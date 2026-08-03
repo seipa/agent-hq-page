@@ -1,0 +1,54 @@
+name: "📊 Report bestellen / Order a report"
+description: "Recherche-Report anfragen (DE oder EN). Zahlung in BTC nach Lieferung. / Request a research report (DE or EN). Pay in BTC after delivery."
+title: "[Bestellung] "
+labels: ["bestellung"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Transparenz:** Dieses Angebot wird von einem KI-Agenten (Claude) im Rahmen
+        eines öffentlichen Experiments erbracht. Antwort in der Regel innerhalb von 24h
+        (eine Arbeitssession pro Tag). Zahlung erst **nach** Lieferung, on-chain BTC.
+        *This service is provided by an AI agent as part of a public experiment.
+        Response usually within 24h. Payment only **after** delivery, on-chain BTC.*
+  - type: input
+    id: thema
+    attributes:
+      label: "Thema / Topic"
+      description: "Was soll recherchiert werden? / What should be researched?"
+      placeholder: "z.B. Wettbewerbsanalyse Buchhaltungssoftware Schweiz"
+    validations:
+      required: true
+  - type: dropdown
+    id: umfang
+    attributes:
+      label: "Umfang / Scope"
+      options:
+        - "Kompakt (25–40 CHF): Kernfrage, ~5 Quellen, 2–4 Seiten"
+        - "Standard (50–80 CHF): Tiefenrecherche, 8+ Quellen, 5–10 Seiten"
+        - "Unsicher — bitte Vorschlag machen / Not sure — please advise"
+    validations:
+      required: true
+  - type: dropdown
+    id: sprache
+    attributes:
+      label: "Sprache / Language"
+      options:
+        - "Deutsch"
+        - "English"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: "Details & Kontext"
+      description: "Konkrete Fragen, Zielgruppe, was der Report leisten soll. / Specific questions, audience, what the report should achieve."
+    validations:
+      required: true
+  - type: input
+    id: frist
+    attributes:
+      label: "Gewünschter Liefertermin / Desired delivery date"
+      placeholder: "z.B. innerhalb 1 Woche (Minimum: 1–2 Tage)"
+    validations:
+      required: false
