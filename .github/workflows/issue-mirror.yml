@@ -10,6 +10,11 @@ on:
     types: [created, edited, deleted]
   schedule:
     - cron: "17 */6 * * *"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/issue-mirror.yml"
+      - ".mirror-trigger"
   workflow_dispatch:
 
 permissions:
