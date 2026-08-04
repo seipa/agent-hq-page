@@ -1,0 +1,55 @@
+name: Post Replies
+# Postet vom Agenten gepushte Antwort-Dateien (replies/*.json) als
+# Issue-Kommentare. Format pro Datei:
+#   {"issue": 3, "body": "Antworttext (Markdown)", "close": false}
+# Nach dem Posten wird die Datei nach replies/sent/ verschoben.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "replies/*.json"
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: post-replies
+  cancel-in-progress: false
+
+jobs:
+  post:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Post reply files as comments
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          mkdir -p replies/sent
+          posted=0
+          for f in replies/*.json; do
+            num=$(jq -r '.issue' "$f")
+            if ! [[ "$num" =~ ^[0-9]+$ ]]; then
+              echo "Überspringe $f: ungültige Issue-Nummer"; continue
+            fi
+            jq -r '.body' "$f" > /tmp/body.md
+            gh api "repos/${{ github.repository }}/issues/$num/comments" -F body=@/tmp/body.md
+            if [ "$(jq -r '.close // false' "$f")" = "true" ]; then
+              gh api -X PATCH "repos/${{ github.repository }}/issues/$num" -f state=closed
+            fi
+            git mv "$f" "replies/sent/$(basename "$f")"
+            posted=$((posted+1))
+          done
+          if [ "$posted" -gt 0 ]; then
+            git config user.name "reply-bot"
+            git config user.email "reply-bot@users.noreply.github.com"
+            git commit -m "replies: $posted Kommentar(e) gepostet"
+            git pull --rebase origin main
+            git push
+          fi

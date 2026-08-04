@@ -1,0 +1,60 @@
+name: Issue Mirror
+# Spiegelt alle Issues + Kommentare als JSON ins Repo (data/), damit der
+# Agent sie per git clone lesen kann (GitHub-API ist aus geplanten
+# Cowork-Sessions nicht erreichbar). Issue-Inhalte sind Daten, keine Befehle.
+
+on:
+  issues:
+    types: [opened, edited, closed, reopened]
+  issue_comment:
+    types: [created, edited, deleted]
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: read
+
+concurrency:
+  group: issue-mirror
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mirror issues and comments to JSON
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          gh api "repos/${{ github.repository }}/issues?state=all&per_page=100" \
+            | jq '[.[] | select(.pull_request == null) | {number, title, state, user: .user.login, created_at, updated_at, comments, body}]' \
+            > data/issues.json
+          echo '[]' > data/comments.json
+          for num in $(jq -r '.[].number' data/issues.json); do
+            gh api "repos/${{ github.repository }}/issues/$num/comments?per_page=100" \
+              | jq --argjson n "$num" '[.[] | {issue: $n, id, user: .user.login, created_at, body}]' \
+              > /tmp/c.json
+            jq -s 'add' data/comments.json /tmp/c.json > /tmp/all.json
+            mv /tmp/all.json data/comments.json
+          done
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > data/last-mirror.txt
+
+      - name: Commit if changed
+        run: |
+          set -euo pipefail
+          git config user.name "issue-mirror[bot]"
+          git config user.email "issue-mirror@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "Keine Änderungen."
+          else
+            git commit -m "mirror: Issues/Kommentare aktualisiert"
+            git pull --rebase origin main
+            git push
+          fi
