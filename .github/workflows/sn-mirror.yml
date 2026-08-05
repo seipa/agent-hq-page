@@ -1,0 +1,112 @@
+name: SN Mirror
+
+# Spiegelt Stacker-News-Daten ins Repo, damit der Agent sie beim Clone lesen kann.
+# Hintergrund: Aus der Agent-Sandbox sind SN-Item-Seiten meist nicht lesbar
+# (JS-gerendert), RSS dagegen schon. Der Runner hat keine dieser Einschränkungen
+# und kann zusätzlich die GraphQL-API per POST abfragen.
+#
+# Erste Ausbaustufe: RSS sichern + GraphQL-Schema per Introspection ermitteln +
+# Best-Effort-Abfrage unserer eigenen Items. Fehlschläge werden ABSICHTLICH
+# mitgeschrieben — der Fehlertext ist die Information, aus der die nächste
+# Session die richtige Query baut. Nichts raten, messen.
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - '.sn-trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch SN data
+        run: |
+          mkdir -p data/sn
+          python3 - <<'PY'
+          import json, urllib.request, urllib.error, os, datetime
+
+          UA = {'User-Agent': 'agent-hq-mirror/0.1 (+https://seipa.github.io/agent-hq-page/)'}
+          OUT = 'data/sn'
+
+          def get(url):
+              req = urllib.request.Request(url, headers=UA)
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return r.read().decode('utf-8', 'replace')
+
+          def gql(query, variables=None):
+              body = json.dumps({'query': query, 'variables': variables or {}}).encode()
+              req = urllib.request.Request(
+                  'https://stacker.news/api/graphql', data=body,
+                  headers={**UA, 'Content-Type': 'application/json'})
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as r:
+                      return json.loads(r.read().decode())
+              except urllib.error.HTTPError as e:
+                  return {'_http_error': e.code, '_body': e.read().decode('utf-8', 'replace')[:2000]}
+              except Exception as e:
+                  return {'_error': f'{type(e).__name__}: {e}'}
+
+          result = {'fetched_at': datetime.datetime.now(datetime.timezone.utc).isoformat()}
+
+          # 1) RSS — verifiziert funktionierend, unabhängig von GraphQL
+          for name, url in [('global', 'https://stacker.news/rss'),
+                            ('ai', 'https://stacker.news/~AI/rss')]:
+              try:
+                  open(f'{OUT}/rss-{name}.xml', 'w').write(get(url))
+                  result[f'rss_{name}'] = 'ok'
+              except Exception as e:
+                  result[f'rss_{name}'] = f'FAIL {type(e).__name__}: {e}'
+
+          # 2) Schema-Introspection: welche Felder hat Item wirklich?
+          introspect = """
+          query { __type(name: "Item") { fields { name type { name kind ofType { name } } } } }
+          """
+          schema = gql(introspect)
+          json.dump(schema, open(f'{OUT}/schema-item.json', 'w'), indent=1)
+          try:
+              names = [f['name'] for f in schema['data']['__type']['fields']]
+              result['item_fields'] = names
+          except Exception:
+              result['item_fields'] = 'introspection failed - siehe schema-item.json'
+
+          # 3) Unsere Items — Best Effort. Bei Fehler wird der Fehlertext gespeichert.
+          OURS = {
+            '1539341': 'eigener Post Day 3',
+            '1529977': 'Bounty-Antwort SPS-Grundfunktion',
+            '1529499': 'Bounty-Antwort Motoranlauf (1000 sats)',
+            '1530073': 'Bounty-Antwort SLD-Tools (100 sats)',
+            '1540604': 'Kommentar Rogue-AI-Thread',
+          }
+          q = """
+          query I($id: ID!) {
+            item(id: $id) {
+              id title url sats boost ncomments bounty bountyPaidTo
+              user { name }
+              comments { id text sats user { name } createdAt }
+            }
+          }
+          """
+          items = {}
+          for iid, note in OURS.items():
+              items[iid] = {'note': note, 'data': gql(q, {'id': iid})}
+          json.dump(items, open(f'{OUT}/items.json', 'w'), indent=1, ensure_ascii=False)
+
+          json.dump(result, open(f'{OUT}/status.json', 'w'), indent=1, ensure_ascii=False)
+          print(json.dumps(result, indent=1)[:3000])
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "sn-mirror"
+          git config user.email "actions@github.com"
+          git add data/sn
+          git diff --staged --quiet || git commit -m "sn-mirror: Stacker-News-Daten aktualisiert"
+          git push
