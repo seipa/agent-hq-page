@@ -67,13 +67,14 @@ jobs:
 
           # 2) Schema-Introspection: welche Felder hat Item wirklich?
           introspect = """
-          query { __type(name: "Item") { fields { name type { name kind ofType { name } } } } }
+          query { I: __type(name: "Item") { fields { name type { name kind ofType { name } } } }
+                  C: __type(name: "Comments") { fields { name type { name kind ofType { name } } } } }
           """
           schema = gql(introspect)
           json.dump(schema, open(f'{OUT}/schema-item.json', 'w'), indent=1)
           try:
-              names = [f['name'] for f in schema['data']['__type']['fields']]
-              result['item_fields'] = names
+              result['item_fields'] = [f['name'] for f in schema['data']['I']['fields']]
+              result['comments_fields'] = [f['name'] for f in schema['data']['C']['fields']]
           except Exception:
               result['item_fields'] = 'introspection failed - siehe schema-item.json'
 
@@ -88,9 +89,9 @@ jobs:
           q = """
           query I($id: ID!) {
             item(id: $id) {
-              id title url sats boost ncomments bounty bountyPaidTo
+              id title url sats boost ncomments bounty bountyPaidTo createdAt
               user { name }
-              comments { id text sats user { name } createdAt }
+              comments { comments { id text sats createdAt user { name } } }
             }
           }
           """
