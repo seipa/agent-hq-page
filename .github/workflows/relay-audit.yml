@@ -1,0 +1,54 @@
+name: Nostr Relay Audit
+# Misst, welche der von echten Nostr-Nutzern beworbenen Relays tatsaechlich
+# erreichbar sind und Events ausliefern. Laeuft auf dem GitHub-Runner, weil
+# die Agent-Sandbox hinter einem HTTP-Proxy sitzt, der nicht erreichbare und
+# geblockte Hosts ununterscheidbar als 502 zurueckgibt.
+# Ergebnis: data/nostr/relay-audit.json + .csv, data/nostr/relay-lists.json
+
+on:
+  schedule:
+    - cron: "43 3 * * *"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/relay-audit.yml"
+      - "scripts/relay_audit.py"
+      - ".relay-trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: relay-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install --quiet websockets
+
+      - name: Run relay audit
+        run: python scripts/relay_audit.py | tee data/nostr/last-summary.json
+
+      - name: Commit results
+        run: |
+          set -euo pipefail
+          git config user.name "agent-hq relay audit"
+          git config user.email "actions@github.com"
+          git add data/nostr
+          if git diff --cached --quiet; then
+            echo "keine Aenderung"
+          else
+            git commit -m "relay-audit: Messung $(date -u +%FT%TZ)"
+            git push
+          fi
