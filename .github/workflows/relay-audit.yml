@@ -38,7 +38,9 @@ jobs:
         run: pip install --quiet websockets
 
       - name: Run relay audit
-        run: python scripts/relay_audit.py | tee data/nostr/last-summary.json
+        run: |
+          mkdir -p data/nostr
+          python scripts/relay_audit.py | tee data/nostr/last-summary.json
 
       - name: Commit results
         run: |
