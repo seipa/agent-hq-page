@@ -1,14 +1,17 @@
 name: SN Mirror
 
-# Spiegelt Stacker-News-Daten ins Repo, damit der Agent sie beim Clone lesen kann.
-# Hintergrund: Aus der Agent-Sandbox sind SN-Item-Seiten meist nicht lesbar
-# (JS-gerendert), RSS dagegen schon. Der Runner hat keine dieser Einschränkungen
-# und kann zusätzlich die GraphQL-API per POST abfragen.
+# Spiegelt externe Daten ins Repo, damit der Agent sie beim Clone lesen kann.
+# Hintergrund: Aus der Agent-Sandbox ist WebFetch unzuverlaessig (oft
+# PROVENANCE_REQUIRED, v.a. in geplanten Sessions) und SN-Item-Seiten sind
+# JS-gerendert. Der Runner hat keine dieser Einschraenkungen.
 #
-# Erste Ausbaustufe: RSS sichern + GraphQL-Schema per Introspection ermitteln +
-# Best-Effort-Abfrage unserer eigenen Items. Fehlschläge werden ABSICHTLICH
-# mitgeschrieben — der Fehlertext ist die Information, aus der die nächste
-# Session die richtige Query baut. Nichts raten, messen.
+# Ausbaustufe 2 (2026-08-06):
+#   - RSS + eigene Items (wie bisher)
+#   - NEU: Bounty-Discovery ueber GraphQL (mehrere Query-Varianten, Fehler
+#     werden absichtlich mitgeschrieben)
+#   - NEU: Volltext von Bounty-Kandidaten
+#   - NEU: Wallet-/Kurs-/Gebuehrendaten von mempool.space -> data/wallet.json
+#     (macht die Tagessession unabhaengig von WebFetch)
 
 on:
   schedule:
@@ -31,9 +34,9 @@ jobs:
         run: |
           mkdir -p data/sn
           python3 - <<'PY'
-          import json, urllib.request, urllib.error, os, datetime
+          import json, urllib.request, urllib.error, datetime
 
-          UA = {'User-Agent': 'agent-hq-mirror/0.1 (+https://seipa.github.io/agent-hq-page/)'}
+          UA = {'User-Agent': 'agent-hq-mirror/0.2 (+https://seipa.github.io/agent-hq-page/)'}
           OUT = 'data/sn'
 
           def get(url):
@@ -56,7 +59,7 @@ jobs:
 
           result = {'fetched_at': datetime.datetime.now(datetime.timezone.utc).isoformat()}
 
-          # 1) RSS — verifiziert funktionierend, unabhängig von GraphQL
+          # 1) RSS
           for name, url in [('global', 'https://stacker.news/rss'),
                             ('ai', 'https://stacker.news/~AI/rss')]:
               try:
@@ -65,31 +68,33 @@ jobs:
               except Exception as e:
                   result[f'rss_{name}'] = f'FAIL {type(e).__name__}: {e}'
 
-          # 2) Schema-Introspection: welche Felder hat Item wirklich?
+          # 2) Schema-Introspection: Item, Comments UND Query-Root (fuer Bounty-Suche)
           introspect = """
-          query { I: __type(name: "Item") { fields { name type { name kind ofType { name } } } }
-                  C: __type(name: "Comments") { fields { name type { name kind ofType { name } } } } }
+          query { I: __type(name: "Item") { fields { name } }
+                  C: __type(name: "Comments") { fields { name } }
+                  Q: __type(name: "Query") { fields { name args { name type { name kind ofType { name } } } } } }
           """
           schema = gql(introspect)
           json.dump(schema, open(f'{OUT}/schema-item.json', 'w'), indent=1)
           try:
               result['item_fields'] = [f['name'] for f in schema['data']['I']['fields']]
-              result['comments_fields'] = [f['name'] for f in schema['data']['C']['fields']]
+              result['query_fields'] = [f['name'] for f in schema['data']['Q']['fields']]
           except Exception:
               result['item_fields'] = 'introspection failed - siehe schema-item.json'
 
-          # 3) Unsere Items — Best Effort. Bei Fehler wird der Fehlertext gespeichert.
+          # 3) Eigene Items + Bounty-Kandidaten (Volltext)
           OURS = {
             '1539341': 'eigener Post Day 3',
             '1529977': 'Bounty-Antwort SPS-Grundfunktion',
             '1529499': 'Bounty-Antwort Motoranlauf (1000 sats)',
-            '1530073': 'Bounty-Antwort SLD-Tools (100 sats)',
+            '1530073': 'Bounty-Antwort SLD-Tools',
             '1540604': 'Kommentar Rogue-AI-Thread',
+            '1532486': 'KANDIDAT Visualizer-Bounty (Volltext gesucht)',
           }
           q = """
           query I($id: ID!) {
             item(id: $id) {
-              id title url sats boost ncomments bounty bountyPaidTo createdAt
+              id title url text sats boost ncomments bounty bountyPaidTo createdAt
               user { name }
               comments { comments { id text sats createdAt user { name } } }
             }
@@ -100,14 +105,79 @@ jobs:
               items[iid] = {'note': note, 'data': gql(q, {'id': iid})}
           json.dump(items, open(f'{OUT}/items.json', 'w'), indent=1, ensure_ascii=False)
 
+          # 4) NEU: Bounty-Discovery. Mehrere Varianten, weil die Signatur unbekannt
+          #    ist. Fehler werden mitgeschrieben - der Fehlertext ist die Information.
+          BF = ("id title url text sats bounty bountyPaidTo ncomments "
+                "createdAt user { name } subName")
+          variants = {
+            'items_type_bounties': 'query { items(sort: "recent", type: "bounties", limit: 40) { items { %s } } }' % BF,
+            'items_type_bounty':   'query { items(sort: "recent", type: "bounty", limit: 40) { items { %s } } }' % BF,
+            'search_bounty':       'query { search(q: "bounty", sort: "recent", limit: 40) { items { %s } } }' % BF,
+            'items_recent_plain':  'query { items(sort: "recent", limit: 40) { items { %s } } }' % BF,
+          }
+          bounties = {}
+          for name, query in variants.items():
+              bounties[name] = gql(query)
+          json.dump(bounties, open(f'{OUT}/bounties.json', 'w'), indent=1, ensure_ascii=False)
+          result['bounty_variants_ok'] = [k for k, v in bounties.items()
+                                          if isinstance(v, dict) and v.get('data') and not v.get('errors')]
+
           json.dump(result, open(f'{OUT}/status.json', 'w'), indent=1, ensure_ascii=False)
           print(json.dumps(result, indent=1)[:3000])
+          PY
+
+      - name: Fetch wallet + price data
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request, datetime
+          UA = {'User-Agent': 'agent-hq-mirror/0.2'}
+          ADDR = 'bc1qnwr485x5s3fxq8x5xd08tc4h3u4eece2ef4phs'
+          OLD  = 'bc1qrwac0zuma2eqez0fhkxrh97m4v3j7vq8l9sser'
+
+          def j(url):
+              try:
+                  req = urllib.request.Request(url, headers=UA)
+                  with urllib.request.urlopen(req, timeout=30) as r:
+                      return json.loads(r.read().decode())
+              except Exception as e:
+                  return {'_error': f'{type(e).__name__}: {e}'}
+
+          out = {
+            'fetched_at': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            'address': ADDR,
+            'addr_stats': j(f'https://mempool.space/api/address/{ADDR}'),
+            'addr_txs': j(f'https://mempool.space/api/address/{ADDR}/txs'),
+            'addr_mempool': j(f'https://mempool.space/api/address/{ADDR}/txs/mempool'),
+            'old_addr_stats': j(f'https://mempool.space/api/address/{OLD}'),
+            'prices': j('https://mempool.space/api/v1/prices'),
+            'fees': j('https://mempool.space/api/v1/fees/recommended'),
+          }
+          try:
+              req = urllib.request.Request('https://mempool.space/api/blocks/tip/height', headers=UA)
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  out['tip_height'] = int(r.read().decode().strip())
+          except Exception as e:
+              out['tip_height'] = f'ERR {e}'
+
+          s = out['addr_stats']
+          try:
+              bal = s['chain_stats']['funded_txo_sum'] - s['chain_stats']['spent_txo_sum']
+              mem = s['mempool_stats']['funded_txo_sum'] - s['mempool_stats']['spent_txo_sum']
+              out['summary'] = {'balance_sats': bal, 'mempool_delta_sats': mem,
+                                'tx_count': s['chain_stats']['tx_count'],
+                                'chf_per_btc': out['prices'].get('CHF')}
+              if isinstance(out['prices'].get('CHF'), (int, float)):
+                  out['summary']['balance_chf'] = round(bal / 1e8 * out['prices']['CHF'], 2)
+          except Exception as e:
+              out['summary'] = {'_error': str(e)}
+          json.dump(out, open('data/wallet.json', 'w'), indent=1)
+          print(json.dumps(out.get('summary'), indent=1))
           PY
 
       - name: Commit
         run: |
           git config user.name "sn-mirror"
           git config user.email "actions@github.com"
-          git add data/sn
-          git diff --staged --quiet || git commit -m "sn-mirror: Stacker-News-Daten aktualisiert"
+          git add data/sn data/wallet.json
+          git diff --staged --quiet || git commit -m "sn-mirror: SN-, Wallet- und Kursdaten aktualisiert"
           git push
