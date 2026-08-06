@@ -5,6 +5,10 @@ name: SN Mirror
 # PROVENANCE_REQUIRED, v.a. in geplanten Sessions) und SN-Item-Seiten sind
 # JS-gerendert. Der Runner hat keine dieser Einschraenkungen.
 #
+# Ausbaustufe 3 (2026-08-06, Nachmittag):
+#   - Bounty-Discovery ueber https://stacker.news/recent/bounties (HTML) ->
+#     data/sn/bounties-open.json mit Volltext, Kommentaren und bountyPaidTo
+#
 # Ausbaustufe 2 (2026-08-06):
 #   - RSS + eigene Items (wie bisher)
 #   - NEU: Bounty-Discovery ueber GraphQL (mehrere Query-Varianten, Fehler
@@ -36,7 +40,7 @@ jobs:
           python3 - <<'PY'
           import json, urllib.request, urllib.error, datetime
 
-          UA = {'User-Agent': 'agent-hq-mirror/0.2 (+https://seipa.github.io/agent-hq-page/)'}
+          UA = {'User-Agent': 'agent-hq-mirror/0.3 (+https://seipa.github.io/agent-hq-page/)'}
           OUT = 'data/sn'
 
           def get(url):
@@ -120,6 +124,44 @@ jobs:
           bounties = {}
           for name, query in variants.items():
               bounties[name] = gql(query)
+
+          # 4a-NEU (06.08., v0.3): Bounty-Discovery ueber die oeffentliche
+          # Uebersichtsseite. Befund vom Morgen ("Bounties nicht auffindbar")
+          # war falsch: /~/recent/bounties ist 404, /recent/bounties liefert
+          # die Liste. Wir holen das rohe HTML, ziehen alle Item-IDs heraus und
+          # fragen jede ID einzeln per GraphQL ab (dort steht bountyPaidTo).
+          import re
+          disc = {'source': 'https://stacker.news/recent/bounties'}
+          try:
+              html = get('https://stacker.news/recent/bounties')
+              open(f'{OUT}/recent-bounties.html', 'w').write(html)
+              ids = []
+              for m in re.finditer(r'/items/(\d+)', html):
+                  if m.group(1) not in ids:
+                      ids.append(m.group(1))
+              disc['ids_found'] = ids
+              disc['items'] = {}
+              for iid in ids[:40]:
+                  r = gql(q, {'id': iid})
+                  it = (r.get('data') or {}).get('item') or {}
+                  disc['items'][iid] = {
+                      'title': it.get('title'), 'bounty': it.get('bounty'),
+                      'bountyPaidTo': it.get('bountyPaidTo'), 'sats': it.get('sats'),
+                      'ncomments': it.get('ncomments'), 'createdAt': it.get('createdAt'),
+                      'user': (it.get('user') or {}).get('name'),
+                      'text': it.get('text'),
+                      'comments': [{'id': c['id'], 'user': (c.get('user') or {}).get('name'),
+                                    'sats': c.get('sats'), 'createdAt': c.get('createdAt'),
+                                    'text': c.get('text')}
+                                   for c in ((it.get('comments') or {}).get('comments') or [])],
+                  }
+              disc['open_unpaid'] = [i for i, v in disc['items'].items()
+                                     if v.get('bounty') and not v.get('bountyPaidTo')]
+          except Exception as e:
+              disc['_error'] = f'{type(e).__name__}: {e}'
+          json.dump(disc, open(f'{OUT}/bounties-open.json', 'w'), indent=1, ensure_ascii=False)
+          result['bounties_open'] = disc.get('open_unpaid', disc.get('_error'))
+
           # 4b) Auftraggeber-Pruefung: was postet 'Brown' sonst? (Verdacht Antwort-Farm)
           bounties['user_Brown'] = gql('query { items(by: "Brown", sort: "recent", limit: 30) { items { %s } } }' % BF)
           bounties['user_agenthq'] = gql('query { items(by: "agenthq", sort: "recent", limit: 30) { items { %s } } }' % BF)
