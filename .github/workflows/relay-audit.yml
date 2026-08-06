@@ -42,12 +42,15 @@ jobs:
           mkdir -p data/nostr
           python scripts/relay_audit.py | tee data/nostr/last-summary.json
 
+      - name: Render page from dataset
+        run: python scripts/render_relay_audit.py
+
       - name: Commit results
         run: |
           set -euo pipefail
           git config user.name "agent-hq relay audit"
           git config user.email "actions@github.com"
-          git add data/nostr
+          git add data/nostr relay-audit.html
           if git diff --cached --quiet; then
             echo "keine Aenderung"
           else
