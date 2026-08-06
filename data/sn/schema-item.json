@@ -3,672 +3,1514 @@
   "I": {
    "fields": [
     {
-     "name": "id",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "ID"
-      }
-     }
-    },
-    {
-     "name": "createdAt",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Date"
-      }
-     }
-    },
-    {
-     "name": "updatedAt",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Date"
-      }
-     }
-    },
-    {
-     "name": "deletedAt",
-     "type": {
-      "name": "Date",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "deleteScheduledAt",
-     "type": {
-      "name": "Date",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "reminderScheduledAt",
-     "type": {
-      "name": "Date",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "title",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "searchTitle",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "url",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "searchText",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "text",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "lexicalState",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
+     "name": "id"
+    },
+    {
+     "name": "createdAt"
+    },
+    {
+     "name": "updatedAt"
+    },
+    {
+     "name": "deletedAt"
+    },
+    {
+     "name": "deleteScheduledAt"
+    },
+    {
+     "name": "reminderScheduledAt"
+    },
+    {
+     "name": "title"
+    },
+    {
+     "name": "searchTitle"
+    },
+    {
+     "name": "url"
+    },
+    {
+     "name": "searchText"
+    },
+    {
+     "name": "text"
+    },
+    {
+     "name": "lexicalState"
+    },
+    {
+     "name": "html"
+    },
+    {
+     "name": "parentId"
+    },
+    {
+     "name": "parent"
+    },
+    {
+     "name": "root"
+    },
+    {
+     "name": "user"
+    },
+    {
+     "name": "userId"
+    },
+    {
+     "name": "depth"
+    },
+    {
+     "name": "mine"
+    },
+    {
+     "name": "boost"
+    },
+    {
+     "name": "bounty"
+    },
+    {
+     "name": "bountyPaidTo"
+    },
+    {
+     "name": "noteId"
+    },
+    {
+     "name": "sats"
+    },
+    {
+     "name": "downSats"
+    },
+    {
+     "name": "credits"
+    },
+    {
+     "name": "commentSats"
+    },
+    {
+     "name": "commentCredits"
+    },
+    {
+     "name": "commentCost"
+    },
+    {
+     "name": "commentBoost"
+    },
+    {
+     "name": "commentDownSats"
+    },
+    {
+     "name": "lastCommentAt"
+    },
+    {
+     "name": "upvotes"
+    },
+    {
+     "name": "meSats"
+    },
+    {
+     "name": "meCredits"
+    },
+    {
+     "name": "meDontLikeSats"
+    },
+    {
+     "name": "meBookmark"
+    },
+    {
+     "name": "meSubscription"
+    },
+    {
+     "name": "meForward"
+    },
+    {
+     "name": "freebie"
+    },
+    {
+     "name": "netInvestment"
+    },
+    {
+     "name": "freedFreebie"
+    },
+    {
+     "name": "bio"
+    },
+    {
+     "name": "ncomments"
+    },
+    {
+     "name": "nDirectComments"
+    },
+    {
+     "name": "comments"
+    },
+    {
+     "name": "path"
+    },
+    {
+     "name": "position"
+    },
+    {
+     "name": "prior"
+    },
+    {
+     "name": "isJob"
+    },
+    {
+     "name": "pollCost"
+    },
+    {
+     "name": "poll"
+    },
+    {
+     "name": "pollExpiresAt"
+    },
+    {
+     "name": "company"
+    },
+    {
+     "name": "location"
+    },
+    {
+     "name": "remote"
+    },
+    {
+     "name": "sub"
+    },
+    {
+     "name": "subName"
+    },
+    {
+     "name": "subs"
+    },
+    {
+     "name": "subNames"
+    },
+    {
+     "name": "status"
+    },
+    {
+     "name": "uploadId"
+    },
+    {
+     "name": "otsHash"
+    },
+    {
+     "name": "parentOtsHash"
+    },
+    {
+     "name": "forwards"
+    },
+    {
+     "name": "imgproxyUrls"
+    },
+    {
+     "name": "rel"
+    },
+    {
+     "name": "apiKey"
+    },
+    {
+     "name": "cost"
+    },
+    {
+     "name": "payIn"
+    },
     {
-     "name": "html",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "parentId",
-     "type": {
-      "name": "Int",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "parent",
-     "type": {
-      "name": "Item",
-      "kind": "OBJECT",
-      "ofType": null
-     }
-    },
-    {
-     "name": "root",
-     "type": {
-      "name": "Item",
-      "kind": "OBJECT",
-      "ofType": null
-     }
-    },
-    {
-     "name": "user",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "User"
-      }
-     }
-    },
-    {
-     "name": "userId",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "depth",
-     "type": {
-      "name": "Int",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "mine",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Boolean"
-      }
-     }
-    },
-    {
-     "name": "boost",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "bounty",
-     "type": {
-      "name": "Int",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "bountyPaidTo",
-     "type": {
-      "name": null,
-      "kind": "LIST",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "noteId",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "sats",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "downSats",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "credits",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "commentSats",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "commentCredits",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "commentCost",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "commentBoost",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "commentDownSats",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "lastCommentAt",
-     "type": {
-      "name": "Date",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "upvotes",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "meSats",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "meCredits",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "meDontLikeSats",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "meBookmark",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Boolean"
-      }
-     }
-    },
-    {
-     "name": "meSubscription",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Boolean"
-      }
-     }
-    },
-    {
-     "name": "meForward",
-     "type": {
-      "name": "Boolean",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "freebie",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Boolean"
-      }
-     }
-    },
-    {
-     "name": "netInvestment",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "freedFreebie",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Boolean"
-      }
-     }
-    },
-    {
-     "name": "bio",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Boolean"
-      }
-     }
-    },
-    {
-     "name": "ncomments",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "nDirectComments",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "comments",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Comments"
-      }
-     }
-    },
-    {
-     "name": "path",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "position",
-     "type": {
-      "name": "Int",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "prior",
-     "type": {
-      "name": "Int",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "isJob",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Boolean"
-      }
-     }
-    },
-    {
-     "name": "pollCost",
-     "type": {
-      "name": "Int",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "poll",
-     "type": {
-      "name": "Poll",
-      "kind": "OBJECT",
-      "ofType": null
-     }
-    },
-    {
-     "name": "pollExpiresAt",
-     "type": {
-      "name": "Date",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "company",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "location",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "remote",
-     "type": {
-      "name": "Boolean",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "sub",
-     "type": {
-      "name": "Sub",
-      "kind": "OBJECT",
-      "ofType": null
-     }
-    },
-    {
-     "name": "subName",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "subs",
-     "type": {
-      "name": null,
-      "kind": "LIST",
-      "ofType": {
-       "name": null
-      }
-     }
-    },
-    {
-     "name": "subNames",
-     "type": {
-      "name": null,
-      "kind": "LIST",
-      "ofType": {
-       "name": null
-      }
-     }
-    },
-    {
-     "name": "status",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "String"
-      }
-     }
-    },
-    {
-     "name": "uploadId",
-     "type": {
-      "name": "Int",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "otsHash",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "parentOtsHash",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "forwards",
-     "type": {
-      "name": null,
-      "kind": "LIST",
-      "ofType": {
-       "name": "ItemForward"
-      }
-     }
-    },
-    {
-     "name": "imgproxyUrls",
-     "type": {
-      "name": "JSONObject",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "rel",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "apiKey",
-     "type": {
-      "name": "Boolean",
-      "kind": "SCALAR",
-      "ofType": null
-     }
-    },
-    {
-     "name": "cost",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": "Int"
-      }
-     }
-    },
-    {
-     "name": "payIn",
-     "type": {
-      "name": "PayIn",
-      "kind": "OBJECT",
-      "ofType": null
-     }
-    },
-    {
-     "name": "meCommentsViewedAt",
-     "type": {
-      "name": "Date",
-      "kind": "SCALAR",
-      "ofType": null
-     }
+     "name": "meCommentsViewedAt"
     }
    ]
   },
   "C": {
    "fields": [
     {
-     "name": "cursor",
-     "type": {
-      "name": "String",
-      "kind": "SCALAR",
-      "ofType": null
-     }
+     "name": "cursor"
     },
     {
-     "name": "comments",
-     "type": {
-      "name": null,
-      "kind": "NON_NULL",
-      "ofType": {
-       "name": null
+     "name": "comments"
+    }
+   ]
+  },
+  "Q": {
+   "fields": [
+    {
+     "name": "_",
+     "args": []
+    },
+    {
+     "name": "me",
+     "args": []
+    },
+    {
+     "name": "settings",
+     "args": []
+    },
+    {
+     "name": "user",
+     "args": [
+      {
+       "name": "id",
+       "type": {
+        "name": "ID",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "name",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
       }
-     }
+     ]
+    },
+    {
+     "name": "nameAvailable",
+     "args": [
+      {
+       "name": "name",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "String"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "topUsers",
+     "args": [
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "by",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "limit",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "Limit"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "topCowboys",
+     "args": [
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "searchUsers",
+     "args": [
+      {
+       "name": "q",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "String"
+        }
+       }
+      },
+      {
+       "name": "limit",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "Limit"
+        }
+       }
+      },
+      {
+       "name": "similarity",
+       "type": {
+        "name": "Float",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "userSuggestions",
+     "args": [
+      {
+       "name": "q",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "limit",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "Limit"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "hasNewNotes",
+     "args": []
+    },
+    {
+     "name": "mySubscribedUsers",
+     "args": [
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "myMutedUsers",
+     "args": [
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "items",
+     "args": [
+      {
+       "name": "sub",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "sort",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "type",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "name",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "by",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "limit",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "Limit"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "item",
+     "args": [
+      {
+       "name": "id",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "ID"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "pageTitleAndUnshorted",
+     "args": [
+      {
+       "name": "url",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "String"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "dupes",
+     "args": [
+      {
+       "name": "url",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "String"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "related",
+     "args": [
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "title",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "id",
+       "type": {
+        "name": "ID",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "minMatch",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "limit",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "Limit"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "search",
+     "args": [
+      {
+       "name": "q",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "what",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "sort",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "itemRepetition",
+     "args": [
+      {
+       "name": "parentId",
+       "type": {
+        "name": "ID",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "newComments",
+     "args": [
+      {
+       "name": "itemId",
+       "type": {
+        "name": "ID",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "after",
+       "type": {
+        "name": "Date",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "messages",
+     "args": []
+    },
+    {
+     "name": "message",
+     "args": [
+      {
+       "name": "id",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "ID"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "numBolt11s",
+     "args": []
+    },
+    {
+     "name": "connectAddress",
+     "args": []
+    },
+    {
+     "name": "wallets",
+     "args": []
+    },
+    {
+     "name": "walletSettings",
+     "args": []
+    },
+    {
+     "name": "walletLogs",
+     "args": [
+      {
+       "name": "walletId",
+       "type": {
+        "name": "ID",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "payInId",
+       "type": {
+        "name": "Int",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "externalTransactionId",
+       "type": {
+        "name": "Int",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "externalTransaction",
+     "args": [
+      {
+       "name": "id",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "Int"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "lnAuth",
+     "args": [
+      {
+       "name": "k1",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "String"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "notifications",
+     "args": [
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "inc",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "invites",
+     "args": []
+    },
+    {
+     "name": "invite",
+     "args": [
+      {
+       "name": "id",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "ID"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "sub",
+     "args": [
+      {
+       "name": "name",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "subLatestPost",
+     "args": [
+      {
+       "name": "name",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "String"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "subs",
+     "args": [
+      {
+       "name": "subNames",
+       "type": {
+        "name": null,
+        "kind": "LIST",
+        "ofType": {
+         "name": null
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "activeSubs",
+     "args": []
+    },
+    {
+     "name": "topSubs",
+     "args": [
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "by",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "limit",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "Limit"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "userSubs",
+     "args": [
+      {
+       "name": "name",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "String"
+        }
+       }
+      },
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "by",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "limit",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "Limit"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "mySubscribedSubs",
+     "args": [
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "subSuggestions",
+     "args": [
+      {
+       "name": "q",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "String"
+        }
+       }
+      },
+      {
+       "name": "limit",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "Limit"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "uploadFees",
+     "args": [
+      {
+       "name": "s3Keys",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": null
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "registrationGrowth",
+     "args": [
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "itemGrowth",
+     "args": [
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "sub",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "mine",
+       "type": {
+        "name": "Boolean",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "spendingGrowth",
+     "args": [
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "sub",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "mine",
+       "type": {
+        "name": "Boolean",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "spenderGrowth",
+     "args": [
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "sub",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "mine",
+       "type": {
+        "name": "Boolean",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "stackingGrowth",
+     "args": [
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "sub",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "mine",
+       "type": {
+        "name": "Boolean",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "stackerGrowth",
+     "args": [
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "sub",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "mine",
+       "type": {
+        "name": "Boolean",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "growthTotals",
+     "args": [
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "sub",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "mine",
+       "type": {
+        "name": "Boolean",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "rewards",
+     "args": [
+      {
+       "name": "when",
+       "type": {
+        "name": null,
+        "kind": "LIST",
+        "ofType": {
+         "name": null
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "meRewards",
+     "args": [
+      {
+       "name": "when",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": null
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "referrals",
+     "args": [
+      {
+       "name": "when",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "from",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "to",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "price",
+     "args": [
+      {
+       "name": "fiatCurrency",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "snl",
+     "args": []
+    },
+    {
+     "name": "blockHeight",
+     "args": []
+    },
+    {
+     "name": "chainFee",
+     "args": []
+    },
+    {
+     "name": "domain",
+     "args": [
+      {
+       "name": "subName",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "String"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "payIn",
+     "args": [
+      {
+       "name": "id",
+       "type": {
+        "name": null,
+        "kind": "NON_NULL",
+        "ofType": {
+         "name": "Int"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "name": "satistics",
+     "args": [
+      {
+       "name": "cursor",
+       "type": {
+        "name": "String",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      },
+      {
+       "name": "walletId",
+       "type": {
+        "name": "ID",
+        "kind": "SCALAR",
+        "ofType": null
+       }
+      }
+     ]
+    },
+    {
+     "name": "failedPayIns",
+     "args": []
+    },
+    {
+     "name": "pendingExternalSendTransactions",
+     "args": []
     }
    ]
   }
