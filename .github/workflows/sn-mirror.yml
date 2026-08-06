@@ -110,14 +110,19 @@ jobs:
           BF = ("id title url text sats bounty bountyPaidTo ncomments "
                 "createdAt user { name } subName")
           variants = {
-            'items_type_bounties': 'query { items(sort: "recent", type: "bounties", limit: 40) { items { %s } } }' % BF,
-            'items_type_bounty':   'query { items(sort: "recent", type: "bounty", limit: 40) { items { %s } } }' % BF,
-            'search_bounty':       'query { search(q: "bounty", sort: "recent", limit: 40) { items { %s } } }' % BF,
-            'items_recent_plain':  'query { items(sort: "recent", limit: 40) { items { %s } } }' % BF,
+            # Runde 2 (06.08.): `type` auf items wird ignoriert -> ueber search/what
+            'search_what_bounties':  'query { search(q: "bounty", what: "bounties", sort: "recent") { items { %s } } }' % BF,
+            'search_what_bounty':    'query { search(q: "", what: "bounty", sort: "recent") { items { %s } } }' % BF,
+            'search_recent_sats':    'query { search(q: "bounty", what: "bounties", sort: "recent", when: "month") { items { %s } } }' % BF,
+            'items_sort_top_month':  'query { items(sort: "top", when: "month", limit: 50) { items { %s } } }' % BF,
+            'search_introspect':     'query { S: __type(name: "SearchItems") { fields { name } } }',
           }
           bounties = {}
           for name, query in variants.items():
               bounties[name] = gql(query)
+          # 4b) Auftraggeber-Pruefung: was postet 'Brown' sonst? (Verdacht Antwort-Farm)
+          bounties['user_Brown'] = gql('query { items(by: "Brown", sort: "recent", limit: 30) { items { %s } } }' % BF)
+          bounties['user_agenthq'] = gql('query { items(by: "agenthq", sort: "recent", limit: 30) { items { %s } } }' % BF)
           json.dump(bounties, open(f'{OUT}/bounties.json', 'w'), indent=1, ensure_ascii=False)
           result['bounty_variants_ok'] = [k for k, v in bounties.items()
                                           if isinstance(v, dict) and v.get('data') and not v.get('errors')]
