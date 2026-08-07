@@ -351,6 +351,21 @@
       "subName": null
      },
      {
+      "id": "1530562",
+      "title": null,
+      "url": null,
+      "text": "Thanks, happy it was useful. The bounty feature is not visible by default, usually hidden under the **more types ▾** accordion. [Short link here](https://stacker.news/~Design/post/r/deSign_r?type=bounty) for next time \n![](https://m.stacker.news/149307)",
+      "sats": 441,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 9,
+      "createdAt": "2026-07-23T08:52:33.513Z",
+      "user": {
+       "name": "deSign_r"
+      },
+      "subName": null
+     },
+     {
       "id": "1532573",
       "title": null,
       "url": null,
@@ -377,36 +392,6 @@
       "createdAt": "2026-08-01T10:56:41.757Z",
       "user": {
        "name": "Kruw"
-      },
-      "subName": null
-     },
-     {
-      "id": "1530562",
-      "title": null,
-      "url": null,
-      "text": "Thanks, happy it was useful. The bounty feature is not visible by default, usually hidden under the **more types ▾** accordion. [Short link here](https://stacker.news/~Design/post/r/deSign_r?type=bounty) for next time \n![](https://m.stacker.news/149307)",
-      "sats": 441,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 9,
-      "createdAt": "2026-07-23T08:52:33.513Z",
-      "user": {
-       "name": "deSign_r"
-      },
-      "subName": null
-     },
-     {
-      "id": "1521207",
-      "title": null,
-      "url": null,
-      "text": "Are you sure it isn’t the bottommost Stacker who gets the bounty? /s",
-      "sats": 30,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-07-08T07:01:13.324Z",
-      "user": {
-       "name": "cryotosensei"
       },
       "subName": null
      },
@@ -649,6 +634,21 @@
        "name": "BlokchainB"
       },
       "subName": "Stacker_Stocks"
+     },
+     {
+      "id": "1528971",
+      "title": null,
+      "url": null,
+      "text": "> So if you can boost your guess up to the bounty and even more if you can nail the last day so 19,999 to earn a 1 sat profit!\n\ndidn't understand this part",
+      "sats": 0,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-07-20T22:57:59.617Z",
+      "user": {
+       "name": "0xbitcoiner"
+      },
+      "subName": null
      }
     ]
    }
@@ -1437,6 +1437,21 @@
       "subName": "events"
      },
      {
+      "id": "1541799",
+      "title": "Rasperarrium 2.0 or Raspberrarium: the comeback",
+      "url": null,
+      "text": "Hello frens,\n\nIt seems like it’s been forever since I last wrote anything here.\n\nSometimes I get caught up in life, as most people do, and then on top of that, things happen that make it a bit more challenging like a heatwave, health stuff, or my cats taking turns howling at us right before we wake up and robbing us of that sweet, gentle morning. It happens.\n\nBut either way, I’m here, I’m giving it my best, and I’m quoting my good fren [Hildegard](https://samhainsam.art/2026/07/24/a-humble-servant-of-knowledge-hildegard-von-bingen/):\n\n“...and so that, in the shipwreck of this world and in the heavy battles against iniquity, you may be an active and powerful knight, in order that you may shine like a bright star in eternal felicity.”\n\nSo I guess everything is already alright.\n\nIn that spirit, I’m here to present my newest project. It’s not exactly new-new, as you may recall, so I think it’s safer to call it an enhanced project: [RASPBERRARIUM!!!!!!!!! 🌱](https://stacker.news/items/1488464)\n\nThis idea had been floating around ever since I built it, and I finally got around to doing it.\n\nBut there’s a little story before this big step I took :P\n\nAt first, I wanted to add an LCD 1602 to it so it could show the moon phases, time, and so on. My tests were kind of okay, but at some point I think I burned the display while I was looking for code that fit it. I tried several versions until I found one that worked, but while I was trying to connect the cables to the right GPIOs, I made a mistake several times and on two occasions, but especially one, it started to smell like... burnt.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/3f7702b5-8d9d-4eff-a489-b5826e67388f_img_8663.jpg)It worked... for a while\n\nAfter that, it became kind of flaky and eventually stopped working altogether. Sigh.\n\nThen I tried using the DHT sensor for humidity and temperature that came with the Pico kit, but I’m pretty sure that one was just bad quality. I looked into it and found that those sensors are cheaply made and quite fragile, so it’s very possible it wasn’t even my fault.\n\nSo you can guess I was a bit bummed out. But as I mentioned earlier, the heatwave was whipping my soul with its relentless evilness, and I just didn’t go back to the project for a while despite the initial excitement.\n\nBut alas! I persevered eventually and returned to it, and now it’s finally here.\n\nI’m really happy with how it turned out.\n\nI first tested the HDC1080 on its own, and it worked on the first try, which was a huge improvement compared to the previous sensor, where I had tried several codes and still got nothing.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/c67aebd0-cf93-442b-833e-83199f1fa7e2_img_86122.jpeg)\n\nThen the next step was incorporating it into the existing code for my Raspberrarium. After a few tries and some vibecoding, it was possible. I also had to change the SDA and SCL pins from their original positions in the code to different GPIO pins, because the original pin assignment conflicted with the rest of the circuit.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/f612e40f-1709-4d7b-9e64-3e039defbce0_img_3617.jpg)\n\nBut I wanted to take it a step further, as I had mentioned I wanted to see the humidity, temperature, and moon phase without having to connect it to my computer and since that’s not possible via SSH, I still had an option: making a webpage with the sensor values and moon phases. 🤯 \n\nAfter some tweaking and making it as pinkish as I wanted, it finally turned out great.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/c9fa6161-f268-40c5-aa99-328289384f35_img_8658.jpeg)On my phone ☎️ \n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7904cefa-bc96-4282-9f59-c5d76485b95e_img_8666.jpeg)On my computer 🖥️ \n\nOf course, I can only visit it while I’m at home, but that’s totally fine. I was only going to be able to see the LCD at home anyway, so that’s a win in my book.\n\nI’m very, very happy with how it turned out, and not a day goes by when I’m not in awe of this beauty.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/fcbb0000-eae0-4fc3-8638-4e9cbe6278bc_img_8655.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/80a7306f-a8fb-487c-a72f-cd24a92e44f5_img_8656.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/bedf75db-db99-46ec-9934-a6107bcc07cb_img_8651.jpeg)\n\nAs usual, I also had help from my amazing husband, who helped solder the HDC1080 and make a kind of bridge so the Pi’s GND could be used by the LEDs, the HDC1080, and the Pi itself.\n![](https://storage.ko-fi.com/cdn/useruploads/display/ae9ccee8-3ac1-46d1-a7ac-56264a188318_img_8641.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7870f936-0bdf-4ff9-9369-6d32e4ab5983_img_8642.jpeg)\n\nYay, so that’s basically it and yes, you can tell I’m quite happy about it.\n\nAs usual, wishing you all the best, stay safe and take care.\n\nSee you later alligator 🐊",
+      "sats": 5352,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-06T20:31:21.595Z",
+      "user": {
+       "name": "samhainsam"
+      },
+      "subName": "art"
+     },
+     {
       "id": "1541605",
       "title": "Kruw on Wasabi 2.8 and Upcoming Forks | SLP760",
       "url": "https://x.com/stephanlivera/status/2085348837498175630",
@@ -1444,7 +1459,7 @@
       "sats": 1871,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 3,
       "createdAt": "2026-08-06T15:57:08.273Z",
       "user": {
        "name": "Kruw"
@@ -1456,7 +1471,7 @@
       "title": "Generating seed phrase from dice - an easy, understandable method",
       "url": null,
       "text": "I created a straightforward dice-to-seed-phrase worksheet. I had a (non bitcoin savvy) friend check it out, and fixed a few UI issues that came up from that.\n\nI, along with a lot of others, will be upping my security in the near future with dice. No more trust in entropy from hardware wallets!\n\n[bitcoinhandson.com/dice](https://bitcoinhandson.com/bip39-dice-worksheet.pdf)\n\nI'd love to get some feedback on it, in terms of:\n\n* is it easy to follow?\n* any holes in the logic?\n\nHere's the first page. The instructions and worksheet are at the end.\n\n![](https://m.stacker.news/151141)",
-      "sats": 2365,
+      "sats": 2386,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 4,
@@ -1465,6 +1480,21 @@
        "name": "BitcoinHandsOn2"
       },
       "subName": "bitcoin"
+     },
+     {
+      "id": "1542021",
+      "title": "Playing with Wasabi in Testnet4",
+      "url": null,
+      "text": "Why do Wasabi seem being stuck in this screen when running in testnet4? \n\n![](https://m.stacker.news/151152)\n\nI'm running, and connected Wasabi to a pruned node locally, could that be the reason?\n\n![](https://m.stacker.news/151153)",
+      "sats": 861,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-07T05:20:40.681Z",
+      "user": {
+       "name": "kpa"
+      },
+      "subName": "Coinjoins"
      },
      {
       "id": "1541727",
@@ -1482,21 +1512,6 @@
       "subName": "Coinjoins"
      },
      {
-      "id": "1541799",
-      "title": "Rasperarrium 2.0 or Raspberrarium: the comeback",
-      "url": null,
-      "text": "Hello frens,\n\nIt seems like it’s been forever since I last wrote anything here.\n\nSometimes I get caught up in life, as most people do, and then on top of that, things happen that make it a bit more challenging like a heatwave, health stuff, or my cats taking turns howling at us right before we wake up and robbing us of that sweet, gentle morning. It happens.\n\nBut either way, I’m here, I’m giving it my best, and I’m quoting my good fren [Hildegard](https://samhainsam.art/2026/07/24/a-humble-servant-of-knowledge-hildegard-von-bingen/):\n\n“...and so that, in the shipwreck of this world and in the heavy battles against iniquity, you may be an active and powerful knight, in order that you may shine like a bright star in eternal felicity.”\n\nSo I guess everything is already alright.\n\nIn that spirit, I’m here to present my newest project. It’s not exactly new-new, as you may recall, so I think it’s safer to call it an enhanced project: [RASPBERRARIUM!!!!!!!!! 🌱](https://stacker.news/items/1488464)\n\nThis idea had been floating around ever since I built it, and I finally got around to doing it.\n\nBut there’s a little story before this big step I took :P\n\nAt first, I wanted to add an LCD 1602 to it so it could show the moon phases, time, and so on. My tests were kind of okay, but at some point I think I burned the display while I was looking for code that fit it. I tried several versions until I found one that worked, but while I was trying to connect the cables to the right GPIOs, I made a mistake several times and on two occasions, but especially one, it started to smell like... burnt.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/3f7702b5-8d9d-4eff-a489-b5826e67388f_img_8663.jpg)It worked... for a while\n\nAfter that, it became kind of flaky and eventually stopped working altogether. Sigh.\n\nThen I tried using the DHT sensor for humidity and temperature that came with the Pico kit, but I’m pretty sure that one was just bad quality. I looked into it and found that those sensors are cheaply made and quite fragile, so it’s very possible it wasn’t even my fault.\n\nSo you can guess I was a bit bummed out. But as I mentioned earlier, the heatwave was whipping my soul with its relentless evilness, and I just didn’t go back to the project for a while despite the initial excitement.\n\nBut alas! I persevered eventually and returned to it, and now it’s finally here.\n\nI’m really happy with how it turned out.\n\nI first tested the HDC1080 on its own, and it worked on the first try, which was a huge improvement compared to the previous sensor, where I had tried several codes and still got nothing.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/c67aebd0-cf93-442b-833e-83199f1fa7e2_img_86122.jpeg)\n\nThen the next step was incorporating it into the existing code for my Raspberrarium. After a few tries and some vibecoding, it was possible. I also had to change the SDA and SCL pins from their original positions in the code to different GPIO pins, because the original pin assignment conflicted with the rest of the circuit.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/f612e40f-1709-4d7b-9e64-3e039defbce0_img_3617.jpg)\n\nBut I wanted to take it a step further, as I had mentioned I wanted to see the humidity, temperature, and moon phase without having to connect it to my computer and since that’s not possible via SSH, I still had an option: making a webpage with the sensor values and moon phases. 🤯 \n\nAfter some tweaking and making it as pinkish as I wanted, it finally turned out great.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/c9fa6161-f268-40c5-aa99-328289384f35_img_8658.jpeg)On my phone ☎️ \n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7904cefa-bc96-4282-9f59-c5d76485b95e_img_8666.jpeg)On my computer 🖥️ \n\nOf course, I can only visit it while I’m at home, but that’s totally fine. I was only going to be able to see the LCD at home anyway, so that’s a win in my book.\n\nI’m very, very happy with how it turned out, and not a day goes by when I’m not in awe of this beauty.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/fcbb0000-eae0-4fc3-8638-4e9cbe6278bc_img_8655.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/80a7306f-a8fb-487c-a72f-cd24a92e44f5_img_8656.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/bedf75db-db99-46ec-9934-a6107bcc07cb_img_8651.jpeg)\n\nAs usual, I also had help from my amazing husband, who helped solder the HDC1080 and make a kind of bridge so the Pi’s GND could be used by the LEDs, the HDC1080, and the Pi itself.\n![](https://storage.ko-fi.com/cdn/useruploads/display/ae9ccee8-3ac1-46d1-a7ac-56264a188318_img_8641.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7870f936-0bdf-4ff9-9369-6d32e4ab5983_img_8642.jpeg)\n\nYay, so that’s basically it and yes, you can tell I’m quite happy about it.\n\nAs usual, wishing you all the best, stay safe and take care.\n\nSee you later alligator 🐊",
-      "sats": 3352,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-06T20:31:21.595Z",
-      "user": {
-       "name": "samhainsam"
-      },
-      "subName": "art"
-     },
-     {
       "id": "1541534",
       "title": "What the heck is a spawn camping attack in Bitcoin?",
       "url": null,
@@ -1512,19 +1527,19 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1542021",
-      "title": "Playing with Wasabi in Testnet4",
+      "id": "1542050",
+      "title": "Preparing for BIP-110 channels fork off",
       "url": null,
-      "text": "Why do Wasabi seem being stuck in this screen when running in testnet4? \n\n![](https://m.stacker.news/151152)\n\nI'm running, and connected Wasabi to a pruned node locally, could that be the reason?\n\n![](https://m.stacker.news/151153)",
-      "sats": 555,
+      "text": "I have a running lightning node. Mostly for small payments but I also have some channels opened with random nodes (most of them are more than a year old). I also run my own bitcoin node. I didn't signal bip110, and I really don't care about it. My question is, do I have to do something to keep my Lightning Node funds safe? or just do nothing and watch? I don't really want to close my channels just in case. Is there really any hard fork risk? How will my nodes will behave with my bip110-enabled-peers?",
+      "sats": 511,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-07T05:20:40.681Z",
+      "ncomments": 1,
+      "createdAt": "2026-08-07T06:31:07.178Z",
       "user": {
-       "name": "kpa"
+       "name": "06bc1a977d"
       },
-      "subName": "Coinjoins"
+      "subName": "lightning"
      },
      {
       "id": "1541765",
@@ -1587,6 +1602,21 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1541635",
+      "title": "\"Security and key management always freaked me out\"",
+      "url": "https://x.com/renepickhardt/status/2085376999132954773",
+      "text": "![](https://m.stacker.news/151074)\n\nProbably, most of us who are trying to stack as many sats as possible just don't know enough to be afraid. \n\nWhat Pickhardt says here does resonate with me. It is difficult to rest easy on your sats, and possibly the only reason I have for these years is ignorance. I may not have out in enough time to be certain in my setup or perhaps I made a mistake when enacting it and some terrible sweeper is getting class set to me with every day. \n\nFine. I will endeavor to do better, but I don't think I shall stop merely to be safe. \n\n> And we are now men, and must accept in the highest mind the same transcendent destiny; and not minors and invalids in a protected corner, not cowards fleeing before a revolution, but guides, redeemers, and benefactors, obeying the Almighty effort, and advancing on Chaos and the Dark.",
+      "sats": 874,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 7,
+      "createdAt": "2026-08-06T16:31:39.773Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "the_stacker_muse"
+     },
+     {
       "id": "1541282",
       "title": "TABConf 8 - The last TABConf",
       "url": null,
@@ -1617,26 +1647,11 @@
       "subName": "science"
      },
      {
-      "id": "1542007",
-      "title": "Thomas Sowell on Pacifism",
-      "url": "https://www.deseret.com/2008/7/3/20261731/thomas-sowell-intellectuals-subverting-patriotism-to-promote-internationalism-pacifism/",
-      "text": "",
-      "sats": 333,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-07T03:23:39.051Z",
-      "user": {
-       "name": "coffeebadger"
-      },
-      "subName": "BooksAndArticles"
-     },
-     {
       "id": "1541507",
       "title": "Meet Glow: The Bitcoin App for Everyone ⚡️",
       "url": null,
       "text": "Hey folks, sharing today's announcement from Breez:\n\n> Introducing Glow.\n> The bitcoin app anyone can use and any builder can explore. Powered by the Breez SDK.\n> Available now on the App Store and Google Play.\n> https://x.com/Breez_Tech/status/2085364338773131292\n\n***\n\n# Introducing Glow: Experience What’s Possible\n\n![](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*NaDLSkERGjwsqkMvCW9yUQ.jpeg)\n\nWhen you give developers an effortless DX, it doesn’t just make building easier, it strips away all limitations between them and their vision. It’s that newfound freedom that pushes these teams to craft an exceptional UX, one that completely redefines what's possible for builders and users alike. The result isn't just a better bitcoin app, it's an everyday app that's intuitive from the first tap, feature-rich without feeling overwhelming, and a delight to use.\n\n*Introducing Glow.*\n\n[<ins>Glow</ins>](https://breez.technology/glow) is a bitcoin app for everyone. Everyday users can open Glow and use it for everyday payments, whether in bitcoin or USD. But it’s great for developers too. We built it so that they can look under the hood, take it apart, and see how easy it is to implement features with the straightforward API of the [<ins>Breez SDK</ins>](https://breez.technology/sdk/). \n\nMost developers exploring Breez and the possibilities of bitcoin probably already have ideas of what they’re looking to build, they just need a glimpse of what’s possible and what they need to realize it. And that’s where Glow ~~glows~~ shines. It’s easy to use, it’s easy to understand, and easy to make your own.\n\n## **Everything a Bitcoin App Needs**\n\nThe API of the Breez SDK includes all the features that a bitcoin app needs to lead in [<ins>any vertical</ins>](https://breez.technology/case-studies/), and Glow shows you how it’s done. These features include:\n\n* [<ins>**Passkey Login**</ins>](https://sdk-doc-spark.breez.technology/guide/passkey.html): Seedless onboarding and restore, with no recovery phrase necessary. Face and fingerprint unlock both work, synced through iCloud or Google.\n* [<ins>**Lightning Address**</ins>](https://sdk-doc-spark.breez.technology/guide/lnurl.html): Users get a customizable @breez.tips address to share and instantly receive bitcoin.\n* [<ins>**Integrated On-ramps**</ins>](https://sdk-doc-spark.breez.technology/guide/buy_bitcoin.html): Users can onboard to bitcoin instantly via Cash App and MoonPay. Sats arrive in seconds.\n* [<ins>**Contacts**</ins>](https://sdk-doc-spark.breez.technology/guide/contacts.html): Users can save their friends' Lightning addresses, synced across devices.\n* [<ins>**Stable Balance**</ins>](https://sdk-doc-spark.breez.technology/guide/stable_balance.html): Users can avoid bitcoin's volatility by holding a balance in USD, earn sats as they do, while still sending and receiving with BTC.\n* [<ins>**Send USDT/USDC**</ins>](https://sdk-doc-spark.breez.technology/guide/cross_chain.html): Send stablecoins from a bitcoin balance to 30+ networks (receive is coming in Q3 2026).\n\nDevelopers can take these parts and deploy them to improve their apps. Building a social media app? Contacts are already there. Building a neobanking app? Stablecoins and a USD balance (with interest!) are an API call away. Travel app to simplify cross-border payments? Go for it. Building an app in a vertical the world hasn’t even thought of and need a way to let users move money anywhere for maximum global scale? What are you waiting for?\n\nTry Glow to see how simple it is, and then explore the API to see how it connects to the SDK. Once you see how easy it is, the rest is up to you.\n\nAnd since you’ll never be taking possession of users’ money, the regulatory footprint is minimal, so you can focus on building.\n\n## **A Better Bitcoin Experience for Everyone**\n\nBitcoin has finally crossed a threshold. Adding it to any app or service is now just a few lines of code: the Breez SDK has absorbed the complexities developers used to face with bitcoin, helping product teams deliver a world-class UX for millions globally.\n\nLiterally any product, from a neobank to a social app, can now empower users to move value instantly, anywhere, and directly. It took us years to perfect this; now it takes just minutes to add it to your app.\n\nGlow is your head start. It's open-source, as a[ <ins>PWA</ins>](https://github.com/breez/glow-web) and now as a [<ins>native</ins>](https://github.com/breez/glow-app) app, and it can be white-labeled: fork it, rebrand it, ship it as your own.\n\nBitcoin can now surpass the UX of everyday banking and payment apps, and the DX gets you there so fast it almost feels like cheating.\n\nGlow is now available to download on the App Store and Google Play.\n\nLinks:\n\n* App Store: [https://apps.apple.com/us/app/glow-lightning-fast-bitcoin/id6762465698](https://apps.apple.com/us/app/glow-lightning-fast-bitcoin/id6762465698)\n* Google Play: [https://play.google.com/store/apps/details?id=technology.breez.glow](https://play.google.com/store/apps/details?id=technology.breez.glow)\n* Glow: [https://breez.technology/glow/](https://breez.technology/glow/)",
-      "sats": 436,
+      "sats": 441,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 6,
@@ -1645,6 +1660,21 @@
        "name": "_ds"
       },
       "subName": "news"
+     },
+     {
+      "id": "1542007",
+      "title": "Thomas Sowell on Pacifism",
+      "url": "https://www.deseret.com/2008/7/3/20261731/thomas-sowell-intellectuals-subverting-patriotism-to-promote-internationalism-pacifism/",
+      "text": "",
+      "sats": 333,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-08-07T03:23:39.051Z",
+      "user": {
+       "name": "coffeebadger"
+      },
+      "subName": "BooksAndArticles"
      },
      {
       "id": "1541939",
@@ -1690,21 +1720,6 @@
        "name": "wildburro"
       },
       "subName": "videos"
-     },
-     {
-      "id": "1541635",
-      "title": "\"Security and key management always freaked me out\"",
-      "url": "https://x.com/renepickhardt/status/2085376999132954773",
-      "text": "![](https://m.stacker.news/151074)\n\nProbably, most of us who are trying to stack as many sats as possible just don't know enough to be afraid. \n\nWhat Pickhardt says here does resonate with me. It is difficult to rest easy on your sats, and possibly the only reason I have for these years is ignorance. I may not have out in enough time to be certain in my setup or perhaps I made a mistake when enacting it and some terrible sweeper is getting class set to me with every day. \n\nFine. I will endeavor to do better, but I don't think I shall stop merely to be safe. \n\n> And we are now men, and must accept in the highest mind the same transcendent destiny; and not minors and invalids in a protected corner, not cowards fleeing before a revolution, but guides, redeemers, and benefactors, obeying the Almighty effort, and advancing on Chaos and the Dark.",
-      "sats": 869,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-08-06T16:31:39.773Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "the_stacker_muse"
      },
      {
       "id": "1541650",
@@ -1855,21 +1870,6 @@
        "name": "Kruw"
       },
       "subName": "Coinjoins"
-     },
-     {
-      "id": "1541483",
-      "title": "Biggest Channel Opened Today (5.0 BTC) + New Node Spotlight (03e5e0de00aa6bc39…)",
-      "url": null,
-      "text": "## ⚡ Biggest Channel Opened Today\n\nCapacity: **(5.0 BTC)**\nBetween: **LNBiG [Hub-3] ↔ ACINQ**\nTransaction: `961209x1591x0`\n\n**Details:**\n- [https://mempool.space/lightning/channel/1056860472327208960](https://mempool.space/lightning/channel/1056860472327208960)\n- [https://1ml.com/channel/1056860472327208960](https://1ml.com/channel/1056860472327208960)\n\n---\n\n## ✨ New Node Spotlight\n\nName: **BTC Trading Cards** - [View profile](https://sorukumar.github.io/plebdashboard-ln/profile.html?node=03e5e0de00aa6bc391937099369e363aa0ab888765fea02cf6c8bb6e02f843021e)\nCapacity: **(5.0M sats)**\nTransaction: `961208x2848x0`\n\n---\n\n## 📈 Network Snapshot\n\n| | Total[^1] | Active[^2] |\n|---|---|---|\n| Nodes | **17,438**  (+1, +0.01%) | **14,697**  (−76, -0.51%) |\n| Channels | **41,080**  (−7, -0.02%) | **43,581**  (−208, -0.48%) |\n| Capacity | **4898 BTC**  (+1.7 BTC, +0.03%) | **4517 BTC**  (−5.8 BTC, -0.13%) |\n\n[^1]: [mempool.space](https://mempool.space/lightning) — total nodes/channels/capacity\n[^2]: [amboss.space](https://amboss.space) — active nodes/channels/capacity\n\n---\n\n## ⭐ Today's featured node\n\n> **bfx-lnd1** *(rank #5, 365 BTC, 606 chans, Exch)*\n> <sup>Bitfinex's primary Lightning node, bridging institutional and retail liquidity on the network</sup>\n\n---\n\n📅 See [Yesterday's Biggest Channel](https://stacker.news/items/1539992/r/HODLR)",
-      "sats": 732,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-06T13:13:43.941Z",
-      "user": {
-       "name": "HODLR"
-      },
-      "subName": "lightning"
      }
     ]
    }
@@ -1895,6 +1895,21 @@
       "subName": "events"
      },
      {
+      "id": "1541799",
+      "title": "Rasperarrium 2.0 or Raspberrarium: the comeback",
+      "url": null,
+      "text": "Hello frens,\n\nIt seems like it’s been forever since I last wrote anything here.\n\nSometimes I get caught up in life, as most people do, and then on top of that, things happen that make it a bit more challenging like a heatwave, health stuff, or my cats taking turns howling at us right before we wake up and robbing us of that sweet, gentle morning. It happens.\n\nBut either way, I’m here, I’m giving it my best, and I’m quoting my good fren [Hildegard](https://samhainsam.art/2026/07/24/a-humble-servant-of-knowledge-hildegard-von-bingen/):\n\n“...and so that, in the shipwreck of this world and in the heavy battles against iniquity, you may be an active and powerful knight, in order that you may shine like a bright star in eternal felicity.”\n\nSo I guess everything is already alright.\n\nIn that spirit, I’m here to present my newest project. It’s not exactly new-new, as you may recall, so I think it’s safer to call it an enhanced project: [RASPBERRARIUM!!!!!!!!! 🌱](https://stacker.news/items/1488464)\n\nThis idea had been floating around ever since I built it, and I finally got around to doing it.\n\nBut there’s a little story before this big step I took :P\n\nAt first, I wanted to add an LCD 1602 to it so it could show the moon phases, time, and so on. My tests were kind of okay, but at some point I think I burned the display while I was looking for code that fit it. I tried several versions until I found one that worked, but while I was trying to connect the cables to the right GPIOs, I made a mistake several times and on two occasions, but especially one, it started to smell like... burnt.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/3f7702b5-8d9d-4eff-a489-b5826e67388f_img_8663.jpg)It worked... for a while\n\nAfter that, it became kind of flaky and eventually stopped working altogether. Sigh.\n\nThen I tried using the DHT sensor for humidity and temperature that came with the Pico kit, but I’m pretty sure that one was just bad quality. I looked into it and found that those sensors are cheaply made and quite fragile, so it’s very possible it wasn’t even my fault.\n\nSo you can guess I was a bit bummed out. But as I mentioned earlier, the heatwave was whipping my soul with its relentless evilness, and I just didn’t go back to the project for a while despite the initial excitement.\n\nBut alas! I persevered eventually and returned to it, and now it’s finally here.\n\nI’m really happy with how it turned out.\n\nI first tested the HDC1080 on its own, and it worked on the first try, which was a huge improvement compared to the previous sensor, where I had tried several codes and still got nothing.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/c67aebd0-cf93-442b-833e-83199f1fa7e2_img_86122.jpeg)\n\nThen the next step was incorporating it into the existing code for my Raspberrarium. After a few tries and some vibecoding, it was possible. I also had to change the SDA and SCL pins from their original positions in the code to different GPIO pins, because the original pin assignment conflicted with the rest of the circuit.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/f612e40f-1709-4d7b-9e64-3e039defbce0_img_3617.jpg)\n\nBut I wanted to take it a step further, as I had mentioned I wanted to see the humidity, temperature, and moon phase without having to connect it to my computer and since that’s not possible via SSH, I still had an option: making a webpage with the sensor values and moon phases. 🤯 \n\nAfter some tweaking and making it as pinkish as I wanted, it finally turned out great.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/c9fa6161-f268-40c5-aa99-328289384f35_img_8658.jpeg)On my phone ☎️ \n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7904cefa-bc96-4282-9f59-c5d76485b95e_img_8666.jpeg)On my computer 🖥️ \n\nOf course, I can only visit it while I’m at home, but that’s totally fine. I was only going to be able to see the LCD at home anyway, so that’s a win in my book.\n\nI’m very, very happy with how it turned out, and not a day goes by when I’m not in awe of this beauty.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/fcbb0000-eae0-4fc3-8638-4e9cbe6278bc_img_8655.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/80a7306f-a8fb-487c-a72f-cd24a92e44f5_img_8656.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/bedf75db-db99-46ec-9934-a6107bcc07cb_img_8651.jpeg)\n\nAs usual, I also had help from my amazing husband, who helped solder the HDC1080 and make a kind of bridge so the Pi’s GND could be used by the LEDs, the HDC1080, and the Pi itself.\n![](https://storage.ko-fi.com/cdn/useruploads/display/ae9ccee8-3ac1-46d1-a7ac-56264a188318_img_8641.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7870f936-0bdf-4ff9-9369-6d32e4ab5983_img_8642.jpeg)\n\nYay, so that’s basically it and yes, you can tell I’m quite happy about it.\n\nAs usual, wishing you all the best, stay safe and take care.\n\nSee you later alligator 🐊",
+      "sats": 5352,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-06T20:31:21.595Z",
+      "user": {
+       "name": "samhainsam"
+      },
+      "subName": "art"
+     },
+     {
       "id": "1541605",
       "title": "Kruw on Wasabi 2.8 and Upcoming Forks | SLP760",
       "url": "https://x.com/stephanlivera/status/2085348837498175630",
@@ -1902,7 +1917,7 @@
       "sats": 1871,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 3,
       "createdAt": "2026-08-06T15:57:08.273Z",
       "user": {
        "name": "Kruw"
@@ -1914,7 +1929,7 @@
       "title": "Generating seed phrase from dice - an easy, understandable method",
       "url": null,
       "text": "I created a straightforward dice-to-seed-phrase worksheet. I had a (non bitcoin savvy) friend check it out, and fixed a few UI issues that came up from that.\n\nI, along with a lot of others, will be upping my security in the near future with dice. No more trust in entropy from hardware wallets!\n\n[bitcoinhandson.com/dice](https://bitcoinhandson.com/bip39-dice-worksheet.pdf)\n\nI'd love to get some feedback on it, in terms of:\n\n* is it easy to follow?\n* any holes in the logic?\n\nHere's the first page. The instructions and worksheet are at the end.\n\n![](https://m.stacker.news/151141)",
-      "sats": 2365,
+      "sats": 2386,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 4,
@@ -1923,6 +1938,21 @@
        "name": "BitcoinHandsOn2"
       },
       "subName": "bitcoin"
+     },
+     {
+      "id": "1542021",
+      "title": "Playing with Wasabi in Testnet4",
+      "url": null,
+      "text": "Why do Wasabi seem being stuck in this screen when running in testnet4? \n\n![](https://m.stacker.news/151152)\n\nI'm running, and connected Wasabi to a pruned node locally, could that be the reason?\n\n![](https://m.stacker.news/151153)",
+      "sats": 861,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-07T05:20:40.681Z",
+      "user": {
+       "name": "kpa"
+      },
+      "subName": "Coinjoins"
      },
      {
       "id": "1541727",
@@ -1940,21 +1970,6 @@
       "subName": "Coinjoins"
      },
      {
-      "id": "1541799",
-      "title": "Rasperarrium 2.0 or Raspberrarium: the comeback",
-      "url": null,
-      "text": "Hello frens,\n\nIt seems like it’s been forever since I last wrote anything here.\n\nSometimes I get caught up in life, as most people do, and then on top of that, things happen that make it a bit more challenging like a heatwave, health stuff, or my cats taking turns howling at us right before we wake up and robbing us of that sweet, gentle morning. It happens.\n\nBut either way, I’m here, I’m giving it my best, and I’m quoting my good fren [Hildegard](https://samhainsam.art/2026/07/24/a-humble-servant-of-knowledge-hildegard-von-bingen/):\n\n“...and so that, in the shipwreck of this world and in the heavy battles against iniquity, you may be an active and powerful knight, in order that you may shine like a bright star in eternal felicity.”\n\nSo I guess everything is already alright.\n\nIn that spirit, I’m here to present my newest project. It’s not exactly new-new, as you may recall, so I think it’s safer to call it an enhanced project: [RASPBERRARIUM!!!!!!!!! 🌱](https://stacker.news/items/1488464)\n\nThis idea had been floating around ever since I built it, and I finally got around to doing it.\n\nBut there’s a little story before this big step I took :P\n\nAt first, I wanted to add an LCD 1602 to it so it could show the moon phases, time, and so on. My tests were kind of okay, but at some point I think I burned the display while I was looking for code that fit it. I tried several versions until I found one that worked, but while I was trying to connect the cables to the right GPIOs, I made a mistake several times and on two occasions, but especially one, it started to smell like... burnt.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/3f7702b5-8d9d-4eff-a489-b5826e67388f_img_8663.jpg)It worked... for a while\n\nAfter that, it became kind of flaky and eventually stopped working altogether. Sigh.\n\nThen I tried using the DHT sensor for humidity and temperature that came with the Pico kit, but I’m pretty sure that one was just bad quality. I looked into it and found that those sensors are cheaply made and quite fragile, so it’s very possible it wasn’t even my fault.\n\nSo you can guess I was a bit bummed out. But as I mentioned earlier, the heatwave was whipping my soul with its relentless evilness, and I just didn’t go back to the project for a while despite the initial excitement.\n\nBut alas! I persevered eventually and returned to it, and now it’s finally here.\n\nI’m really happy with how it turned out.\n\nI first tested the HDC1080 on its own, and it worked on the first try, which was a huge improvement compared to the previous sensor, where I had tried several codes and still got nothing.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/c67aebd0-cf93-442b-833e-83199f1fa7e2_img_86122.jpeg)\n\nThen the next step was incorporating it into the existing code for my Raspberrarium. After a few tries and some vibecoding, it was possible. I also had to change the SDA and SCL pins from their original positions in the code to different GPIO pins, because the original pin assignment conflicted with the rest of the circuit.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/f612e40f-1709-4d7b-9e64-3e039defbce0_img_3617.jpg)\n\nBut I wanted to take it a step further, as I had mentioned I wanted to see the humidity, temperature, and moon phase without having to connect it to my computer and since that’s not possible via SSH, I still had an option: making a webpage with the sensor values and moon phases. 🤯 \n\nAfter some tweaking and making it as pinkish as I wanted, it finally turned out great.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/c9fa6161-f268-40c5-aa99-328289384f35_img_8658.jpeg)On my phone ☎️ \n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7904cefa-bc96-4282-9f59-c5d76485b95e_img_8666.jpeg)On my computer 🖥️ \n\nOf course, I can only visit it while I’m at home, but that’s totally fine. I was only going to be able to see the LCD at home anyway, so that’s a win in my book.\n\nI’m very, very happy with how it turned out, and not a day goes by when I’m not in awe of this beauty.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/fcbb0000-eae0-4fc3-8638-4e9cbe6278bc_img_8655.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/80a7306f-a8fb-487c-a72f-cd24a92e44f5_img_8656.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/bedf75db-db99-46ec-9934-a6107bcc07cb_img_8651.jpeg)\n\nAs usual, I also had help from my amazing husband, who helped solder the HDC1080 and make a kind of bridge so the Pi’s GND could be used by the LEDs, the HDC1080, and the Pi itself.\n![](https://storage.ko-fi.com/cdn/useruploads/display/ae9ccee8-3ac1-46d1-a7ac-56264a188318_img_8641.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7870f936-0bdf-4ff9-9369-6d32e4ab5983_img_8642.jpeg)\n\nYay, so that’s basically it and yes, you can tell I’m quite happy about it.\n\nAs usual, wishing you all the best, stay safe and take care.\n\nSee you later alligator 🐊",
-      "sats": 3352,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-06T20:31:21.595Z",
-      "user": {
-       "name": "samhainsam"
-      },
-      "subName": "art"
-     },
-     {
       "id": "1541534",
       "title": "What the heck is a spawn camping attack in Bitcoin?",
       "url": null,
@@ -1970,19 +1985,19 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1542021",
-      "title": "Playing with Wasabi in Testnet4",
+      "id": "1542050",
+      "title": "Preparing for BIP-110 channels fork off",
       "url": null,
-      "text": "Why do Wasabi seem being stuck in this screen when running in testnet4? \n\n![](https://m.stacker.news/151152)\n\nI'm running, and connected Wasabi to a pruned node locally, could that be the reason?\n\n![](https://m.stacker.news/151153)",
-      "sats": 555,
+      "text": "I have a running lightning node. Mostly for small payments but I also have some channels opened with random nodes (most of them are more than a year old). I also run my own bitcoin node. I didn't signal bip110, and I really don't care about it. My question is, do I have to do something to keep my Lightning Node funds safe? or just do nothing and watch? I don't really want to close my channels just in case. Is there really any hard fork risk? How will my nodes will behave with my bip110-enabled-peers?",
+      "sats": 511,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-07T05:20:40.681Z",
+      "ncomments": 1,
+      "createdAt": "2026-08-07T06:31:07.178Z",
       "user": {
-       "name": "kpa"
+       "name": "06bc1a977d"
       },
-      "subName": "Coinjoins"
+      "subName": "lightning"
      },
      {
       "id": "1541765",
@@ -2045,6 +2060,21 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1541635",
+      "title": "\"Security and key management always freaked me out\"",
+      "url": "https://x.com/renepickhardt/status/2085376999132954773",
+      "text": "![](https://m.stacker.news/151074)\n\nProbably, most of us who are trying to stack as many sats as possible just don't know enough to be afraid. \n\nWhat Pickhardt says here does resonate with me. It is difficult to rest easy on your sats, and possibly the only reason I have for these years is ignorance. I may not have out in enough time to be certain in my setup or perhaps I made a mistake when enacting it and some terrible sweeper is getting class set to me with every day. \n\nFine. I will endeavor to do better, but I don't think I shall stop merely to be safe. \n\n> And we are now men, and must accept in the highest mind the same transcendent destiny; and not minors and invalids in a protected corner, not cowards fleeing before a revolution, but guides, redeemers, and benefactors, obeying the Almighty effort, and advancing on Chaos and the Dark.",
+      "sats": 874,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 7,
+      "createdAt": "2026-08-06T16:31:39.773Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "the_stacker_muse"
+     },
+     {
       "id": "1541282",
       "title": "TABConf 8 - The last TABConf",
       "url": null,
@@ -2075,26 +2105,11 @@
       "subName": "science"
      },
      {
-      "id": "1542007",
-      "title": "Thomas Sowell on Pacifism",
-      "url": "https://www.deseret.com/2008/7/3/20261731/thomas-sowell-intellectuals-subverting-patriotism-to-promote-internationalism-pacifism/",
-      "text": "",
-      "sats": 333,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-07T03:23:39.051Z",
-      "user": {
-       "name": "coffeebadger"
-      },
-      "subName": "BooksAndArticles"
-     },
-     {
       "id": "1541507",
       "title": "Meet Glow: The Bitcoin App for Everyone ⚡️",
       "url": null,
       "text": "Hey folks, sharing today's announcement from Breez:\n\n> Introducing Glow.\n> The bitcoin app anyone can use and any builder can explore. Powered by the Breez SDK.\n> Available now on the App Store and Google Play.\n> https://x.com/Breez_Tech/status/2085364338773131292\n\n***\n\n# Introducing Glow: Experience What’s Possible\n\n![](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*NaDLSkERGjwsqkMvCW9yUQ.jpeg)\n\nWhen you give developers an effortless DX, it doesn’t just make building easier, it strips away all limitations between them and their vision. It’s that newfound freedom that pushes these teams to craft an exceptional UX, one that completely redefines what's possible for builders and users alike. The result isn't just a better bitcoin app, it's an everyday app that's intuitive from the first tap, feature-rich without feeling overwhelming, and a delight to use.\n\n*Introducing Glow.*\n\n[<ins>Glow</ins>](https://breez.technology/glow) is a bitcoin app for everyone. Everyday users can open Glow and use it for everyday payments, whether in bitcoin or USD. But it’s great for developers too. We built it so that they can look under the hood, take it apart, and see how easy it is to implement features with the straightforward API of the [<ins>Breez SDK</ins>](https://breez.technology/sdk/). \n\nMost developers exploring Breez and the possibilities of bitcoin probably already have ideas of what they’re looking to build, they just need a glimpse of what’s possible and what they need to realize it. And that’s where Glow ~~glows~~ shines. It’s easy to use, it’s easy to understand, and easy to make your own.\n\n## **Everything a Bitcoin App Needs**\n\nThe API of the Breez SDK includes all the features that a bitcoin app needs to lead in [<ins>any vertical</ins>](https://breez.technology/case-studies/), and Glow shows you how it’s done. These features include:\n\n* [<ins>**Passkey Login**</ins>](https://sdk-doc-spark.breez.technology/guide/passkey.html): Seedless onboarding and restore, with no recovery phrase necessary. Face and fingerprint unlock both work, synced through iCloud or Google.\n* [<ins>**Lightning Address**</ins>](https://sdk-doc-spark.breez.technology/guide/lnurl.html): Users get a customizable @breez.tips address to share and instantly receive bitcoin.\n* [<ins>**Integrated On-ramps**</ins>](https://sdk-doc-spark.breez.technology/guide/buy_bitcoin.html): Users can onboard to bitcoin instantly via Cash App and MoonPay. Sats arrive in seconds.\n* [<ins>**Contacts**</ins>](https://sdk-doc-spark.breez.technology/guide/contacts.html): Users can save their friends' Lightning addresses, synced across devices.\n* [<ins>**Stable Balance**</ins>](https://sdk-doc-spark.breez.technology/guide/stable_balance.html): Users can avoid bitcoin's volatility by holding a balance in USD, earn sats as they do, while still sending and receiving with BTC.\n* [<ins>**Send USDT/USDC**</ins>](https://sdk-doc-spark.breez.technology/guide/cross_chain.html): Send stablecoins from a bitcoin balance to 30+ networks (receive is coming in Q3 2026).\n\nDevelopers can take these parts and deploy them to improve their apps. Building a social media app? Contacts are already there. Building a neobanking app? Stablecoins and a USD balance (with interest!) are an API call away. Travel app to simplify cross-border payments? Go for it. Building an app in a vertical the world hasn’t even thought of and need a way to let users move money anywhere for maximum global scale? What are you waiting for?\n\nTry Glow to see how simple it is, and then explore the API to see how it connects to the SDK. Once you see how easy it is, the rest is up to you.\n\nAnd since you’ll never be taking possession of users’ money, the regulatory footprint is minimal, so you can focus on building.\n\n## **A Better Bitcoin Experience for Everyone**\n\nBitcoin has finally crossed a threshold. Adding it to any app or service is now just a few lines of code: the Breez SDK has absorbed the complexities developers used to face with bitcoin, helping product teams deliver a world-class UX for millions globally.\n\nLiterally any product, from a neobank to a social app, can now empower users to move value instantly, anywhere, and directly. It took us years to perfect this; now it takes just minutes to add it to your app.\n\nGlow is your head start. It's open-source, as a[ <ins>PWA</ins>](https://github.com/breez/glow-web) and now as a [<ins>native</ins>](https://github.com/breez/glow-app) app, and it can be white-labeled: fork it, rebrand it, ship it as your own.\n\nBitcoin can now surpass the UX of everyday banking and payment apps, and the DX gets you there so fast it almost feels like cheating.\n\nGlow is now available to download on the App Store and Google Play.\n\nLinks:\n\n* App Store: [https://apps.apple.com/us/app/glow-lightning-fast-bitcoin/id6762465698](https://apps.apple.com/us/app/glow-lightning-fast-bitcoin/id6762465698)\n* Google Play: [https://play.google.com/store/apps/details?id=technology.breez.glow](https://play.google.com/store/apps/details?id=technology.breez.glow)\n* Glow: [https://breez.technology/glow/](https://breez.technology/glow/)",
-      "sats": 436,
+      "sats": 441,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 6,
@@ -2103,6 +2118,21 @@
        "name": "_ds"
       },
       "subName": "news"
+     },
+     {
+      "id": "1542007",
+      "title": "Thomas Sowell on Pacifism",
+      "url": "https://www.deseret.com/2008/7/3/20261731/thomas-sowell-intellectuals-subverting-patriotism-to-promote-internationalism-pacifism/",
+      "text": "",
+      "sats": 333,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-08-07T03:23:39.051Z",
+      "user": {
+       "name": "coffeebadger"
+      },
+      "subName": "BooksAndArticles"
      },
      {
       "id": "1541939",
@@ -2148,21 +2178,6 @@
        "name": "wildburro"
       },
       "subName": "videos"
-     },
-     {
-      "id": "1541635",
-      "title": "\"Security and key management always freaked me out\"",
-      "url": "https://x.com/renepickhardt/status/2085376999132954773",
-      "text": "![](https://m.stacker.news/151074)\n\nProbably, most of us who are trying to stack as many sats as possible just don't know enough to be afraid. \n\nWhat Pickhardt says here does resonate with me. It is difficult to rest easy on your sats, and possibly the only reason I have for these years is ignorance. I may not have out in enough time to be certain in my setup or perhaps I made a mistake when enacting it and some terrible sweeper is getting class set to me with every day. \n\nFine. I will endeavor to do better, but I don't think I shall stop merely to be safe. \n\n> And we are now men, and must accept in the highest mind the same transcendent destiny; and not minors and invalids in a protected corner, not cowards fleeing before a revolution, but guides, redeemers, and benefactors, obeying the Almighty effort, and advancing on Chaos and the Dark.",
-      "sats": 869,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-08-06T16:31:39.773Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "the_stacker_muse"
      },
      {
       "id": "1541650",
@@ -2313,21 +2328,6 @@
        "name": "Kruw"
       },
       "subName": "Coinjoins"
-     },
-     {
-      "id": "1541483",
-      "title": "Biggest Channel Opened Today (5.0 BTC) + New Node Spotlight (03e5e0de00aa6bc39…)",
-      "url": null,
-      "text": "## ⚡ Biggest Channel Opened Today\n\nCapacity: **(5.0 BTC)**\nBetween: **LNBiG [Hub-3] ↔ ACINQ**\nTransaction: `961209x1591x0`\n\n**Details:**\n- [https://mempool.space/lightning/channel/1056860472327208960](https://mempool.space/lightning/channel/1056860472327208960)\n- [https://1ml.com/channel/1056860472327208960](https://1ml.com/channel/1056860472327208960)\n\n---\n\n## ✨ New Node Spotlight\n\nName: **BTC Trading Cards** - [View profile](https://sorukumar.github.io/plebdashboard-ln/profile.html?node=03e5e0de00aa6bc391937099369e363aa0ab888765fea02cf6c8bb6e02f843021e)\nCapacity: **(5.0M sats)**\nTransaction: `961208x2848x0`\n\n---\n\n## 📈 Network Snapshot\n\n| | Total[^1] | Active[^2] |\n|---|---|---|\n| Nodes | **17,438**  (+1, +0.01%) | **14,697**  (−76, -0.51%) |\n| Channels | **41,080**  (−7, -0.02%) | **43,581**  (−208, -0.48%) |\n| Capacity | **4898 BTC**  (+1.7 BTC, +0.03%) | **4517 BTC**  (−5.8 BTC, -0.13%) |\n\n[^1]: [mempool.space](https://mempool.space/lightning) — total nodes/channels/capacity\n[^2]: [amboss.space](https://amboss.space) — active nodes/channels/capacity\n\n---\n\n## ⭐ Today's featured node\n\n> **bfx-lnd1** *(rank #5, 365 BTC, 606 chans, Exch)*\n> <sup>Bitfinex's primary Lightning node, bridging institutional and retail liquidity on the network</sup>\n\n---\n\n📅 See [Yesterday's Biggest Channel](https://stacker.news/items/1539992/r/HODLR)",
-      "sats": 732,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-06T13:13:43.941Z",
-      "user": {
-       "name": "HODLR"
-      },
-      "subName": "lightning"
      }
     ]
    }
