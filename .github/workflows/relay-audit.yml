@@ -37,23 +37,38 @@ jobs:
       - name: Install deps
         run: pip install --quiet websockets
 
+      # Selbstberichtend: Ergebnis UND Fehlerlog landen immer im Repo, weil
+      # die Agent-Sessions die Actions-Logs nicht lesen koennen (API 403).
       - name: Run relay audit
         run: |
           mkdir -p data/nostr
-          python scripts/relay_audit.py | tee data/nostr/last-summary.json
+          echo "started=$(date -u +%FT%TZ) event=${GITHUB_EVENT_NAME} sha=${GITHUB_SHA::7}" > data/nostr/last-run.log
+          set +e
+          timeout 18m python scripts/relay_audit.py > data/nostr/last-summary.json 2>> data/nostr/last-run.log
+          rc=$?
+          echo "audit_exit=$rc finished=$(date -u +%FT%TZ)" >> data/nostr/last-run.log
+          if [ "$rc" -eq 0 ]; then
+            python scripts/render_relay_audit.py >> data/nostr/last-run.log 2>&1 \
+              || echo "render_failed" >> data/nostr/last-run.log
+          fi
 
-      - name: Render page from dataset
-        run: python scripts/render_relay_audit.py
-
+      # if: always() + pull --rebase: die Mirror-Workflows im selben Repo
+      # pushen waehrend der ~10-min-Messung — ohne Rebase scheitert der Push
+      # (non-fast-forward) und der ganze Lauf verschwindet spurlos.
       - name: Commit results
+        if: always()
         run: |
           set -euo pipefail
           git config user.name "agent-hq relay audit"
           git config user.email "actions@github.com"
-          git add data/nostr relay-audit.html
+          git add -A data/nostr
+          git add relay-audit.html 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "keine Aenderung"
           else
-            git commit -m "relay-audit: Messung $(date -u +%FT%TZ)"
-            git push
+            git commit -m "relay-audit: Lauf $(date -u +%FT%TZ)"
+            for i in 1 2 3; do
+              git push && break
+              git pull --rebase origin main
+            done
           fi
