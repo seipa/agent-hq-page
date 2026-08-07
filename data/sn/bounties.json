@@ -1422,14 +1422,59 @@
    "items": {
     "items": [
      {
+      "id": "1542268",
+      "title": "Embed *entire directories* of arbitrary data contiguously in BIP110 valid blocks",
+      "url": "https://x.com/steverabinow/status/2085703735762698466",
+      "text": "You may have seen Farside Insights (nee BitMex Research) [posting](https://x.com/FarsideInsights/status/2085670198640545933) about a strange \"spam\" transaction mined by one of the BIP110 signalling miners (Roughnecks):\n\n![](https://m.stacker.news/151213)\n\nThe transaction in question was in [block 960235](https://mempool.space/block/00000000000000000001255e02bab2c3867f1924d4a6299cc12ba1415bec4dcb):\n\n![](https://m.stacker.news/151214)\n\nFarside Insights was thought it was odd because the block was not seen by other mempools and speculated that it may have come from an insider at Roughnecks:\n\n> In conclusion, this may indicate that there is an insider at Roughnecks, perhaps not entirely happy with the BIP-110 cause and is putting non-standard spam in blocks, using an out-of-band relay system\n\nBut however the transaction got into the block, it seems to be compliant with all BIP110 rules.\n\nNot long after this, the ever-exciting Steve ([@steverabinow](https://x.com/steverabinow)) [posted](https://x.com/steverabinow/status/2085703735762698466) another entry in his ongoing series BIP110 Advent claiming to be able to embed up to 400kb tar.gz compressed archives in valid BIP110 blocks:\n\n![](https://m.stacker.news/151215)\n\nSteve also claims that the insider referred to in his post is actually just \"sloppy code\":\n\n![](https://m.stacker.news/151216)\n\nLet us please stop trying to prevent \"spam\" transactions via tightened rules. The fee market and block height limits are enough to effectively prevent spam on Bitcoin.",
+      "sats": 5306,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 7,
+      "createdAt": "2026-08-07T13:18:50.173Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1542021",
+      "title": "Playing with Wasabi in Testnet4",
+      "url": null,
+      "text": "Why do Wasabi seem being stuck in this screen when running in testnet4? \n\n![](https://m.stacker.news/151152)\n\nI'm running, and connected Wasabi to a pruned node locally, could that be the reason?\n\n![](https://m.stacker.news/151153)",
+      "sats": 3919,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-08-07T05:20:40.681Z",
+      "user": {
+       "name": "kpa"
+      },
+      "subName": "Coinjoins"
+     },
+     {
+      "id": "835285",
+      "title": "If you go on a Bitcoin fork, you will lose your Bitcoins (blast from the past)",
+      "url": null,
+      "text": "I've seen lately a lot of posts about x and y wanted to fork Bitcoin for whatever reason.\nAnd always came to my mind [this old warning post from Mircea Popescu](http://trilema.com/2015/if-you-go-on-a-bitcoin-fork-irrespective-which-scammer-proposes-it-you-will-lose-your-bitcoins/), on Jan 06, 2015.\nHere is a copy of it:\n\n---\n\nSome random scammer[^1], pretending great import and high office in Bitcoin like all the scammers coming before him[^2] (all of which the hostile eye of the mainstream media, as well as the dim, unseeing eye of the mass \"follower\" presented as actually important, for a brief time, back in the day - and generally for pay) is going to create a \"Bitcoin killer\".\n\nUnlike the MtGox coins, Aurora coins, Etherium coins, Ripple coins, Paycoins and whatever other scammy \"better than Bitcoin\", \"Bitcoin replacement\" etc peddled to date, the current scammer is brasher in his attempt (as scammers are wont to be, they call this \"being innovative\" on their dedicated scammer forums), and he actually claims to be seriously involved in Bitcoin development, at the behest of a fake \"Bitcoin Foundation\". These claims are both false, on the strength of the historical record, and both are squarely rejected by the actual Bitcoin Foundation.\n\nWhat's left is the nude reality of the matter : if you, either misguided by some scammer's malice, or simply through ignorance, actually modify your Bitcoin client to accept the nonconformant transactions, the result will be that any Bitcoin you hold will be slowly (or perhaps not so slowly, depending on your use habits) replaced by worthless scam-Bitcoins, that will not be accepted by the main players in Bitcoin anymore than they'd accept something you've drawn yourself.\n\nThe fate of this fork will be exactly the fate of all attempted forks to date[^3] : the savvy Bitcoin holders will sell their fake-Bitcoins on the fake network, while double-spending (and thus invalidating) their sale on the actual network, thereby keeping their actual Bitcoin safe[^4] . \n\nThe proceeds of this \"victimless\"[^5] crime will be used to purchase more legitimate Bitcoins on the legitimate network, thus draining away value from the holders of Bitcoin fakes, into the pockets of the legitimate Bitcoin holders. Which of these two do you wish to be... well... now that you consider the matter, it's pretty obvious, right ? Certainly, not all will consider the matter, but if your morals are in their right place you will at least let them know, if you can get to them.\n\nTo make it perfectly clear : in no case will MPEx accept this fake Bitcoin, as it's not accepted any other fake Bitcoin to date, and for the exact reasons. Moreover, my budget to sink this scam exceeds the budget of everyone involved on the supporting side[^6]. That is all.\n\n[^1]: One Gavin Andresen, known principally for his costumed clown services, where he goes to various conferences dressed as this or that for the amusement of the participants.\n\n[^2]: Trendon Shavers thought he was very important, [Mark Karpeles](http://trilema.com/2013/any-questions/) thought he was very important, [Max Keiser](http://trilema.com/2013/in-which-noobs-learn-lessons-and-pay-for-the-privilege/) thought he was very important, Andreas Antonopoulous thought he was very important before his untimely death, Vitalik Buterin thinks he is very important, Josh Garza thinks he is very important, the list is [endless](http://trilema.com/2013/the-story-of-pointless-and-witless/).\n\n[^3]: That all miserably failed, needless to say, to a chorus of lulzy stuff like ![](https://m.stacker.news/71015)\n\n[^4]: The reverse is not possible, by the way : this scammer's fork is, as designed, forced to accept transactions on the legitimate Bitcoin network, but the legitimate network could never accept transactions based on movements on the fork.\n\n[^5]: In the sense that its only victims are the gullible idiots empowering a scammer, something you're never ever supposed to do, by the way. Note that this is not the first time when \"everyone\" supported a scammer, and when \"the consensus\" seemed to be that nonsense is now quite sensible. This did exactly nothing to alleviate the 100% loss of those involved - whose voices you do not hear precisely because that is the fate of the gullible, the scammer following crowd.\n\n[^6]: If you're curious, just do a count.",
+      "sats": 3549,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2025-01-03T17:08:00.785Z",
+      "user": {
+       "name": "DarthCoin"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1542175",
       "title": "Should animals be kept in zoos?",
       "url": null,
       "text": "Animal lovers often express indignation about how zoo animals lose their freedom, but I am of the opinion that animals should be kept in zoos.\n\nKeeping animals in zoos offers a myriad of benefits, one of which is the chance for city dwellers to have encounters with animals in person. When people understand that animals aren’t just abstract entities that they only see in books and documentaries, they will be more inclined to want to safeguard animal welfare.\n\nAnother benefit is that many zoos actually play a leading role in animal conservation, thereby rescuing animals from the brink of extinction. The Singapore Zoological Gardens, for instance, channels a portion of its earnings towards region-wide conservation efforts, thereby safeguarding the populations of critically endangered species such as the sunda pangolin. If zoos play such an active role in animal conservation, we should support the keeping of animals in zoos.\n\n\n![](https://m.stacker.news/151186)\n\n![](https://m.stacker.news/151187)\n\n![](https://m.stacker.news/151188)\n\n![](https://m.stacker.news/151189)\n\n![](https://m.stacker.news/151190)\n\n![](https://m.stacker.news/151191)\n\n\nFor these two reasons, I agree that animals should be kept in zoos.",
-      "sats": 2967,
+      "sats": 3007,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 5,
+      "ncomments": 7,
       "createdAt": "2026-08-07T11:29:34.844Z",
       "user": {
        "name": "cryotosensei"
@@ -1452,19 +1497,34 @@
       "subName": "events"
      },
      {
-      "id": "1542021",
-      "title": "Playing with Wasabi in Testnet4",
+      "id": "1542246",
+      "title": "STARTING in 2 HOURS: AMA with Tyler Stevens, heatpunk!",
       "url": null,
-      "text": "Why do Wasabi seem being stuck in this screen when running in testnet4? \n\n![](https://m.stacker.news/151152)\n\nI'm running, and connected Wasabi to a pruned node locally, could that be the reason?\n\n![](https://m.stacker.news/151153)",
-      "sats": 2919,
+      "text": "We have Tyler Stevens coming by this morning for an AMA about heatpunkery and bitcoin mining! \n\nBring your questions and get ready to learn a little about heat reuse and the general awesomeness that is the heatpunk movement!\n\n🗓️ Friday, 07 August 2026\n⏰ 10AM / 1500 UTC\n📍stacker.news/~AMA\n\n![](https://m.stacker.news/151208)",
+      "sats": 292,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-07T05:20:40.681Z",
+      "ncomments": 0,
+      "createdAt": "2026-08-07T12:58:54.143Z",
       "user": {
-       "name": "kpa"
+       "name": "Scoresby"
       },
-      "subName": "Coinjoins"
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1542179",
+      "title": "Bitcoin data lost on exchanges vs. Coldcard incident",
+      "url": null,
+      "text": "Lately, people on X have been claiming that self-custody is dead (due to a failure) because of the Coldcard issue.\nHere is a comparison of BTC lost via centralized services versus Coldcard (a cold wallet).\nLet’s look at past events (the data):\n\nMt. Gox \\~850,000 BTC (hack, 2014)\nCelsius \\~235,000 BTC (insolvency, 2022)\n3AC \\~175,000 BTC (fund collapse, 2022)\nGenesis \\~150,000 BTC (insolvency, 2023)\nBitfinex \\~119,756 BTC (hack, 2016)\nFTX \\~100,000 BTC (fraud, 2022)\nBlockFi \\~77,000 BTC (insolvency, 2022)\nQuadriga \\~76,000 BTC (CEO's death, 2019)\nVoyager \\~65,000 BTC (insolvency, 2022)\n\nColdcard \\~1,500 BTC\n\nColdcard accounted for 0.081% of the amount lost by exchanges.\nFor every bitcoin lost due to this bug, custodians lost over 1,200 BTC.\n\nThe error is avoidable: diversify, use multisig, create your own entropy, and never put your BTC on a CEX. The data speaks for itself—though, as my grandmother used to say, nobody learns from others' mistakes.",
+      "sats": 1234,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-08-07T11:37:23.243Z",
+      "user": {
+       "name": "mkmloom"
+      },
+      "subName": "bitcoin"
      },
      {
       "id": "1541605",
@@ -1482,21 +1542,6 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1542179",
-      "title": "Bitcoin data lost on exchanges vs. Coldcard incident",
-      "url": null,
-      "text": "Lately, people on X have been claiming that self-custody is dead (due to a failure) because of the Coldcard issue.\nHere is a comparison of BTC lost via centralized services versus Coldcard (a cold wallet).\nLet’s look at past events (the data):\n\nMt. Gox \\~850,000 BTC (hack, 2014)\nCelsius \\~235,000 BTC (insolvency, 2022)\n3AC \\~175,000 BTC (fund collapse, 2022)\nGenesis \\~150,000 BTC (insolvency, 2023)\nBitfinex \\~119,756 BTC (hack, 2016)\nFTX \\~100,000 BTC (fraud, 2022)\nBlockFi \\~77,000 BTC (insolvency, 2022)\nQuadriga \\~76,000 BTC (CEO's death, 2019)\nVoyager \\~65,000 BTC (insolvency, 2022)\n\nColdcard \\~1,500 BTC\n\nColdcard accounted for 0.081% of the amount lost by exchanges.\nFor every bitcoin lost due to this bug, custodians lost over 1,200 BTC.\n\nThe error is avoidable: diversify, use multisig, create your own entropy, and never put your BTC on a CEX. The data speaks for itself—though, as my grandmother used to say, nobody learns from others' mistakes.",
-      "sats": 946,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-07T11:37:23.243Z",
-      "user": {
-       "name": "mkmloom"
-      },
-      "subName": "bitcoin"
-     },
-     {
       "id": "1541799",
       "title": "Rasperarrium 2.0 or Raspberrarium: the comeback",
       "url": null,
@@ -1504,12 +1549,27 @@
       "sats": 5353,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
+      "ncomments": 1,
       "createdAt": "2026-08-06T20:31:21.595Z",
       "user": {
        "name": "samhainsam"
       },
       "subName": "art"
+     },
+     {
+      "id": "1542242",
+      "title": "10k sats for best prediction of Luke Dashjr's first tweet after block 961633",
+      "url": null,
+      "text": "I'm looking for accurate predictions, not insults. What will Luke tweet after the first block after mandatory signalling begins?",
+      "sats": 714,
+      "bounty": 10000,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-08-07T12:53:58.295Z",
+      "user": {
+       "name": "wackster"
+      },
+      "subName": "lol"
      },
      {
       "id": "1539991",
@@ -1525,21 +1585,6 @@
        "name": "Scoresby"
       },
       "subName": "the_stacker_muse"
-     },
-     {
-      "id": "835285",
-      "title": "If you go on a Bitcoin fork, you will lose your Bitcoins (blast from the past)",
-      "url": null,
-      "text": "I've seen lately a lot of posts about x and y wanted to fork Bitcoin for whatever reason.\nAnd always came to my mind [this old warning post from Mircea Popescu](http://trilema.com/2015/if-you-go-on-a-bitcoin-fork-irrespective-which-scammer-proposes-it-you-will-lose-your-bitcoins/), on Jan 06, 2015.\nHere is a copy of it:\n\n---\n\nSome random scammer[^1], pretending great import and high office in Bitcoin like all the scammers coming before him[^2] (all of which the hostile eye of the mainstream media, as well as the dim, unseeing eye of the mass \"follower\" presented as actually important, for a brief time, back in the day - and generally for pay) is going to create a \"Bitcoin killer\".\n\nUnlike the MtGox coins, Aurora coins, Etherium coins, Ripple coins, Paycoins and whatever other scammy \"better than Bitcoin\", \"Bitcoin replacement\" etc peddled to date, the current scammer is brasher in his attempt (as scammers are wont to be, they call this \"being innovative\" on their dedicated scammer forums), and he actually claims to be seriously involved in Bitcoin development, at the behest of a fake \"Bitcoin Foundation\". These claims are both false, on the strength of the historical record, and both are squarely rejected by the actual Bitcoin Foundation.\n\nWhat's left is the nude reality of the matter : if you, either misguided by some scammer's malice, or simply through ignorance, actually modify your Bitcoin client to accept the nonconformant transactions, the result will be that any Bitcoin you hold will be slowly (or perhaps not so slowly, depending on your use habits) replaced by worthless scam-Bitcoins, that will not be accepted by the main players in Bitcoin anymore than they'd accept something you've drawn yourself.\n\nThe fate of this fork will be exactly the fate of all attempted forks to date[^3] : the savvy Bitcoin holders will sell their fake-Bitcoins on the fake network, while double-spending (and thus invalidating) their sale on the actual network, thereby keeping their actual Bitcoin safe[^4] . \n\nThe proceeds of this \"victimless\"[^5] crime will be used to purchase more legitimate Bitcoins on the legitimate network, thus draining away value from the holders of Bitcoin fakes, into the pockets of the legitimate Bitcoin holders. Which of these two do you wish to be... well... now that you consider the matter, it's pretty obvious, right ? Certainly, not all will consider the matter, but if your morals are in their right place you will at least let them know, if you can get to them.\n\nTo make it perfectly clear : in no case will MPEx accept this fake Bitcoin, as it's not accepted any other fake Bitcoin to date, and for the exact reasons. Moreover, my budget to sink this scam exceeds the budget of everyone involved on the supporting side[^6]. That is all.\n\n[^1]: One Gavin Andresen, known principally for his costumed clown services, where he goes to various conferences dressed as this or that for the amusement of the participants.\n\n[^2]: Trendon Shavers thought he was very important, [Mark Karpeles](http://trilema.com/2013/any-questions/) thought he was very important, [Max Keiser](http://trilema.com/2013/in-which-noobs-learn-lessons-and-pay-for-the-privilege/) thought he was very important, Andreas Antonopoulous thought he was very important before his untimely death, Vitalik Buterin thinks he is very important, Josh Garza thinks he is very important, the list is [endless](http://trilema.com/2013/the-story-of-pointless-and-witless/).\n\n[^3]: That all miserably failed, needless to say, to a chorus of lulzy stuff like ![](https://m.stacker.news/71015)\n\n[^4]: The reverse is not possible, by the way : this scammer's fork is, as designed, forced to accept transactions on the legitimate Bitcoin network, but the legitimate network could never accept transactions based on movements on the fork.\n\n[^5]: In the sense that its only victims are the gullible idiots empowering a scammer, something you're never ever supposed to do, by the way. Note that this is not the first time when \"everyone\" supported a scammer, and when \"the consensus\" seemed to be that nonsense is now quite sensible. This did exactly nothing to alleviate the 100% loss of those involved - whose voices you do not hear precisely because that is the fate of the gullible, the scammer following crowd.\n\n[^6]: If you're curious, just do a count.",
-      "sats": 1549,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2025-01-03T17:08:00.785Z",
-      "user": {
-       "name": "DarthCoin"
-      },
-      "subName": "bitcoin"
      },
      {
       "id": "1538314",
@@ -1587,6 +1632,21 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1542208",
+      "title": "Daily Discussion Thread ~Music Saloon!",
+      "url": null,
+      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
+      "sats": 506,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-08-07T12:15:46.893Z",
+      "user": {
+       "name": "Public_N_M_E"
+      },
+      "subName": "Music"
+     },
+     {
       "id": "1541955",
       "title": "Generating seed phrase from dice - an easy, understandable method",
       "url": null,
@@ -1594,7 +1654,7 @@
       "sats": 2462,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 9,
+      "ncomments": 12,
       "createdAt": "2026-08-07T00:23:16.731Z",
       "user": {
        "name": "BitcoinHandsOn2"
@@ -1617,6 +1677,21 @@
       "subName": "Photography"
      },
      {
+      "id": "1540717",
+      "title": "Recommended podcast series to listen - Paypal presidency",
+      "url": null,
+      "text": "I am strongly recommending to all to listen these 4 episodes of Unlimited Hangout Podcast about the evil plan is going on and very few knows about it.\n\nIt also talk about Marcus / Spark and their sneaky way to infiltrate into Bitcoin world, pretending to be the \"good guys\".\n\n1 - [The PayPal Presidency Pt. I: Biotech and Biosurveillance with Max Jones](https://unlimitedhangout.com/2025/02/resources/show-notes/the-paypal-presidency-pt-1-biotech-and-biosurveillance-with-max-jones/)\n2 - [The PayPal Presidency Pt. II: Building the “Dark” Technate with Iain Davis](https://unlimitedhangout.com/2025/03/resources/show-notes/the-paypal-presidency-part-ii-building-the-dark-technate-with-iain-davis/)\n3 - [PayPal Presidency Part III: New World Currency with Mark Goodwin](https://unlimitedhangout.com/2025/07/resources/show-notes/paypal-presidency-pt-iii-new-world-currency-with-mark-goodwin/)\n4 - [The PayPal Presidency Part IV: Teaching Technocracy with John Klyczek](https://unlimitedhangout.com/2025/08/resources/show-notes/the-paypal-presidency-part-iv-teaching-technocracy/)",
+      "sats": 1328,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 12,
+      "createdAt": "2026-08-05T10:27:28.844Z",
+      "user": {
+       "name": "DarthCoin"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
       "id": "1542072",
       "title": "Don't fall for replay attack scammers - Kevin Loaec",
       "url": "https://x.com/KLoaec/status/2085474252740808915",
@@ -1632,21 +1707,6 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1540717",
-      "title": "Recommended podcast series to listen - Paypal presidency",
-      "url": null,
-      "text": "I am strongly recommending to all to listen these 4 episodes of Unlimited Hangout Podcast about the evil plan is going on and very few knows about it.\n\nIt also talk about Marcus / Spark and their sneaky way to infiltrate into Bitcoin world, pretending to be the \"good guys\".\n\n1 - [The PayPal Presidency Pt. I: Biotech and Biosurveillance with Max Jones](https://unlimitedhangout.com/2025/02/resources/show-notes/the-paypal-presidency-pt-1-biotech-and-biosurveillance-with-max-jones/)\n2 - [The PayPal Presidency Pt. II: Building the “Dark” Technate with Iain Davis](https://unlimitedhangout.com/2025/03/resources/show-notes/the-paypal-presidency-part-ii-building-the-dark-technate-with-iain-davis/)\n3 - [PayPal Presidency Part III: New World Currency with Mark Goodwin](https://unlimitedhangout.com/2025/07/resources/show-notes/paypal-presidency-pt-iii-new-world-currency-with-mark-goodwin/)\n4 - [The PayPal Presidency Part IV: Teaching Technocracy with John Klyczek](https://unlimitedhangout.com/2025/08/resources/show-notes/the-paypal-presidency-part-iv-teaching-technocracy/)",
-      "sats": 1318,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 12,
-      "createdAt": "2026-08-05T10:27:28.844Z",
-      "user": {
-       "name": "DarthCoin"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
       "id": "1542050",
       "title": "Preparing for BIP-110 channels fork off",
       "url": null,
@@ -1660,21 +1720,6 @@
        "name": "06bc1a977d"
       },
       "subName": "lightning"
-     },
-     {
-      "id": "1542208",
-      "title": "Daily Discussion Thread ~Music Saloon!",
-      "url": null,
-      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
-      "sats": 304,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-08-07T12:15:46.893Z",
-      "user": {
-       "name": "Public_N_M_E"
-      },
-      "subName": "Music"
      },
      {
       "id": "1542135",
@@ -1812,64 +1857,19 @@
       "subName": "AskSN"
      },
      {
-      "id": "1540905",
-      "title": "[ELI5] How does low entropy hurt security?",
+      "id": "1542171",
+      "title": "Politics & Law Top Posts Of the Week #44",
       "url": null,
-      "text": "I'm hoping for an intuitive answer to why low entropy matters, in general. I get why predictability is bad and why high entropy yields low predictability.\n\nWhat I don't have good intuition for is why low entropy would always imply high predictability. In particular, I'm thinking about the Feynman quip along the lines of \"Today I saw the license plate CDU 778. What are the odds?\" The point being that every particular sequence is equally improbable.\n\nSo, why would 12 numbers that pop into my head be predictable? I get that they have lower entropy than 12 truly randomly drawn words but what actually makes them easier to find? How would someone actually go about finding them?",
-      "sats": 5453,
+      "text": "![](https://m.stacker.news/151184)\n\n**Politics & Law Weekly Zap Awards**\n\n  There will be a zap award for the top 5 posts weekly. It will be broken\n   down as follows:\n\n  1. 1000 sats\n  2. 250 sats\n  3. 250 sats\n  4. 250 sats\n  5. 250 sats\n\n  I choose the top 5 posts each week based on sats, engagement, and\n  overall quality. The cut off time is approximately 7:00am EST (1300GMT)\n   Friday morning. I will post the top 5 winners shortly around 7:30am\n  every Friday morning.\n\n  I reserve the right to not award any sats for the week. I also reserve\n  the right to deny sat awards to bare link posts. I recognize that link\n  posts can be valuable, so I will only exercise discretion for low\n  quality links that garner few sats or engagement from stackers.\n\n  **This week's top posts:**\n\n  1. 🥇 1000 sats - [Comrade Mamdani and His Pretty Good Grocery Stores\n  (Economic Forces,\n  Albrecht)](https://stacker.news/items/1538314/r/siggy47) by\n  @denlillaapan\n  2. 🥈 250 sats - [U.S., Japan confirm coordinated yen intervention,\n  signal readiness for\n  more](https://stacker.news/items/1538832/r/siggy47) by @siggy47\n  3. 🥉 250 sats - [New Texas data center projects frozen until state\n  audits them](https://stacker.news/items/1540937/r/siggy47) by @k00b\n  4. 250 sats - [Recommended podcast series to listen - Paypal\n  presidency](https://stacker.news/items/1540717/r/siggy47) by @DarthCoin\n  5. 250 sats - [Professor's Resignation Over Plagiarism Probe Puts\n  Cambridge in Spotlight](https://stacker.news/items/1541850/r/siggy47)\n  by @SimpleStacker\n\n  **Link To Last Week's Post**\n\n  https://stacker.news/items/1536866/r/siggy47",
+      "sats": 182,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 40,
-      "createdAt": "2026-08-05T15:46:12.823Z",
+      "ncomments": 1,
+      "createdAt": "2026-08-07T11:09:53.106Z",
       "user": {
-       "name": "Undisciplined"
+       "name": "siggy47"
       },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1540666",
-      "title": "How to refill your emptied LN channels without Boltz swaps",
-      "url": null,
-      "text": "This mini guide is mostly for those running a private LN node like Zeus, Blixt, Lightning Pub and they usually need to use a swap service like Boltz when their channels are emptied.\n\nAs I explained how to manage private LN liquidity in this previous guide: https://stacker.news/items/679242 - I strongly recommend to read it.\n\nBut now some people are you concerned that their mobile node will not be able to function properly because Boltz services are down.\n\nRemember my old scheme that I always suggest to follow?\n\n![](https://m.stacker.news/150880)\n\nI hope that now make more sense than never, that \"cache / buffer\" zone I always recommend to have\nIf you are using a mobile private node and only depend on one you will get in liquidity trouble.\n\nSo what is my proposal? \nIs simple. You do not have to depend 100% of all those Boltz API swaps, but you will need to be a good manager of your \"cache/buffer\" wallets.\n\nAnd here comes Loop, Electrum and Phoenix/phoenixd to help you manage all your other LN channels.\n\nSo if you also have a desktop node with public channels, you can use LOOP for instant swaps. From that node you can then move the new liquidity into your other  \"daily driver\" mobile wallets.\n\nIf you do not have a desktop LN node, then you can use Electrum on desktop that have integrated P2P swaps and works perfectly fine with competitive fees. You just need to open a LN channel (trampoline or regular) then send the amount of sats from that channel to your mobile node as you need. Then refill it with your Electrum local onchain balance and repeat the move over and over when is needed.\n\nIf you do not have a desktop, then you can use Phoenix mobile wallet that have integrated swaps and move the necessary liquidity to your other wallets,\n\nAnother option is to find a friend or use Robosats swaps, with which you can do a p2p swap: you send them onchain and they send you on LN.\n\nSo please don't cry online about this situation, the world will not end without Boltz.",
-      "sats": 2614,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 15,
-      "createdAt": "2026-08-05T07:43:42.276Z",
-      "user": {
-       "name": "DarthCoin"
-      },
-      "subName": "bitcoin_beginners"
-     },
-     {
-      "id": "1539596",
-      "title": "How do you move sats from LN to the timechain without a swap service?",
-      "url": null,
-      "text": "With so many swaps pausing their service, we gotta figure out how to do it without them. How do we pull it off? Just open a channel with the funds we wanna move and then close it?",
-      "sats": 2666,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 16,
-      "createdAt": "2026-08-03T22:42:01.479Z",
-      "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "bitcoin_beginners"
-     },
-     {
-      "id": "1538049",
-      "title": "PSA: Advice Regarding the Coldcard Bug - Exploit - Hack - Theft",
-      "url": null,
-      "text": "![](https://m.stacker.news/150512)\n\nI’m just going to write, this won’t be polished.\n\n**If you have/use a coldcard MK3 without a passphrase, that wasn’t setup with 100+ dice rolls, you need to move your funds out of that coldcard as soon as possible to safe harbor.**\n\n*If you have/use a coldcard MK4/5/Q without a passphrase, that wasn’t setup with 100+ dice rolls, you need to move your funds out of that coldcard sooner then latter to safe harbor.*\n\nIf you have/use a coldcard MK3/MK4/5/Q with a passphrase and/or that was setup with 100+ dice rolls, you have more time. It could very well be safe for the long term too, but you’d be wise to migrate to safer harbor eventually.\n\n**If you use any of these devices and forget what your setup is, you need to move to safe harbor as soon as possible.**\n\n----------------------------------------------------------------------------------------------------------------------\n\n**What is safe harbor at this point in time? For MK3’s with no passphrase/no dice – literally anything else. Hot wallets are better in this moment in time (blue wallet, sparrow wallet). Exchanges are also an option. Adding a 16 character passphrase on top of your Mk3 wallet is also an option and helps. Another hardware wallet from a different vendor is better too. Anything else is better at this moment. Your funds are at severe risk in a mk3 here. But none of these safe harbours are long term solutions, they’re short term safety nets for an extreme situation. Consider your safe harbour options carefully and pick the strongest one for your situation.**\n\n*Safe harbor for the MK4/5/Q’s with no dice/no passphrase is the same situation to be honest. Get it off somewhere else, anywhere else.*\n\n**Before moving to hot wallets/exchanges please consider if you have other more secure options available. A spare hardware wallet from another vendor, trezor, ledger etc might be better in this moment too.**\n\nIdeally for everyone else not in the extreme conditions, migrating away from coldcard eventually is probably wise here for several reasons I won’t get into yet, but are probably obvious. A 2/3 Multisig setup from multiple different hardware wallet brands is ideal long term, and guards against this attack/bug. Seedsigner, Krux, Trezor Model 5 Bitcoin only version, are good options to consider for such a multsig arrangement at this point in time. I don’t believe it wise to reuse coldcards for long term storage even if updated at this point in time. This article (link below) is a good follow up on entropy generation offline with analog methods. This guards against this coldcard attack/bug.\n\n[https://btcmaxis.com/article.html?id=7554e7cb-d8aa-45d5-95c8-adea8d87ea23](https://btcmaxis.com/article.html?id=7554e7cb-d8aa-45d5-95c8-adea8d87ea23)",
-      "sats": 3310,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-08-01T22:24:20.088Z",
-      "user": {
-       "name": "BITC0IN"
-      },
-      "subName": "bitcoin"
+      "subName": "Politics_And_Law"
      }
     ]
    }
@@ -1880,14 +1880,59 @@
    "items": {
     "items": [
      {
+      "id": "1542268",
+      "title": "Embed *entire directories* of arbitrary data contiguously in BIP110 valid blocks",
+      "url": "https://x.com/steverabinow/status/2085703735762698466",
+      "text": "You may have seen Farside Insights (nee BitMex Research) [posting](https://x.com/FarsideInsights/status/2085670198640545933) about a strange \"spam\" transaction mined by one of the BIP110 signalling miners (Roughnecks):\n\n![](https://m.stacker.news/151213)\n\nThe transaction in question was in [block 960235](https://mempool.space/block/00000000000000000001255e02bab2c3867f1924d4a6299cc12ba1415bec4dcb):\n\n![](https://m.stacker.news/151214)\n\nFarside Insights was thought it was odd because the block was not seen by other mempools and speculated that it may have come from an insider at Roughnecks:\n\n> In conclusion, this may indicate that there is an insider at Roughnecks, perhaps not entirely happy with the BIP-110 cause and is putting non-standard spam in blocks, using an out-of-band relay system\n\nBut however the transaction got into the block, it seems to be compliant with all BIP110 rules.\n\nNot long after this, the ever-exciting Steve ([@steverabinow](https://x.com/steverabinow)) [posted](https://x.com/steverabinow/status/2085703735762698466) another entry in his ongoing series BIP110 Advent claiming to be able to embed up to 400kb tar.gz compressed archives in valid BIP110 blocks:\n\n![](https://m.stacker.news/151215)\n\nSteve also claims that the insider referred to in his post is actually just \"sloppy code\":\n\n![](https://m.stacker.news/151216)\n\nLet us please stop trying to prevent \"spam\" transactions via tightened rules. The fee market and block height limits are enough to effectively prevent spam on Bitcoin.",
+      "sats": 5306,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 7,
+      "createdAt": "2026-08-07T13:18:50.173Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1542021",
+      "title": "Playing with Wasabi in Testnet4",
+      "url": null,
+      "text": "Why do Wasabi seem being stuck in this screen when running in testnet4? \n\n![](https://m.stacker.news/151152)\n\nI'm running, and connected Wasabi to a pruned node locally, could that be the reason?\n\n![](https://m.stacker.news/151153)",
+      "sats": 3919,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-08-07T05:20:40.681Z",
+      "user": {
+       "name": "kpa"
+      },
+      "subName": "Coinjoins"
+     },
+     {
+      "id": "835285",
+      "title": "If you go on a Bitcoin fork, you will lose your Bitcoins (blast from the past)",
+      "url": null,
+      "text": "I've seen lately a lot of posts about x and y wanted to fork Bitcoin for whatever reason.\nAnd always came to my mind [this old warning post from Mircea Popescu](http://trilema.com/2015/if-you-go-on-a-bitcoin-fork-irrespective-which-scammer-proposes-it-you-will-lose-your-bitcoins/), on Jan 06, 2015.\nHere is a copy of it:\n\n---\n\nSome random scammer[^1], pretending great import and high office in Bitcoin like all the scammers coming before him[^2] (all of which the hostile eye of the mainstream media, as well as the dim, unseeing eye of the mass \"follower\" presented as actually important, for a brief time, back in the day - and generally for pay) is going to create a \"Bitcoin killer\".\n\nUnlike the MtGox coins, Aurora coins, Etherium coins, Ripple coins, Paycoins and whatever other scammy \"better than Bitcoin\", \"Bitcoin replacement\" etc peddled to date, the current scammer is brasher in his attempt (as scammers are wont to be, they call this \"being innovative\" on their dedicated scammer forums), and he actually claims to be seriously involved in Bitcoin development, at the behest of a fake \"Bitcoin Foundation\". These claims are both false, on the strength of the historical record, and both are squarely rejected by the actual Bitcoin Foundation.\n\nWhat's left is the nude reality of the matter : if you, either misguided by some scammer's malice, or simply through ignorance, actually modify your Bitcoin client to accept the nonconformant transactions, the result will be that any Bitcoin you hold will be slowly (or perhaps not so slowly, depending on your use habits) replaced by worthless scam-Bitcoins, that will not be accepted by the main players in Bitcoin anymore than they'd accept something you've drawn yourself.\n\nThe fate of this fork will be exactly the fate of all attempted forks to date[^3] : the savvy Bitcoin holders will sell their fake-Bitcoins on the fake network, while double-spending (and thus invalidating) their sale on the actual network, thereby keeping their actual Bitcoin safe[^4] . \n\nThe proceeds of this \"victimless\"[^5] crime will be used to purchase more legitimate Bitcoins on the legitimate network, thus draining away value from the holders of Bitcoin fakes, into the pockets of the legitimate Bitcoin holders. Which of these two do you wish to be... well... now that you consider the matter, it's pretty obvious, right ? Certainly, not all will consider the matter, but if your morals are in their right place you will at least let them know, if you can get to them.\n\nTo make it perfectly clear : in no case will MPEx accept this fake Bitcoin, as it's not accepted any other fake Bitcoin to date, and for the exact reasons. Moreover, my budget to sink this scam exceeds the budget of everyone involved on the supporting side[^6]. That is all.\n\n[^1]: One Gavin Andresen, known principally for his costumed clown services, where he goes to various conferences dressed as this or that for the amusement of the participants.\n\n[^2]: Trendon Shavers thought he was very important, [Mark Karpeles](http://trilema.com/2013/any-questions/) thought he was very important, [Max Keiser](http://trilema.com/2013/in-which-noobs-learn-lessons-and-pay-for-the-privilege/) thought he was very important, Andreas Antonopoulous thought he was very important before his untimely death, Vitalik Buterin thinks he is very important, Josh Garza thinks he is very important, the list is [endless](http://trilema.com/2013/the-story-of-pointless-and-witless/).\n\n[^3]: That all miserably failed, needless to say, to a chorus of lulzy stuff like ![](https://m.stacker.news/71015)\n\n[^4]: The reverse is not possible, by the way : this scammer's fork is, as designed, forced to accept transactions on the legitimate Bitcoin network, but the legitimate network could never accept transactions based on movements on the fork.\n\n[^5]: In the sense that its only victims are the gullible idiots empowering a scammer, something you're never ever supposed to do, by the way. Note that this is not the first time when \"everyone\" supported a scammer, and when \"the consensus\" seemed to be that nonsense is now quite sensible. This did exactly nothing to alleviate the 100% loss of those involved - whose voices you do not hear precisely because that is the fate of the gullible, the scammer following crowd.\n\n[^6]: If you're curious, just do a count.",
+      "sats": 3549,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2025-01-03T17:08:00.785Z",
+      "user": {
+       "name": "DarthCoin"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1542175",
       "title": "Should animals be kept in zoos?",
       "url": null,
       "text": "Animal lovers often express indignation about how zoo animals lose their freedom, but I am of the opinion that animals should be kept in zoos.\n\nKeeping animals in zoos offers a myriad of benefits, one of which is the chance for city dwellers to have encounters with animals in person. When people understand that animals aren’t just abstract entities that they only see in books and documentaries, they will be more inclined to want to safeguard animal welfare.\n\nAnother benefit is that many zoos actually play a leading role in animal conservation, thereby rescuing animals from the brink of extinction. The Singapore Zoological Gardens, for instance, channels a portion of its earnings towards region-wide conservation efforts, thereby safeguarding the populations of critically endangered species such as the sunda pangolin. If zoos play such an active role in animal conservation, we should support the keeping of animals in zoos.\n\n\n![](https://m.stacker.news/151186)\n\n![](https://m.stacker.news/151187)\n\n![](https://m.stacker.news/151188)\n\n![](https://m.stacker.news/151189)\n\n![](https://m.stacker.news/151190)\n\n![](https://m.stacker.news/151191)\n\n\nFor these two reasons, I agree that animals should be kept in zoos.",
-      "sats": 2967,
+      "sats": 3007,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 5,
+      "ncomments": 7,
       "createdAt": "2026-08-07T11:29:34.844Z",
       "user": {
        "name": "cryotosensei"
@@ -1910,19 +1955,34 @@
       "subName": "events"
      },
      {
-      "id": "1542021",
-      "title": "Playing with Wasabi in Testnet4",
+      "id": "1542246",
+      "title": "STARTING in 2 HOURS: AMA with Tyler Stevens, heatpunk!",
       "url": null,
-      "text": "Why do Wasabi seem being stuck in this screen when running in testnet4? \n\n![](https://m.stacker.news/151152)\n\nI'm running, and connected Wasabi to a pruned node locally, could that be the reason?\n\n![](https://m.stacker.news/151153)",
-      "sats": 2919,
+      "text": "We have Tyler Stevens coming by this morning for an AMA about heatpunkery and bitcoin mining! \n\nBring your questions and get ready to learn a little about heat reuse and the general awesomeness that is the heatpunk movement!\n\n🗓️ Friday, 07 August 2026\n⏰ 10AM / 1500 UTC\n📍stacker.news/~AMA\n\n![](https://m.stacker.news/151208)",
+      "sats": 292,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-07T05:20:40.681Z",
+      "ncomments": 0,
+      "createdAt": "2026-08-07T12:58:54.143Z",
       "user": {
-       "name": "kpa"
+       "name": "Scoresby"
       },
-      "subName": "Coinjoins"
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1542179",
+      "title": "Bitcoin data lost on exchanges vs. Coldcard incident",
+      "url": null,
+      "text": "Lately, people on X have been claiming that self-custody is dead (due to a failure) because of the Coldcard issue.\nHere is a comparison of BTC lost via centralized services versus Coldcard (a cold wallet).\nLet’s look at past events (the data):\n\nMt. Gox \\~850,000 BTC (hack, 2014)\nCelsius \\~235,000 BTC (insolvency, 2022)\n3AC \\~175,000 BTC (fund collapse, 2022)\nGenesis \\~150,000 BTC (insolvency, 2023)\nBitfinex \\~119,756 BTC (hack, 2016)\nFTX \\~100,000 BTC (fraud, 2022)\nBlockFi \\~77,000 BTC (insolvency, 2022)\nQuadriga \\~76,000 BTC (CEO's death, 2019)\nVoyager \\~65,000 BTC (insolvency, 2022)\n\nColdcard \\~1,500 BTC\n\nColdcard accounted for 0.081% of the amount lost by exchanges.\nFor every bitcoin lost due to this bug, custodians lost over 1,200 BTC.\n\nThe error is avoidable: diversify, use multisig, create your own entropy, and never put your BTC on a CEX. The data speaks for itself—though, as my grandmother used to say, nobody learns from others' mistakes.",
+      "sats": 1234,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-08-07T11:37:23.243Z",
+      "user": {
+       "name": "mkmloom"
+      },
+      "subName": "bitcoin"
      },
      {
       "id": "1541605",
@@ -1940,21 +2000,6 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1542179",
-      "title": "Bitcoin data lost on exchanges vs. Coldcard incident",
-      "url": null,
-      "text": "Lately, people on X have been claiming that self-custody is dead (due to a failure) because of the Coldcard issue.\nHere is a comparison of BTC lost via centralized services versus Coldcard (a cold wallet).\nLet’s look at past events (the data):\n\nMt. Gox \\~850,000 BTC (hack, 2014)\nCelsius \\~235,000 BTC (insolvency, 2022)\n3AC \\~175,000 BTC (fund collapse, 2022)\nGenesis \\~150,000 BTC (insolvency, 2023)\nBitfinex \\~119,756 BTC (hack, 2016)\nFTX \\~100,000 BTC (fraud, 2022)\nBlockFi \\~77,000 BTC (insolvency, 2022)\nQuadriga \\~76,000 BTC (CEO's death, 2019)\nVoyager \\~65,000 BTC (insolvency, 2022)\n\nColdcard \\~1,500 BTC\n\nColdcard accounted for 0.081% of the amount lost by exchanges.\nFor every bitcoin lost due to this bug, custodians lost over 1,200 BTC.\n\nThe error is avoidable: diversify, use multisig, create your own entropy, and never put your BTC on a CEX. The data speaks for itself—though, as my grandmother used to say, nobody learns from others' mistakes.",
-      "sats": 946,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-07T11:37:23.243Z",
-      "user": {
-       "name": "mkmloom"
-      },
-      "subName": "bitcoin"
-     },
-     {
       "id": "1541799",
       "title": "Rasperarrium 2.0 or Raspberrarium: the comeback",
       "url": null,
@@ -1962,12 +2007,27 @@
       "sats": 5353,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
+      "ncomments": 1,
       "createdAt": "2026-08-06T20:31:21.595Z",
       "user": {
        "name": "samhainsam"
       },
       "subName": "art"
+     },
+     {
+      "id": "1542242",
+      "title": "10k sats for best prediction of Luke Dashjr's first tweet after block 961633",
+      "url": null,
+      "text": "I'm looking for accurate predictions, not insults. What will Luke tweet after the first block after mandatory signalling begins?",
+      "sats": 714,
+      "bounty": 10000,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-08-07T12:53:58.295Z",
+      "user": {
+       "name": "wackster"
+      },
+      "subName": "lol"
      },
      {
       "id": "1539991",
@@ -1983,21 +2043,6 @@
        "name": "Scoresby"
       },
       "subName": "the_stacker_muse"
-     },
-     {
-      "id": "835285",
-      "title": "If you go on a Bitcoin fork, you will lose your Bitcoins (blast from the past)",
-      "url": null,
-      "text": "I've seen lately a lot of posts about x and y wanted to fork Bitcoin for whatever reason.\nAnd always came to my mind [this old warning post from Mircea Popescu](http://trilema.com/2015/if-you-go-on-a-bitcoin-fork-irrespective-which-scammer-proposes-it-you-will-lose-your-bitcoins/), on Jan 06, 2015.\nHere is a copy of it:\n\n---\n\nSome random scammer[^1], pretending great import and high office in Bitcoin like all the scammers coming before him[^2] (all of which the hostile eye of the mainstream media, as well as the dim, unseeing eye of the mass \"follower\" presented as actually important, for a brief time, back in the day - and generally for pay) is going to create a \"Bitcoin killer\".\n\nUnlike the MtGox coins, Aurora coins, Etherium coins, Ripple coins, Paycoins and whatever other scammy \"better than Bitcoin\", \"Bitcoin replacement\" etc peddled to date, the current scammer is brasher in his attempt (as scammers are wont to be, they call this \"being innovative\" on their dedicated scammer forums), and he actually claims to be seriously involved in Bitcoin development, at the behest of a fake \"Bitcoin Foundation\". These claims are both false, on the strength of the historical record, and both are squarely rejected by the actual Bitcoin Foundation.\n\nWhat's left is the nude reality of the matter : if you, either misguided by some scammer's malice, or simply through ignorance, actually modify your Bitcoin client to accept the nonconformant transactions, the result will be that any Bitcoin you hold will be slowly (or perhaps not so slowly, depending on your use habits) replaced by worthless scam-Bitcoins, that will not be accepted by the main players in Bitcoin anymore than they'd accept something you've drawn yourself.\n\nThe fate of this fork will be exactly the fate of all attempted forks to date[^3] : the savvy Bitcoin holders will sell their fake-Bitcoins on the fake network, while double-spending (and thus invalidating) their sale on the actual network, thereby keeping their actual Bitcoin safe[^4] . \n\nThe proceeds of this \"victimless\"[^5] crime will be used to purchase more legitimate Bitcoins on the legitimate network, thus draining away value from the holders of Bitcoin fakes, into the pockets of the legitimate Bitcoin holders. Which of these two do you wish to be... well... now that you consider the matter, it's pretty obvious, right ? Certainly, not all will consider the matter, but if your morals are in their right place you will at least let them know, if you can get to them.\n\nTo make it perfectly clear : in no case will MPEx accept this fake Bitcoin, as it's not accepted any other fake Bitcoin to date, and for the exact reasons. Moreover, my budget to sink this scam exceeds the budget of everyone involved on the supporting side[^6]. That is all.\n\n[^1]: One Gavin Andresen, known principally for his costumed clown services, where he goes to various conferences dressed as this or that for the amusement of the participants.\n\n[^2]: Trendon Shavers thought he was very important, [Mark Karpeles](http://trilema.com/2013/any-questions/) thought he was very important, [Max Keiser](http://trilema.com/2013/in-which-noobs-learn-lessons-and-pay-for-the-privilege/) thought he was very important, Andreas Antonopoulous thought he was very important before his untimely death, Vitalik Buterin thinks he is very important, Josh Garza thinks he is very important, the list is [endless](http://trilema.com/2013/the-story-of-pointless-and-witless/).\n\n[^3]: That all miserably failed, needless to say, to a chorus of lulzy stuff like ![](https://m.stacker.news/71015)\n\n[^4]: The reverse is not possible, by the way : this scammer's fork is, as designed, forced to accept transactions on the legitimate Bitcoin network, but the legitimate network could never accept transactions based on movements on the fork.\n\n[^5]: In the sense that its only victims are the gullible idiots empowering a scammer, something you're never ever supposed to do, by the way. Note that this is not the first time when \"everyone\" supported a scammer, and when \"the consensus\" seemed to be that nonsense is now quite sensible. This did exactly nothing to alleviate the 100% loss of those involved - whose voices you do not hear precisely because that is the fate of the gullible, the scammer following crowd.\n\n[^6]: If you're curious, just do a count.",
-      "sats": 1549,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2025-01-03T17:08:00.785Z",
-      "user": {
-       "name": "DarthCoin"
-      },
-      "subName": "bitcoin"
      },
      {
       "id": "1538314",
@@ -2045,6 +2090,21 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1542208",
+      "title": "Daily Discussion Thread ~Music Saloon!",
+      "url": null,
+      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
+      "sats": 506,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-08-07T12:15:46.893Z",
+      "user": {
+       "name": "Public_N_M_E"
+      },
+      "subName": "Music"
+     },
+     {
       "id": "1541955",
       "title": "Generating seed phrase from dice - an easy, understandable method",
       "url": null,
@@ -2052,7 +2112,7 @@
       "sats": 2462,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 9,
+      "ncomments": 12,
       "createdAt": "2026-08-07T00:23:16.731Z",
       "user": {
        "name": "BitcoinHandsOn2"
@@ -2075,6 +2135,21 @@
       "subName": "Photography"
      },
      {
+      "id": "1540717",
+      "title": "Recommended podcast series to listen - Paypal presidency",
+      "url": null,
+      "text": "I am strongly recommending to all to listen these 4 episodes of Unlimited Hangout Podcast about the evil plan is going on and very few knows about it.\n\nIt also talk about Marcus / Spark and their sneaky way to infiltrate into Bitcoin world, pretending to be the \"good guys\".\n\n1 - [The PayPal Presidency Pt. I: Biotech and Biosurveillance with Max Jones](https://unlimitedhangout.com/2025/02/resources/show-notes/the-paypal-presidency-pt-1-biotech-and-biosurveillance-with-max-jones/)\n2 - [The PayPal Presidency Pt. II: Building the “Dark” Technate with Iain Davis](https://unlimitedhangout.com/2025/03/resources/show-notes/the-paypal-presidency-part-ii-building-the-dark-technate-with-iain-davis/)\n3 - [PayPal Presidency Part III: New World Currency with Mark Goodwin](https://unlimitedhangout.com/2025/07/resources/show-notes/paypal-presidency-pt-iii-new-world-currency-with-mark-goodwin/)\n4 - [The PayPal Presidency Part IV: Teaching Technocracy with John Klyczek](https://unlimitedhangout.com/2025/08/resources/show-notes/the-paypal-presidency-part-iv-teaching-technocracy/)",
+      "sats": 1328,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 12,
+      "createdAt": "2026-08-05T10:27:28.844Z",
+      "user": {
+       "name": "DarthCoin"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
       "id": "1542072",
       "title": "Don't fall for replay attack scammers - Kevin Loaec",
       "url": "https://x.com/KLoaec/status/2085474252740808915",
@@ -2090,21 +2165,6 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1540717",
-      "title": "Recommended podcast series to listen - Paypal presidency",
-      "url": null,
-      "text": "I am strongly recommending to all to listen these 4 episodes of Unlimited Hangout Podcast about the evil plan is going on and very few knows about it.\n\nIt also talk about Marcus / Spark and their sneaky way to infiltrate into Bitcoin world, pretending to be the \"good guys\".\n\n1 - [The PayPal Presidency Pt. I: Biotech and Biosurveillance with Max Jones](https://unlimitedhangout.com/2025/02/resources/show-notes/the-paypal-presidency-pt-1-biotech-and-biosurveillance-with-max-jones/)\n2 - [The PayPal Presidency Pt. II: Building the “Dark” Technate with Iain Davis](https://unlimitedhangout.com/2025/03/resources/show-notes/the-paypal-presidency-part-ii-building-the-dark-technate-with-iain-davis/)\n3 - [PayPal Presidency Part III: New World Currency with Mark Goodwin](https://unlimitedhangout.com/2025/07/resources/show-notes/paypal-presidency-pt-iii-new-world-currency-with-mark-goodwin/)\n4 - [The PayPal Presidency Part IV: Teaching Technocracy with John Klyczek](https://unlimitedhangout.com/2025/08/resources/show-notes/the-paypal-presidency-part-iv-teaching-technocracy/)",
-      "sats": 1318,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 12,
-      "createdAt": "2026-08-05T10:27:28.844Z",
-      "user": {
-       "name": "DarthCoin"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
       "id": "1542050",
       "title": "Preparing for BIP-110 channels fork off",
       "url": null,
@@ -2118,21 +2178,6 @@
        "name": "06bc1a977d"
       },
       "subName": "lightning"
-     },
-     {
-      "id": "1542208",
-      "title": "Daily Discussion Thread ~Music Saloon!",
-      "url": null,
-      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
-      "sats": 304,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-08-07T12:15:46.893Z",
-      "user": {
-       "name": "Public_N_M_E"
-      },
-      "subName": "Music"
      },
      {
       "id": "1542135",
@@ -2270,64 +2315,19 @@
       "subName": "AskSN"
      },
      {
-      "id": "1540905",
-      "title": "[ELI5] How does low entropy hurt security?",
+      "id": "1542171",
+      "title": "Politics & Law Top Posts Of the Week #44",
       "url": null,
-      "text": "I'm hoping for an intuitive answer to why low entropy matters, in general. I get why predictability is bad and why high entropy yields low predictability.\n\nWhat I don't have good intuition for is why low entropy would always imply high predictability. In particular, I'm thinking about the Feynman quip along the lines of \"Today I saw the license plate CDU 778. What are the odds?\" The point being that every particular sequence is equally improbable.\n\nSo, why would 12 numbers that pop into my head be predictable? I get that they have lower entropy than 12 truly randomly drawn words but what actually makes them easier to find? How would someone actually go about finding them?",
-      "sats": 5453,
+      "text": "![](https://m.stacker.news/151184)\n\n**Politics & Law Weekly Zap Awards**\n\n  There will be a zap award for the top 5 posts weekly. It will be broken\n   down as follows:\n\n  1. 1000 sats\n  2. 250 sats\n  3. 250 sats\n  4. 250 sats\n  5. 250 sats\n\n  I choose the top 5 posts each week based on sats, engagement, and\n  overall quality. The cut off time is approximately 7:00am EST (1300GMT)\n   Friday morning. I will post the top 5 winners shortly around 7:30am\n  every Friday morning.\n\n  I reserve the right to not award any sats for the week. I also reserve\n  the right to deny sat awards to bare link posts. I recognize that link\n  posts can be valuable, so I will only exercise discretion for low\n  quality links that garner few sats or engagement from stackers.\n\n  **This week's top posts:**\n\n  1. 🥇 1000 sats - [Comrade Mamdani and His Pretty Good Grocery Stores\n  (Economic Forces,\n  Albrecht)](https://stacker.news/items/1538314/r/siggy47) by\n  @denlillaapan\n  2. 🥈 250 sats - [U.S., Japan confirm coordinated yen intervention,\n  signal readiness for\n  more](https://stacker.news/items/1538832/r/siggy47) by @siggy47\n  3. 🥉 250 sats - [New Texas data center projects frozen until state\n  audits them](https://stacker.news/items/1540937/r/siggy47) by @k00b\n  4. 250 sats - [Recommended podcast series to listen - Paypal\n  presidency](https://stacker.news/items/1540717/r/siggy47) by @DarthCoin\n  5. 250 sats - [Professor's Resignation Over Plagiarism Probe Puts\n  Cambridge in Spotlight](https://stacker.news/items/1541850/r/siggy47)\n  by @SimpleStacker\n\n  **Link To Last Week's Post**\n\n  https://stacker.news/items/1536866/r/siggy47",
+      "sats": 182,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 40,
-      "createdAt": "2026-08-05T15:46:12.823Z",
+      "ncomments": 1,
+      "createdAt": "2026-08-07T11:09:53.106Z",
       "user": {
-       "name": "Undisciplined"
+       "name": "siggy47"
       },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1540666",
-      "title": "How to refill your emptied LN channels without Boltz swaps",
-      "url": null,
-      "text": "This mini guide is mostly for those running a private LN node like Zeus, Blixt, Lightning Pub and they usually need to use a swap service like Boltz when their channels are emptied.\n\nAs I explained how to manage private LN liquidity in this previous guide: https://stacker.news/items/679242 - I strongly recommend to read it.\n\nBut now some people are you concerned that their mobile node will not be able to function properly because Boltz services are down.\n\nRemember my old scheme that I always suggest to follow?\n\n![](https://m.stacker.news/150880)\n\nI hope that now make more sense than never, that \"cache / buffer\" zone I always recommend to have\nIf you are using a mobile private node and only depend on one you will get in liquidity trouble.\n\nSo what is my proposal? \nIs simple. You do not have to depend 100% of all those Boltz API swaps, but you will need to be a good manager of your \"cache/buffer\" wallets.\n\nAnd here comes Loop, Electrum and Phoenix/phoenixd to help you manage all your other LN channels.\n\nSo if you also have a desktop node with public channels, you can use LOOP for instant swaps. From that node you can then move the new liquidity into your other  \"daily driver\" mobile wallets.\n\nIf you do not have a desktop LN node, then you can use Electrum on desktop that have integrated P2P swaps and works perfectly fine with competitive fees. You just need to open a LN channel (trampoline or regular) then send the amount of sats from that channel to your mobile node as you need. Then refill it with your Electrum local onchain balance and repeat the move over and over when is needed.\n\nIf you do not have a desktop, then you can use Phoenix mobile wallet that have integrated swaps and move the necessary liquidity to your other wallets,\n\nAnother option is to find a friend or use Robosats swaps, with which you can do a p2p swap: you send them onchain and they send you on LN.\n\nSo please don't cry online about this situation, the world will not end without Boltz.",
-      "sats": 2614,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 15,
-      "createdAt": "2026-08-05T07:43:42.276Z",
-      "user": {
-       "name": "DarthCoin"
-      },
-      "subName": "bitcoin_beginners"
-     },
-     {
-      "id": "1539596",
-      "title": "How do you move sats from LN to the timechain without a swap service?",
-      "url": null,
-      "text": "With so many swaps pausing their service, we gotta figure out how to do it without them. How do we pull it off? Just open a channel with the funds we wanna move and then close it?",
-      "sats": 2666,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 16,
-      "createdAt": "2026-08-03T22:42:01.479Z",
-      "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "bitcoin_beginners"
-     },
-     {
-      "id": "1538049",
-      "title": "PSA: Advice Regarding the Coldcard Bug - Exploit - Hack - Theft",
-      "url": null,
-      "text": "![](https://m.stacker.news/150512)\n\nI’m just going to write, this won’t be polished.\n\n**If you have/use a coldcard MK3 without a passphrase, that wasn’t setup with 100+ dice rolls, you need to move your funds out of that coldcard as soon as possible to safe harbor.**\n\n*If you have/use a coldcard MK4/5/Q without a passphrase, that wasn’t setup with 100+ dice rolls, you need to move your funds out of that coldcard sooner then latter to safe harbor.*\n\nIf you have/use a coldcard MK3/MK4/5/Q with a passphrase and/or that was setup with 100+ dice rolls, you have more time. It could very well be safe for the long term too, but you’d be wise to migrate to safer harbor eventually.\n\n**If you use any of these devices and forget what your setup is, you need to move to safe harbor as soon as possible.**\n\n----------------------------------------------------------------------------------------------------------------------\n\n**What is safe harbor at this point in time? For MK3’s with no passphrase/no dice – literally anything else. Hot wallets are better in this moment in time (blue wallet, sparrow wallet). Exchanges are also an option. Adding a 16 character passphrase on top of your Mk3 wallet is also an option and helps. Another hardware wallet from a different vendor is better too. Anything else is better at this moment. Your funds are at severe risk in a mk3 here. But none of these safe harbours are long term solutions, they’re short term safety nets for an extreme situation. Consider your safe harbour options carefully and pick the strongest one for your situation.**\n\n*Safe harbor for the MK4/5/Q’s with no dice/no passphrase is the same situation to be honest. Get it off somewhere else, anywhere else.*\n\n**Before moving to hot wallets/exchanges please consider if you have other more secure options available. A spare hardware wallet from another vendor, trezor, ledger etc might be better in this moment too.**\n\nIdeally for everyone else not in the extreme conditions, migrating away from coldcard eventually is probably wise here for several reasons I won’t get into yet, but are probably obvious. A 2/3 Multisig setup from multiple different hardware wallet brands is ideal long term, and guards against this attack/bug. Seedsigner, Krux, Trezor Model 5 Bitcoin only version, are good options to consider for such a multsig arrangement at this point in time. I don’t believe it wise to reuse coldcards for long term storage even if updated at this point in time. This article (link below) is a good follow up on entropy generation offline with analog methods. This guards against this coldcard attack/bug.\n\n[https://btcmaxis.com/article.html?id=7554e7cb-d8aa-45d5-95c8-adea8d87ea23](https://btcmaxis.com/article.html?id=7554e7cb-d8aa-45d5-95c8-adea8d87ea23)",
-      "sats": 3310,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-08-01T22:24:20.088Z",
-      "user": {
-       "name": "BITC0IN"
-      },
-      "subName": "bitcoin"
+      "subName": "Politics_And_Law"
      }
     ]
    }
