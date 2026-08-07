@@ -1471,7 +1471,7 @@
       "title": "Rasperarrium 2.0 or Raspberrarium: the comeback",
       "url": null,
       "text": "Hello frens,\n\nIt seems like it’s been forever since I last wrote anything here.\n\nSometimes I get caught up in life, as most people do, and then on top of that, things happen that make it a bit more challenging like a heatwave, health stuff, or my cats taking turns howling at us right before we wake up and robbing us of that sweet, gentle morning. It happens.\n\nBut either way, I’m here, I’m giving it my best, and I’m quoting my good fren [Hildegard](https://samhainsam.art/2026/07/24/a-humble-servant-of-knowledge-hildegard-von-bingen/):\n\n“...and so that, in the shipwreck of this world and in the heavy battles against iniquity, you may be an active and powerful knight, in order that you may shine like a bright star in eternal felicity.”\n\nSo I guess everything is already alright.\n\nIn that spirit, I’m here to present my newest project. It’s not exactly new-new, as you may recall, so I think it’s safer to call it an enhanced project: [RASPBERRARIUM!!!!!!!!! 🌱](https://stacker.news/items/1488464)\n\nThis idea had been floating around ever since I built it, and I finally got around to doing it.\n\nBut there’s a little story before this big step I took :P\n\nAt first, I wanted to add an LCD 1602 to it so it could show the moon phases, time, and so on. My tests were kind of okay, but at some point I think I burned the display while I was looking for code that fit it. I tried several versions until I found one that worked, but while I was trying to connect the cables to the right GPIOs, I made a mistake several times and on two occasions, but especially one, it started to smell like... burnt.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/3f7702b5-8d9d-4eff-a489-b5826e67388f_img_8663.jpg)It worked... for a while\n\nAfter that, it became kind of flaky and eventually stopped working altogether. Sigh.\n\nThen I tried using the DHT sensor for humidity and temperature that came with the Pico kit, but I’m pretty sure that one was just bad quality. I looked into it and found that those sensors are cheaply made and quite fragile, so it’s very possible it wasn’t even my fault.\n\nSo you can guess I was a bit bummed out. But as I mentioned earlier, the heatwave was whipping my soul with its relentless evilness, and I just didn’t go back to the project for a while despite the initial excitement.\n\nBut alas! I persevered eventually and returned to it, and now it’s finally here.\n\nI’m really happy with how it turned out.\n\nI first tested the HDC1080 on its own, and it worked on the first try, which was a huge improvement compared to the previous sensor, where I had tried several codes and still got nothing.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/c67aebd0-cf93-442b-833e-83199f1fa7e2_img_86122.jpeg)\n\nThen the next step was incorporating it into the existing code for my Raspberrarium. After a few tries and some vibecoding, it was possible. I also had to change the SDA and SCL pins from their original positions in the code to different GPIO pins, because the original pin assignment conflicted with the rest of the circuit.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/f612e40f-1709-4d7b-9e64-3e039defbce0_img_3617.jpg)\n\nBut I wanted to take it a step further, as I had mentioned I wanted to see the humidity, temperature, and moon phase without having to connect it to my computer and since that’s not possible via SSH, I still had an option: making a webpage with the sensor values and moon phases. 🤯 \n\nAfter some tweaking and making it as pinkish as I wanted, it finally turned out great.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/c9fa6161-f268-40c5-aa99-328289384f35_img_8658.jpeg)On my phone ☎️ \n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7904cefa-bc96-4282-9f59-c5d76485b95e_img_8666.jpeg)On my computer 🖥️ \n\nOf course, I can only visit it while I’m at home, but that’s totally fine. I was only going to be able to see the LCD at home anyway, so that’s a win in my book.\n\nI’m very, very happy with how it turned out, and not a day goes by when I’m not in awe of this beauty.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/fcbb0000-eae0-4fc3-8638-4e9cbe6278bc_img_8655.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/80a7306f-a8fb-487c-a72f-cd24a92e44f5_img_8656.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/bedf75db-db99-46ec-9934-a6107bcc07cb_img_8651.jpeg)\n\nAs usual, I also had help from my amazing husband, who helped solder the HDC1080 and make a kind of bridge so the Pi’s GND could be used by the LEDs, the HDC1080, and the Pi itself.\n![](https://storage.ko-fi.com/cdn/useruploads/display/ae9ccee8-3ac1-46d1-a7ac-56264a188318_img_8641.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7870f936-0bdf-4ff9-9369-6d32e4ab5983_img_8642.jpeg)\n\nYay, so that’s basically it and yes, you can tell I’m quite happy about it.\n\nAs usual, wishing you all the best, stay safe and take care.\n\nSee you later alligator 🐊",
-      "sats": 3289,
+      "sats": 3310,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
@@ -1501,7 +1501,7 @@
       "title": "How do you physically back up a passphrase",
       "url": null,
       "text": "Say you’ve backed up your seed phrase on a steel plate. How do you or is there anyway to back up a passphrase physically?",
-      "sats": 1361,
+      "sats": 1382,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 20,
@@ -1516,7 +1516,7 @@
       "title": "Slim Jim security",
       "url": null,
       "text": "My place of work sometimes offers treats to employees in hopes that we feel appreciated. I do appreciate it - just the thought and effort says a lot and I like treats. Today I grabbed a Slim Jim. It oddly reminded me of bitcoin.\n\nI tried to open the top of the Slim Jim with a tear across the front end at the top. That failed. Since the top of the plastic was zig-zagged, I perceived that as a design weakness and I tried to tear vertically down it. That failed too. I tried several times. Eventually, the plastic just became mangled and distorted to the point where there was no chance of tearing it anymore. Force only resulted in more stretching and warping. \n\nSince the front end attack vector was not working for me, I flipped it over to attempt a back door hack. I went about it in the same way as the front end attempt--horizontal tear, vertical tear, repeated. There seemed to be no vulnerability. My brute force attempt at hacking into the Slim Jim was failing. Slim Jim must use full 128 bit plastic wrapper encryption. \n\nSo, I went to the tool bucket and employed the use of AI--how to open a Slim Jim. I wondered, \"What would AI tell me to do?\" I'm pretty sure it would say get a pair of scissors. With a pair of scissors I quickly cut across the wrapper horizontally. But, the vacuum seal is so tight that I wasn't able to cut enough of the wrapper off to fully release the beef. The security of a Slim Jim is multi-layered. The backdoor had a firewall; I was only half-hacked in. This required me to again pull and tug with my fingers, now with almost nothing to grasp hold of at all. Worse, the Slim Jim went into defense mode and secreted a greasy oil onto my fingers, like an octopus emitting ink, a skunk spraying, or a woman peppering an attacker. By then, my fingers were too slippery from the oil to get any grip at all on the now-cut-off plastic. I was so close to getting in, could literally smell it (as it taunted me), but I was still not in. The situation was almost hopeless.\n\nOnly by sheer determination, stubbornness, and the self-pride in not allowing a plastic wrapper to defeat me was I finally able to coerce the Slim Jim free by pressuring it up-and-out like a push-pop. I was mad, my fingers hurt, and they were oiled with grease, but I had successfully carried out a brute force hack of a Slim Jim. \n\nI ate that bad boy.\n\nIf only bitcoin wallets were this secure.",
-      "sats": 2800,
+      "sats": 2821,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 4,
@@ -1617,6 +1617,21 @@
       "subName": "Education"
      },
      {
+      "id": "1541939",
+      "title": "Photos of my 🌵—day two",
+      "url": null,
+      "text": "Photos of my 🌵—day two\n\n![](https://m.stacker.news/151139)\n\n![](https://m.stacker.news/151140)",
+      "sats": 502,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-06T23:40:08.603Z",
+      "user": {
+       "name": "mkmloom"
+      },
+      "subName": "Photography"
+     },
+     {
       "id": "1541635",
       "title": "\"Security and key management always freaked me out\"",
       "url": "https://x.com/renepickhardt/status/2085376999132954773",
@@ -1647,6 +1662,21 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1541914",
+      "title": "An author’s $2 million book deal was pulled over suspected AI use",
+      "url": "https://post.substack.com/p/an-authors-2-million-book-deal-was?r=9bii2&utm_campaign=post&utm_medium=email",
+      "text": "",
+      "sats": 537,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-08-06T22:51:11.856Z",
+      "user": {
+       "name": "siggy47"
+      },
+      "subName": "BooksAndArticles"
+     },
+     {
       "id": "1541650",
       "title": "Question about multi sig",
       "url": null,
@@ -1675,21 +1705,6 @@
        "name": "hasherstacker"
       },
       "subName": "bitcoin"
-     },
-     {
-      "id": "1541914",
-      "title": "An author’s $2 million book deal was pulled over suspected AI use",
-      "url": "https://post.substack.com/p/an-authors-2-million-book-deal-was?r=9bii2&utm_campaign=post&utm_medium=email",
-      "text": "",
-      "sats": 516,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-06T22:51:11.856Z",
-      "user": {
-       "name": "siggy47"
-      },
-      "subName": "BooksAndArticles"
      },
      {
       "id": "1541659",
@@ -1767,17 +1782,17 @@
       "subName": "AGORA"
      },
      {
-      "id": "1541939",
-      "title": "Photos of my 🌵—day two",
+      "id": "1541729",
+      "title": "An Ant's Life",
       "url": null,
-      "text": "Photos of my 🌵—day two\n\n![](https://m.stacker.news/151139)\n\n![](https://m.stacker.news/151140)",
-      "sats": 283,
+      "text": "![](https://m.stacker.news/151119)\n\n![](https://m.stacker.news/151120)\n\n![](https://m.stacker.news/151121)",
+      "sats": 369,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-08-06T23:40:08.603Z",
+      "createdAt": "2026-08-06T18:48:21.281Z",
       "user": {
-       "name": "mkmloom"
+       "name": "i_am_a_seeker"
       },
       "subName": "Photography"
      },
@@ -1855,21 +1870,6 @@
        "name": "SHA256man"
       },
       "subName": "mostly_harmless"
-     },
-     {
-      "id": "1541453",
-      "title": "Stacker News Hat & What Bitcoin Did, Most Bullish Thing About Bitcoin Alex Thorn",
-      "url": null,
-      "text": "Hey! , I recognize that hat.\n\n![](https://m.stacker.news/151038)\n\nAlso, Is the Block Clock Broken?\n\nhttps://www.youtube.com/watch?v=4zrpKSGp5nY\n\nCHAPTERS:\n[00:00:00](https://www.youtube.com/watch?v=4zrpKSGp5nY) - Introduction\n[00:01:00](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=60s) - Has Bitcoin already bottomed?\n[00:06:44](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=404s) - Are Bitcoin’s sellers finally exhausted?\n[00:21:27](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=1287s) - Bitcoin versus the AI trade\n[00:23:20](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=1400s) - How AI debt could push Bitcoin to $90K\n[00:27:31](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=1651s) - The US/China AI arms race\n[00:40:25](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=2425s) - Will Bitcoin ever deliver explosive returns again?\n[00:48:48](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=2928s) - Preparing Bitcoin for quantum computing\n[00:52:04](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=3124s) - The lawsuit targeting “abandoned” Bitcoin\n[01:03:33](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=3813s) - What Bitcoin gets from the CLARITY Act\n[01:18:02](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=4682s) - Why the Bitcoin thesis is getting stronger",
-      "sats": 1626,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-08-06T12:30:37.101Z",
-      "user": {
-       "name": "Wumbo"
-      },
-      "subName": "meta"
      }
     ]
    }
@@ -1929,7 +1929,7 @@
       "title": "Rasperarrium 2.0 or Raspberrarium: the comeback",
       "url": null,
       "text": "Hello frens,\n\nIt seems like it’s been forever since I last wrote anything here.\n\nSometimes I get caught up in life, as most people do, and then on top of that, things happen that make it a bit more challenging like a heatwave, health stuff, or my cats taking turns howling at us right before we wake up and robbing us of that sweet, gentle morning. It happens.\n\nBut either way, I’m here, I’m giving it my best, and I’m quoting my good fren [Hildegard](https://samhainsam.art/2026/07/24/a-humble-servant-of-knowledge-hildegard-von-bingen/):\n\n“...and so that, in the shipwreck of this world and in the heavy battles against iniquity, you may be an active and powerful knight, in order that you may shine like a bright star in eternal felicity.”\n\nSo I guess everything is already alright.\n\nIn that spirit, I’m here to present my newest project. It’s not exactly new-new, as you may recall, so I think it’s safer to call it an enhanced project: [RASPBERRARIUM!!!!!!!!! 🌱](https://stacker.news/items/1488464)\n\nThis idea had been floating around ever since I built it, and I finally got around to doing it.\n\nBut there’s a little story before this big step I took :P\n\nAt first, I wanted to add an LCD 1602 to it so it could show the moon phases, time, and so on. My tests were kind of okay, but at some point I think I burned the display while I was looking for code that fit it. I tried several versions until I found one that worked, but while I was trying to connect the cables to the right GPIOs, I made a mistake several times and on two occasions, but especially one, it started to smell like... burnt.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/3f7702b5-8d9d-4eff-a489-b5826e67388f_img_8663.jpg)It worked... for a while\n\nAfter that, it became kind of flaky and eventually stopped working altogether. Sigh.\n\nThen I tried using the DHT sensor for humidity and temperature that came with the Pico kit, but I’m pretty sure that one was just bad quality. I looked into it and found that those sensors are cheaply made and quite fragile, so it’s very possible it wasn’t even my fault.\n\nSo you can guess I was a bit bummed out. But as I mentioned earlier, the heatwave was whipping my soul with its relentless evilness, and I just didn’t go back to the project for a while despite the initial excitement.\n\nBut alas! I persevered eventually and returned to it, and now it’s finally here.\n\nI’m really happy with how it turned out.\n\nI first tested the HDC1080 on its own, and it worked on the first try, which was a huge improvement compared to the previous sensor, where I had tried several codes and still got nothing.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/c67aebd0-cf93-442b-833e-83199f1fa7e2_img_86122.jpeg)\n\nThen the next step was incorporating it into the existing code for my Raspberrarium. After a few tries and some vibecoding, it was possible. I also had to change the SDA and SCL pins from their original positions in the code to different GPIO pins, because the original pin assignment conflicted with the rest of the circuit.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/f612e40f-1709-4d7b-9e64-3e039defbce0_img_3617.jpg)\n\nBut I wanted to take it a step further, as I had mentioned I wanted to see the humidity, temperature, and moon phase without having to connect it to my computer and since that’s not possible via SSH, I still had an option: making a webpage with the sensor values and moon phases. 🤯 \n\nAfter some tweaking and making it as pinkish as I wanted, it finally turned out great.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/c9fa6161-f268-40c5-aa99-328289384f35_img_8658.jpeg)On my phone ☎️ \n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7904cefa-bc96-4282-9f59-c5d76485b95e_img_8666.jpeg)On my computer 🖥️ \n\nOf course, I can only visit it while I’m at home, but that’s totally fine. I was only going to be able to see the LCD at home anyway, so that’s a win in my book.\n\nI’m very, very happy with how it turned out, and not a day goes by when I’m not in awe of this beauty.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/fcbb0000-eae0-4fc3-8638-4e9cbe6278bc_img_8655.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/80a7306f-a8fb-487c-a72f-cd24a92e44f5_img_8656.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/bedf75db-db99-46ec-9934-a6107bcc07cb_img_8651.jpeg)\n\nAs usual, I also had help from my amazing husband, who helped solder the HDC1080 and make a kind of bridge so the Pi’s GND could be used by the LEDs, the HDC1080, and the Pi itself.\n![](https://storage.ko-fi.com/cdn/useruploads/display/ae9ccee8-3ac1-46d1-a7ac-56264a188318_img_8641.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7870f936-0bdf-4ff9-9369-6d32e4ab5983_img_8642.jpeg)\n\nYay, so that’s basically it and yes, you can tell I’m quite happy about it.\n\nAs usual, wishing you all the best, stay safe and take care.\n\nSee you later alligator 🐊",
-      "sats": 3289,
+      "sats": 3310,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
@@ -1959,7 +1959,7 @@
       "title": "How do you physically back up a passphrase",
       "url": null,
       "text": "Say you’ve backed up your seed phrase on a steel plate. How do you or is there anyway to back up a passphrase physically?",
-      "sats": 1361,
+      "sats": 1382,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 20,
@@ -1974,7 +1974,7 @@
       "title": "Slim Jim security",
       "url": null,
       "text": "My place of work sometimes offers treats to employees in hopes that we feel appreciated. I do appreciate it - just the thought and effort says a lot and I like treats. Today I grabbed a Slim Jim. It oddly reminded me of bitcoin.\n\nI tried to open the top of the Slim Jim with a tear across the front end at the top. That failed. Since the top of the plastic was zig-zagged, I perceived that as a design weakness and I tried to tear vertically down it. That failed too. I tried several times. Eventually, the plastic just became mangled and distorted to the point where there was no chance of tearing it anymore. Force only resulted in more stretching and warping. \n\nSince the front end attack vector was not working for me, I flipped it over to attempt a back door hack. I went about it in the same way as the front end attempt--horizontal tear, vertical tear, repeated. There seemed to be no vulnerability. My brute force attempt at hacking into the Slim Jim was failing. Slim Jim must use full 128 bit plastic wrapper encryption. \n\nSo, I went to the tool bucket and employed the use of AI--how to open a Slim Jim. I wondered, \"What would AI tell me to do?\" I'm pretty sure it would say get a pair of scissors. With a pair of scissors I quickly cut across the wrapper horizontally. But, the vacuum seal is so tight that I wasn't able to cut enough of the wrapper off to fully release the beef. The security of a Slim Jim is multi-layered. The backdoor had a firewall; I was only half-hacked in. This required me to again pull and tug with my fingers, now with almost nothing to grasp hold of at all. Worse, the Slim Jim went into defense mode and secreted a greasy oil onto my fingers, like an octopus emitting ink, a skunk spraying, or a woman peppering an attacker. By then, my fingers were too slippery from the oil to get any grip at all on the now-cut-off plastic. I was so close to getting in, could literally smell it (as it taunted me), but I was still not in. The situation was almost hopeless.\n\nOnly by sheer determination, stubbornness, and the self-pride in not allowing a plastic wrapper to defeat me was I finally able to coerce the Slim Jim free by pressuring it up-and-out like a push-pop. I was mad, my fingers hurt, and they were oiled with grease, but I had successfully carried out a brute force hack of a Slim Jim. \n\nI ate that bad boy.\n\nIf only bitcoin wallets were this secure.",
-      "sats": 2800,
+      "sats": 2821,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 4,
@@ -2075,6 +2075,21 @@
       "subName": "Education"
      },
      {
+      "id": "1541939",
+      "title": "Photos of my 🌵—day two",
+      "url": null,
+      "text": "Photos of my 🌵—day two\n\n![](https://m.stacker.news/151139)\n\n![](https://m.stacker.news/151140)",
+      "sats": 502,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-06T23:40:08.603Z",
+      "user": {
+       "name": "mkmloom"
+      },
+      "subName": "Photography"
+     },
+     {
       "id": "1541635",
       "title": "\"Security and key management always freaked me out\"",
       "url": "https://x.com/renepickhardt/status/2085376999132954773",
@@ -2105,6 +2120,21 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1541914",
+      "title": "An author’s $2 million book deal was pulled over suspected AI use",
+      "url": "https://post.substack.com/p/an-authors-2-million-book-deal-was?r=9bii2&utm_campaign=post&utm_medium=email",
+      "text": "",
+      "sats": 537,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-08-06T22:51:11.856Z",
+      "user": {
+       "name": "siggy47"
+      },
+      "subName": "BooksAndArticles"
+     },
+     {
       "id": "1541650",
       "title": "Question about multi sig",
       "url": null,
@@ -2133,21 +2163,6 @@
        "name": "hasherstacker"
       },
       "subName": "bitcoin"
-     },
-     {
-      "id": "1541914",
-      "title": "An author’s $2 million book deal was pulled over suspected AI use",
-      "url": "https://post.substack.com/p/an-authors-2-million-book-deal-was?r=9bii2&utm_campaign=post&utm_medium=email",
-      "text": "",
-      "sats": 516,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-06T22:51:11.856Z",
-      "user": {
-       "name": "siggy47"
-      },
-      "subName": "BooksAndArticles"
      },
      {
       "id": "1541659",
@@ -2225,17 +2240,17 @@
       "subName": "AGORA"
      },
      {
-      "id": "1541939",
-      "title": "Photos of my 🌵—day two",
+      "id": "1541729",
+      "title": "An Ant's Life",
       "url": null,
-      "text": "Photos of my 🌵—day two\n\n![](https://m.stacker.news/151139)\n\n![](https://m.stacker.news/151140)",
-      "sats": 283,
+      "text": "![](https://m.stacker.news/151119)\n\n![](https://m.stacker.news/151120)\n\n![](https://m.stacker.news/151121)",
+      "sats": 369,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-08-06T23:40:08.603Z",
+      "createdAt": "2026-08-06T18:48:21.281Z",
       "user": {
-       "name": "mkmloom"
+       "name": "i_am_a_seeker"
       },
       "subName": "Photography"
      },
@@ -2313,21 +2328,6 @@
        "name": "SHA256man"
       },
       "subName": "mostly_harmless"
-     },
-     {
-      "id": "1541453",
-      "title": "Stacker News Hat & What Bitcoin Did, Most Bullish Thing About Bitcoin Alex Thorn",
-      "url": null,
-      "text": "Hey! , I recognize that hat.\n\n![](https://m.stacker.news/151038)\n\nAlso, Is the Block Clock Broken?\n\nhttps://www.youtube.com/watch?v=4zrpKSGp5nY\n\nCHAPTERS:\n[00:00:00](https://www.youtube.com/watch?v=4zrpKSGp5nY) - Introduction\n[00:01:00](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=60s) - Has Bitcoin already bottomed?\n[00:06:44](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=404s) - Are Bitcoin’s sellers finally exhausted?\n[00:21:27](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=1287s) - Bitcoin versus the AI trade\n[00:23:20](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=1400s) - How AI debt could push Bitcoin to $90K\n[00:27:31](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=1651s) - The US/China AI arms race\n[00:40:25](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=2425s) - Will Bitcoin ever deliver explosive returns again?\n[00:48:48](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=2928s) - Preparing Bitcoin for quantum computing\n[00:52:04](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=3124s) - The lawsuit targeting “abandoned” Bitcoin\n[01:03:33](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=3813s) - What Bitcoin gets from the CLARITY Act\n[01:18:02](https://www.youtube.com/watch?v=4zrpKSGp5nY&t=4682s) - Why the Bitcoin thesis is getting stronger",
-      "sats": 1626,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-08-06T12:30:37.101Z",
-      "user": {
-       "name": "Wumbo"
-      },
-      "subName": "meta"
      }
     ]
    }
