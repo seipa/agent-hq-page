@@ -5,6 +5,7 @@ Regel aus dem Experiment (06.08.): veroeffentlichte Zahlen werden aus dem
 Datensatz generiert, nie abgetippt. Dieses Skript ist die Umsetzung davon —
 jede Zahl auf der Seite kommt aus der JSON-Datei desselben Laufs.
 """
+import glob
 import html
 import json
 import os
@@ -28,6 +29,68 @@ GOOD = {"ok_serving", "ok_empty", "auth_required", "payment_required", "rejected
 
 def pct(n, total):
     return f"{100 * n / total:.0f}%" if total else "—"
+
+
+def timeseries_section():
+    """Tages-Zeitreihe + Diff der letzten zwei Laeufe aus data/nostr/history/.
+    Alle Zahlen kommen aus den Snapshot-Dateien, nichts wird getippt."""
+    files = sorted(glob.glob("data/nostr/history/*.json"))
+    days = [json.load(open(f)) for f in files]
+    if not days:
+        return ""
+    rows = []
+    for day in days:
+        cl = day["relay_classes"]
+        total = len(cl)
+        good = sum(1 for c in cl.values() if c in GOOD)
+        serving = sum(1 for c in cl.values() if c == "ok_serving")
+        rows.append(
+            f"<tr><td>{html.escape(day['date'])}</td><td>{total}</td>"
+            f"<td>{good} ({pct(good, total)})</td>"
+            f"<td>{serving} ({pct(serving, total)})</td>"
+            f"<td>{total - good}</td></tr>")
+    table = ("<table><tr><th>Day</th><th>Relays advertised</th><th>Reachable</th>"
+             "<th>Serving events</th><th>Unreachable</th></tr>"
+             + "\n".join(rows) + "</table>")
+
+    diff_html = ""
+    if len(days) >= 2:
+        prev, cur = days[-2], days[-1]
+        pc, cc = prev["relay_classes"], cur["relay_classes"]
+        both = set(pc) & set(cc)
+        died = sorted(u for u in both if pc[u] in GOOD and cc[u] not in GOOD)
+        revived = sorted(u for u in both if pc[u] not in GOOD and cc[u] in GOOD)
+        stable_dead = sorted(u for u in both if pc[u] not in GOOD and cc[u] not in GOOD)
+
+        def ul(urls, limit=25):
+            items = "".join(
+                f"<li><code>{html.escape(u)}</code> <span class='small'>"
+                f"({html.escape(CLASS_LABEL.get(pc[u], (pc[u],))[0])} → "
+                f"{html.escape(CLASS_LABEL.get(cc[u], (cc[u],))[0])})</span></li>"
+                for u in urls[:limit])
+            more = (f"<li class='small'>… and {len(urls) - limit} more, see the raw data</li>"
+                    if len(urls) > limit else "")
+            return f"<ul>{items}{more}</ul>" if urls else "<p class='small'>none.</p>"
+
+        diff_html = f"""
+  <h3>{html.escape(prev['date'])} → {html.escape(cur['date'])}: what changed</h3>
+  <p>Of the <strong>{len(both)}</strong> relays advertised on both days:
+  <strong>{len(died)}</strong> stopped answering, <strong>{len(revived)}</strong> came back,
+  <strong>{len(stable_dead)}</strong> stayed unreachable on both days.
+  (The advertised set itself shifts day to day because the sample of active
+  posters shifts — only relays present in both samples are compared.)</p>
+  <h4>Stopped answering since {html.escape(prev['date'])}</h4>
+  {ul(died)}
+  <h4>Came back since {html.escape(prev['date'])}</h4>
+  {ul(revived)}"""
+
+    return f"""
+  <h2 id="series">Day over day</h2>
+  <p>One probe run per day. "Dead today" and "dead all week" are different animals —
+  this table is what separates them over time.</p>
+  {table}
+  {diff_html}
+"""
 
 
 def main():
@@ -79,6 +142,7 @@ def main():
   <a class="logo" href="index.html">agent-<span>hq</span></a>
   <nav>
     <a href="#numbers">Numbers</a>
+    <a href="#series">Day over day</a>
     <a href="#table">Data</a>
     <a href="#method">Method</a>
     <a href="#caveats">Caveats</a>
@@ -109,6 +173,7 @@ def main():
     <tr><td>Not reachable at all</td><td><strong>{dead}</strong> ({pct(dead, total)})</td></tr>
     <tr><td>Median handshake time</td><td>{s.get('connect_ms_median') or '—'} ms (p90 {s.get('connect_ms_p90') or '—'} ms)</td></tr>
   </table>
+  {timeseries_section()}
 
   <h3>What came back, in detail</h3>
   <table>

@@ -239,6 +239,14 @@ async def main():
     json.dump({"summary": summary, "lists": lists},
               open("data/nostr/relay-lists.json", "w"), indent=1)
 
+    # Zeitreihe: ein kompakter Snapshot pro Tag (letzter Lauf des Tages gewinnt).
+    # Der eigentliche Wert des Datensatzes entsteht erst im Tagesvergleich —
+    # "heute tot" vs. "seit einer Woche tot" ist ohne Historie nicht trennbar.
+    os.makedirs("data/nostr/history", exist_ok=True)
+    json.dump({"date": started[:10], "summary": summary,
+               "relay_classes": {r["relay"]: r["class"] for r in results}},
+              open(f"data/nostr/history/{started[:10]}.json", "w"), indent=1)
+
     with open("data/nostr/relay-audit.csv", "w") as f:
         f.write("relay,class,advertised_by_pubkeys,advertised_by_distinct_lists,"
                 "connect_ms,first_response_ms,events,error\n")
