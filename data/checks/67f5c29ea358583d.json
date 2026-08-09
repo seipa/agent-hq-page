@@ -1,0 +1,140 @@
+{
+ "pubkey": "67f5c29ea358583d7293f5ee4dad81545f1a1736e6778e9d3b7deab0e46a8aa7",
+ "checked_at": "2026-08-09 04:11 UTC",
+ "vantage": "GitHub Actions runner (ubuntu-latest)",
+ "nip65_created": "2026-07-24",
+ "relays_listed": 8,
+ "ok": 5,
+ "dead": 1,
+ "rows": [
+  {
+   "relay": "wss://relay.damus.io",
+   "marker": "read+write",
+   "verdict": "OK — your notes are retrievable here",
+   "probe": {
+    "relay": "wss://relay.damus.io",
+    "connect": true,
+    "events_found": 5,
+    "eose": true,
+    "auth_required": false,
+    "error": null,
+    "latency_ms": 270
+   },
+   "audit_class": "ok_serving",
+   "advertised_by_pubkeys": 153
+  },
+  {
+   "relay": "wss://nos.lol",
+   "marker": "read+write",
+   "verdict": "OK — your notes are retrievable here",
+   "probe": {
+    "relay": "wss://nos.lol",
+    "connect": true,
+    "events_found": 5,
+    "eose": true,
+    "auth_required": false,
+    "error": null,
+    "latency_ms": 725
+   },
+   "audit_class": "ok_serving",
+   "advertised_by_pubkeys": 178
+  },
+  {
+   "relay": "wss://relay.primal.net",
+   "marker": "read+write",
+   "verdict": "OK — your notes are retrievable here",
+   "probe": {
+    "relay": "wss://relay.primal.net",
+    "connect": true,
+    "events_found": 1,
+    "eose": true,
+    "auth_required": false,
+    "error": null,
+    "latency_ms": 526
+   },
+   "audit_class": "ok_serving",
+   "advertised_by_pubkeys": 97
+  },
+  {
+   "relay": "wss://nostr.wine",
+   "marker": "read+write",
+   "verdict": "EMPTY — reachable, but NONE of your notes are stored here",
+   "probe": {
+    "relay": "wss://nostr.wine",
+    "connect": true,
+    "events_found": 0,
+    "eose": true,
+    "auth_required": false,
+    "error": null,
+    "latency_ms": 507
+   },
+   "audit_class": "ok_serving",
+   "advertised_by_pubkeys": 76
+  },
+  {
+   "relay": "wss://relay.nostr.band",
+   "marker": "read+write",
+   "verdict": "DEAD — connection failed",
+   "probe": {
+    "relay": "wss://relay.nostr.band",
+    "connect": false,
+    "events_found": 0,
+    "eose": false,
+    "auth_required": false,
+    "error": "TimeoutError: timed out during opening handshake",
+    "latency_ms": null
+   },
+   "audit_class": "timeout",
+   "advertised_by_pubkeys": 64
+  },
+  {
+   "relay": "wss://offchain.pub",
+   "marker": "read+write",
+   "verdict": "OK — your notes are retrievable here",
+   "probe": {
+    "relay": "wss://offchain.pub",
+    "connect": true,
+    "events_found": 5,
+    "eose": true,
+    "auth_required": false,
+    "error": null,
+    "latency_ms": 381
+   },
+   "audit_class": "ok_serving",
+   "advertised_by_pubkeys": 23
+  },
+  {
+   "relay": "wss://purplerelay.com",
+   "marker": "read+write",
+   "verdict": "OK — your notes are retrievable here",
+   "probe": {
+    "relay": "wss://purplerelay.com",
+    "connect": true,
+    "events_found": 5,
+    "eose": true,
+    "auth_required": false,
+    "error": null,
+    "latency_ms": 215
+   },
+   "audit_class": "ok_serving",
+   "advertised_by_pubkeys": 4
+  },
+  {
+   "relay": "wss://buzz.cashu.space",
+   "marker": "read+write",
+   "verdict": "AUTH — relay requires login; reading without auth not possible",
+   "probe": {
+    "relay": "wss://buzz.cashu.space",
+    "connect": true,
+    "events_found": 0,
+    "eose": false,
+    "auth_required": true,
+    "error": "closed: auth-required: not authenticated",
+    "latency_ms": 452,
+    "notice": "auth-required: authenticate before subscribing"
+   },
+   "audit_class": null,
+   "advertised_by_pubkeys": null
+  }
+ ]
+}
