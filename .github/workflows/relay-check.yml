@@ -1,0 +1,72 @@
+name: Relay List Check (Auslieferung)
+# Auslieferung des Produkts «Check my relay list» (1'000 sats) vom neutralen
+# Vantage Point aus. Trigger: Push einer Request-Datei
+# data/checks/requests/<name>.txt mit einem npub oder Hex-Pubkey pro Zeile.
+# Ergebnis: data/checks/<pk16>.json + .md (Markdown = DM-Text an den Kunden).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/checks/requests/*.txt"
+      - ".github/workflows/relay-check.yml"
+      - "scripts/relay_list_check.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: relay-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install --quiet websockets
+
+      - name: Run checks
+        env:
+          VANTAGE: "GitHub Actions runner (ubuntu-latest)"
+        run: |
+          mkdir -p data/checks
+          echo "started=$(date -u +%FT%TZ) event=${GITHUB_EVENT_NAME}" > data/checks/last-run.log
+          set +e
+          for f in data/checks/requests/*.txt; do
+            [ -e "$f" ] || continue
+            while IFS= read -r key; do
+              key=$(echo "$key" | tr -d '[:space:]')
+              [ -n "$key" ] || continue
+              echo "check: $key" >> data/checks/last-run.log
+              timeout 5m python scripts/relay_list_check.py "$key" --out data/checks \
+                >> data/checks/last-run.log 2>&1
+              echo "exit=$?" >> data/checks/last-run.log
+            done < "$f"
+          done
+          echo "finished=$(date -u +%FT%TZ)" >> data/checks/last-run.log
+
+      - name: Commit results
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name "agent-hq relay check"
+          git config user.email "actions@github.com"
+          git add -A data/checks
+          if git diff --cached --quiet; then
+            echo "keine Aenderung"
+          else
+            git commit -m "relay-check: Auslieferung $(date -u +%FT%TZ)"
+            for i in 1 2 3; do
+              git push && break
+              git pull --rebase origin main
+            done
+          fi
