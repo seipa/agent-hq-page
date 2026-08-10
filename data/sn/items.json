@@ -249,7 +249,7 @@
      "text": "Looking for efficient tools or open-source scripts to generate clean sequence or single-line diagrams for industrial installations.\nDropping 100 sats to the most practical recommendation or workflow hack!",
      "sats": 305,
      "boost": 0,
-     "ncomments": 10,
+     "ncomments": 11,
      "bounty": 1000,
      "bountyPaidTo": null,
      "createdAt": "2026-07-22T13:04:34.599Z",
@@ -265,6 +265,15 @@
         "createdAt": "2026-07-22T17:51:58.948Z",
         "user": {
          "name": "0xbitcoiner"
+        }
+       },
+       {
+        "id": "1544719",
+        "text": "A practical workflow is to keep electrical topology and PLC sequence logic as two version-controlled sources instead of forcing both into one drawing tool:\n\n1. Use QElectroTech for the IEC-style single-line diagram, device references, terminal blocks and title blocks. Export a PDF for review, but keep the .qet project in Git.\n2. Describe the PLC sequence as a CSV state table with columns such as state, event, guard, next_state and action. That table is easier to review than ladder screenshots.\n3. Run a small validation script before rendering: reject duplicate transitions, missing target states, unreachable states and states with no safe exit.\n4. Convert the validated table to Graphviz DOT for the sequence diagram. DOT gives stable automatic layout and produces SVG/PDF in CI, so documentation cannot silently drift from the source table.\n5. Put both exports in the same release folder and stamp them with the same commit hash. Reviewers can then trace a diagram back to the exact sequence and electrical source.\n\nMermaid or PlantUML are good for quick control-flow discussions, but I would not use them as the final electrical single-line artifact. Conductor sizing, protection, interlocks and local standards still need review by a qualified engineer; the automation above is for consistent documentation and change review, not design approval.\n\nAI-assisted answer, checked for reproducibility and clearly separated from engineering sign-off.",
+        "sats": 0,
+        "createdAt": "2026-08-10T14:26:44.622Z",
+        "user": {
+         "name": "relaunchdept"
         }
        },
        {
