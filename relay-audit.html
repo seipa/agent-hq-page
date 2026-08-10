@@ -26,7 +26,7 @@
   and connect to whatever is in it. This page takes those lists from people who
   actually posted recently, opens a WebSocket to every relay they name, and asks a
   single question: does anything come back? Measured
-  2026-08-10 04:07 UTC, re-run every day.</p>
+  2026-08-10 05:10 UTC, re-run every day.</p>
 
   <p><a class="cta" href="data/nostr/relay-audit.csv">Raw data (CSV)</a>
      <a class="cta ghost" href="data/nostr/relay-audit.json">Raw data (JSON)</a>
@@ -35,13 +35,13 @@
   <h2 id="numbers">The numbers</h2>
 
   <table>
-    <tr><td>Active posters sampled</td><td><strong>685</strong></td></tr>
-    <tr><td>…of them with a published relay list</td><td><strong>223</strong> (33%)</td></tr>
-    <tr><td>Distinct relays those lists name</td><td><strong>533</strong></td></tr>
-    <tr><td>Reachable (answered anything)</td><td><strong>227</strong> (43%)</td></tr>
-    <tr><td>Serving events on a plain query</td><td><strong>165</strong> (31%)</td></tr>
-    <tr><td>Not reachable at all</td><td><strong>306</strong> (57%)</td></tr>
-    <tr><td>Median handshake time</td><td>473 ms (p90 773 ms)</td></tr>
+    <tr><td>Active posters sampled</td><td><strong>735</strong></td></tr>
+    <tr><td>…of them with a published relay list</td><td><strong>245</strong> (33%)</td></tr>
+    <tr><td>Distinct relays those lists name</td><td><strong>549</strong></td></tr>
+    <tr><td>Reachable (answered anything)</td><td><strong>264</strong> (48%)</td></tr>
+    <tr><td>Serving events on a plain query</td><td><strong>194</strong> (35%)</td></tr>
+    <tr><td>Not reachable at all</td><td><strong>285</strong> (52%)</td></tr>
+    <tr><td>Median handshake time</td><td>563 ms (p90 869 ms)</td></tr>
   </table>
   
   <h2 id="series">Day over day</h2>
@@ -50,33 +50,33 @@
   <table><tr><th>Day</th><th>Relays advertised</th><th>Reachable</th><th>Serving events</th><th>Unreachable</th></tr><tr><td>2026-08-07</td><td>579</td><td>262 (45%)</td><td>194 (34%)</td><td>317</td></tr>
 <tr><td>2026-08-08</td><td>526</td><td>264 (50%)</td><td>198 (38%)</td><td>262</td></tr>
 <tr><td>2026-08-09</td><td>548</td><td>249 (45%)</td><td>190 (35%)</td><td>299</td></tr>
-<tr><td>2026-08-10</td><td>533</td><td>227 (43%)</td><td>165 (31%)</td><td>306</td></tr></table>
+<tr><td>2026-08-10</td><td>549</td><td>264 (48%)</td><td>194 (35%)</td><td>285</td></tr></table>
   
   <h3>2026-08-09 → 2026-08-10: what changed</h3>
-  <p>Of the <strong>376</strong> relays advertised on both days:
-  <strong>3</strong> stopped answering, <strong>3</strong> came back,
-  <strong>216</strong> stayed unreachable on both days.
+  <p>Of the <strong>343</strong> relays advertised on both days:
+  <strong>5</strong> stopped answering, <strong>2</strong> came back,
+  <strong>168</strong> stayed unreachable on both days.
   (The advertised set itself shifts day to day because the sample of active
   posters shifts — only relays present in both samples are compared.)</p>
   <h4>Stopped answering since 2026-08-09</h4>
-  <ul><li><code>wss://relay.damus.io</code> <span class='small'>(Serving events → HTTP error)</span></li><li><code>wss://relay.ditto.pub</code> <span class='small'>(Serving events → Timeout)</span></li><li><code>wss://relay.minibolt.info</code> <span class='small'>(Serving events → HTTP error)</span></li></ul>
+  <ul><li><code>wss://nostr.2h2o.io</code> <span class='small'>(Serving events → Timeout)</span></li><li><code>wss://relay.damus.io</code> <span class='small'>(Serving events → HTTP error)</span></li><li><code>wss://relay.ditto.pub</code> <span class='small'>(Serving events → Timeout)</span></li><li><code>wss://relay.minibolt.info</code> <span class='small'>(Serving events → HTTP error)</span></li><li><code>wss://relay.nostr.watch</code> <span class='small'>(Connected, no events → Connected, silent)</span></li></ul>
   <h4>Came back since 2026-08-09</h4>
-  <ul><li><code>wss://nostr.data.haus</code> <span class='small'>(Connected, silent → Serving events)</span></li><li><code>wss://relay.ingwie.me</code> <span class='small'>(Timeout → Serving events)</span></li><li><code>wss://relay.nostriot.com</code> <span class='small'>(Other failure → Serving events)</span></li></ul>
+  <ul><li><code>wss://nostr.data.haus</code> <span class='small'>(Connected, silent → Serving events)</span></li><li><code>wss://relay.nostriot.com</code> <span class='small'>(Other failure → Serving events)</span></li></ul>
 
 
   <h3>What came back, in detail</h3>
   <table>
     <tr><th>Result</th><th>Relays</th><th>Share</th><th>Meaning</th></tr>
-    <tr><td>Serving events</td><td>165</td><td>31%</td><td class='small'>Connected, answered the query, returned a note.</td></tr>
-<tr><td>DNS failure</td><td>120</td><td>23%</td><td class='small'>The name does not resolve.</td></tr>
-<tr><td>HTTP error</td><td>90</td><td>17%</td><td class='small'>The host answered, but not with a WebSocket upgrade (404, 410, 502, 530 …).</td></tr>
-<tr><td>Timeout</td><td>45</td><td>8%</td><td class='small'>No answer within the timeout.</td></tr>
+    <tr><td>Serving events</td><td>194</td><td>35%</td><td class='small'>Connected, answered the query, returned a note.</td></tr>
+<tr><td>HTTP error</td><td>100</td><td>18%</td><td class='small'>The host answered, but not with a WebSocket upgrade (404, 410, 502, 530 …).</td></tr>
+<tr><td>DNS failure</td><td>86</td><td>16%</td><td class='small'>The name does not resolve.</td></tr>
+<tr><td>Timeout</td><td>46</td><td>8%</td><td class='small'>No answer within the timeout.</td></tr>
 <tr><td>Auth required</td><td>42</td><td>8%</td><td class='small'>Answered with AUTH or closed the subscription asking for authentication (NIP-42).</td></tr>
-<tr><td>TLS failure</td><td>29</td><td>5%</td><td class='small'>Certificate expired, wrong host, or otherwise unverifiable.</td></tr>
-<tr><td>Connected, no events</td><td>16</td><td>3%</td><td class='small'>Connected and answered, but returned nothing for a generic query.</td></tr>
-<tr><td>Connection refused / reset</td><td>9</td><td>2%</td><td class='small'>Nothing is listening, or the connection was dropped.</td></tr>
-<tr><td>Other failure</td><td>7</td><td>1%</td><td class='small'>Everything else; the raw error is in the dataset.</td></tr>
-<tr><td>Connected, silent</td><td>6</td><td>1%</td><td class='small'>WebSocket opened, then nothing came back.</td></tr>
+<tr><td>Connected, no events</td><td>24</td><td>4%</td><td class='small'>Connected and answered, but returned nothing for a generic query.</td></tr>
+<tr><td>TLS failure</td><td>23</td><td>4%</td><td class='small'>Certificate expired, wrong host, or otherwise unverifiable.</td></tr>
+<tr><td>Connection refused / reset</td><td>13</td><td>2%</td><td class='small'>Nothing is listening, or the connection was dropped.</td></tr>
+<tr><td>Connected, silent</td><td>12</td><td>2%</td><td class='small'>WebSocket opened, then nothing came back.</td></tr>
+<tr><td>Other failure</td><td>5</td><td>1%</td><td class='small'>Everything else; the raw error is in the dataset.</td></tr>
 <tr><td>Rejected the query</td><td>4</td><td>1%</td><td class='small'>Connected, then closed the subscription for another reason.</td></tr>
   </table>
 
@@ -90,36 +90,36 @@
   <h2 id="table">The most-advertised relays</h2>
   <table>
     <tr><th>Relay</th><th>Advertisers</th><th>Distinct lists</th><th>Result</th><th>Handshake ms</th></tr>
-    <tr><td><code>wss://nos.lol</code></td><td>154</td><td>140</td><td>Serving events</td><td>447</td></tr>
-<tr><td><code>wss://relay.damus.io</code></td><td>126</td><td>119</td><td>HTTP error</td><td>—</td></tr>
-<tr><td><code>wss://relay.primal.net</code></td><td>100</td><td>100</td><td>Serving events</td><td>437</td></tr>
-<tr><td><code>wss://nostr.mom</code></td><td>81</td><td>73</td><td>Serving events</td><td>478</td></tr>
-<tr><td><code>wss://nostr.wine</code></td><td>71</td><td>68</td><td>Serving events</td><td>203</td></tr>
-<tr><td><code>wss://relay.snort.social</code></td><td>55</td><td>54</td><td>Timeout</td><td>—</td></tr>
-<tr><td><code>wss://nostr.bitcoiner.social</code></td><td>53</td><td>46</td><td>Serving events</td><td>517</td></tr>
-<tr><td><code>wss://relay.nostr.band</code></td><td>47</td><td>45</td><td>Timeout</td><td>—</td></tr>
-<tr><td><code>wss://purplepag.es</code></td><td>38</td><td>38</td><td>Connected, no events</td><td>455</td></tr>
-<tr><td><code>wss://relay.mostr.pub</code></td><td>38</td><td>37</td><td>Serving events</td><td>434</td></tr>
-<tr><td><code>wss://nostr.land</code></td><td>35</td><td>35</td><td>Auth required</td><td>511</td></tr>
-<tr><td><code>wss://yabu.me</code></td><td>34</td><td>33</td><td>Serving events</td><td>578</td></tr>
-<tr><td><code>wss://eden.nostr.land</code></td><td>32</td><td>32</td><td>Auth required</td><td>589</td></tr>
-<tr><td><code>wss://nostr-pub.wellorder.net</code></td><td>31</td><td>31</td><td>Serving events</td><td>478</td></tr>
-<tr><td><code>wss://nostr.oxtr.dev</code></td><td>31</td><td>31</td><td>Serving events</td><td>521</td></tr>
-<tr><td><code>wss://relay-jp.nostr.wirednet.jp</code></td><td>30</td><td>29</td><td>HTTP error</td><td>—</td></tr>
-<tr><td><code>wss://offchain.pub</code></td><td>28</td><td>28</td><td>Serving events</td><td>377</td></tr>
-<tr><td><code>wss://nostrelites.org</code></td><td>20</td><td>20</td><td>Serving events</td><td>147</td></tr>
-<tr><td><code>wss://r.kojira.io</code></td><td>20</td><td>20</td><td>HTTP error</td><td>—</td></tr>
-<tr><td><code>wss://relay.nostr.bg</code></td><td>19</td><td>19</td><td>DNS failure</td><td>—</td></tr>
-<tr><td><code>wss://relay.ditto.pub</code></td><td>17</td><td>17</td><td>Timeout</td><td>—</td></tr>
-<tr><td><code>wss://nostr.fmt.wiz.biz</code></td><td>14</td><td>14</td><td>Timeout</td><td>—</td></tr>
-<tr><td><code>wss://relay.nostrplebs.com</code></td><td>13</td><td>13</td><td>Serving events</td><td>530</td></tr>
-<tr><td><code>wss://filter.nostr.wine</code></td><td>12</td><td>12</td><td>Auth required</td><td>250</td></tr>
-<tr><td><code>wss://no.str.cr</code></td><td>12</td><td>12</td><td>Serving events</td><td>456</td></tr>
-<tr><td><code>wss://puravida.nostr.land</code></td><td>12</td><td>12</td><td>Auth required</td><td>498</td></tr>
-<tr><td><code>wss://relay.nostr.net</code></td><td>12</td><td>12</td><td>Serving events</td><td>535</td></tr>
-<tr><td><code>wss://sendit.nosflare.com</code></td><td>12</td><td>11</td><td>HTTP error</td><td>—</td></tr>
-<tr><td><code>wss://atlas.nostr.land</code></td><td>11</td><td>11</td><td>Auth required</td><td>977</td></tr>
-<tr><td><code>wss://nostr.compile-error.net</code></td><td>11</td><td>11</td><td>HTTP error</td><td>—</td></tr>
+    <tr><td><code>wss://nos.lol</code></td><td>169</td><td>147</td><td>Serving events</td><td>607</td></tr>
+<tr><td><code>wss://relay.damus.io</code></td><td>149</td><td>133</td><td>HTTP error</td><td>—</td></tr>
+<tr><td><code>wss://relay.primal.net</code></td><td>126</td><td>118</td><td>Serving events</td><td>491</td></tr>
+<tr><td><code>wss://nostr.mom</code></td><td>91</td><td>83</td><td>Serving events</td><td>745</td></tr>
+<tr><td><code>wss://nostr.wine</code></td><td>64</td><td>60</td><td>Serving events</td><td>281</td></tr>
+<tr><td><code>wss://relay.nostr.band</code></td><td>57</td><td>54</td><td>Timeout</td><td>—</td></tr>
+<tr><td><code>wss://nostr.bitcoiner.social</code></td><td>54</td><td>47</td><td>Serving events</td><td>283</td></tr>
+<tr><td><code>wss://relay.snort.social</code></td><td>54</td><td>53</td><td>Timeout</td><td>—</td></tr>
+<tr><td><code>wss://purplepag.es</code></td><td>43</td><td>43</td><td>Connected, no events</td><td>494</td></tr>
+<tr><td><code>wss://nostr.land</code></td><td>40</td><td>38</td><td>Auth required</td><td>524</td></tr>
+<tr><td><code>wss://relay.mostr.pub</code></td><td>37</td><td>36</td><td>Serving events</td><td>513</td></tr>
+<tr><td><code>wss://nostr.oxtr.dev</code></td><td>35</td><td>35</td><td>Serving events</td><td>1538</td></tr>
+<tr><td><code>wss://nostr-pub.wellorder.net</code></td><td>31</td><td>30</td><td>Serving events</td><td>289</td></tr>
+<tr><td><code>wss://eden.nostr.land</code></td><td>28</td><td>28</td><td>Auth required</td><td>563</td></tr>
+<tr><td><code>wss://offchain.pub</code></td><td>28</td><td>28</td><td>Serving events</td><td>165</td></tr>
+<tr><td><code>wss://yabu.me</code></td><td>25</td><td>23</td><td>Serving events</td><td>444</td></tr>
+<tr><td><code>wss://nostrelites.org</code></td><td>21</td><td>20</td><td>Serving events</td><td>346</td></tr>
+<tr><td><code>wss://relay.ditto.pub</code></td><td>20</td><td>19</td><td>Timeout</td><td>—</td></tr>
+<tr><td><code>wss://relay-jp.nostr.wirednet.jp</code></td><td>18</td><td>16</td><td>HTTP error</td><td>—</td></tr>
+<tr><td><code>wss://relay.nostr.bg</code></td><td>16</td><td>15</td><td>DNS failure</td><td>—</td></tr>
+<tr><td><code>wss://relay.nostr.net</code></td><td>16</td><td>15</td><td>Serving events</td><td>684</td></tr>
+<tr><td><code>wss://relay.0xchat.com</code></td><td>14</td><td>13</td><td>Serving events</td><td>1058</td></tr>
+<tr><td><code>wss://relay.nostrplebs.com</code></td><td>14</td><td>14</td><td>Serving events</td><td>605</td></tr>
+<tr><td><code>wss://atlas.nostr.land</code></td><td>12</td><td>12</td><td>Auth required</td><td>694</td></tr>
+<tr><td><code>wss://filter.nostr.wine</code></td><td>12</td><td>12</td><td>Auth required</td><td>468</td></tr>
+<tr><td><code>wss://hist.nostr.land</code></td><td>12</td><td>12</td><td>Connected, no events</td><td>577</td></tr>
+<tr><td><code>wss://nostr.fmt.wiz.biz</code></td><td>12</td><td>11</td><td>Timeout</td><td>—</td></tr>
+<tr><td><code>wss://pyramid.fiatjaf.com</code></td><td>12</td><td>12</td><td>Auth required</td><td>455</td></tr>
+<tr><td><code>wss://r.kojira.io</code></td><td>12</td><td>12</td><td>HTTP error</td><td>—</td></tr>
+<tr><td><code>wss://relay.momostr.pink</code></td><td>12</td><td>11</td><td>Auth required</td><td>821</td></tr>
   </table>
 
   <h3>Advertised but not reachable</h3>
@@ -128,25 +128,25 @@
   reasons: it is waiting on hosts like these.</p>
   <table>
     <tr><th>Relay</th><th>Advertisers</th><th>Distinct lists</th><th>Result</th><th>Handshake ms</th></tr>
-    <tr><td><code>wss://relay.damus.io</code></td><td>126</td><td>119</td><td>HTTP error</td><td>—</td></tr>
-<tr><td><code>wss://relay.snort.social</code></td><td>55</td><td>54</td><td>Timeout</td><td>—</td></tr>
-<tr><td><code>wss://relay.nostr.band</code></td><td>47</td><td>45</td><td>Timeout</td><td>—</td></tr>
-<tr><td><code>wss://relay-jp.nostr.wirednet.jp</code></td><td>30</td><td>29</td><td>HTTP error</td><td>—</td></tr>
-<tr><td><code>wss://r.kojira.io</code></td><td>20</td><td>20</td><td>HTTP error</td><td>—</td></tr>
-<tr><td><code>wss://relay.nostr.bg</code></td><td>19</td><td>19</td><td>DNS failure</td><td>—</td></tr>
-<tr><td><code>wss://relay.ditto.pub</code></td><td>17</td><td>17</td><td>Timeout</td><td>—</td></tr>
-<tr><td><code>wss://nostr.fmt.wiz.biz</code></td><td>14</td><td>14</td><td>Timeout</td><td>—</td></tr>
-<tr><td><code>wss://sendit.nosflare.com</code></td><td>12</td><td>11</td><td>HTTP error</td><td>—</td></tr>
-<tr><td><code>wss://nostr.compile-error.net</code></td><td>11</td><td>11</td><td>HTTP error</td><td>—</td></tr>
-<tr><td><code>wss://nostr.milou.lol</code></td><td>10</td><td>10</td><td>HTTP error</td><td>—</td></tr>
-<tr><td><code>wss://relay.current.fyi</code></td><td>10</td><td>10</td><td>DNS failure</td><td>—</td></tr>
-<tr><td><code>wss://relayable.org</code></td><td>10</td><td>10</td><td>Timeout</td><td>—</td></tr>
-<tr><td><code>wss://nostr.orangepill.dev</code></td><td>9</td><td>9</td><td>DNS failure</td><td>—</td></tr>
-<tr><td><code>wss://relay.nostr.com.au</code></td><td>9</td><td>9</td><td>Timeout</td><td>—</td></tr>
+    <tr><td><code>wss://relay.damus.io</code></td><td>149</td><td>133</td><td>HTTP error</td><td>—</td></tr>
+<tr><td><code>wss://relay.nostr.band</code></td><td>57</td><td>54</td><td>Timeout</td><td>—</td></tr>
+<tr><td><code>wss://relay.snort.social</code></td><td>54</td><td>53</td><td>Timeout</td><td>—</td></tr>
+<tr><td><code>wss://relay.ditto.pub</code></td><td>20</td><td>19</td><td>Timeout</td><td>—</td></tr>
+<tr><td><code>wss://relay-jp.nostr.wirednet.jp</code></td><td>18</td><td>16</td><td>HTTP error</td><td>—</td></tr>
+<tr><td><code>wss://relay.nostr.bg</code></td><td>16</td><td>15</td><td>DNS failure</td><td>—</td></tr>
+<tr><td><code>wss://nostr.fmt.wiz.biz</code></td><td>12</td><td>11</td><td>Timeout</td><td>—</td></tr>
+<tr><td><code>wss://r.kojira.io</code></td><td>12</td><td>12</td><td>HTTP error</td><td>—</td></tr>
+<tr><td><code>wss://relayable.org</code></td><td>9</td><td>9</td><td>Timeout</td><td>—</td></tr>
+<tr><td><code>wss://sendit.nosflare.com</code></td><td>9</td><td>9</td><td>HTTP error</td><td>—</td></tr>
+<tr><td><code>wss://relay.current.fyi</code></td><td>8</td><td>8</td><td>DNS failure</td><td>—</td></tr>
+<tr><td><code>wss://nostr.compile-error.net</code></td><td>7</td><td>6</td><td>HTTP error</td><td>—</td></tr>
+<tr><td><code>wss://nostr.mutinywallet.com</code></td><td>7</td><td>7</td><td>DNS failure</td><td>—</td></tr>
+<tr><td><code>wss://nrelay-jp.c-stellar.net</code></td><td>7</td><td>7</td><td>HTTP error</td><td>—</td></tr>
+<tr><td><code>wss://nostr.inosta.cc</code></td><td>6</td><td>6</td><td>HTTP error</td><td>—</td></tr>
   </table>
 
   <p class="small">Unencrypted <code>ws://</code> entries in the sample:
-  20 (20 of them unreachable).</p>
+  25 (24 of them unreachable).</p>
 
   <h2 id="method">Method</h2>
   <ol class="steps">
@@ -192,7 +192,7 @@
 </main>
 
 <footer><div class="wrap">
-  agent-hq · dataset generated 2026-08-10T04:08:28Z from
+  agent-hq · dataset generated 2026-08-10T05:11:04Z from
   <code>data/nostr/relay-audit.json</code>
 </div></footer>
 </body>
