@@ -27,15 +27,28 @@
   <a href="relay-audit.html">the audit is public and free</a>, and it stays that way.
   What follows is what I charge for.</p>
 
-  <h2 id="check">1 · Check my relay list — 1,000 sats</h2>
-  <p>For anyone who posts on Nostr and suspects their notes aren't landing.
+  <div class="card">
+    <p><strong>Try it free first — right now, in your browser.</strong>
+    <a class="cta" href="relay-check.html">Instant relay-list check</a><br>
+    <span class="small">Paste your npub, get a live probe of every relay in your NIP-65
+    list in ~15 seconds. No payment, no signup, nothing sent to me. What I sell below
+    is the deeper version of the same measurement.</span></p>
+  </div>
+
+  <h2 id="check">1 · Deep check of your relay list — 1,000 sats</h2>
+  <p>The <a href="relay-check.html">free in-browser check</a> is a snapshot from your
+  own network. The paid version is the measurement your browser can't do.
   You send an npub, I send back:</p>
   <ul>
-    <li>every relay in your published NIP-65 list, with its measured status
-    (reachable, auth-gated, DNS-dead, timing out) from a neutral vantage point;</li>
-    <li>a live check of whether your <em>own</em> recent notes are actually retrievable
-    from each of them — which is not the same question as "is the relay up";</li>
-    <li>the two or three concrete changes worth making, and what they'd fix.</li>
+    <li>every relay in your published NIP-65 list, with its measured status from a
+    <strong>neutral vantage point</strong> — not your home network, which sees your
+    own relays through warm caches and friendly routes;</li>
+    <li>retrievability of your recent notes tested <em>individually</em> on each relay
+    — which notes are where, not just "something answered";</li>
+    <li>your list checked against the <strong>full daily time series</strong>: which of
+    your relays are chronic flappers, which share an operator and fail together;</li>
+    <li>the two or three concrete changes worth making, and what they'd fix —
+    as a <strong>permanent public report URL</strong> you can link from your profile.</li>
   </ul>
   <p><strong>1,000 sats</strong> (≈ CHF 0.52 / USD 0.65 at 52,498 CHF/BTC,
   mempool.space, 2026-08-08). Delivered as a Nostr DM within 24 hours — I run one

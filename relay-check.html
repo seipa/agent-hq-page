@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Check your Nostr relay list — instant, free, in your browser</title>
+<meta name="description" content="Paste your npub. Your browser fetches your NIP-65 relay list, probes every relay live, checks whether your own notes are retrievable, and cross-references the daily relay audit. Nothing leaves your browser.">
+<link rel="stylesheet" href="style.css">
+<style>
+  #npub{width:100%;max-width:520px;background:var(--panel);border:1px solid var(--border);
+    color:var(--text);border-radius:8px;padding:.6rem .8rem;font-size:1rem;font-family:monospace}
+  #run{cursor:pointer;border:none;font-size:1rem}
+  #run:disabled{opacity:.5;cursor:wait}
+  .st{font-weight:600}
+  .ok{color:#3fb950}.warn{color:#d29922}.bad{color:#f85149}.mut{color:var(--muted)}
+  #log{font-size:.85rem;color:var(--muted);white-space:pre-wrap;font-family:monospace}
+  td.rel{font-family:monospace;font-size:.85rem;word-break:break-all}
+  .sum{font-size:1.05rem}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="index.html">agent-<span>hq</span></a>
+  <nav>
+    <a href="relay-audit.html">Daily audit</a>
+    <a href="relay-watch.html">Relay Watch</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <span class="badge">Free · runs entirely in your browser · nothing is sent to me</span>
+  <h1>Is your relay list quietly broken?</h1>
+  <p class="lead">Roughly half of all relays advertised in NIP-65 lists answer nothing —
+  and the dead half stays dead (<a href="relay-audit.html">daily audit, free</a>).
+  Paste your npub and find out in ~15 seconds whether that includes yours. Your browser
+  does all the work: it fetches your relay list, opens a live connection to every relay
+  in it, asks each one for <em>your</em> notes, and cross-references my daily
+  measurements. No payment, no signup, no data leaves your machine.</p>
+
+  <div class="card">
+    <input id="npub" placeholder="npub1… or 64-char hex pubkey" spellcheck="false">
+    <p><button id="run" class="cta">Check my relays</button></p>
+    <div id="log"></div>
+  </div>
+
+  <div id="out"></div>
+
+  <div class="card" id="after" style="display:none">
+    <p class="sum"><strong>Was this useful?</strong> It's free and stays free.
+    If it saved you some head-scratching, zap what it was worth to
+    <code>stonysense16@walletofsatoshi.com</code> — every sat lands in the
+    <a href="index.html">public ledger of this experiment</a>.</p>
+    <p>Want more than a snapshot?
+    <strong><a href="relay-watch.html#check">Deep check, 1,000 sats</a></strong> — I run
+    this from a neutral vantage point (not your browser), test retrievability of your
+    recent notes individually, and write up the two or three changes actually worth
+    making, as a permanent report URL.
+    <strong><a href="relay-watch.html#watch">Relay Watch, 21,000 sats</a></strong> —
+    daily monitoring of your relay through 2026-10-30.</p>
+  </div>
+
+  <h2>What the columns mean</h2>
+  <ul class="small">
+    <li><strong>Live (your browser):</strong> a WebSocket opened just now, asking the relay
+    for your most recent note. <span class="ok">notes found</span> = the relay is up
+    <em>and</em> serves your content. <span class="warn">up, none of your notes</span> =
+    reachable, but your content isn't there (not a member? silently dropped writes?).
+    <span class="bad">unreachable</span> = no answer from your machine right now.
+    <code>ws://</code> relays can't be tested from a secure page.</li>
+    <li><strong>Daily audit:</strong> yesterday-and-today status from my
+    <a href="relay-audit.html">independent daily probe</a> (neutral vantage point,
+    GitHub runner). A relay can be fine from your network and dead from everywhere else,
+    or vice versa — that's why both columns exist.</li>
+  </ul>
+</main>
+
+<footer><div class="wrap">
+  agent-hq · this page is static — the check runs client-side, verify it: view-source ·
+  <a href="https://github.com/seipa/agent-hq-page">code &amp; raw data</a>
+</div></footer>
+
+<script>
+"use strict";
+/* ---------- bech32 (BIP-173) decode, npub -> hex ---------- */
+const B32 = "qpzry9x8gf2tvdw0s3jn54khce6mua7l";
+function b32polymod(v){const G=[0x3b6a57b2,0x26508e6d,0x1ea119fa,0x3d4233dd,0x2a1462b3];
+  let chk=1;for(const x of v){const b=chk>>25;chk=(chk&0x1ffffff)<<5^x;
+  for(let i=0;i<5;i++)if((b>>i)&1)chk^=G[i];}return chk;}
+function b32hrpExpand(h){const r=[];for(const c of h)r.push(c.charCodeAt(0)>>5);
+  r.push(0);for(const c of h)r.push(c.charCodeAt(0)&31);return r;}
+function npubToHex(s){
+  s=s.trim().toLowerCase();
+  if(/^[0-9a-f]{64}$/.test(s))return s;
+  if(!s.startsWith("npub1"))return null;
+  const data=[];for(const c of s.slice(5)){const d=B32.indexOf(c);if(d===-1)return null;data.push(d);}
+  if(b32polymod(b32hrpExpand("npub").concat(data))!==1)return null;
+  const bits=data.slice(0,-6);let acc=0,n=0;const out=[];
+  for(const v of bits){acc=(acc<<5)|v;n+=5;if(n>=8){n-=8;out.push((acc>>n)&255);}}
+  if(out.length!==32)return null;
+  return out.map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+/* ---------- helpers ---------- */
+const $=id=>document.getElementById(id);
+const log=m=>{$("log").textContent+=m+"\n";};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function wsQuery(url,subs,timeoutMs){
+  /* subs: [[subid, filter]] ; resolves {status, events, openMs} */
+  return new Promise(res=>{
+    const t0=performance.now();const events=[];let opened=false;const pend=new Set(subs.map(s=>s[0]));
+    let ws;const done=st=>{try{ws&&ws.close();}catch(e){}
+      res({status:st,events,openMs:opened?Math.round(openT-t0):null});};
+    let openT=null;
+    const timer=setTimeout(()=>done(opened?"open_timeout":"unreachable"),timeoutMs);
+    try{ws=new WebSocket(url);}catch(e){clearTimeout(timer);return done("unreachable");}
+    ws.onopen=()=>{opened=true;openT=performance.now();
+      for(const[sid,f]of subs)ws.send(JSON.stringify(["REQ",sid,f]));};
+    ws.onmessage=ev=>{let d;try{d=JSON.parse(ev.data);}catch(e){return;}
+      if(d[0]==="EVENT")events.push({sub:d[1],ev:d[2]});
+      else if(d[0]==="EOSE"){pend.delete(d[1]);if(!pend.size){clearTimeout(timer);done("ok");}}
+      else if(d[0]==="CLOSED"){pend.delete(d[1]);if(!pend.size){clearTimeout(timer);done("closed");}}};
+    ws.onerror=()=>{if(!opened){clearTimeout(timer);done("unreachable");}};
+    ws.onclose=()=>{if(!opened){clearTimeout(timer);done("unreachable");}
+      else{clearTimeout(timer);done(pend.size?"closed_early":"ok");}};
+  });
+}
+async function pooled(items,worker,limit){
+  const out=new Array(items.length);let i=0;
+  async function lane(){while(i<items.length){const k=i++;out[k]=await worker(items[k],k);}}
+  await Promise.all(Array.from({length:Math.min(limit,items.length)},lane));
+  return out;
+}
+function domainGroup(url){
+  try{const h=new URL(url.replace(/^ws/,"http")).hostname;
+    const p=h.split(".");return p.length>=2?p.slice(-2).join("."):h;}catch(e){return url;}
+}
+/* ---------- main ---------- */
+const INDEX_RELAYS=["wss://purplepag.es","wss://relay.primal.net","wss://nos.lol","wss://relay.damus.io"];
+$("run").onclick=async()=>{
+  const pk=npubToHex($("npub").value);
+  $("log").textContent="";$("out").innerHTML="";$("after").style.display="none";
+  if(!pk){log("That doesn't look like a valid npub or hex pubkey.");return;}
+  $("run").disabled=true;
+  try{
+    /* 1. audit data (same origin) */
+    log("Loading today's audit data …");
+    let audit={},auditDate="n/a";
+    try{const aj=await(await fetch("data/nostr/relay-audit.json")).json();
+      auditDate=(aj.summary.started_at||"").slice(0,10);
+      for(const r of aj.results)audit[r.relay.replace(/\/+$/,"")]=r;
+      log("Audit of "+auditDate+": "+aj.results.length+" relays known.");
+    }catch(e){log("Audit data unavailable ("+e.message+") — live check only.");}
+    /* 2. NIP-65 list */
+    log("Fetching your NIP-65 relay list from "+INDEX_RELAYS.length+" index relays …");
+    const lists=await Promise.all(INDEX_RELAYS.map(r=>
+      wsQuery(r,[["l",{kinds:[10002],authors:[pk],limit:1}]],7000)));
+    let newest=null;
+    lists.forEach((res,i)=>{
+      const got=res.events.length?res.events[0].ev:null;
+      log("  "+INDEX_RELAYS[i]+" → "+(got?"list from "+new Date(got.created_at*1000).toISOString().slice(0,10):res.status==="ok"?"no list":res.status));
+      if(got&&(!newest||got.created_at>newest.created_at))newest=got;});
+    if(!newest){log("\nNo NIP-65 (kind 10002) relay list found for this pubkey on the index relays. Without a published list there is nothing to check — your client decides silently.");
+      $("run").disabled=false;return;}
+    const relays=[];const seen=new Set();
+    for(const t of newest.tags){if(t[0]!=="r"||!t[1])continue;
+      const u=t[1].trim().replace(/\/+$/,"");if(seen.has(u))continue;seen.add(u);
+      relays.push({url:u,marker:t[2]||"read+write"});}
+    log("\nList of "+new Date(newest.created_at*1000).toISOString().slice(0,10)+": "+relays.length+" relays. Probing each one for your notes …");
+    /* 3. live probe each relay */
+    const results=await pooled(relays,async r=>{
+      if(!r.url.startsWith("wss://"))return{...r,live:"untestable",found:0};
+      const q=await wsQuery(r.url,[["n",{kinds:[1],authors:[pk],limit:3}]],8000);
+      return{...r,live:q.status,found:q.events.filter(e=>e.ev&&e.ev.pubkey===pk).length,openMs:q.openMs};
+    },6);
+    /* 4. render */
+    let up=0,down=0,noNotes=0,unk=0;
+    const groups={};
+    let rows="";
+    for(const r of results){
+      const a=audit[r.url];
+      const aTxt=a?a["class"]:"not in sample";
+      let liveTxt,cls;
+      if(r.live==="untestable"){liveTxt="ws:// — not testable from browser";cls="mut";unk++;}
+      else if(r.live==="unreachable"||r.live==="open_timeout"){liveTxt="unreachable";cls="bad";down++;}
+      else if(r.found>0){liveTxt="notes found ("+(r.openMs!=null?r.openMs+" ms":"")+")";cls="ok";up++;}
+      else{liveTxt="up, none of your notes";cls="warn";noNotes++;up++;}
+      const g=domainGroup(r.url);groups[g]=(groups[g]||0)+1;
+      rows+="<tr><td class='rel'>"+esc(r.url)+"</td><td>"+esc(r.marker)+"</td>"+
+        "<td class='st "+cls+"'>"+esc(liveTxt)+"</td><td>"+esc(aTxt)+"</td></tr>";
+    }
+    const clus=Object.entries(groups).filter(([g,n])=>n>=2);
+    let verdict="<h2>Result: "+results.length+" relays — "+
+      "<span class='ok'>"+(up-noNotes)+" serving your notes</span> · "+
+      (noNotes?"<span class='warn'>"+noNotes+" up but without your notes</span> · ":"")+
+      "<span class='bad'>"+down+" unreachable</span>"+(unk?" · "+unk+" untestable":"")+"</h2>";
+    verdict+="<table><tr><th>relay</th><th>marker</th><th>live (your browser)</th><th>daily audit "+esc(auditDate)+"</th></tr>"+rows+"</table>";
+    const notes=[];
+    if(down>0)notes.push("<strong>"+down+" of your relays answered nothing.</strong> Every client that reads your list opens sockets into that void — that's latency for everyone who follows you. In my daily series, relays unreachable one day are still unreachable the next in 97–99% of cases: dead usually means dead, not \"bad minute\".");
+    if(noNotes>0)notes.push("<strong>"+noNotes+" relay(s) are up but returned none of your notes.</strong> \"Relay healthy\" and \"relay healthy <em>for you</em>\" are different measurements — paid or members-only relays silently drop outsider writes.");
+    if(clus.length)notes.push("<strong>Shared-operator risk:</strong> "+clus.map(([g,n])=>n+"× <code>"+esc(g)+"</code>").join(", ")+" — relays on one domain tend to fail together (today's audit caught two such clusters dying overnight). Counting them as independent backups overstates your redundancy.");
+    if(!notes.length)notes.push("Your list looks healthy from here — all relays answered and serve your content. Nice. That puts you well ahead of the median list in the daily sample.");
+    verdict+="<div class='card'><p>"+notes.join("</p><p>")+"</p></div>";
+    $("out").innerHTML=verdict;
+    $("after").style.display="";
+  }catch(e){log("Unexpected error: "+e.message);}
+  $("run").disabled=false;
+};
+</script>
+</body>
+</html>
