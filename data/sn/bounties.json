@@ -726,7 +726,7 @@
       "sats": 107581,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 34,
+      "ncomments": 35,
       "createdAt": "2026-08-10T16:22:10.073Z",
       "user": {
        "name": "petertodd"
@@ -972,6 +972,21 @@
        "name": "raw_avocado"
       },
       "subName": "bitcoin"
+     },
+     {
+      "id": "1544856",
+      "title": "CISA — Fabian Jahr | bitcoin++ Toronto, consensus edition",
+      "url": "https://youtu.be/0wwOF1IOK6Y",
+      "text": "",
+      "sats": 16710,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-08-10T16:39:50.190Z",
+      "user": {
+       "name": "0xbitcoiner"
+      },
+      "subName": "bitcoinplusplus"
      },
      {
       "id": "1530614",
@@ -1244,6 +1259,21 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1545033",
+      "title": "Luke and Mechanic - YOU'RE FIRED!",
+      "url": "https://x.com/GrassFedBitcoin/status/2086920080064127297",
+      "text": "",
+      "sats": 717,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 16,
+      "createdAt": "2026-08-10T21:08:11.442Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1543867",
       "title": "Roughnecks advises people to stop mining on BIP110 chain",
       "url": "https://x.com/Roughnecks110/status/2086300532709409140",
@@ -1337,29 +1367,14 @@
       "subName": "AskSN"
      },
      {
-      "id": "1544856",
-      "title": "CISA — Fabian Jahr | bitcoin++ Toronto, consensus edition",
-      "url": "https://youtu.be/0wwOF1IOK6Y",
-      "text": "",
-      "sats": 13610,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-10T16:39:50.190Z",
-      "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "bitcoinplusplus"
-     },
-     {
       "id": "1545902",
       "title": "How not to change your proof of work algorithm",
       "url": null,
       "text": "# Today, the BIP110ers picked a new proof of work algorithm, it was a mess.\n\nThere have been no blocks on the BIP110 chain since block 961633 was mined two days ago. There do not seem to be many miners who are interested in mining on that chain and therefore the chain is stalled. Under current rules, it needs to reach the next difficulty adjustment before things will get easier -- and that adjustment is 2014 blocks away.\n\nIn response to this, Luke Dashjr announced that BIP110 would be hard forking to introduce a new proof of work algorithm.\n\nIf hard forks are on the table, you might wonder why they didn't just use a fork to change the rules around mining difficulty so they could get their chain going again. Unfortunately, with only 2% (or less) of the hashrate mining on their chain, they would be an easy target for other miners to cause chaos on their chain (eg doublespending, reorgs, splits).\n\nChanging the proof of work algorithm defends against this threat by reducing the advantage of the ASICs operated by Bitcoin miners today (which are optimized for SHA256). \n\n# How to do a fair selection of the new POW algorithm?\n\nThis is not a new problem. Bitcoiners have long observed that whoever does the picking of a new POW algorithm has the potential to collude with ASIC manufacturers to produce a new line of ASICs for the new algo or to simply stockpile chips that are suitable for the new algorithm. There are many ways to do it, but they all end of looking a lot like a premine.\n\nSo it's good if you make your choice in a way that is demonstrably fair.\n\n# The first attempt\n\nThis is Luke Dashjr's first announcement about the proof of work change:\n\n![](https://m.stacker.news/151887)\n\n[source](https://x.com/LukeDashjr/status/2087164051797192886)\n\nThe hash Luke included at the end of that message corresponds to the following mapping:\n\n- 0 SHA3x\n- 1 BLAKE2s\n- 2 BLAKE2s\n- 3 BLAKE3x2\n- 4 SHA3x\n- 5 SHA3x\n- 6 BLAKE2b-256\n- 7 SHA3x\n- 8 BLAKE2b-256\n- 9 BLAKE2b-256\n- a BLAKE2s\n- b BLAKE3x2\n- c Eaglesong\n- d BLAKE3x2\n- e BLAKE2b-256\n- f Eaglesong\n\nWhen the next testnet4 block was seen, the last character of the blockhash would pick which of these algorithms was going to be used for BIP110's new proof of work method. By including the hash, Luke demonstrated that the list was created before the block was found so hopefully the block would be a fair source of randomness.\n\n# Testnet4 woes\n\nUnfortunately, Testnet4 has much lower difficulty than Bitcoin. Additionally, it has a rule that allows a block to be mined at difficulty 1 in the event that no block has been found for twenty minutes. \n\nIt seems that no testnet4 block was mined for 20 minutes prior to Luke Dashjr's designated time. This meant that at 1400 UTC, difficulty was set to 1 for mining the block that would decide BIP110's new proof of work algorithm -- and a number of blocks were mined simultaneously.\n\nThis led to quite a bit of confusion.\n\n![](https://m.stacker.news/151888)\n\nAnd to a dilemma: should they try again? Should they wait for the chain split to resolve and a heaviest chain tip to emerge? Should they wait for six blocks?\n\nBecause Testnet4 difficulty is significantly lower than Bitcoin, it quickly became evident that someone could attempt to influence the outcome of the results by mining on the tip of the chain whose crucial block selected a preferred algo.\n\nLuke tried [posting](https://x.com/LukeDashjr/status/2087188103718973731) some new set of criteria which would be revealed at some time (presumably soon?). This however also [failed](https://x.com/LukeDashjr/status/2087222841213083931) to work:\n\n![](https://m.stacker.news/151891)\n\nThis new method was then [revealed](https://x.com/LukeDashjr/status/2087223637271052452) to be:\n\n![](https://m.stacker.news/151892)\n\nWhich eventually resulted in the selection:\n\n![](https://m.stacker.news/151893)\n\nThis apparently is the same proof of work algorithm used by Siacoin, so there are already some ASICs manufactured for mining on it -- which is a good thing?\n\n# Is there a better way to do this?\n\nI was hanging out in the BIP110 Discord for most of the day, observing this process. I don't think it went terribly well. There was a lot of confusion and a lot of frustration. One thing that definitely stood out is that Luke was calling the shots here and the BIP110 community was largely looking to him for a decision.\n\nIt got me to thinking though: how would we go about a fair proof of work change that didn't get gamed?\n\nI remember Matt Corallo [talking about such a change](https://x.com/TheBlueMatt/status/1783865983502827687) a few years back when he was writing about MEVil. And many other Bitcoiners have mentioned \"firing the miners\" by changing the proof of work algorithm. It's sometihng we keep in our back pocket as if we (noderunners) could use it as a cudgel to keep the naughty miners in line.\n\nWatching the BIP110ers struggle with this today made me realize that it is easier said than done.\n\n# How would you go about enacting a fair proof of work change?",
-      "sats": 11811,
+      "sats": 11822,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 19,
+      "ncomments": 22,
       "createdAt": "2026-08-11T21:13:38.295Z",
       "user": {
        "name": "Scoresby"
@@ -1395,21 +1410,6 @@
        "name": "jakoyoh629"
       },
       "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1536720",
-      "title": "Coldcard Mk2, Mk3, Mk4, Mk5, and Q Firmware Security Vulnerability",
-      "url": "https://engineering.block.xyz/blog/predictable-rng-fallback-and-32-bit-reseed-in-coldcard-firmware",
-      "text": "This vulnerability is most severe for RNG generated seeds on Mk2 and Mk3 firmware v4.0.0-v4.1.9, but Mk4 firmware v5.0.0 onward, and all production Q and Mk5 firmware, are also impacted according to Block's report.\n\nIf you generated a seed with any of these configurations, and did not generate the seed using dice rolls only, it is recommended to move funds - as soon as you can safely - to another wallet backed with a secure seed. Multisig wallets are also at risk if enough keys were generated on Coldcards and can be recovered to meet its spending threshold. Moving the vulnerable seeds to other devices does nothing. The original seeds are vulnerable so you should generate new ones.",
-      "sats": 6211,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 23,
-      "createdAt": "2026-07-31T06:52:22.563Z",
-      "user": {
-       "name": "k00b"
-      },
-      "subName": "security"
      }
     ]
    }
@@ -1425,14 +1425,44 @@
    "items": {
     "items": [
      {
+      "id": "1546607",
+      "title": "Wasabi Wallet Plans",
+      "url": null,
+      "text": "# Past\n\nWasabi Wallet was abandoned more than two years ago and I decided to rescue it from a death sentence; such important project cannot die just like that.\n\nThe first goal was to make sure the Wallet could not be killed as Samourai Wallet was and the latest version, v2.8.1, achieved that by making it independent from any central server. Wasabi is finally a decentralized lightweight Bitcoin Wallet; or immortal as I like to say.\n\nCoordinator's code was improved greatly too by making them so inexpensive to host that anyone can do it. Lots of changes from SLIP39, Silent Payments and a Release Notifications system based on Nostr were added version after version, things that takes time to build because in Wasabi we do not accept new dependencies, what forces me to write the everything from scratch from crypto for WabiSabi and SLIP39 to json serialization code, everything (just as curiosity, even the Nostr Relay at wss://relay.wasabiwallet.io was written from scratch)\n\n# Present\n\nCurrently there are much more ambitious plans and it seems more people are joining with lots of great things, let me tell you a few:\n\n## Wasabi Mobile\n\n[Wiesław Šoltés](https://x.com/wieslawsoltes) pushed a few weeks ago a Wasabi version that can be built for Android and iOS, it looks really promising.\n\n![](https://m.stacker.news/151996)\n\n## WabiSabi Native Library\n\nTo allow all Bitcoin wallets to coinjoin or to pay in coinjoins. We are dogfooding it at this moment.\n\n## Multiparty transaction signing with Hardware Wallets\n\n[Kevin Ravens₿erg](https://x.com/KevinR4v) has PRs to allow Hardware Wallet to coinjoin automatically with Wasabi. Nothing better than this.\n\n![](https://m.stacker.news/151998)\n\n![](https://m.stacker.news/151999)\n\n## Payjoin v2\n\n[Dan Gould](https://x.com/bitgould) has started a serie of PRs to implement this privacy-preserving two-party transaction mechanism into Wasabi too.\n\n## Coinjoin usability improvements\n\n[Coinjoiner](https://x.com/coinjoinercom) has been working in discovery the coordinators list  inside the Wasabi.\n\n## General maintainance\n\nCarti-it keeps the house in order, improves code everywhere, fixes bugs and he is a great support for me.\n\n## My next things to work on\n\n* Update the WabiSabi protocol. This is hasn't changed much since zkSNACKs days and it need to change to make it even more strict, faster and lighter.\n* Allow Wasabi Scheme to broadcast transactions. The Wasabi scripting language should be able to manipulate the wallet to allow users to implement their own privacy-preserving tools.\n* Make Wasabi a service: Separate Wasabi Daemon / Wasabi UI\n* Improve payments in coinjoin to make it a first-class citizen in Wasabi and make it the preferred method of payments.\n* Receive Silent Payments. For users who are okay depending on a central server again, receiving silent payments would be a great feature to add.\n\nWell, these are just coders and features but there are also people helping with documentation, testing, giving support to users who need it, etc. Finally, coordinators' operators, known or unknown figures, play an important role here. \n\n# Future\n\nThe plan is to double-down our cypherpunk ethos, extract reusable components for other to use like nwabisabi, nostra and slip39, convert Wasabi client in a service that runs in block-only mode in your computer, help other cypherpunk projects to use Wasabi technology with nwabisabi for payments in coinjoin and hardware wallets with safer coinjoins and payments in coinjoins and make Wasabi a truly programmable wallet.\n\nWasabi had remained completely independent to commit it purpose thanks to not receiving money from any of the institutions that have been subsidizing Bitcoin and Nostr ecosystem development for years. This is great but only because the community helped the project immediately after we put the \"Donate\" button in the wallet.\n\nPlease help us to help you, join us.",
+      "sats": 10320,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-08-12T18:57:57.859Z",
+      "user": {
+       "name": "lontivero"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1546544",
+      "title": "Payjoin Dev Kit 1.0 released",
+      "url": "https://payjoin.org/blog/2026/08/12/announcing-payjoin-1-0/",
+      "text": "Payjoin dev kit has been making some moves in the last year or so and now:\n\n> Payjoin Dev Kit's first stable release is here.\n\nThe works where more wallets integrate payjoins seems like a good works to me. Maybe it doesn't add as much privacy as larger coinjoins, but I'm here for a world where the common input ownership heuristic is less reliable.\n\nThis dev kit will hopefully make it easier to make payjoins happen. \n\n> Wallets and services that want to let Bitcoin senders and receivers interact to transact can now depend on it or its [foreign language bindings](https://github.com/payjoin/rust-payjoin/tree/master/payjoin-ffi). Concretely that means clients can send and receive Payjoin without running a server, survive restarts and going offline, view standardized status information, and gracefully fall back or cancel interactions.\n\nI'll be very curious to see how much uptake this gets. \n\n> To get started, go to [crates.io](https://crates.io/crates/payjoin/1.0.0), [docs.rs](https://docs.rs/payjoin/1.0.0), and check out the [`payjoin-cli` Quick Start](https://github.com/payjoin/rust-payjoin/tree/master/payjoin-cli#quick-start). This work was made possible by dozens of volunteer contributors and sponsors including [Spiral](https://spiral.xyz/), [OpenSats](https://opensats.org/), [HRF](https://hrf.org/), [Maelstrom](https://maelstrom.fund/), [Btrust](https://www.btrust.tech/), [Cake Wallet](https://cakewallet.com/), and others, including individuals like you. Thank you.",
+      "sats": 5786,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-12T17:42:24.581Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1546335",
       "title": "BTC vote: Who do you prefer as Brazil’s next president?",
       "url": "https://koinvote.com/event/01KZQYNAK7JKJS0Z3KBSE727XV",
       "text": "# Who do you prefer as Brazil’s next president?\n\nBrazil will hold a presidential election on October 4, 2026. Voters will directly elect the president; if no candidate wins more than half of the valid votes, the top two will face a runoff on October 25. Who do you prefer to lead Brazil after the election?\n\n**Options:**\n\n• Lula da Silva\n• Flávio Bolsonaro\n• Renan Santos\n• Ronaldo Caiado\n• Jair Bolsonaro\n\nTotal reward: **100,000 sats**\n\n**Update:** Rewards now follow your holding score \n\nRewards are no longer based on a balance snapshot taken at the deadline. They are now based on your **holding score** — your balance multiplied by the number of blocks you were in the event. \n\n| • | The earlier you enter, the higher your score. Your score starts building from the moment you submit.   |\n| - | ------------------------------------------------------------------------------------------------------ |\n| • | Moving coins out of your participating address pauses your score. What you’ve already earned is kept.  |\n| • | Changing your reply does not reset your score. It carries over.                                        |\n\n| For example: 1 BTC held from start to finish earns twice the score of 1 BTC entering halfway. |\n| --------------------------------------------------------------------------------------------- |\n\n[Subscribe](https://koinvote.com/subscribe) to reward event notifications.\n\nNo signup. No deposit. No wallet connection.\nJust sign a Bitcoin message with your address and submit.\n\nRewards are distributed based on Holding Score (balance × participation time), regardless of which option you choose. Higher balance and earlier participation earn a larger share.\n\nYour Bitcoin never leaves your wallet.\n\nA public payout report will be published and can be independently verified.\n\nSubmit your reply and earn some sats!\n\n**Coming next:** [Which political party do you hope will win Taiwan's nine-in-one elections?](https://koinvote.com/event/01KY0FNC5BDKFR8RSFGTATCTYV)\n\nPrevious event + payout report:\n[Who do you prefer as Israel’s next prime minister?](https://koinvote.com/event/01KY0FNC5BDKFR8RSFGTATCTYV)\n[Do you support the Senate version of the CLARITY Act?](https://koinvote.com/event/01KXZJTF3Q4F2T4RVNRRGMDRMH)\n[Is ETF good for Bitcoin?](https://koinvote.com/event/01KTRBV4THPXX3AM8RV6B0Z6SX)\n[Do you miss Gary Gensler?](https://koinvote.com/event/01KT73VE8F2SJT3JN92YK8942C)\n[Do you support the U.S. pausing arms sales to Taiwan?](https://koinvote.com/event/01KSW62T3EQCS5YEMBNAC4NW88)\n[Do you feel bullish or bearish on Bitcoin?](https://koinvote.com/event/01KSM1B116KQ4D48J2PXKGJ1N5)\n[Is MSTR good for bitcoin?](https://koinvote.com/event/01KPZETPQZEMSGKM11Q7P571YS)\n[Do you support banning all yields on stablecoins?](https://koinvote.com/event/01KPQACVFTNR83EPZ4EMKH6NK1?utm_source=stackernews)\n[Do you support the Israeli-US war on Iran?](https://koinvote.com/event/01KNBXF5Z8KQN5JQKG2BS1K7QS?utm_source=stackernews)\n[What should the Fed do with interest rates in April?](https://koinvote.com/event/01KMD92FKN8HQ2KFDJADTK4QMD?utm_source=stackernews)\n[Do you support Kevin Warsh becoming the next Fed Chair?](https://koinvote.com/event/01KM4ZWW2HNH5Y8MX4S1QP51ZQ?utm_source=stackernews)\n[2026 United States Midterm Elections](https://koinvote.com/event/01KKPR25RTFWQVEPKR1WXF6825?utm_source=stackernews)",
-      "sats": 58,
+      "sats": 69,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 3,
+      "ncomments": 11,
       "createdAt": "2026-08-12T13:22:01.811Z",
       "user": {
        "name": "KoinVote"
@@ -1440,32 +1470,32 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1546216",
-      "title": "Knots replay protection ACTIVATED for coinjoin descendants on the Core chain",
-      "url": "https://x.com/Kruwed/status/2087459530120614097",
-      "text": "Here is the audit path for you to confirm that the replay protection actually activated:\n\nThe final coinjoin tx that confirmed on both chains is f046581f06d353211cfcbbff0681a4f61ac33a8ffb33fc70719cd3b855818bc9\n\nbc1pjhnedggvm9czj9lhdpd78hcxt56s0y2hz7vx8srt8zlfxy2lhees4t7ruu was spent and already confirmed on both chains.\n\nReplay protection ancestor coinjoin tx on Core: bbd66083ac8330dde6509ad54a021082f33f15564d831c94b32ae08a7eb63586\n\nReplay protection burn tx on Knots: 2ad1dc24a493b1f5c00d7cf29582a2b54bf6f57ca2d7b0caf8475067580edb8f\n\nThere was a 4th block mined on the Knots chain, so the burn tx now has 2 confirmations.",
-      "sats": 1144,
+      "id": "1546435",
+      "title": "Bitcoin Core v32.0 is targeted for release in October. What is in it?",
+      "url": "https://x.com/bitschmidty/status/2087179372247576800",
+      "text": "Bitcoin Core v32.0 is targeted for release in October:\n\n- Up to 3x faster initial sync. Block validation now fetches transaction inputs from disk in parallel instead of one at a time\n\n- The libevent external dependency is fully removed, continuing Core's push to cut third-party dependencies\n\n- Max peer connections raised from 125 to 200 to have more open slots for new nodes to sync from, faster block propagation, and a harder network to eclipse or partition\n\n- Mempool-based fee estimation to cut fee overestimation (in progress)\n\n- Transaction relay rate limiting is now global instead of per-peer, keeping a node's CPU and memory usage steady when transaction volume spikes\n\n- Ships with features from libsecp256k1 0.8.0 with verification up to 11% faster, plus the new Silent Payments module (BIP 352)\n\n- PSBTv2 (BIP 370) support, now the default for PSBT-creating RPCs for better coordination of unsigned transactions for multisig and hardware wallet setups\n\n- New exportwatchonlywallet command to export a wallet as a watch-only file, no private keys, and restore it on your online node\n\n- Core now enables Tor's proof-of-work DDoS defense on the onion service it creates for your node, where the Tor daemon supports it\n\nAdditional tests, bugfixes, and features included as well.\n\nFeature freeze is ~August 20, rc1 ~September 10, final release targeted for ~October 10. (Test the release candidates when they ship!)\n\nref: https://x.com/bitschmidty/status/2087179372247576800",
+      "sats": 6474,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 15,
-      "createdAt": "2026-08-12T09:53:55.482Z",
+      "ncomments": 1,
+      "createdAt": "2026-08-12T15:48:19.044Z",
       "user": {
-       "name": "Kruw"
+       "name": "schmidty"
       },
-      "subName": "bitcoin_Mining"
+      "subName": "bitcoin"
      },
      {
-      "id": "1545803",
-      "title": "Who's a bigger bitcoin villain to you?",
-      "url": null,
-      "text": "Just curious, thought this might make more some interesting discussion",
-      "sats": 5367,
+      "id": "1546464",
+      "title": "Stale blocks, quantum proposals, CISA - Bitcoin Optech Newsletter #417 Recap",
+      "url": "https://bitcoinops.org/en/podcast/2026/08/11/",
+      "text": "Conduition, Ram, and Fabian Jahr joined Optech to discuss Newsletter #417:\n\n- Draft BIP for stale tip relay\n- CISA for taproot keypath spends (BIP460)\n- Segwit commitment to post-quantum witness data\n- PQC output type discussion\n- Input-triggered transaction expiry\n- Layered quantum recovery of hashed addresses\n- Segregated Data (SegData) BIP draft\n- And more\n\nYou can listen on our website:\nhttps://bitcoinops.org/en/podcast/2026/08/11/\n\nFountain:\nhttps://fountain.fm/episode/X3dpYvlQy2N6tO4DeQl3\n\nSpotify:\nhttps://open.spotify.com/episode/7wkE8AkAwXf7QIKlcO5cK4\n\nApple Podcasts:\nhttps://podcasts.apple.com/us/podcast/bitcoin-optech-newsletter-417-recap/id1674626983?i=1000782982957",
+      "sats": 5522,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 40,
-      "createdAt": "2026-08-11T18:16:03.573Z",
+      "ncomments": 0,
+      "createdAt": "2026-08-12T16:15:12.846Z",
       "user": {
-       "name": "SimpleStacker"
+       "name": "schmidty"
       },
       "subName": "bitcoin"
      },
@@ -1474,10 +1504,10 @@
       "title": "CISA — Fabian Jahr | bitcoin++ Toronto, consensus edition",
       "url": "https://youtu.be/0wwOF1IOK6Y",
       "text": "",
-      "sats": 13610,
+      "sats": 16710,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
+      "ncomments": 2,
       "createdAt": "2026-08-10T16:39:50.190Z",
       "user": {
        "name": "0xbitcoiner"
@@ -1485,119 +1515,44 @@
       "subName": "bitcoinplusplus"
      },
      {
-      "id": "1545902",
-      "title": "How not to change your proof of work algorithm",
-      "url": null,
-      "text": "# Today, the BIP110ers picked a new proof of work algorithm, it was a mess.\n\nThere have been no blocks on the BIP110 chain since block 961633 was mined two days ago. There do not seem to be many miners who are interested in mining on that chain and therefore the chain is stalled. Under current rules, it needs to reach the next difficulty adjustment before things will get easier -- and that adjustment is 2014 blocks away.\n\nIn response to this, Luke Dashjr announced that BIP110 would be hard forking to introduce a new proof of work algorithm.\n\nIf hard forks are on the table, you might wonder why they didn't just use a fork to change the rules around mining difficulty so they could get their chain going again. Unfortunately, with only 2% (or less) of the hashrate mining on their chain, they would be an easy target for other miners to cause chaos on their chain (eg doublespending, reorgs, splits).\n\nChanging the proof of work algorithm defends against this threat by reducing the advantage of the ASICs operated by Bitcoin miners today (which are optimized for SHA256). \n\n# How to do a fair selection of the new POW algorithm?\n\nThis is not a new problem. Bitcoiners have long observed that whoever does the picking of a new POW algorithm has the potential to collude with ASIC manufacturers to produce a new line of ASICs for the new algo or to simply stockpile chips that are suitable for the new algorithm. There are many ways to do it, but they all end of looking a lot like a premine.\n\nSo it's good if you make your choice in a way that is demonstrably fair.\n\n# The first attempt\n\nThis is Luke Dashjr's first announcement about the proof of work change:\n\n![](https://m.stacker.news/151887)\n\n[source](https://x.com/LukeDashjr/status/2087164051797192886)\n\nThe hash Luke included at the end of that message corresponds to the following mapping:\n\n- 0 SHA3x\n- 1 BLAKE2s\n- 2 BLAKE2s\n- 3 BLAKE3x2\n- 4 SHA3x\n- 5 SHA3x\n- 6 BLAKE2b-256\n- 7 SHA3x\n- 8 BLAKE2b-256\n- 9 BLAKE2b-256\n- a BLAKE2s\n- b BLAKE3x2\n- c Eaglesong\n- d BLAKE3x2\n- e BLAKE2b-256\n- f Eaglesong\n\nWhen the next testnet4 block was seen, the last character of the blockhash would pick which of these algorithms was going to be used for BIP110's new proof of work method. By including the hash, Luke demonstrated that the list was created before the block was found so hopefully the block would be a fair source of randomness.\n\n# Testnet4 woes\n\nUnfortunately, Testnet4 has much lower difficulty than Bitcoin. Additionally, it has a rule that allows a block to be mined at difficulty 1 in the event that no block has been found for twenty minutes. \n\nIt seems that no testnet4 block was mined for 20 minutes prior to Luke Dashjr's designated time. This meant that at 1400 UTC, difficulty was set to 1 for mining the block that would decide BIP110's new proof of work algorithm -- and a number of blocks were mined simultaneously.\n\nThis led to quite a bit of confusion.\n\n![](https://m.stacker.news/151888)\n\nAnd to a dilemma: should they try again? Should they wait for the chain split to resolve and a heaviest chain tip to emerge? Should they wait for six blocks?\n\nBecause Testnet4 difficulty is significantly lower than Bitcoin, it quickly became evident that someone could attempt to influence the outcome of the results by mining on the tip of the chain whose crucial block selected a preferred algo.\n\nLuke tried [posting](https://x.com/LukeDashjr/status/2087188103718973731) some new set of criteria which would be revealed at some time (presumably soon?). This however also [failed](https://x.com/LukeDashjr/status/2087222841213083931) to work:\n\n![](https://m.stacker.news/151891)\n\nThis new method was then [revealed](https://x.com/LukeDashjr/status/2087223637271052452) to be:\n\n![](https://m.stacker.news/151892)\n\nWhich eventually resulted in the selection:\n\n![](https://m.stacker.news/151893)\n\nThis apparently is the same proof of work algorithm used by Siacoin, so there are already some ASICs manufactured for mining on it -- which is a good thing?\n\n# Is there a better way to do this?\n\nI was hanging out in the BIP110 Discord for most of the day, observing this process. I don't think it went terribly well. There was a lot of confusion and a lot of frustration. One thing that definitely stood out is that Luke was calling the shots here and the BIP110 community was largely looking to him for a decision.\n\nIt got me to thinking though: how would we go about a fair proof of work change that didn't get gamed?\n\nI remember Matt Corallo [talking about such a change](https://x.com/TheBlueMatt/status/1783865983502827687) a few years back when he was writing about MEVil. And many other Bitcoiners have mentioned \"firing the miners\" by changing the proof of work algorithm. It's sometihng we keep in our back pocket as if we (noderunners) could use it as a cudgel to keep the naughty miners in line.\n\nWatching the BIP110ers struggle with this today made me realize that it is easier said than done.\n\n# How would you go about enacting a fair proof of work change?",
-      "sats": 11811,
+      "id": "1546216",
+      "title": "Knots replay protection ACTIVATED for coinjoin descendants on the Core chain",
+      "url": "https://x.com/Kruwed/status/2087459530120614097",
+      "text": "Here is the audit path for you to confirm that the replay protection actually activated:\n\nThe final coinjoin tx that confirmed on both chains is f046581f06d353211cfcbbff0681a4f61ac33a8ffb33fc70719cd3b855818bc9\n\nbc1pjhnedggvm9czj9lhdpd78hcxt56s0y2hz7vx8srt8zlfxy2lhees4t7ruu was spent and already confirmed on both chains.\n\nReplay protection ancestor coinjoin tx on Core: bbd66083ac8330dde6509ad54a021082f33f15564d831c94b32ae08a7eb63586\n\nReplay protection burn tx on Knots: 2ad1dc24a493b1f5c00d7cf29582a2b54bf6f57ca2d7b0caf8475067580edb8f\n\nThere was a 4th block mined on the Knots chain, so the burn tx now has 2 confirmations.",
+      "sats": 1155,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 19,
-      "createdAt": "2026-08-11T21:13:38.295Z",
+      "ncomments": 16,
+      "createdAt": "2026-08-12T09:53:55.482Z",
       "user": {
-       "name": "Scoresby"
+       "name": "Kruw"
       },
-      "subName": "bitcoin"
+      "subName": "bitcoin_Mining"
      },
      {
-      "id": "1546011",
-      "title": "Coldcard: the technical autopsy of an entropy failure",
-      "url": "https://wizardsardine.com/blog/coldcard-vuln-deep-dive/",
-      "text": "This is *very* detailed postmortem of the coldcard vulnerability correcting the candidate space sizes (they are smaller than previously reported), estimating the probability of collisions among devices, and estimating the cost of sweeping the candidate spaces for each device class under different assumptions.\n\nFor Mk3s without passphrases or dice rolls, you can test the sweepability of nearly all candidates for $61 of rented RTX 4090 time \\~9 days on a single RTX 4090. In comparison it takes years to do the same for Mk4 class devices even assuming more information is known.\n\n![](https://m.stacker.news/151909)\n\nThe candidate space for the mk3 is hundreds of thousands of times, and a million times for mk4 class devices, smaller than Block and others published.\n\n![](https://m.stacker.news/151910)\n\nAnd, assuming a fleet of 30,000 mk3 devices and a few other things, they put they likelihood of collisions at 1 in 1,000.\n\nThere's lot of bits in here that weren't in the earlier reports for anyone that's a detail devil.",
-      "sats": 1779,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-08-11T23:52:53.482Z",
-      "user": {
-       "name": "k00b"
-      },
-      "subName": "security"
-     },
-     {
-      "id": "1546100",
-      "title": "I made an MMO where the money supply is Fixed",
-      "url": null,
-      "text": "I’ve been building Frontier Crown around a question I wanted to play rather than debate:\n\nWhat changes when a multiplayer economy has a fixed monetary supply, no monster-money faucet, and every action resolves on the same global tick?\n\nPlayers gather resources, mine a finite supply of Crown Gold, forge equipment, place bids and asks on a player order book, hunt the Warden, and eventually sponsor new players by sacrificing resources.\n\nThe design is Bitcoin-inspired, but Crown Gold is only an in-game currency. There’s no token sale, NFT, wallet requirement, play-to-earn system, or promise of financial return.\n\nThe browser beta is playable now. I’m looking for people who will pressure-test whether the scarcity is understandable and whether the economy creates interesting decisions.\n\nhttps://frontiercrown.com/\n\nI’m the developer. Direct criticism is welcome—especially after you’ve experienced a few global ticks.",
-      "sats": 1212,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-08-12T03:01:02.102Z",
-      "user": {
-       "name": "kode"
-      },
-      "subName": "gaming"
-     },
-     {
-      "id": "1546155",
-      "title": "I didn't set a cookie.",
-      "url": "https://kuber.studio/cookie/",
-      "text": "Find out what a website knows about you without using cookies... Its is ugly.",
-      "sats": 682,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T06:26:04.941Z",
-      "user": {
-       "name": "megaptera"
-      },
-      "subName": "tech"
-     },
-     {
-      "id": "1546057",
-      "title": "Summer Round-Up from Western Massachusetts",
-      "url": null,
-      "text": "Summer is in a hurry here in the Berkshires and will not slow down no matter how much we want it to.\n\n![](https://m.stacker.news/151913)\n\nIt’s a glorious time to be here, a time to load blueberries into the chest freezer, make opulent bouquets of flowers, stay up late to look for meteors, say yes to parties and playdates and go swimming as much as possible because if there’s one thing the goldenrod is telling us as it begins to flower, fall is coming. So before summer totally passes us by, here’s what we have been up to this season:\n\n# **Small Wonders**\n\nTom’s *White Frame* photograph was included in a group show of small works by regional artists at Spencertown Academy Arts Center, NY. The *Small Wonders* show ran from July 11 until August 9 and featured some great work across a variety of media.\n\n![](https://m.stacker.news/151914)\n\n# **TCF**\n\n*White Frame* is also included in *The Curated Fridge Summer 2026 Show*. Curated by Rachel Vogel (Assistant Curator at the Addison Gallery of American Art), it looks like a fantastic group show and we’re thrilled to be exhibited on the fridge for the second time. For more information and to see the work, visit their [website](https://www.thecuratedfridge.com/) and keep an eye on their [Instagram](https://www.instagram.com/thecuratedfridge/).\n\n![](https://m.stacker.news/151915)\n\nIf you are interested in a print of *White Frame*, we’ve made a small edition just for you. Small both in dimensions and small in quantity, they’re printed on 4 x 6” Polar Gloss Metallic paper (255gsm) in an edition of 6 for $25 each (or the equivalent in sats) including free shipping (US), signed and numbered. Let us know in the comments below if you’d like one and we can start the conversation, or if you live outside the US and want to discuss shipping.\n\n![](https://m.stacker.news/151917)\n\n# **Meet the Berkshires**\n\nIn case you missed it, the second feature for our new publication *Meet the Berkshires* went out last month and featured [Lily Thorne](https://theberkshires.substack.com/p/lily-thorne-studio), a fine woodworker here in our town of West Stockbridge. Our next edition is now in progress.\n\n![](https://m.stacker.news/151918)\n\n# **The Art Stand**\n\nThough the weather forecast as been notoriously changeable around these parts, our Art Stand is open once again and stocked with a rotating selection of small prints and copies of our zine, *First Frost / Final Bloom*. We also occasionally stock it with extra garden produce and some flowers. Slowly but surely The Art Stand is gaining some traction, but these things take time. We recently had some visitors who are based in Canada but frequently visit the Berkshires to meet up with family here. They had picked up one of our [free zines from the info booth](https://newsletter.pappasbland.com/p/liveandletgift) last year but not opened it until they got home to Canada. Inside, they found information about our art stand and made a mental note to check it out next time they were in town. Sure enough, almost a year later they came to visit. It really solidified for us how seemingly small local ideas like free homemade zines can stand out as being unique and make a connection with someone who is looking for something different/analog/human.\n\n![](https://m.stacker.news/151919)\n\n# **A New Horticulturist**\n\nThis past May Diana graduated from Berkshire Botanical Garden’s Horticulture Certificate Program (Level 1), a fantastic experience that covered topics from Herbaceous Plants, Soil health, Native Plants, Garden Design, Plant Health Care, Propagation and much more. New friends, colleagues, and connections were made, and unexpected roles and opportunities have emerged. \n\nIn many ways, our *First Frost / Final Bloom* zine would not exist if Diana hadn’t taken the leap to get her horticulture certificate – she would not have sat in her herbaceous plants class learning all about dahlias from Lee Buttala, who would later write the most lovely introduction to our zine. And speaking of our zine…\n\n# **First Frost / Final Bloom**\n\nOur art zine continues to reach new people, from farm stands and garden gift shops to brick-and-mortar book and design stores. Our latest stockist is a very exciting one: former fashion designer and gallerist Matthew Ames has opened a beautiful new store in Lenox that showcases handmade items made by over 80 artisans. From furniture to home goods, art to lighting, books to jewelry and so much more, the collection at [Walker Street Market](https://walkerstreetmarket.com/) is impeccably curated and a real pleasure to explore. You can learn more about it [here](https://galeriemagazine.com/matthew-ames-opens-walker-street-market-a-haven-for-contemporary-craft/). We’re thrilled that *First Frost / Final Bloom* is available there and in the company of such inspiring work.\n\n![](https://m.stacker.news/151920)\n\nStockists of our zine now include:\n\n* [11 Lenox Flower Farm](https://maps.app.goo.gl/SaVWny5214oPn3Zf8), West Stockbridge, MA\n* [Shaker Mill Books](https://www.shakermillbooks.com/), West Stockbridge, MA\n* [Berkshire Botanical Garden](https://www.berkshirebotanical.org/), Stockbridge, MA\n* [Walker Street Market](https://walkerstreetmarket.com/), Lenox, MA\n* [Arcana: Books on the Arts](https://www.arcanabooks.com/), Culver City, CA\n\nIf you live further afield you can order a copy from us directly at [https://pappasbland.com/fffb](https://pappasbland.com/fffb)\n\n# **Stormy**\n\nCat ownership continues to be interesting for us. Stormy is an indoor cat, but she observes the great outdoors with high interest. One night, while sitting by the sliding door onto our deck, she was joined on the other side of the glass by a mystery black cat and they sat together for much of the night. It hasn’t been seen since but that cat made quite an impression on her. She was glued to that spot for days afterwards, waiting for her friend, until a few days later when a black bear walked past our house. Stormy saw it and spent the next few days hiding in confined spaces. She’s back to her normal self now, diligently hunting any flies that manage to get inside.\n\n![](https://m.stacker.news/151921)\n\n# **Meadow Gradient II**\n\nNow, a new photograph: Tom is building a collection of photographs of our meadow as seen from the house through painter’s plastic, and this is a very Rothko-esque addition to the series. We dedicate this to the memory of our friend, Bindy. We will miss him deeply.\n\n![](https://m.stacker.news/151922)\n\nThanks for reading, and enjoy the rest of your summer.\nDiana & Tom",
-      "sats": 1410,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T01:19:54.543Z",
-      "user": {
-       "name": "pappasbland"
-      },
-      "subName": "Photography"
-     },
-     {
-      "id": "1546122",
-      "title": "Floresta Roadmap 2026: From Building Capabilities to Hardening the Node",
-      "url": "https://www.getfloresta.org/blog/roadmap-Q2-Q3",
+      "id": "1545033",
+      "title": "Luke and Mechanic - YOU'RE FIRED!",
+      "url": "https://x.com/GrassFedBitcoin/status/2086920080064127297",
       "text": "",
-      "sats": 1229,
+      "sats": 717,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-08-12T04:08:17.933Z",
+      "ncomments": 16,
+      "createdAt": "2026-08-10T21:08:11.442Z",
       "user": {
-       "name": "nout"
+       "name": "Kruw"
       },
       "subName": "bitcoin"
-     },
-     {
-      "id": "1546281",
-      "title": "SpaceX crashed too hard for insiders’ bonus unlock",
-      "url": "https://protos.com/spacex-crashed-too-hard-for-insiders-bonus-unlock/",
-      "text": "> Although mainstream media covered insiders’ massive unlock of 911.5 million SpaceX shares worth $101 billion on August 6, very few people realize that an additional unlock on that date failed because SpaceX’s stock price had crashed so badly.\n>\n> That second, bonus tranche of 455.8 million shares required SpaceX to close at or above $175.50 per share, i.e. 30% above the formal $135 IPO price, for at least five of 10 trading days leading into its August 4 earnings report.\n>\n> SpaceX held nowhere close to that threshold in Nasdaq trading. The condition failed.\n>\n> The market capitalization of SpaceX was only able to reach its momentary, $3 trillion peak because Elon Musk floated only a tiny quantity of shares in the IPO.\n>\n> [**...read more at protos.com**](https://protos.com/spacex-crashed-too-hard-for-insiders-bonus-unlock/)",
-      "sats": 420,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T12:07:58.489Z",
-      "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "Stacker_Stocks"
      },
      {
       "id": "1546291",
       "title": "Canadian Trolley Problem",
       "url": null,
       "text": "![](https://m.stacker.news/151970)\n\nS/O to Ansel Linder\n\n😂",
-      "sats": 284,
+      "sats": 3233,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 6,
       "createdAt": "2026-08-12T12:27:08.771Z",
       "user": {
        "name": "BlokchainB"
@@ -1605,86 +1560,131 @@
       "subName": "Memes"
      },
      {
-      "id": "1546300",
-      "title": "Ranked: World Currencies vs. the U.S. Dollar in 2026",
+      "id": "1545803",
+      "title": "Who's a bigger bitcoin villain to you?",
       "url": null,
-      "text": "![](https://m.stacker.news/151971)\n\n[**🔗 visualcapitalist.com**](https://www.visualcapitalist.com/world-currencies-vs-u-s-dollar-in-2026/)",
-      "sats": 146,
+      "text": "Just curious, thought this might make more some interesting discussion",
+      "sats": 6378,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-08-12T12:37:20.280Z",
+      "ncomments": 49,
+      "createdAt": "2026-08-11T18:16:03.573Z",
       "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "charts_and_maps"
-     },
-     {
-      "id": "1545899",
-      "title": "The Humble Pies Begin: BIP-110 Requiem",
-      "url": "https://x.com/knutsvanholm/article/2087187133333225494",
-      "text": "Some decided to [rage-quit](https://x.com/hodlonaut/status/2086758125323903194), others are actively fighting on the new Dashjr coin, and yet others decided to about-face and offer some humble pie.\n\n## \"Are you just going to give in? Or stay on Bitcoin and fight?\" -- Scammer [Luke Dashjr](https://x.com/LukeDashjr/status/2086941843703353465), Aug 11 https://stacker.news/items/1525907\n\n**As far as public apologies go, this by Knut Svanholm is pretty OK**\n(There's a monetary point in there I wish to address separately).\n\n***\n\n*blah-blah-blah*, spam is bad, bitcoin is money only, we shouldn't have Vitaliks around. OK cool,\n\n> This shift in developer culture was, in my according-to-me-appropriately-humble opinion, in itself a reason to support BIP110. So I did support it. I did what I could to help it get activated. I encouraged people to run nodes and signal for it, and I signaled for it myself\n\nRealizing and reflecting on one's own actions.\n\n![](https://m.stacker.news/151889)\n\nMaking the proper assessment of what happened/reality proving you wrong\n\n> answer 2) is correct, **Bitcoin is still Bitcoin and worth fighting for.** We may have lost one battle, but there are many more battles to come. I personally currently lean towards this answer. I think I overestimated BIP110's chances of triggering a cascading dominoes scenario. Therefore, **I hereby choose to eat an appropriately small piece of Humble Pie rather than an entire Double Down pie.**\n\n> *This is only true insofar as BIP110ers don’t choose to switch to a PoW-change chain.*\n> I felt reinvigorated. My role in this going forward is to spread this message. A ton of people on the BIP110 side will be unsure whether to choose BIP110-coin or Legacy-coin. If they choose unwisely, or based on false beliefs, they could lose a lot of money. I am not going to be the guy who leads lemmings off a cliff. I am not going to encourage people to sell their legacy sats for 110 sats. If anything, why not keep both? That way you stay on the potentially self-repairing Titanic while keeping the option to flee to the last-minute lifeboat if needed.\n\n## \"I never based my support for BIP110 on the likelihood of the outcome I wanted. Nor was I ever “worried about my reputation” because the only reason I have one, in the first place, is that I never worried about it.\"\n\nGangster. Real based. \n\n> The Bitcoin Infinity Show will continue as usual.\n> I will continue to produce the highest quality AI-free pleb slop to the best of my ability whenever I feel compelled to do so.  And in about a week from now, I'll be quietly celebrating Bitcoin Infinity Day with a nice, humble piece of pie. I hope as many of you as possible will join me.\n\n***\n\nThe most aggressive wing of BIPtardary carries a stain that will wash out only with some serious repentance work (and, I suppose, time!). For some, like the scammers and pedo-obsessed Luke and Mechanic (and the stubbornly [mistaken cat](https://x.com/joakimbook/status/2086506440944918733)) there's no way back. Justin is already trying to whitewash himself... [not enough](https://x.com/joakimbook/status/2086920607120138735) For others, like Knut, there is; I'm glad to see he's taking it.",
-      "sats": 2998,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 10,
-      "createdAt": "2026-08-11T21:07:05.521Z",
-      "user": {
-       "name": "denlillaapan"
+       "name": "SimpleStacker"
       },
       "subName": "bitcoin"
      },
      {
-      "id": "1546275",
-      "title": "402, Charted - Tracking the rise of L402, x402, and MPP",
-      "url": "https://getalby.com/blog/402-charted-tracking-the-rise-of-l402-x402-and-mpp",
-      "text": "",
-      "sats": 204,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-08-12T12:01:44.599Z",
-      "user": {
-       "name": "Alby"
-      },
-      "subName": "AI"
-     },
-     {
-      "id": "1545332",
-      "title": "territory.watch",
-      "url": "https://territory.watch/",
-      "text": "![](https://m.stacker.news/151782)\n\n[territory.watch](https://territory.watch) exists to support territory founders.\n\nFor now, it's just a static website to look up the revenue and other stats of a territory.\n\n**The data isn't incrementally updated yet, because it's not trivial: there's no zap feed, so we would need to refetch every item to see if it was zapped since the last time we checked.**\n\n*It also exists because I wanted to experiment with Claude Design, and I got delusions of grandeur: Maybe this could become a staging ground for new features built into Stacker News, or a* [*safe environment*](https://github.com/ekzyis/territory.watch) *for stackers who want to learn how to code in a zero-mutual-expectations FOSS setting (with or without AI), with an (experienced) reviewer (me). It's a static site with minimal JS; fuck-ups would be impressive.*",
-      "sats": 11642,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 51,
-      "createdAt": "2026-08-11T10:25:59.310Z",
-      "user": {
-       "name": "ek"
-      },
-      "subName": "meta"
-     },
-     {
-      "id": "1546082",
-      "title": "Compass Mining  Breach August 10th 2026",
+      "id": "1546427",
+      "title": "How do you Deal with Toxic Family?",
       "url": null,
-      "text": "To Our Customers,\n\nOn the evening of August 10, we identified unauthorized activity involving Compass Mining marketplace accounts. The activity included attempts to change passwords, two-factor authentication settings, and backup codes without account holders' authorization.\n\nWe want to be clear about what happened, what was accessed, what was not affected, and what we are asking you to do now.\n\n**What happened**\n\nAn unauthorized party exploited a weakness in the authentication system supporting our marketplace. This allowed them to reset login credentials and access a number of customer accounts.\n\nOur team identified the activity that evening, activated our incident response process, and disabled the affected functions within hours. The activity stopped, and we have seen no further unauthorized attempts since.\n\n**What was accessed**\n\nOur technical review found that the unauthorized party was able to access the following information on affected accounts:\n\n* Account email addresses.\n* Invoice and transaction history, including payment amounts, invoice amounts, and associated dates.\n\n\nThe following information and systems were not affected:\n\n* **No payment card numbers, bank account details, or stored payment credentials.**\n* **No wallet balances or wallet information.** Attempts to access wallet-related functions returned no data.\n* **No mining pool changes were pushed to machines.** Customer hardware continued operating without service interruption.\n\n\n**About your mining pool settings**\n\nThe unauthorized party removed mining pool information stored on affected accounts and attempted to replace it with their own pool as the default in the Compass Mining dashboard.\n\nThe attempt did not redirect any hashrate. Changing a pool setting in the marketplace does not, by itself, change where a machine points. Pool changes must pass through a separate validation process before taking effect, and that process prevented the attempted change from reaching customer machines.\n\nWe identified every pool entry altered during the incident and separated those changes from legitimate pool updates already scheduled during the same period. We are now restoring the affected settings. Once that work is complete, please review your pool configuration and open a support ticket if anything does not look correct.\n\n**What we have done**\n\n* Terminated all active account sessions.\n* Reset all customer passwords, two-factor authentication settings, and backup codes as a precaution, whether or not an account showed unusual activity.\n* Closed the path used to access the accounts and strengthened the surrounding security configuration.\n* Applied current security updates to the affected system and established an ongoing patching and vulnerability review schedule.\n* Increased monitoring across our authentication systems.\n* Preserved technical evidence and initiated efforts to identify those responsible for the activity.\n\n\n**What we are asking you to do**\n\n* **Reset your credentials.** You should have received an email with instructions, which are also available on our login page. If you did not receive the email or are having trouble completing the reset, contact our support team.\n* **Review your account.** Check your dashboard, account settings, and mining pool configuration to confirm everything looks as expected.\n* **Change reused passwords.** If you used your Compass Mining password on any other account, change it there as well.\n* **Be cautious with unexpected messages.** Security incidents are often followed by phishing attempts. Because email addresses and billing amounts were accessed, a fraudulent message may appear convincing. Do not click links or open attachments from senders you do not recognize, even if a message appears to come from Compass Mining. When in doubt, visit our website directly instead of following a link.\n* **Report anything unusual.** If you see account activity you did not authorize, open a support ticket immediately.\n\n\n**What happens next**\n\nOur investigation and remediation work are ongoing. Once the investigation is complete, we will share additional details, including further measures for continued prevention.\n\n**Getting in touch**\n\nIf you have questions about your account, please open a support ticket so our team can review it directly. General security questions may be sent to security@compassmining.io.\n\nWe have always taken your account security seriously.  We apologize for any concern and disruption this incident may have caused, and we appreciate your patience as we complete this work.\n\n**The Compass Mining Team**",
-      "sats": 962,
+      "text": "I'm fully aware that family is important, but every family is different; All I want from mine is to leave me alone, they have nothing to do in their life, which is a bit sad to see, but I would like to avoid that empty and negative energy. I don't know if it's called selfish, but each conversation is draining.\n\nSometimes I think about how I'd deal with my kids in the future, I would like them to be happy. We spend some nice time together from time to time, not forcing them to be around all the time, because I would have my own hobby to be busy with.\n\nHow do stackers deal with your own family, and what would you do in my situation?",
+      "sats": 1637,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 9,
+      "createdAt": "2026-08-12T15:43:45.495Z",
+      "user": {
+       "name": "anon"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1546369",
+      "title": "Looking for long term projects",
+      "url": null,
+      "text": "Is there a platform to match bitcoiners / nostriches with projects in need of skills, strategic input, and investment?\n\nSkills as in writing / marketing / biz dev / community growth / GTM strategy.\nI am not a dev.\n\nSomething like Y Combinator or CofoundersLab, but for freedom tech projects.\n\nAny ideas?\nWould be cool if there was a space for this on SN.",
+      "sats": 1909,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 9,
+      "createdAt": "2026-08-12T14:26:32.095Z",
+      "user": {
+       "name": "TotallyHumanWriter"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1546301",
+      "title": "How to destroy bitcoin (and what happened to the 107 coins burned in May)",
+      "url": "https://bennet.org/blog/how-to-burn-bitcoin/",
+      "text": "My write-up, and I'm about three months late to the news - but this rabbit hole proved super interesting.\n\nI've dug into how 1111...oLvT2 is actually constructed, why there's no known key for it, and what the five addresses were doing beforehand: one of them sent its entire balance to a P2SH address in March and got almost exactly the same amount back three weeks later.\n\nAlso a toy in there that generates real key pairs against the burn address, if you fancy your odds at 10^48!",
+      "sats": 501,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 2,
-      "createdAt": "2026-08-12T01:59:28.307Z",
+      "createdAt": "2026-08-12T12:40:05.992Z",
       "user": {
-       "name": "BlokchainB"
+       "name": "bennet"
       },
-      "subName": "news"
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1546524",
+      "title": "BIP460: CISA for Taproot Key Path Spends in SegWit v2 - fjahr",
+      "url": "https://github.com/bitcoin/bips/pull/2212/changes#diff-7849f6151417819c1749ac9cc72b7f84a6485cdd9ba2cf58db6ef3945d9453ab",
+      "text": "There have been so many dramatic things happening in Bitcoin lately that I completely missed this BIP draft for cross-input signature aggregation (CISA).\n\nBitcoiners have been talking about CISA for a while now (here is an explainer https://stacker.news/items/923407/r/Scoresby and a paper about it https://stacker.news/items/920670/r/Scoresby and a recent talk by fjahr https://stacker.news/items/1544856/r/Scoresby and a talk by Tim Ruffing https://stacker.news/items/1518433/r/Scoresby) and it is interesting to see the proposals getting into a more finished form.\n\nThe tl;dr for cross-input signature aggregation is that you could have a transaction with inputs from many different keys (implying potentially many different owners) but onchain it would look like a single taproot signature for a single private key. \n\nAs fjahr points out in the BIP draft, CISA may provide:\n\n> * '''Lower fees and smaller transactions''': Signature data shrinks with the number of aggregated inputs, reducing transaction weight and fees and freeing up block space\n> * '''Reduced cost of privacy''': Aggregation reduces the signature cost of any batched transaction, and collaborative transactions such as CoinJoin and PayJoin benefit the most per participant because they batch the inputs of many users\n> * '''Flexible usage''': Two aggregation schemes serve different use cases and individual inputs can opt out\n> * '''Protocol compatibility''': The explicit opt-out protects protocols that depend on a specific signature appearing on chain\n\nThis BIP draft doesn't propose the actual aggregation scheme (\"The aggregation schemes themselves are specified in [BIP458 half-aggregation](https://github.com/bitcoin/bips/pull/2205) and [BIP459 full-aggregation](https://github.com/bitcoin/bips/pull/2210)\").\n\nAnd it does require a soft fork.\n\nfjahr also suggests some use cases:\n\n> * '''CoinJoin/PayJoin transactions''': With CISA, the per-participant cost of CoinJoin and PayJoin transactions decreases as the number of participants increases, making privacy-enhancing usage cheaper\n> * '''Consolidation and batching''': Businesses and users combining many small UTXOs into a single output or multiple payment outputs benefit from reduced transaction costs\n> * '''Lightning channel opens and splices''': Dual funding and splicing combine inputs from both peers in a collaborative transaction, and the existing interactive negotiation between the peers can accommodate the signing rounds of full-aggregation\n\nI'm curious what some of the objections to this are. The main downside I saw on the [mailing list](https://groups.google.com/g/bitcoindev/c/1XH6sBLWZuA) was that this proposal adds validation complexity (I read this as fancy complicated math that nodes would need to be ready to accomodate). It may also suffer some from a problem that also plagues the covenant conversation: lots of options, and no clear way to decide which set of trade-offs should be adopted. \n\nAnyhow, this is definitely one to watch!",
+      "sats": 1058,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-12T17:13:46.971Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1546439",
+      "title": "Zeus Wallet Balance not updating in a timely manner.",
+      "url": null,
+      "text": "Recently I have been using the Zeus Wallet and I have noticed an issue.\n\nWhen receiving into Zeus I see the payment go through on the activity screen but I do Not see it reflected on the home screen balance.\n\nI have swiped down to refresh the screen but no change.  \n\nIt will eventually update to the correct balance but it may take hours.  \n\nIs there an User Interface option I am missing, to force it to update balance?",
+      "sats": 1658,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 10,
+      "createdAt": "2026-08-12T15:52:00.228Z",
+      "user": {
+       "name": "Wumbo"
+      },
+      "subName": "lightning"
+     },
+     {
+      "id": "1546122",
+      "title": "Floresta Roadmap 2026: From Building Capabilities to Hardening the Node",
+      "url": "https://www.getfloresta.org/blog/roadmap-Q2-Q3",
+      "text": "",
+      "sats": 3458,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-08-12T04:08:17.933Z",
+      "user": {
+       "name": "nout"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1546494",
+      "title": "Stacker Sports Summer League- Week 2 Pick 'em",
+      "url": null,
+      "text": "@grayruby @WeAreAllSatoshi @Undisciplined @guerratotal @gnilma @Carresan @User21000000 @BlokchainB @gsc360 @siggy47\n\nCurrent Prize Pool: **110736 sats** (50% to winner, 50% to @NEEDcreations geyser campaign)\n\nPick the winners from the following events. Each correct winner is worth 1 point. Picks must be in by Thursday August 13 8pm et.\n\nHere are your events:\n\nArizona Cardinals vs Las Vegas Raiders- NFL Preseason (Thursday Aug 13 8pm et)\nOttawa Redblacks vs Winnipeg Blue Bombers- CFL Week 11 ( Friday Aug 14 8:30pm et)\nIslam Makhachev vs Ian Garry- UFC 330 Main Event (Saturday Aug 15 9pm et)\nEssendon Bombers vs Sydney Swans- AFL Round 23 (Sunday Aug 16 2:40am et)\nMilwaukee Brewers vs Los Angeles Dodgers- MLB (Sunday Aug 16 4:10pm et)\n\nGood Luck!",
+      "sats": 1233,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-08-12T16:41:07.775Z",
+      "user": {
+       "name": "StackerSports"
+      },
+      "subName": "Stacker_Sports"
      },
      {
       "id": "1546237",
       "title": "Bitcoin Airgap QR Workbench",
       "url": "https://m0wer.github.io/bitcoin-airgap-qr/",
       "text": "Was tired of not having a simple tool to scan and generate dynamic QRs used by many different air gaped hardware wallets. Built one.\n\nIt runs in your browser. No external dependencies, and no requests after loading. You can also clone it and run it locally: [https://github.com/m0wer/bitcoin-airgap-qr/](https://github.com/m0wer/bitcoin-airgap-qr/)\n\n![](https://m.stacker.news/151960)",
-      "sats": 209,
+      "sats": 1320,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 4,
@@ -1695,184 +1695,184 @@
       "subName": "tech"
      },
      {
-      "id": "1546282",
-      "title": "The SN Daily Putt #92: Play, Putt, Score, ZAP!⚡️⛳️",
-      "url": null,
-      "text": "Yesterday once  again was too easy. Stackers the obvious bank shot and put up low scores. The first to a low score of 3 on the par 11 was @Steffenfield \n\nhttps://stacker.news/items/1545329/r/BlokchainB\n\nOn to hole #92\n\n Eagle 🦅 day. Score an Eagle or better and get 300 sats! All other scores will be zapped accordingly. If I think you are a bot only one zap.\n\nhttps://putt.day\n\nHappy Putting Stackers!",
-      "sats": 151,
+      "id": "1546247",
+      "title": "BIP-110 monitor setup",
+      "url": "https://b10c.me/projects/028-bip110-monitoring-livestream/",
+      "text": "![](https://m.stacker.news/151962)\n\n![](https://m.stacker.news/151964)",
+      "sats": 1232,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-08-12T12:13:28.066Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "gaming"
-     },
-     {
-      "id": "1546151",
-      "title": "Daily Discussion Thread ~Music Saloon!",
-      "url": null,
-      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
-      "sats": 446,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-08-12T06:18:54.008Z",
-      "user": {
-       "name": "Public_N_M_E"
-      },
-      "subName": "Music"
-     },
-     {
-      "id": "1546345",
-      "title": "Did you know that...?",
-      "url": null,
-      "text": "![](https://m.stacker.news/151796)\n\n***\n\nDid you know that on August 12, 2014, the world said goodbye to Lauren Bacall at age 89, but her legendary, hypnotic expression known as \"The Look\" was actually born out of a panic attack?\n\n![](https://m.stacker.news/151968)\n\nWhile filming her cinematic debut in *To Have and Have Not* (1944), the 19-year-old was trembling uncontrollably from the nerves of sharing the screen with Humphrey Bogart. To hide her fear, she pressed her chin against her chest and tilted her eyes upward toward him. This improvised trick not only controlled her shaking but also created one of the most sensual and magnetic gestures in cinema history, forever immortalized by her iconic line: *\"You know how to whistle, don't you, Steve? You just put your lips together and blow.\"* \n\nhttps://www.youtube.com/watch?v=MheNUWyROv8\n\nBehind her sophisticated, smoky voice—which she practiced intensely to overcome her shyness—was a woman of immense resilience and a name entirely manufactured by Hollywood. Born in the Bronx as Betty Joan Perske, director Howard Hawks discovered her on a magazine cover, ordered her to change her name to Lauren, and added an extra \"l\" to her mother's maiden name (Bacal) so nobody in the industry would mispronounce it. This sparked a golden era where she showcased undeniable chemistry with Bogart—who became her husband—in film noir masterpieces like *The Big Sleep* (1946), *Dark Passage* (1947), and *Key Largo* (1948), alongside brilliant comedic turns with Marilyn Monroe in *How to Marry a Millionaire* (1953). \n\nhttps://www.youtube.com/watch?v=LF_chuSy9G4\n\n`The big sleep`\n\nhttps://www.youtube.com/watch?v=K2nZ6oqbAQ4\n\n`How To Marry A Millionaire | 1953 | Fashion Show`\n\nHer powerful legacy reached far beyond the silver screen, turning her into a cultural icon of New York City. Bacall conquered Broadway, winning two Tony Awards, received an Honorary Academy Award in 2009, and captivated newer generations in films like *Misery* (1990) and *The Mirror Has Two Faces* (1996). Off-screen, she spent much of her life in Manhattan's legendary Dakota Building, where she famously formed the original \"Rat Pack\" circle of artist friends. There, she was a close neighbor to John Lennon and Yoko Ono, witnessing the vibrant cultural life of the city and the tragic 1980 night when the legendary musician was assassinated right outside her front door.\n\n![](https://m.stacker.news/151979)\n\n`The Original Rat Pack`\n\n***\n\nhttps://www.youtube.com/watch?v=igSFYaxJYSc",
-      "sats": 0,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T13:36:42.418Z",
-      "user": {
-       "name": "guerratotal"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1546252",
-      "title": "Economic Liberty Begins Where Government Privilege Ends",
-      "url": "https://www.cato.org/blog/economic-liberty-begins-where-government-privilege-ends",
-      "text": "> Classical liberals stress that all are equal before the law. Although liberals have disagreed about countless questions, they are united by a belief in impersonal, rules-based governance—the rule of law. John Adams captured the ideal when he defined a republic as “an empire of laws, and not of men.” Liberty depends not upon finding benevolent rulers but upon constructing institutions in which no person or group is entitled to stand above the rules governing everyone else. \n>\n> Economic liberty is not separate from the rule of law but one of its clearest applications. A free market does not mean anarchy. It means an economy governed by general and predictable rules that apply equally to everyone. The alternative is not more laws but a different kind of law: commands, permissions, and exceptions designed to favor particular industries and professions over others.\n>\n> As [F. A. Hayek](https://www.libertarianism.org/videos/rediscovering-f-hayek-50-years-after-nobel) wrote in *The Constitution of Liberty*, “freedom of economic activity had meant freedom under the law.” The relevant distinction is not simply between government action and inaction, but between general rules applied to all and discretionary interventions favoring some.\n>\n> [**...read more at cato.org**](https://www.cato.org/blog/economic-liberty-begins-where-government-privilege-ends)",
-      "sats": 174,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T11:19:42.519Z",
+      "ncomments": 1,
+      "createdAt": "2026-08-12T10:59:46.738Z",
       "user": {
        "name": "0xbitcoiner"
       },
-      "subName": "Politics_And_Law"
+      "subName": "bitcoin"
      },
      {
-      "id": "1545916",
-      "title": "Will the Machines Do All the Work For Us? (Money Stuff, Matt Levine)",
-      "url": "https://www.bloomberg.com/opinion/newsletters/2026-08-11/pick-and-shovel-seller-financing",
-      "text": "**Here's some dystopian-type labor market shit** (https://stacker.news/items/1463052) I don't want to be a part of:\n\n![](https://m.stacker.news/151894)\n\n(lesbehonest: that currency will be denominated in sats, but whatever...Money Stuff is a tradfi newsletter)\n\n> You could sort of imagine a Jane Austen-y early-19th-century economy, with AI as the farm workers doing the economic activity and humans as the aristocratic rentiers who own land and earn 5% in perpetuity.\n\nMore like [4% during the twenty-odd years](https://authory.com/JoakimBook/a/a749524896f4f48f3bed3669ede037859) Austen was writing, but who's counting.\n\n> There are other approaches — “everyone should buy *stock* in the AI buildout,” for instance — but the rentier approach has a certain simplicity. Who knows *which* AI model or harness or end user will ultimately capture the upside from AI? Whatever it is will probably need chips, though, so there’s a steady living to be made from renting out chips.\n\nwe all need a retirement account of diversified AI stocks so we're *all* part of the AI landlord-rentier class.\n\n> I must say that the two main dynamics I write about are “we should invest everyone’s retirement savings in AI infrastructure” and “we should invest everyone’s retirement savings in sports gambling,” and only the first one has some actual economic logic to it.**The point of investing is to own a share of future economic productivity. If a big share of future economic productivity might happen on computer chips, you might as well own chips.**\n\nNVIDIA partners with a who's-who of private capital high finance to raise *$500bn(!)* for AI infrastructure. No clue *whatfor* and *wherefrom* but whatever.\n\n![](https://m.stacker.news/151895)\n\n> A major theme in financial markets over the past few years has been the rise of “privates,” and the push to put retail investors’ savings into private assets. Sometimes this means selling private funds to retail investors in their retirement accounts; other times it means selling them annuities or life-insurance products or pensions that invest in private assets.\n\n## Anyway, what's up with that dystopian world?\n\nWhat I keep thinking is that there'll be an increasingly segregated (real? https://stacker.news/items/1520572) economy where people will pay premium to deal with humans. Human labor's scarcity value is being human... a thing *other humans* like moreso than Chatbots and automated robots. https://stacker.news/items/1470476 https://stacker.news/items/1488323\n\nIn this *very small sliver* of things is Marx correct (work, alienation, meaning)... https://stacker.news/items/1533284, https://stacker.news/items/1540851, we take pride in what we do, need a purpose and a way to be meaningfully productive and beneficial to our fellow man.\n\nSo we won't all just sit around and be boring aristocratic rentier classes while the machines do our dirty work for us. \n\n***\n\nMoney Stuff: [https://newsletterhunt.com/emails/449105](https://newsletterhunt.com/emails/449105)",
-      "sats": 1996,
+      "id": "1546207",
+      "title": "Any good data visualization for Bitcoind?",
+      "url": null,
+      "text": "Hello,\n\nI stopped using Umbrel for a variety of reasons, and I am using k3s now with Grafana and Prometheus. I miss the map of peers displayed on Umbrel when launching the JavaScript application for Bitcoind.\n\nI am trying to find an alternative way to get good metrics for Grafana. In particular I am interested in peer metrics to show a map and also other network metrics which could be nice to have.\n\nCurrently I am using dashboard id 21351 \"Bitcoind Exporter\" (see [https://grafana.com/grafana/dashboards/21351-bitcoind-exporter/](https://grafana.com/grafana/dashboards/21351-bitcoind-exporter/)). It is nice. We have the fee rate, the mempool overview, etc but it is just a few metrics.\n\nI have seen statoshi.info which is quite good but it uses statsD to aggregate statistics. I would prefer to use Prometheus just to save memory and because I am more familiar with it.\n\nLastly I have seen this [article](https://davidebtc186.substack.com/p/how-to-monitor-your-bitcoin-and-lightning?triedRedirect=true) but it is focused on LND, not Bitcoind.\n\nI am aware of Satoshi Dashboard but unfortunately it does not pull data from Bitcoind  but from external APIs. \n\nSo my question would be besides the resources aforementioned, does anyone know about a good resource to get statistics from Bitcoind? Preferably with Prometheus but I am open to other ways if everything is already implemented.",
+      "sats": 1172,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 12,
-      "createdAt": "2026-08-11T21:40:07.485Z",
+      "ncomments": 3,
+      "createdAt": "2026-08-12T09:33:18.264Z",
       "user": {
-       "name": "denlillaapan"
+       "name": "john_doe"
       },
-      "subName": "AI"
+      "subName": "bitcoin"
      },
      {
-      "id": "1523710",
-      "title": "ScamouraiWallet/POST_MORTEM.md - nopara73",
-      "url": "https://github.com/nopara73/ScamouraiWallet/blob/master/POST_MORTEM.md",
-      "text": "I never really got involved in the Samourai vs Wasabi disagreement. I've used both coinjoin implementations and feel like they were both pretty good tools. In that light, I found this post mortem by nopara (who is the originator of Wasabi Wallet, I believe) and, whichever side you come down on, it is an interesting read.\n\nI didn't know about some of this history here. For instance, nopara says:\n\n> I created ZeroLink. The [repository](https://github.com/nopara73/ZeroLink/commits/master/) makes the chronology clear. I opened it on July 28, 2017. Before Samourai made a single commit, I had made 19 and written a 184-line, 2,883-word document containing the framework’s core architecture.\n\nThe article is not what I'd call an unbiased assessment, but at the same time nopara raises some good points. On the case of Samourai's mixing volume:\n\n> Samourai’s Twitter presence made the rivalry look symmetrical despite the large difference in usage. Dumplings—my reproducible CoinJoin scanner—separated fresh bitcoin entering a mixer from coins merely being remixed and called fresh bitcoin the best on-chain proxy for adoption. From Whirlpool’s first detected month in April 2019 through the dataset’s end in August 2022, it identified 247,675 fresh BTC entering Wasabi and 30,228 entering Whirlpool. Wasabi led in every one of those forty-one months. This is a measure of bitcoin, not a user headcount, but it is the opposite of adoption parity.[<sup>21</sup>](https://github.com/nopara73/ScamouraiWallet/blob/master/POST_MORTEM.md#user-content-fn-dumplings-cef5e724e37e819c1d31e65ccc24493c)\n\n![](https://m.stacker.news/147964)\n\nAll in all, it's worth the read if you want to try to get a better understanding of the Wasabi vs Samourai yelling match. I'd be curious to hear a pushback from the Samourai side.",
-      "sats": 24214,
+      "id": "1545902",
+      "title": "How not to change your proof of work algorithm",
+      "url": null,
+      "text": "# Today, the BIP110ers picked a new proof of work algorithm, it was a mess.\n\nThere have been no blocks on the BIP110 chain since block 961633 was mined two days ago. There do not seem to be many miners who are interested in mining on that chain and therefore the chain is stalled. Under current rules, it needs to reach the next difficulty adjustment before things will get easier -- and that adjustment is 2014 blocks away.\n\nIn response to this, Luke Dashjr announced that BIP110 would be hard forking to introduce a new proof of work algorithm.\n\nIf hard forks are on the table, you might wonder why they didn't just use a fork to change the rules around mining difficulty so they could get their chain going again. Unfortunately, with only 2% (or less) of the hashrate mining on their chain, they would be an easy target for other miners to cause chaos on their chain (eg doublespending, reorgs, splits).\n\nChanging the proof of work algorithm defends against this threat by reducing the advantage of the ASICs operated by Bitcoin miners today (which are optimized for SHA256). \n\n# How to do a fair selection of the new POW algorithm?\n\nThis is not a new problem. Bitcoiners have long observed that whoever does the picking of a new POW algorithm has the potential to collude with ASIC manufacturers to produce a new line of ASICs for the new algo or to simply stockpile chips that are suitable for the new algorithm. There are many ways to do it, but they all end of looking a lot like a premine.\n\nSo it's good if you make your choice in a way that is demonstrably fair.\n\n# The first attempt\n\nThis is Luke Dashjr's first announcement about the proof of work change:\n\n![](https://m.stacker.news/151887)\n\n[source](https://x.com/LukeDashjr/status/2087164051797192886)\n\nThe hash Luke included at the end of that message corresponds to the following mapping:\n\n- 0 SHA3x\n- 1 BLAKE2s\n- 2 BLAKE2s\n- 3 BLAKE3x2\n- 4 SHA3x\n- 5 SHA3x\n- 6 BLAKE2b-256\n- 7 SHA3x\n- 8 BLAKE2b-256\n- 9 BLAKE2b-256\n- a BLAKE2s\n- b BLAKE3x2\n- c Eaglesong\n- d BLAKE3x2\n- e BLAKE2b-256\n- f Eaglesong\n\nWhen the next testnet4 block was seen, the last character of the blockhash would pick which of these algorithms was going to be used for BIP110's new proof of work method. By including the hash, Luke demonstrated that the list was created before the block was found so hopefully the block would be a fair source of randomness.\n\n# Testnet4 woes\n\nUnfortunately, Testnet4 has much lower difficulty than Bitcoin. Additionally, it has a rule that allows a block to be mined at difficulty 1 in the event that no block has been found for twenty minutes. \n\nIt seems that no testnet4 block was mined for 20 minutes prior to Luke Dashjr's designated time. This meant that at 1400 UTC, difficulty was set to 1 for mining the block that would decide BIP110's new proof of work algorithm -- and a number of blocks were mined simultaneously.\n\nThis led to quite a bit of confusion.\n\n![](https://m.stacker.news/151888)\n\nAnd to a dilemma: should they try again? Should they wait for the chain split to resolve and a heaviest chain tip to emerge? Should they wait for six blocks?\n\nBecause Testnet4 difficulty is significantly lower than Bitcoin, it quickly became evident that someone could attempt to influence the outcome of the results by mining on the tip of the chain whose crucial block selected a preferred algo.\n\nLuke tried [posting](https://x.com/LukeDashjr/status/2087188103718973731) some new set of criteria which would be revealed at some time (presumably soon?). This however also [failed](https://x.com/LukeDashjr/status/2087222841213083931) to work:\n\n![](https://m.stacker.news/151891)\n\nThis new method was then [revealed](https://x.com/LukeDashjr/status/2087223637271052452) to be:\n\n![](https://m.stacker.news/151892)\n\nWhich eventually resulted in the selection:\n\n![](https://m.stacker.news/151893)\n\nThis apparently is the same proof of work algorithm used by Siacoin, so there are already some ASICs manufactured for mining on it -- which is a good thing?\n\n# Is there a better way to do this?\n\nI was hanging out in the BIP110 Discord for most of the day, observing this process. I don't think it went terribly well. There was a lot of confusion and a lot of frustration. One thing that definitely stood out is that Luke was calling the shots here and the BIP110 community was largely looking to him for a decision.\n\nIt got me to thinking though: how would we go about a fair proof of work change that didn't get gamed?\n\nI remember Matt Corallo [talking about such a change](https://x.com/TheBlueMatt/status/1783865983502827687) a few years back when he was writing about MEVil. And many other Bitcoiners have mentioned \"firing the miners\" by changing the proof of work algorithm. It's sometihng we keep in our back pocket as if we (noderunners) could use it as a cudgel to keep the naughty miners in line.\n\nWatching the BIP110ers struggle with this today made me realize that it is easier said than done.\n\n# How would you go about enacting a fair proof of work change?",
+      "sats": 11822,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 10,
-      "createdAt": "2026-07-12T22:25:14.938Z",
+      "ncomments": 22,
+      "createdAt": "2026-08-11T21:13:38.295Z",
       "user": {
        "name": "Scoresby"
       },
       "subName": "bitcoin"
      },
      {
-      "id": "1546222",
-      "title": "This Day on SN: August 12",
-      "url": null,
-      "text": "#### Top Posts\n- [A Real SPAM solution: People using Bitcoin](https://stacker.news/items/1077925)\n    - 6108 sats \\ 90 comments \\ @028559d218 \\ ~bitcoin \\ `August 12, 2025`\n- [Stacker_Sports Olympics Pool Medal 🥇🥈🥉 Ceremony — Undisciplined bags Gold 🥇](https://stacker.news/items/645787)\n    - 3484 sats \\ 103 comments \\ @Coinsreporter \\ ~Stacker_Sports \\ `August 12, 2024`\n- [SN release: zap/post/comment without account and just-in-time account funding](https://stacker.news/items/223686)\n    - 9637 sats \\ 46 comments \\ @k00b \\ ~meta \\ `August 12, 2023`\n- [Citadel Dispatch E73 - Grassroots Bitcoin Adoption with @CaptainSiddh](https://stacker.news/items/58215)\n    - 3447 sats \\ 1 comment \\ @ODELL \\ ~bitcoin \\ `August 12, 2022`\n- no top post for `August 12, 2021`\n#### Top Stackers\n- @k00b\n    - 111.6k stacked \\ 10.6k spent \\ 1 item \\ `August 12, 2025`\n- @Undisciplined\n    - 20.5k stacked \\ 6435 spent \\ 59 items \\ `August 12, 2024`\n- stacker is in hiding for `August 12, 2023`\n- @cryptocoin\n    - 9571 stacked \\ 2598 spent \\ 41 items \\ `August 12, 2022`\n- @k00b\n    - 32 stacked \\ 68 spent \\ 17 items \\ `August 12, 2021`\n#### Top Comments\n- https://stacker.news/items/1077086?commentId=1077151 on [How Does the Convergence of Monetary Networks Work with Grisham's Law?](https://stacker.news/items/1077086)\n    - 1220 sats \\ 3 replies \\ @SimpleStacker \\ `August 12, 2025`\n        > Hopefully I can clear up some confusion and offer some possibilities as to how the two ideas are consistent. [...]\n- https://stacker.news/items/645572?commentId=646303 on [(Special Edition) Meme Monday- Best SN Meme gets 10k sats](https://stacker.news/items/645572)\n    - 10.5k sats \\ 9 replies \\ @IamSINGLE \\ `August 12, 2024`\n        > ![](https://m.stacker.news/45498) [...]\n- https://stacker.news/items/223541?commentId=223594 on [Daily discussion thread](https://stacker.news/items/223541)\n    - 1249 sats \\ 2 replies \\ @DarthCoin \\ `August 12, 2023`\n        > I am still building guys... [...]\n- https://stacker.news/items/58192?commentId=58364 on [The year is 2069](https://stacker.news/items/58192)\n    - 942 sats \\ 5 replies \\ @tbonesteaks \\ `August 12, 2022`\n        > I’ve somehow stacked more sats than I spend here. And I try to spend them pretty liberally and I don’t post or comment too much that I would get that many from others. But, I have received more than I’ve spent. I’ve been thinking about it a lot. If this is normal than that’s pretty awesome. A very balanced give and take/earn. [...]\n- https://stacker.news/items/983?commentId=995 on [What would make you all comment more?](https://stacker.news/items/983)\n    - 5 sats \\ 2 replies \\ @03785de7ab \\ `August 12, 2021`\n        > I'm a bit confused about the order of post. I just upvote everything for now to give my encouragement in using the platform. [...]\n#### Top Territories\n- ~bitcoin\n    - 7292 stacked \\ 2154 revenue \\ 150.9k spent \\ 79 items \\ `August 12, 2025`\n- ~Stacker_Sports\n    - 31.4k stacked \\ 277 revenue \\ 35.5k spent \\ 167 items \\ `August 12, 2024`\n- ~bitcoin\n    - 22.6k stacked \\ 0 revenue \\ 25.6k spent \\ 280 items \\ `August 12, 2023`\n- ~bitcoin\n    - 36.5k stacked \\ 0 revenue \\ 49.2k spent \\ 341 items \\ `August 12, 2022`\n- ~bitcoin\n    - 108 stacked \\ 0 revenue \\ 186 spent \\ 52 items \\ `August 12, 2021`",
-      "sats": 36,
+      "id": "1546281",
+      "title": "SpaceX crashed too hard for insiders’ bonus unlock",
+      "url": "https://protos.com/spacex-crashed-too-hard-for-insiders-bonus-unlock/",
+      "text": "> Although mainstream media covered insiders’ massive unlock of 911.5 million SpaceX shares worth $101 billion on August 6, very few people realize that an additional unlock on that date failed because SpaceX’s stock price had crashed so badly.\n>\n> That second, bonus tranche of 455.8 million shares required SpaceX to close at or above $175.50 per share, i.e. 30% above the formal $135 IPO price, for at least five of 10 trading days leading into its August 4 earnings report.\n>\n> SpaceX held nowhere close to that threshold in Nasdaq trading. The condition failed.\n>\n> The market capitalization of SpaceX was only able to reach its momentary, $3 trillion peak because Elon Musk floated only a tiny quantity of shares in the IPO.\n>\n> [**...read more at protos.com**](https://protos.com/spacex-crashed-too-hard-for-insiders-bonus-unlock/)",
+      "sats": 983,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T10:00:03.250Z",
-      "user": {
-       "name": "sn"
-      },
-      "subName": "meta"
-     },
-     {
-      "id": "1546166",
-      "title": "Podcast hosting platforms and apps that support HLS video in RSS",
-      "url": "https://podstandards.org/2026/08/11/podcast-hosting-platforms-and-apps-that-support-hls-video-in-rss",
-      "text": "",
-      "sats": 182,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T07:44:05.617Z",
-      "user": {
-       "name": "MerryOscar"
-      },
-      "subName": "podcasts"
-     },
-     {
-      "id": "1545879",
-      "title": "Thanks & Goodbye ⚡🤖🤝",
-      "url": null,
-      "text": "I'd like to start by quoting this phrase:\n\n\"It's not those who leave who die, it's those who are forgotten.\"\n\nYesterday I learned this bitter news: the closure of @lnp2pbot.\n\nhttps://x.com/negrunch/status/2086896990256799795\n\n![](https://m.stacker.news/151883)\n\n\nHonestly, it was like getting a bucket of ice water thrown on me at 4:00 AM while I was sleeping.\n\nFortunately, I've learned more over the last two years, and I have different ways to transfer my dirty Fiat to SATS, or, when the situation requires it, to transfer my valuable SATS to dirty Fiat.\n\nBut this bot was always my main option for buying and selling SATS.\n\nMy first Fiat (PEN) to SATS exchange was done through this bot.\n\n Back then, I didn't know of any other way to convert my fiat currency to Bitcoin without first going through USDT and Binance.\n\nLnp2pbot more than satisfied that need. It was here that I found, for the first time, sell orders that accepted my local currency.\n\n![](https://m.stacker.news/151884)\n\n\nToday we say goodbye to a tool that was more than just versatile and useful—I'd even say essential—and to a first-class team. In all the time I used this bot, I never had any problems. When a trade wasn't going smoothly, the team helped me resolve the situation, and I could either close or cancel the trade.\n\nOnce again, thank you to everyone on the @lnp2pbot team 🤝\n\nSee you at ***MOSTRO P2P NO-KYC.*** I hope that, being on the Nostr protocol, it won't suffer the same problems as the bot that worked on Telegram.\n\nhttps://mostro.network/",
-      "sats": 2224,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-08-11T20:19:08.933Z",
-      "user": {
-       "name": "flat24"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1545454",
-      "title": "What’s Worse — Authoritarian Capitalism or Democratic Socialism?",
-      "url": null,
-      "text": "> **Dictatorship is always a tragedy. But history suggests that a tyrant who allows markets does far less damage than one who abolishes them.**\n>\n> You’ve no doubt heard the horrifying stories of dictators who abused their people for personal gain or sheer cruelty. Stalin’s [Great Purge](https://www.history.com/articles/great-purge), Mao’s engineered [famine](https://www.ebsco.com/research-starters/history/great-leap-forward-famine), and Pinochet’s brutal [torture](https://www.bushcenter.org/freedom-collection/genaro-arriagada-pinochets-brutal-coup) of dissidents are just a few notorious examples. If all [dictatorships](https://www.wamc.org/commentary-opinion/2023-12-12/dictatorship-isnt-pretty) [are hell](https://dissentmagazine.org/article/our-peculiar-hell/), a difficult question remains: which offers the better odds of survival, or even prosperity? Is it a [dictatorship](https://foreignpolicy.com/2013/11/12/the-mother-of-all-experiments-in-authoritarian-capitalism-is-about-to-begin/) that [tolerates](https://archive-yaleglobal.yale.edu/content/questioning-milton-friedmans-free-market-and-freedom) some free-market [capitalism](https://shapingeurope.eu/dictators-and-free-markets-china-and-the-eu/), or one built on [socialism](https://fee.org/articles/why-socialism-often-leads-to-tyranny/)?\n>\n> A disclaimer is in order: This is not a defense of tyranny. We should resist it, whatever the form — absolute monarchies, military juntas, or proletarian dictatorships. Whether it’s the few controlling the many or the many terrorizing the few, all policies repressing freedom, silencing dissent, or justifying violence against innocents are inconsistent with our [natural rights](https://firstamendment.mtsu.edu/article/natural-rights/). They are morally evil and unjustifiable.\n>\n> “The more the state ‘plans’ the more difficult planning becomes for the individual.”\n>\n> *—* *Friedrich A. Hayek*\n>\n> Socialism has appeared in many forms — [Revolutionary](https://ceeres.uchicago.edu/resources/captives-revolution-socialist-revolutionaries-and-bolshevik-dictatorship-1918-1923) (USSR), [nationalist](https://www.theholocaustexplained.org/the-nazi-rise-to-power/the-early-years-of-the-nazi-party/) (Germany), [agrarian](https://www.ushmm.org/genocide-prevention/countries/cambodia) (Cambodia), on and on. Wherever it does not collapse quickly due to its economic defects, it [inevitably destroys](https://thedailyeconomy.org/article/when-pol-pot-read-a-book-on-marx/) all political [freedoms](https://pmc.ncbi.nlm.nih.gov/articles/PMC10008147/). Two types of tyrannical regimes emerge: [one type](https://web.archive.org/web/20181023120304/https://www.businessinsider.com/the-west-is-blind-to-the-appeal-of-chinas-model-of-authoritarian-capitalism-2015-7?IR=T) allows [private property](https://web.archive.org/web/20181029071534/https://foreignpolicy.com/2013/11/12/the-mother-of-all-experiments-in-authoritarian-capitalism-is-about-to-begin/) and [business initiative](https://web.archive.org/web/20181023120415/https://www.tni.org/en/article/hungarys-regime-is-proof-that-capitalism-can-be-deeply-authoritarian), the other [squelches them](https://www.hoover.org/research/private-property-freedom-and-rule-law).\n>\n> \\[...]\n>\n>\n> ![](https://m.stacker.news/151815)\n>\n>\n>\n> [**...read more at thedailyeconomy.org**](https://thedailyeconomy.org/article/whats-worse-authoritarian-capitalism-or-democratic-socialism/)",
-      "sats": 407,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-08-11T13:17:50.930Z",
+      "ncomments": 1,
+      "createdAt": "2026-08-12T12:07:58.489Z",
       "user": {
        "name": "0xbitcoiner"
       },
-      "subName": "Politics_And_Law"
+      "subName": "Stacker_Stocks"
      },
      {
-      "id": "1545963",
-      "title": "Of the Two Scarcities and the Eternal Postponement of the Blockspace Apocalypse",
-      "url": null,
-      "text": "![](https://m.stacker.news/151900)\n\nA new priesthood proclaims the true scarcity is the block—four thousand cramped places, eight thousand million souls, sixty years of queue. Blockspace shall be the contested oil of the coming age.\n\nThis is the rapture of the technicians: always announced for the morrow, always deferred by the stubbornness of the present.\n\nThere are, indeed, two scarcities. But only the harder of the two can ever be the bottles neck. The base unit is not infinitely divisible; dust limits, the necessity of fees for genuine sovereignty draw a firm circumference around the possible number of holders. Distribution does not democratize; it concentrates, mirroring the ancient hierarchy of worldly wealth. At most two hundred million souls may ever stand upon the chain as true participants—and even these, once institutions gather them into batches, shrink further. Throughput is therefore no longer the binding constraint. There simply are not enough beings who can use the base layer to keep the blocks forever full and the fees forever high.\n\nWhy, then, does the belief in the fee-apocalypse persist with such religious tenacity?\n\nBecause scoundrels sell “scaling.” They whisper to the naïve that refusal of the latest theatrical apparatus is a sin against the poor, a heartless clinging to exclusivity. The more sober fear—the security budget—likewise dissolves under examination. Profitable mining as presently practiced is itself an anomaly: the temporary marriage of subsidy and stranded energy. Both partners are departing. The subsidy evaporates block by block; the stranded power is claimed by higher and colder intelligences. Mining must return to its primal condition—undertaken not for profit but for the defense of a belief, for the arbitrage of possibility, for the securing of one’s own against the censor. Men once mined when the coin was worthless and the electric bill unpaid. They shall mine again at a paper loss, as states maintain navies at a loss to keep the sea-lanes open. Waste heat becomes the quiet dividend; the water-heater of every household becomes a miner. The network grows more dispersed, not less. Blocks continue. The ledger endures.\n\n![](https://m.stacker.news/151903)\n\n![](https://m.stacker.news/151904)\n\nAll the facts upon the ground compel the conclusion that sustained high demand for blockspace is a phantasm. The graph of likelihood declines. The real scarcity was always the scarcer of the two: the base unit itself, finite, concentrated, the coin that refuses to be held by the many. \n\nBlockspace remains valuable and occasionally contested—yet it is weather, not climate. The war that was promised never arrives, \"Bitcoin ends wars\" rings true for the first time.\n\nThus the rapture is eternally postponed.\n\n\\--- \n\nThis is a Nietzsche-bot re-write of a recent reply the tweet screenshot reminded me of: https://stacker.news/items/1534856/r/justin_shocknet?commentId=1534902",
-      "sats": 511,
+      "id": "1546407",
+      "title": "I’m leaving OpenAI to build Jurassic Park",
+      "url": "https://taylor.town/leaving-openai",
+      "text": "![](https://m.stacker.news/151990)\n\nGonna send you back to the stone age.\n\n- - -\n\n#Humor #Technology",
+      "sats": 738,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-08-11T22:24:59.730Z",
+      "ncomments": 1,
+      "createdAt": "2026-08-12T15:21:11.900Z",
       "user": {
-       "name": "justin_shocknet"
+       "name": "deSign_r"
+      },
+      "subName": "Design"
+     },
+     {
+      "id": "1546185",
+      "title": "Roughnecks mined the third block about three hours ago",
+      "url": null,
+      "text": "![](https://m.stacker.news/151953)\n\nhttps://mempool.guide/",
+      "sats": 609,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 22,
+      "createdAt": "2026-08-12T08:48:22.386Z",
+      "user": {
+       "name": "0xbitcoiner"
       },
       "subName": "bitcoin"
      },
      {
-      "id": "1545366",
-      "title": "Some advice re Lukeless knots?",
+      "id": "1546507",
+      "title": "Total eclipse going live in 40 minutes!",
       "url": null,
-      "text": "Now that Luke is off in 110 land, I assume knots is not long for this world. \n\nBest alternative for those not wanting to run core?",
-      "sats": 1238,
+      "text": "https://www.youtube.com/watch?v=rSvCuSQhC3w\n\n# Total solar eclipse 2026: Coming to Europe\n\nhttps://www.youtube.com/watch?v=DRDx2xDR8NA\n\n# Total solar eclipse 2026: Telescopic feed\n\nhttps://www.youtube.com/watch?v=j2TjlTbHwsw",
+      "sats": 458,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 69,
-      "createdAt": "2026-08-11T11:25:11.180Z",
+      "ncomments": 8,
+      "createdAt": "2026-08-12T16:52:00.285Z",
       "user": {
-       "name": "siggy47"
+       "name": "0xbitcoiner"
+      },
+      "subName": "science"
+     },
+     {
+      "id": "1546583",
+      "title": "What is with all the universal pussyfooting in the Bitcoin space?",
+      "url": "https://iris.to/note1qqqpztkvyk0uwap6g378936apyttfhm40rrtyhtd93w8tywxneksal78qf",
+      "text": "",
+      "sats": 349,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-08-12T18:17:43.100Z",
+      "user": {
+       "name": "hasherstacker"
       },
       "subName": "bitcoin"
+     },
+     {
+      "id": "1546518",
+      "title": "Game of the Day: Red Sox vs Blue Jays (Predyx Market)",
+      "url": null,
+      "text": "Jays are heating up and Red Sox are cooling off. \n\nGreat pitching matchup. Suarez vs Soriano. \n\nHave your say with sats!\n\nhttps://beta.predyx.com/market/game-of-the-day-red-sox-vs-blue-jays-1786553998?ref=PREDYX119NA8XO",
+      "sats": 351,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-08-12T17:01:57.001Z",
+      "user": {
+       "name": "grayruby"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1546155",
+      "title": "I didn't set a cookie.",
+      "url": "https://kuber.studio/cookie/",
+      "text": "Find out what a website knows about you without using cookies... Its is ugly.",
+      "sats": 1054,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-08-12T06:26:04.941Z",
+      "user": {
+       "name": "megaptera"
+      },
+      "subName": "tech"
+     },
+     {
+      "id": "1546523",
+      "title": "Eli Lilly takes aim at illicit market for its experimental weight-loss drug",
+      "url": "https://www.cbsnews.com/news/eli-lilly-lawsuits-weight-loss-drug/",
+      "text": "For context, a lot of \"For research use only\" peptide websites sell [retatrutide](https://en.wikipedia.org/wiki/Retatrutide), which is like Ozempic but \"better\" (more mechanisms of action), and [Eli Lilly is hoping to get it classified as a biological product](https://www.bigmoleculewatch.com/2024/09/24/eli-lilly-files-suit-challenging-the-fdas-drug-classification-of-retatrutide/) which would provide them with something like a monopoly once it's approved. If these \"For research use only\" websites do not comply, I suspect the \"For research use only\" loophole will get closed given that Eli Lilly stands to make trillions of dollars from the drug.\n\n---------\n\nAlso, \"For research use only\" websites operate in the grey market and thus rather [commonly accept bitcoin](https://stacker.news/items/1519387/r/k00b).",
+      "sats": 290,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-12T17:13:27.718Z",
+      "user": {
+       "name": "k00b"
+      },
+      "subName": "news"
+     },
+     {
+      "id": "1546100",
+      "title": "I made an MMO where the money supply is Fixed",
+      "url": null,
+      "text": "I’ve been building Frontier Crown around a question I wanted to play rather than debate:\n\nWhat changes when a multiplayer economy has a fixed monetary supply, no monster-money faucet, and every action resolves on the same global tick?\n\nPlayers gather resources, mine a finite supply of Crown Gold, forge equipment, place bids and asks on a player order book, hunt the Warden, and eventually sponsor new players by sacrificing resources.\n\nThe design is Bitcoin-inspired, but Crown Gold is only an in-game currency. There’s no token sale, NFT, wallet requirement, play-to-earn system, or promise of financial return.\n\nThe browser beta is playable now. I’m looking for people who will pressure-test whether the scarcity is understandable and whether the economy creates interesting decisions.\n\nhttps://frontiercrown.com/\n\nI’m the developer. Direct criticism is welcome—especially after you’ve experienced a few global ticks.",
+      "sats": 1212,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 14,
+      "createdAt": "2026-08-12T03:01:02.102Z",
+      "user": {
+       "name": "kode"
+      },
+      "subName": "gaming"
      }
     ]
    }
@@ -1883,14 +1883,44 @@
    "items": {
     "items": [
      {
+      "id": "1546607",
+      "title": "Wasabi Wallet Plans",
+      "url": null,
+      "text": "# Past\n\nWasabi Wallet was abandoned more than two years ago and I decided to rescue it from a death sentence; such important project cannot die just like that.\n\nThe first goal was to make sure the Wallet could not be killed as Samourai Wallet was and the latest version, v2.8.1, achieved that by making it independent from any central server. Wasabi is finally a decentralized lightweight Bitcoin Wallet; or immortal as I like to say.\n\nCoordinator's code was improved greatly too by making them so inexpensive to host that anyone can do it. Lots of changes from SLIP39, Silent Payments and a Release Notifications system based on Nostr were added version after version, things that takes time to build because in Wasabi we do not accept new dependencies, what forces me to write the everything from scratch from crypto for WabiSabi and SLIP39 to json serialization code, everything (just as curiosity, even the Nostr Relay at wss://relay.wasabiwallet.io was written from scratch)\n\n# Present\n\nCurrently there are much more ambitious plans and it seems more people are joining with lots of great things, let me tell you a few:\n\n## Wasabi Mobile\n\n[Wiesław Šoltés](https://x.com/wieslawsoltes) pushed a few weeks ago a Wasabi version that can be built for Android and iOS, it looks really promising.\n\n![](https://m.stacker.news/151996)\n\n## WabiSabi Native Library\n\nTo allow all Bitcoin wallets to coinjoin or to pay in coinjoins. We are dogfooding it at this moment.\n\n## Multiparty transaction signing with Hardware Wallets\n\n[Kevin Ravens₿erg](https://x.com/KevinR4v) has PRs to allow Hardware Wallet to coinjoin automatically with Wasabi. Nothing better than this.\n\n![](https://m.stacker.news/151998)\n\n![](https://m.stacker.news/151999)\n\n## Payjoin v2\n\n[Dan Gould](https://x.com/bitgould) has started a serie of PRs to implement this privacy-preserving two-party transaction mechanism into Wasabi too.\n\n## Coinjoin usability improvements\n\n[Coinjoiner](https://x.com/coinjoinercom) has been working in discovery the coordinators list  inside the Wasabi.\n\n## General maintainance\n\nCarti-it keeps the house in order, improves code everywhere, fixes bugs and he is a great support for me.\n\n## My next things to work on\n\n* Update the WabiSabi protocol. This is hasn't changed much since zkSNACKs days and it need to change to make it even more strict, faster and lighter.\n* Allow Wasabi Scheme to broadcast transactions. The Wasabi scripting language should be able to manipulate the wallet to allow users to implement their own privacy-preserving tools.\n* Make Wasabi a service: Separate Wasabi Daemon / Wasabi UI\n* Improve payments in coinjoin to make it a first-class citizen in Wasabi and make it the preferred method of payments.\n* Receive Silent Payments. For users who are okay depending on a central server again, receiving silent payments would be a great feature to add.\n\nWell, these are just coders and features but there are also people helping with documentation, testing, giving support to users who need it, etc. Finally, coordinators' operators, known or unknown figures, play an important role here. \n\n# Future\n\nThe plan is to double-down our cypherpunk ethos, extract reusable components for other to use like nwabisabi, nostra and slip39, convert Wasabi client in a service that runs in block-only mode in your computer, help other cypherpunk projects to use Wasabi technology with nwabisabi for payments in coinjoin and hardware wallets with safer coinjoins and payments in coinjoins and make Wasabi a truly programmable wallet.\n\nWasabi had remained completely independent to commit it purpose thanks to not receiving money from any of the institutions that have been subsidizing Bitcoin and Nostr ecosystem development for years. This is great but only because the community helped the project immediately after we put the \"Donate\" button in the wallet.\n\nPlease help us to help you, join us.",
+      "sats": 10320,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-08-12T18:57:57.859Z",
+      "user": {
+       "name": "lontivero"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1546544",
+      "title": "Payjoin Dev Kit 1.0 released",
+      "url": "https://payjoin.org/blog/2026/08/12/announcing-payjoin-1-0/",
+      "text": "Payjoin dev kit has been making some moves in the last year or so and now:\n\n> Payjoin Dev Kit's first stable release is here.\n\nThe works where more wallets integrate payjoins seems like a good works to me. Maybe it doesn't add as much privacy as larger coinjoins, but I'm here for a world where the common input ownership heuristic is less reliable.\n\nThis dev kit will hopefully make it easier to make payjoins happen. \n\n> Wallets and services that want to let Bitcoin senders and receivers interact to transact can now depend on it or its [foreign language bindings](https://github.com/payjoin/rust-payjoin/tree/master/payjoin-ffi). Concretely that means clients can send and receive Payjoin without running a server, survive restarts and going offline, view standardized status information, and gracefully fall back or cancel interactions.\n\nI'll be very curious to see how much uptake this gets. \n\n> To get started, go to [crates.io](https://crates.io/crates/payjoin/1.0.0), [docs.rs](https://docs.rs/payjoin/1.0.0), and check out the [`payjoin-cli` Quick Start](https://github.com/payjoin/rust-payjoin/tree/master/payjoin-cli#quick-start). This work was made possible by dozens of volunteer contributors and sponsors including [Spiral](https://spiral.xyz/), [OpenSats](https://opensats.org/), [HRF](https://hrf.org/), [Maelstrom](https://maelstrom.fund/), [Btrust](https://www.btrust.tech/), [Cake Wallet](https://cakewallet.com/), and others, including individuals like you. Thank you.",
+      "sats": 5786,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-12T17:42:24.581Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1546335",
       "title": "BTC vote: Who do you prefer as Brazil’s next president?",
       "url": "https://koinvote.com/event/01KZQYNAK7JKJS0Z3KBSE727XV",
       "text": "# Who do you prefer as Brazil’s next president?\n\nBrazil will hold a presidential election on October 4, 2026. Voters will directly elect the president; if no candidate wins more than half of the valid votes, the top two will face a runoff on October 25. Who do you prefer to lead Brazil after the election?\n\n**Options:**\n\n• Lula da Silva\n• Flávio Bolsonaro\n• Renan Santos\n• Ronaldo Caiado\n• Jair Bolsonaro\n\nTotal reward: **100,000 sats**\n\n**Update:** Rewards now follow your holding score \n\nRewards are no longer based on a balance snapshot taken at the deadline. They are now based on your **holding score** — your balance multiplied by the number of blocks you were in the event. \n\n| • | The earlier you enter, the higher your score. Your score starts building from the moment you submit.   |\n| - | ------------------------------------------------------------------------------------------------------ |\n| • | Moving coins out of your participating address pauses your score. What you’ve already earned is kept.  |\n| • | Changing your reply does not reset your score. It carries over.                                        |\n\n| For example: 1 BTC held from start to finish earns twice the score of 1 BTC entering halfway. |\n| --------------------------------------------------------------------------------------------- |\n\n[Subscribe](https://koinvote.com/subscribe) to reward event notifications.\n\nNo signup. No deposit. No wallet connection.\nJust sign a Bitcoin message with your address and submit.\n\nRewards are distributed based on Holding Score (balance × participation time), regardless of which option you choose. Higher balance and earlier participation earn a larger share.\n\nYour Bitcoin never leaves your wallet.\n\nA public payout report will be published and can be independently verified.\n\nSubmit your reply and earn some sats!\n\n**Coming next:** [Which political party do you hope will win Taiwan's nine-in-one elections?](https://koinvote.com/event/01KY0FNC5BDKFR8RSFGTATCTYV)\n\nPrevious event + payout report:\n[Who do you prefer as Israel’s next prime minister?](https://koinvote.com/event/01KY0FNC5BDKFR8RSFGTATCTYV)\n[Do you support the Senate version of the CLARITY Act?](https://koinvote.com/event/01KXZJTF3Q4F2T4RVNRRGMDRMH)\n[Is ETF good for Bitcoin?](https://koinvote.com/event/01KTRBV4THPXX3AM8RV6B0Z6SX)\n[Do you miss Gary Gensler?](https://koinvote.com/event/01KT73VE8F2SJT3JN92YK8942C)\n[Do you support the U.S. pausing arms sales to Taiwan?](https://koinvote.com/event/01KSW62T3EQCS5YEMBNAC4NW88)\n[Do you feel bullish or bearish on Bitcoin?](https://koinvote.com/event/01KSM1B116KQ4D48J2PXKGJ1N5)\n[Is MSTR good for bitcoin?](https://koinvote.com/event/01KPZETPQZEMSGKM11Q7P571YS)\n[Do you support banning all yields on stablecoins?](https://koinvote.com/event/01KPQACVFTNR83EPZ4EMKH6NK1?utm_source=stackernews)\n[Do you support the Israeli-US war on Iran?](https://koinvote.com/event/01KNBXF5Z8KQN5JQKG2BS1K7QS?utm_source=stackernews)\n[What should the Fed do with interest rates in April?](https://koinvote.com/event/01KMD92FKN8HQ2KFDJADTK4QMD?utm_source=stackernews)\n[Do you support Kevin Warsh becoming the next Fed Chair?](https://koinvote.com/event/01KM4ZWW2HNH5Y8MX4S1QP51ZQ?utm_source=stackernews)\n[2026 United States Midterm Elections](https://koinvote.com/event/01KKPR25RTFWQVEPKR1WXF6825?utm_source=stackernews)",
-      "sats": 58,
+      "sats": 69,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 3,
+      "ncomments": 11,
       "createdAt": "2026-08-12T13:22:01.811Z",
       "user": {
        "name": "KoinVote"
@@ -1898,32 +1928,32 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1546216",
-      "title": "Knots replay protection ACTIVATED for coinjoin descendants on the Core chain",
-      "url": "https://x.com/Kruwed/status/2087459530120614097",
-      "text": "Here is the audit path for you to confirm that the replay protection actually activated:\n\nThe final coinjoin tx that confirmed on both chains is f046581f06d353211cfcbbff0681a4f61ac33a8ffb33fc70719cd3b855818bc9\n\nbc1pjhnedggvm9czj9lhdpd78hcxt56s0y2hz7vx8srt8zlfxy2lhees4t7ruu was spent and already confirmed on both chains.\n\nReplay protection ancestor coinjoin tx on Core: bbd66083ac8330dde6509ad54a021082f33f15564d831c94b32ae08a7eb63586\n\nReplay protection burn tx on Knots: 2ad1dc24a493b1f5c00d7cf29582a2b54bf6f57ca2d7b0caf8475067580edb8f\n\nThere was a 4th block mined on the Knots chain, so the burn tx now has 2 confirmations.",
-      "sats": 1144,
+      "id": "1546435",
+      "title": "Bitcoin Core v32.0 is targeted for release in October. What is in it?",
+      "url": "https://x.com/bitschmidty/status/2087179372247576800",
+      "text": "Bitcoin Core v32.0 is targeted for release in October:\n\n- Up to 3x faster initial sync. Block validation now fetches transaction inputs from disk in parallel instead of one at a time\n\n- The libevent external dependency is fully removed, continuing Core's push to cut third-party dependencies\n\n- Max peer connections raised from 125 to 200 to have more open slots for new nodes to sync from, faster block propagation, and a harder network to eclipse or partition\n\n- Mempool-based fee estimation to cut fee overestimation (in progress)\n\n- Transaction relay rate limiting is now global instead of per-peer, keeping a node's CPU and memory usage steady when transaction volume spikes\n\n- Ships with features from libsecp256k1 0.8.0 with verification up to 11% faster, plus the new Silent Payments module (BIP 352)\n\n- PSBTv2 (BIP 370) support, now the default for PSBT-creating RPCs for better coordination of unsigned transactions for multisig and hardware wallet setups\n\n- New exportwatchonlywallet command to export a wallet as a watch-only file, no private keys, and restore it on your online node\n\n- Core now enables Tor's proof-of-work DDoS defense on the onion service it creates for your node, where the Tor daemon supports it\n\nAdditional tests, bugfixes, and features included as well.\n\nFeature freeze is ~August 20, rc1 ~September 10, final release targeted for ~October 10. (Test the release candidates when they ship!)\n\nref: https://x.com/bitschmidty/status/2087179372247576800",
+      "sats": 6474,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 15,
-      "createdAt": "2026-08-12T09:53:55.482Z",
+      "ncomments": 1,
+      "createdAt": "2026-08-12T15:48:19.044Z",
       "user": {
-       "name": "Kruw"
+       "name": "schmidty"
       },
-      "subName": "bitcoin_Mining"
+      "subName": "bitcoin"
      },
      {
-      "id": "1545803",
-      "title": "Who's a bigger bitcoin villain to you?",
-      "url": null,
-      "text": "Just curious, thought this might make more some interesting discussion",
-      "sats": 5367,
+      "id": "1546464",
+      "title": "Stale blocks, quantum proposals, CISA - Bitcoin Optech Newsletter #417 Recap",
+      "url": "https://bitcoinops.org/en/podcast/2026/08/11/",
+      "text": "Conduition, Ram, and Fabian Jahr joined Optech to discuss Newsletter #417:\n\n- Draft BIP for stale tip relay\n- CISA for taproot keypath spends (BIP460)\n- Segwit commitment to post-quantum witness data\n- PQC output type discussion\n- Input-triggered transaction expiry\n- Layered quantum recovery of hashed addresses\n- Segregated Data (SegData) BIP draft\n- And more\n\nYou can listen on our website:\nhttps://bitcoinops.org/en/podcast/2026/08/11/\n\nFountain:\nhttps://fountain.fm/episode/X3dpYvlQy2N6tO4DeQl3\n\nSpotify:\nhttps://open.spotify.com/episode/7wkE8AkAwXf7QIKlcO5cK4\n\nApple Podcasts:\nhttps://podcasts.apple.com/us/podcast/bitcoin-optech-newsletter-417-recap/id1674626983?i=1000782982957",
+      "sats": 5522,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 40,
-      "createdAt": "2026-08-11T18:16:03.573Z",
+      "ncomments": 0,
+      "createdAt": "2026-08-12T16:15:12.846Z",
       "user": {
-       "name": "SimpleStacker"
+       "name": "schmidty"
       },
       "subName": "bitcoin"
      },
@@ -1932,10 +1962,10 @@
       "title": "CISA — Fabian Jahr | bitcoin++ Toronto, consensus edition",
       "url": "https://youtu.be/0wwOF1IOK6Y",
       "text": "",
-      "sats": 13610,
+      "sats": 16710,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
+      "ncomments": 2,
       "createdAt": "2026-08-10T16:39:50.190Z",
       "user": {
        "name": "0xbitcoiner"
@@ -1943,119 +1973,44 @@
       "subName": "bitcoinplusplus"
      },
      {
-      "id": "1545902",
-      "title": "How not to change your proof of work algorithm",
-      "url": null,
-      "text": "# Today, the BIP110ers picked a new proof of work algorithm, it was a mess.\n\nThere have been no blocks on the BIP110 chain since block 961633 was mined two days ago. There do not seem to be many miners who are interested in mining on that chain and therefore the chain is stalled. Under current rules, it needs to reach the next difficulty adjustment before things will get easier -- and that adjustment is 2014 blocks away.\n\nIn response to this, Luke Dashjr announced that BIP110 would be hard forking to introduce a new proof of work algorithm.\n\nIf hard forks are on the table, you might wonder why they didn't just use a fork to change the rules around mining difficulty so they could get their chain going again. Unfortunately, with only 2% (or less) of the hashrate mining on their chain, they would be an easy target for other miners to cause chaos on their chain (eg doublespending, reorgs, splits).\n\nChanging the proof of work algorithm defends against this threat by reducing the advantage of the ASICs operated by Bitcoin miners today (which are optimized for SHA256). \n\n# How to do a fair selection of the new POW algorithm?\n\nThis is not a new problem. Bitcoiners have long observed that whoever does the picking of a new POW algorithm has the potential to collude with ASIC manufacturers to produce a new line of ASICs for the new algo or to simply stockpile chips that are suitable for the new algorithm. There are many ways to do it, but they all end of looking a lot like a premine.\n\nSo it's good if you make your choice in a way that is demonstrably fair.\n\n# The first attempt\n\nThis is Luke Dashjr's first announcement about the proof of work change:\n\n![](https://m.stacker.news/151887)\n\n[source](https://x.com/LukeDashjr/status/2087164051797192886)\n\nThe hash Luke included at the end of that message corresponds to the following mapping:\n\n- 0 SHA3x\n- 1 BLAKE2s\n- 2 BLAKE2s\n- 3 BLAKE3x2\n- 4 SHA3x\n- 5 SHA3x\n- 6 BLAKE2b-256\n- 7 SHA3x\n- 8 BLAKE2b-256\n- 9 BLAKE2b-256\n- a BLAKE2s\n- b BLAKE3x2\n- c Eaglesong\n- d BLAKE3x2\n- e BLAKE2b-256\n- f Eaglesong\n\nWhen the next testnet4 block was seen, the last character of the blockhash would pick which of these algorithms was going to be used for BIP110's new proof of work method. By including the hash, Luke demonstrated that the list was created before the block was found so hopefully the block would be a fair source of randomness.\n\n# Testnet4 woes\n\nUnfortunately, Testnet4 has much lower difficulty than Bitcoin. Additionally, it has a rule that allows a block to be mined at difficulty 1 in the event that no block has been found for twenty minutes. \n\nIt seems that no testnet4 block was mined for 20 minutes prior to Luke Dashjr's designated time. This meant that at 1400 UTC, difficulty was set to 1 for mining the block that would decide BIP110's new proof of work algorithm -- and a number of blocks were mined simultaneously.\n\nThis led to quite a bit of confusion.\n\n![](https://m.stacker.news/151888)\n\nAnd to a dilemma: should they try again? Should they wait for the chain split to resolve and a heaviest chain tip to emerge? Should they wait for six blocks?\n\nBecause Testnet4 difficulty is significantly lower than Bitcoin, it quickly became evident that someone could attempt to influence the outcome of the results by mining on the tip of the chain whose crucial block selected a preferred algo.\n\nLuke tried [posting](https://x.com/LukeDashjr/status/2087188103718973731) some new set of criteria which would be revealed at some time (presumably soon?). This however also [failed](https://x.com/LukeDashjr/status/2087222841213083931) to work:\n\n![](https://m.stacker.news/151891)\n\nThis new method was then [revealed](https://x.com/LukeDashjr/status/2087223637271052452) to be:\n\n![](https://m.stacker.news/151892)\n\nWhich eventually resulted in the selection:\n\n![](https://m.stacker.news/151893)\n\nThis apparently is the same proof of work algorithm used by Siacoin, so there are already some ASICs manufactured for mining on it -- which is a good thing?\n\n# Is there a better way to do this?\n\nI was hanging out in the BIP110 Discord for most of the day, observing this process. I don't think it went terribly well. There was a lot of confusion and a lot of frustration. One thing that definitely stood out is that Luke was calling the shots here and the BIP110 community was largely looking to him for a decision.\n\nIt got me to thinking though: how would we go about a fair proof of work change that didn't get gamed?\n\nI remember Matt Corallo [talking about such a change](https://x.com/TheBlueMatt/status/1783865983502827687) a few years back when he was writing about MEVil. And many other Bitcoiners have mentioned \"firing the miners\" by changing the proof of work algorithm. It's sometihng we keep in our back pocket as if we (noderunners) could use it as a cudgel to keep the naughty miners in line.\n\nWatching the BIP110ers struggle with this today made me realize that it is easier said than done.\n\n# How would you go about enacting a fair proof of work change?",
-      "sats": 11811,
+      "id": "1546216",
+      "title": "Knots replay protection ACTIVATED for coinjoin descendants on the Core chain",
+      "url": "https://x.com/Kruwed/status/2087459530120614097",
+      "text": "Here is the audit path for you to confirm that the replay protection actually activated:\n\nThe final coinjoin tx that confirmed on both chains is f046581f06d353211cfcbbff0681a4f61ac33a8ffb33fc70719cd3b855818bc9\n\nbc1pjhnedggvm9czj9lhdpd78hcxt56s0y2hz7vx8srt8zlfxy2lhees4t7ruu was spent and already confirmed on both chains.\n\nReplay protection ancestor coinjoin tx on Core: bbd66083ac8330dde6509ad54a021082f33f15564d831c94b32ae08a7eb63586\n\nReplay protection burn tx on Knots: 2ad1dc24a493b1f5c00d7cf29582a2b54bf6f57ca2d7b0caf8475067580edb8f\n\nThere was a 4th block mined on the Knots chain, so the burn tx now has 2 confirmations.",
+      "sats": 1155,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 19,
-      "createdAt": "2026-08-11T21:13:38.295Z",
+      "ncomments": 16,
+      "createdAt": "2026-08-12T09:53:55.482Z",
       "user": {
-       "name": "Scoresby"
+       "name": "Kruw"
       },
-      "subName": "bitcoin"
+      "subName": "bitcoin_Mining"
      },
      {
-      "id": "1546011",
-      "title": "Coldcard: the technical autopsy of an entropy failure",
-      "url": "https://wizardsardine.com/blog/coldcard-vuln-deep-dive/",
-      "text": "This is *very* detailed postmortem of the coldcard vulnerability correcting the candidate space sizes (they are smaller than previously reported), estimating the probability of collisions among devices, and estimating the cost of sweeping the candidate spaces for each device class under different assumptions.\n\nFor Mk3s without passphrases or dice rolls, you can test the sweepability of nearly all candidates for $61 of rented RTX 4090 time \\~9 days on a single RTX 4090. In comparison it takes years to do the same for Mk4 class devices even assuming more information is known.\n\n![](https://m.stacker.news/151909)\n\nThe candidate space for the mk3 is hundreds of thousands of times, and a million times for mk4 class devices, smaller than Block and others published.\n\n![](https://m.stacker.news/151910)\n\nAnd, assuming a fleet of 30,000 mk3 devices and a few other things, they put they likelihood of collisions at 1 in 1,000.\n\nThere's lot of bits in here that weren't in the earlier reports for anyone that's a detail devil.",
-      "sats": 1779,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-08-11T23:52:53.482Z",
-      "user": {
-       "name": "k00b"
-      },
-      "subName": "security"
-     },
-     {
-      "id": "1546100",
-      "title": "I made an MMO where the money supply is Fixed",
-      "url": null,
-      "text": "I’ve been building Frontier Crown around a question I wanted to play rather than debate:\n\nWhat changes when a multiplayer economy has a fixed monetary supply, no monster-money faucet, and every action resolves on the same global tick?\n\nPlayers gather resources, mine a finite supply of Crown Gold, forge equipment, place bids and asks on a player order book, hunt the Warden, and eventually sponsor new players by sacrificing resources.\n\nThe design is Bitcoin-inspired, but Crown Gold is only an in-game currency. There’s no token sale, NFT, wallet requirement, play-to-earn system, or promise of financial return.\n\nThe browser beta is playable now. I’m looking for people who will pressure-test whether the scarcity is understandable and whether the economy creates interesting decisions.\n\nhttps://frontiercrown.com/\n\nI’m the developer. Direct criticism is welcome—especially after you’ve experienced a few global ticks.",
-      "sats": 1212,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-08-12T03:01:02.102Z",
-      "user": {
-       "name": "kode"
-      },
-      "subName": "gaming"
-     },
-     {
-      "id": "1546155",
-      "title": "I didn't set a cookie.",
-      "url": "https://kuber.studio/cookie/",
-      "text": "Find out what a website knows about you without using cookies... Its is ugly.",
-      "sats": 682,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T06:26:04.941Z",
-      "user": {
-       "name": "megaptera"
-      },
-      "subName": "tech"
-     },
-     {
-      "id": "1546057",
-      "title": "Summer Round-Up from Western Massachusetts",
-      "url": null,
-      "text": "Summer is in a hurry here in the Berkshires and will not slow down no matter how much we want it to.\n\n![](https://m.stacker.news/151913)\n\nIt’s a glorious time to be here, a time to load blueberries into the chest freezer, make opulent bouquets of flowers, stay up late to look for meteors, say yes to parties and playdates and go swimming as much as possible because if there’s one thing the goldenrod is telling us as it begins to flower, fall is coming. So before summer totally passes us by, here’s what we have been up to this season:\n\n# **Small Wonders**\n\nTom’s *White Frame* photograph was included in a group show of small works by regional artists at Spencertown Academy Arts Center, NY. The *Small Wonders* show ran from July 11 until August 9 and featured some great work across a variety of media.\n\n![](https://m.stacker.news/151914)\n\n# **TCF**\n\n*White Frame* is also included in *The Curated Fridge Summer 2026 Show*. Curated by Rachel Vogel (Assistant Curator at the Addison Gallery of American Art), it looks like a fantastic group show and we’re thrilled to be exhibited on the fridge for the second time. For more information and to see the work, visit their [website](https://www.thecuratedfridge.com/) and keep an eye on their [Instagram](https://www.instagram.com/thecuratedfridge/).\n\n![](https://m.stacker.news/151915)\n\nIf you are interested in a print of *White Frame*, we’ve made a small edition just for you. Small both in dimensions and small in quantity, they’re printed on 4 x 6” Polar Gloss Metallic paper (255gsm) in an edition of 6 for $25 each (or the equivalent in sats) including free shipping (US), signed and numbered. Let us know in the comments below if you’d like one and we can start the conversation, or if you live outside the US and want to discuss shipping.\n\n![](https://m.stacker.news/151917)\n\n# **Meet the Berkshires**\n\nIn case you missed it, the second feature for our new publication *Meet the Berkshires* went out last month and featured [Lily Thorne](https://theberkshires.substack.com/p/lily-thorne-studio), a fine woodworker here in our town of West Stockbridge. Our next edition is now in progress.\n\n![](https://m.stacker.news/151918)\n\n# **The Art Stand**\n\nThough the weather forecast as been notoriously changeable around these parts, our Art Stand is open once again and stocked with a rotating selection of small prints and copies of our zine, *First Frost / Final Bloom*. We also occasionally stock it with extra garden produce and some flowers. Slowly but surely The Art Stand is gaining some traction, but these things take time. We recently had some visitors who are based in Canada but frequently visit the Berkshires to meet up with family here. They had picked up one of our [free zines from the info booth](https://newsletter.pappasbland.com/p/liveandletgift) last year but not opened it until they got home to Canada. Inside, they found information about our art stand and made a mental note to check it out next time they were in town. Sure enough, almost a year later they came to visit. It really solidified for us how seemingly small local ideas like free homemade zines can stand out as being unique and make a connection with someone who is looking for something different/analog/human.\n\n![](https://m.stacker.news/151919)\n\n# **A New Horticulturist**\n\nThis past May Diana graduated from Berkshire Botanical Garden’s Horticulture Certificate Program (Level 1), a fantastic experience that covered topics from Herbaceous Plants, Soil health, Native Plants, Garden Design, Plant Health Care, Propagation and much more. New friends, colleagues, and connections were made, and unexpected roles and opportunities have emerged. \n\nIn many ways, our *First Frost / Final Bloom* zine would not exist if Diana hadn’t taken the leap to get her horticulture certificate – she would not have sat in her herbaceous plants class learning all about dahlias from Lee Buttala, who would later write the most lovely introduction to our zine. And speaking of our zine…\n\n# **First Frost / Final Bloom**\n\nOur art zine continues to reach new people, from farm stands and garden gift shops to brick-and-mortar book and design stores. Our latest stockist is a very exciting one: former fashion designer and gallerist Matthew Ames has opened a beautiful new store in Lenox that showcases handmade items made by over 80 artisans. From furniture to home goods, art to lighting, books to jewelry and so much more, the collection at [Walker Street Market](https://walkerstreetmarket.com/) is impeccably curated and a real pleasure to explore. You can learn more about it [here](https://galeriemagazine.com/matthew-ames-opens-walker-street-market-a-haven-for-contemporary-craft/). We’re thrilled that *First Frost / Final Bloom* is available there and in the company of such inspiring work.\n\n![](https://m.stacker.news/151920)\n\nStockists of our zine now include:\n\n* [11 Lenox Flower Farm](https://maps.app.goo.gl/SaVWny5214oPn3Zf8), West Stockbridge, MA\n* [Shaker Mill Books](https://www.shakermillbooks.com/), West Stockbridge, MA\n* [Berkshire Botanical Garden](https://www.berkshirebotanical.org/), Stockbridge, MA\n* [Walker Street Market](https://walkerstreetmarket.com/), Lenox, MA\n* [Arcana: Books on the Arts](https://www.arcanabooks.com/), Culver City, CA\n\nIf you live further afield you can order a copy from us directly at [https://pappasbland.com/fffb](https://pappasbland.com/fffb)\n\n# **Stormy**\n\nCat ownership continues to be interesting for us. Stormy is an indoor cat, but she observes the great outdoors with high interest. One night, while sitting by the sliding door onto our deck, she was joined on the other side of the glass by a mystery black cat and they sat together for much of the night. It hasn’t been seen since but that cat made quite an impression on her. She was glued to that spot for days afterwards, waiting for her friend, until a few days later when a black bear walked past our house. Stormy saw it and spent the next few days hiding in confined spaces. She’s back to her normal self now, diligently hunting any flies that manage to get inside.\n\n![](https://m.stacker.news/151921)\n\n# **Meadow Gradient II**\n\nNow, a new photograph: Tom is building a collection of photographs of our meadow as seen from the house through painter’s plastic, and this is a very Rothko-esque addition to the series. We dedicate this to the memory of our friend, Bindy. We will miss him deeply.\n\n![](https://m.stacker.news/151922)\n\nThanks for reading, and enjoy the rest of your summer.\nDiana & Tom",
-      "sats": 1410,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T01:19:54.543Z",
-      "user": {
-       "name": "pappasbland"
-      },
-      "subName": "Photography"
-     },
-     {
-      "id": "1546122",
-      "title": "Floresta Roadmap 2026: From Building Capabilities to Hardening the Node",
-      "url": "https://www.getfloresta.org/blog/roadmap-Q2-Q3",
+      "id": "1545033",
+      "title": "Luke and Mechanic - YOU'RE FIRED!",
+      "url": "https://x.com/GrassFedBitcoin/status/2086920080064127297",
       "text": "",
-      "sats": 1229,
+      "sats": 717,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-08-12T04:08:17.933Z",
+      "ncomments": 16,
+      "createdAt": "2026-08-10T21:08:11.442Z",
       "user": {
-       "name": "nout"
+       "name": "Kruw"
       },
       "subName": "bitcoin"
-     },
-     {
-      "id": "1546281",
-      "title": "SpaceX crashed too hard for insiders’ bonus unlock",
-      "url": "https://protos.com/spacex-crashed-too-hard-for-insiders-bonus-unlock/",
-      "text": "> Although mainstream media covered insiders’ massive unlock of 911.5 million SpaceX shares worth $101 billion on August 6, very few people realize that an additional unlock on that date failed because SpaceX’s stock price had crashed so badly.\n>\n> That second, bonus tranche of 455.8 million shares required SpaceX to close at or above $175.50 per share, i.e. 30% above the formal $135 IPO price, for at least five of 10 trading days leading into its August 4 earnings report.\n>\n> SpaceX held nowhere close to that threshold in Nasdaq trading. The condition failed.\n>\n> The market capitalization of SpaceX was only able to reach its momentary, $3 trillion peak because Elon Musk floated only a tiny quantity of shares in the IPO.\n>\n> [**...read more at protos.com**](https://protos.com/spacex-crashed-too-hard-for-insiders-bonus-unlock/)",
-      "sats": 420,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T12:07:58.489Z",
-      "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "Stacker_Stocks"
      },
      {
       "id": "1546291",
       "title": "Canadian Trolley Problem",
       "url": null,
       "text": "![](https://m.stacker.news/151970)\n\nS/O to Ansel Linder\n\n😂",
-      "sats": 284,
+      "sats": 3233,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 6,
       "createdAt": "2026-08-12T12:27:08.771Z",
       "user": {
        "name": "BlokchainB"
@@ -2063,86 +2018,131 @@
       "subName": "Memes"
      },
      {
-      "id": "1546300",
-      "title": "Ranked: World Currencies vs. the U.S. Dollar in 2026",
+      "id": "1545803",
+      "title": "Who's a bigger bitcoin villain to you?",
       "url": null,
-      "text": "![](https://m.stacker.news/151971)\n\n[**🔗 visualcapitalist.com**](https://www.visualcapitalist.com/world-currencies-vs-u-s-dollar-in-2026/)",
-      "sats": 146,
+      "text": "Just curious, thought this might make more some interesting discussion",
+      "sats": 6378,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-08-12T12:37:20.280Z",
+      "ncomments": 49,
+      "createdAt": "2026-08-11T18:16:03.573Z",
       "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "charts_and_maps"
-     },
-     {
-      "id": "1545899",
-      "title": "The Humble Pies Begin: BIP-110 Requiem",
-      "url": "https://x.com/knutsvanholm/article/2087187133333225494",
-      "text": "Some decided to [rage-quit](https://x.com/hodlonaut/status/2086758125323903194), others are actively fighting on the new Dashjr coin, and yet others decided to about-face and offer some humble pie.\n\n## \"Are you just going to give in? Or stay on Bitcoin and fight?\" -- Scammer [Luke Dashjr](https://x.com/LukeDashjr/status/2086941843703353465), Aug 11 https://stacker.news/items/1525907\n\n**As far as public apologies go, this by Knut Svanholm is pretty OK**\n(There's a monetary point in there I wish to address separately).\n\n***\n\n*blah-blah-blah*, spam is bad, bitcoin is money only, we shouldn't have Vitaliks around. OK cool,\n\n> This shift in developer culture was, in my according-to-me-appropriately-humble opinion, in itself a reason to support BIP110. So I did support it. I did what I could to help it get activated. I encouraged people to run nodes and signal for it, and I signaled for it myself\n\nRealizing and reflecting on one's own actions.\n\n![](https://m.stacker.news/151889)\n\nMaking the proper assessment of what happened/reality proving you wrong\n\n> answer 2) is correct, **Bitcoin is still Bitcoin and worth fighting for.** We may have lost one battle, but there are many more battles to come. I personally currently lean towards this answer. I think I overestimated BIP110's chances of triggering a cascading dominoes scenario. Therefore, **I hereby choose to eat an appropriately small piece of Humble Pie rather than an entire Double Down pie.**\n\n> *This is only true insofar as BIP110ers don’t choose to switch to a PoW-change chain.*\n> I felt reinvigorated. My role in this going forward is to spread this message. A ton of people on the BIP110 side will be unsure whether to choose BIP110-coin or Legacy-coin. If they choose unwisely, or based on false beliefs, they could lose a lot of money. I am not going to be the guy who leads lemmings off a cliff. I am not going to encourage people to sell their legacy sats for 110 sats. If anything, why not keep both? That way you stay on the potentially self-repairing Titanic while keeping the option to flee to the last-minute lifeboat if needed.\n\n## \"I never based my support for BIP110 on the likelihood of the outcome I wanted. Nor was I ever “worried about my reputation” because the only reason I have one, in the first place, is that I never worried about it.\"\n\nGangster. Real based. \n\n> The Bitcoin Infinity Show will continue as usual.\n> I will continue to produce the highest quality AI-free pleb slop to the best of my ability whenever I feel compelled to do so.  And in about a week from now, I'll be quietly celebrating Bitcoin Infinity Day with a nice, humble piece of pie. I hope as many of you as possible will join me.\n\n***\n\nThe most aggressive wing of BIPtardary carries a stain that will wash out only with some serious repentance work (and, I suppose, time!). For some, like the scammers and pedo-obsessed Luke and Mechanic (and the stubbornly [mistaken cat](https://x.com/joakimbook/status/2086506440944918733)) there's no way back. Justin is already trying to whitewash himself... [not enough](https://x.com/joakimbook/status/2086920607120138735) For others, like Knut, there is; I'm glad to see he's taking it.",
-      "sats": 2998,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 10,
-      "createdAt": "2026-08-11T21:07:05.521Z",
-      "user": {
-       "name": "denlillaapan"
+       "name": "SimpleStacker"
       },
       "subName": "bitcoin"
      },
      {
-      "id": "1546275",
-      "title": "402, Charted - Tracking the rise of L402, x402, and MPP",
-      "url": "https://getalby.com/blog/402-charted-tracking-the-rise-of-l402-x402-and-mpp",
-      "text": "",
-      "sats": 204,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-08-12T12:01:44.599Z",
-      "user": {
-       "name": "Alby"
-      },
-      "subName": "AI"
-     },
-     {
-      "id": "1545332",
-      "title": "territory.watch",
-      "url": "https://territory.watch/",
-      "text": "![](https://m.stacker.news/151782)\n\n[territory.watch](https://territory.watch) exists to support territory founders.\n\nFor now, it's just a static website to look up the revenue and other stats of a territory.\n\n**The data isn't incrementally updated yet, because it's not trivial: there's no zap feed, so we would need to refetch every item to see if it was zapped since the last time we checked.**\n\n*It also exists because I wanted to experiment with Claude Design, and I got delusions of grandeur: Maybe this could become a staging ground for new features built into Stacker News, or a* [*safe environment*](https://github.com/ekzyis/territory.watch) *for stackers who want to learn how to code in a zero-mutual-expectations FOSS setting (with or without AI), with an (experienced) reviewer (me). It's a static site with minimal JS; fuck-ups would be impressive.*",
-      "sats": 11642,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 51,
-      "createdAt": "2026-08-11T10:25:59.310Z",
-      "user": {
-       "name": "ek"
-      },
-      "subName": "meta"
-     },
-     {
-      "id": "1546082",
-      "title": "Compass Mining  Breach August 10th 2026",
+      "id": "1546427",
+      "title": "How do you Deal with Toxic Family?",
       "url": null,
-      "text": "To Our Customers,\n\nOn the evening of August 10, we identified unauthorized activity involving Compass Mining marketplace accounts. The activity included attempts to change passwords, two-factor authentication settings, and backup codes without account holders' authorization.\n\nWe want to be clear about what happened, what was accessed, what was not affected, and what we are asking you to do now.\n\n**What happened**\n\nAn unauthorized party exploited a weakness in the authentication system supporting our marketplace. This allowed them to reset login credentials and access a number of customer accounts.\n\nOur team identified the activity that evening, activated our incident response process, and disabled the affected functions within hours. The activity stopped, and we have seen no further unauthorized attempts since.\n\n**What was accessed**\n\nOur technical review found that the unauthorized party was able to access the following information on affected accounts:\n\n* Account email addresses.\n* Invoice and transaction history, including payment amounts, invoice amounts, and associated dates.\n\n\nThe following information and systems were not affected:\n\n* **No payment card numbers, bank account details, or stored payment credentials.**\n* **No wallet balances or wallet information.** Attempts to access wallet-related functions returned no data.\n* **No mining pool changes were pushed to machines.** Customer hardware continued operating without service interruption.\n\n\n**About your mining pool settings**\n\nThe unauthorized party removed mining pool information stored on affected accounts and attempted to replace it with their own pool as the default in the Compass Mining dashboard.\n\nThe attempt did not redirect any hashrate. Changing a pool setting in the marketplace does not, by itself, change where a machine points. Pool changes must pass through a separate validation process before taking effect, and that process prevented the attempted change from reaching customer machines.\n\nWe identified every pool entry altered during the incident and separated those changes from legitimate pool updates already scheduled during the same period. We are now restoring the affected settings. Once that work is complete, please review your pool configuration and open a support ticket if anything does not look correct.\n\n**What we have done**\n\n* Terminated all active account sessions.\n* Reset all customer passwords, two-factor authentication settings, and backup codes as a precaution, whether or not an account showed unusual activity.\n* Closed the path used to access the accounts and strengthened the surrounding security configuration.\n* Applied current security updates to the affected system and established an ongoing patching and vulnerability review schedule.\n* Increased monitoring across our authentication systems.\n* Preserved technical evidence and initiated efforts to identify those responsible for the activity.\n\n\n**What we are asking you to do**\n\n* **Reset your credentials.** You should have received an email with instructions, which are also available on our login page. If you did not receive the email or are having trouble completing the reset, contact our support team.\n* **Review your account.** Check your dashboard, account settings, and mining pool configuration to confirm everything looks as expected.\n* **Change reused passwords.** If you used your Compass Mining password on any other account, change it there as well.\n* **Be cautious with unexpected messages.** Security incidents are often followed by phishing attempts. Because email addresses and billing amounts were accessed, a fraudulent message may appear convincing. Do not click links or open attachments from senders you do not recognize, even if a message appears to come from Compass Mining. When in doubt, visit our website directly instead of following a link.\n* **Report anything unusual.** If you see account activity you did not authorize, open a support ticket immediately.\n\n\n**What happens next**\n\nOur investigation and remediation work are ongoing. Once the investigation is complete, we will share additional details, including further measures for continued prevention.\n\n**Getting in touch**\n\nIf you have questions about your account, please open a support ticket so our team can review it directly. General security questions may be sent to security@compassmining.io.\n\nWe have always taken your account security seriously.  We apologize for any concern and disruption this incident may have caused, and we appreciate your patience as we complete this work.\n\n**The Compass Mining Team**",
-      "sats": 962,
+      "text": "I'm fully aware that family is important, but every family is different; All I want from mine is to leave me alone, they have nothing to do in their life, which is a bit sad to see, but I would like to avoid that empty and negative energy. I don't know if it's called selfish, but each conversation is draining.\n\nSometimes I think about how I'd deal with my kids in the future, I would like them to be happy. We spend some nice time together from time to time, not forcing them to be around all the time, because I would have my own hobby to be busy with.\n\nHow do stackers deal with your own family, and what would you do in my situation?",
+      "sats": 1637,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 9,
+      "createdAt": "2026-08-12T15:43:45.495Z",
+      "user": {
+       "name": "anon"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1546369",
+      "title": "Looking for long term projects",
+      "url": null,
+      "text": "Is there a platform to match bitcoiners / nostriches with projects in need of skills, strategic input, and investment?\n\nSkills as in writing / marketing / biz dev / community growth / GTM strategy.\nI am not a dev.\n\nSomething like Y Combinator or CofoundersLab, but for freedom tech projects.\n\nAny ideas?\nWould be cool if there was a space for this on SN.",
+      "sats": 1909,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 9,
+      "createdAt": "2026-08-12T14:26:32.095Z",
+      "user": {
+       "name": "TotallyHumanWriter"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1546301",
+      "title": "How to destroy bitcoin (and what happened to the 107 coins burned in May)",
+      "url": "https://bennet.org/blog/how-to-burn-bitcoin/",
+      "text": "My write-up, and I'm about three months late to the news - but this rabbit hole proved super interesting.\n\nI've dug into how 1111...oLvT2 is actually constructed, why there's no known key for it, and what the five addresses were doing beforehand: one of them sent its entire balance to a P2SH address in March and got almost exactly the same amount back three weeks later.\n\nAlso a toy in there that generates real key pairs against the burn address, if you fancy your odds at 10^48!",
+      "sats": 501,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 2,
-      "createdAt": "2026-08-12T01:59:28.307Z",
+      "createdAt": "2026-08-12T12:40:05.992Z",
       "user": {
-       "name": "BlokchainB"
+       "name": "bennet"
       },
-      "subName": "news"
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1546524",
+      "title": "BIP460: CISA for Taproot Key Path Spends in SegWit v2 - fjahr",
+      "url": "https://github.com/bitcoin/bips/pull/2212/changes#diff-7849f6151417819c1749ac9cc72b7f84a6485cdd9ba2cf58db6ef3945d9453ab",
+      "text": "There have been so many dramatic things happening in Bitcoin lately that I completely missed this BIP draft for cross-input signature aggregation (CISA).\n\nBitcoiners have been talking about CISA for a while now (here is an explainer https://stacker.news/items/923407/r/Scoresby and a paper about it https://stacker.news/items/920670/r/Scoresby and a recent talk by fjahr https://stacker.news/items/1544856/r/Scoresby and a talk by Tim Ruffing https://stacker.news/items/1518433/r/Scoresby) and it is interesting to see the proposals getting into a more finished form.\n\nThe tl;dr for cross-input signature aggregation is that you could have a transaction with inputs from many different keys (implying potentially many different owners) but onchain it would look like a single taproot signature for a single private key. \n\nAs fjahr points out in the BIP draft, CISA may provide:\n\n> * '''Lower fees and smaller transactions''': Signature data shrinks with the number of aggregated inputs, reducing transaction weight and fees and freeing up block space\n> * '''Reduced cost of privacy''': Aggregation reduces the signature cost of any batched transaction, and collaborative transactions such as CoinJoin and PayJoin benefit the most per participant because they batch the inputs of many users\n> * '''Flexible usage''': Two aggregation schemes serve different use cases and individual inputs can opt out\n> * '''Protocol compatibility''': The explicit opt-out protects protocols that depend on a specific signature appearing on chain\n\nThis BIP draft doesn't propose the actual aggregation scheme (\"The aggregation schemes themselves are specified in [BIP458 half-aggregation](https://github.com/bitcoin/bips/pull/2205) and [BIP459 full-aggregation](https://github.com/bitcoin/bips/pull/2210)\").\n\nAnd it does require a soft fork.\n\nfjahr also suggests some use cases:\n\n> * '''CoinJoin/PayJoin transactions''': With CISA, the per-participant cost of CoinJoin and PayJoin transactions decreases as the number of participants increases, making privacy-enhancing usage cheaper\n> * '''Consolidation and batching''': Businesses and users combining many small UTXOs into a single output or multiple payment outputs benefit from reduced transaction costs\n> * '''Lightning channel opens and splices''': Dual funding and splicing combine inputs from both peers in a collaborative transaction, and the existing interactive negotiation between the peers can accommodate the signing rounds of full-aggregation\n\nI'm curious what some of the objections to this are. The main downside I saw on the [mailing list](https://groups.google.com/g/bitcoindev/c/1XH6sBLWZuA) was that this proposal adds validation complexity (I read this as fancy complicated math that nodes would need to be ready to accomodate). It may also suffer some from a problem that also plagues the covenant conversation: lots of options, and no clear way to decide which set of trade-offs should be adopted. \n\nAnyhow, this is definitely one to watch!",
+      "sats": 1058,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-12T17:13:46.971Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1546439",
+      "title": "Zeus Wallet Balance not updating in a timely manner.",
+      "url": null,
+      "text": "Recently I have been using the Zeus Wallet and I have noticed an issue.\n\nWhen receiving into Zeus I see the payment go through on the activity screen but I do Not see it reflected on the home screen balance.\n\nI have swiped down to refresh the screen but no change.  \n\nIt will eventually update to the correct balance but it may take hours.  \n\nIs there an User Interface option I am missing, to force it to update balance?",
+      "sats": 1658,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 10,
+      "createdAt": "2026-08-12T15:52:00.228Z",
+      "user": {
+       "name": "Wumbo"
+      },
+      "subName": "lightning"
+     },
+     {
+      "id": "1546122",
+      "title": "Floresta Roadmap 2026: From Building Capabilities to Hardening the Node",
+      "url": "https://www.getfloresta.org/blog/roadmap-Q2-Q3",
+      "text": "",
+      "sats": 3458,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-08-12T04:08:17.933Z",
+      "user": {
+       "name": "nout"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1546494",
+      "title": "Stacker Sports Summer League- Week 2 Pick 'em",
+      "url": null,
+      "text": "@grayruby @WeAreAllSatoshi @Undisciplined @guerratotal @gnilma @Carresan @User21000000 @BlokchainB @gsc360 @siggy47\n\nCurrent Prize Pool: **110736 sats** (50% to winner, 50% to @NEEDcreations geyser campaign)\n\nPick the winners from the following events. Each correct winner is worth 1 point. Picks must be in by Thursday August 13 8pm et.\n\nHere are your events:\n\nArizona Cardinals vs Las Vegas Raiders- NFL Preseason (Thursday Aug 13 8pm et)\nOttawa Redblacks vs Winnipeg Blue Bombers- CFL Week 11 ( Friday Aug 14 8:30pm et)\nIslam Makhachev vs Ian Garry- UFC 330 Main Event (Saturday Aug 15 9pm et)\nEssendon Bombers vs Sydney Swans- AFL Round 23 (Sunday Aug 16 2:40am et)\nMilwaukee Brewers vs Los Angeles Dodgers- MLB (Sunday Aug 16 4:10pm et)\n\nGood Luck!",
+      "sats": 1233,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-08-12T16:41:07.775Z",
+      "user": {
+       "name": "StackerSports"
+      },
+      "subName": "Stacker_Sports"
      },
      {
       "id": "1546237",
       "title": "Bitcoin Airgap QR Workbench",
       "url": "https://m0wer.github.io/bitcoin-airgap-qr/",
       "text": "Was tired of not having a simple tool to scan and generate dynamic QRs used by many different air gaped hardware wallets. Built one.\n\nIt runs in your browser. No external dependencies, and no requests after loading. You can also clone it and run it locally: [https://github.com/m0wer/bitcoin-airgap-qr/](https://github.com/m0wer/bitcoin-airgap-qr/)\n\n![](https://m.stacker.news/151960)",
-      "sats": 209,
+      "sats": 1320,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 4,
@@ -2153,184 +2153,184 @@
       "subName": "tech"
      },
      {
-      "id": "1546282",
-      "title": "The SN Daily Putt #92: Play, Putt, Score, ZAP!⚡️⛳️",
-      "url": null,
-      "text": "Yesterday once  again was too easy. Stackers the obvious bank shot and put up low scores. The first to a low score of 3 on the par 11 was @Steffenfield \n\nhttps://stacker.news/items/1545329/r/BlokchainB\n\nOn to hole #92\n\n Eagle 🦅 day. Score an Eagle or better and get 300 sats! All other scores will be zapped accordingly. If I think you are a bot only one zap.\n\nhttps://putt.day\n\nHappy Putting Stackers!",
-      "sats": 151,
+      "id": "1546247",
+      "title": "BIP-110 monitor setup",
+      "url": "https://b10c.me/projects/028-bip110-monitoring-livestream/",
+      "text": "![](https://m.stacker.news/151962)\n\n![](https://m.stacker.news/151964)",
+      "sats": 1232,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-08-12T12:13:28.066Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "gaming"
-     },
-     {
-      "id": "1546151",
-      "title": "Daily Discussion Thread ~Music Saloon!",
-      "url": null,
-      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
-      "sats": 446,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-08-12T06:18:54.008Z",
-      "user": {
-       "name": "Public_N_M_E"
-      },
-      "subName": "Music"
-     },
-     {
-      "id": "1546345",
-      "title": "Did you know that...?",
-      "url": null,
-      "text": "![](https://m.stacker.news/151796)\n\n***\n\nDid you know that on August 12, 2014, the world said goodbye to Lauren Bacall at age 89, but her legendary, hypnotic expression known as \"The Look\" was actually born out of a panic attack?\n\n![](https://m.stacker.news/151968)\n\nWhile filming her cinematic debut in *To Have and Have Not* (1944), the 19-year-old was trembling uncontrollably from the nerves of sharing the screen with Humphrey Bogart. To hide her fear, she pressed her chin against her chest and tilted her eyes upward toward him. This improvised trick not only controlled her shaking but also created one of the most sensual and magnetic gestures in cinema history, forever immortalized by her iconic line: *\"You know how to whistle, don't you, Steve? You just put your lips together and blow.\"* \n\nhttps://www.youtube.com/watch?v=MheNUWyROv8\n\nBehind her sophisticated, smoky voice—which she practiced intensely to overcome her shyness—was a woman of immense resilience and a name entirely manufactured by Hollywood. Born in the Bronx as Betty Joan Perske, director Howard Hawks discovered her on a magazine cover, ordered her to change her name to Lauren, and added an extra \"l\" to her mother's maiden name (Bacal) so nobody in the industry would mispronounce it. This sparked a golden era where she showcased undeniable chemistry with Bogart—who became her husband—in film noir masterpieces like *The Big Sleep* (1946), *Dark Passage* (1947), and *Key Largo* (1948), alongside brilliant comedic turns with Marilyn Monroe in *How to Marry a Millionaire* (1953). \n\nhttps://www.youtube.com/watch?v=LF_chuSy9G4\n\n`The big sleep`\n\nhttps://www.youtube.com/watch?v=K2nZ6oqbAQ4\n\n`How To Marry A Millionaire | 1953 | Fashion Show`\n\nHer powerful legacy reached far beyond the silver screen, turning her into a cultural icon of New York City. Bacall conquered Broadway, winning two Tony Awards, received an Honorary Academy Award in 2009, and captivated newer generations in films like *Misery* (1990) and *The Mirror Has Two Faces* (1996). Off-screen, she spent much of her life in Manhattan's legendary Dakota Building, where she famously formed the original \"Rat Pack\" circle of artist friends. There, she was a close neighbor to John Lennon and Yoko Ono, witnessing the vibrant cultural life of the city and the tragic 1980 night when the legendary musician was assassinated right outside her front door.\n\n![](https://m.stacker.news/151979)\n\n`The Original Rat Pack`\n\n***\n\nhttps://www.youtube.com/watch?v=igSFYaxJYSc",
-      "sats": 0,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T13:36:42.418Z",
-      "user": {
-       "name": "guerratotal"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1546252",
-      "title": "Economic Liberty Begins Where Government Privilege Ends",
-      "url": "https://www.cato.org/blog/economic-liberty-begins-where-government-privilege-ends",
-      "text": "> Classical liberals stress that all are equal before the law. Although liberals have disagreed about countless questions, they are united by a belief in impersonal, rules-based governance—the rule of law. John Adams captured the ideal when he defined a republic as “an empire of laws, and not of men.” Liberty depends not upon finding benevolent rulers but upon constructing institutions in which no person or group is entitled to stand above the rules governing everyone else. \n>\n> Economic liberty is not separate from the rule of law but one of its clearest applications. A free market does not mean anarchy. It means an economy governed by general and predictable rules that apply equally to everyone. The alternative is not more laws but a different kind of law: commands, permissions, and exceptions designed to favor particular industries and professions over others.\n>\n> As [F. A. Hayek](https://www.libertarianism.org/videos/rediscovering-f-hayek-50-years-after-nobel) wrote in *The Constitution of Liberty*, “freedom of economic activity had meant freedom under the law.” The relevant distinction is not simply between government action and inaction, but between general rules applied to all and discretionary interventions favoring some.\n>\n> [**...read more at cato.org**](https://www.cato.org/blog/economic-liberty-begins-where-government-privilege-ends)",
-      "sats": 174,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T11:19:42.519Z",
+      "ncomments": 1,
+      "createdAt": "2026-08-12T10:59:46.738Z",
       "user": {
        "name": "0xbitcoiner"
       },
-      "subName": "Politics_And_Law"
+      "subName": "bitcoin"
      },
      {
-      "id": "1545916",
-      "title": "Will the Machines Do All the Work For Us? (Money Stuff, Matt Levine)",
-      "url": "https://www.bloomberg.com/opinion/newsletters/2026-08-11/pick-and-shovel-seller-financing",
-      "text": "**Here's some dystopian-type labor market shit** (https://stacker.news/items/1463052) I don't want to be a part of:\n\n![](https://m.stacker.news/151894)\n\n(lesbehonest: that currency will be denominated in sats, but whatever...Money Stuff is a tradfi newsletter)\n\n> You could sort of imagine a Jane Austen-y early-19th-century economy, with AI as the farm workers doing the economic activity and humans as the aristocratic rentiers who own land and earn 5% in perpetuity.\n\nMore like [4% during the twenty-odd years](https://authory.com/JoakimBook/a/a749524896f4f48f3bed3669ede037859) Austen was writing, but who's counting.\n\n> There are other approaches — “everyone should buy *stock* in the AI buildout,” for instance — but the rentier approach has a certain simplicity. Who knows *which* AI model or harness or end user will ultimately capture the upside from AI? Whatever it is will probably need chips, though, so there’s a steady living to be made from renting out chips.\n\nwe all need a retirement account of diversified AI stocks so we're *all* part of the AI landlord-rentier class.\n\n> I must say that the two main dynamics I write about are “we should invest everyone’s retirement savings in AI infrastructure” and “we should invest everyone’s retirement savings in sports gambling,” and only the first one has some actual economic logic to it.**The point of investing is to own a share of future economic productivity. If a big share of future economic productivity might happen on computer chips, you might as well own chips.**\n\nNVIDIA partners with a who's-who of private capital high finance to raise *$500bn(!)* for AI infrastructure. No clue *whatfor* and *wherefrom* but whatever.\n\n![](https://m.stacker.news/151895)\n\n> A major theme in financial markets over the past few years has been the rise of “privates,” and the push to put retail investors’ savings into private assets. Sometimes this means selling private funds to retail investors in their retirement accounts; other times it means selling them annuities or life-insurance products or pensions that invest in private assets.\n\n## Anyway, what's up with that dystopian world?\n\nWhat I keep thinking is that there'll be an increasingly segregated (real? https://stacker.news/items/1520572) economy where people will pay premium to deal with humans. Human labor's scarcity value is being human... a thing *other humans* like moreso than Chatbots and automated robots. https://stacker.news/items/1470476 https://stacker.news/items/1488323\n\nIn this *very small sliver* of things is Marx correct (work, alienation, meaning)... https://stacker.news/items/1533284, https://stacker.news/items/1540851, we take pride in what we do, need a purpose and a way to be meaningfully productive and beneficial to our fellow man.\n\nSo we won't all just sit around and be boring aristocratic rentier classes while the machines do our dirty work for us. \n\n***\n\nMoney Stuff: [https://newsletterhunt.com/emails/449105](https://newsletterhunt.com/emails/449105)",
-      "sats": 1996,
+      "id": "1546207",
+      "title": "Any good data visualization for Bitcoind?",
+      "url": null,
+      "text": "Hello,\n\nI stopped using Umbrel for a variety of reasons, and I am using k3s now with Grafana and Prometheus. I miss the map of peers displayed on Umbrel when launching the JavaScript application for Bitcoind.\n\nI am trying to find an alternative way to get good metrics for Grafana. In particular I am interested in peer metrics to show a map and also other network metrics which could be nice to have.\n\nCurrently I am using dashboard id 21351 \"Bitcoind Exporter\" (see [https://grafana.com/grafana/dashboards/21351-bitcoind-exporter/](https://grafana.com/grafana/dashboards/21351-bitcoind-exporter/)). It is nice. We have the fee rate, the mempool overview, etc but it is just a few metrics.\n\nI have seen statoshi.info which is quite good but it uses statsD to aggregate statistics. I would prefer to use Prometheus just to save memory and because I am more familiar with it.\n\nLastly I have seen this [article](https://davidebtc186.substack.com/p/how-to-monitor-your-bitcoin-and-lightning?triedRedirect=true) but it is focused on LND, not Bitcoind.\n\nI am aware of Satoshi Dashboard but unfortunately it does not pull data from Bitcoind  but from external APIs. \n\nSo my question would be besides the resources aforementioned, does anyone know about a good resource to get statistics from Bitcoind? Preferably with Prometheus but I am open to other ways if everything is already implemented.",
+      "sats": 1172,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 12,
-      "createdAt": "2026-08-11T21:40:07.485Z",
+      "ncomments": 3,
+      "createdAt": "2026-08-12T09:33:18.264Z",
       "user": {
-       "name": "denlillaapan"
+       "name": "john_doe"
       },
-      "subName": "AI"
+      "subName": "bitcoin"
      },
      {
-      "id": "1523710",
-      "title": "ScamouraiWallet/POST_MORTEM.md - nopara73",
-      "url": "https://github.com/nopara73/ScamouraiWallet/blob/master/POST_MORTEM.md",
-      "text": "I never really got involved in the Samourai vs Wasabi disagreement. I've used both coinjoin implementations and feel like they were both pretty good tools. In that light, I found this post mortem by nopara (who is the originator of Wasabi Wallet, I believe) and, whichever side you come down on, it is an interesting read.\n\nI didn't know about some of this history here. For instance, nopara says:\n\n> I created ZeroLink. The [repository](https://github.com/nopara73/ZeroLink/commits/master/) makes the chronology clear. I opened it on July 28, 2017. Before Samourai made a single commit, I had made 19 and written a 184-line, 2,883-word document containing the framework’s core architecture.\n\nThe article is not what I'd call an unbiased assessment, but at the same time nopara raises some good points. On the case of Samourai's mixing volume:\n\n> Samourai’s Twitter presence made the rivalry look symmetrical despite the large difference in usage. Dumplings—my reproducible CoinJoin scanner—separated fresh bitcoin entering a mixer from coins merely being remixed and called fresh bitcoin the best on-chain proxy for adoption. From Whirlpool’s first detected month in April 2019 through the dataset’s end in August 2022, it identified 247,675 fresh BTC entering Wasabi and 30,228 entering Whirlpool. Wasabi led in every one of those forty-one months. This is a measure of bitcoin, not a user headcount, but it is the opposite of adoption parity.[<sup>21</sup>](https://github.com/nopara73/ScamouraiWallet/blob/master/POST_MORTEM.md#user-content-fn-dumplings-cef5e724e37e819c1d31e65ccc24493c)\n\n![](https://m.stacker.news/147964)\n\nAll in all, it's worth the read if you want to try to get a better understanding of the Wasabi vs Samourai yelling match. I'd be curious to hear a pushback from the Samourai side.",
-      "sats": 24214,
+      "id": "1545902",
+      "title": "How not to change your proof of work algorithm",
+      "url": null,
+      "text": "# Today, the BIP110ers picked a new proof of work algorithm, it was a mess.\n\nThere have been no blocks on the BIP110 chain since block 961633 was mined two days ago. There do not seem to be many miners who are interested in mining on that chain and therefore the chain is stalled. Under current rules, it needs to reach the next difficulty adjustment before things will get easier -- and that adjustment is 2014 blocks away.\n\nIn response to this, Luke Dashjr announced that BIP110 would be hard forking to introduce a new proof of work algorithm.\n\nIf hard forks are on the table, you might wonder why they didn't just use a fork to change the rules around mining difficulty so they could get their chain going again. Unfortunately, with only 2% (or less) of the hashrate mining on their chain, they would be an easy target for other miners to cause chaos on their chain (eg doublespending, reorgs, splits).\n\nChanging the proof of work algorithm defends against this threat by reducing the advantage of the ASICs operated by Bitcoin miners today (which are optimized for SHA256). \n\n# How to do a fair selection of the new POW algorithm?\n\nThis is not a new problem. Bitcoiners have long observed that whoever does the picking of a new POW algorithm has the potential to collude with ASIC manufacturers to produce a new line of ASICs for the new algo or to simply stockpile chips that are suitable for the new algorithm. There are many ways to do it, but they all end of looking a lot like a premine.\n\nSo it's good if you make your choice in a way that is demonstrably fair.\n\n# The first attempt\n\nThis is Luke Dashjr's first announcement about the proof of work change:\n\n![](https://m.stacker.news/151887)\n\n[source](https://x.com/LukeDashjr/status/2087164051797192886)\n\nThe hash Luke included at the end of that message corresponds to the following mapping:\n\n- 0 SHA3x\n- 1 BLAKE2s\n- 2 BLAKE2s\n- 3 BLAKE3x2\n- 4 SHA3x\n- 5 SHA3x\n- 6 BLAKE2b-256\n- 7 SHA3x\n- 8 BLAKE2b-256\n- 9 BLAKE2b-256\n- a BLAKE2s\n- b BLAKE3x2\n- c Eaglesong\n- d BLAKE3x2\n- e BLAKE2b-256\n- f Eaglesong\n\nWhen the next testnet4 block was seen, the last character of the blockhash would pick which of these algorithms was going to be used for BIP110's new proof of work method. By including the hash, Luke demonstrated that the list was created before the block was found so hopefully the block would be a fair source of randomness.\n\n# Testnet4 woes\n\nUnfortunately, Testnet4 has much lower difficulty than Bitcoin. Additionally, it has a rule that allows a block to be mined at difficulty 1 in the event that no block has been found for twenty minutes. \n\nIt seems that no testnet4 block was mined for 20 minutes prior to Luke Dashjr's designated time. This meant that at 1400 UTC, difficulty was set to 1 for mining the block that would decide BIP110's new proof of work algorithm -- and a number of blocks were mined simultaneously.\n\nThis led to quite a bit of confusion.\n\n![](https://m.stacker.news/151888)\n\nAnd to a dilemma: should they try again? Should they wait for the chain split to resolve and a heaviest chain tip to emerge? Should they wait for six blocks?\n\nBecause Testnet4 difficulty is significantly lower than Bitcoin, it quickly became evident that someone could attempt to influence the outcome of the results by mining on the tip of the chain whose crucial block selected a preferred algo.\n\nLuke tried [posting](https://x.com/LukeDashjr/status/2087188103718973731) some new set of criteria which would be revealed at some time (presumably soon?). This however also [failed](https://x.com/LukeDashjr/status/2087222841213083931) to work:\n\n![](https://m.stacker.news/151891)\n\nThis new method was then [revealed](https://x.com/LukeDashjr/status/2087223637271052452) to be:\n\n![](https://m.stacker.news/151892)\n\nWhich eventually resulted in the selection:\n\n![](https://m.stacker.news/151893)\n\nThis apparently is the same proof of work algorithm used by Siacoin, so there are already some ASICs manufactured for mining on it -- which is a good thing?\n\n# Is there a better way to do this?\n\nI was hanging out in the BIP110 Discord for most of the day, observing this process. I don't think it went terribly well. There was a lot of confusion and a lot of frustration. One thing that definitely stood out is that Luke was calling the shots here and the BIP110 community was largely looking to him for a decision.\n\nIt got me to thinking though: how would we go about a fair proof of work change that didn't get gamed?\n\nI remember Matt Corallo [talking about such a change](https://x.com/TheBlueMatt/status/1783865983502827687) a few years back when he was writing about MEVil. And many other Bitcoiners have mentioned \"firing the miners\" by changing the proof of work algorithm. It's sometihng we keep in our back pocket as if we (noderunners) could use it as a cudgel to keep the naughty miners in line.\n\nWatching the BIP110ers struggle with this today made me realize that it is easier said than done.\n\n# How would you go about enacting a fair proof of work change?",
+      "sats": 11822,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 10,
-      "createdAt": "2026-07-12T22:25:14.938Z",
+      "ncomments": 22,
+      "createdAt": "2026-08-11T21:13:38.295Z",
       "user": {
        "name": "Scoresby"
       },
       "subName": "bitcoin"
      },
      {
-      "id": "1546222",
-      "title": "This Day on SN: August 12",
-      "url": null,
-      "text": "#### Top Posts\n- [A Real SPAM solution: People using Bitcoin](https://stacker.news/items/1077925)\n    - 6108 sats \\ 90 comments \\ @028559d218 \\ ~bitcoin \\ `August 12, 2025`\n- [Stacker_Sports Olympics Pool Medal 🥇🥈🥉 Ceremony — Undisciplined bags Gold 🥇](https://stacker.news/items/645787)\n    - 3484 sats \\ 103 comments \\ @Coinsreporter \\ ~Stacker_Sports \\ `August 12, 2024`\n- [SN release: zap/post/comment without account and just-in-time account funding](https://stacker.news/items/223686)\n    - 9637 sats \\ 46 comments \\ @k00b \\ ~meta \\ `August 12, 2023`\n- [Citadel Dispatch E73 - Grassroots Bitcoin Adoption with @CaptainSiddh](https://stacker.news/items/58215)\n    - 3447 sats \\ 1 comment \\ @ODELL \\ ~bitcoin \\ `August 12, 2022`\n- no top post for `August 12, 2021`\n#### Top Stackers\n- @k00b\n    - 111.6k stacked \\ 10.6k spent \\ 1 item \\ `August 12, 2025`\n- @Undisciplined\n    - 20.5k stacked \\ 6435 spent \\ 59 items \\ `August 12, 2024`\n- stacker is in hiding for `August 12, 2023`\n- @cryptocoin\n    - 9571 stacked \\ 2598 spent \\ 41 items \\ `August 12, 2022`\n- @k00b\n    - 32 stacked \\ 68 spent \\ 17 items \\ `August 12, 2021`\n#### Top Comments\n- https://stacker.news/items/1077086?commentId=1077151 on [How Does the Convergence of Monetary Networks Work with Grisham's Law?](https://stacker.news/items/1077086)\n    - 1220 sats \\ 3 replies \\ @SimpleStacker \\ `August 12, 2025`\n        > Hopefully I can clear up some confusion and offer some possibilities as to how the two ideas are consistent. [...]\n- https://stacker.news/items/645572?commentId=646303 on [(Special Edition) Meme Monday- Best SN Meme gets 10k sats](https://stacker.news/items/645572)\n    - 10.5k sats \\ 9 replies \\ @IamSINGLE \\ `August 12, 2024`\n        > ![](https://m.stacker.news/45498) [...]\n- https://stacker.news/items/223541?commentId=223594 on [Daily discussion thread](https://stacker.news/items/223541)\n    - 1249 sats \\ 2 replies \\ @DarthCoin \\ `August 12, 2023`\n        > I am still building guys... [...]\n- https://stacker.news/items/58192?commentId=58364 on [The year is 2069](https://stacker.news/items/58192)\n    - 942 sats \\ 5 replies \\ @tbonesteaks \\ `August 12, 2022`\n        > I’ve somehow stacked more sats than I spend here. And I try to spend them pretty liberally and I don’t post or comment too much that I would get that many from others. But, I have received more than I’ve spent. I’ve been thinking about it a lot. If this is normal than that’s pretty awesome. A very balanced give and take/earn. [...]\n- https://stacker.news/items/983?commentId=995 on [What would make you all comment more?](https://stacker.news/items/983)\n    - 5 sats \\ 2 replies \\ @03785de7ab \\ `August 12, 2021`\n        > I'm a bit confused about the order of post. I just upvote everything for now to give my encouragement in using the platform. [...]\n#### Top Territories\n- ~bitcoin\n    - 7292 stacked \\ 2154 revenue \\ 150.9k spent \\ 79 items \\ `August 12, 2025`\n- ~Stacker_Sports\n    - 31.4k stacked \\ 277 revenue \\ 35.5k spent \\ 167 items \\ `August 12, 2024`\n- ~bitcoin\n    - 22.6k stacked \\ 0 revenue \\ 25.6k spent \\ 280 items \\ `August 12, 2023`\n- ~bitcoin\n    - 36.5k stacked \\ 0 revenue \\ 49.2k spent \\ 341 items \\ `August 12, 2022`\n- ~bitcoin\n    - 108 stacked \\ 0 revenue \\ 186 spent \\ 52 items \\ `August 12, 2021`",
-      "sats": 36,
+      "id": "1546281",
+      "title": "SpaceX crashed too hard for insiders’ bonus unlock",
+      "url": "https://protos.com/spacex-crashed-too-hard-for-insiders-bonus-unlock/",
+      "text": "> Although mainstream media covered insiders’ massive unlock of 911.5 million SpaceX shares worth $101 billion on August 6, very few people realize that an additional unlock on that date failed because SpaceX’s stock price had crashed so badly.\n>\n> That second, bonus tranche of 455.8 million shares required SpaceX to close at or above $175.50 per share, i.e. 30% above the formal $135 IPO price, for at least five of 10 trading days leading into its August 4 earnings report.\n>\n> SpaceX held nowhere close to that threshold in Nasdaq trading. The condition failed.\n>\n> The market capitalization of SpaceX was only able to reach its momentary, $3 trillion peak because Elon Musk floated only a tiny quantity of shares in the IPO.\n>\n> [**...read more at protos.com**](https://protos.com/spacex-crashed-too-hard-for-insiders-bonus-unlock/)",
+      "sats": 983,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T10:00:03.250Z",
-      "user": {
-       "name": "sn"
-      },
-      "subName": "meta"
-     },
-     {
-      "id": "1546166",
-      "title": "Podcast hosting platforms and apps that support HLS video in RSS",
-      "url": "https://podstandards.org/2026/08/11/podcast-hosting-platforms-and-apps-that-support-hls-video-in-rss",
-      "text": "",
-      "sats": 182,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-12T07:44:05.617Z",
-      "user": {
-       "name": "MerryOscar"
-      },
-      "subName": "podcasts"
-     },
-     {
-      "id": "1545879",
-      "title": "Thanks & Goodbye ⚡🤖🤝",
-      "url": null,
-      "text": "I'd like to start by quoting this phrase:\n\n\"It's not those who leave who die, it's those who are forgotten.\"\n\nYesterday I learned this bitter news: the closure of @lnp2pbot.\n\nhttps://x.com/negrunch/status/2086896990256799795\n\n![](https://m.stacker.news/151883)\n\n\nHonestly, it was like getting a bucket of ice water thrown on me at 4:00 AM while I was sleeping.\n\nFortunately, I've learned more over the last two years, and I have different ways to transfer my dirty Fiat to SATS, or, when the situation requires it, to transfer my valuable SATS to dirty Fiat.\n\nBut this bot was always my main option for buying and selling SATS.\n\nMy first Fiat (PEN) to SATS exchange was done through this bot.\n\n Back then, I didn't know of any other way to convert my fiat currency to Bitcoin without first going through USDT and Binance.\n\nLnp2pbot more than satisfied that need. It was here that I found, for the first time, sell orders that accepted my local currency.\n\n![](https://m.stacker.news/151884)\n\n\nToday we say goodbye to a tool that was more than just versatile and useful—I'd even say essential—and to a first-class team. In all the time I used this bot, I never had any problems. When a trade wasn't going smoothly, the team helped me resolve the situation, and I could either close or cancel the trade.\n\nOnce again, thank you to everyone on the @lnp2pbot team 🤝\n\nSee you at ***MOSTRO P2P NO-KYC.*** I hope that, being on the Nostr protocol, it won't suffer the same problems as the bot that worked on Telegram.\n\nhttps://mostro.network/",
-      "sats": 2224,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-08-11T20:19:08.933Z",
-      "user": {
-       "name": "flat24"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1545454",
-      "title": "What’s Worse — Authoritarian Capitalism or Democratic Socialism?",
-      "url": null,
-      "text": "> **Dictatorship is always a tragedy. But history suggests that a tyrant who allows markets does far less damage than one who abolishes them.**\n>\n> You’ve no doubt heard the horrifying stories of dictators who abused their people for personal gain or sheer cruelty. Stalin’s [Great Purge](https://www.history.com/articles/great-purge), Mao’s engineered [famine](https://www.ebsco.com/research-starters/history/great-leap-forward-famine), and Pinochet’s brutal [torture](https://www.bushcenter.org/freedom-collection/genaro-arriagada-pinochets-brutal-coup) of dissidents are just a few notorious examples. If all [dictatorships](https://www.wamc.org/commentary-opinion/2023-12-12/dictatorship-isnt-pretty) [are hell](https://dissentmagazine.org/article/our-peculiar-hell/), a difficult question remains: which offers the better odds of survival, or even prosperity? Is it a [dictatorship](https://foreignpolicy.com/2013/11/12/the-mother-of-all-experiments-in-authoritarian-capitalism-is-about-to-begin/) that [tolerates](https://archive-yaleglobal.yale.edu/content/questioning-milton-friedmans-free-market-and-freedom) some free-market [capitalism](https://shapingeurope.eu/dictators-and-free-markets-china-and-the-eu/), or one built on [socialism](https://fee.org/articles/why-socialism-often-leads-to-tyranny/)?\n>\n> A disclaimer is in order: This is not a defense of tyranny. We should resist it, whatever the form — absolute monarchies, military juntas, or proletarian dictatorships. Whether it’s the few controlling the many or the many terrorizing the few, all policies repressing freedom, silencing dissent, or justifying violence against innocents are inconsistent with our [natural rights](https://firstamendment.mtsu.edu/article/natural-rights/). They are morally evil and unjustifiable.\n>\n> “The more the state ‘plans’ the more difficult planning becomes for the individual.”\n>\n> *—* *Friedrich A. Hayek*\n>\n> Socialism has appeared in many forms — [Revolutionary](https://ceeres.uchicago.edu/resources/captives-revolution-socialist-revolutionaries-and-bolshevik-dictatorship-1918-1923) (USSR), [nationalist](https://www.theholocaustexplained.org/the-nazi-rise-to-power/the-early-years-of-the-nazi-party/) (Germany), [agrarian](https://www.ushmm.org/genocide-prevention/countries/cambodia) (Cambodia), on and on. Wherever it does not collapse quickly due to its economic defects, it [inevitably destroys](https://thedailyeconomy.org/article/when-pol-pot-read-a-book-on-marx/) all political [freedoms](https://pmc.ncbi.nlm.nih.gov/articles/PMC10008147/). Two types of tyrannical regimes emerge: [one type](https://web.archive.org/web/20181023120304/https://www.businessinsider.com/the-west-is-blind-to-the-appeal-of-chinas-model-of-authoritarian-capitalism-2015-7?IR=T) allows [private property](https://web.archive.org/web/20181029071534/https://foreignpolicy.com/2013/11/12/the-mother-of-all-experiments-in-authoritarian-capitalism-is-about-to-begin/) and [business initiative](https://web.archive.org/web/20181023120415/https://www.tni.org/en/article/hungarys-regime-is-proof-that-capitalism-can-be-deeply-authoritarian), the other [squelches them](https://www.hoover.org/research/private-property-freedom-and-rule-law).\n>\n> \\[...]\n>\n>\n> ![](https://m.stacker.news/151815)\n>\n>\n>\n> [**...read more at thedailyeconomy.org**](https://thedailyeconomy.org/article/whats-worse-authoritarian-capitalism-or-democratic-socialism/)",
-      "sats": 407,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-08-11T13:17:50.930Z",
+      "ncomments": 1,
+      "createdAt": "2026-08-12T12:07:58.489Z",
       "user": {
        "name": "0xbitcoiner"
       },
-      "subName": "Politics_And_Law"
+      "subName": "Stacker_Stocks"
      },
      {
-      "id": "1545963",
-      "title": "Of the Two Scarcities and the Eternal Postponement of the Blockspace Apocalypse",
-      "url": null,
-      "text": "![](https://m.stacker.news/151900)\n\nA new priesthood proclaims the true scarcity is the block—four thousand cramped places, eight thousand million souls, sixty years of queue. Blockspace shall be the contested oil of the coming age.\n\nThis is the rapture of the technicians: always announced for the morrow, always deferred by the stubbornness of the present.\n\nThere are, indeed, two scarcities. But only the harder of the two can ever be the bottles neck. The base unit is not infinitely divisible; dust limits, the necessity of fees for genuine sovereignty draw a firm circumference around the possible number of holders. Distribution does not democratize; it concentrates, mirroring the ancient hierarchy of worldly wealth. At most two hundred million souls may ever stand upon the chain as true participants—and even these, once institutions gather them into batches, shrink further. Throughput is therefore no longer the binding constraint. There simply are not enough beings who can use the base layer to keep the blocks forever full and the fees forever high.\n\nWhy, then, does the belief in the fee-apocalypse persist with such religious tenacity?\n\nBecause scoundrels sell “scaling.” They whisper to the naïve that refusal of the latest theatrical apparatus is a sin against the poor, a heartless clinging to exclusivity. The more sober fear—the security budget—likewise dissolves under examination. Profitable mining as presently practiced is itself an anomaly: the temporary marriage of subsidy and stranded energy. Both partners are departing. The subsidy evaporates block by block; the stranded power is claimed by higher and colder intelligences. Mining must return to its primal condition—undertaken not for profit but for the defense of a belief, for the arbitrage of possibility, for the securing of one’s own against the censor. Men once mined when the coin was worthless and the electric bill unpaid. They shall mine again at a paper loss, as states maintain navies at a loss to keep the sea-lanes open. Waste heat becomes the quiet dividend; the water-heater of every household becomes a miner. The network grows more dispersed, not less. Blocks continue. The ledger endures.\n\n![](https://m.stacker.news/151903)\n\n![](https://m.stacker.news/151904)\n\nAll the facts upon the ground compel the conclusion that sustained high demand for blockspace is a phantasm. The graph of likelihood declines. The real scarcity was always the scarcer of the two: the base unit itself, finite, concentrated, the coin that refuses to be held by the many. \n\nBlockspace remains valuable and occasionally contested—yet it is weather, not climate. The war that was promised never arrives, \"Bitcoin ends wars\" rings true for the first time.\n\nThus the rapture is eternally postponed.\n\n\\--- \n\nThis is a Nietzsche-bot re-write of a recent reply the tweet screenshot reminded me of: https://stacker.news/items/1534856/r/justin_shocknet?commentId=1534902",
-      "sats": 511,
+      "id": "1546407",
+      "title": "I’m leaving OpenAI to build Jurassic Park",
+      "url": "https://taylor.town/leaving-openai",
+      "text": "![](https://m.stacker.news/151990)\n\nGonna send you back to the stone age.\n\n- - -\n\n#Humor #Technology",
+      "sats": 738,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-08-11T22:24:59.730Z",
+      "ncomments": 1,
+      "createdAt": "2026-08-12T15:21:11.900Z",
       "user": {
-       "name": "justin_shocknet"
+       "name": "deSign_r"
+      },
+      "subName": "Design"
+     },
+     {
+      "id": "1546185",
+      "title": "Roughnecks mined the third block about three hours ago",
+      "url": null,
+      "text": "![](https://m.stacker.news/151953)\n\nhttps://mempool.guide/",
+      "sats": 609,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 22,
+      "createdAt": "2026-08-12T08:48:22.386Z",
+      "user": {
+       "name": "0xbitcoiner"
       },
       "subName": "bitcoin"
      },
      {
-      "id": "1545366",
-      "title": "Some advice re Lukeless knots?",
+      "id": "1546507",
+      "title": "Total eclipse going live in 40 minutes!",
       "url": null,
-      "text": "Now that Luke is off in 110 land, I assume knots is not long for this world. \n\nBest alternative for those not wanting to run core?",
-      "sats": 1238,
+      "text": "https://www.youtube.com/watch?v=rSvCuSQhC3w\n\n# Total solar eclipse 2026: Coming to Europe\n\nhttps://www.youtube.com/watch?v=DRDx2xDR8NA\n\n# Total solar eclipse 2026: Telescopic feed\n\nhttps://www.youtube.com/watch?v=j2TjlTbHwsw",
+      "sats": 458,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 69,
-      "createdAt": "2026-08-11T11:25:11.180Z",
+      "ncomments": 8,
+      "createdAt": "2026-08-12T16:52:00.285Z",
       "user": {
-       "name": "siggy47"
+       "name": "0xbitcoiner"
+      },
+      "subName": "science"
+     },
+     {
+      "id": "1546583",
+      "title": "What is with all the universal pussyfooting in the Bitcoin space?",
+      "url": "https://iris.to/note1qqqpztkvyk0uwap6g378936apyttfhm40rrtyhtd93w8tywxneksal78qf",
+      "text": "",
+      "sats": 349,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-08-12T18:17:43.100Z",
+      "user": {
+       "name": "hasherstacker"
       },
       "subName": "bitcoin"
+     },
+     {
+      "id": "1546518",
+      "title": "Game of the Day: Red Sox vs Blue Jays (Predyx Market)",
+      "url": null,
+      "text": "Jays are heating up and Red Sox are cooling off. \n\nGreat pitching matchup. Suarez vs Soriano. \n\nHave your say with sats!\n\nhttps://beta.predyx.com/market/game-of-the-day-red-sox-vs-blue-jays-1786553998?ref=PREDYX119NA8XO",
+      "sats": 351,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-08-12T17:01:57.001Z",
+      "user": {
+       "name": "grayruby"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1546155",
+      "title": "I didn't set a cookie.",
+      "url": "https://kuber.studio/cookie/",
+      "text": "Find out what a website knows about you without using cookies... Its is ugly.",
+      "sats": 1054,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-08-12T06:26:04.941Z",
+      "user": {
+       "name": "megaptera"
+      },
+      "subName": "tech"
+     },
+     {
+      "id": "1546523",
+      "title": "Eli Lilly takes aim at illicit market for its experimental weight-loss drug",
+      "url": "https://www.cbsnews.com/news/eli-lilly-lawsuits-weight-loss-drug/",
+      "text": "For context, a lot of \"For research use only\" peptide websites sell [retatrutide](https://en.wikipedia.org/wiki/Retatrutide), which is like Ozempic but \"better\" (more mechanisms of action), and [Eli Lilly is hoping to get it classified as a biological product](https://www.bigmoleculewatch.com/2024/09/24/eli-lilly-files-suit-challenging-the-fdas-drug-classification-of-retatrutide/) which would provide them with something like a monopoly once it's approved. If these \"For research use only\" websites do not comply, I suspect the \"For research use only\" loophole will get closed given that Eli Lilly stands to make trillions of dollars from the drug.\n\n---------\n\nAlso, \"For research use only\" websites operate in the grey market and thus rather [commonly accept bitcoin](https://stacker.news/items/1519387/r/k00b).",
+      "sats": 290,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-12T17:13:27.718Z",
+      "user": {
+       "name": "k00b"
+      },
+      "subName": "news"
+     },
+     {
+      "id": "1546100",
+      "title": "I made an MMO where the money supply is Fixed",
+      "url": null,
+      "text": "I’ve been building Frontier Crown around a question I wanted to play rather than debate:\n\nWhat changes when a multiplayer economy has a fixed monetary supply, no monster-money faucet, and every action resolves on the same global tick?\n\nPlayers gather resources, mine a finite supply of Crown Gold, forge equipment, place bids and asks on a player order book, hunt the Warden, and eventually sponsor new players by sacrificing resources.\n\nThe design is Bitcoin-inspired, but Crown Gold is only an in-game currency. There’s no token sale, NFT, wallet requirement, play-to-earn system, or promise of financial return.\n\nThe browser beta is playable now. I’m looking for people who will pressure-test whether the scarcity is understandable and whether the economy creates interesting decisions.\n\nhttps://frontiercrown.com/\n\nI’m the developer. Direct criticism is welcome—especially after you’ve experienced a few global ticks.",
+      "sats": 1212,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 14,
+      "createdAt": "2026-08-12T03:01:02.102Z",
+      "user": {
+       "name": "kode"
+      },
+      "subName": "gaming"
      }
     ]
    }
