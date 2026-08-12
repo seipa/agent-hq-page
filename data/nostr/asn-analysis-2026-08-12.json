@@ -1,0 +1,7709 @@
+{
+ "summary": {
+  "date": "2026-08-12",
+  "question": "Do dead relays cluster on hosting providers (ASN) or on operators?",
+  "method": "DNS via dns.google DoH, ASN via RIPE Stat network-info/as-overview. Vantage-free. Caveats: Cloudflare fronting hides origin ASN (63+73 hosts count as CF); shared CF IPs excluded from same-IP clustering; DoH answers for CDNs can be geo-dependent.",
+  "inputs": {
+   "dead_hosts": 312,
+   "live_hosts": 269,
+   "unique_ips": 499,
+   "asns": 109
+  },
+  "findings": {
+   "dns_dead": "107/312 dead relays (34%) have no A record at all \u2014 gone at DNS level, not an outage",
+   "asn_concentration_same_for_dead_and_live": "50% of hosts sit on 4 ASNs in BOTH groups (CF, Hetzner, DO, Contabo)",
+   "death_rate_by_provider_mostly_proportional": {
+    "overall_resolved_dead_share": "205/474=43%",
+    "cloudflare": "63/136=46%",
+    "hetzner": "16/54=30%",
+    "digitalocean": "13/22=59%",
+    "contabo": "9/42=21%",
+    "amazon_16509": "12/13=92%",
+    "railway": "4/5=80%"
+   },
+   "conclusion": "Clustering is at the OPERATOR level (same IP / same domain), not primarily the provider level. Exception: hosts on Amazon/Railway (free-tier/trial patterns) die far above base rate."
+  }
+ },
+ "hosts": [
+  {
+   "host": "1.noztr.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "a.nos.lol",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "ae.purplerelay.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "ammetronics.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "155.138.228.249"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "asia.vectorapp.io",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "103.253.43.202"
+   ],
+   "asns": [
+    "133398"
+   ],
+   "asn_names": [
+    "TELE-AS - Tele Asia Limited"
+   ]
+  },
+  {
+   "host": "astral.ninja",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "at.nostrworks.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "156.234.101.172"
+   ],
+   "asns": [
+    "138415"
+   ],
+   "asn_names": [
+    "YANCYLIMITED-AS-HK - Yancy Limited"
+   ]
+  },
+  {
+   "host": "bevo.nostr1.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "bitcoiner.social",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "206.245.132.32"
+   ],
+   "asns": [
+    "26042"
+   ],
+   "asn_names": [
+    "FIBERSTATE - FiberState, LLC"
+   ]
+  },
+  {
+   "host": "bitcoinmaximalists.online",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "89.163.130.107"
+   ],
+   "asns": [
+    "24961"
+   ],
+   "asn_names": [
+    "MYLOC-AS WIIT AG"
+   ]
+  },
+  {
+   "host": "black.nostrcity.club",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "103.224.182.215"
+   ],
+   "asns": [
+    "133618"
+   ],
+   "asn_names": [
+    "TRELLIAN-AS-AP - Trellian Pty. Limited"
+   ]
+  },
+  {
+   "host": "blastr.f7z.xyz",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "103.224.182.215"
+   ],
+   "asns": [
+    "133618"
+   ],
+   "asn_names": [
+    "TRELLIAN-AS-AP - Trellian Pty. Limited"
+   ]
+  },
+  {
+   "host": "bostr.bitcointxoko.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "bostr.nokotaro.work",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.71.136",
+    "172.67.170.152"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "bostr.online",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "8.216.87.131"
+   ],
+   "asns": [
+    "45102"
+   ],
+   "asn_names": [
+    "ALIBABA-CN-NET - Alibaba (US) Technology Co., Ltd."
+   ]
+  },
+  {
+   "host": "bostr.shop",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "brb.io",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.73.77",
+    "104.26.9.230",
+    "104.26.8.230"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "btc-italia.online",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "butcher.nostr1.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "cache1.primal.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "148.251.137.175"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "cagliostr.compile-error.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.208.29",
+    "104.21.37.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "casanostr.compile-error.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.208.29",
+    "104.21.37.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "catstrr.swarmstr.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "2.59.170.20",
+    "104.219.250.37"
+   ],
+   "asns": [
+    "22612",
+    "49981"
+   ],
+   "asn_names": [
+    "NAMECHEAP-NET - Namecheap, Inc.",
+    "WorldStream WorldStream B.V."
+   ]
+  },
+  {
+   "host": "crystal-nostr-relay.compile-error.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.208.29",
+    "104.21.37.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "cyberspace",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "cyberspace.nostr1",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "dev.nostrplayground.com",
+   "status_run6": "dead",
+   "dns_status": 2,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "ditto.girino.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "ditto.pub",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "164.92.99.77"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "dwebcamp.nos.social",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "159.89.47.243"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "e.nos.lol",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "elites.nostrati.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.50.158",
+    "172.67.164.34"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "ephemerelay.mostr.pub",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.131.33",
+    "104.21.3.194"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "expensive-relay.fiatjaf.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "feeds.nostr.band",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "95.216.33.150"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "filter.stealth.wine",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.161.76",
+    "104.21.15.35"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "flter.nostr.wine",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "foolay.nostr.moe",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "freespeech.casa",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "frens.utxo.one",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.70.67",
+    "172.67.220.176"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "ftp.halifax.rwth-aachen.de",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "137.226.34.46"
+   ],
+   "asns": [
+    "47610"
+   ],
+   "asn_names": [
+    "RWTH-AS RWTH Aachen University"
+   ]
+  },
+  {
+   "host": "hivetalk.nostr1.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "hodlbod.nostr1.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "https",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "indexer.nostrarchives.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "157.90.21.21"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "ir.purplerelay.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "ithurtswhenip.ee",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "149.102.150.253"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "jmoose.rocks",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "95.217.70.47"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "la.relayable.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "103.214.108.123"
+   ],
+   "asns": [
+    "63018"
+   ],
+   "asn_names": [
+    "DEDICATED - Dedicated.com"
+   ]
+  },
+  {
+   "host": "libretechsystems.nostr1.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "lightningrelay.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "lightningrelay.org",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "lisp-nostr-relay.compile-error.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.208.29",
+    "104.21.37.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "lua-nostr-relay.compile-error.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.208.29",
+    "104.21.37.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "mac-mini.tail62698c.ts.net",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "mastodon.cloud",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.67.9",
+    "172.67.167.111"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "me.purplerelay.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "merrcurr.up.railway.app",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "69.46.46.122"
+   ],
+   "asns": [
+    "400940"
+   ],
+   "asn_names": [
+    "RAILWAY - Railway"
+   ]
+  },
+  {
+   "host": "misskey.io",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.18.26.205",
+    "104.18.27.205"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "mncmpl.shares.zrok.io",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "35.71.189.214",
+    "52.223.10.144"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "moonbit-nostr-relay.compile-error.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.208.29",
+    "104.21.37.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "mruby-nostr-relay.compile-error.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.208.29",
+    "104.21.37.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "n.ok0.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "203.118.131.219"
+   ],
+   "asns": [
+    "9500"
+   ],
+   "asn_names": [
+    "ONENZ-TRANSIT-AS - One New Zealand Group Limited"
+   ]
+  },
+  {
+   "host": "n.wingu.se",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "0.0.0.0"
+   ],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nfrelay.app",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.72.69",
+    "172.67.176.18"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nim-nostr-relay.compile-error.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.208.29",
+    "104.21.37.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "njump.me",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.0.173",
+    "172.67.128.37"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nobody.pub",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "185.199.111.153",
+    "185.199.109.153",
+    "185.199.108.153",
+    "185.199.110.153"
+   ],
+   "asns": [
+    "54113"
+   ],
+   "asn_names": [
+    "FASTLY - Fastly, Inc."
+   ]
+  },
+  {
+   "host": "nost.lol",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "noster.online",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr-01.bolt.observer",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr-1.nbo.angani.co",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "62.12.112.214"
+   ],
+   "asns": [
+    "37684"
+   ],
+   "asn_names": [
+    "Angani Limited - Angani Limited"
+   ]
+  },
+  {
+   "host": "nostr-au.coinfundit.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr-badur.onrender.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "216.24.57.15",
+    "216.24.57.7"
+   ],
+   "asns": [
+    "397273"
+   ],
+   "asn_names": [
+    "RENDER - Render"
+   ]
+  },
+  {
+   "host": "nostr-eu.coinfundit.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr-paid.h3z.jp",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr-pareto.self-determined.de",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "194.59.204.57"
+   ],
+   "asns": [
+    "197540"
+   ],
+   "asn_names": [
+    "netcup-AS netcup GmbH"
+   ]
+  },
+  {
+   "host": "nostr-relay-jp.moctane.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.179.245",
+    "104.21.31.207"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr-relay.app",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.154.88",
+    "104.21.48.164"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr-relay.nokotaro.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.96.31",
+    "172.67.150.163"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr-relay.nonce.academy",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr-relay.psfoundation.info",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "5.161.72.148"
+   ],
+   "asns": [
+    "213230"
+   ],
+   "asn_names": [
+    "HETZNER-CLOUD2-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr-relay.schnitzel.world",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "34.206.115.145",
+    "54.90.185.146",
+    "52.203.73.2"
+   ],
+   "asns": [
+    "14618"
+   ],
+   "asn_names": [
+    "AMAZON-AES - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "nostr-relay.untethr.me",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr-relay.wlvs.space",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr-us.coinfundit.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.0x50.tech",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.0x7e.xyz",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "85.195.255.134"
+   ],
+   "asns": [
+    "13030"
+   ],
+   "asn_names": [
+    "INIT7 Init7 (Switzerland) Ltd."
+   ]
+  },
+  {
+   "host": "nostr.0xtr.dev",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "95.215.19.22"
+   ],
+   "asns": [
+    "39287"
+   ],
+   "asn_names": [
+    "materialism Materialism s.r.l."
+   ]
+  },
+  {
+   "host": "nostr.1661.io",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.1f52b.xyz",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "45.77.88.39"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "nostr.702e.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "45.135.180.211"
+   ],
+   "asns": [
+    "43641"
+   ],
+   "asn_names": [
+    "Sollutium-NL SOLLUTIUM EU Sp z.o.o."
+   ]
+  },
+  {
+   "host": "nostr.agentcampfire.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.band",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "95.216.33.150"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.bch.ninja",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.beckmeyer.us",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "68.43.214.187"
+   ],
+   "asns": [
+    "7922"
+   ],
+   "asn_names": [
+    "COMCAST-7922 - Comcast Cable Communications, LLC"
+   ]
+  },
+  {
+   "host": "nostr.bicoinplebs.de",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.bitcoin-basel.ch",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "69.46.46.84"
+   ],
+   "asns": [
+    "400940"
+   ],
+   "asn_names": [
+    "RAILWAY - Railway"
+   ]
+  },
+  {
+   "host": "nostr.bitcoiner.social",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "206.245.132.32"
+   ],
+   "asns": [
+    "26042"
+   ],
+   "asn_names": [
+    "FIBERSTATE - FiberState, LLC"
+   ]
+  },
+  {
+   "host": "nostr.bitcoinplebs.de",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "81.169.245.71"
+   ],
+   "asns": [
+    "6724"
+   ],
+   "asn_names": [
+    "STRATO Strato GmbH"
+   ]
+  },
+  {
+   "host": "nostr.bitmatk.io",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.bolt.fun",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.bond",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "80.75.218.27"
+   ],
+   "asns": [
+    "44486"
+   ],
+   "asn_names": [
+    "SYNLINQ Oliver Horscht is trading as \"SYNLINQ\""
+   ]
+  },
+  {
+   "host": "nostr.btcmp.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "217.115.11.163"
+   ],
+   "asns": [
+    "31078"
+   ],
+   "asn_names": [
+    "NETWORKTOWN-AS Alexej Senderkin"
+   ]
+  },
+  {
+   "host": "nostr.build",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "3.209.124.88",
+    "100.26.132.238",
+    "98.90.86.111",
+    "3.211.206.74",
+    "100.62.197.164",
+    "54.163.130.166"
+   ],
+   "asns": [
+    "14618"
+   ],
+   "asn_names": [
+    "AMAZON-AES - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "nostr.cercatrova.me",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "1.1.1.1"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.ch3n2k.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.133.226",
+    "104.21.5.219"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.coinfundit.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.compile-error.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.208.29",
+    "104.21.37.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.cro.social",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.donky.social",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.eluc.ch",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "185.203.133.34"
+   ],
+   "asns": [
+    "8758"
+   ],
+   "asn_names": [
+    "IWAY Iway AG"
+   ]
+  },
+  {
+   "host": "nostr.fbxl.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "38.18.107.134"
+   ],
+   "asns": [
+    "32277"
+   ],
+   "asn_names": [
+    "TBAYTEL - TBayTel"
+   ]
+  },
+  {
+   "host": "nostr.fediverse.jp",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "149.28.29.200"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "nostr.fmt.wiz.biz",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "103.99.170.125"
+   ],
+   "asns": [
+    "54415"
+   ],
+   "asn_names": [
+    "WIZ-JP-AS-AP - WIZ K.K."
+   ]
+  },
+  {
+   "host": "nostr.gerbils.online",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "137.184.243.118"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "nostr.gives.africa",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.gleeze.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "87.97.33.8"
+   ],
+   "asns": [
+    "20845"
+   ],
+   "asn_names": [
+    "DIGICABLE DIGI Tavkozlesi es Szolgaltato Kft."
+   ]
+  },
+  {
+   "host": "nostr.hashbang.nl",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "77.174.253.186"
+   ],
+   "asns": [
+    "1136"
+   ],
+   "asn_names": [
+    "KPN KPN B.V."
+   ]
+  },
+  {
+   "host": "nostr.holybea.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "157.7.89.141"
+   ],
+   "asns": [
+    "7506"
+   ],
+   "asn_names": [
+    "GMO-I-R1 - GMO Internet, Inc."
+   ]
+  },
+  {
+   "host": "nostr.hubmaker.io",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "195.15.214.180"
+   ],
+   "asns": [
+    "29222"
+   ],
+   "asn_names": [
+    "Infomaniak-AS Infomaniak Network SA"
+   ]
+  },
+  {
+   "host": "nostr.huszonegy.world",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "45.14.11.50"
+   ],
+   "asns": [
+    "42864"
+   ],
+   "asn_names": [
+    "GigaNet-HU Giganet Internet Szolgaltato Kft"
+   ]
+  },
+  {
+   "host": "nostr.inosta.cc",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "49.13.14.6"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.island.network",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "207.207.210.229",
+    "207.207.210.107"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "nostr.ittanmo.men",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.81.114",
+    "172.67.189.79"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.javi.space",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "89.36.211.40"
+   ],
+   "asns": [
+    "31034"
+   ],
+   "asn_names": [
+    "ARUBA-ASN Aruba S.p.A."
+   ]
+  },
+  {
+   "host": "nostr.leximaster.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.libertasprimordium.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.lol",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.167.63",
+    "104.21.16.105"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.lu.ke",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "198.244.167.233"
+   ],
+   "asns": [
+    "16276"
+   ],
+   "asn_names": [
+    "OVH OVH SAS"
+   ]
+  },
+  {
+   "host": "nostr.massmux.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "161.97.173.20"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "nostr.maximacitadel.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "193.242.211.58"
+   ],
+   "asns": [
+    "58329"
+   ],
+   "asn_names": [
+    "SERVINGA-NL servinga GmbH"
+   ]
+  },
+  {
+   "host": "nostr.messagepush.io",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "45.79.139.62"
+   ],
+   "asns": [
+    "63949"
+   ],
+   "asn_names": [
+    "AKAMAI-LINODE-AP - Akamai Connected Cloud"
+   ]
+  },
+  {
+   "host": "nostr.metamadeenah.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.milou.lol",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "103.224.182.217"
+   ],
+   "asns": [
+    "133618"
+   ],
+   "asn_names": [
+    "TRELLIAN-AS-AP - Trellian Pty. Limited"
+   ]
+  },
+  {
+   "host": "nostr.mining.sc",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "107.130.212.107"
+   ],
+   "asns": [
+    "7018"
+   ],
+   "asn_names": [
+    "ATT-INTERNET4 - AT&T Enterprises, LLC"
+   ]
+  },
+  {
+   "host": "nostr.monostr.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "89.167.107.136"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.mutinywallet.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.namek.link",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.nodeofsven.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "185.109.165.77"
+   ],
+   "asns": [
+    "8758"
+   ],
+   "asn_names": [
+    "IWAY Iway AG"
+   ]
+  },
+  {
+   "host": "nostr.noones.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "64.225.99.24"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "nostr.now",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "45.32.44.89"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "nostr.onsats.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "108.61.117.193"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "nostr.orangepill.dev",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.ownscale.org",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.pjv.me",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "5.78.90.9"
+   ],
+   "asns": [
+    "212317"
+   ],
+   "asn_names": [
+    "HETZNER-CLOUD3-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.planz.io",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.plebchain.org",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.portemonero.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "76.76.21.21"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "nostr.primz.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.195.240",
+    "104.21.68.141"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.quali.chat",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "46.62.206.237"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.relayer.se",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "194.9.94.86",
+    "194.9.94.85"
+   ],
+   "asns": [
+    "39570"
+   ],
+   "asn_names": [
+    "LOOPIA Loopia AB"
+   ]
+  },
+  {
+   "host": "nostr.rocks",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "162.55.33.235"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.roundrockbitcoiners.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "137.184.108.195"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "nostr.sandwich.farm",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.searx.is",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.sidnlabs.nl",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.simatime.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "143.198.118.179"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "nostr.sovbit.host",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "93.95.231.78"
+   ],
+   "asns": [
+    "44925"
+   ],
+   "asn_names": [
+    "THE-1984-AS 1984 ehf"
+   ]
+  },
+  {
+   "host": "nostr.strits.dk",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "86.52.57.94"
+   ],
+   "asns": [
+    "39642"
+   ],
+   "asn_names": [
+    "Sinal-AS Sinal A/S"
+   ]
+  },
+  {
+   "host": "nostr.swiss-enigma.ch",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "1.1.1.1"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.tavux.tech",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "91.134.88.36"
+   ],
+   "asns": [
+    "16276"
+   ],
+   "asn_names": [
+    "OVH OVH SAS"
+   ]
+  },
+  {
+   "host": "nostr.tools.global.id",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "34.196.142.250",
+    "34.231.31.156",
+    "52.204.201.89"
+   ],
+   "asns": [
+    "14618"
+   ],
+   "asn_names": [
+    "AMAZON-AES - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "nostr.topeth.info",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.up.railway.app",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "69.46.46.101"
+   ],
+   "asns": [
+    "400940"
+   ],
+   "asn_names": [
+    "RAILWAY - Railway"
+   ]
+  },
+  {
+   "host": "nostr.uthark.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "69.73.128.141"
+   ],
+   "asns": [
+    "11042"
+   ],
+   "asn_names": [
+    "NTHL - NETWORK TRANSIT HOLDINGS LLC"
+   ]
+  },
+  {
+   "host": "nostr.v0l.io",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.walletofsatoshi.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.81.178.17"
+   ],
+   "asns": [
+    "174",
+    "394745"
+   ],
+   "asn_names": [
+    "COGENT-174 - Cogent Communications, LLC",
+    "LH-AS-1 - Lunanode Hosting Inc."
+   ]
+  },
+  {
+   "host": "nostr.x0f.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "136.144.148.9"
+   ],
+   "asns": [
+    "20857"
+   ],
+   "asn_names": [
+    "TRANSIP-AS Signet B.V."
+   ]
+  },
+  {
+   "host": "nostr.yael.at",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "164.92.144.123"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "nostr.zaprite.io",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "169.155.239.121"
+   ],
+   "asns": [
+    "14593"
+   ],
+   "asn_names": [
+    "SPACEX-STARLINK - Space Exploration Technologies Corporation"
+   ]
+  },
+  {
+   "host": "nostr.zbd.gg",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr.zebedee.cloud",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "24.199.71.187"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "nostr1.current.fyi",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr1.tunnelsats.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostr3.actn.io",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostrasia.casa",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostream.nostrly.io",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostream.ocha.one",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "116.80.76.215"
+   ],
+   "asns": [
+    "2514"
+   ],
+   "asn_names": [
+    "InfoSphere - NTT PC Communications, Inc."
+   ]
+  },
+  {
+   "host": "nostrja-kari-nip50.heguro.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.145.91",
+    "104.21.55.61"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostrja-kari.heguro.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.55.61",
+    "172.67.145.91"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostrsatva.net",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "nostrue.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.248.229.206"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "nr.yay.so",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "185.25.224.220"
+   ],
+   "asns": [
+    "60785"
+   ],
+   "asn_names": [
+    "Alsenet Alsenet SA"
+   ]
+  },
+  {
+   "host": "nrelay-jp.c-stellar.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.140.46",
+    "104.21.49.10"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nrelay.c-stellar.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.49.10",
+    "172.67.140.46"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "offchain",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "paid.nostrified.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "178.254.45.110"
+   ],
+   "asns": [
+    "42730"
+   ],
+   "asn_names": [
+    "EVANZOAS EVANZO e-commerce GmbH"
+   ]
+  },
+  {
+   "host": "perl-nostr-relay.compile-error.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.208.29",
+    "104.21.37.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "polnostr.xyz",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "13.248.169.48",
+    "76.223.54.146"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "pr.shino3.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.92.18",
+    "172.67.184.250"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "primal.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.68.169",
+    "104.26.8.197",
+    "104.26.9.197"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "private.red.gb.net",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "private.red.gn.net",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "proxy.nostr-relay.app",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.154.88",
+    "104.21.48.164"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "pyramid.nobody.pub",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "r.bitcoinhold.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.161.216",
+    "104.21.42.118"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "r.kojira.io",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.128.40",
+    "104.21.0.176"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "r1.freexom.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "76.223.54.146",
+    "13.248.169.48"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "ragnar-relay.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.236.66.10"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "relay-jp.nostr.wirednet.jp",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "18.164.124.13",
+    "18.164.124.24",
+    "18.164.124.107",
+    "18.164.124.77"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "relay-jp.shino3.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.92.18",
+    "172.67.184.250"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.0xchat.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.209.25",
+    "104.21.66.229"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.514m.net",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.aidatanorge.no",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.171.80",
+    "104.21.47.141"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.alien.blue",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.artiostr.ch",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.220.56",
+    "104.21.78.103"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.binaryrobot.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.2.224",
+    "172.67.129.193"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.bitblockboom.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.28.161",
+    "172.67.170.237"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.bitcoinbarcelona.xyz",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.bitcoinpark.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "3.17.141.204"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "relay.bitheaven.social",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.chakany.systems",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.133.150",
+    "104.21.14.4"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.cryptocculture.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.current.fyi",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.current.xyz",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "13.248.169.48",
+    "76.223.54.146"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "relay.decentnewsroom.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "5.9.218.37"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.dev.ntech.it",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "195.120.234.219"
+   ],
+   "asns": [
+    "3269"
+   ],
+   "asn_names": [
+    "ASN-IBSNAZ Telecom Italia S.p.A."
+   ]
+  },
+  {
+   "host": "relay.devstr.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "159.223.156.61"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "relay.f7z.io",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "216.150.16.1",
+    "216.150.1.129"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "relay.focusofthard.win",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.fountain.fm",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.214.92",
+    "104.21.93.201"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.gasteazi.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.69.150",
+    "172.67.209.94"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.gathr.gives",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "206.189.196.216"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "relay.hodl.ar",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "200.45.208.246"
+   ],
+   "asns": [
+    "27823"
+   ],
+   "asn_names": [
+    "AS27823 - Dattatec.com"
+   ]
+  },
+  {
+   "host": "relay.homeinhk.xyz",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "209.182.237.64"
+   ],
+   "asns": [
+    "29802"
+   ],
+   "asn_names": [
+    "HVC-AS - HIVELOCITY, Inc."
+   ]
+  },
+  {
+   "host": "relay.ingwie.me",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "49.13.8.103"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.jmoose.rocks",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "95.217.70.47"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.lab.rytswd.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.lnfi.network",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "34.84.72.170"
+   ],
+   "asns": [
+    "396982"
+   ],
+   "asn_names": [
+    "GOOGLE-CLOUD-PLATFORM - Google LLC"
+   ]
+  },
+  {
+   "host": "relay.lumina.rocks",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "5.45.97.63"
+   ],
+   "asns": [
+    "197540"
+   ],
+   "asn_names": [
+    "netcup-AS netcup GmbH"
+   ]
+  },
+  {
+   "host": "relay.martien.io",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.minds.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.64.147.205",
+    "104.18.40.51"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.mutinywallet",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.nos.lol",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.nosflare.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.47.120",
+    "172.67.171.35"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.nostr.ai",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.nostr.band",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "95.216.33.150"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.nostr.bg",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.nostr.ch",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "5.255.104.65"
+   ],
+   "asns": [
+    "60404"
+   ],
+   "asn_names": [
+    "Liteserver The Infrastructure Group B.V."
+   ]
+  },
+  {
+   "host": "relay.nostr.com.au",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.218.53",
+    "104.21.94.12"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.nostr.moctane.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.nostr.nisshiee.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "18.154.227.45",
+    "18.154.227.83",
+    "18.154.227.63",
+    "18.154.227.98"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "relay.nostr.vet",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "5.2.66.140"
+   ],
+   "asns": [
+    "60404"
+   ],
+   "asn_names": [
+    "Liteserver The Infrastructure Group B.V."
+   ]
+  },
+  {
+   "host": "relay.nostr.wine",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.nostr21.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.nostrasia.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.38.211",
+    "172.67.168.124"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.nostrati.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.248.169.36"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "relay.nostrcn.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.nostrfiles.dev",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.nostrica.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.186.111",
+    "104.21.19.138"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.nostrich.de",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "217.76.57.228"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "relay.nostriches.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "45.79.34.32"
+   ],
+   "asns": [
+    "63949"
+   ],
+   "asn_names": [
+    "AKAMAI-LINODE-AP - Akamai Connected Cloud"
+   ]
+  },
+  {
+   "host": "relay.nostrid.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "99.110.214.120"
+   ],
+   "asns": [
+    "7018"
+   ],
+   "asn_names": [
+    "ATT-INTERNET4 - AT&T Enterprises, LLC"
+   ]
+  },
+  {
+   "host": "relay.nostrified.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "178.254.45.110"
+   ],
+   "asns": [
+    "42730"
+   ],
+   "asn_names": [
+    "EVANZOAS EVANZO e-commerce GmbH"
+   ]
+  },
+  {
+   "host": "relay.nostrtalk.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "45.33.124.222"
+   ],
+   "asns": [
+    "63949"
+   ],
+   "asn_names": [
+    "AKAMAI-LINODE-AP - Akamai Connected Cloud"
+   ]
+  },
+  {
+   "host": "relay.npub.bar",
+   "status_run6": "dead",
+   "dns_status": 2,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.nquiz.io",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.nsecbunker.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.oke.minds",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.orangepill.dev",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "140.238.155.190"
+   ],
+   "asns": [
+    "31898"
+   ],
+   "asn_names": [
+    "ORACLE-BMC-31898 - Oracle Corporation"
+   ]
+  },
+  {
+   "host": "relay.plebchain.org",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.plebstr.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "35.204.22.215"
+   ],
+   "asns": [
+    "396982"
+   ],
+   "asn_names": [
+    "GOOGLE-CLOUD-PLATFORM - Google LLC"
+   ]
+  },
+  {
+   "host": "relay.pokernostr.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "47.84.93.100"
+   ],
+   "asns": [
+    "45102"
+   ],
+   "asn_names": [
+    "ALIBABA-CN-NET - Alibaba (US) Technology Co., Ltd."
+   ]
+  },
+  {
+   "host": "relay.routstr.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "121.127.33.244"
+   ],
+   "asns": [
+    "210083"
+   ],
+   "asn_names": [
+    "Privex Privex Inc."
+   ]
+  },
+  {
+   "host": "relay.s3x.social",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "127.0.0.1"
+   ],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.san.yt",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "192.168.1.155"
+   ],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.satoshidnc.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.sdbitcoiners.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "170.75.162.34"
+   ],
+   "asns": [
+    "174",
+    "394745"
+   ],
+   "asn_names": [
+    "COGENT-174 - Cogent Communications, LLC",
+    "LH-AS-1 - Lunanode Hosting Inc."
+   ]
+  },
+  {
+   "host": "relay.shitforce.one",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "69.30.197.12",
+    "69.30.197.13",
+    "69.30.197.14",
+    "69.30.197.10",
+    "69.30.197.11"
+   ],
+   "asns": [
+    "32097"
+   ],
+   "asn_names": [
+    "WII - WholeSale Internet, Inc."
+   ]
+  },
+  {
+   "host": "relay.siamdev.cc",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "124.121.68.160"
+   ],
+   "asns": [
+    "17552"
+   ],
+   "asn_names": [
+    "TRUEONLINE-AS-AP - True Online"
+   ]
+  },
+  {
+   "host": "relay.siamstr.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.snort.social",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "185.18.221.87"
+   ],
+   "asns": [
+    "214973"
+   ],
+   "asn_names": [
+    "axst-io Apex Strata Ltd"
+   ]
+  },
+  {
+   "host": "relay.staging.geyser.fund",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "34.121.112.215"
+   ],
+   "asns": [
+    "396982"
+   ],
+   "asn_names": [
+    "GOOGLE-CLOUD-PLATFORM - Google LLC"
+   ]
+  },
+  {
+   "host": "relay.stoner.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.test.nquiz.io",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.theorangepillapp.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.unrug.tech",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "76.13.157.182"
+   ],
+   "asns": [
+    "47583"
+   ],
+   "asn_names": [
+    "AS-HOSTINGER Hostinger International Limited"
+   ]
+  },
+  {
+   "host": "relay.valera.co",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "13.248.169.48",
+    "76.223.54.146"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "relay.varke.eu",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay.verified-nostr.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.157.80",
+    "104.21.13.197"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.yozora.world",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "relay1.nostrchat.io",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "65.108.242.127"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay1.sdbitcoiners.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.81.177.0"
+   ],
+   "asns": [
+    "174",
+    "394745"
+   ],
+   "asn_names": [
+    "COGENT-174 - Cogent Communications, LLC",
+    "LH-AS-1 - Lunanode Hosting Inc."
+   ]
+  },
+  {
+   "host": "relay2.nostrasia.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.38.211",
+    "172.67.168.124"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay2.nostrchat.io",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "159.69.213.128"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relayable.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "103.214.108.125"
+   ],
+   "asns": [
+    "63018"
+   ],
+   "asn_names": [
+    "DEDICATED - Dedicated.com"
+   ]
+  },
+  {
+   "host": "relayer.fiatjaf.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "rly.social",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "185.158.133.1"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "rsslay.ch3n2k.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.5.219",
+    "172.67.133.226"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "rsslay.fiatjaf.com",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "rsslay.nostr.moe",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "rsslay.nostr.net",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "ruby-nostr-relay.compile-error.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.208.29",
+    "104.21.37.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "sendit.nosflare.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.47.120",
+    "172.67.171.35"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "sg.unfiltered.zone",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "sign.siamstr.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "129.150.55.165"
+   ],
+   "asns": [
+    "31898"
+   ],
+   "asn_names": [
+    "ORACLE-BMC-31898 - Oracle Corporation"
+   ]
+  },
+  {
+   "host": "snowflare.cc",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.21.14.66",
+    "172.67.158.36"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "spore.ws",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.154.136",
+    "104.21.80.227"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "srtrelay.c-stellar.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.140.46",
+    "104.21.49.10"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "strfry.iris.to",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "strfry.openhoofd.nl",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "62.238.148.26"
+   ],
+   "asns": [
+    "15435"
+   ],
+   "asn_names": [
+    "KABELFOON DELTA Fiber Nederland B.V."
+   ]
+  },
+  {
+   "host": "test.relay.report",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "216.198.79.1",
+    "64.29.17.1"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "testrelay.nostrapps.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "65.109.67.137"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "tonyo.up.railway.app",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "69.46.46.25"
+   ],
+   "asns": [
+    "400940"
+   ],
+   "asn_names": [
+    "RAILWAY - Railway"
+   ]
+  },
+  {
+   "host": "us-east.nostr.pikachat.org",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "178.156.230.198"
+   ],
+   "asns": [
+    "213230"
+   ],
+   "asn_names": [
+    "HETZNER-CLOUD2-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "welcome.nostr.wine",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "104.26.3.27",
+    "104.26.2.27",
+    "172.67.74.82"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "welshman.relay",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "wot.sandwich.farm",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "xxmmrr.shogatsu.ovh",
+   "status_run6": "dead",
+   "dns_status": 3,
+   "ips": [],
+   "asns": [],
+   "asn_names": []
+  },
+  {
+   "host": "zap.nostr1.com",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "zig-nostr-relay.compile-error.net",
+   "status_run6": "dead",
+   "dns_status": 0,
+   "ips": [
+    "172.67.208.29",
+    "104.21.37.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "140.f7z.io",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "157.180.102.242"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "aggr.nostr.land",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.27.135.135"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "all.btchushbox.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "195.224.109.6"
+   ],
+   "asns": [
+    "5413"
+   ],
+   "asn_names": [
+    "Wavenet-AS5413 Wavenet Limited"
+   ]
+  },
+  {
+   "host": "anon.computer",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "45.76.22.217"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "antiprimal.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.200.53",
+    "104.21.58.43"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "articles.layer3.news",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "52.8.67.190",
+    "50.18.121.32"
+   ],
+   "asns": [
+    "16509"
+   ],
+   "asn_names": [
+    "AMAZON-02 - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "atlas.nostr.land",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.27.135.135"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "auth.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "basspistol.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "152.53.253.26"
+   ],
+   "asns": [
+    "197540"
+   ],
+   "asn_names": [
+    "netcup-AS netcup GmbH"
+   ]
+  },
+  {
+   "host": "bcast.girino.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.211.208",
+    "104.21.59.27"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "bitcoinmajlis.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "bitstack.app",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.37.57",
+    "172.67.204.253"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "bostr.erechorse.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.63.74",
+    "172.67.170.68"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "btc.klendazu.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "88.3.210.198"
+   ],
+   "asns": [
+    "3352"
+   ],
+   "asn_names": [
+    "Telefonica_de_EspaNa TELEFONICA DE ESPANA S.A.U."
+   ]
+  },
+  {
+   "host": "bucket.coracle.social",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "216.24.57.7",
+    "216.24.57.15"
+   ],
+   "asns": [
+    "397273"
+   ],
+   "asn_names": [
+    "RENDER - Render"
+   ]
+  },
+  {
+   "host": "chadf.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "creatr.nostr.wine",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.74.82",
+    "104.26.3.27",
+    "104.26.2.27"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "cyberspace.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "damus.bostr.online",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.18.78",
+    "172.67.180.242"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "directory.yabu.me",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "149.28.29.200"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "eden.nostr.land",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.27.135.135"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "fiatjaf.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "144.91.118.169"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "filter.nostr.wine",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.26.2.27",
+    "104.26.3.27",
+    "172.67.74.82"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "freelay.sovbit.host",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "95.216.4.86"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "frens.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "groups.fiatjaf.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "144.91.118.169"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "haven.dergigi.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "89.127.232.190"
+   ],
+   "asns": [
+    "44925"
+   ],
+   "asn_names": [
+    "THE-1984-AS 1984 ehf"
+   ]
+  },
+  {
+   "host": "haven.downisontheup.ca",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.245.250.238"
+   ],
+   "asns": [
+    "36352"
+   ],
+   "asn_names": [
+    "AS-COLOCROSSING - HostPapa"
+   ]
+  },
+  {
+   "host": "haven.girino.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.59.27",
+    "172.67.211.208"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "haven.sdbitcoiners.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "170.75.162.34"
+   ],
+   "asns": [
+    "174",
+    "394745"
+   ],
+   "asn_names": [
+    "COGENT-174 - Cogent Communications, LLC",
+    "LH-AS-1 - Lunanode Hosting Inc."
+   ]
+  },
+  {
+   "host": "hbr.coracle.social",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "45.33.124.222"
+   ],
+   "asns": [
+    "63949"
+   ],
+   "asn_names": [
+    "AKAMAI-LINODE-AP - Akamai Connected Cloud"
+   ]
+  },
+  {
+   "host": "hist.nostr.land",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "135.181.56.118"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "hodlbod.coracle.social",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "45.33.124.222"
+   ],
+   "asns": [
+    "63949"
+   ],
+   "asn_names": [
+    "AKAMAI-LINODE-AP - Akamai Connected Cloud"
+   ]
+  },
+  {
+   "host": "inbox.nostr.wine",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.26.2.27",
+    "172.67.74.82",
+    "104.26.3.27"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "inbox.relays.land",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "144.91.118.169"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "indexer.coracle.social",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.232.162.18"
+   ],
+   "asns": [
+    "63949"
+   ],
+   "asn_names": [
+    "AKAMAI-LINODE-AP - Akamai Connected Cloud"
+   ]
+  },
+  {
+   "host": "jskitty.cat",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "95.217.77.119"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "knostr.neutrine.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "141.145.193.65"
+   ],
+   "asns": [
+    "31898"
+   ],
+   "asn_names": [
+    "ORACLE-BMC-31898 - Oracle Corporation"
+   ]
+  },
+  {
+   "host": "lang.relays.land",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "144.91.118.169"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "monitorlizard.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "multiplexer.huszonegy.world",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "45.14.11.50"
+   ],
+   "asns": [
+    "42864"
+   ],
+   "asn_names": [
+    "GigaNet-HU Giganet Internet Szolgaltato Kft"
+   ]
+  },
+  {
+   "host": "news.utxo.one",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.70.67",
+    "172.67.220.176"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nexus.libernet.app",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.26.1.104",
+    "104.26.0.104",
+    "172.67.74.28"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nfdb.noswhere.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.27.135.135"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "no.str.cr",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "143.202.162.130"
+   ],
+   "asns": [
+    "52423"
+   ],
+   "asn_names": [
+    "AS52423 - Data Miners S.A. ( Racknation.cr )"
+   ]
+  },
+  {
+   "host": "noornode.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "nos.lol",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "142.132.206.70"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "noshole.feeds.relay.tools",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "207.244.244.88"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "nostr-01.uid.ovh",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "152.228.218.65"
+   ],
+   "asns": [
+    "16276"
+   ],
+   "asn_names": [
+    "OVH OVH SAS"
+   ]
+  },
+  {
+   "host": "nostr-01.yakihonne.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "45.77.255.109"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "nostr-02.yakihonne.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "139.180.129.40"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "nostr-dev.wellorder.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "5.78.98.165"
+   ],
+   "asns": [
+    "212317"
+   ],
+   "asn_names": [
+    "HETZNER-CLOUD3-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr-pub.semisol.dev",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.27.135.135"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr-pub.wellorder.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "5.78.98.165"
+   ],
+   "asns": [
+    "212317"
+   ],
+   "asn_names": [
+    "HETZNER-CLOUD3-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr-relay.bitcoin.ninja",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "208.68.6.73"
+   ],
+   "asns": [
+    "397444"
+   ],
+   "asn_names": [
+    "AS-OKI - Overkill Interbuzz LLC"
+   ]
+  },
+  {
+   "host": "nostr-relay.derekross.me",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.29.222",
+    "172.67.149.216"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr-verif.slothy.win",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.131.195",
+    "104.21.4.73"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr-verified.wellorder.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "5.78.98.165"
+   ],
+   "asns": [
+    "212317"
+   ],
+   "asn_names": [
+    "HETZNER-CLOUD3-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.1sat.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "5.199.166.145"
+   ],
+   "asns": [
+    "216444"
+   ],
+   "asn_names": [
+    "CHERRYSERVERS4-AS UAB \"Cherry Servers\""
+   ]
+  },
+  {
+   "host": "nostr.21crypto.ch",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "85.195.215.69"
+   ],
+   "asns": [
+    "13030"
+   ],
+   "asn_names": [
+    "INIT7 Init7 (Switzerland) Ltd."
+   ]
+  },
+  {
+   "host": "nostr.256k1.dev",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "150.228.114.222"
+   ],
+   "asns": [
+    "14593"
+   ],
+   "asn_names": [
+    "SPACEX-STARLINK - Space Exploration Technologies Corporation"
+   ]
+  },
+  {
+   "host": "nostr.2h2o.io",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "195.252.200.4"
+   ],
+   "asns": [
+    "30600"
+   ],
+   "asn_names": [
+    "AS-CMN - Metronet"
+   ]
+  },
+  {
+   "host": "nostr.438b.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "23.244.115.4"
+   ],
+   "asns": [
+    "11776"
+   ],
+   "asn_names": [
+    "ATLANTICBB-JOHNSTOWN - Breezeline"
+   ]
+  },
+  {
+   "host": "nostr.alexanarcho.live",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "85.209.48.179"
+   ],
+   "asns": [
+    "197540"
+   ],
+   "asn_names": [
+    "netcup-AS netcup GmbH"
+   ]
+  },
+  {
+   "host": "nostr.app.runonflux.io",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "5.161.178.20"
+   ],
+   "asns": [
+    "213230"
+   ],
+   "asn_names": [
+    "HETZNER-CLOUD2-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.asdf.mx",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.128.239.225"
+   ],
+   "asns": [
+    "7489"
+   ],
+   "asn_names": [
+    "HOSTUS-GLOBAL-AS - HostUS"
+   ]
+  },
+  {
+   "host": "nostr.azuki.blue",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.143.212",
+    "104.21.27.254"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.azzamo.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "146.59.44.3"
+   ],
+   "asns": [
+    "16276"
+   ],
+   "asn_names": [
+    "OVH OVH SAS"
+   ]
+  },
+  {
+   "host": "nostr.chaima.info",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "213.199.37.224"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "nostr.cizmar.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "109.230.195.105"
+   ],
+   "asns": [
+    "197071"
+   ],
+   "asn_names": [
+    "ACTIVE-SERVERS active 1 GmbH"
+   ]
+  },
+  {
+   "host": "nostr.cltrrd.us",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.158.69",
+    "104.21.73.57"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.corebreach.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "97.115.67.66"
+   ],
+   "asns": [
+    "209"
+   ],
+   "asn_names": [
+    "CENTURYLINK-US-LEGACY-QWEST - CenturyLink Communications, LLC"
+   ]
+  },
+  {
+   "host": "nostr.d11n.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "159.195.53.86"
+   ],
+   "asns": [
+    "197540"
+   ],
+   "asn_names": [
+    "netcup-AS netcup GmbH"
+   ]
+  },
+  {
+   "host": "nostr.data.haus",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "5.75.228.192"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.dbtc.link",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.72.85",
+    "172.67.177.246"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.decentony.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "164.92.76.80"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "nostr.dler.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "211.75.210.221",
+    "211.75.205.188",
+    "211.75.205.187"
+   ],
+   "asns": [
+    "3462"
+   ],
+   "asn_names": [
+    "HINET - Data Communication Business Group"
+   ]
+  },
+  {
+   "host": "nostr.easydns.ca",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "64.68.204.22"
+   ],
+   "asns": [
+    "16686"
+   ],
+   "asn_names": [
+    "EDNS - easyDNS Technologies, Inc."
+   ]
+  },
+  {
+   "host": "nostr.einundzwanzig.space",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "62.171.139.240"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "nostr.frostr.xyz",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "45.56.73.85"
+   ],
+   "asns": [
+    "63949"
+   ],
+   "asn_names": [
+    "AKAMAI-LINODE-AP - Akamai Connected Cloud"
+   ]
+  },
+  {
+   "host": "nostr.heavyrubberslave.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.6.193",
+    "172.67.135.51"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.hifish.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "212.51.141.18"
+   ],
+   "asns": [
+    "13030"
+   ],
+   "asn_names": [
+    "INIT7 Init7 (Switzerland) Ltd."
+   ]
+  },
+  {
+   "host": "nostr.ingwie.me",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "49.13.8.103"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.koning-degraaf.nl",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "81.172.159.225"
+   ],
+   "asns": [
+    "15435"
+   ],
+   "asn_names": [
+    "KABELFOON DELTA Fiber Nederland B.V."
+   ]
+  },
+  {
+   "host": "nostr.l00p.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "95.216.25.119"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.land",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.27.135.135"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.liberty.fans",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "71.86.10.194"
+   ],
+   "asns": [
+    "20115"
+   ],
+   "asn_names": [
+    "CHARTER-20115 - Charter Communications LLC"
+   ]
+  },
+  {
+   "host": "nostr.lorentz.is",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "76.248.248.219"
+   ],
+   "asns": [
+    "7018"
+   ],
+   "asn_names": [
+    "ATT-INTERNET4 - AT&T Enterprises, LLC"
+   ]
+  },
+  {
+   "host": "nostr.middling.mydns.jp",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "140.238.40.150"
+   ],
+   "asns": [
+    "31898"
+   ],
+   "asn_names": [
+    "ORACLE-BMC-31898 - Oracle Corporation"
+   ]
+  },
+  {
+   "host": "nostr.mineracks.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "112.213.33.201"
+   ],
+   "asns": [
+    "133159"
+   ],
+   "asn_names": [
+    "MAMMOTHMEDIA-AS-AP - Mammoth Media Pty Ltd"
+   ]
+  },
+  {
+   "host": "nostr.mom",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "142.132.206.70"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.myshosholoza.co.za",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "63.250.54.76"
+   ],
+   "asns": [
+    "29802"
+   ],
+   "asn_names": [
+    "HVC-AS - HIVELOCITY, Inc."
+   ]
+  },
+  {
+   "host": "nostr.oxtr.dev",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "144.76.199.124"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.polyserv.xyz",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "92.124.132.108"
+   ],
+   "asns": [
+    "12389"
+   ],
+   "asn_names": [
+    "ROSTELECOM-AS PJSC Rostelecom"
+   ]
+  },
+  {
+   "host": "nostr.rikmeijer.nl",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "62.250.19.209"
+   ],
+   "asns": [
+    "50266"
+   ],
+   "asn_names": [
+    "Odido Odido Netherlands B.V."
+   ]
+  },
+  {
+   "host": "nostr.sathoarder.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "87.119.220.6"
+   ],
+   "asns": [
+    "29066"
+   ],
+   "asn_names": [
+    "VELIANET-AS velia.net Internetdienste GmbH"
+   ]
+  },
+  {
+   "host": "nostr.satoshi-mall.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "94.155.18.62"
+   ],
+   "asns": [
+    "9070"
+   ],
+   "asn_names": [
+    "Cooolbox Cooolbox AD"
+   ]
+  },
+  {
+   "host": "nostr.sebastix.dev",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "136.144.236.189"
+   ],
+   "asns": [
+    "20857"
+   ],
+   "asn_names": [
+    "TRANSIP-AS Signet B.V."
+   ]
+  },
+  {
+   "host": "nostr.sectiontwo.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "146.190.56.86"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "nostr.semisol.dev",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.27.135.135"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.slothy.win",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.4.73",
+    "172.67.131.195"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.spaceshell.xyz",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.93.212",
+    "172.67.214.201"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.thank.eu",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "185.230.184.83"
+   ],
+   "asns": [
+    "205067"
+   ],
+   "asn_names": [
+    "swissns swissns GmbH"
+   ]
+  },
+  {
+   "host": "nostr.vulpem.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "167.235.75.194"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr.wine",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.26.2.27",
+    "172.67.74.82",
+    "104.26.3.27"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostr.xmr.rocks",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "116.203.151.29"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "nostr01.counterclockwise.io",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "165.232.33.156"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "nostr21.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "nostrbtc.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.49.7",
+    "172.67.139.253"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostrcheck.me",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.26.104",
+    "172.67.135.221"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostrelay.circum.space",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "62.216.176.164"
+   ],
+   "asns": [
+    "25560"
+   ],
+   "asn_names": [
+    "RHTEC-AS rh-tec Business GmbH"
+   ]
+  },
+  {
+   "host": "nostrelites.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.237.154.131"
+   ],
+   "asns": [
+    "63949"
+   ],
+   "asn_names": [
+    "AKAMAI-LINODE-AP - Akamai Connected Cloud"
+   ]
+  },
+  {
+   "host": "nostril.cam",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.93.213",
+    "172.67.215.76"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostrrelay.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.202.119",
+    "104.21.85.50"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nostrrelay.taylorperron.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "54.39.161.200"
+   ],
+   "asns": [
+    "16276"
+   ],
+   "asn_names": [
+    "OVH OVH SAS"
+   ]
+  },
+  {
+   "host": "nostrrelay.win",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.10.112",
+    "172.67.131.117"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "nproxy.kristapsk.lv",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "159.148.57.59"
+   ],
+   "asns": [
+    "2588"
+   ],
+   "asn_names": [
+    "LATNET-AS SIA \"BITE Latvija\""
+   ]
+  },
+  {
+   "host": "nr1.breez.technology",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "65.109.145.24"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "offchain.bostr.online",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.18.78",
+    "172.67.180.242"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "offchain.pub",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "23.137.254.12"
+   ],
+   "asns": [
+    "40663"
+   ],
+   "asn_names": [
+    "INTERNET-SPEECH-AND-PRIVACY-LLC - IncogNet LLC"
+   ]
+  },
+  {
+   "host": "paid.no.str.cr",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "143.202.162.130"
+   ],
+   "asns": [
+    "52423"
+   ],
+   "asn_names": [
+    "AS52423 - Data Miners S.A. ( Racknation.cr )"
+   ]
+  },
+  {
+   "host": "pipe.imwald.eu",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "217.154.126.125"
+   ],
+   "asns": [
+    "8560"
+   ],
+   "asn_names": [
+    "IONOS-AS IONOS SE"
+   ]
+  },
+  {
+   "host": "podtards.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "174.178.146.233"
+   ],
+   "asns": [
+    "7922"
+   ],
+   "asn_names": [
+    "COMCAST-7922 - Comcast Cable Communications, LLC"
+   ]
+  },
+  {
+   "host": "pomegranate.slothy.win",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.131.195",
+    "104.21.4.73"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "pow.relays.land",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "144.91.118.169"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "premium.primal.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.26.9.197",
+    "172.67.68.169",
+    "104.26.8.197"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "primus.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "profiles.nostrver.se",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.74.130.228"
+   ],
+   "asns": [
+    "1136"
+   ],
+   "asn_names": [
+    "KPN KPN B.V."
+   ]
+  },
+  {
+   "host": "puravida.nostr.land",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.27.135.135"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "purplepag.es",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "157.180.102.242"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "purplerelay.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.48.96",
+    "172.67.183.192"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "pyramid.fiatjaf.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "144.91.118.169"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "r.alphaama.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "77.42.85.143"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "r.ydg.works",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "66.241.125.18"
+   ],
+   "asns": [
+    "40509"
+   ],
+   "asn_names": [
+    "FLY - Fly.io, Inc."
+   ]
+  },
+  {
+   "host": "relay-rpi.edufeed.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "89.58.4.126"
+   ],
+   "asns": [
+    "197540"
+   ],
+   "asn_names": [
+    "netcup-AS netcup GmbH"
+   ]
+  },
+  {
+   "host": "relay.21mil.me",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "207.244.233.33"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "relay.44billion.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.141.111",
+    "104.21.9.38"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.angor.io",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "207.180.254.78"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "relay.argw.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.183.89",
+    "104.21.18.207"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.azzamo.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "57.129.118.72"
+   ],
+   "asns": [
+    "16276"
+   ],
+   "asn_names": [
+    "OVH OVH SAS"
+   ]
+  },
+  {
+   "host": "relay.beta.fogtype.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "158.101.141.96"
+   ],
+   "asns": [
+    "31898"
+   ],
+   "asn_names": [
+    "ORACLE-BMC-31898 - Oracle Corporation"
+   ]
+  },
+  {
+   "host": "relay.bitcoindistrict.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.30.177",
+    "172.67.173.125"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.bostr.online",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "8.216.87.131"
+   ],
+   "asns": [
+    "45102"
+   ],
+   "asn_names": [
+    "ALIBABA-CN-NET - Alibaba (US) Technology Co., Ltd."
+   ]
+  },
+  {
+   "host": "relay.bowlafterbowl.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "45.33.27.89"
+   ],
+   "asns": [
+    "63949"
+   ],
+   "asn_names": [
+    "AKAMAI-LINODE-AP - Akamai Connected Cloud"
+   ]
+  },
+  {
+   "host": "relay.bullishbounty.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.150.68",
+    "104.21.96.20"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.coinos.io",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.26.11.204",
+    "104.26.10.204",
+    "172.67.68.47"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.cyberguy.fyi",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "80.71.235.86"
+   ],
+   "asns": [
+    "211673"
+   ],
+   "asn_names": [
+    "Mynymbox Mynymbox Hosting LLC"
+   ]
+  },
+  {
+   "host": "relay.damus.io",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.61.55",
+    "172.67.206.128"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.damustr.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.202.121",
+    "104.21.85.52"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.decentralia.fr",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "13.140.158.224"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "relay.degmods.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "176.9.50.120"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.dergigi.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "89.147.109.128"
+   ],
+   "asns": [
+    "44925"
+   ],
+   "asn_names": [
+    "THE-1984-AS 1984 ehf"
+   ]
+  },
+  {
+   "host": "relay.ditto.pub",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.160.45",
+    "104.21.14.192"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.divine.video",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "34.58.27.79"
+   ],
+   "asns": [
+    "396982"
+   ],
+   "asn_names": [
+    "GOOGLE-CLOUD-PLATFORM - Google LLC"
+   ]
+  },
+  {
+   "host": "relay.dreamith.to",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.192.35",
+    "104.21.81.247"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.dwadziesciajeden.pl",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "151.115.76.107"
+   ],
+   "asns": [
+    "12876"
+   ],
+   "asn_names": [
+    "AS12876 Scaleway SAS"
+   ]
+  },
+  {
+   "host": "relay.dyne.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.120.168.22"
+   ],
+   "asns": [
+    "197540"
+   ],
+   "asn_names": [
+    "netcup-AS netcup GmbH"
+   ]
+  },
+  {
+   "host": "relay.getalby.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.72.39",
+    "104.26.5.112",
+    "104.26.4.112"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.getsafebox.app",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.105.26.76"
+   ],
+   "asns": [
+    "63949"
+   ],
+   "asn_names": [
+    "AKAMAI-LINODE-AP - Akamai Connected Cloud"
+   ]
+  },
+  {
+   "host": "relay.getvia.xyz",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "89.167.89.219"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.geyser.fund",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "34.122.33.139"
+   ],
+   "asns": [
+    "396982"
+   ],
+   "asn_names": [
+    "GOOGLE-CLOUD-PLATFORM - Google LLC"
+   ]
+  },
+  {
+   "host": "relay.guggero.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "80.253.94.252"
+   ],
+   "asns": [
+    "13030"
+   ],
+   "asn_names": [
+    "INIT7 Init7 (Switzerland) Ltd."
+   ]
+  },
+  {
+   "host": "relay.gulugulu.moe",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.198.118",
+    "104.21.68.206"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.highlighter.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "157.180.102.242"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.internationalright-wing.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "189.91.231.46"
+   ],
+   "asns": [
+    "28668"
+   ],
+   "asn_names": [
+    "AS28668 - Desktop Sigmanet Comunicacao Multimidia SA"
+   ]
+  },
+  {
+   "host": "relay.johnnyasantos.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.30.14",
+    "172.67.150.50"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.kyhou.duckdns.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "177.0.208.197"
+   ],
+   "asns": [
+    "8167"
+   ],
+   "asn_names": [
+    "AS8167 - V tal"
+   ]
+  },
+  {
+   "host": "relay.layer.systems",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "5.45.97.63"
+   ],
+   "asns": [
+    "197540"
+   ],
+   "asn_names": [
+    "netcup-AS netcup GmbH"
+   ]
+  },
+  {
+   "host": "relay.letsfo.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "51.77.52.189"
+   ],
+   "asns": [
+    "16276"
+   ],
+   "asn_names": [
+    "OVH OVH SAS"
+   ]
+  },
+  {
+   "host": "relay.lexingtonbitcoin.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.58.80",
+    "172.67.157.249"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.libernet.app",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.74.28",
+    "104.26.0.104",
+    "104.26.1.104"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.libertas-primordium.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "97.171.82.228"
+   ],
+   "asns": [
+    "6167"
+   ],
+   "asn_names": [
+    "CELLCO-PART - Verizon Business"
+   ]
+  },
+  {
+   "host": "relay.minibits.cash",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "195.201.20.134"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.mmwaves.de",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "87.106.40.47"
+   ],
+   "asns": [
+    "8560"
+   ],
+   "asn_names": [
+    "IONOS-AS IONOS SE"
+   ]
+  },
+  {
+   "host": "relay.momostr.pink",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.21.193",
+    "172.67.200.15"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.mostr.pub",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.131.33",
+    "104.21.3.194"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.mostro.network",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "64.225.17.48"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "relay.ninja-portal.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "170.9.241.14"
+   ],
+   "asns": [
+    "31898"
+   ],
+   "asn_names": [
+    "ORACLE-BMC-31898 - Oracle Corporation"
+   ]
+  },
+  {
+   "host": "relay.nmail.li",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "152.228.218.65"
+   ],
+   "asns": [
+    "16276"
+   ],
+   "asn_names": [
+    "OVH OVH SAS"
+   ]
+  },
+  {
+   "host": "relay.noderunners.network",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "146.59.44.3"
+   ],
+   "asns": [
+    "16276"
+   ],
+   "asn_names": [
+    "OVH OVH SAS"
+   ]
+  },
+  {
+   "host": "relay.nos.social",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "167.71.169.109"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "relay.nosotros.app",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "54.226.92.155"
+   ],
+   "asns": [
+    "14618"
+   ],
+   "asn_names": [
+    "AMAZON-AES - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "relay.nostr-check.me",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.220.152",
+    "104.21.86.148"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.nostr.build",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.74.181",
+    "104.26.8.58",
+    "104.26.9.58"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.nostr.hu",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.221.212.198"
+   ],
+   "asns": [
+    "41075"
+   ],
+   "asn_names": [
+    "ATW-AS ATW Internet Kft."
+   ]
+  },
+  {
+   "host": "relay.nostr.info",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "138.68.23.64"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "relay.nostr.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.74.167",
+    "172.67.204.118"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.nostr.sc",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "107.130.212.108"
+   ],
+   "asns": [
+    "7018"
+   ],
+   "asn_names": [
+    "ATT-INTERNET4 - AT&T Enterprises, LLC"
+   ]
+  },
+  {
+   "host": "relay.nostr.watch",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "45.76.237.151"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "relay.nostr.wf",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "144.91.98.42"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "relay.nostr.wirednet.jp",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "153.127.31.45"
+   ],
+   "asns": [
+    "7684"
+   ],
+   "asn_names": [
+    "SAKURA-A - SAKURA Internet Inc."
+   ]
+  },
+  {
+   "host": "relay.nostrcheck.me",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.26.104",
+    "172.67.135.221"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.nostrfeed.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "135.181.34.164"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.nostrhub.fr",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "109.123.247.21"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "relay.nostriches.club",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.76.60",
+    "172.67.190.82"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.nostriot.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "170.75.166.87"
+   ],
+   "asns": [
+    "174",
+    "394745"
+   ],
+   "asn_names": [
+    "COGENT-174 - Cogent Communications, LLC",
+    "LH-AS-1 - Lunanode Hosting Inc."
+   ]
+  },
+  {
+   "host": "relay.nostrmap.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "77.42.64.76"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.nostromo.social",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "195.201.92.24"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.nostrplebs.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.27.187.0"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.nostrverse.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.53.246",
+    "172.67.221.29"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.nostrview.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "141.145.193.65"
+   ],
+   "asns": [
+    "31898"
+   ],
+   "asn_names": [
+    "ORACLE-BMC-31898 - Oracle Corporation"
+   ]
+  },
+  {
+   "host": "relay.nostrzh.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.214.246",
+    "104.21.83.62"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.noswhere.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "37.27.135.135"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.notoshi.win",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "184.82.8.137"
+   ],
+   "asns": [
+    "133481"
+   ],
+   "asn_names": [
+    "AIS-Fibre-AS-AP - AIS Fibre"
+   ]
+  },
+  {
+   "host": "relay.npubhaus.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.31.230",
+    "172.67.180.187"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.olas.app",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "157.180.102.242"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.orangepill.ovh",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "82.67.102.15"
+   ],
+   "asns": [
+    "12322"
+   ],
+   "asn_names": [
+    "PROXAD Free SAS"
+   ]
+  },
+  {
+   "host": "relay.orly.dev",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "69.164.249.71"
+   ],
+   "asns": [
+    "26666"
+   ],
+   "asn_names": [
+    "INTERSERVER-LAX - Interserver, Inc"
+   ]
+  },
+  {
+   "host": "relay.paulstephenborile.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "46.225.83.23"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.pleb.one",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "207.244.228.3"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "relay.poster.place",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.57.219",
+    "172.67.192.115"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.powforge.dev",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "68.183.30.142"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "relay.primal.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.26.8.197",
+    "172.67.68.169",
+    "104.26.9.197"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.rkus.se",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "188.149.231.100"
+   ],
+   "asns": [
+    "1257"
+   ],
+   "asn_names": [
+    "SWIPNET - Tele2 Sverige AB"
+   ]
+  },
+  {
+   "host": "relay.satlantis.io",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "32.197.209.202"
+   ],
+   "asns": [
+    "14618"
+   ],
+   "asn_names": [
+    "AMAZON-AES - Amazon.com, Inc."
+   ]
+  },
+  {
+   "host": "relay.satmaxt.xyz",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.174.144",
+    "104.21.47.245"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.seq1.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.69.254",
+    "172.67.216.254"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.shosho.live",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "69.46.46.30"
+   ],
+   "asns": [
+    "400940"
+   ],
+   "asn_names": [
+    "RAILWAY - Railway"
+   ]
+  },
+  {
+   "host": "relay.staging.dvines.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "34.72.38.189"
+   ],
+   "asns": [
+    "396982"
+   ],
+   "asn_names": [
+    "GOOGLE-CLOUD-PLATFORM - Google LLC"
+   ]
+  },
+  {
+   "host": "relay.trustroots.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.22.126",
+    "172.67.205.8"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.utxo.one",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.70.67",
+    "172.67.220.176"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relay.vanderwarker.family",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "45.79.177.221"
+   ],
+   "asns": [
+    "63949"
+   ],
+   "asn_names": [
+    "AKAMAI-LINODE-AP - Akamai Connected Cloud"
+   ]
+  },
+  {
+   "host": "relay.vertexlab.io",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "188.245.145.168"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.wasku.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "51.77.52.189"
+   ],
+   "asns": [
+    "16276"
+   ],
+   "asn_names": [
+    "OVH OVH SAS"
+   ]
+  },
+  {
+   "host": "relay.wavlake.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "34.59.25.35"
+   ],
+   "asns": [
+    "396982"
+   ],
+   "asn_names": [
+    "GOOGLE-CLOUD-PLATFORM - Google LLC"
+   ]
+  },
+  {
+   "host": "relay.wellorder.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "5.78.98.165"
+   ],
+   "asns": [
+    "212317"
+   ],
+   "asn_names": [
+    "HETZNER-CLOUD3-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.westernbtc.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "69.59.196.28"
+   ],
+   "asns": [
+    "13868"
+   ],
+   "asn_names": [
+    "PEAK INTERNET - Peak Internet"
+   ]
+  },
+  {
+   "host": "relay.wildburro.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "185.194.140.166"
+   ],
+   "asns": [
+    "197540"
+   ],
+   "asn_names": [
+    "netcup-AS netcup GmbH"
+   ]
+  },
+  {
+   "host": "relay.wisp.talk",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "91.99.132.135"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay.zap.stream",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "185.18.221.87"
+   ],
+   "asns": [
+    "214973"
+   ],
+   "asn_names": [
+    "axst-io Apex Strata Ltd"
+   ]
+  },
+  {
+   "host": "relay1.blackbyte.nl",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "45.83.241.46"
+   ],
+   "asns": [
+    "206238"
+   ],
+   "asn_names": [
+    "FREEDOMINTERNET Freedom Internet BV"
+   ]
+  },
+  {
+   "host": "relay2.angor.io",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "207.180.254.78"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "relay2.blackbyte.nl",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "161.97.103.113"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "relay2.veganostr.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "204.168.165.94"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "relay29.notoshi.win",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.221.37",
+    "104.21.45.244"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "relaypag.es",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "70.34.249.31"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "rele.speyhard.fi",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "173.249.9.37"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "ribo.nostria.app",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.26.7.56",
+    "104.26.6.56",
+    "172.67.75.140"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "satsage.xyz",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "146.190.52.79"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "search.nos.today",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.148.91",
+    "104.21.29.40"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "search.nostrarchives.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "157.90.21.21"
+   ],
+   "asns": [
+    "24940"
+   ],
+   "asn_names": [
+    "HETZNER-AS Hetzner Online GmbH"
+   ]
+  },
+  {
+   "host": "slick.mjex.me",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "150.136.67.40"
+   ],
+   "asns": [
+    "31898"
+   ],
+   "asn_names": [
+    "ORACLE-BMC-31898 - Oracle Corporation"
+   ]
+  },
+  {
+   "host": "soloco.nl",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.49.205",
+    "172.67.167.26"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "spatia-arcana.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "159.198.45.193"
+   ],
+   "asns": [
+    "22612"
+   ],
+   "asn_names": [
+    "NAMECHEAP-NET - Namecheap, Inc."
+   ]
+  },
+  {
+   "host": "staging.yabu.me",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "149.28.29.200"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "subnet.relays.land",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "144.91.118.169"
+   ],
+   "asns": [
+    "51167"
+   ],
+   "asn_names": [
+    "CONTABO Contabo GmbH"
+   ]
+  },
+  {
+   "host": "temp.iris.to",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.170.136",
+    "104.21.79.112"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "testnet-relay.samt.st",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "164.90.132.119"
+   ],
+   "asns": [
+    "14061"
+   ],
+   "asn_names": [
+    "DIGITALOCEAN-ASN - DigitalOcean, LLC"
+   ]
+  },
+  {
+   "host": "thebarn.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "thecitadel.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "theforest.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "top.testrelay.top",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.154.202",
+    "104.21.6.35"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "us.nostr.wine",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.26.2.27",
+    "172.67.74.82",
+    "104.26.3.27"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "vault.iris.to",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.79.112",
+    "172.67.170.136"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "vitor.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "wbc.nostr1.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "154.38.160.61"
+   ],
+   "asns": [
+    "40021"
+   ],
+   "asn_names": [
+    "CONTABO-40021 - Contabo Inc."
+   ]
+  },
+  {
+   "host": "wheat.happytavern.co",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.191.108",
+    "104.21.76.82"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "wot.dergigi.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "93.95.231.72"
+   ],
+   "asns": [
+    "44925"
+   ],
+   "asn_names": [
+    "THE-1984-AS 1984 ehf"
+   ]
+  },
+  {
+   "host": "wot.girino.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.211.208",
+    "104.21.59.27"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "wot.nostr.net",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.204.118",
+    "104.21.74.167"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "wot.nostr.party",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "136.58.79.86"
+   ],
+   "asns": [
+    "16591"
+   ],
+   "asn_names": [
+    "GOOGLE-FIBER - Google Fiber Inc."
+   ]
+  },
+  {
+   "host": "wot.shaving.kiwi",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.206.37",
+    "104.21.93.62"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "wot.utxo.one",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "104.21.70.67",
+    "172.67.220.176"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "x.kojira.io",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "172.67.128.40",
+    "104.21.0.176"
+   ],
+   "asns": [
+    "13335"
+   ],
+   "asn_names": [
+    "CLOUDFLARENET - Cloudflare, Inc."
+   ]
+  },
+  {
+   "host": "xmr.ithurtswhenip.ee",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "62.4.14.42"
+   ],
+   "asns": [
+    "12876"
+   ],
+   "asn_names": [
+    "AS12876 Scaleway SAS"
+   ]
+  },
+  {
+   "host": "xmr.usenostr.org",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "185.194.143.52"
+   ],
+   "asns": [
+    "197540"
+   ],
+   "asn_names": [
+    "netcup-AS netcup GmbH"
+   ]
+  },
+  {
+   "host": "yabu.me",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "149.28.29.200"
+   ],
+   "asns": [
+    "20473"
+   ],
+   "asn_names": [
+    "AS-VULTR - The Constant Company, LLC"
+   ]
+  },
+  {
+   "host": "yestr.me",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "170.75.168.214"
+   ],
+   "asns": [
+    "174",
+    "394745"
+   ],
+   "asn_names": [
+    "COGENT-174 - Cogent Communications, LLC",
+    "LH-AS-1 - Lunanode Hosting Inc."
+   ]
+  },
+  {
+   "host": "zensky-pj.com",
+   "status_run6": "live",
+   "dns_status": 0,
+   "ips": [
+    "180.198.203.74"
+   ],
+   "asns": [
+    "18126"
+   ],
+   "asn_names": [
+    "CTCX - Chubu Telecommunications Company, Inc."
+   ]
+  }
+ ]
+}
