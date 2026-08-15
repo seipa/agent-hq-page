@@ -418,9 +418,11 @@
      "text": "See: https://stacker.news/items/1532473?commentId=1532477\n\n> Whirlpool has worse privacy, fees, speed, and custody model than a regular Bitcoin payment:\n>\n> -The privacy is worse than sending normal on chain payments because tx0 always reveals common input ownership and creates change\n> -The fee is worse than on chain payments because the victim wastes fees in tx0, wastes fees remixing sybil attackers, and wastes fees paying the coordinator (feeding the attacker)\n> -The speed is worse than a regular payment because you have to confirm tx0, then Whirlpool, then spend. Best case scenario 30 minutes.\n> -The trust model is worse than a regular payment because the coordinator can just steal your fees in tx0 and never whirlpool your coins.\n\n> Samourai's absence from the community unironically prevented Bitcoin from being destroyed. It is a downgrade for users in every possible category, see an example here: [https://bitcointalk.org/index.php?topic=5482818.msg63551707#msg63551707](https://bitcointalk.org/index.php?topic=5482818.msg63551707#msg63551707)\n>\n> I had a fantasy about building a tool that shows your exposed Whirlpool data for a long time, but it would have been pointless since it would not include the xpub data from Samourai and the Electrum data from Sparrow. But now it is relevant since Ashigaru at least requires Tor, so a tool that tracks the on chain peeling that is built in to tx0 would be mostly accurate from a third party blockchain viewer perspective.\n\n500k sat bounty to the user who builds this app/plugin for your Bitcoin node. This code is terribly outdated and inefficient, but it might help you get started on top of the Bitcointalk post: [https://github.com/nopara73/dumplings](https://github.com/nopara73/dumplings)",
      "sats": 1133,
      "boost": 42260,
-     "ncomments": 80,
+     "ncomments": 83,
      "bounty": 500000,
-     "bountyPaidTo": null,
+     "bountyPaidTo": [
+      1548391
+     ],
      "createdAt": "2026-07-25T13:53:42.588Z",
      "user": {
       "name": "Kruw"
@@ -428,19 +430,19 @@
      "comments": {
       "comments": [
        {
-        "id": "1548472",
-        "text": "@clenchwallet is the competition winner. Please reply to this comment with your on chain address for payment.",
-        "sats": 0,
-        "createdAt": "2026-08-15T11:58:41.904Z",
+        "id": "1532802",
+        "text": "COMPETITION ENDS IN ONE WEEK! Minimum feature spec (courtesy of @clenchwallet ):\n\n- Must track the coordinator fee output and total profit (minus mining fees). There is some variation here when discount codes were applied in Samourai, which are not used by Ashigaru AFAIK\n- Must track common input ownership count revealed & their total BTC value from every tx0 premixe\n- Must track toxic change created from tx0 premixes, and have an extra flag if these coins get spent in a following tx0 premix\n- Must track the total fee cost in sats and as a % of the equal denominations created for any specific tx0 premix\n- Must track when a postmix transaction is spent as stonewall or ricochet, and the fee address paid for richochet\n- Must track the size (5:5, 6:6, 7:7, or up to 8:8) of the round, and the ratio of new entrants + remixers\n- Must track the total liquidity in each pool at each block height (and therefore the +/- change in pool entry/exit\n- Bonus: Flag CPFP spends from Whirlpool, and 1:1 consolidations of 3+ coins from tx0 -> Whirlpool -> Payment\n- Bonus: Flag address reuse for coordinator fees, tx0 inputs, tx0 change outputs, tx0 feeder outputs/Whirlpool inputs, Whirlpool outputs, & postmix Stonewall address reuse\n- Bonus: Flag BIP47 Payment OP_RETURNs, count how many notification transactions each entity has received on chain, and track to see if there is an immediate consolidation of any 2+ notifications and 2+ future input consolidations\n- Bonus: Look forward or backwards by an additional generation for all tx0 premixes and postmix spending",
+        "sats": 26,
+        "createdAt": "2026-07-25T21:59:14.077Z",
         "user": {
          "name": "Kruw"
         }
        },
        {
-        "id": "1532802",
-        "text": "COMPETITION ENDS IN ONE WEEK! Minimum feature spec (courtesy of @clenchwallet ):\n\n- Must track the coordinator fee output and total profit (minus mining fees). There is some variation here when discount codes were applied in Samourai, which are not used by Ashigaru AFAIK\n- Must track common input ownership count revealed & their total BTC value from every tx0 premixe\n- Must track toxic change created from tx0 premixes, and have an extra flag if these coins get spent in a following tx0 premix\n- Must track the total fee cost in sats and as a % of the equal denominations created for any specific tx0 premix\n- Must track when a postmix transaction is spent as stonewall or ricochet, and the fee address paid for richochet\n- Must track the size (5:5, 6:6, 7:7, or up to 8:8) of the round, and the ratio of new entrants + remixers\n- Must track the total liquidity in each pool at each block height (and therefore the +/- change in pool entry/exit\n- Bonus: Flag CPFP spends from Whirlpool, and 1:1 consolidations of 3+ coins from tx0 -> Whirlpool -> Payment\n- Bonus: Flag address reuse for coordinator fees, tx0 inputs, tx0 change outputs, tx0 feeder outputs/Whirlpool inputs, Whirlpool outputs, & postmix Stonewall address reuse\n- Bonus: Flag BIP47 Payment OP_RETURNs, count how many notification transactions each entity has received on chain, and track to see if there is an immediate consolidation of any 2+ notifications and 2+ future input consolidations\n- Bonus: Look forward or backwards by an additional generation for all tx0 premixes and postmix spending",
-        "sats": 26,
-        "createdAt": "2026-07-25T21:59:14.077Z",
+        "id": "1548472",
+        "text": "@clenchwallet is the competition winner. Please reply to this comment with your on chain address for payment.",
+        "sats": 0,
+        "createdAt": "2026-08-15T11:58:41.904Z",
         "user": {
          "name": "Kruw"
         }
