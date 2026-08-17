@@ -1,7 +1,7 @@
 {
  "summary": {
-  "started_at": "2026-08-17T04:21:28Z",
-  "finished_at": "2026-08-17T04:22:26Z",
+  "started_at": "2026-08-17T04:25:01Z",
+  "finished_at": "2026-08-17T04:25:51Z",
   "vantage": "GitHub Actions runner (ubuntu-latest)",
   "seed_relays": {
    "wss://relay.primal.net": {
@@ -25,48 +25,32 @@
     "notes": 500
    },
    "wss://relay.damus.io": {
-    "status": "OK",
-    "notes": 500
+    "status": "FAIL InvalidStatus: server rejected WebSocket connection: HTTP 503",
+    "notes": 0
    }
   },
-  "authors_sampled": 660,
-  "authors_with_list": 195,
-  "relays_advertised": 526,
+  "authors_sampled": 442,
+  "authors_with_list": 178,
+  "relays_advertised": 482,
   "classes": {
-   "ok_serving": 151,
-   "dns_fail": 122,
-   "http_error": 98,
-   "auth_required": 45,
-   "timeout": 39,
-   "tls_fail": 30,
-   "ok_empty": 15,
-   "other_fail": 9,
-   "refused": 7,
+   "ok_serving": 148,
+   "dns_fail": 109,
+   "http_error": 90,
+   "auth_required": 40,
+   "timeout": 27,
+   "tls_fail": 27,
+   "ok_empty": 14,
+   "other_fail": 11,
    "no_response": 7,
+   "refused": 6,
    "rejected": 3
   },
-  "reachable": 214,
-  "serving_events": 151,
-  "connect_ms_median": 562,
-  "connect_ms_p90": 795
+  "reachable": 205,
+  "serving_events": 148,
+  "connect_ms_median": 456,
+  "connect_ms_p90": 730
  },
  "lists": [
-  {
-   "pubkey": "ff18165afde00852d49a4e1316c981c7af0164c1810c0bc0fe41d361dd7ca7f0",
-   "created_at": 1786939675,
-   "relays": [
-    "wss://aggr.nostr.land",
-    "wss://david.nostr1.com",
-    "wss://nostr.land",
-    "wss://nostr.wine",
-    "wss://relay.bitcoinpark.com",
-    "wss://relay.damus.io",
-    "wss://satsage.xyz",
-    "wss://testorly.nosfabrica.com",
-    "wss://theforest.nostr1.com",
-    "wss://wot.nostr.party"
-   ]
-  },
   {
    "pubkey": "b3e43e8cc7e6dff23a33d9213a3e912d895b1c3e4250240e0c99dbefe3068b5f",
    "created_at": 1786939635,
@@ -126,33 +110,10 @@
    ]
   },
   {
-   "pubkey": "0f0db1c9352ebc20c75ab7bbfa82d8442ecc9303816437141358d42b9075a554",
-   "created_at": 1786481136,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr.wine",
-    "wss://offchain.pub",
-    "wss://purplepag.es",
-    "wss://relay.damus.io",
-    "wss://relay.nostr.band",
-    "wss://relay.primal.net"
-   ]
-  },
-  {
    "pubkey": "4b56bbf41c92e586e88927acb78836eb49f2b184081ef852625cf78be7d56bd6",
    "created_at": 1786388315,
    "relays": [
     "wss://relay.poster.place"
-   ]
-  },
-  {
-   "pubkey": "fc37f163f4a1e33d40af73657d02160bf8a15c20f76f0c535cf6deb30b24608f",
-   "created_at": 1786240669,
-   "relays": [
-    "wss://nos.lol",
-    "wss://relay.damus.io",
-    "wss://relay.nostr.build",
-    "wss://sendit.nosflare.com"
    ]
   },
   {
@@ -164,39 +125,6 @@
     "wss://relay.damus.io",
     "wss://relay.primal.net",
     "wss://xmr.usenostr.org"
-   ]
-  },
-  {
-   "pubkey": "83d52b4363d2d1bc5a098de7be67c120bfb7c0cee8efefd8eb6e42372af24689",
-   "created_at": 1785466895,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr.fediverse.jp",
-    "wss://nostr.mom",
-    "wss://nostream.ocha.one",
-    "wss://r.kojira.io",
-    "wss://r.ydg.works",
-    "wss://relay-jp.nostr.wirednet.jp",
-    "wss://relay.nostr.wirednet.jp",
-    "wss://relay.nostrcheck.me",
-    "wss://relay.primal.net",
-    "wss://relay.snort.social",
-    "wss://snowflare.cc",
-    "wss://yabu.me"
-   ]
-  },
-  {
-   "pubkey": "409c5539d20822f463e0e6297e217d5752109cdbdcebc21e2724075f72610245",
-   "created_at": 1785287259,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr-relay.nokotaro.com",
-    "wss://nostr.fediverse.jp",
-    "wss://nostr.holybea.com",
-    "wss://relay-jp.nostr.wirednet.jp",
-    "wss://relay.damus.io",
-    "wss://relay.primal.net",
-    "wss://yabu.me"
    ]
   },
   {
@@ -283,6 +211,29 @@
    ]
   },
   {
+   "pubkey": "bd9aaa6e97156a75463658b3f3a60560d98b7b5633600f4de2d0542ecc6f88ff",
+   "created_at": 1782508096,
+   "relays": [
+    "wss://140.f7z.io",
+    "wss://bcast.girino.org",
+    "wss://eden.nostr.land",
+    "wss://hist.nostr.land",
+    "wss://nos.lol",
+    "wss://nostr.bitcoiner.social",
+    "wss://nostr.wine",
+    "wss://nostr21.com",
+    "wss://nostrcheck.me/relay",
+    "wss://purplepag.es",
+    "wss://relay.damus.io",
+    "wss://relay.layer.systems",
+    "wss://relay.poster.place",
+    "wss://relay.primal.net",
+    "wss://relay.seq1.net",
+    "wss://relay.snort.social",
+    "wss://relay2.nostrchat.io"
+   ]
+  },
+  {
    "pubkey": "de77978bae90ec880a4aa2fb6400aa027ee54430c7a25f6bf3166c7a5e3e4d4d",
    "created_at": 1782368795,
    "relays": [
@@ -313,6 +264,18 @@
    ]
   },
   {
+   "pubkey": "c239c0f994c471c9a1e0d22b14255d956923cfbc7ce7aac653aceb2bfa4a5015",
+   "created_at": 1782061110,
+   "relays": [
+    "wss://relav.coinos.pro/xenon-xenon",
+    "wss://relay.damus.io",
+    "wss://relay.primal.net",
+    "wss://relay2.nostrchat.io",
+    "wss://temp.iris.to/jade",
+    "wss://thingstr-relay.fly.dev/haven"
+   ]
+  },
+  {
    "pubkey": "4f7e61faeb062bb33be86d6df45aa48b7720cee734ef649ec29ef48649577f5b",
    "created_at": 1781038535,
    "relays": [
@@ -320,6 +283,60 @@
     "wss://relay.damus.io",
     "wss://relay.primal.net",
     "wss://rilo.nostria.app"
+   ]
+  },
+  {
+   "pubkey": "e3a59924933c9f9f2df83449055eb3858f1480fdd0c5edb95df08bedcd2e6624",
+   "created_at": 1780619912,
+   "relays": [
+    "wss://nos.lol",
+    "wss://nostr.azzamo.net",
+    "wss://nostr.mom",
+    "wss://nostr.oxtr.dev",
+    "wss://relay.damus.io",
+    "wss://relay.dreamith.to",
+    "wss://relay.fountain.fm",
+    "wss://relay.momostr.pink",
+    "wss://relay.mostr.pub",
+    "wss://relay.primal.net",
+    "wss://relay.snort.social",
+    "wss://sendit.nosflare.com"
+   ]
+  },
+  {
+   "pubkey": "ff1a68c42082105d852c425bcb783c99e3c8fccafa6a93a22f3829e0ec9831cf",
+   "created_at": 1780514480,
+   "relays": [
+    "wss://nos.lol",
+    "wss://nostr.bitcoiner.social",
+    "wss://offchain.pub",
+    "wss://relay.current.fyi",
+    "wss://relay.damus.io",
+    "wss://relay.exit.pub",
+    "wss://relay.minds.com/nostr/v1/ws",
+    "wss://relay.mostr.pub",
+    "wss://relay.nostr.band",
+    "wss://relay.nostr.info",
+    "wss://relay.nostrich.de",
+    "wss://relay.nostrss.re",
+    "wss://relay.plebstr.com",
+    "wss://relay.poster.place",
+    "wss://relay.primal.net",
+    "wss://relay.snort.social",
+    "wss://relay.wellorder.net"
+   ]
+  },
+  {
+   "pubkey": "f2872512a241043b0efd6c893681ea5eb50499a265aea07ef1715285e60f64bc",
+   "created_at": 1780428654,
+   "relays": [
+    "wss://nos.lol",
+    "wss://nostr.land",
+    "wss://nostr.lorentz.is",
+    "wss://premium.primal.net",
+    "wss://relay.nostr.band",
+    "wss://relay.nostriot.com",
+    "wss://relay.primal.net"
    ]
   },
   {
@@ -333,76 +350,20 @@
    ]
   },
   {
-   "pubkey": "b93cc51172e3e472b0a74f1b0950fc11a7151c9aaba212ace66f601ea4ce98a5",
-   "created_at": 1774604399,
+   "pubkey": "0ed56ec7d1a9a763cc49fd62ae8a3623dfe26c26644235aae48a3e0fcf24949f",
+   "created_at": 1772939867,
    "relays": [
-    "wss://bostr.shop",
-    "wss://christpill.nostr1.com",
-    "wss://eden.nostr.land",
-    "wss://filter.nostr.wine",
-    "wss://hist.nostr.land",
+    "wss://directory.yabu.me",
     "wss://nos.lol",
-    "wss://nostr-pub.wellorder.net",
-    "wss://nostr.alexanarcho.live",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.data.haus",
-    "wss://nostr.einundzwanzig.space",
-    "wss://nostr.land",
-    "wss://nostr.mom",
-    "wss://nostr.oxtr.dev",
-    "wss://nostr.xmr.rocks",
-    "wss://nostr21.com",
-    "wss://offchain.pub",
-    "wss://purplepag.es",
-    "wss://relay.coinos.io",
-    "wss://relay.damus.io",
-    "wss://relay.getalby.com/v1",
-    "wss://relay.mostr.pub",
-    "wss://relay.nos.social",
-    "wss://relay.nostr.net",
-    "wss://relay.nostr.nu",
-    "wss://relay.noswhere.com",
-    "wss://relay.primal.net",
-    "wss://relay.snort.social",
-    "wss://theforest.nostr1.com",
-    "wss://xmr.usenostr.org"
-   ]
-  },
-  {
-   "pubkey": "a012dc823bcf80d5eadf4b6683035634bc40f1b0a52b958278b6bbc96458a70d",
-   "created_at": 1772787520,
-   "relays": [
-    "wss://at.nostrworks.com",
-    "wss://btc.klendazu.com",
-    "wss://ir.purplerelay.com",
-    "wss://knostr.neutrine.com",
-    "wss://libretechsystems.nostr1.com",
-    "wss://lightningrelay.com",
-    "wss://no.str.cr",
-    "wss://nos.lol",
-    "wss://nostr-pub.wellorder.net",
-    "wss://nostr-verif.slothy.win",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.cercatrova.me",
-    "wss://nostr.einundzwanzig.space",
-    "wss://nostr.fmt.wiz.biz",
-    "wss://nostr.land",
-    "wss://nostr.mom",
-    "wss://nostr.oxtr.dev",
-    "wss://nostr.roundrockbitcoiners.com",
-    "wss://nostr.semisol.dev",
+    "wss://nostr.cltrrd.us",
     "wss://nostr.wine",
-    "wss://nostrrelay.com",
-    "wss://primal.net",
+    "wss://premium.primal.net",
     "wss://relay.damus.io",
-    "wss://relay.lexingtonbitcoin.org",
-    "wss://relay.minibits.cash",
-    "wss://relay.mostro.network",
+    "wss://relay.gasteazi.net",
     "wss://relay.nostr.band",
-    "wss://relay.nostr.bg",
-    "wss://relay.nquiz.io",
+    "wss://relay.nostr.band/npub1jn3x3a9v5nxpgcf7rfk4pk45pzptnuy2x8tldw5pvpzznvdmhg8q0f6n6v",
     "wss://relay.primal.net",
-    "wss://relay.westernbtc.com"
+    "wss://relay.snort.social"
    ]
   },
   {
@@ -432,39 +393,26 @@
    ]
   },
   {
-   "pubkey": "e5f3339e34bf2f16dd03c62cad6bad8a4d27a9b776f37d65115983e20952d54d",
-   "created_at": 1767196722,
+   "pubkey": "1db113ebbf6dca151c2971fc8e61e378d2b2c95b5b029789a996ea47a775d16f",
+   "created_at": 1768678983,
    "relays": [
+    "wss://at.nostrworks.com",
+    "wss://atlas.nostr.land",
+    "wss://eden.nostr.land",
+    "wss://greensoul.space",
+    "wss://knostr.neutrine.com",
+    "wss://nerostr.xmr.rocks",
     "wss://nos.lol",
+    "wss://nostr-pub.semisol.dev",
     "wss://nostr-pub.wellorder.net",
+    "wss://nostr-verified.wellorder.net",
+    "wss://nostr.land",
     "wss://nostr.mom",
-    "wss://nostr.wine",
-    "wss://relay.damus.io",
-    "wss://relay.nostr.band",
-    "wss://relay.primal.net"
-   ]
-  },
-  {
-   "pubkey": "ff1a68c42082105d852c425bcb783c99e3c8fccafa6a93a22f3829e0ec9831cf",
-   "created_at": 1780514480,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr.bitcoiner.social",
-    "wss://offchain.pub",
-    "wss://relay.current.fyi",
-    "wss://relay.damus.io",
-    "wss://relay.exit.pub",
-    "wss://relay.minds.com/nostr/v1/ws",
-    "wss://relay.mostr.pub",
-    "wss://relay.nostr.band",
-    "wss://relay.nostr.info",
-    "wss://relay.nostrich.de",
-    "wss://relay.nostrss.re",
-    "wss://relay.plebstr.com",
-    "wss://relay.poster.place",
+    "wss://nostr.noones.com",
+    "wss://nostr21.com",
+    "wss://relay.nostrplebs.com",
     "wss://relay.primal.net",
-    "wss://relay.snort.social",
-    "wss://relay.wellorder.net"
+    "wss://relay.snort.social"
    ]
   },
   {
@@ -473,15 +421,6 @@
    "relays": [
     "wss://nos.lol",
     "wss://nostr.wine",
-    "wss://relay.damus.io"
-   ]
-  },
-  {
-   "pubkey": "e85ed75286cb77475776c1007df8c4ff1c9c68eff91c3627347b065c5bf4dc78",
-   "created_at": 1760260263,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr.mom",
     "wss://relay.damus.io"
    ]
   },
@@ -520,6 +459,15 @@
     "wss://relay.nquiz.io",
     "wss://relay.primal.net",
     "wss://relay.westernbtc.com"
+   ]
+  },
+  {
+   "pubkey": "e4dd796a3c78d952c509fb9791449c15c837da408650d4a2fbcac0c42f63d1d1",
+   "created_at": 1757112053,
+   "relays": [
+    "wss://nos.lol",
+    "wss://nostr.bitcoiner.social",
+    "wss://nostr.mom"
    ]
   },
   {
@@ -573,6 +521,31 @@
     "wss://nostrsatva.net",
     "wss://purplepag.es",
     "wss://relay.primal.net"
+   ]
+  },
+  {
+   "pubkey": "2d14793e6de1ec6209d5af36ff3ef00986e3299e5184cf46eb7fa3f704d804f4",
+   "created_at": 1777243453,
+   "relays": [
+    "ws://relay.damus.io",
+    "wss://nostr.bitcoiner.social",
+    "wss://relay.primal.net"
+   ]
+  },
+  {
+   "pubkey": "ff18165afde00852d49a4e1316c981c7af0164c1810c0bc0fe41d361dd7ca7f0",
+   "created_at": 1786939675,
+   "relays": [
+    "wss://aggr.nostr.land",
+    "wss://david.nostr1.com",
+    "wss://nostr.land",
+    "wss://nostr.wine",
+    "wss://relay.bitcoinpark.com",
+    "wss://relay.damus.io",
+    "wss://satsage.xyz",
+    "wss://testorly.nosfabrica.com",
+    "wss://theforest.nostr1.com",
+    "wss://wot.nostr.party"
    ]
   },
   {
@@ -646,6 +619,19 @@
    ]
   },
   {
+   "pubkey": "0f0db1c9352ebc20c75ab7bbfa82d8442ecc9303816437141358d42b9075a554",
+   "created_at": 1786481136,
+   "relays": [
+    "wss://nos.lol",
+    "wss://nostr.wine",
+    "wss://offchain.pub",
+    "wss://purplepag.es",
+    "wss://relay.damus.io",
+    "wss://relay.nostr.band",
+    "wss://relay.primal.net"
+   ]
+  },
+  {
    "pubkey": "998a4b3a313d9619447f4f07426a19a8de29dd693c76fde985860bb75904d06a",
    "created_at": 1786348635,
    "relays": [
@@ -657,33 +643,37 @@
    ]
   },
   {
-   "pubkey": "698f4c636c208e1226aa07ddde8d78c7b1b6ba3bd1aadfc7eb48df29d28ba60f",
-   "created_at": 1786282891,
+   "pubkey": "fc37f163f4a1e33d40af73657d02160bf8a15c20f76f0c535cf6deb30b24608f",
+   "created_at": 1786240669,
    "relays": [
-    "wss://damus.bostr.online",
-    "wss://relay.0xchat.com",
-    "wss://relay.bostr.online",
-    "wss://relay.ditto.pub",
-    "wss://relay.gulugulu.moe",
-    "wss://relay.nostr.net",
-    "wss://top.testrelay.top",
-    "wss://wheat.happytavern.co"
+    "wss://nos.lol",
+    "wss://relay.damus.io",
+    "wss://relay.nostr.build",
+    "wss://sendit.nosflare.com"
    ]
   },
   {
-   "pubkey": "c4b5369a9db27a2e1bc97b25faa4862d9fcfa747506b1f272f8f4b36b812dbd6",
-   "created_at": 1785831683,
+   "pubkey": "c07c054989c9737204a224fd01092d87c3cacb267923c318a0be84d6e75c85f5",
+   "created_at": 1786142829,
    "relays": [
-    "wss://bitcoiner.social",
-    "wss://nostr-01.yakihonne.com",
-    "wss://nostr-02.yakihonne.com",
-    "wss://nostr.einundzwanzig.space",
+    "wss://nos.lol",
+    "wss://nostr.mom",
+    "wss://relay.dtan.xyz",
+    "wss://relay.libernet.app"
+   ]
+  },
+  {
+   "pubkey": "f76dfec4aaac8a03938289418aa9755aa4a2062b0927339bcd5284a5a74c56d4",
+   "created_at": 1786110866,
+   "relays": [
+    "wss:",
+    "wss://eden.nostr.land",
+    "wss://nos.lol",
+    "wss://nostr.wine",
     "wss://relay.damus.io",
-    "wss://relay.gandlaf.com",
-    "wss://relay.gandlaf.com/outbox",
-    "wss://relay.mostr.pub",
-    "wss://relay.nostrich.de",
-    "wss://relay.primal.net"
+    "wss://relay.damus.io/%20wss://relay.notoshi.win/%20wss://nos.lol/%20wss://relay.siamstr.com/%20wss://relay.0xchat.com/%20wss://nfrelay.app/%20wss://relayrs.notoshi.win/%20wss://relay.nexterz.com/%20wss://fenrir-s.notoshi.win",
+    "wss://relay.siamstr.com",
+    "wss://relay.snort.social"
    ]
   },
   {
@@ -708,6 +698,25 @@
    ]
   },
   {
+   "pubkey": "83d52b4363d2d1bc5a098de7be67c120bfb7c0cee8efefd8eb6e42372af24689",
+   "created_at": 1785466895,
+   "relays": [
+    "wss://nos.lol",
+    "wss://nostr.fediverse.jp",
+    "wss://nostr.mom",
+    "wss://nostream.ocha.one",
+    "wss://r.kojira.io",
+    "wss://r.ydg.works",
+    "wss://relay-jp.nostr.wirednet.jp",
+    "wss://relay.nostr.wirednet.jp",
+    "wss://relay.nostrcheck.me",
+    "wss://relay.primal.net",
+    "wss://relay.snort.social",
+    "wss://snowflare.cc",
+    "wss://yabu.me"
+   ]
+  },
+  {
    "pubkey": "07804b786c6a3b400b7b20d9bfc945035f3ad213da797b0c50954767c375c543",
    "created_at": 1785404547,
    "relays": [
@@ -717,6 +726,20 @@
     "wss://r.kojira.io",
     "wss://relay-jp.nostr.wirednet.jp",
     "wss://search.nos.today",
+    "wss://yabu.me"
+   ]
+  },
+  {
+   "pubkey": "409c5539d20822f463e0e6297e217d5752109cdbdcebc21e2724075f72610245",
+   "created_at": 1785287259,
+   "relays": [
+    "wss://nos.lol",
+    "wss://nostr-relay.nokotaro.com",
+    "wss://nostr.fediverse.jp",
+    "wss://nostr.holybea.com",
+    "wss://relay-jp.nostr.wirednet.jp",
+    "wss://relay.damus.io",
+    "wss://relay.primal.net",
     "wss://yabu.me"
    ]
   },
@@ -765,81 +788,49 @@
    ]
   },
   {
-   "pubkey": "ec42c765418b3db9c85abff3a88f4a3bbe57535eebbdc54522041fa5328c0600",
-   "created_at": 1784198326,
+   "pubkey": "b93cc51172e3e472b0a74f1b0950fc11a7151c9aaba212ace66f601ea4ce98a5",
+   "created_at": 1774604399,
    "relays": [
-    "wss://nos.lol",
-    "wss://nostr.compile-error.net",
-    "wss://r.kojira.io",
-    "wss://relay-jp.nostr.wirednet.jp",
-    "wss://relay.damus.io",
-    "wss://snowflare.cc",
-    "wss://yabu.me"
-   ]
-  },
-  {
-   "pubkey": "339db62c91c8cfa8f085f89f115f1ad95df10ce749730239b6054d2453332908",
-   "created_at": 1782904090,
-   "relays": [
-    "wss://bitcoiner.social",
+    "wss://bostr.shop",
+    "wss://christpill.nostr1.com",
     "wss://eden.nostr.land",
     "wss://filter.nostr.wine",
+    "wss://hist.nostr.land",
+    "wss://nos.lol",
+    "wss://nostr-pub.wellorder.net",
+    "wss://nostr.alexanarcho.live",
     "wss://nostr.bitcoiner.social",
+    "wss://nostr.data.haus",
+    "wss://nostr.einundzwanzig.space",
     "wss://nostr.land",
-    "wss://nostr.noones.com",
-    "wss://nostr.slothy.win",
-    "wss://nostr.wine",
-    "wss://pyramid.fiatjaf.com",
+    "wss://nostr.mom",
+    "wss://nostr.oxtr.dev",
+    "wss://nostr.xmr.rocks",
+    "wss://nostr21.com",
+    "wss://offchain.pub",
+    "wss://purplepag.es",
+    "wss://relay.coinos.io",
     "wss://relay.damus.io",
-    "wss://relay.minibits.cash",
+    "wss://relay.getalby.com/v1",
     "wss://relay.mostr.pub",
-    "wss://relay.nostrplebs.com",
+    "wss://relay.nos.social",
+    "wss://relay.nostr.net",
+    "wss://relay.nostr.nu",
     "wss://relay.noswhere.com",
     "wss://relay.primal.net",
     "wss://relay.snort.social",
-    "wss://theforest.nostr1.com"
+    "wss://theforest.nostr1.com",
+    "wss://xmr.usenostr.org"
    ]
   },
   {
-   "pubkey": "56ac6d9ed4053fbc1068c55e513c6b8af658774746a58c92f7fac79416a46fda",
-   "created_at": 1786865298,
-   "relays": [
-    "wss://bitcoiner.social",
-    "wss://nos.lol",
-    "wss://offchain.pub",
-    "wss://relay.mostr.pub",
-    "wss://relay.primal.net",
-    "wss://relay.utxo.one"
-   ]
-  },
-  {
-   "pubkey": "4ce6abbd68dab6e9fdf6e8e9912a8e12f9b539e078c634c55a9bff2994a514dd",
-   "created_at": 1775024433,
+   "pubkey": "e7649ef1140f482640e8463237ca959c7cbd83f14ab004fc5a7655a23b341160",
+   "created_at": 1786728444,
    "relays": [
     "wss://nos.lol",
-    "wss://nostr.land",
-    "wss://premium.primal.net",
-    "wss://purplepag.es",
+    "wss://nostr.mom",
     "wss://relay.damus.io",
-    "wss://relay.geyser.fund",
-    "wss://relay.primal.net",
-    "wss://relay.snort.social"
-   ]
-  },
-  {
-   "pubkey": "0ed56ec7d1a9a763cc49fd62ae8a3623dfe26c26644235aae48a3e0fcf24949f",
-   "created_at": 1772939867,
-   "relays": [
-    "wss://directory.yabu.me",
-    "wss://nos.lol",
-    "wss://nostr.cltrrd.us",
-    "wss://nostr.wine",
-    "wss://premium.primal.net",
-    "wss://relay.damus.io",
-    "wss://relay.gasteazi.net",
-    "wss://relay.nostr.band",
-    "wss://relay.nostr.band/npub1jn3x3a9v5nxpgcf7rfk4pk45pzptnuy2x8tldw5pvpzznvdmhg8q0f6n6v",
-    "wss://relay.primal.net",
+    "wss://relay.nostr.com",
     "wss://relay.snort.social"
    ]
   },
@@ -879,40 +870,12 @@
    ]
   },
   {
-   "pubkey": "2248fe0518a40ef52013abd98602bfb7110d5f544d43f56fe5522e6273582fdb",
-   "created_at": 1757187501,
+   "pubkey": "e85ed75286cb77475776c1007df8c4ff1c9c68eff91c3627347b065c5bf4dc78",
+   "created_at": 1760260263,
    "relays": [
-    "wss://brb.io",
-    "wss://eden.nostr.land",
     "wss://nos.lol",
-    "wss://nostr-relay.texashedge.xyz",
-    "wss://nostr.bitcoiner.social",
     "wss://nostr.mom",
-    "wss://nostr.mutinywallet.com",
-    "wss://nostr.orangepill.dev",
-    "wss://nostr.stakey.net",
-    "wss://nostr.wine",
-    "wss://nostrue.com",
-    "wss://relay.bitcoinpark.com",
-    "wss://relay.current.fyi",
-    "wss://relay.damus.io",
-    "wss://relay.nostrplebs.com",
-    "wss://relay.orangepill.dev",
-    "wss://relay.primal.net",
-    "wss://relay.snort.social",
-    "wss://rly.nostrkid.com"
-   ]
-  },
-  {
-   "pubkey": "ecf468164bd743b75683db3870ce01cb9a1d4b8ec203ed26de50f96255bbc75a",
-   "created_at": 1751906688,
-   "relays": [
-    "wss://nostr.wine",
-    "wss://nostrelites.org",
-    "wss://relay.damus.io",
-    "wss://wot.downisontheup.ca",
-    "wss://wot.sovbit.host",
-    "wss://wot.utxo.one"
+    "wss://relay.damus.io"
    ]
   },
   {
@@ -934,16 +897,28 @@
    ]
   },
   {
-   "pubkey": "6a325947f67debaccf50274ab8b25892e81a2eafff824df41248a6c238ebbe6a",
-   "created_at": 1745187481,
+   "pubkey": "c6716205cf41794c1abe4619be582e8627f3b76df284a414ba09e4cdecd92f88",
+   "created_at": 1742155309,
    "relays": [
-    "wss://purplepag.es",
-    "wss://relay.martien.io",
+    "wss://brb.io",
+    "wss://e.nos.lol",
+    "wss://no.str.cr",
+    "wss://nos.lol",
+    "wss://nostr-pub.wellorder.net",
+    "wss://nostr.bitcoiner.social",
+    "wss://nostr.data.haus",
+    "wss://nostr.fmt.wiz.biz",
+    "wss://nostr.mom",
+    "wss://purplerelay.com",
+    "wss://relay.damus.io",
+    "wss://relay.mostr.pub",
     "wss://relay.nostr.band",
-    "wss://relay.nostr.nu",
-    "wss://relay.primal.net",
-    "wss://relay.roygbiv.guide",
-    "wss://relay.utxo.one"
+    "wss://relay.nostr.bg",
+    "wss://relay.noswhere.com",
+    "wss://relay.san.yt",
+    "wss://relay.snort.social",
+    "wss://wheat.happytavern.co",
+    "wss://wot.shaving.kiwi"
    ]
   },
   {
@@ -1045,59 +1020,6 @@
    ]
   },
   {
-   "pubkey": "7c5f24e1c95f6f1f75555498f0019be1259a65c75ae851c235f7b15c9f88e0ee",
-   "created_at": 1709326680,
-   "relays": [
-    "wss://eden.nostr.land",
-    "wss://nos.lol",
-    "wss://nostr-01.bolt.observer",
-    "wss://nostr-pub.wellorder.net",
-    "wss://nostr-relay.wlvs.space",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.mom",
-    "wss://nostr.mutinywallet.com",
-    "wss://nostr.oxtr.dev",
-    "wss://nostr1.tunnelsats.com",
-    "wss://nostr3.actn.io",
-    "wss://purplepag.es",
-    "wss://relay.damus.io",
-    "wss://relay.nostr.bg",
-    "wss://relay.nostr.info",
-    "wss://relay.snort.social",
-    "wss://relayer.fiatjaf.com"
-   ]
-  },
-  {
-   "pubkey": "8534b22a15cb31ad1236e109201daf651c6ea8cec888d44194e51a337ffb12c7",
-   "created_at": 1697433192,
-   "relays": [
-    "wss://n.xmr.se",
-    "wss://nos.lol",
-    "wss://nostr-pub1.southflorida.ninja",
-    "wss://nostr.cercatrova.me",
-    "wss://relay.damus.io",
-    "wss://relay.primal.net",
-    "wss://relay.sendstr.com"
-   ]
-  },
-  {
-   "pubkey": "a3bce095cd0e8348b094c9201bd0c3270eafaf78f776517f4101326daf5cb7ff",
-   "created_at": 1786875006,
-   "relays": [
-    "ws://192.168.3.3:7777",
-    "wss://bostr.nokotaro.work",
-    "wss://nos.lol",
-    "wss://nostr-relay.nokotaro.com",
-    "wss://nrelay-jp.c-stellar.net",
-    "wss://r.kojira.io",
-    "wss://r.ydg.works",
-    "wss://relay.damustr.com",
-    "wss://snowflare.cc",
-    "wss://srtrelay.c-stellar.net",
-    "wss://yabu.me"
-   ]
-  },
-  {
    "pubkey": "dc4cd086cd7ce5b1832adf4fdd1211289880d2c7e295bcb0e684c01acee77c06",
    "created_at": 1786669909,
    "relays": [
@@ -1155,55 +1077,17 @@
    ]
   },
   {
-   "pubkey": "b707d6be7fd9cc9e1aee83e81c3994156cfcf74ded5b09111930fdeeeb5a0c20",
-   "created_at": 1785739824,
+   "pubkey": "698f4c636c208e1226aa07ddde8d78c7b1b6ba3bd1aadfc7eb48df29d28ba60f",
+   "created_at": 1786282891,
    "relays": [
-    "wss://nos.lol",
-    "wss://nostr-relay.nokotaro.com",
-    "wss://nostr.fediverse.jp",
-    "wss://nostr.holybea.com",
-    "wss://nostr.now",
-    "wss://nostr.wine",
-    "wss://nostream.ocha.one",
-    "wss://offchain.pub",
-    "wss://r.kojira.io",
-    "wss://r.ydg.works",
-    "wss://relay-jp.nostr.wirednet.jp",
+    "wss://damus.bostr.online",
     "wss://relay.0xchat.com",
-    "wss://relay.damus.io",
-    "wss://staging.yabu.me",
-    "wss://yabu.me"
-   ]
-  },
-  {
-   "pubkey": "046990634363739961d3afa4fc2241d6f665acd124a23fc189ac704d74e4d092",
-   "created_at": 1785444445,
-   "relays": [
-    "wss://indexer.coracle.social",
-    "wss://lang.relays.land/es",
-    "wss://lang.relays.land/fr",
-    "wss://lang.relays.land/ja",
-    "wss://nos.lol",
-    "wss://nostr.bitcoiner.social",
-    "wss://purplepag.es",
-    "wss://relay.damus.io",
-    "wss://theforest.nostr1.com",
-    "wss://trending.relays.land"
-   ]
-  },
-  {
-   "pubkey": "3ea210ca771795521350f5cfe3bc3ad6019c0369766bb323ce89754c4d1d9909",
-   "created_at": 1785317202,
-   "relays": [
-    "wss://cagliostr.compile-error.net",
-    "wss://nostr.compile-error.net",
-    "wss://nostr.land",
-    "wss://nostr.wine",
-    "wss://r.kojira.io",
-    "wss://relay-jp.nostr.wirednet.jp",
-    "wss://relay.damus.io",
-    "wss://snowflare.cc",
-    "wss://yabu.me"
+    "wss://relay.bostr.online",
+    "wss://relay.ditto.pub",
+    "wss://relay.gulugulu.moe",
+    "wss://relay.nostr.net",
+    "wss://top.testrelay.top",
+    "wss://wheat.happytavern.co"
    ]
   },
   {
@@ -1276,6 +1160,19 @@
    ]
   },
   {
+   "pubkey": "ec42c765418b3db9c85abff3a88f4a3bbe57535eebbdc54522041fa5328c0600",
+   "created_at": 1784198326,
+   "relays": [
+    "wss://nos.lol",
+    "wss://nostr.compile-error.net",
+    "wss://r.kojira.io",
+    "wss://relay-jp.nostr.wirednet.jp",
+    "wss://relay.damus.io",
+    "wss://snowflare.cc",
+    "wss://yabu.me"
+   ]
+  },
+  {
    "pubkey": "bf6fd852b98a19bb940d800233fe11fe47302d6f8230d98dff0c0a6f455c447c",
    "created_at": 1783936785,
    "relays": [
@@ -1293,29 +1190,6 @@
     "wss://nostr.mom",
     "wss://offchain.pub",
     "wss://relay.primal.net"
-   ]
-  },
-  {
-   "pubkey": "bd9aaa6e97156a75463658b3f3a60560d98b7b5633600f4de2d0542ecc6f88ff",
-   "created_at": 1782508096,
-   "relays": [
-    "wss://140.f7z.io",
-    "wss://bcast.girino.org",
-    "wss://eden.nostr.land",
-    "wss://hist.nostr.land",
-    "wss://nos.lol",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.wine",
-    "wss://nostr21.com",
-    "wss://nostrcheck.me/relay",
-    "wss://purplepag.es",
-    "wss://relay.damus.io",
-    "wss://relay.layer.systems",
-    "wss://relay.poster.place",
-    "wss://relay.primal.net",
-    "wss://relay.seq1.net",
-    "wss://relay.snort.social",
-    "wss://relay2.nostrchat.io"
    ]
   },
   {
@@ -1344,25 +1218,42 @@
    ]
   },
   {
-   "pubkey": "edcdaec5536aa4af6d64b6cc5bb0aae725523d77a51292d2d40c872f3f22c041",
-   "created_at": 1777929767,
+   "pubkey": "4ce6abbd68dab6e9fdf6e8e9912a8e12f9b539e078c634c55a9bff2994a514dd",
+   "created_at": 1775024433,
    "relays": [
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.mom",
-    "wss://nostr.oxtr.dev",
-    "wss://offchain.pub",
-    "wss://relay.fountain.fm",
-    "wss://relay.mostr.pub"
+    "wss://nos.lol",
+    "wss://nostr.land",
+    "wss://premium.primal.net",
+    "wss://purplepag.es",
+    "wss://relay.damus.io",
+    "wss://relay.geyser.fund",
+    "wss://relay.primal.net",
+    "wss://relay.snort.social"
    ]
   },
   {
-   "pubkey": "581c9da9e8284c26f9e93b8f8986f0f9f8a391bf7dac00eef3b44385403c1539",
-   "created_at": 1767342949,
+   "pubkey": "56ac6d9ed4053fbc1068c55e513c6b8af658774746a58c92f7fac79416a46fda",
+   "created_at": 1786865298,
+   "relays": [
+    "wss://bitcoiner.social",
+    "wss://nos.lol",
+    "wss://offchain.pub",
+    "wss://relay.mostr.pub",
+    "wss://relay.primal.net",
+    "wss://relay.utxo.one"
+   ]
+  },
+  {
+   "pubkey": "e5f3339e34bf2f16dd03c62cad6bad8a4d27a9b776f37d65115983e20952d54d",
+   "created_at": 1767196722,
    "relays": [
     "wss://nos.lol",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.land",
-    "wss://nostr.mom"
+    "wss://nostr-pub.wellorder.net",
+    "wss://nostr.mom",
+    "wss://nostr.wine",
+    "wss://relay.damus.io",
+    "wss://relay.nostr.band",
+    "wss://relay.primal.net"
    ]
   },
   {
@@ -1390,15 +1281,6 @@
     "wss://relay.snort.social",
     "wss://relayable.org",
     "wss://strfry.iris.to"
-   ]
-  },
-  {
-   "pubkey": "f75e8fcff975d0de69dcede9674fd97275528b9a890205076435ce478b5cb698",
-   "created_at": 1757823106,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr.bitcoiner.social",
-    "wss://relay.fountain"
    ]
   },
   {
@@ -1687,92 +1569,6 @@
    ]
   },
   {
-   "pubkey": "1ea4ae8405ad5c6bd0dc35a0ac83e548c485142538e1e0c54ad40e5bb59a2ae8",
-   "created_at": 1786661729,
-   "relays": [
-    "ws://relay.jb55.com",
-    "ws://umbrel.local:4848",
-    "wss://atlas.nostr.land",
-    "wss://brb.io",
-    "wss://eden.nostr.land",
-    "wss://filter.nostr.wine",
-    "wss://filter.nostr.wine/npub1t5wc8h37uhkau9tsw82sjxndq04d3n8p634utpdfvs4tm5xmt2sqgk6dke?broadcast=true",
-    "wss://ftp.halifax.rwth-aachen.de/nostr",
-    "wss://http//olpl42hhgieoef5b4tdlu4nloomfqo5yrzeu3lo6wk4qqgubyv7uj3qd.onion",
-    "wss://jellyfish.land",
-    "wss://lightningrelay.com",
-    "wss://news.nos.social",
-    "wss://nfdb.noswhere.com",
-    "wss://no.str.cr",
-    "wss://nos.lol",
-    "wss://nostr-pub.semisol.dev",
-    "wss://nostr-pub.wellorder.net",
-    "wss://nostr-relay.digitalmob.ro",
-    "wss://nostr-relay.wlvs.space",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.fmt.wiz.biz",
-    "wss://nostr.inosta.cc",
-    "wss://nostr.land",
-    "wss://nostr.lopp.social",
-    "wss://nostr.milou.lol",
-    "wss://nostr.mom",
-    "wss://nostr.mutinywallet.com",
-    "wss://nostr.orangepill.dev",
-    "wss://nostr.oxtr.dev",
-    "wss://nostr.portemonero.com",
-    "wss://nostr.relayer.se",
-    "wss://nostr.semisol.dev",
-    "wss://nostr.v0l.io",
-    "wss://nostr.vulpem.com",
-    "wss://nostr.wine",
-    "wss://nostr.xmr.rocks",
-    "wss://nostr.zbd.gg",
-    "wss://nostr.zebedee.cloud",
-    "wss://nostrelites.org",
-    "wss://nwc.primal.net/ayvjleilmx0al7j2pqt24qed1z7a8s",
-    "wss://offchain.pub",
-    "wss://onchain.pub",
-    "wss://pablof7z.nostr1.com",
-    "wss://puravida.nostr.land",
-    "wss://purplepag.es",
-    "wss://purplerelay.com",
-    "wss://pyramid.fiatjaf.com",
-    "wss://relay.bitcoinpark.com",
-    "wss://relay.current.fyi",
-    "wss://relay.damus.io",
-    "wss://relay.ditto.pub",
-    "wss://relay.f7z.io",
-    "wss://relay.getalby.com/v1",
-    "wss://relay.momostr.pink",
-    "wss://relay.mostr.pub",
-    "wss://relay.nos.social",
-    "wss://relay.nostr.band",
-    "wss://relay.nostr.bg",
-    "wss://relay.nostr.blockhenge.com",
-    "wss://relay.nostr.com.au",
-    "wss://relay.nostr.info",
-    "wss://relay.nostr.moe",
-    "wss://relay.nostr.net",
-    "wss://relay.nostrati.com",
-    "wss://relay.nostrcheck.me",
-    "wss://relay.nostrich.de",
-    "wss://relay.nostriches.org",
-    "wss://relay.nostrplebs.com",
-    "wss://relay.nostrview.com",
-    "wss://relay.noswhere.com",
-    "wss://relay.orangepill.dev",
-    "wss://relay.primal.net",
-    "wss://relay.snort.social",
-    "wss://relay.stoner.com",
-    "wss://relayable.org",
-    "wss://rsslay.fiatjaf.com",
-    "wss://satstacker.cloud",
-    "wss://sendit.nosflare.com",
-    "wss://welcome.nostr.wine",
-    "wss://wot.utxo.one"
-   ]
-  },
-  {
    "pubkey": "df50c179ed670394c4fd54cd3c611d3c0c4c8087c9535586592cd1fb9503ab1f",
    "created_at": 1786635566,
    "relays": [
@@ -1919,6 +1715,27 @@
    ]
   },
   {
+   "pubkey": "b707d6be7fd9cc9e1aee83e81c3994156cfcf74ded5b09111930fdeeeb5a0c20",
+   "created_at": 1785739824,
+   "relays": [
+    "wss://nos.lol",
+    "wss://nostr-relay.nokotaro.com",
+    "wss://nostr.fediverse.jp",
+    "wss://nostr.holybea.com",
+    "wss://nostr.now",
+    "wss://nostr.wine",
+    "wss://nostream.ocha.one",
+    "wss://offchain.pub",
+    "wss://r.kojira.io",
+    "wss://r.ydg.works",
+    "wss://relay-jp.nostr.wirednet.jp",
+    "wss://relay.0xchat.com",
+    "wss://relay.damus.io",
+    "wss://staging.yabu.me",
+    "wss://yabu.me"
+   ]
+  },
+  {
    "pubkey": "4180da638a2579c5187be5d2129cd2fd2ba6244a8f9f4dd99092b4487b3c147e",
    "created_at": 1785717770,
    "relays": [
@@ -1963,22 +1780,6 @@
    ]
   },
   {
-   "pubkey": "d9a329afabb263a8af216838eb45e1f04cc3000704464947c4b907e1bef580d7",
-   "created_at": 1784684600,
-   "relays": [
-    "wss://nostr.azzamo.net",
-    "wss://nostr.oxtr.dev",
-    "wss://nostrelites.org",
-    "wss://nostrue.com",
-    "wss://offchain.pub",
-    "wss://relay.nostr.band",
-    "wss://relay.nostr.bg",
-    "wss://relay.nostr.net",
-    "wss://relay.poster.place",
-    "wss://relay.primal.net"
-   ]
-  },
-  {
    "pubkey": "cc4e38bdec831918ee33b67ad6242fcd4948d2439ddcf448051be2970c7b2c6c",
    "created_at": 1784171992,
    "relays": [
@@ -2011,19 +1812,6 @@
     "wss://nostr.land",
     "wss://premium.primal.net",
     "wss://relay.nostr.build"
-   ]
-  },
-  {
-   "pubkey": "efc2b6e59480f0e55cc87c69af06b6d1a11fa25e4ea95a439878c41799c53c19",
-   "created_at": 1782945256,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr-01.yakihonne.com",
-    "wss://nostr-02.yakihonne.com",
-    "wss://nostr.codonaft.com",
-    "wss://relay.nmail.li",
-    "wss://relay.pleb.one",
-    "wss://wot.nostr.net"
    ]
   },
   {
@@ -2187,17 +1975,6 @@
    ]
   },
   {
-   "pubkey": "e7649ef1140f482640e8463237ca959c7cbd83f14ab004fc5a7655a23b341160",
-   "created_at": 1786728444,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr.mom",
-    "wss://relay.damus.io",
-    "wss://relay.nostr.com",
-    "wss://relay.snort.social"
-   ]
-  },
-  {
    "pubkey": "a16d8bf83edeb1adf0e6ef2b98e0909000c6637719b54ef26db875d5866369e5",
    "created_at": 1786326076,
    "relays": [
@@ -2287,6 +2064,18 @@
    ]
   },
   {
+   "pubkey": "edcdaec5536aa4af6d64b6cc5bb0aae725523d77a51292d2d40c872f3f22c041",
+   "created_at": 1777929767,
+   "relays": [
+    "wss://nostr.bitcoiner.social",
+    "wss://nostr.mom",
+    "wss://nostr.oxtr.dev",
+    "wss://offchain.pub",
+    "wss://relay.fountain.fm",
+    "wss://relay.mostr.pub"
+   ]
+  },
+  {
    "pubkey": "8ee4290c98b20b2999138b322f466ea20c75608f568ab53cf11492bf9b2e849c",
    "created_at": 1776223438,
    "relays": [
@@ -2319,12 +2108,39 @@
    ]
   },
   {
+   "pubkey": "55f573b651eff351db57b0601d23022d8c532f9825db10a5733ebf39be4aa21b",
+   "created_at": 1775730545,
+   "relays": [
+    "wss://archive.orly.dev",
+    "wss://bitcoiner.social",
+    "wss://hist.nostr.land",
+    "wss://nos.lol",
+    "wss://nostr.bitcoiner.social",
+    "wss://nostr.mom",
+    "wss://nostrelites.org",
+    "wss://relay.orly.dev",
+    "wss://relay.sovereign.app",
+    "wss://theforest.nostr1.com",
+    "wss://wot.siamstr.com"
+   ]
+  },
+  {
    "pubkey": "738f7873ac2c6cb7701e3150616afc824379b132b467ba5a8429d5964af1b136",
    "created_at": 1768673814,
    "relays": [
     "wss://nos.lol",
     "wss://nostr.mom",
     "wss://relay.primal.net"
+   ]
+  },
+  {
+   "pubkey": "581c9da9e8284c26f9e93b8f8986f0f9f8a391bf7dac00eef3b44385403c1539",
+   "created_at": 1767342949,
+   "relays": [
+    "wss://nos.lol",
+    "wss://nostr.bitcoiner.social",
+    "wss://nostr.land",
+    "wss://nostr.mom"
    ]
   },
   {
@@ -2347,70 +2163,41 @@
    ]
   },
   {
-   "pubkey": "130994a7cd56be6ddc44bd65fdb64e632c8a076d2f0c3774ea0569d46c6febfb",
-   "created_at": 1742329736,
+   "pubkey": "2248fe0518a40ef52013abd98602bfb7110d5f544d43f56fe5522e6273582fdb",
+   "created_at": 1757187501,
    "relays": [
-    "wss://140.f7z.io",
     "wss://brb.io",
-    "wss://filter.nostr.wine",
+    "wss://eden.nostr.land",
     "wss://nos.lol",
-    "wss://nostr-01.bolt.observer",
-    "wss://nostr-pub.wellorder.net",
-    "wss://nostr-relay.digitalmob.ro",
-    "wss://nostr-relay.wlvs.space",
+    "wss://nostr-relay.texashedge.xyz",
     "wss://nostr.bitcoiner.social",
-    "wss://nostr.hodl.ar",
-    "wss://nostr.lacrypta.com.ar",
-    "wss://nostr.milou.lol",
+    "wss://nostr.mom",
     "wss://nostr.mutinywallet.com",
-    "wss://nostr.noones.com",
-    "wss://nostr.oxtr.dev",
-    "wss://nostr.pleb.network",
-    "wss://nostr.terminus.money",
+    "wss://nostr.orangepill.dev",
+    "wss://nostr.stakey.net",
     "wss://nostr.wine",
-    "wss://nostr.zbd.gg",
-    "wss://nostr.zebedee.cloud",
-    "wss://nostr1.tunnelsats.com",
-    "wss://nostrelites.org",
-    "wss://offchain.pub",
-    "wss://purplepag.es",
+    "wss://nostrue.com",
+    "wss://relay.bitcoinpark.com",
     "wss://relay.current.fyi",
     "wss://relay.damus.io",
-    "wss://relay.hodl.ar",
-    "wss://relay.nostr.ai",
-    "wss://relay.nostr.band",
-    "wss://relay.nostr.bg",
-    "wss://relay.nostr.info",
-    "wss://relay.nostrich.de",
-    "wss://relay.plebstr.com",
+    "wss://relay.nostrplebs.com",
+    "wss://relay.orangepill.dev",
     "wss://relay.primal.net",
     "wss://relay.snort.social",
-    "wss://relayer.fiatjaf.com"
+    "wss://rly.nostrkid.com"
    ]
   },
   {
-   "pubkey": "c6716205cf41794c1abe4619be582e8627f3b76df284a414ba09e4cdecd92f88",
-   "created_at": 1742155309,
+   "pubkey": "6a325947f67debaccf50274ab8b25892e81a2eafff824df41248a6c238ebbe6a",
+   "created_at": 1745187481,
    "relays": [
-    "wss://brb.io",
-    "wss://e.nos.lol",
-    "wss://no.str.cr",
-    "wss://nos.lol",
-    "wss://nostr-pub.wellorder.net",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.data.haus",
-    "wss://nostr.fmt.wiz.biz",
-    "wss://nostr.mom",
-    "wss://purplerelay.com",
-    "wss://relay.damus.io",
-    "wss://relay.mostr.pub",
+    "wss://purplepag.es",
+    "wss://relay.martien.io",
     "wss://relay.nostr.band",
-    "wss://relay.nostr.bg",
-    "wss://relay.noswhere.com",
-    "wss://relay.san.yt",
-    "wss://relay.snort.social",
-    "wss://wheat.happytavern.co",
-    "wss://wot.shaving.kiwi"
+    "wss://relay.nostr.nu",
+    "wss://relay.primal.net",
+    "wss://relay.roygbiv.guide",
+    "wss://relay.utxo.one"
    ]
   },
   {
@@ -2478,21 +2265,33 @@
    ]
   },
   {
+   "pubkey": "a2f193ad328b0e0fb882f0558e5db6f543c0c21b3f44e02cb0e77967527854be",
+   "created_at": 1718809664,
+   "relays": [
+    "wss://primal.net",
+    "wss://relay.westernbtc.com"
+   ]
+  },
+  {
+   "pubkey": "8534b22a15cb31ad1236e109201daf651c6ea8cec888d44194e51a337ffb12c7",
+   "created_at": 1697433192,
+   "relays": [
+    "wss://n.xmr.se",
+    "wss://nos.lol",
+    "wss://nostr-pub1.southflorida.ninja",
+    "wss://nostr.cercatrova.me",
+    "wss://relay.damus.io",
+    "wss://relay.primal.net",
+    "wss://relay.sendstr.com"
+   ]
+  },
+  {
    "pubkey": "5538e28a66eb88360f15f8fa95646bdd2daa2999aacfe4faacf43d0c0540b281",
    "created_at": 1785663199,
    "relays": [
     "wss://relay.orly.dev",
     "wss://relay.primal.net",
     "wss://relay.smesh.lol"
-   ]
-  },
-  {
-   "pubkey": "0f428b16f1793991b2a9cc1da9b431c7afe119efc3b7f8eda321a86825fe1ee7",
-   "created_at": 1786940425,
-   "relays": [
-    "wss://nostr.mom",
-    "wss://relay.damus.io",
-    "wss://relay.primal.net"
    ]
   },
   {
@@ -2512,18 +2311,6 @@
    "created_at": 1786922287,
    "relays": [
     "wss://nostr.data.haus"
-   ]
-  },
-  {
-   "pubkey": "e034d654802d7cfaa2d41a952801054114e09ad6a352b28288e23075ca919814",
-   "created_at": 1786815972,
-   "relays": [
-    "ws://s7hv3v7w3wpag52m5ff76ls4pbrpgnw3n5qpdj3ahreeotoykznnrzqd.onion/inbox",
-    "ws://s7hv3v7w3wpag52m5ff76ls4pbrpgnw3n5qpdj3ahreeotoykznnrzqd.onion/outbox",
-    "wss://nostr.land",
-    "wss://poe.feeds.relay.tools",
-    "wss://poe.nostr1.com",
-    "wss://theforest.nostr1.com"
    ]
   },
   {
@@ -2568,19 +2355,6 @@
    ]
   },
   {
-   "pubkey": "7055fc42c9a638ab56ad057016a2deface97b5eece31a3a7a46727ad847899e5",
-   "created_at": 1785742372,
-   "relays": [
-    "wss://basspistol.org",
-    "wss://basspistol.org/inbox",
-    "wss://nos.lol",
-    "wss://nostr.mom",
-    "wss://nostr21.com",
-    "wss://relay.letsfo.com",
-    "wss://relay.pleb.one"
-   ]
-  },
-  {
    "pubkey": "655f0194f141831368f4da372622062457ef73cbf1e6db1734d2c7c05e0029ca",
    "created_at": 1785465525,
    "relays": [
@@ -2588,6 +2362,21 @@
     "ws://nostr.mom",
     "wss://nos.lol",
     "wss://nostr.mom"
+   ]
+  },
+  {
+   "pubkey": "3ea210ca771795521350f5cfe3bc3ad6019c0369766bb323ce89754c4d1d9909",
+   "created_at": 1785317202,
+   "relays": [
+    "wss://cagliostr.compile-error.net",
+    "wss://nostr.compile-error.net",
+    "wss://nostr.land",
+    "wss://nostr.wine",
+    "wss://r.kojira.io",
+    "wss://relay-jp.nostr.wirednet.jp",
+    "wss://relay.damus.io",
+    "wss://snowflare.cc",
+    "wss://yabu.me"
    ]
   },
   {
@@ -2644,15 +2433,6 @@
     "wss://relay.snort.social",
     "wss://relay.sovrgn.co.za",
     "wss://relay.utxo.one"
-   ]
-  },
-  {
-   "pubkey": "839d523f7d63bfe3ec9351e331d784148e9315fac05bbb2444ecb5b35747ec60",
-   "created_at": 1786932835,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.mom"
    ]
   },
   {
@@ -2755,18 +2535,6 @@
    ]
   },
   {
-   "pubkey": "aa4fc8665f5696e33db7e1a572e3b0f5b3d615837b0f362dcb1c8068b098c7b4",
-   "created_at": 1782752913,
-   "relays": [
-    "wss://nos.lol",
-    "wss://relay.damus.io",
-    "wss://relay.minibits.cash",
-    "wss://relay.momostr.pink",
-    "wss://relay.nostrcheck.me",
-    "wss://ribo.nostria.app"
-   ]
-  },
-  {
    "pubkey": "416335ae6302946042249279d96cae8a33337baae859b6f962618d3c9e520a63",
    "created_at": 1782625733,
    "relays": [
@@ -2811,76 +2579,12 @@
    ]
   },
   {
-   "pubkey": "f568a043fc60098381a97f5720f253f1e3cad8ced9b96d06d4c65eb59ca8e94a",
-   "created_at": 1780818860,
-   "relays": [
-    "wss://purplepag.es",
-    "wss://relay.damus.io"
-   ]
-  },
-  {
-   "pubkey": "e3a59924933c9f9f2df83449055eb3858f1480fdd0c5edb95df08bedcd2e6624",
-   "created_at": 1780619912,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr.azzamo.net",
-    "wss://nostr.mom",
-    "wss://nostr.oxtr.dev",
-    "wss://relay.damus.io",
-    "wss://relay.dreamith.to",
-    "wss://relay.fountain.fm",
-    "wss://relay.momostr.pink",
-    "wss://relay.mostr.pub",
-    "wss://relay.primal.net",
-    "wss://relay.snort.social",
-    "wss://sendit.nosflare.com"
-   ]
-  },
-  {
    "pubkey": "1bc70a0148b3f316da33fe3c89f23e3e71ac4ff998027ec712b905cd24f6a411",
    "created_at": 1777130437,
    "relays": [
     "wss://relay.damus.io",
     "wss://relay.primal.net",
     "wss://sendit.nosflare.com"
-   ]
-  },
-  {
-   "pubkey": "81fa5b70a73a691c6e78823d035ffc44f6b505e6f03637759bd36e7a451539fd",
-   "created_at": 1775851507,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.mom"
-   ]
-  },
-  {
-   "pubkey": "55f573b651eff351db57b0601d23022d8c532f9825db10a5733ebf39be4aa21b",
-   "created_at": 1775730545,
-   "relays": [
-    "wss://archive.orly.dev",
-    "wss://bitcoiner.social",
-    "wss://hist.nostr.land",
-    "wss://nos.lol",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.mom",
-    "wss://nostrelites.org",
-    "wss://relay.orly.dev",
-    "wss://relay.sovereign.app",
-    "wss://theforest.nostr1.com",
-    "wss://wot.siamstr.com"
-   ]
-  },
-  {
-   "pubkey": "1c9dcd8fd2d2fb879d6f02d6cc56aeefd74a9678ae48434b0f0de7a21852f704",
-   "created_at": 1775594715,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr.land",
-    "wss://nostr.wine",
-    "wss://relay.damus.io",
-    "wss://relay.nostr.band",
-    "wss://relay.snort.social"
    ]
   },
   {
@@ -2909,6 +2613,39 @@
     "wss://wot.sovbit.host",
     "wss://wot.sudocarlos.com",
     "wss://wot.utxo.one"
+   ]
+  },
+  {
+   "pubkey": "1123ece2770b0d5fecd7ac02d79ca7819b27f507deab0290152945d37d1e00c0",
+   "created_at": 1758198127,
+   "relays": [
+    "wss://bitcoiner.social",
+    "wss://eden.nostr.land",
+    "wss://nos.lol",
+    "wss://nostr.bitcoiner.social",
+    "wss://nostr.land",
+    "wss://nostr.wine",
+    "wss://relay.damus.io",
+    "wss://relay.nostr.band",
+    "wss://relay.nostr.com.au",
+    "wss://relay.snort.social"
+   ]
+  },
+  {
+   "pubkey": "f568a043fc60098381a97f5720f253f1e3cad8ced9b96d06d4c65eb59ca8e94a",
+   "created_at": 1780818860,
+   "relays": [
+    "wss://purplepag.es",
+    "wss://relay.damus.io"
+   ]
+  },
+  {
+   "pubkey": "81fa5b70a73a691c6e78823d035ffc44f6b505e6f03637759bd36e7a451539fd",
+   "created_at": 1775851507,
+   "relays": [
+    "wss://nos.lol",
+    "wss://nostr.bitcoiner.social",
+    "wss://nostr.mom"
    ]
   },
   {
@@ -3041,22 +2778,6 @@
    ]
   },
   {
-   "pubkey": "1123ece2770b0d5fecd7ac02d79ca7819b27f507deab0290152945d37d1e00c0",
-   "created_at": 1758198127,
-   "relays": [
-    "wss://bitcoiner.social",
-    "wss://eden.nostr.land",
-    "wss://nos.lol",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.land",
-    "wss://nostr.wine",
-    "wss://relay.damus.io",
-    "wss://relay.nostr.band",
-    "wss://relay.nostr.com.au",
-    "wss://relay.snort.social"
-   ]
-  },
-  {
    "pubkey": "2bb2abbfc5892b7bda8f78d53682d913cc9a446b45e11929f0935d8fdfcb40bd",
    "created_at": 1749721139,
    "relays": [
@@ -3142,37 +2863,12 @@
    ]
   },
   {
-   "pubkey": "997139662d74c524316df258243ea5b15ae3d4c7db0977320a127107a34784bb",
-   "created_at": 1729920113,
-   "relays": [
-    "wss://lightning.benchodroff.com/nostrclient/api/v1/relay",
-    "wss://nos.lol",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.fmt.wiz.biz",
-    "wss://nostr.mom",
-    "wss://nostr.oxtr.dev",
-    "wss://relay.damus.io",
-    "wss://relay.mostr.pub",
-    "wss://relay.nostr.band",
-    "wss://relay.nostr.bg",
-    "wss://relay.noswhere.com"
-   ]
-  },
-  {
    "pubkey": "c111c856bffef92aefcea1121402c7898bf60d63503ac9ab5c4408de099e961e",
    "created_at": 1726032861,
    "relays": [
     "wss://nos.lol",
     "wss://nostr.mom",
     "wss://relay.damus.io"
-   ]
-  },
-  {
-   "pubkey": "a2f193ad328b0e0fb882f0558e5db6f543c0c21b3f44e02cb0e77967527854be",
-   "created_at": 1718809664,
-   "relays": [
-    "wss://primal.net",
-    "wss://relay.westernbtc.com"
    ]
   },
   {
@@ -3197,81 +2893,6 @@
     "wss://relay.plebstr.com",
     "wss://rsslay.nostr.net",
     "wss://welcome.nostr.wine"
-   ]
-  },
-  {
-   "pubkey": "3493b0c2376fe2a91dc804985ffd681f50210611597a2003f724c6744ce7120f",
-   "created_at": 1701129670,
-   "relays": [
-    "wss://bucket.coracle.social",
-    "wss://la.relayable.org",
-    "wss://nostr-badur.onrender.com",
-    "wss://nostr.island.network",
-    "wss://relay.damus.io"
-   ]
-  },
-  {
-   "pubkey": "cc2783215f21a578e492ac0cf31e5038be7a9f7b8b8d696ac753c48bcd6074a5",
-   "created_at": 1780629521,
-   "relays": [
-    "wss://nos.lol",
-    "wss://nostr-01.yakihonne.com",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr.land",
-    "wss://nostr.mom",
-    "wss://nostr.oxtr.dev",
-    "wss://relay.damus.io",
-    "wss://relay.getalby.com/v1",
-    "wss://relay.nostr.band",
-    "wss://relay.nostrati.com",
-    "wss://relay.notoshi.win",
-    "wss://relay.siamdev.cc",
-    "wss://relay.snort.social",
-    "wss://relay29.notoshi.win",
-    "wss://sign.siamstr.com"
-   ]
-  },
-  {
-   "pubkey": "340d9f8f4aa9fb37f151526eccf29c730ef94eaba98a2e55cd3101a7c7daf082",
-   "created_at": 1773904326,
-   "relays": [
-    "wss://bbb.santos.lol",
-    "wss://catstrr.swarmstr.com",
-    "wss://knostr.neutrine.com:8880",
-    "wss://lolison.top",
-    "wss://nostr.lifeonbtc.xyz:",
-    "wss://purplepag.es",
-    "wss://relay.bullishbounty.com",
-    "wss://relay.damus.io",
-    "wss://relay.minibits.cash",
-    "wss://relay.primal.net"
-   ]
-  },
-  {
-   "pubkey": "184dca27c18fec7d9e38e15552a6d5c2cd22741a7fe356fd13c4bd99c63594ee",
-   "created_at": 1745339687,
-   "relays": [
-    "wss://nostr-relay.algotech.io",
-    "wss://nostr-relay.philipcristiano.com",
-    "wss://nostr.oxtr.dev",
-    "wss://purplepag.es",
-    "wss://relay.damus.io",
-    "wss://relay.hamnet.io",
-    "wss://relay.nostr.band",
-    "wss://relay.primal.net",
-    "wss://sfr0.nostr1.com"
-   ]
-  },
-  {
-   "pubkey": "f08f345c489c22877eb03a9ca002f47008c2e4c13e7d0b4244bfef0b47ba75b5",
-   "created_at": 1777877168,
-   "relays": [
-    "wss://bitcoiner.social/foxtrot-raven-echo",
-    "wss://nostr-01.uid.ovh/lantern",
-    "wss://nostr-pub.semisol.dev",
-    "wss://relay.damus.io",
-    "wss://relay.primal.net",
-    "wss://yabu.me/whiskey-quebec"
    ]
   }
  ]
