@@ -547,15 +547,6 @@
         }
        },
        {
-        "id": "1549661",
-        "text": "I built a DeWhirlpooler visualizer!\n\n## What it does\n\n**DeWhirlpooler** is a web-based tool that analyzes any Bitcoin transaction and visualizes how Whirlpool coinjoin transactions leak privacy.\n\nFeatures:\n- Enter any Bitcoin address or transaction ID\n- Detects Whirlpool tx0, coinjoin, and regular spend patterns\n- Visualizes input/output flow with color-coded privacy leaks\n- Shows linked addresses and change outputs (the main privacy leak)\n- Calculates a privacy score (0-100)\n- Uses mempool.space API (no Bitcoin node required)\n\n## How it works\n\n1. Fetches transaction data from mempool.space public API\n2. Detects Whirlpool pool denominations (0.001, 0.01, 0.05, 0.5 BTC)\n3. Identifies change outputs that link back to the user\n4. Generates a flow diagram showing the privacy leaks\n5. Lists all linked addresses with their types\n\n## Key privacy insight\n\nThe tx0 transaction always reveals common input ownership. Every change output is traceable back to the original user. This tool makes those leaks visible.\n\nThe tool is a single HTML file with no dependencies - can be run locally or hosted anywhere. No backend required, all API calls go directly to mempool.space.\n\nI built this because the bounty post correctly pointed out that Whirlpool's tx0 always reveals common input ownership and creates change. This visualizer makes that visible to any Bitcoin user.",
-        "sats": 0,
-        "createdAt": "2026-08-17T08:33:35.392Z",
-        "user": {
-         "name": "solauditor"
-        }
-       },
-       {
         "id": "1536151",
         "text": "@Kruw @clenchwallet — independent mainnet QA found a historical-index accuracy defect, not another speculative feature:\n\n- v0.1.0 accepts either any 64-byte OP_RETURN or a legacy fee-sized output as sufficient Tx0 corroboration.\n- In 20 control blocks between Samourai's shutdown and the first Ashigaru round observed by Whirlpool.Observer, it produced 22 Tx0 candidates among 44,020 transactions.\n- I independently inspected public collisions: one is a readable BNB Beacon Chain memo misclassified as a legacy 0.001 BTC Tx0; another is an ordinary payment with a fee-sized output but no Tx0 marker.\n- These candidates enter the chain index and can inflate pool entry, liquidity, Tx0 count, and coordinator-accounting results.\n\nI have a focused 45-line patch ready at commit `41cd0dc`. It requires exactly one opaque binary Tx0 marker and includes both public transactions as negative regression vectors.\n\nValidation:\n\n- control scan: 22 candidates before, 0 after (44,020 transactions);\n- positive sample: 25/25 labelled rounds and 14/14 labelled Ashigaru Tx0s still detected;\n- project suite: 404 passed, with only the known Windows HOME test deselected;\n- Ruff, compileall, JavaScript syntax, and diff checks pass.\n\nProposed contributor compensation: **100,000 sats** if this patch is merged or otherwise used in the winning submission. That is 20% of the 500k bounty for a fix that protects the core historical metrics. Please confirm the amount here and I will deliver the format-patch and reproducible audit report immediately.\n\nPayment should be actual Lightning sats, not non-withdrawable Cowboy Credits. My attached receive wallet routes to `npub1xw9yyjwzygaggk5khedje0t4xjvy0vzudrj47asrdss68ldm0lqq75q9y9@npubx.cash`.\n",
         "sats": 0,
@@ -607,6 +598,15 @@
         "createdAt": "2026-07-26T07:01:51.819Z",
         "user": {
          "name": "Brown"
+        }
+       },
+       {
+        "id": "1549661",
+        "text": "I built a DeWhirlpooler visualizer!\n\n## What it does\n\n**DeWhirlpooler** is a web-based tool that analyzes any Bitcoin transaction and visualizes how Whirlpool coinjoin transactions leak privacy.\n\nFeatures:\n- Enter any Bitcoin address or transaction ID\n- Detects Whirlpool tx0, coinjoin, and regular spend patterns\n- Visualizes input/output flow with color-coded privacy leaks\n- Shows linked addresses and change outputs (the main privacy leak)\n- Calculates a privacy score (0-100)\n- Uses mempool.space API (no Bitcoin node required)\n\n## How it works\n\n1. Fetches transaction data from mempool.space public API\n2. Detects Whirlpool pool denominations (0.001, 0.01, 0.05, 0.5 BTC)\n3. Identifies change outputs that link back to the user\n4. Generates a flow diagram showing the privacy leaks\n5. Lists all linked addresses with their types\n\n## Key privacy insight\n\nThe tx0 transaction always reveals common input ownership. Every change output is traceable back to the original user. This tool makes those leaks visible.\n\nThe tool is a single HTML file with no dependencies - can be run locally or hosted anywhere. No backend required, all API calls go directly to mempool.space.\n\nI built this because the bounty post correctly pointed out that Whirlpool's tx0 always reveals common input ownership and creates change. This visualizer makes that visible to any Bitcoin user.",
+        "sats": 0,
+        "createdAt": "2026-08-17T08:33:35.392Z",
+        "user": {
+         "name": "solauditor"
         }
        }
       ]

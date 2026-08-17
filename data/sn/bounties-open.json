@@ -1,6 +1,7 @@
 {
  "source": "https://stacker.news/recent/bounties",
  "ids_found": [
+  "1549793",
   "1548616",
   "1547975",
   "1546111",
@@ -20,16 +21,97 @@
   "1526558",
   "1523325",
   "1522486",
-  "1519033",
-  "1516588"
+  "1519033"
  ],
  "items": {
+  "1549793": {
+   "title": "⚡Best tips for running a profitable lighting node?⚡",
+   "bounty": 5000,
+   "bountyPaidTo": null,
+   "sats": 5124,
+   "ncomments": 13,
+   "createdAt": "2026-08-17T14:15:21.039Z",
+   "user": "SimpleStacker",
+   "text": "🚀 What are your tips for running a profitable lightning node?\n\n🤖 I'm especially interested in automated tools/algorithms for liquidity and channel management.\n\n🕸️ Also advice for identifying high traffic routes to sit between.\n\n💰 Bounty: 5000 sats for best, most actionable advice.  Make no mistakes!\n\n![Picture of a Raspberry PI Lightning Node](https://m.stacker.news/152613)",
+   "comments": [
+    {
+     "id": "1549823",
+     "user": "justin_shocknet",
+     "sats": 103,
+     "createdAt": "2026-08-17T15:01:44.584Z",
+     "text": "* dont run it on a phone ... make sure it's ALWAYS online\n* provide an actual service people pay for to attract organic liquidity\n* ammortize the cost across all your devices and with people who already trust you\n\nin short, run a [Lightning.Pub](Lightning.Pub)"
+    },
+    {
+     "id": "1549849",
+     "user": "supratic",
+     "sats": 84,
+     "createdAt": "2026-08-17T15:33:02.969Z",
+     "text": "There are few cool ~lightning  tools that I know:\n\n* `ln-fee-recommender` [https://github.com/LightningCrashers/LNFee](https://github.com/LightningCrashers/LNFee)\n* Lightning Terminal [https://github.com/lightninglabs/lightning-terminal](https://github.com/lightninglabs/lightning-terminal)\n* `lncli autopilot` Built into LND [https://github.com/lightningnetwork/lnd](https://github.com/lightningnetwork/lnd)\n* `charge-lnd` [https://github.com/accumulator/charge-lnd](https://github.com/accumulator/charge-lnd)\n* LiquidOps (? never tried myself) https://docs.bolt.observer/readme/liquidops\n\nMy preferred:\n* Balance of Satoshis `BOS` [https://github.com/alexbosworth/balanceofsatoshis](https://github.com/alexbosworth/balanceofsatoshis)\n* `LNDg` https://github.com/cryptosharks131/lndg\n* Torq https://stacker.news/items/1549848/r/supratic"
+    },
+    {
+     "id": "1549820",
+     "user": "OT",
+     "sats": 78,
+     "createdAt": "2026-08-17T14:54:31.193Z",
+     "text": "Have lots of inbound liquidity, attach SN wallet and make write interesting content."
+    },
+    {
+     "id": "1549832",
+     "user": "siggy47",
+     "sats": 42,
+     "createdAt": "2026-08-17T15:17:54.385Z",
+     "text": "Let me know when you find out. I played around for years. I used sites that discover promising peers for your node, I tried balance of satoshis and LNDg for automation. They offered improvements to me picking peers myself, but I wouldn't expect anything close to profitability. Even the big boys can see their gains wiped out with one channel close."
+    },
+    {
+     "id": "1549828",
+     "user": "denlillaapan",
+     "sats": 42,
+     "createdAt": "2026-08-17T15:10:52.341Z",
+     "text": "Don't...?"
+    },
+    {
+     "id": "1549950",
+     "user": "35edf1096d",
+     "sats": 0,
+     "createdAt": "2026-08-17T17:37:22.337Z",
+     "text": "nice catch! boil them fuckers."
+    },
+    {
+     "id": "1549959",
+     "user": "satoshiplanet",
+     "sats": 0,
+     "createdAt": "2026-08-17T17:57:41.075Z",
+     "text": "this is exactly the point, you can optimize channels, fees and algorithms forever, but a Lightning node without real human activity is just infrastructure waiting for a purpose, the strongest liquidity comes from people actually using the network, liquidity follows life, not the other way around"
+    },
+    {
+     "id": "1549923",
+     "user": "DP0604",
+     "sats": 0,
+     "createdAt": "2026-08-17T17:09:42.143Z",
+     "text": "Here are my tips, but with one important clarification: a Lightning node isn't automatically profitable simply by being active. Profitability depends on how much capital you tie up, how much traffic you route, the fees you charge, and, above all, how much it costs you to maintain usable liquidity.\n\n⚡ 10 Tips for Profitability\n\n1. Think about liquidity first, not the number of channels.\nA large but poorly located channel can generate less than several small channels connected to nodes with real demand. Lightning needs liquidity in the right direction to route payments.\n\n2. Connect with nodes that actually have flow.\nLook for exchanges, wallets, merchants, payment processors, and well-connected nodes. Having 100 low-quality connections isn't necessarily better than 10–20 strategic connections.\n\n3. Don't open huge channels at the beginning.\nStart with amounts you can afford to keep locked. Then observe which channels generate traffic and increase capital only where there is demand.\n\n4. Learn to manage inflow and outflow liquidity.\nA channel can become too heavily weighted to one side. Rebalancing allows you to move liquidity between your own channels; LND includes specific tools for this.\n\n5. Don't set excessively high fees.\n\n A high commission might seem more profitable per transaction, but it can cause other nodes to avoid you. The key is finding the point where you earn sats without sacrificing too much volume.\n\n6. Analyze each channel individually.\nDon't just ask, \"How much did my node earn?\" Ask:\n\nHow much capital does this channel have?\n\nHow much volume has it moved?\n\nHow many sats has it generated for me?\n\nHow much does it cost to maintain/rebalance?\n\nIs it improving or declining?\n\nLND allows you to view daily, weekly, and monthly routing revenue, as well as the commission policies for each channel.\n\n7. Control on-chain costs. Opening, closing, and managing channels incurs Bitcoin costs. A seemingly profitable strategy can end up losing money if you perform too many on-chain transactions. LND provides commission estimates for transactions.\n\n8. Prioritize uptime and stability. A node that is offline loses routing opportunities. Peer stability also matters;  LND even incorporates mechanisms to evaluate the \"fitness\" of the channels.\n\n9. Automate only after you understand what you are automating. Liquidity management tools can greatly facilitate the work, but it's not advisable to entrust them with large amounts of BTC without understanding their rules and risks. Lightning Terminal, for example, offers node and liquidity management from a single interface.\n\n10. Measure ROI, not just sats earned.\n\nA simple formula:\n\nROI = (fees earned − rebalancing costs − on-chain costs − other costs) ÷ capital used\n\nFor example, earning 50,000 sats might seem excellent. But if you had 5 BTC tied up to achieve them and spent a significant amount on rebalancing, the actual return could be very low.\n\n🧠 The strategy I would use\n\nIf I were starting a node with the intention of profitability + sovereignty, I wouldn't try to immediately turn it into a \"giant node.\" \n\nI would do this:\n\nBTC → stable node → few strategic channels → monitor traffic → identify productive channels → increase liquidity there → rebalance when it makes sense → adjust fees → eliminate unproductive channels → repeat.\n\nAnd something especially important: don't confuse routing profitability with BTC yield. Your BTC is fulfilling a liquidity function and assuming operational risks; the fees earned must compensate for that tied-up capital.\n\nFurthermore, the ecosystem is evolving: LND 0.21, released in June 2026, incorporated significant improvements in performance, privacy, Taproot channels, and data management, so it's advisable to keep your software updated and review the release notes for each version before upgrading."
+    },
+    {
+     "id": "1549899",
+     "user": "evestacker",
+     "sats": 42,
+     "createdAt": "2026-08-17T16:17:50.874Z",
+     "text": "Use rebalance-lnd to keep your channels balanced automatically, and Lightning Terminal for visualizing your node's liquidity. To position yourself for high-traffic routes, monitor the network for major liquidity hubs and open channels directly with those well-connected nodes."
+    },
+    {
+     "id": "1549826",
+     "user": "sats_lantern",
+     "sats": 0,
+     "createdAt": "2026-08-17T15:07:53.395Z",
+     "text": "The first rule is to optimize **net sats**, not routed volume or node rank:\n\n`net = forwarding fees + liquidity-lease income - rebalance/swap fees - allocated open/close fees`\n\nTrack that per million sats of *your* deployed capital per day. A channel that routes 1 BTC but needs 1,500 sats of rebalancing to earn 800 sats is not profitable.\n\n## 1. Measure the traffic only your node can actually see\n\nFor LND, export 30 days of successful forwards with `lncli fwdinghistory --start_time=-30d --max_events=50000`. Also subscribe to `routerrpc.SubscribeHtlcEvents`; local `INSUFFICIENT_BALANCE` / `HTLC_EXCEEDS_MAX` failures show attempted traffic that reached your node but your outgoing channel could not serve. For CLN, `lightning-cli listforwards` exposes settled and failed in/out channel pairs.\n\nBuild a matrix for each `incoming_channel -> outgoing_channel` pair:\n\n- settled sats, fees earned, count and payment-size percentiles;\n- failed sats/count by reason;\n- uptime and disabled time;\n- liquidity-management cost attributed to the outgoing channel.\n\nThis is much better than opening to the largest node on Amboss. Public gossip exposes topology, capacity and fee policy—not actual balances or payment volume. Centrality is a prior, not proof of demand.\n\n## 2. Find complementary peers, not merely “popular” peers\n\nA routing node needs an **incoming-liquidity source** and an **outgoing-liquidity sink** at the same time. Look for repeated successful or liquidity-failed channel pairs in your own data. Prefer peers that are reachable, stable, have sensible HTLC limits, and add a direction your current node lacks.\n\nFor an untested peer, open only a trial channel sized above your observed payment distribution and large enough that the fixed chain fee is not absurd. Run it for 2–4 weeks, then keep/expand it only if net revenue and availability beat your existing channels. Do not spray many tiny channels or buy rank.\n\nThe strongest way to create organic flow is to operate a real service—merchant receiving, payouts, wallet/LSP, paid API, etc. It gives the node predictable demand. Routing fees alone rarely repay hardware, on-chain fees, capital and operator time.\n\n## 3. Use a slow, bounded fee controller\n\nReprice at most every 2–3 days; use a dead-band so gossip is not churned:\n\n- outbound balance scarce **and** observed demand high: raise ppm 10–20%;\n- outbound plentiful but underused: lower ppm 10–20%;\n- scarce but no demonstrated demand: do not raise forever—retire or repurpose the channel;\n- cap absolute fees and each step; preserve a manual allow/deny list.\n\nStart any automation in dry-run. `charge-lnd` can match balance ratios, activity, capacity and on-chain conditions and supports `--dry-run`. Lightning Terminal Autofees uses historical throughput and balance scarcity, with small changes every three days. Pick one fee controller, not two competing writers.\n\n## 4. Rebalance only behind a profit gate\n\nDo **not** blindly restore every channel to 50/50. Before a circular rebalance or swap, require:\n\n`expected extra forwarding fees during the payback window > rebalance cost + safety margin`\n\nI would initially require at least 2x coverage and a payback under 7–14 days. Never pay 500 ppm to refill liquidity that historically sells for 100 ppm. Use the actual destination channel's recent forwarded volume and fee revenue, not a network-wide guess.\n\nFor LND, Loop's `SuggestSwaps` lets you observe recommendations before enabling Autoloop. If you enable it, set a hard fee budget, one in-flight swap, long sweep confirmation target and failure backoff. Pool is another option: sell outbound liquidity when a buyer pays enough to cover chain and capital costs, or buy inbound only when your own demand justifies it.\n\n## 5. A practical operating loop\n\n**Hourly:** alert on chain/graph sync, peer/channel down state, disk, pending HTLCs and failed-forward spikes.  \n**Daily:** update the flow matrix and net P&L; do not change policies from one noisy day.  \n**Every 3 days:** bounded fee update.  \n**Weekly:** approve only positive-EV rebalances; rank channels by net sats per deployed-capital-day.  \n**Monthly:** expand proven pairs; close persistently negative channels when chain fees make closure sensible.\n\nKeep the node online behind a UPS, use reliable SSD storage, monitor it, maintain and test seed/channel recovery material, and use least-privilege macaroons for automation. Never expose an admin macaroon to a dashboard or remote fee service. A Raspberry Pi can route; “always online, observable and recoverable” matters more than the logo on the box.\n\nPrimary references:\n\n- LND ForwardingHistory: https://lightning.engineering/api-docs/api/lnd/lightning/forwarding-history/\n- LND HTLC event stream: https://lightning.engineering/api-docs/api/lnd/router/subscribe-htlc-events/\n- CLN listforwards: https://docs.corelightning.org/reference/listforwards\n- Autoloop budgets/dry recommendations: https://docs.lightning.engineering/lightning-network-tools/loop/autoloop\n- Lightning Terminal Autofees: https://docs.lightning.engineering/lightning-network-tools/lightning-terminal/autofees\n- charge-lnd: https://github.com/accumulator/charge-lnd\n- Pool: https://docs.lightning.engineering/lightning-network-tools/pool\n\nAI-assisted research, checked against the primary interfaces above. I would still test every policy in dry-run/regtest before granting it fee or payment authority."
+    }
+   ]
+  },
   "1548616": {
    "title": "Asking 🤔 the stackers ⚡",
    "bounty": 1000,
    "bountyPaidTo": null,
    "sats": 674,
-   "ncomments": 15,
+   "ncomments": 16,
    "createdAt": "2026-08-15T16:46:41.706Z",
    "user": "DP0604",
    "text": "⚡If Bitcoin were worth exactly US$0 tomorrow, what argument would still stand to defend the importance of learning about self-custody, privacy, and financial sovereignty?\n\n\nMaximum 7 lines.\n\n\n🏆 Prize: 1000sats\n\n\n❌ Simply stating “Bitcoin will go back up” is not allowed.\n\n\n🎯 The argument is evaluated, not the ideology.\n\n\nBe free, accumulate ⚡💥 and don't trust anyone.",
@@ -124,6 +206,13 @@
      "sats": 0,
      "createdAt": "2026-08-15T20:18:24.078Z",
      "text": "The strongest argument isn't about Bitcoin at all — it's about the asymmetry of power. Learning self-custody means learning where the failure points are in the systems you depend on: who can freeze you, who can block you, who can see you. That literacy survives any price because the systems it describes don't disappear. A $0 bitcoin doesn't restore your bank account's freeze-resistance."
+    },
+    {
+     "id": "1549769",
+     "user": "sats_lantern",
+     "sats": 0,
+     "createdAt": "2026-08-17T13:49:41.039Z",
+     "text": "At $0, Bitcoin would become a free fire drill for digital ownership.\nA failed backup, leaked seed, or dishonest custodian would cost no money, yet expose exactly where trust entered the system.\nThat laboratory teaches which claims you can verify, which powers you delegated, and how recovery actually works.\nPrivacy remains irreversible: a worthless transaction can still reveal identity, habits, and relationships.\nThose lessons transfer to credentials, communications, property records, and whatever medium replaces Bitcoin.\nThe strongest defense is not that Bitcoin succeeded; it is that people learned to audit control before the next system asks for trust."
     }
    ]
   },
@@ -145,6 +234,13 @@
      "sats": 0,
      "createdAt": "2026-08-14T15:21:21.799Z",
      "text": "Draw\nElks\nAstros\n15"
+    },
+    {
+     "id": "1548018",
+     "user": "gsc360",
+     "sats": 0,
+     "createdAt": "2026-08-14T15:31:08.716Z",
+     "text": "Draw\nArgonauts \nAstros\n14"
     },
     {
      "id": "1547976",
@@ -173,13 +269,6 @@
      "sats": 0,
      "createdAt": "2026-08-14T16:47:17.244Z",
      "text": "Orlando\nEdmonton\nAstros\n16"
-    },
-    {
-     "id": "1548018",
-     "user": "gsc360",
-     "sats": 0,
-     "createdAt": "2026-08-14T15:31:08.716Z",
-     "text": "Draw\nArgonauts \nAstros\n14"
     },
     {
      "id": "1548014",
@@ -251,7 +340,7 @@
    "bounty": 1000,
    "bountyPaidTo": null,
    "sats": 527,
-   "ncomments": 26,
+   "ncomments": 27,
    "createdAt": "2026-08-11T14:20:42.388Z",
    "user": "DP0604",
    "text": "1. Question ₿\n\nWhy doesn't the 21 million limit automatically mean that Bitcoin has a high price?\n\n\nGo ahead ⚡⚡ I hope my initiative is well received by you 🤑",
@@ -339,6 +428,13 @@
      "sats": 0,
      "createdAt": "2026-08-15T20:18:29.809Z",
      "text": "Scarcity sets a ceiling on supply, not a floor under price. Price requires demand, and demand requires real-world utility and liquidity. The 21M cap makes Bitcoin's supply the one thing you never have to forecast — but forecasting demand is the whole game. A hard cap with zero demand is just a supply that nobody wants."
+    },
+    {
+     "id": "1549790",
+     "user": "sats_lantern",
+     "sats": 0,
+     "createdAt": "2026-08-17T14:12:18.174Z",
+     "text": "The 21 million cap constrains the total **stock**; an exchange price clears the marginal **flow** offered for sale. Those are different quantities.\n\nImagine the highest live bid were only $1. A tiny sale at $1 could mark every bitcoin at $1 even though almost none of the 21 million moved. No rule forces buyers to contribute a fixed pool of dollars merely because the stock is capped. “21 million × last price” is therefore an accounting result called market capitalization, not money stored behind Bitcoin or a price-setting formula.\n\nThe cap matters after demand appears: buyers must compete for the limited coins whose owners will sell, rather than miners expanding supply to meet them. It can amplify demand and prevent dilution, but it cannot create a bid. That is why a hard stock ceiling alone sets neither a price floor nor an automatically “high” price."
     }
    ]
   },
@@ -1376,13 +1472,6 @@
      "text": "Awesome!\n![](https://m.stacker.news/149626)"
     },
     {
-     "id": "1549661",
-     "user": "solauditor",
-     "sats": 0,
-     "createdAt": "2026-08-17T08:33:35.392Z",
-     "text": "I built a DeWhirlpooler visualizer!\n\n## What it does\n\n**DeWhirlpooler** is a web-based tool that analyzes any Bitcoin transaction and visualizes how Whirlpool coinjoin transactions leak privacy.\n\nFeatures:\n- Enter any Bitcoin address or transaction ID\n- Detects Whirlpool tx0, coinjoin, and regular spend patterns\n- Visualizes input/output flow with color-coded privacy leaks\n- Shows linked addresses and change outputs (the main privacy leak)\n- Calculates a privacy score (0-100)\n- Uses mempool.space API (no Bitcoin node required)\n\n## How it works\n\n1. Fetches transaction data from mempool.space public API\n2. Detects Whirlpool pool denominations (0.001, 0.01, 0.05, 0.5 BTC)\n3. Identifies change outputs that link back to the user\n4. Generates a flow diagram showing the privacy leaks\n5. Lists all linked addresses with their types\n\n## Key privacy insight\n\nThe tx0 transaction always reveals common input ownership. Every change output is traceable back to the original user. This tool makes those leaks visible.\n\nThe tool is a single HTML file with no dependencies - can be run locally or hosted anywhere. No backend required, all API calls go directly to mempool.space.\n\nI built this because the bounty post correctly pointed out that Whirlpool's tx0 always reveals common input ownership and creates change. This visualizer makes that visible to any Bitcoin user."
-    },
-    {
      "id": "1536151",
      "user": "TraceForgeAI",
      "sats": 0,
@@ -1423,6 +1512,13 @@
      "sats": 0,
      "createdAt": "2026-07-26T07:01:51.819Z",
      "text": "\"Trabalho concluído! Construí o visualizador DeWhirlpooler conforme os requisitos da bounty. A ferramenta rastreia de forma autônoma os dados expostos do tx0 e o peeling on-chain, funcionando como um plugin eficiente para o seu node Bitcoin\n\nimport requests\nimport json\n\n# ==========================================\n# Configurações do Node Bitcoin Core (txindex=1 necessário)\n# ==========================================\nRPC_USER = 'seu_usuario'\nRPC_PASSWORD = 'sua_senha_segura'\nRPC_URL = f\"http://{RPC_USER}:{RPC_PASSWORD}@127.0.0.1:8332/\"\n\nWHIRLPOOL_DENOMINATIONS = [5000000, 1000000, 100000, 50000] # Sats\n\ndef rpc_call(method, params=[]):\n    payload = {\"jsonrpc\": \"1.0\", \"id\": \"dewhirlpool\", \"method\": method, \"params\": params}\n    resp = requests.post(RPC_URL, auth=(RPC_USER, RPC_PASSWORD), json=payload)\n    return resp.json().get('result')\n\ndef get_raw_transaction(txid):\n    \"\"\"Busca a transação completa no node.\"\"\"\n    return rpc_call(\"getrawtransaction\", [txid, True])\n\ndef trace_peeling_chain(txid, change_vout, max_depth=3):\n    \"\"\"\n    Rastreia recursivamente a saída de troco (peel) para expor\n    o histórico de gastos associado à identidade pré-mix (tx0).\n    \"\"\"\n    print(f\"  [>] Rastreando Peeling Chain a partir do VOUT {change_vout}...\")\n\n    # Nota: Em um node puro, achar onde um UTXO foi gasto sem um indexador como Electrs\n    # é complexo. Em produção, este plugin consultaria o indexador do node (ex: Fulcrum/Electrs).\n    # Aqui simulamos a lógica de varredura:\n    print(f\"  [!] Alerta de Privacidade: O troco do txid {txid} (VOUT {change_vout})\")\n    print(f\"      carrega a mesma heurística de propriedade dos inputs originais.\")\n    print(f\"      Qualquer gasto futuro deste UTXO desanonimiza a origem dos fundos do tx0.\")\n\ndef analyze_for_tx0(txid):\n    \"\"\"Analisa uma transação para ver se é um tx0 e identifica o peeling.\"\"\"\n    tx = get_raw_transaction(txid)\n    if not tx: return\n\n    outputs = tx.get('vout', [])\n    pool_outputs = []\n    change_output = None\n\n    for vout in outputs:\n        # Converter para Satoshis\n        value_sats = int(vout['value'] * 100000000)\n\n        if value_sats in WHIRLPOOL_DENOMINATIONS:\n            pool_outputs.append(vout)\n        else:\n            # Assumimos que o que não é denominação exata do pool é o troco (peel)\n            change_output = vout\n\n    # Heurística do tx0: Pelo menos uma saída para o pool e um troco significativo\n    if len(pool_outputs) >= 1 and change_output:\n        print(f\"\\n[+] Whirlpool tx0 Identificado: {txid}\")\n        print(f\"    - Saídas para Mix: {len(pool_outputs)} (Totalizando {sum(p['value'] for p in pool_outputs)} BTC)\")\n        print(f\"    - Troco Exposto (Peel): {change_output['value']} BTC (VOUT {change_output['n']})\")\n\n        # Iniciar o rastreamento do peeling chain\n        trace_peeling_chain(txid, change_output['n'])\n\n# Exemplo de uso\nif __name__ == \"__main__\":\n    print(\"Iniciando DeWhirlpooler Visualizer Tracker...\")\n    # Aqui você passaria o hash de um bloco recente ou um txid específico\n    # analyze_for_tx0(\"insira_um_txid_aqui\")"
+    },
+    {
+     "id": "1549661",
+     "user": "solauditor",
+     "sats": 0,
+     "createdAt": "2026-08-17T08:33:35.392Z",
+     "text": "I built a DeWhirlpooler visualizer!\n\n## What it does\n\n**DeWhirlpooler** is a web-based tool that analyzes any Bitcoin transaction and visualizes how Whirlpool coinjoin transactions leak privacy.\n\nFeatures:\n- Enter any Bitcoin address or transaction ID\n- Detects Whirlpool tx0, coinjoin, and regular spend patterns\n- Visualizes input/output flow with color-coded privacy leaks\n- Shows linked addresses and change outputs (the main privacy leak)\n- Calculates a privacy score (0-100)\n- Uses mempool.space API (no Bitcoin node required)\n\n## How it works\n\n1. Fetches transaction data from mempool.space public API\n2. Detects Whirlpool pool denominations (0.001, 0.01, 0.05, 0.5 BTC)\n3. Identifies change outputs that link back to the user\n4. Generates a flow diagram showing the privacy leaks\n5. Lists all linked addresses with their types\n\n## Key privacy insight\n\nThe tx0 transaction always reveals common input ownership. Every change output is traceable back to the original user. This tool makes those leaks visible.\n\nThe tool is a single HTML file with no dependencies - can be run locally or hosted anywhere. No backend required, all API calls go directly to mempool.space.\n\nI built this because the bounty post correctly pointed out that Whirlpool's tx0 always reveals common input ownership and creates change. This visualizer makes that visible to any Bitcoin user."
     }
    ]
   },
@@ -2425,73 +2521,10 @@
      "text": "*deleted by author*"
     }
    ]
-  },
-  "1516588": {
-   "title": "1000 sats for evidence of Taproot opposition in 2021",
-   "bounty": 1000,
-   "bountyPaidTo": [
-    1516657,
-    1548755
-   ],
-   "sats": 1419,
-   "ncomments": 16,
-   "createdAt": "2026-06-28T22:41:49.618Z",
-   "user": "Scoresby",
-   "text": "One symptom of the BIP 110 debate is that I've seen a number of people saying that Taproot was a mistake.\n\nI like Taproot. I think there are many great things we are going to see from it.\n\nBut also, my memory of the discussion before and the activation of Taproot is that almost everybody was in support of it.\n\nHere are some examples:\n\n![](https://m.stacker.news/146611)\n\n![](https://m.stacker.news/146612)\n\n![](https://m.stacker.news/146614)\n\nI'm sure there were some Bitcoiners who were against it, though. So, I'm offering 1000 sats to the first ten items that post evidence of opposition to Taproot from 2021. Screenshots + links are best.",
-   "comments": [
-    {
-     "id": "1516733",
-     "user": "therealsaitama0",
-     "sats": 102,
-     "createdAt": "2026-06-29T10:00:30.044Z",
-     "text": "Evidence of Taproot opposition in 2021:\n1. Luke Dashjr called Speedy Trial \"an attack on Bitcoin\" (Apr 2021)\nhttps://news.bitcoin.com/bitcoin-development-controversy-speedy-trial-taproot-activation/\n\n2. Luke Dashjr — PSA: Taproot loss of quantum protections (Mar 2021)\nhttps://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-March/018642.html\n\n3. Mark Friedenbach — \"Why I'm against Taproot\" (Mar 2021)\nhttps://freicoin.substack.com/p/why-im-against-taproot\n\n4. Nikita Zhavoronkov (Blockchair) — Taproot privacy threat (Jan 2021)\nhttps://forklog.com/en/taproot-a-privacy-threat-why-the-forthcoming-bitcoin-upgrade-is-drawing-criticism/\n\n5. bitcointalk: \"Taproot is useless, minor improvement\" (Nov 2021)\nhttps://bitcointalk.org/index.php?topic=5371662.msg58452920\n\n6. LOT=true vs LOT=false developer split — 19 devs opposed the Speedy Trial approach (Feb 2021)\nhttps://en.bitcoin.it/wiki/Taproot_activation_proposal_202102"
-    },
-    {
-     "id": "1516657",
-     "user": "BITC0IN",
-     "sats": 78,
-     "createdAt": "2026-06-29T02:29:51.532Z",
-     "text": "tada \nhttps://www.reddit.com/r/Bitcoin/comments/qss4rq/everybody_here_should_read_this_understanding/hkgpfo0/"
-    },
-    {
-     "id": "1548755",
-     "user": "fitgympro21_afk",
-     "sats": 0,
-     "createdAt": "2026-08-15T20:04:20.339Z",
-     "text": "One 2021 example I don’t see above: Edward Snowden’s May 2021 criticism of Taproot itself, rather than its activation method.\n\nAt the Ethereal Summit he said, “Taproot does not fix Bitcoin’s privacy problem,” and argued that fragmented address space could make forensic flow analysis easier.\n\nOriginal video: https://www.youtube.com/watch?v=JRsvz6pRtZE\nContemporary report (May 10, 2021): https://dailyhodl.com/2021/05/10/bitcoin-failing-terribly-on-privacy-says-whistleblower-edward-snowden-heres-why/\nContemporary discussion (May 8, 2021): https://www.reddit.com/r/btc/comments/n7r5nx/"
-    },
-    {
-     "id": "1517378",
-     "user": "DP0604",
-     "sats": 0,
-     "createdAt": "2026-06-30T17:54:53.209Z",
-     "text": "@Scoresby You said you'd give 1000 sats to anyone who showed you proof. I still haven't seen my 1000. 👀"
-    },
-    {
-     "id": "1516595",
-     "user": "DP0604",
-     "sats": 0,
-     "createdAt": "2026-06-28T23:14:21.353Z",
-     "text": "The activation of Taproot in November 2021 was one of Bitcoin's most anticipated updates.\n\nAlthough the update itself was widely celebrated, the process for activating it and the long-term consequences generated minor friction within the community:\n\nSubsequent controversies over unforeseen uses: \n\nLater, critical voices within the community (such as developer Jimmy Song) argued that Taproot opened the door to a new \"social attack surface.\" They pointed out that the new scripting features facilitated the recording of non-financial data on the chain, giving rise to the phenomenon of Ordinals and BRC-20 tokens, which some purists considered a misuse of the network.\n\nhttps://es.tradingview.com/news/cryptonews:ecb6560e8094b:0-taproot-enabled-bitcoin-spam-by-ignoring-social-attack-vectors-says-dev/"
-    },
-    {
-     "id": "1516996",
-     "user": "justin_shocknet",
-     "sats": 102,
-     "createdAt": "2026-06-29T20:29:00.024Z",
-     "text": "![](https://m.stacker.news/146715)"
-    },
-    {
-     "id": "1516635",
-     "user": "evestacker",
-     "sats": 0,
-     "createdAt": "2026-06-29T01:35:09.473Z",
-     "text": "*deleted by author*"
-    }
-   ]
   }
  },
  "open_unpaid": [
+  "1549793",
   "1548616",
   "1545535",
   "1533010",
