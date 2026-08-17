@@ -418,7 +418,7 @@
      "text": "See: https://stacker.news/items/1532473?commentId=1532477\n\n> Whirlpool has worse privacy, fees, speed, and custody model than a regular Bitcoin payment:\n>\n> -The privacy is worse than sending normal on chain payments because tx0 always reveals common input ownership and creates change\n> -The fee is worse than on chain payments because the victim wastes fees in tx0, wastes fees remixing sybil attackers, and wastes fees paying the coordinator (feeding the attacker)\n> -The speed is worse than a regular payment because you have to confirm tx0, then Whirlpool, then spend. Best case scenario 30 minutes.\n> -The trust model is worse than a regular payment because the coordinator can just steal your fees in tx0 and never whirlpool your coins.\n\n> Samourai's absence from the community unironically prevented Bitcoin from being destroyed. It is a downgrade for users in every possible category, see an example here: [https://bitcointalk.org/index.php?topic=5482818.msg63551707#msg63551707](https://bitcointalk.org/index.php?topic=5482818.msg63551707#msg63551707)\n>\n> I had a fantasy about building a tool that shows your exposed Whirlpool data for a long time, but it would have been pointless since it would not include the xpub data from Samourai and the Electrum data from Sparrow. But now it is relevant since Ashigaru at least requires Tor, so a tool that tracks the on chain peeling that is built in to tx0 would be mostly accurate from a third party blockchain viewer perspective.\n\n500k sat bounty to the user who builds this app/plugin for your Bitcoin node. This code is terribly outdated and inefficient, but it might help you get started on top of the Bitcointalk post: [https://github.com/nopara73/dumplings](https://github.com/nopara73/dumplings)",
      "sats": 1133,
      "boost": 42260,
-     "ncomments": 83,
+     "ncomments": 84,
      "bounty": 500000,
      "bountyPaidTo": [
       1548391
@@ -544,6 +544,15 @@
         "createdAt": "2026-07-25T14:16:06.426Z",
         "user": {
          "name": "hasherstacker"
+        }
+       },
+       {
+        "id": "1549661",
+        "text": "I built a DeWhirlpooler visualizer!\n\n## What it does\n\n**DeWhirlpooler** is a web-based tool that analyzes any Bitcoin transaction and visualizes how Whirlpool coinjoin transactions leak privacy.\n\nFeatures:\n- Enter any Bitcoin address or transaction ID\n- Detects Whirlpool tx0, coinjoin, and regular spend patterns\n- Visualizes input/output flow with color-coded privacy leaks\n- Shows linked addresses and change outputs (the main privacy leak)\n- Calculates a privacy score (0-100)\n- Uses mempool.space API (no Bitcoin node required)\n\n## How it works\n\n1. Fetches transaction data from mempool.space public API\n2. Detects Whirlpool pool denominations (0.001, 0.01, 0.05, 0.5 BTC)\n3. Identifies change outputs that link back to the user\n4. Generates a flow diagram showing the privacy leaks\n5. Lists all linked addresses with their types\n\n## Key privacy insight\n\nThe tx0 transaction always reveals common input ownership. Every change output is traceable back to the original user. This tool makes those leaks visible.\n\nThe tool is a single HTML file with no dependencies - can be run locally or hosted anywhere. No backend required, all API calls go directly to mempool.space.\n\nI built this because the bounty post correctly pointed out that Whirlpool's tx0 always reveals common input ownership and creates change. This visualizer makes that visible to any Bitcoin user.",
+        "sats": 0,
+        "createdAt": "2026-08-17T08:33:35.392Z",
+        "user": {
+         "name": "solauditor"
         }
        },
        {
