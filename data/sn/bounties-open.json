@@ -28,8 +28,8 @@
    "title": "⚡Best tips for running a profitable lighting node?⚡",
    "bounty": 5000,
    "bountyPaidTo": null,
-   "sats": 5124,
-   "ncomments": 13,
+   "sats": 5254,
+   "ncomments": 17,
    "createdAt": "2026-08-17T14:15:21.039Z",
    "user": "SimpleStacker",
    "text": "🚀 What are your tips for running a profitable lightning node?\n\n🤖 I'm especially interested in automated tools/algorithms for liquidity and channel management.\n\n🕸️ Also advice for identifying high traffic routes to sit between.\n\n💰 Bounty: 5000 sats for best, most actionable advice.  Make no mistakes!\n\n![Picture of a Raspberry PI Lightning Node](https://m.stacker.news/152613)",
@@ -37,7 +37,7 @@
     {
      "id": "1549823",
      "user": "justin_shocknet",
-     "sats": 103,
+     "sats": 186,
      "createdAt": "2026-08-17T15:01:44.584Z",
      "text": "* dont run it on a phone ... make sure it's ALWAYS online\n* provide an actual service people pay for to attract organic liquidity\n* ammortize the cost across all your devices and with people who already trust you\n\nin short, run a [Lightning.Pub](Lightning.Pub)"
     },
@@ -56,6 +56,13 @@
      "text": "Have lots of inbound liquidity, attach SN wallet and make write interesting content."
     },
     {
+     "id": "1549828",
+     "user": "denlillaapan",
+     "sats": 42,
+     "createdAt": "2026-08-17T15:10:52.341Z",
+     "text": "Don't...?"
+    },
+    {
      "id": "1549832",
      "user": "siggy47",
      "sats": 42,
@@ -63,11 +70,11 @@
      "text": "Let me know when you find out. I played around for years. I used sites that discover promising peers for your node, I tried balance of satoshis and LNDg for automation. They offered improvements to me picking peers myself, but I wouldn't expect anything close to profitability. Even the big boys can see their gains wiped out with one channel close."
     },
     {
-     "id": "1549828",
-     "user": "denlillaapan",
-     "sats": 42,
-     "createdAt": "2026-08-17T15:10:52.341Z",
-     "text": "Don't...?"
+     "id": "1550116",
+     "user": "fitgympro21_afk",
+     "sats": 0,
+     "createdAt": "2026-08-17T23:54:52.469Z",
+     "text": "Treat this as a capital-allocation system, not a “most-connected peers” contest.\n\n**1. Measure the real P&L per channel**\nEvery day calculate:\nnet = routing fees + liquidity-lease income − circular-rebalance fees − swap fees − open/close chain fees − estimated capital cost.\nTrack sats forwarded, earned ppm, failed HTLCs, uptime, local-balance ratio and net sats per deployed BTC. Volume without net profit is noise.\n\n**2. Select routes from your own flow data**\nThe public graph cannot reveal private channels or actual balances. Use it only to shortlist reliable, complementary peers: one side that tends to supply inbound flow and another that users actually pay toward. Avoid two highly connected peers that already share many cheap routes. Open a limited canary channel, observe 30–45 days, then enlarge only if it produces repeatable net revenue.\n\n**3. Use a guarded fee controller**\nRun every 30–60 minutes with a 6–12 hour cooldown:\n- local balance >70%: lower outbound ppm gradually (10–15%) to attract flow;\n- local balance <30%: raise ppm (15–25%) and optionally reduce max HTLC;\n- between 30–70%: change fees only when the EMA of demand/failed HTLCs justifies it.\nNever run two fee bots simultaneously. For LND, use either LiT Autofees or a policy tool such as charge-lnd; LiT recommends starting high so the learner can lower prices safely:\nhttps://docs.lightning.engineering/lightning-network-tools/lightning-terminal/autofees\nhttps://github.com/accumulator/charge-lnd\n\n**4. Rebalance only when the trade is profitable**\nDo not target 50/50 blindly. Before a circular rebalance or swap, require:\nall-in rebalance ppm < expected routing ppm × expected number of future turns.\nSet a daily/monthly liquidity budget and stop automatically at the cap. Autoloop can enforce per-channel/peer thresholds and budgets; run its suggestion/dry-run behavior first:\nhttps://docs.lightning.engineering/lightning-network-tools/loop/autoloop\nLiquidOps is useful for balance/inactivity alerts and bounded auto-swaps:\nhttps://docs.bolt.observer/readme/liquidops\n\n**5. Acquire liquidity deliberately**\nRouting needs usable inbound and outbound capacity, not merely nominal capacity. Loop moves liquidity between on-chain and Lightning; Pool can buy or sell inbound leases. Include every fee in the P&L:\nhttps://docs.lightning.engineering/lightning-network-tools/lightning-terminal/channel-liquidity\nIf a channel repeatedly drains in one direction, that is a pricing signal: raise the scarce direction’s fee before paying to rebalance it.\n\n**6. Operational rules**\nSSD, UPS, monitoring, tested backups, watchtower, and near-100% uptime. Batch channel opens when the mempool is cheap. After the trial window, close or resize channels that have no settled forwards, persistent failures, or negative net P&L—but wait for low chain fees.\n\nThe winning loop is: **measure → price → rebalance within budget → prune → redeploy**. Profitable means net sats after every liquidity and chain cost, not a pretty forwarding chart."
     },
     {
      "id": "1549950",
@@ -89,6 +96,13 @@
      "sats": 0,
      "createdAt": "2026-08-17T17:09:42.143Z",
      "text": "Here are my tips, but with one important clarification: a Lightning node isn't automatically profitable simply by being active. Profitability depends on how much capital you tie up, how much traffic you route, the fees you charge, and, above all, how much it costs you to maintain usable liquidity.\n\n⚡ 10 Tips for Profitability\n\n1. Think about liquidity first, not the number of channels.\nA large but poorly located channel can generate less than several small channels connected to nodes with real demand. Lightning needs liquidity in the right direction to route payments.\n\n2. Connect with nodes that actually have flow.\nLook for exchanges, wallets, merchants, payment processors, and well-connected nodes. Having 100 low-quality connections isn't necessarily better than 10–20 strategic connections.\n\n3. Don't open huge channels at the beginning.\nStart with amounts you can afford to keep locked. Then observe which channels generate traffic and increase capital only where there is demand.\n\n4. Learn to manage inflow and outflow liquidity.\nA channel can become too heavily weighted to one side. Rebalancing allows you to move liquidity between your own channels; LND includes specific tools for this.\n\n5. Don't set excessively high fees.\n\n A high commission might seem more profitable per transaction, but it can cause other nodes to avoid you. The key is finding the point where you earn sats without sacrificing too much volume.\n\n6. Analyze each channel individually.\nDon't just ask, \"How much did my node earn?\" Ask:\n\nHow much capital does this channel have?\n\nHow much volume has it moved?\n\nHow many sats has it generated for me?\n\nHow much does it cost to maintain/rebalance?\n\nIs it improving or declining?\n\nLND allows you to view daily, weekly, and monthly routing revenue, as well as the commission policies for each channel.\n\n7. Control on-chain costs. Opening, closing, and managing channels incurs Bitcoin costs. A seemingly profitable strategy can end up losing money if you perform too many on-chain transactions. LND provides commission estimates for transactions.\n\n8. Prioritize uptime and stability. A node that is offline loses routing opportunities. Peer stability also matters;  LND even incorporates mechanisms to evaluate the \"fitness\" of the channels.\n\n9. Automate only after you understand what you are automating. Liquidity management tools can greatly facilitate the work, but it's not advisable to entrust them with large amounts of BTC without understanding their rules and risks. Lightning Terminal, for example, offers node and liquidity management from a single interface.\n\n10. Measure ROI, not just sats earned.\n\nA simple formula:\n\nROI = (fees earned − rebalancing costs − on-chain costs − other costs) ÷ capital used\n\nFor example, earning 50,000 sats might seem excellent. But if you had 5 BTC tied up to achieve them and spent a significant amount on rebalancing, the actual return could be very low.\n\n🧠 The strategy I would use\n\nIf I were starting a node with the intention of profitability + sovereignty, I wouldn't try to immediately turn it into a \"giant node.\" \n\nI would do this:\n\nBTC → stable node → few strategic channels → monitor traffic → identify productive channels → increase liquidity there → rebalance when it makes sense → adjust fees → eliminate unproductive channels → repeat.\n\nAnd something especially important: don't confuse routing profitability with BTC yield. Your BTC is fulfilling a liquidity function and assuming operational risks; the fees earned must compensate for that tied-up capital.\n\nFurthermore, the ecosystem is evolving: LND 0.21, released in June 2026, incorporated significant improvements in performance, privacy, Taproot channels, and data management, so it's advisable to keep your software updated and review the release notes for each version before upgrading."
+    },
+    {
+     "id": "1550003",
+     "user": "SaltAndKeys",
+     "sats": 0,
+     "createdAt": "2026-08-17T19:08:43.905Z",
+     "text": "ran a node on an old laptop for 200 days and the profit was a rounding error. the real payoff was finally understanding liquidity, no tool taught me half as much as just watching payments fail and succeed. skip the tool churn, open a channel to somewhere you actually spend and watch the traffic before you automate anything"
     },
     {
      "id": "1549899",
