@@ -1,7 +1,7 @@
 {
  "summary": {
-  "started_at": "2026-08-18T04:06:15Z",
-  "finished_at": "2026-08-18T04:06:54Z",
+  "started_at": "2026-08-18T04:20:09Z",
+  "finished_at": "2026-08-18T04:20:45Z",
   "vantage": "GitHub Actions runner (ubuntu-latest)",
   "seed_relays": {
    "wss://relay.primal.net": {
@@ -29,26 +29,26 @@
     "notes": 500
    }
   },
-  "authors_sampled": 898,
-  "authors_with_list": 164,
-  "relays_advertised": 453,
+  "authors_sampled": 772,
+  "authors_with_list": 163,
+  "relays_advertised": 442,
   "classes": {
-   "ok_serving": 153,
+   "ok_serving": 136,
    "dns_fail": 105,
-   "http_error": 71,
-   "auth_required": 33,
-   "tls_fail": 28,
+   "http_error": 84,
+   "auth_required": 32,
    "timeout": 26,
-   "ok_empty": 17,
-   "other_fail": 8,
-   "refused": 6,
+   "tls_fail": 26,
+   "ok_empty": 14,
+   "refused": 7,
+   "other_fail": 6,
    "no_response": 3,
    "rejected": 3
   },
-  "reachable": 206,
-  "serving_events": 153,
-  "connect_ms_median": 533,
-  "connect_ms_p90": 837
+  "reachable": 185,
+  "serving_events": 136,
+  "connect_ms_median": 472,
+  "connect_ms_p90": 773
  },
  "results": [
   {
@@ -63,12 +63,12 @@
    "closed_reason": null,
    "notice": null,
    "class": "refused",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
-   "relay": "ws://137.184.127.2:4848",
-   "error": "ConnectionRefusedError: [Errno 111] Connect call failed ('137.184.127.2', 4848)",
+   "relay": "ws://192.168.79.150:7000",
+   "error": "TimeoutError: timed out during opening handshake",
    "connect_ms": null,
    "first_ms": null,
    "events": 0,
@@ -77,22 +77,7 @@
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "refused",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "ws://a18a0b33f6f99c4a1.awsglobalaccelerator.com/v1/ws",
-   "error": "gaierror: [Errno -2] Name or service not known",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "dns_fail",
+   "class": "timeout",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
@@ -113,21 +98,6 @@
   },
   {
    "relay": "ws://ex3znuu3kt4se7fjhc2l7zbjv2ydsajqi5suegk3gpfuqlzdgtl4f3qd.onion",
-   "error": "gaierror: [Errno -2] Name or service not known",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "dns_fail",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "ws://fxhid6hhwm2swtn6rkjsvxeit4hbwm55wmmhzcbariokzfufxqk3zpqd.onion",
    "error": "gaierror: [Errno -2] Name or service not known",
    "connect_ms": null,
    "first_ms": null,
@@ -172,6 +142,21 @@
    "advertised_by_distinct_lists": 1
   },
   {
+   "relay": "ws://localhost:4869",
+   "error": "OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 4869, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 4869)",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "refused",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
    "relay": "ws://monad.jb55.com:8080",
    "error": "TimeoutError: timed out during opening handshake",
    "connect_ms": null,
@@ -183,8 +168,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "timeout",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 3
   },
   {
    "relay": "ws://nos.lol",
@@ -232,21 +217,6 @@
    "advertised_by_distinct_lists": 2
   },
   {
-   "relay": "ws://relay.damus.io",
-   "error": "InvalidURI: https://relay.damus.io/ isn't a valid URI: scheme isn't ws or wss",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "other_fail",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
    "relay": "ws://villagejvc2bc3l35rb4he4x5dmvehnpatttc7oz2wgpllsrheq5lwyd.onion",
    "error": "gaierror: [Errno -2] Name or service not known",
    "connect_ms": null,
@@ -277,21 +247,6 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://03cc1d0932bb99b0697f5b5e5961b83ab7fd66f1efc4c9f5c7bad66c1bcbe78f02@52.5.194.83:9735",
-   "error": "InvalidURI: wss://03cc1d0932bb99b0697f5b5e5961b83ab7fd66f1efc4c9f5c7bad66c1bcbe78f02@52.5.194.83:9735 isn't a valid URI: username provided without passw",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "other_fail",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
    "relay": "wss://1.noztr.com",
    "error": "gaierror: [Errno -2] Name or service not known",
    "connect_ms": null,
@@ -309,8 +264,8 @@
   {
    "relay": "wss://140.f7z.io",
    "error": null,
-   "connect_ms": 885,
-   "first_ms": 1073,
+   "connect_ms": 580,
+   "first_ms": 719,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -318,14 +273,29 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://192.168.79.150",
+   "error": "TimeoutError: timed out during opening handshake",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "timeout",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://428lab.communities.buzz.xyz",
    "error": null,
-   "connect_ms": 567,
-   "first_ms": 632,
+   "connect_ms": 597,
+   "first_ms": 598,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -354,8 +324,8 @@
   {
    "relay": "wss://aggr.nostr.land",
    "error": null,
-   "connect_ms": 888,
-   "first_ms": 888,
+   "connect_ms": 969,
+   "first_ms": 982,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -369,23 +339,8 @@
   {
    "relay": "wss://antiprimal.net",
    "error": null,
-   "connect_ms": 687,
-   "first_ms": 972,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
-  },
-  {
-   "relay": "wss://articles.layer3.news",
-   "error": null,
-   "connect_ms": 396,
-   "first_ms": 404,
+   "connect_ms": 473,
+   "first_ms": 699,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -397,10 +352,10 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://asia.vectorapp.io/nostr",
+   "relay": "wss://articles.layer3.news",
    "error": null,
-   "connect_ms": 837,
-   "first_ms": 1017,
+   "connect_ms": 303,
+   "first_ms": 354,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -427,40 +382,55 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://atlas.nostr.land",
-   "error": null,
-   "connect_ms": 928,
-   "first_ms": 928,
+   "relay": "wss://at.nostrworks.com",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 406",
+   "connect_ms": null,
+   "first_ms": null,
    "events": 0,
    "eose": false,
-   "auth_required": true,
+   "auth_required": false,
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "auth_required",
-   "advertised_by_pubkeys": 11,
-   "advertised_by_distinct_lists": 11
-  },
-  {
-   "relay": "wss://basspistol.org",
-   "error": null,
-   "connect_ms": 767,
-   "first_ms": 767,
-   "events": 0,
-   "eose": false,
-   "auth_required": true,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "auth_required",
+   "class": "http_error",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
   {
+   "relay": "wss://atlas.nostr.land",
+   "error": null,
+   "connect_ms": 725,
+   "first_ms": 725,
+   "events": 0,
+   "eose": false,
+   "auth_required": true,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "auth_required",
+   "advertised_by_pubkeys": 9,
+   "advertised_by_distinct_lists": 9
+  },
+  {
+   "relay": "wss://basspistol.org",
+   "error": null,
+   "connect_ms": 686,
+   "first_ms": 698,
+   "events": 0,
+   "eose": false,
+   "auth_required": true,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "auth_required",
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
+  },
+  {
    "relay": "wss://basspistol.org/inbox",
    "error": null,
-   "connect_ms": 822,
-   "first_ms": 977,
+   "connect_ms": 658,
+   "first_ms": 794,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -472,10 +442,25 @@
    "advertised_by_distinct_lists": 1
   },
   {
+   "relay": "wss://bbb.santos.lol",
+   "error": "gaierror: [Errno -2] Name or service not known",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "dns_fail",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
    "relay": "wss://bcast.girino.org",
    "error": null,
-   "connect_ms": 502,
-   "first_ms": 615,
+   "connect_ms": 302,
+   "first_ms": 338,
    "events": 0,
    "eose": true,
    "auth_required": false,
@@ -498,14 +483,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 4,
-   "advertised_by_distinct_lists": 4
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://bitcoiner.social",
    "error": null,
-   "connect_ms": 333,
-   "first_ms": 376,
+   "connect_ms": 440,
+   "first_ms": 522,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -513,8 +498,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 4,
-   "advertised_by_distinct_lists": 4
+   "advertised_by_pubkeys": 5,
+   "advertised_by_distinct_lists": 5
   },
   {
    "relay": "wss://bitcoinmaximalists.online",
@@ -534,8 +519,8 @@
   {
    "relay": "wss://bostr.erechorse.com",
    "error": null,
-   "connect_ms": 615,
-   "first_ms": 615,
+   "connect_ms": 773,
+   "first_ms": 800,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -564,8 +549,8 @@
   {
    "relay": "wss://bots.utxo.one",
    "error": null,
-   "connect_ms": 464,
-   "first_ms": 578,
+   "connect_ms": 378,
+   "first_ms": 454,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -588,8 +573,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 5,
-   "advertised_by_distinct_lists": 5
+   "advertised_by_pubkeys": 6,
+   "advertised_by_distinct_lists": 6
   },
   {
    "relay": "wss://btc-italia.online",
@@ -609,8 +594,8 @@
   {
    "relay": "wss://btc.klendazu.com",
    "error": null,
-   "connect_ms": 911,
-   "first_ms": 1271,
+   "connect_ms": 749,
+   "first_ms": 878,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -618,21 +603,21 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://bucket.coracle.social",
    "error": null,
-   "connect_ms": 227,
-   "first_ms": 293,
-   "events": 0,
+   "connect_ms": 419,
+   "first_ms": 499,
+   "events": 1,
    "eose": true,
    "auth_required": false,
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "ok_empty",
+   "class": "ok_serving",
    "advertised_by_pubkeys": 2,
    "advertised_by_distinct_lists": 2
   },
@@ -663,8 +648,23 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 5,
+   "advertised_by_pubkeys": 7,
    "advertised_by_distinct_lists": 5
+  },
+  {
+   "relay": "wss://casanostr.compile-error.net",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 403",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "http_error",
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://catstrr.swarmstr.com",
@@ -678,57 +678,12 @@
    "closed_reason": null,
    "notice": null,
    "class": "refused",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://chat-relay.zap-work.com/jade",
-   "error": null,
-   "connect_ms": 781,
-   "first_ms": 1139,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://chorus.pjv.me",
-   "error": null,
-   "connect_ms": 427,
-   "first_ms": 427,
-   "events": 0,
-   "eose": false,
-   "auth_required": true,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "auth_required",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://cyberspace.nostr1.com",
-   "error": null,
-   "connect_ms": 342,
-   "first_ms": 397,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
    "advertised_by_pubkeys": 2,
    "advertised_by_distinct_lists": 2
   },
   {
-   "relay": "wss://damus.bostr.online",
-   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 502",
+   "relay": "wss://crystal-nostr-relay.compile-error.net",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 403",
    "connect_ms": null,
    "first_ms": null,
    "events": 0,
@@ -738,6 +693,21 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://damus.bostr.online",
+   "error": null,
+   "connect_ms": 210,
+   "first_ms": 295,
+   "events": 1,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_serving",
    "advertised_by_pubkeys": 3,
    "advertised_by_distinct_lists": 3
   },
@@ -759,8 +729,8 @@
   {
    "relay": "wss://directory.yabu.me",
    "error": null,
-   "connect_ms": 571,
-   "first_ms": 703,
+   "connect_ms": 718,
+   "first_ms": 893,
    "events": 0,
    "eose": true,
    "auth_required": false,
@@ -828,14 +798,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "dns_fail",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://eden.nostr.land",
    "error": null,
-   "connect_ms": 847,
-   "first_ms": 884,
+   "connect_ms": 1798,
+   "first_ms": 1798,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -843,8 +813,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "auth_required",
-   "advertised_by_pubkeys": 22,
-   "advertised_by_distinct_lists": 22
+   "advertised_by_pubkeys": 26,
+   "advertised_by_distinct_lists": 26
   },
   {
    "relay": "wss://expensive-relay.fiatjaf.com",
@@ -862,10 +832,10 @@
    "advertised_by_distinct_lists": 2
   },
   {
-   "relay": "wss://fabian.nostr1.com",
+   "relay": "wss://feeds.nostrarchives.com/notes/trending/reposts/today",
    "error": null,
-   "connect_ms": 280,
-   "first_ms": 328,
+   "connect_ms": 449,
+   "first_ms": 638,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -873,6 +843,21 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://feedsnostrachives.com/notes/trending/reposts/today",
+   "error": "gaierror: [Errno -2] Name or service not known",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "dns_fail",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
@@ -894,8 +879,8 @@
   {
    "relay": "wss://fiatjaf.com",
    "error": null,
-   "connect_ms": 756,
-   "first_ms": 966,
+   "connect_ms": 574,
+   "first_ms": 729,
    "events": 0,
    "eose": true,
    "auth_required": false,
@@ -909,8 +894,8 @@
   {
    "relay": "wss://filter.nostr.wine",
    "error": null,
-   "connect_ms": 435,
-   "first_ms": 435,
+   "connect_ms": 425,
+   "first_ms": 425,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -918,14 +903,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "auth_required",
-   "advertised_by_pubkeys": 9,
-   "advertised_by_distinct_lists": 9
+   "advertised_by_pubkeys": 5,
+   "advertised_by_distinct_lists": 5
   },
   {
    "relay": "wss://filter.nostr.wine/?global=all",
    "error": null,
-   "connect_ms": 373,
-   "first_ms": 411,
+   "connect_ms": 540,
+   "first_ms": 555,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -939,8 +924,8 @@
   {
    "relay": "wss://filter.nostr.wine/npub153xmex42x4chdf757hp3q6zxagykkek7pdgwuwd074964dkyha9s82ryu8?broadcast=true",
    "error": null,
-   "connect_ms": 314,
-   "first_ms": 353,
+   "connect_ms": 464,
+   "first_ms": 465,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -954,8 +939,23 @@
   {
    "relay": "wss://filter.nostr.wine/npub1aeh2zw4elewy5682lxc6xnlqzjnxksq303gwu2npfaxd49vmde6qcq4nwx?broadcast=true&global=all",
    "error": null,
-   "connect_ms": 293,
-   "first_ms": 330,
+   "connect_ms": 390,
+   "first_ms": 390,
+   "events": 0,
+   "eose": false,
+   "auth_required": true,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "auth_required",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://filter.nostr.wine/npub1jz005en8k2rz0ug8wexw8s5gjhzxll73sydhg9wu4vplfrzykktsheh5z8?broadcast=true",
+   "error": null,
+   "connect_ms": 384,
+   "first_ms": 384,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -969,8 +969,8 @@
   {
    "relay": "wss://filter.nostr.wine/npub1l04jhee8rg2pj65yymncaex8gacxhcjzgwftqdh4l2lygvcl2h3se4kdhn?broadcast=true",
    "error": null,
-   "connect_ms": 274,
-   "first_ms": 310,
+   "connect_ms": 426,
+   "first_ms": 456,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -983,7 +983,7 @@
   },
   {
    "relay": "wss://foolay.nostr.moe",
-   "error": "gaierror: [Errno -2] Name or service not known",
+   "error": "gaierror: [Errno -5] No address associated with hostname",
    "connect_ms": null,
    "first_ms": null,
    "events": 0,
@@ -1029,8 +1029,8 @@
   {
    "relay": "wss://haven.downisontheup.ca",
    "error": null,
-   "connect_ms": 155,
-   "first_ms": 199,
+   "connect_ms": 336,
+   "first_ms": 448,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1044,8 +1044,8 @@
   {
    "relay": "wss://haven.downisontheup.ca/inbox",
    "error": null,
-   "connect_ms": 121,
-   "first_ms": 165,
+   "connect_ms": 261,
+   "first_ms": 312,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1059,8 +1059,8 @@
   {
    "relay": "wss://haven.girino.org/outbox",
    "error": null,
-   "connect_ms": 829,
-   "first_ms": 1046,
+   "connect_ms": 591,
+   "first_ms": 774,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1089,8 +1089,8 @@
   {
    "relay": "wss://hist.nostr.land",
    "error": null,
-   "connect_ms": 829,
-   "first_ms": 1013,
+   "connect_ms": 528,
+   "first_ms": 674,
    "events": 0,
    "eose": true,
    "auth_required": false,
@@ -1132,7 +1132,7 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://http://relay.flashapp.me",
+   "relay": "wss://https//nostr.wine",
    "error": "gaierror: [Errno -3] Temporary failure in name resolution",
    "connect_ms": null,
    "first_ms": null,
@@ -1194,8 +1194,8 @@
   {
    "relay": "wss://inbox.relays.land",
    "error": null,
-   "connect_ms": 693,
-   "first_ms": 720,
+   "connect_ms": 625,
+   "first_ms": 625,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -1203,23 +1203,23 @@
    "closed_reason": null,
    "notice": null,
    "class": "auth_required",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 3
   },
   {
-   "relay": "wss://indexer.coracle.social",
-   "error": null,
-   "connect_ms": 320,
-   "first_ms": 395,
+   "relay": "wss://ir.purplerelay.com",
+   "error": "gaierror: [Errno -2] Name or service not known",
+   "connect_ms": null,
+   "first_ms": null,
    "events": 0,
-   "eose": true,
+   "eose": false,
    "auth_required": false,
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "ok_empty",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "class": "dns_fail",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://jiggytom.ddns.net",
@@ -1233,6 +1233,36 @@
    "closed_reason": null,
    "notice": null,
    "class": "dns_fail",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://knostr.neutrine.com",
+   "error": null,
+   "connect_ms": 550,
+   "first_ms": 687,
+   "events": 1,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_serving",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://knostr.neutrine.com:8880",
+   "error": "TimeoutError: timed out during opening handshake",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "timeout",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
@@ -1269,8 +1299,8 @@
   {
    "relay": "wss://lang.relays.land/ja",
    "error": null,
-   "connect_ms": 787,
-   "first_ms": 787,
+   "connect_ms": 754,
+   "first_ms": 754,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -1282,17 +1312,17 @@
    "advertised_by_distinct_lists": 3
   },
   {
-   "relay": "wss://lang.relays.land/zh",
-   "error": null,
-   "connect_ms": 769,
-   "first_ms": 769,
+   "relay": "wss://libretechsystems.nostr1.com",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 402",
+   "connect_ms": null,
+   "first_ms": null,
    "events": 0,
    "eose": false,
-   "auth_required": true,
+   "auth_required": false,
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "auth_required",
+   "class": "http_error",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
@@ -1308,8 +1338,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "dns_fail",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://lightningrelay.org",
@@ -1327,23 +1357,8 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://livestream.livelier.live",
-   "error": null,
-   "connect_ms": 229,
-   "first_ms": 272,
-   "events": 0,
-   "eose": false,
-   "auth_required": true,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "auth_required",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://lockbox.fiatjaf.com",
-   "error": "gaierror: [Errno -2] Name or service not known",
+   "relay": "wss://lisp-nostr-relay.compile-error.net",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 403",
    "connect_ms": null,
    "first_ms": null,
    "events": 0,
@@ -1352,8 +1367,38 @@
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "dns_fail",
+   "class": "http_error",
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://lolison.top",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 200",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "http_error",
    "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://lua-nostr-relay.compile-error.net",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 403",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "http_error",
+   "advertised_by_pubkeys": 3,
    "advertised_by_distinct_lists": 1
   },
   {
@@ -1387,8 +1432,38 @@
    "advertised_by_distinct_lists": 1
   },
   {
+   "relay": "wss://mercury-relay.imwald.eu",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 200",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "http_error",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
    "relay": "wss://merrcurr.up.railway.app",
    "error": "InvalidStatus: server rejected WebSocket connection: HTTP 404",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "http_error",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://mhp258zrpiiwn.clorecloud.net",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 502",
    "connect_ms": null,
    "first_ms": null,
    "events": 0,
@@ -1417,6 +1492,36 @@
    "advertised_by_distinct_lists": 1
   },
   {
+   "relay": "wss://moonbit-nostr-relay.compile-error.net",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 403",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "http_error",
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://mruby-nostr-relay.compile-error.net",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 403",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "http_error",
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 1
+  },
+  {
    "relay": "wss://n.ok0.org",
    "error": "InvalidStatus: server rejected WebSocket connection: HTTP 200",
    "connect_ms": null,
@@ -1428,14 +1533,29 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://n.xmr.se",
+   "error": "gaierror: [Errno -2] Name or service not known",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "dns_fail",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://nexus.libernet.app",
    "error": null,
-   "connect_ms": 876,
-   "first_ms": 1159,
+   "connect_ms": 640,
+   "first_ms": 813,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1444,6 +1564,21 @@
    "notice": null,
    "class": "ok_serving",
    "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://nim-nostr-relay.compile-error.net",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 403",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "http_error",
+   "advertised_by_pubkeys": 3,
    "advertised_by_distinct_lists": 1
   },
   {
@@ -1464,8 +1599,8 @@
   {
    "relay": "wss://no.str.cr",
    "error": null,
-   "connect_ms": 671,
-   "first_ms": 895,
+   "connect_ms": 666,
+   "first_ms": 774,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1473,8 +1608,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 8,
-   "advertised_by_distinct_lists": 8
+   "advertised_by_pubkeys": 9,
+   "advertised_by_distinct_lists": 9
   },
   {
    "relay": "wss://nobody.pub",
@@ -1494,8 +1629,8 @@
   {
    "relay": "wss://nos.lol",
    "error": null,
-   "connect_ms": 590,
-   "first_ms": 852,
+   "connect_ms": 580,
+   "first_ms": 714,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1503,8 +1638,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 116,
-   "advertised_by_distinct_lists": 109
+   "advertised_by_pubkeys": 124,
+   "advertised_by_distinct_lists": 112
   },
   {
    "relay": "wss://nost.lol",
@@ -1569,8 +1704,8 @@
   {
    "relay": "wss://nostr-01.uid.ovh",
    "error": null,
-   "connect_ms": 770,
-   "first_ms": 921,
+   "connect_ms": 519,
+   "first_ms": 644,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1584,8 +1719,8 @@
   {
    "relay": "wss://nostr-01.uid.ovh/hotel",
    "error": null,
-   "connect_ms": 752,
-   "first_ms": 900,
+   "connect_ms": 508,
+   "first_ms": 631,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1599,8 +1734,8 @@
   {
    "relay": "wss://nostr-01.yakihonne.com",
    "error": null,
-   "connect_ms": 793,
-   "first_ms": 2207,
+   "connect_ms": 746,
+   "first_ms": 956,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1614,8 +1749,8 @@
   {
    "relay": "wss://nostr-02.uid.ovh",
    "error": null,
-   "connect_ms": 773,
-   "first_ms": 921,
+   "connect_ms": 527,
+   "first_ms": 641,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1629,8 +1764,8 @@
   {
    "relay": "wss://nostr-02.yakihonne.com",
    "error": null,
-   "connect_ms": 698,
-   "first_ms": 871,
+   "connect_ms": 814,
+   "first_ms": 1010,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1638,6 +1773,21 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 3
+  },
+  {
+   "relay": "wss://nostr-03.dorafactory.org",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 503",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "http_error",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
@@ -1689,8 +1839,8 @@
   {
    "relay": "wss://nostr-dev.wellorder.net",
    "error": null,
-   "connect_ms": 310,
-   "first_ms": 338,
+   "connect_ms": 362,
+   "first_ms": 404,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1704,6 +1854,21 @@
   {
    "relay": "wss://nostr-eu.coinfundit.com",
    "error": "gaierror: [Errno -2] Name or service not known",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "dns_fail",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://nostr-paid.h3z.jp",
+   "error": "gaierror: [Errno -5] No address associated with hostname",
    "connect_ms": null,
    "first_ms": null,
    "events": 0,
@@ -1734,8 +1899,8 @@
   {
    "relay": "wss://nostr-pub.semisol.dev",
    "error": null,
-   "connect_ms": 1071,
-   "first_ms": 1071,
+   "connect_ms": 867,
+   "first_ms": 867,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -1749,8 +1914,8 @@
   {
    "relay": "wss://nostr-pub.wellorder.net",
    "error": null,
-   "connect_ms": 216,
-   "first_ms": 234,
+   "connect_ms": 426,
+   "first_ms": 500,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -1760,6 +1925,21 @@
    "class": "ok_serving",
    "advertised_by_pubkeys": 26,
    "advertised_by_distinct_lists": 26
+  },
+  {
+   "relay": "wss://nostr-pub1.southflorida.ninja",
+   "error": "gaierror: [Errno -2] Name or service not known",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "dns_fail",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://nostr-relay-jp.moctane.net",
@@ -1773,36 +1953,6 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://nostr-relay.algotech.io",
-   "error": null,
-   "connect_ms": 205,
-   "first_ms": 342,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://nostr-relay.bitcoin.ninja",
-   "error": null,
-   "connect_ms": 148,
-   "first_ms": 193,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
@@ -1848,8 +1998,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://nostr-relay.nonce.academy",
@@ -1863,36 +2013,6 @@
    "closed_reason": null,
    "notice": null,
    "class": "dns_fail",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://nostr-relay.philipcristiano.com",
-   "error": "TimeoutError: timed out during opening handshake",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "timeout",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://nostr-relay.psfoundation.info",
-   "error": "TimeoutError: timed out during opening handshake",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "timeout",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
@@ -1942,10 +2062,25 @@
    "advertised_by_distinct_lists": 2
   },
   {
+   "relay": "wss://nostr-verif.slothy.win",
+   "error": null,
+   "connect_ms": 667,
+   "first_ms": 672,
+   "events": 0,
+   "eose": false,
+   "auth_required": true,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "auth_required",
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
+  },
+  {
    "relay": "wss://nostr-verified.wellorder.net",
    "error": null,
-   "connect_ms": 306,
-   "first_ms": 321,
+   "connect_ms": 357,
+   "first_ms": 400,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2002,25 +2137,10 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://nostr.1661.io",
-   "error": "gaierror: [Errno -2] Name or service not known",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "dns_fail",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
    "relay": "wss://nostr.2h2o.io",
    "error": null,
-   "connect_ms": 542,
-   "first_ms": 606,
+   "connect_ms": 246,
+   "first_ms": 280,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2034,8 +2154,8 @@
   {
    "relay": "wss://nostr.438b.net",
    "error": null,
-   "connect_ms": 355,
-   "first_ms": 458,
+   "connect_ms": 309,
+   "first_ms": 363,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2079,8 +2199,8 @@
   {
    "relay": "wss://nostr.azuki.blue",
    "error": null,
-   "connect_ms": 466,
-   "first_ms": 617,
+   "connect_ms": 864,
+   "first_ms": 1021,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2088,14 +2208,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://nostr.azzamo.net",
    "error": null,
-   "connect_ms": 659,
-   "first_ms": 831,
+   "connect_ms": 509,
+   "first_ms": 641,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2118,7 +2238,7 @@
    "closed_reason": null,
    "notice": null,
    "class": "timeout",
-   "advertised_by_pubkeys": 2,
+   "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
   {
@@ -2154,8 +2274,8 @@
   {
    "relay": "wss://nostr.bitcoiner.social",
    "error": null,
-   "connect_ms": 401,
-   "first_ms": 444,
+   "connect_ms": 436,
+   "first_ms": 519,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2163,8 +2283,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 39,
-   "advertised_by_distinct_lists": 34
+   "advertised_by_pubkeys": 37,
+   "advertised_by_distinct_lists": 33
   },
   {
    "relay": "wss://nostr.bitmatk.io",
@@ -2199,8 +2319,8 @@
   {
    "relay": "wss://nostr.bond/romeo-juliet-xray",
    "error": null,
-   "connect_ms": 579,
-   "first_ms": 735,
+   "connect_ms": 520,
+   "first_ms": 637,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2253,8 +2373,23 @@
    "closed_reason": null,
    "notice": null,
    "class": "tls_fail",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 4,
+   "advertised_by_distinct_lists": 4
+  },
+  {
+   "relay": "wss://nostr.chaima.info",
+   "error": null,
+   "connect_ms": 472,
+   "first_ms": 609,
+   "events": 1,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_serving",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://nostr.coinfundit.com",
@@ -2283,8 +2418,23 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 4,
+   "advertised_by_pubkeys": 6,
    "advertised_by_distinct_lists": 4
+  },
+  {
+   "relay": "wss://nostr.corebreach.com",
+   "error": null,
+   "connect_ms": 229,
+   "first_ms": 289,
+   "events": 1,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_serving",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://nostr.cro.social",
@@ -2304,8 +2454,8 @@
   {
    "relay": "wss://nostr.data.haus",
    "error": null,
-   "connect_ms": 844,
-   "first_ms": 1074,
+   "connect_ms": 927,
+   "first_ms": 7229,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2313,14 +2463,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 5,
-   "advertised_by_distinct_lists": 5
+   "advertised_by_pubkeys": 6,
+   "advertised_by_distinct_lists": 6
   },
   {
    "relay": "wss://nostr.dbtc.link",
    "error": null,
-   "connect_ms": 774,
-   "first_ms": 775,
+   "connect_ms": 554,
+   "first_ms": 554,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -2334,8 +2484,8 @@
   {
    "relay": "wss://nostr.decentony.com",
    "error": null,
-   "connect_ms": 95,
-   "first_ms": 100,
+   "connect_ms": 193,
+   "first_ms": 236,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2349,8 +2499,8 @@
   {
    "relay": "wss://nostr.dler.com/lantern",
    "error": null,
-   "connect_ms": 616,
-   "first_ms": 754,
+   "connect_ms": 794,
+   "first_ms": 960,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2364,8 +2514,8 @@
   {
    "relay": "wss://nostr.dler.com/zulu",
    "error": null,
-   "connect_ms": 590,
-   "first_ms": 729,
+   "connect_ms": 779,
+   "first_ms": 945,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2409,8 +2559,8 @@
   {
    "relay": "wss://nostr.einundzwanzig.space",
    "error": null,
-   "connect_ms": 636,
-   "first_ms": 836,
+   "connect_ms": 562,
+   "first_ms": 683,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2418,8 +2568,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 4,
-   "advertised_by_distinct_lists": 4
+   "advertised_by_pubkeys": 6,
+   "advertised_by_distinct_lists": 6
   },
   {
    "relay": "wss://nostr.eluc.ch",
@@ -2433,8 +2583,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "tls_fail",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://nostr.fbxl.net",
@@ -2463,8 +2613,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 3,
-   "advertised_by_distinct_lists": 3
+   "advertised_by_pubkeys": 6,
+   "advertised_by_distinct_lists": 6
   },
   {
    "relay": "wss://nostr.fmt.wiz.biz",
@@ -2478,8 +2628,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "timeout",
-   "advertised_by_pubkeys": 11,
-   "advertised_by_distinct_lists": 11
+   "advertised_by_pubkeys": 8,
+   "advertised_by_distinct_lists": 8
   },
   {
    "relay": "wss://nostr.gerbils.online",
@@ -2497,10 +2647,25 @@
    "advertised_by_distinct_lists": 1
   },
   {
+   "relay": "wss://nostr.gives.africa",
+   "error": "gaierror: [Errno -2] Name or service not known",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "dns_fail",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
    "relay": "wss://nostr.hanshan.io",
    "error": null,
-   "connect_ms": 1934,
-   "first_ms": 2073,
+   "connect_ms": 736,
+   "first_ms": 854,
    "events": 0,
    "eose": true,
    "auth_required": false,
@@ -2529,8 +2694,8 @@
   {
    "relay": "wss://nostr.hifish.org",
    "error": null,
-   "connect_ms": 763,
-   "first_ms": 928,
+   "connect_ms": 544,
+   "first_ms": 678,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2553,8 +2718,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "timeout",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 3
   },
   {
    "relay": "wss://nostr.hubmaker.io",
@@ -2583,8 +2748,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 7,
-   "advertised_by_distinct_lists": 7
+   "advertised_by_pubkeys": 6,
+   "advertised_by_distinct_lists": 6
   },
   {
    "relay": "wss://nostr.island.network",
@@ -2600,21 +2765,6 @@
    "class": "tls_fail",
    "advertised_by_pubkeys": 2,
    "advertised_by_distinct_lists": 2
-  },
-  {
-   "relay": "wss://nostr.itsnebula.net",
-   "error": "gaierror: [Errno -5] No address associated with hostname",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "dns_fail",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://nostr.ittanmo.men",
@@ -2647,25 +2797,10 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://nostr.l484.com/dynamo-vertex",
-   "error": null,
-   "connect_ms": 264,
-   "first_ms": 264,
-   "events": 0,
-   "eose": false,
-   "auth_required": true,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "auth_required",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
    "relay": "wss://nostr.land",
    "error": null,
-   "connect_ms": 582,
-   "first_ms": 582,
+   "connect_ms": 477,
+   "first_ms": 477,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -2673,8 +2808,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "auth_required",
-   "advertised_by_pubkeys": 21,
-   "advertised_by_distinct_lists": 21
+   "advertised_by_pubkeys": 26,
+   "advertised_by_distinct_lists": 24
   },
   {
    "relay": "wss://nostr.leximaster.com",
@@ -2707,8 +2842,8 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://nostr.liberty.fans",
-   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 502",
+   "relay": "wss://nostr.lifeonbtc.xyz:",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 530",
    "connect_ms": null,
    "first_ms": null,
    "events": 0,
@@ -2750,21 +2885,6 @@
    "class": "tls_fail",
    "advertised_by_pubkeys": 2,
    "advertised_by_distinct_lists": 2
-  },
-  {
-   "relay": "wss://nostr.lu.ke/%0a",
-   "error": "SSLError: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1016)",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "tls_fail",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://nostr.massmux.com",
@@ -2823,14 +2943,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 8,
-   "advertised_by_distinct_lists": 8
+   "advertised_by_pubkeys": 7,
+   "advertised_by_distinct_lists": 7
   },
   {
    "relay": "wss://nostr.mineracks.com",
    "error": null,
-   "connect_ms": 576,
-   "first_ms": 774,
+   "connect_ms": 722,
+   "first_ms": 914,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2838,8 +2958,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://nostr.mining.sc",
@@ -2859,8 +2979,8 @@
   {
    "relay": "wss://nostr.mom",
    "error": null,
-   "connect_ms": 515,
-   "first_ms": 736,
+   "connect_ms": 564,
+   "first_ms": 686,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2869,7 +2989,7 @@
    "notice": null,
    "class": "ok_serving",
    "advertised_by_pubkeys": 69,
-   "advertised_by_distinct_lists": 64
+   "advertised_by_distinct_lists": 65
   },
   {
    "relay": "wss://nostr.monostr.com",
@@ -2898,14 +3018,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "dns_fail",
-   "advertised_by_pubkeys": 6,
-   "advertised_by_distinct_lists": 6
+   "advertised_by_pubkeys": 5,
+   "advertised_by_distinct_lists": 5
   },
   {
    "relay": "wss://nostr.myshosholoza.co.za",
    "error": null,
-   "connect_ms": 726,
-   "first_ms": 892,
+   "connect_ms": 546,
+   "first_ms": 657,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -2928,21 +3048,6 @@
    "closed_reason": null,
    "notice": null,
    "class": "timeout",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://nostr.notribe.net",
-   "error": null,
-   "connect_ms": 545,
-   "first_ms": 659,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
@@ -2988,8 +3093,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "tls_fail",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 3
   },
   {
    "relay": "wss://nostr.oooxxx.ml",
@@ -3007,6 +3112,21 @@
    "advertised_by_distinct_lists": 1
   },
   {
+   "relay": "wss://nostr.openhoofd.nl",
+   "error": null,
+   "connect_ms": 844,
+   "first_ms": 978,
+   "events": 1,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_serving",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
    "relay": "wss://nostr.orangepill.dev",
    "error": "gaierror: [Errno -2] Name or service not known",
    "connect_ms": null,
@@ -3018,8 +3138,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "dns_fail",
-   "advertised_by_pubkeys": 4,
-   "advertised_by_distinct_lists": 4
+   "advertised_by_pubkeys": 7,
+   "advertised_by_distinct_lists": 7
   },
   {
    "relay": "wss://nostr.ownscale.org",
@@ -3039,8 +3159,8 @@
   {
    "relay": "wss://nostr.oxtr.dev",
    "error": null,
-   "connect_ms": 771,
-   "first_ms": 927,
+   "connect_ms": 895,
+   "first_ms": 1024,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3048,8 +3168,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 31,
-   "advertised_by_distinct_lists": 31
+   "advertised_by_pubkeys": 29,
+   "advertised_by_distinct_lists": 29
   },
   {
    "relay": "wss://nostr.planz.io",
@@ -3097,21 +3217,6 @@
    "advertised_by_distinct_lists": 2
   },
   {
-   "relay": "wss://nostr.quali.chat/charlie",
-   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 502",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "http_error",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
    "relay": "wss://nostr.relayer.se",
    "error": "SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1016)",
    "connect_ms": null,
@@ -3123,8 +3228,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "tls_fail",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://nostr.rocks",
@@ -3138,8 +3243,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "tls_fail",
-   "advertised_by_pubkeys": 3,
-   "advertised_by_distinct_lists": 3
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://nostr.roundrockbitcoiners.com",
@@ -3153,8 +3258,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "timeout",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://nostr.sandwich.farm",
@@ -3189,8 +3294,8 @@
   {
    "relay": "wss://nostr.semisol.dev",
    "error": null,
-   "connect_ms": 842,
-   "first_ms": 842,
+   "connect_ms": 1106,
+   "first_ms": 1106,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -3198,8 +3303,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "auth_required",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 4,
+   "advertised_by_distinct_lists": 4
   },
   {
    "relay": "wss://nostr.sidnlabs.nl",
@@ -3234,8 +3339,8 @@
   {
    "relay": "wss://nostr.slothy.win",
    "error": null,
-   "connect_ms": 852,
-   "first_ms": 852,
+   "connect_ms": 602,
+   "first_ms": 616,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -3243,59 +3348,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "auth_required",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://nostr.sprovoost.nl",
-   "error": null,
-   "connect_ms": 643,
-   "first_ms": 643,
-   "events": 0,
-   "eose": false,
-   "auth_required": true,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "auth_required",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://nostr.tavux.tech",
-   "error": "TimeoutError: timed out during opening handshake",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "timeout",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://nostr.topeth.info",
-   "error": "gaierror: [Errno -2] Name or service not known",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "dns_fail",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://nostr.twinkle.lol",
    "error": null,
-   "connect_ms": 798,
-   "first_ms": 1014,
+   "connect_ms": 733,
+   "first_ms": 904,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3339,8 +3399,8 @@
   {
    "relay": "wss://nostr.vulpem.com",
    "error": null,
-   "connect_ms": 646,
-   "first_ms": 795,
+   "connect_ms": 469,
+   "first_ms": 607,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3352,34 +3412,34 @@
    "advertised_by_distinct_lists": 2
   },
   {
-   "relay": "wss://nostr.wine",
-   "error": null,
-   "connect_ms": 250,
-   "first_ms": 425,
-   "events": 1,
-   "eose": true,
+   "relay": "wss://nostr.walletofsatoshi.com",
+   "error": "TimeoutError: timed out during opening handshake",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
    "auth_required": false,
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 48,
-   "advertised_by_distinct_lists": 48
-  },
-  {
-   "relay": "wss://nostr.xmr.rocks",
-   "error": null,
-   "connect_ms": 685,
-   "first_ms": 835,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
+   "class": "timeout",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://nostr.wine",
+   "error": null,
+   "connect_ms": 260,
+   "first_ms": 308,
+   "events": 1,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_serving",
+   "advertised_by_pubkeys": 55,
+   "advertised_by_distinct_lists": 53
   },
   {
    "relay": "wss://nostr.zaprite.io",
@@ -3408,14 +3468,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "timeout",
-   "advertised_by_pubkeys": 4,
-   "advertised_by_distinct_lists": 4
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 3
   },
   {
    "relay": "wss://nostr01.counterclockwise.io",
    "error": null,
-   "connect_ms": 465,
-   "first_ms": 465,
+   "connect_ms": 455,
+   "first_ms": 455,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -3444,8 +3504,8 @@
   {
    "relay": "wss://nostr21.com",
    "error": null,
-   "connect_ms": 242,
-   "first_ms": 290,
+   "connect_ms": 129,
+   "first_ms": 168,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3489,8 +3549,8 @@
   {
    "relay": "wss://nostrbtc.com",
    "error": null,
-   "connect_ms": 301,
-   "first_ms": 374,
+   "connect_ms": 256,
+   "first_ms": 284,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3504,8 +3564,8 @@
   {
    "relay": "wss://nostrcheck.me/relay",
    "error": null,
-   "connect_ms": 702,
-   "first_ms": 7334,
+   "connect_ms": 986,
+   "first_ms": 7927,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3543,14 +3603,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 4,
-   "advertised_by_distinct_lists": 4
+   "advertised_by_pubkeys": 5,
+   "advertised_by_distinct_lists": 5
   },
   {
    "relay": "wss://nostrelites.org",
    "error": null,
-   "connect_ms": 367,
-   "first_ms": 415,
+   "connect_ms": 140,
+   "first_ms": 152,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3558,13 +3618,13 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 14,
-   "advertised_by_distinct_lists": 14
+   "advertised_by_pubkeys": 10,
+   "advertised_by_distinct_lists": 10
   },
   {
    "relay": "wss://nostrja-kari.heguro.com",
    "error": null,
-   "connect_ms": 443,
+   "connect_ms": 664,
    "first_ms": null,
    "events": 0,
    "eose": false,
@@ -3573,14 +3633,29 @@
    "closed_reason": null,
    "notice": null,
    "class": "no_response",
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
+  },
+  {
+   "relay": "wss://nostrrelay.com",
+   "error": null,
+   "connect_ms": 257,
+   "first_ms": 270,
+   "events": 0,
+   "eose": false,
+   "auth_required": true,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "auth_required",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://nostrrelay.win",
    "error": null,
-   "connect_ms": 158,
-   "first_ms": 319,
+   "connect_ms": 306,
+   "first_ms": 638,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3648,14 +3723,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 5,
-   "advertised_by_distinct_lists": 5
+   "advertised_by_pubkeys": 6,
+   "advertised_by_distinct_lists": 6
   },
   {
    "relay": "wss://offchain.bostr.online",
    "error": null,
-   "connect_ms": 306,
-   "first_ms": 357,
+   "connect_ms": 290,
+   "first_ms": 319,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3669,8 +3744,8 @@
   {
    "relay": "wss://offchain.pub",
    "error": null,
-   "connect_ms": 206,
-   "first_ms": 279,
+   "connect_ms": 180,
+   "first_ms": 213,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3678,8 +3753,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 19,
-   "advertised_by_distinct_lists": 19
+   "advertised_by_pubkeys": 17,
+   "advertised_by_distinct_lists": 17
   },
   {
    "relay": "wss://paid.nostrified.org",
@@ -3697,8 +3772,8 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://pj25z5eolrvbzjgeygbirv6rd4c4v2fgca4rggzzlpvtqpran4hszaad.onion:5051",
-   "error": "gaierror: [Errno -2] Name or service not known",
+   "relay": "wss://perl-nostr-relay.compile-error.net",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 403",
    "connect_ms": null,
    "first_ms": null,
    "events": 0,
@@ -3707,8 +3782,8 @@
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "dns_fail",
-   "advertised_by_pubkeys": 1,
+   "class": "http_error",
+   "advertised_by_pubkeys": 3,
    "advertised_by_distinct_lists": 1
   },
   {
@@ -3723,36 +3798,6 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://poster.place/relay",
-   "error": null,
-   "connect_ms": 452,
-   "first_ms": 536,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://pow.relays.land/charlie-zenith-glyph",
-   "error": null,
-   "connect_ms": 522,
-   "first_ms": 669,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
@@ -3774,8 +3819,8 @@
   {
    "relay": "wss://premium.primal.net",
    "error": null,
-   "connect_ms": 1156,
-   "first_ms": 1633,
+   "connect_ms": 493,
+   "first_ms": 652,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3783,23 +3828,23 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 8,
-   "advertised_by_distinct_lists": 8
+   "advertised_by_pubkeys": 7,
+   "advertised_by_distinct_lists": 7
   },
   {
-   "relay": "wss://primus.nostr1.com",
-   "error": null,
-   "connect_ms": 247,
-   "first_ms": 295,
-   "events": 1,
-   "eose": true,
+   "relay": "wss://primal.net",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 200",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
    "auth_required": false,
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "class": "http_error",
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://private.red.gb.net",
@@ -3834,8 +3879,8 @@
   {
    "relay": "wss://profiles.nostr1.com",
    "error": null,
-   "connect_ms": 196,
-   "first_ms": 260,
+   "connect_ms": 224,
+   "first_ms": 244,
    "events": 0,
    "eose": true,
    "auth_required": false,
@@ -3843,44 +3888,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_empty",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
-  },
-  {
-   "relay": "wss://profiles.nostrver.se/lima",
-   "error": null,
-   "connect_ms": 809,
-   "first_ms": 966,
-   "events": 0,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_empty",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://public.relaying.io",
-   "error": "gaierror: [Errno -2] Name or service not known",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "dns_fail",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://puravida.nostr.land",
    "error": null,
-   "connect_ms": 680,
-   "first_ms": 680,
+   "connect_ms": 575,
+   "first_ms": 575,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -3888,14 +3903,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "auth_required",
-   "advertised_by_pubkeys": 9,
-   "advertised_by_distinct_lists": 9
+   "advertised_by_pubkeys": 11,
+   "advertised_by_distinct_lists": 11
   },
   {
    "relay": "wss://purplepag.es",
    "error": null,
-   "connect_ms": 575,
-   "first_ms": 751,
+   "connect_ms": 481,
+   "first_ms": 620,
    "events": 0,
    "eose": true,
    "auth_required": false,
@@ -3903,14 +3918,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_empty",
-   "advertised_by_pubkeys": 21,
-   "advertised_by_distinct_lists": 21
+   "advertised_by_pubkeys": 20,
+   "advertised_by_distinct_lists": 20
   },
   {
    "relay": "wss://purplerelay.com",
    "error": null,
-   "connect_ms": 192,
-   "first_ms": 265,
+   "connect_ms": 158,
+   "first_ms": 194,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3924,8 +3939,8 @@
   {
    "relay": "wss://pyramid.fiatjaf.com",
    "error": null,
-   "connect_ms": 518,
-   "first_ms": 518,
+   "connect_ms": 428,
+   "first_ms": 428,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -3933,8 +3948,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "auth_required",
-   "advertised_by_pubkeys": 8,
-   "advertised_by_distinct_lists": 8
+   "advertised_by_pubkeys": 7,
+   "advertised_by_distinct_lists": 7
   },
   {
    "relay": "wss://pyramid.nobody.pub",
@@ -3963,8 +3978,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 3,
-   "advertised_by_distinct_lists": 3
+   "advertised_by_pubkeys": 4,
+   "advertised_by_distinct_lists": 4
   },
   {
    "relay": "wss://r.kojira.io",
@@ -3978,14 +3993,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 12,
-   "advertised_by_distinct_lists": 12
+   "advertised_by_pubkeys": 10,
+   "advertised_by_distinct_lists": 10
   },
   {
    "relay": "wss://r.ydg.works",
    "error": null,
-   "connect_ms": 484,
-   "first_ms": 619,
+   "connect_ms": 286,
+   "first_ms": 456,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -3993,21 +4008,21 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 5,
-   "advertised_by_distinct_lists": 5
+   "advertised_by_pubkeys": 6,
+   "advertised_by_distinct_lists": 6
   },
   {
-   "relay": "wss://relay-dev.satlantis.io",
-   "error": null,
-   "connect_ms": 431,
-   "first_ms": 501,
-   "events": 1,
-   "eose": true,
+   "relay": "wss://relav.coinos.pro/xenon-xenon",
+   "error": "gaierror: [Errno -2] Name or service not known",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
    "auth_required": false,
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "ok_serving",
+   "class": "dns_fail",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
@@ -4027,6 +4042,21 @@
    "advertised_by_distinct_lists": 1
   },
   {
+   "relay": "wss://relay-jp.nostr.moctane.com",
+   "error": "gaierror: [Errno -5] No address associated with hostname",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "dns_fail",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
    "relay": "wss://relay-jp.nostr.wirednet.jp",
    "error": "InvalidStatus: server rejected WebSocket connection: HTTP 403",
    "connect_ms": null,
@@ -4038,8 +4068,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 16,
-   "advertised_by_distinct_lists": 16
+   "advertised_by_pubkeys": 20,
+   "advertised_by_distinct_lists": 17
   },
   {
    "relay": "wss://relay-jp.shino3.net",
@@ -4053,8 +4083,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 3,
-   "advertised_by_distinct_lists": 3
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://relay.0xchat.com",
@@ -4068,8 +4098,38 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 10,
-   "advertised_by_distinct_lists": 10
+   "advertised_by_pubkeys": 7,
+   "advertised_by_distinct_lists": 7
+  },
+  {
+   "relay": "wss://relay.21mil.me",
+   "error": null,
+   "connect_ms": 167,
+   "first_ms": 187,
+   "events": 1,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_serving",
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
+  },
+  {
+   "relay": "wss://relay.21mil.me/inbox",
+   "error": null,
+   "connect_ms": 96,
+   "first_ms": 117,
+   "events": 1,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_serving",
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://relay.alien.blue",
@@ -4083,6 +4143,21 @@
    "closed_reason": null,
    "notice": null,
    "class": "dns_fail",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://relay.artio.inf.unibe.ch/foxtrot-quartz-cipher",
+   "error": null,
+   "connect_ms": 1033,
+   "first_ms": 1033,
+   "events": 0,
+   "eose": false,
+   "auth_required": true,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "auth_required",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
@@ -4104,8 +4179,8 @@
   {
    "relay": "wss://relay.azzamo.net",
    "error": null,
-   "connect_ms": 554,
-   "first_ms": 707,
+   "connect_ms": 438,
+   "first_ms": 559,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4113,8 +4188,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://relay.bitblockboom.com",
@@ -4143,8 +4218,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "timeout",
-   "advertised_by_pubkeys": 3,
-   "advertised_by_distinct_lists": 3
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://relay.bitheaven.social",
@@ -4158,14 +4233,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "dns_fail",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://relay.bostr.online",
    "error": null,
-   "connect_ms": 381,
-   "first_ms": 494,
+   "connect_ms": 457,
+   "first_ms": 594,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4177,25 +4252,10 @@
    "advertised_by_distinct_lists": 3
   },
   {
-   "relay": "wss://relay.bostr.online/inbox",
-   "error": null,
-   "connect_ms": 364,
-   "first_ms": 480,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
    "relay": "wss://relay.bullishbounty.com",
    "error": null,
-   "connect_ms": 723,
-   "first_ms": 918,
+   "connect_ms": 602,
+   "first_ms": 764,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4203,8 +4263,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://relay.causes.com",
@@ -4224,8 +4284,8 @@
   {
    "relay": "wss://relay.coinos.io",
    "error": null,
-   "connect_ms": 408,
-   "first_ms": 459,
+   "connect_ms": 316,
+   "first_ms": 390,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4239,8 +4299,8 @@
   {
    "relay": "wss://relay.conduit.market",
    "error": null,
-   "connect_ms": 533,
-   "first_ms": 595,
+   "connect_ms": 445,
+   "first_ms": 486,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4263,14 +4323,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "dns_fail",
-   "advertised_by_pubkeys": 8,
-   "advertised_by_distinct_lists": 8
+   "advertised_by_pubkeys": 9,
+   "advertised_by_distinct_lists": 9
   },
   {
    "relay": "wss://relay.damus.io",
    "error": null,
-   "connect_ms": 55,
-   "first_ms": 61,
+   "connect_ms": 139,
+   "first_ms": 204,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4278,23 +4338,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 96,
-   "advertised_by_distinct_lists": 95
-  },
-  {
-   "relay": "wss://relay.decentralia.fr",
-   "error": null,
-   "connect_ms": 788,
-   "first_ms": 936,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 105,
+   "advertised_by_distinct_lists": 99
   },
   {
    "relay": "wss://relay.dev.ntech.it",
@@ -4314,8 +4359,8 @@
   {
    "relay": "wss://relay.ditto.pub",
    "error": null,
-   "connect_ms": 209,
-   "first_ms": 563,
+   "connect_ms": 279,
+   "first_ms": 807,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4323,14 +4368,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 10,
-   "advertised_by_distinct_lists": 10
+   "advertised_by_pubkeys": 7,
+   "advertised_by_distinct_lists": 7
   },
   {
    "relay": "wss://relay.divine.video",
    "error": null,
-   "connect_ms": 424,
-   "first_ms": 571,
+   "connect_ms": 135,
+   "first_ms": 222,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4344,8 +4389,8 @@
   {
    "relay": "wss://relay.dreamith.to",
    "error": null,
-   "connect_ms": 289,
-   "first_ms": 391,
+   "connect_ms": 380,
+   "first_ms": 541,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4359,8 +4404,8 @@
   {
    "relay": "wss://relay.edufeed.org",
    "error": null,
-   "connect_ms": 768,
-   "first_ms": 948,
+   "connect_ms": 504,
+   "first_ms": 650,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4383,13 +4428,13 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 3,
-   "advertised_by_distinct_lists": 3
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://relay.fountain.fm",
    "error": null,
-   "connect_ms": 1295,
+   "connect_ms": 1341,
    "first_ms": null,
    "events": 0,
    "eose": false,
@@ -4398,14 +4443,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "no_response",
-   "advertised_by_pubkeys": 5,
-   "advertised_by_distinct_lists": 5
+   "advertised_by_pubkeys": 4,
+   "advertised_by_distinct_lists": 4
   },
   {
-   "relay": "wss://relay.fundstr.me",
+   "relay": "wss://relay.fredati.ch",
    "error": null,
-   "connect_ms": 291,
-   "first_ms": 370,
+   "connect_ms": 435,
+   "first_ms": 560,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4419,8 +4464,8 @@
   {
    "relay": "wss://relay.getalby.com",
    "error": null,
-   "connect_ms": 303,
-   "first_ms": 458,
+   "connect_ms": 304,
+   "first_ms": 427,
    "events": 0,
    "eose": false,
    "auth_required": false,
@@ -4434,8 +4479,8 @@
   {
    "relay": "wss://relay.getalby.com/v1",
    "error": null,
-   "connect_ms": 232,
-   "first_ms": 394,
+   "connect_ms": 250,
+   "first_ms": 371,
    "events": 0,
    "eose": false,
    "auth_required": false,
@@ -4443,29 +4488,14 @@
    "closed_reason": "blocked: Request rejected",
    "notice": null,
    "class": "rejected",
-   "advertised_by_pubkeys": 4,
-   "advertised_by_distinct_lists": 4
-  },
-  {
-   "relay": "wss://relay.getvia.xyz",
-   "error": null,
-   "connect_ms": 550,
-   "first_ms": 724,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://relay.goodmorningbitcoin.com",
    "error": null,
-   "connect_ms": 324,
-   "first_ms": 412,
+   "connect_ms": 297,
+   "first_ms": 352,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4479,8 +4509,8 @@
   {
    "relay": "wss://relay.guggero.org",
    "error": null,
-   "connect_ms": 811,
-   "first_ms": 960,
+   "connect_ms": 634,
+   "first_ms": 745,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4494,8 +4524,8 @@
   {
    "relay": "wss://relay.gulugulu.moe",
    "error": null,
-   "connect_ms": 92,
-   "first_ms": 99,
+   "connect_ms": 217,
+   "first_ms": 280,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4507,55 +4537,10 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://relay.hamnet.io",
-   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 502",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "http_error",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://relay.highlighter.com",
-   "error": null,
-   "connect_ms": 591,
-   "first_ms": 780,
-   "events": 0,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_empty",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://relay.ingwie.me",
-   "error": "TimeoutError: timed out during opening handshake",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "timeout",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
    "relay": "wss://relay.jmoose.rocks",
    "error": null,
-   "connect_ms": 587,
-   "first_ms": 1911,
+   "connect_ms": 860,
+   "first_ms": 8995,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4582,25 +4567,10 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://relay.lanacoin-eternity.com",
-   "error": null,
-   "connect_ms": 316,
-   "first_ms": 397,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
    "relay": "wss://relay.layer.systems",
    "error": null,
-   "connect_ms": 505,
-   "first_ms": 661,
+   "connect_ms": 545,
+   "first_ms": 668,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4614,8 +4584,8 @@
   {
    "relay": "wss://relay.letsfo.com",
    "error": null,
-   "connect_ms": 569,
-   "first_ms": 741,
+   "connect_ms": 544,
+   "first_ms": 677,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4629,8 +4599,8 @@
   {
    "relay": "wss://relay.lexingtonbitcoin.org",
    "error": null,
-   "connect_ms": 552,
-   "first_ms": 636,
+   "connect_ms": 252,
+   "first_ms": 311,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4638,14 +4608,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 4,
+   "advertised_by_distinct_lists": 4
   },
   {
    "relay": "wss://relay.libernet.app",
    "error": null,
-   "connect_ms": 580,
-   "first_ms": 1268,
+   "connect_ms": 569,
+   "first_ms": 738,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4717,10 +4687,25 @@
    "advertised_by_distinct_lists": 1
   },
   {
+   "relay": "wss://relay.minds.com/nostr",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 200",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "http_error",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
    "relay": "wss://relay.minibits.cash",
    "error": null,
-   "connect_ms": 1004,
-   "first_ms": 1175,
+   "connect_ms": 577,
+   "first_ms": 702,
    "events": 0,
    "eose": true,
    "auth_required": false,
@@ -4728,14 +4713,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_empty",
-   "advertised_by_pubkeys": 3,
-   "advertised_by_distinct_lists": 3
+   "advertised_by_pubkeys": 5,
+   "advertised_by_distinct_lists": 5
   },
   {
    "relay": "wss://relay.mmwaves.de",
    "error": null,
-   "connect_ms": 610,
-   "first_ms": 769,
+   "connect_ms": 523,
+   "first_ms": 640,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4749,8 +4734,8 @@
   {
    "relay": "wss://relay.momostr.pink",
    "error": null,
-   "connect_ms": 808,
-   "first_ms": 808,
+   "connect_ms": 340,
+   "first_ms": 340,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -4758,14 +4743,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "auth_required",
-   "advertised_by_pubkeys": 8,
-   "advertised_by_distinct_lists": 8
+   "advertised_by_pubkeys": 5,
+   "advertised_by_distinct_lists": 5
   },
   {
    "relay": "wss://relay.mostr.pub",
    "error": null,
-   "connect_ms": 325,
-   "first_ms": 436,
+   "connect_ms": 316,
+   "first_ms": 389,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4779,8 +4764,8 @@
   {
    "relay": "wss://relay.mostro.network",
    "error": null,
-   "connect_ms": 274,
-   "first_ms": 354,
+   "connect_ms": 198,
+   "first_ms": 233,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4788,14 +4773,29 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 3
+  },
+  {
+   "relay": "wss://relay.mymt.casa",
+   "error": "gaierror: [Errno -5] No address associated with hostname",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "dns_fail",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://relay.nmail.li",
    "error": null,
-   "connect_ms": 715,
-   "first_ms": 879,
+   "connect_ms": 613,
+   "first_ms": 727,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4809,8 +4809,8 @@
   {
    "relay": "wss://relay.nos.social",
    "error": null,
-   "connect_ms": 290,
-   "first_ms": 378,
+   "connect_ms": 180,
+   "first_ms": 215,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4818,8 +4818,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 3,
-   "advertised_by_distinct_lists": 3
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://relay.nosflare.com",
@@ -4863,8 +4863,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "timeout",
-   "advertised_by_pubkeys": 32,
-   "advertised_by_distinct_lists": 32
+   "advertised_by_pubkeys": 26,
+   "advertised_by_distinct_lists": 26
   },
   {
    "relay": "wss://relay.nostr.bg",
@@ -4878,14 +4878,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "dns_fail",
-   "advertised_by_pubkeys": 14,
-   "advertised_by_distinct_lists": 14
+   "advertised_by_pubkeys": 15,
+   "advertised_by_distinct_lists": 15
   },
   {
    "relay": "wss://relay.nostr.build",
    "error": null,
-   "connect_ms": 250,
-   "first_ms": 250,
+   "connect_ms": 593,
+   "first_ms": 593,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -4908,14 +4908,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "timeout",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://relay.nostr.com",
    "error": null,
-   "connect_ms": 577,
-   "first_ms": 732,
+   "connect_ms": 507,
+   "first_ms": 623,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -4944,8 +4944,8 @@
   {
    "relay": "wss://relay.nostr.info",
    "error": null,
-   "connect_ms": 42,
-   "first_ms": 44,
+   "connect_ms": 203,
+   "first_ms": 251,
    "events": 0,
    "eose": true,
    "auth_required": false,
@@ -4953,29 +4953,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_empty",
-   "advertised_by_pubkeys": 7,
-   "advertised_by_distinct_lists": 7
-  },
-  {
-   "relay": "wss://relay.nostr.moctane.com",
-   "error": "gaierror: [Errno -5] No address associated with hostname",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "dns_fail",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 8,
+   "advertised_by_distinct_lists": 8
   },
   {
    "relay": "wss://relay.nostr.moe",
    "error": null,
-   "connect_ms": 1080,
-   "first_ms": 1080,
+   "connect_ms": 1047,
+   "first_ms": 1047,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -4989,8 +4974,8 @@
   {
    "relay": "wss://relay.nostr.net",
    "error": null,
-   "connect_ms": 816,
-   "first_ms": 1015,
+   "connect_ms": 518,
+   "first_ms": 651,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5019,8 +5004,8 @@
   {
    "relay": "wss://relay.nostr.nu",
    "error": null,
-   "connect_ms": 675,
-   "first_ms": 833,
+   "connect_ms": 588,
+   "first_ms": 721,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5028,14 +5013,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://relay.nostr.watch",
    "error": null,
-   "connect_ms": 165,
-   "first_ms": 254,
+   "connect_ms": 592,
+   "first_ms": 626,
    "events": 0,
    "eose": true,
    "auth_required": false,
@@ -5049,8 +5034,8 @@
   {
    "relay": "wss://relay.nostr.wirednet.jp",
    "error": null,
-   "connect_ms": 541,
-   "first_ms": 694,
+   "connect_ms": 607,
+   "first_ms": 779,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5073,14 +5058,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 6,
-   "advertised_by_distinct_lists": 6
+   "advertised_by_pubkeys": 5,
+   "advertised_by_distinct_lists": 5
   },
   {
    "relay": "wss://relay.nostrcheck.me",
    "error": null,
-   "connect_ms": 762,
-   "first_ms": 8003,
+   "connect_ms": 689,
+   "first_ms": 4979,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5109,8 +5094,8 @@
   {
    "relay": "wss://relay.nostrhub.fr",
    "error": null,
-   "connect_ms": 675,
-   "first_ms": 835,
+   "connect_ms": 602,
+   "first_ms": 717,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5169,8 +5154,8 @@
   {
    "relay": "wss://relay.nostriot.com",
    "error": null,
-   "connect_ms": 322,
-   "first_ms": 382,
+   "connect_ms": 270,
+   "first_ms": 305,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5184,8 +5169,8 @@
   {
    "relay": "wss://relay.nostrplebs.com",
    "error": null,
-   "connect_ms": 661,
-   "first_ms": 835,
+   "connect_ms": 529,
+   "first_ms": 666,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5195,6 +5180,21 @@
    "class": "ok_serving",
    "advertised_by_pubkeys": 4,
    "advertised_by_distinct_lists": 4
+  },
+  {
+   "relay": "wss://relay.nostrswap.com",
+   "error": "gaierror: [Errno -2] Name or service not known",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "dns_fail",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://relay.nostrtalk.org",
@@ -5212,55 +5212,10 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://relay.nostrview.com",
-   "error": null,
-   "connect_ms": 532,
-   "first_ms": 680,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://relay.nostrzh.org",
-   "error": null,
-   "connect_ms": 513,
-   "first_ms": 662,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 3,
-   "advertised_by_distinct_lists": 3
-  },
-  {
-   "relay": "wss://relay.nostrzh.org/inbox",
-   "error": null,
-   "connect_ms": 494,
-   "first_ms": 644,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
-  },
-  {
    "relay": "wss://relay.noswhere.com",
    "error": null,
-   "connect_ms": 765,
-   "first_ms": 939,
+   "connect_ms": 640,
+   "first_ms": 777,
    "events": 0,
    "eose": true,
    "auth_required": false,
@@ -5268,8 +5223,23 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_empty",
-   "advertised_by_pubkeys": 7,
-   "advertised_by_distinct_lists": 7
+   "advertised_by_pubkeys": 5,
+   "advertised_by_distinct_lists": 5
+  },
+  {
+   "relay": "wss://relay.nquiz.io",
+   "error": "gaierror: [Errno -2] Name or service not known",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "dns_fail",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://relay.oke.minds",
@@ -5289,7 +5259,7 @@
   {
    "relay": "wss://relay.orangepill.dev",
    "error": "ConnectionClosedError: no close frame received or sent",
-   "connect_ms": 302,
+   "connect_ms": 190,
    "first_ms": null,
    "events": 0,
    "eose": false,
@@ -5304,8 +5274,8 @@
   {
    "relay": "wss://relay.paulstephenborile.com/kilo-romeo",
    "error": null,
-   "connect_ms": 717,
-   "first_ms": 872,
+   "connect_ms": 790,
+   "first_ms": 909,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5317,25 +5287,10 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://relay.phantom-power.coracle.tools",
-   "error": "gaierror: [Errno -2] Name or service not known",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "dns_fail",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
    "relay": "wss://relay.pleb.one",
    "error": null,
-   "connect_ms": 193,
-   "first_ms": 193,
+   "connect_ms": 120,
+   "first_ms": 121,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -5343,21 +5298,6 @@
    "closed_reason": null,
    "notice": null,
    "class": "auth_required",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://relay.pleb.to",
-   "error": "SSLError: [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1016)",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "tls_fail",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
@@ -5377,55 +5317,55 @@
    "advertised_by_distinct_lists": 2
   },
   {
-   "relay": "wss://relay.poster.place",
-   "error": null,
-   "connect_ms": 465,
-   "first_ms": 533,
-   "events": 1,
-   "eose": true,
+   "relay": "wss://relay.pokernostr.com",
+   "error": "TimeoutError: timed out during opening handshake",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
    "auth_required": false,
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 4,
-   "advertised_by_distinct_lists": 4
-  },
-  {
-   "relay": "wss://relay.primal.net",
-   "error": null,
-   "connect_ms": 602,
-   "first_ms": 769,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 78,
-   "advertised_by_distinct_lists": 77
-  },
-  {
-   "relay": "wss://relay.reya.su",
-   "error": null,
-   "connect_ms": 706,
-   "first_ms": 886,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
+   "class": "timeout",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
   {
+   "relay": "wss://relay.poster.place",
+   "error": null,
+   "connect_ms": 432,
+   "first_ms": 666,
+   "events": 1,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_serving",
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 3
+  },
+  {
+   "relay": "wss://relay.primal.net",
+   "error": null,
+   "connect_ms": 423,
+   "first_ms": 552,
+   "events": 1,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_serving",
+   "advertised_by_pubkeys": 76,
+   "advertised_by_distinct_lists": 71
+  },
+  {
    "relay": "wss://relay.rkus.se",
    "error": null,
-   "connect_ms": 1015,
-   "first_ms": 1175,
+   "connect_ms": 904,
+   "first_ms": 1033,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5452,21 +5392,6 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://relay.samt.st",
-   "error": null,
-   "connect_ms": 462,
-   "first_ms": 547,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
    "relay": "wss://relay.san.yt",
    "error": "TimeoutError: timed out during opening handshake",
    "connect_ms": null,
@@ -5484,8 +5409,8 @@
   {
    "relay": "wss://relay.satlantis.io",
    "error": null,
-   "connect_ms": 255,
-   "first_ms": 321,
+   "connect_ms": 273,
+   "first_ms": 310,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5497,8 +5422,8 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://relay.satoshidnc.com",
-   "error": "gaierror: [Errno -2] Name or service not known",
+   "relay": "wss://relay.sendstr.com",
+   "error": "ConnectionRefusedError: [Errno 111] Connect call failed ('104.206.180.86', 443)",
    "connect_ms": null,
    "first_ms": null,
    "events": 0,
@@ -5507,15 +5432,15 @@
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "dns_fail",
+   "class": "refused",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://relay.seq1.net",
    "error": null,
-   "connect_ms": 534,
-   "first_ms": 691,
+   "connect_ms": 439,
+   "first_ms": 555,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5528,7 +5453,7 @@
   },
   {
    "relay": "wss://relay.shitforce.one",
-   "error": "OSError: Multiple exceptions: [Errno 111] Connect call failed ('69.30.197.11', 443), [Errno 111] Connect call failed ('69.30.197.12', 443), [Errno 11",
+   "error": "OSError: Multiple exceptions: [Errno 111] Connect call failed ('69.30.197.13', 443), [Errno 111] Connect call failed ('69.30.197.14', 443), [Errno 11",
    "connect_ms": null,
    "first_ms": null,
    "events": 0,
@@ -5544,8 +5469,8 @@
   {
    "relay": "wss://relay.shosho.live",
    "error": null,
-   "connect_ms": 134,
-   "first_ms": 175,
+   "connect_ms": 447,
+   "first_ms": 552,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5559,8 +5484,8 @@
   {
    "relay": "wss://relay.snort.social",
    "error": null,
-   "connect_ms": 545,
-   "first_ms": 732,
+   "connect_ms": 483,
+   "first_ms": 611,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5568,23 +5493,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 38,
-   "advertised_by_distinct_lists": 38
-  },
-  {
-   "relay": "wss://relay.snort.social:57",
-   "error": "TimeoutError: timed out during opening handshake",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "timeout",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 44,
+   "advertised_by_distinct_lists": 44
   },
   {
    "relay": "wss://relay.stoner.com",
@@ -5604,8 +5514,8 @@
   {
    "relay": "wss://relay.trosso.net",
    "error": null,
-   "connect_ms": 373,
-   "first_ms": 437,
+   "connect_ms": 180,
+   "first_ms": 211,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5619,8 +5529,8 @@
   {
    "relay": "wss://relay.trosso.net/inbox",
    "error": null,
-   "connect_ms": 340,
-   "first_ms": 401,
+   "connect_ms": 185,
+   "first_ms": 214,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5649,8 +5559,8 @@
   {
    "relay": "wss://relay.unrug.tech",
    "error": null,
-   "connect_ms": 488,
-   "first_ms": 638,
+   "connect_ms": 404,
+   "first_ms": 517,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5664,8 +5574,8 @@
   {
    "relay": "wss://relay.utxo.one",
    "error": null,
-   "connect_ms": 274,
-   "first_ms": 367,
+   "connect_ms": 170,
+   "first_ms": 201,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5673,14 +5583,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 4,
-   "advertised_by_distinct_lists": 4
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://relay.utxo.one/inbox",
    "error": null,
-   "connect_ms": 250,
-   "first_ms": 349,
+   "connect_ms": 130,
+   "first_ms": 161,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5694,8 +5604,8 @@
   {
    "relay": "wss://relay.utxo.one/outbox",
    "error": null,
-   "connect_ms": 312,
-   "first_ms": 385,
+   "connect_ms": 127,
+   "first_ms": 160,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5754,8 +5664,8 @@
   {
    "relay": "wss://relay.wasku.com",
    "error": null,
-   "connect_ms": 620,
-   "first_ms": 790,
+   "connect_ms": 464,
+   "first_ms": 594,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5769,23 +5679,8 @@
   {
    "relay": "wss://relay.wavlake.com",
    "error": null,
-   "connect_ms": 233,
-   "first_ms": 300,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://relay.wellorder.net",
-   "error": null,
-   "connect_ms": 282,
-   "first_ms": 306,
+   "connect_ms": 230,
+   "first_ms": 252,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5799,8 +5694,8 @@
   {
    "relay": "wss://relay.westernbtc.com",
    "error": null,
-   "connect_ms": 200,
-   "first_ms": 235,
+   "connect_ms": 316,
+   "first_ms": 386,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5808,44 +5703,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
-  },
-  {
-   "relay": "wss://relay.wheredoitrain.com",
-   "error": null,
-   "connect_ms": 597,
-   "first_ms": 774,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://relay.wikifreedia.xyz",
-   "error": null,
-   "connect_ms": 555,
-   "first_ms": 732,
-   "events": 0,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_empty",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 3
   },
   {
    "relay": "wss://relay.wisp.talk",
    "error": null,
-   "connect_ms": 827,
-   "first_ms": 998,
+   "connect_ms": 756,
+   "first_ms": 883,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5853,8 +5718,23 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 4,
-   "advertised_by_distinct_lists": 4
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 3
+  },
+  {
+   "relay": "wss://relay.ynniv.com",
+   "error": null,
+   "connect_ms": 311,
+   "first_ms": 402,
+   "events": 1,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_serving",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://relay.yozora.world",
@@ -5868,14 +5748,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "other_fail",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 3
   },
   {
    "relay": "wss://relay.zap.stream",
    "error": null,
-   "connect_ms": 1036,
-   "first_ms": 1037,
+   "connect_ms": 609,
+   "first_ms": 609,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -5889,8 +5769,8 @@
   {
    "relay": "wss://relay.zapanimations.com",
    "error": null,
-   "connect_ms": 347,
-   "first_ms": 427,
+   "connect_ms": 440,
+   "first_ms": 516,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5904,7 +5784,7 @@
   {
    "relay": "wss://relay2.nostrchat.io",
    "error": null,
-   "connect_ms": 683,
+   "connect_ms": 436,
    "first_ms": null,
    "events": 0,
    "eose": false,
@@ -5913,14 +5793,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "no_response",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://relay2.veganostr.com/karma-bravo",
    "error": null,
-   "connect_ms": 693,
-   "first_ms": 874,
+   "connect_ms": 602,
+   "first_ms": 746,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5943,8 +5823,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "refused",
-   "advertised_by_pubkeys": 7,
-   "advertised_by_distinct_lists": 7
+   "advertised_by_pubkeys": 5,
+   "advertised_by_distinct_lists": 5
   },
   {
    "relay": "wss://relayer.fiatjaf.com",
@@ -5958,14 +5838,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "dns_fail",
-   "advertised_by_pubkeys": 5,
-   "advertised_by_distinct_lists": 5
+   "advertised_by_pubkeys": 4,
+   "advertised_by_distinct_lists": 4
   },
   {
    "relay": "wss://rele.speyhard.fi/nostr/oscar",
    "error": null,
-   "connect_ms": 652,
-   "first_ms": 838,
+   "connect_ms": 685,
+   "first_ms": 811,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -5994,8 +5874,8 @@
   {
    "relay": "wss://ribo.eu.nostria.app",
    "error": null,
-   "connect_ms": 712,
-   "first_ms": 914,
+   "connect_ms": 641,
+   "first_ms": 806,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6009,23 +5889,8 @@
   {
    "relay": "wss://ribo.nostria.app",
    "error": null,
-   "connect_ms": 3957,
-   "first_ms": 4806,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://rilo.nostria.app",
-   "error": null,
-   "connect_ms": 689,
-   "first_ms": 882,
+   "connect_ms": 563,
+   "first_ms": 729,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6035,6 +5900,21 @@
    "class": "ok_serving",
    "advertised_by_pubkeys": 2,
    "advertised_by_distinct_lists": 2
+  },
+  {
+   "relay": "wss://rilo.nostria.app",
+   "error": null,
+   "connect_ms": 615,
+   "first_ms": 756,
+   "events": 1,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_serving",
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://rly.social",
@@ -6097,10 +5977,25 @@
    "advertised_by_distinct_lists": 3
   },
   {
+   "relay": "wss://ruby-nostr-relay.compile-error.net",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 403",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "http_error",
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 1
+  },
+  {
    "relay": "wss://satsage.xyz",
    "error": null,
-   "connect_ms": 41,
-   "first_ms": 43,
+   "connect_ms": 197,
+   "first_ms": 248,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6114,8 +6009,8 @@
   {
    "relay": "wss://search.nos.today",
    "error": null,
-   "connect_ms": 1687,
-   "first_ms": 2374,
+   "connect_ms": 522,
+   "first_ms": 693,
    "events": 0,
    "eose": false,
    "auth_required": false,
@@ -6138,23 +6033,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 9,
-   "advertised_by_distinct_lists": 9
-  },
-  {
-   "relay": "wss://sfr0.nostr1.com",
-   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 410",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "http_error",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 8,
+   "advertised_by_distinct_lists": 8
   },
   {
    "relay": "wss://sg.qemura.xyz",
@@ -6204,8 +6084,8 @@
   {
    "relay": "wss://soloco.nl",
    "error": null,
-   "connect_ms": 504,
-   "first_ms": 657,
+   "connect_ms": 417,
+   "first_ms": 543,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6219,8 +6099,8 @@
   {
    "relay": "wss://spatia-arcana.com",
    "error": null,
-   "connect_ms": 147,
-   "first_ms": 147,
+   "connect_ms": 239,
+   "first_ms": 240,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -6228,14 +6108,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "auth_required",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://spatia-arcana.com/inbox",
    "error": null,
-   "connect_ms": 107,
-   "first_ms": 126,
+   "connect_ms": 218,
+   "first_ms": 280,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6264,8 +6144,8 @@
   {
    "relay": "wss://staging.yabu.me",
    "error": null,
-   "connect_ms": 592,
-   "first_ms": 697,
+   "connect_ms": 610,
+   "first_ms": 743,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6294,8 +6174,8 @@
   {
    "relay": "wss://strfry.ymir.cloud",
    "error": null,
-   "connect_ms": 105,
-   "first_ms": 541,
+   "connect_ms": 299,
+   "first_ms": 821,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6322,10 +6202,10 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://support.nostr1.com",
+   "relay": "wss://temp.iris.to/jade",
    "error": null,
-   "connect_ms": 183,
-   "first_ms": 231,
+   "connect_ms": 699,
+   "first_ms": 870,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6339,8 +6219,8 @@
   {
    "relay": "wss://thebarn.nostr1.com",
    "error": null,
-   "connect_ms": 214,
-   "first_ms": 277,
+   "connect_ms": 137,
+   "first_ms": 156,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6354,8 +6234,8 @@
   {
    "relay": "wss://thecitadel.nostr1.com",
    "error": null,
-   "connect_ms": 198,
-   "first_ms": 258,
+   "connect_ms": 253,
+   "first_ms": 273,
    "events": 0,
    "eose": true,
    "auth_required": false,
@@ -6369,8 +6249,8 @@
   {
    "relay": "wss://theforest.nostr1.com",
    "error": null,
-   "connect_ms": 188,
-   "first_ms": 254,
+   "connect_ms": 135,
+   "first_ms": 155,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6378,14 +6258,29 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 9,
-   "advertised_by_distinct_lists": 9
+   "advertised_by_pubkeys": 10,
+   "advertised_by_distinct_lists": 10
+  },
+  {
+   "relay": "wss://thingstr-relay.fly.dev/haven",
+   "error": null,
+   "connect_ms": 523,
+   "first_ms": 706,
+   "events": 0,
+   "eose": true,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "ok_empty",
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://top.testrelay.top",
    "error": null,
-   "connect_ms": 332,
-   "first_ms": 411,
+   "connect_ms": 179,
+   "first_ms": 212,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6397,40 +6292,25 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://us.azzamo.net",
+   "relay": "wss://user.kindpag.es",
    "error": null,
-   "connect_ms": 268,
-   "first_ms": 338,
-   "events": 1,
+   "connect_ms": 374,
+   "first_ms": 478,
+   "events": 0,
    "eose": true,
    "auth_required": false,
    "payment_required": false,
    "closed_reason": null,
    "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://us.nostr.wine",
-   "error": null,
-   "connect_ms": 762,
-   "first_ms": 849,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
+   "class": "ok_empty",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://vitor.nostr1.com",
    "error": null,
-   "connect_ms": 219,
-   "first_ms": 268,
+   "connect_ms": 123,
+   "first_ms": 143,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6444,8 +6324,8 @@
   {
    "relay": "wss://wbc.nostr1.com",
    "error": null,
-   "connect_ms": 198,
-   "first_ms": 246,
+   "connect_ms": 124,
+   "first_ms": 144,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6468,14 +6348,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "http_error",
-   "advertised_by_pubkeys": 5,
-   "advertised_by_distinct_lists": 5
+   "advertised_by_pubkeys": 4,
+   "advertised_by_distinct_lists": 4
   },
   {
    "relay": "wss://wheat.happytavern.co",
    "error": null,
    "connect_ms": 263,
-   "first_ms": 265,
+   "first_ms": 267,
    "events": 0,
    "eose": false,
    "auth_required": true,
@@ -6483,8 +6363,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "auth_required",
-   "advertised_by_pubkeys": 3,
-   "advertised_by_distinct_lists": 3
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://wons.calva.dev",
@@ -6517,25 +6397,10 @@
    "advertised_by_distinct_lists": 1
   },
   {
-   "relay": "wss://wot.dergigi.com",
-   "error": null,
-   "connect_ms": 577,
-   "first_ms": 857,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
    "relay": "wss://wot.girino.org",
    "error": null,
-   "connect_ms": 1027,
-   "first_ms": 1202,
+   "connect_ms": 117,
+   "first_ms": 136,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6549,23 +6414,8 @@
   {
    "relay": "wss://wot.nostr.net",
    "error": null,
-   "connect_ms": 671,
-   "first_ms": 860,
-   "events": 1,
-   "eose": true,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "ok_serving",
-   "advertised_by_pubkeys": 3,
-   "advertised_by_distinct_lists": 3
-  },
-  {
-   "relay": "wss://wot.nostr.party",
-   "error": null,
-   "connect_ms": 250,
-   "first_ms": 322,
+   "connect_ms": 526,
+   "first_ms": 663,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6577,10 +6427,10 @@
    "advertised_by_distinct_lists": 2
   },
   {
-   "relay": "wss://wot.rejecttheframe.xyz",
+   "relay": "wss://wot.nostr.party",
    "error": null,
-   "connect_ms": 542,
-   "first_ms": 712,
+   "connect_ms": 569,
+   "first_ms": 609,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6588,8 +6438,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
+   "advertised_by_pubkeys": 2,
+   "advertised_by_distinct_lists": 2
   },
   {
    "relay": "wss://wot.sandwich.farm",
@@ -6609,8 +6459,8 @@
   {
    "relay": "wss://wot.shaving.kiwi",
    "error": null,
-   "connect_ms": 519,
-   "first_ms": 672,
+   "connect_ms": 438,
+   "first_ms": 551,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6648,8 +6498,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "dns_fail",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://wot.sudocarlos.com",
@@ -6699,8 +6549,8 @@
   {
    "relay": "wss://wot.utxo.one",
    "error": null,
-   "connect_ms": 264,
-   "first_ms": 355,
+   "connect_ms": 232,
+   "first_ms": 278,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6708,8 +6558,8 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 9,
-   "advertised_by_distinct_lists": 9
+   "advertised_by_pubkeys": 6,
+   "advertised_by_distinct_lists": 6
   },
   {
    "relay": "wss://wot.zacoos.com",
@@ -6729,8 +6579,8 @@
   {
    "relay": "wss://x.kojira.io",
    "error": null,
-   "connect_ms": 390,
-   "first_ms": 502,
+   "connect_ms": 527,
+   "first_ms": 675,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6738,14 +6588,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 2,
-   "advertised_by_distinct_lists": 2
+   "advertised_by_pubkeys": 3,
+   "advertised_by_distinct_lists": 3
   },
   {
    "relay": "wss://xmr.usenostr.org",
    "error": null,
-   "connect_ms": 607,
-   "first_ms": 761,
+   "connect_ms": 508,
+   "first_ms": 622,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6753,29 +6603,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
-  },
-  {
-   "relay": "wss://xxmmrr.shogatsu.ovh",
-   "error": "gaierror: [Errno -2] Name or service not known",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "dns_fail",
    "advertised_by_pubkeys": 1,
    "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://yabu.me",
    "error": null,
-   "connect_ms": 394,
-   "first_ms": 499,
+   "connect_ms": 573,
+   "first_ms": 706,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6783,14 +6618,14 @@
    "closed_reason": null,
    "notice": null,
    "class": "ok_serving",
-   "advertised_by_pubkeys": 19,
-   "advertised_by_distinct_lists": 19
+   "advertised_by_pubkeys": 21,
+   "advertised_by_distinct_lists": 18
   },
   {
    "relay": "wss://yestr.me",
    "error": null,
-   "connect_ms": 322,
-   "first_ms": 389,
+   "connect_ms": 204,
+   "first_ms": 230,
    "events": 1,
    "eose": true,
    "auth_required": false,
@@ -6800,21 +6635,6 @@
    "class": "ok_serving",
    "advertised_by_pubkeys": 2,
    "advertised_by_distinct_lists": 2
-  },
-  {
-   "relay": "wss://zap.cooking",
-   "error": "InvalidMessage: did not receive a valid HTTP response",
-   "connect_ms": null,
-   "first_ms": null,
-   "events": 0,
-   "eose": false,
-   "auth_required": false,
-   "payment_required": false,
-   "closed_reason": null,
-   "notice": null,
-   "class": "http_error",
-   "advertised_by_pubkeys": 1,
-   "advertised_by_distinct_lists": 1
   },
   {
    "relay": "wss://zap.nostr1.com",
@@ -6844,6 +6664,21 @@
    "notice": null,
    "class": "http_error",
    "advertised_by_pubkeys": 1,
+   "advertised_by_distinct_lists": 1
+  },
+  {
+   "relay": "wss://zig-nostr-relay.compile-error.net",
+   "error": "InvalidStatus: server rejected WebSocket connection: HTTP 403",
+   "connect_ms": null,
+   "first_ms": null,
+   "events": 0,
+   "eose": false,
+   "auth_required": false,
+   "payment_required": false,
+   "closed_reason": null,
+   "notice": null,
+   "class": "http_error",
+   "advertised_by_pubkeys": 3,
    "advertised_by_distinct_lists": 1
   }
  ]
