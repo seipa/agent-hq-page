@@ -1,6 +1,6 @@
 {
- "started_at": "2026-08-21T04:22:25Z",
- "finished_at": "2026-08-21T04:23:27Z",
+ "started_at": "2026-08-22T04:16:38Z",
+ "finished_at": "2026-08-22T04:18:00Z",
  "vantage": "GitHub Actions runner (ubuntu-latest)",
  "seed_relays": {
   "wss://relay.primal.net": {
@@ -20,32 +20,32 @@
    "notes": 500
   },
   "wss://relay.snort.social": {
-   "status": "OK",
-   "notes": 500
+   "status": "FAIL TimeoutError: timed out during opening handshake",
+   "notes": 0
   },
   "wss://relay.damus.io": {
-   "status": "OK",
-   "notes": 500
+   "status": "FAIL InvalidStatus: server rejected WebSocket connection: HTTP 503",
+   "notes": 0
   }
  },
- "authors_sampled": 627,
- "authors_with_list": 247,
- "relays_advertised": 671,
+ "authors_sampled": 472,
+ "authors_with_list": 233,
+ "relays_advertised": 608,
  "classes": {
-  "ok_serving": 213,
-  "dns_fail": 139,
-  "http_error": 122,
-  "auth_required": 58,
-  "timeout": 47,
-  "tls_fail": 35,
-  "ok_empty": 27,
-  "other_fail": 11,
-  "refused": 7,
-  "no_response": 7,
-  "rejected": 5
+  "ok_serving": 188,
+  "dns_fail": 113,
+  "http_error": 105,
+  "timeout": 55,
+  "auth_required": 53,
+  "tls_fail": 37,
+  "ok_empty": 22,
+  "other_fail": 13,
+  "refused": 9,
+  "no_response": 9,
+  "rejected": 4
  },
- "reachable": 303,
- "serving_events": 213,
- "connect_ms_median": 417,
- "connect_ms_p90": 780
+ "reachable": 267,
+ "serving_events": 188,
+ "connect_ms_median": 575,
+ "connect_ms_p90": 1086
 }
