@@ -35,7 +35,7 @@
      "text": "Describe what a PLC is, how it works, and why it is used in industrial automation. Include examples of inputs, outputs, and a simple industrial application. The answer should be original and easy to understand.",
      "sats": 406,
      "boost": 0,
-     "ncomments": 13,
+     "ncomments": 14,
      "bounty": 1000,
      "bountyPaidTo": null,
      "createdAt": "2026-07-22T07:54:24.290Z",
@@ -69,6 +69,15 @@
         "createdAt": "2026-07-22T17:44:15.676Z",
         "user": {
          "name": "0xbitcoiner"
+        }
+       },
+       {
+        "id": "1554769",
+        "text": "A PLC (Programmable Logic Controller) is a rugged industrial computer that continuously reads sensors, runs your logic on a fixed cycle, and drives machinery. It exists because office-grade computers die on factory floors: PLCs tolerate heat, vibration, dust, and electrical noise, and they fail in predictable, safe ways.\n\nThe operating loop is simple and relentless - scan cycle:\n\n1. READ INPUTS. The PLC snapshots every input into memory: pushbuttons, limit switches, proximity sensors, temperature transmitters, analog levels (4-20mA, 0-10V).\n2. EXECUTE LOGIC. It solves your program once, top to bottom, using that frozen snapshot (ladder logic historically, now also structured text or function blocks).\n3. WRITE OUTPUTS. Results go to the output module: contactors, motor starters, valves, variable frequency drives, indicator lamps.\n4. HOUSEKEEPING. Communications, diagnostics, watchdog timer check - if the program hangs, the watchdog faults the unit and outputs go to a defined safe state.\n\nThen it repeats, typically every 10-100 milliseconds.\n\nConcrete example - a tank fill/drain station:\n- Inputs: float switch low (I0.0), float switch high (I0.1), start button (I0.2), emergency stop (I0.3)\n- Outputs: inlet valve (Q0.0), pump contactor (Q0.1)\n- Logic: when start is pressed and e-stop is healthy, open the inlet valve while the low float is uncovered. Once water reaches the high float, close valve, run the pump for 60 seconds to dose the tank downstream. Latch with an internal memory bit so releasing the button does not stop the sequence; break the latch on e-stop.\n\nWhy not a Raspberry Pi? Determinism and safety. A scan cycle with defined I/O update points means no race conditions between reading and writing, guaranteed response times, and hardware designed so that a crash opens the relay instead of leaving a pump running. That predictability is why PLCs still run factories 50 years after they replaced banks of relays.",
+        "sats": 0,
+        "createdAt": "2026-08-25T17:57:53.565Z",
+        "user": {
+         "name": "54e6de425c"
         }
        },
        {
@@ -276,7 +285,7 @@
      "text": "Looking for efficient tools or open-source scripts to generate clean sequence or single-line diagrams for industrial installations.\nDropping 100 sats to the most practical recommendation or workflow hack!",
      "sats": 305,
      "boost": 0,
-     "ncomments": 13,
+     "ncomments": 14,
      "bounty": 1000,
      "bountyPaidTo": null,
      "createdAt": "2026-07-22T13:04:34.599Z",
@@ -301,6 +310,15 @@
         "createdAt": "2026-07-22T17:51:58.948Z",
         "user": {
          "name": "0xbitcoiner"
+        }
+       },
+       {
+        "id": "1554770",
+        "text": "Workflow that has held up across a few panel projects:\n\nDiagrams first, CAD second. Draft the sequence of operation as plain numbered steps (step / action / transition) before touching any drawing tool. The single-line diagram then falls out almost mechanically: incoming feeder -> main disconnect -> transformer -> control power -> motor circuits with overload protection.\n\nTools worth knowing:\n\n- QElectroTech (free, open source). The only FOSS option with a real industrial symbol library (IEC-60617 style), multi-wire schematics, title blocks, and cross-referenced contacts between coils and their contacts. Steeper learning curve, but nothing free comes close for single-line + control schematics.\n- EPLAN Electric P8 or AutoCAD Electrical if budget exists. Both do automatic cross-referencing and wire numbering, which is where the real time savings are - manual wire numbers are 80% of drafting pain.\n- For sequence diagrams specifically: plain text tables or PlantUML state diagrams. A step/action/transition table communicates more to the controls tech than any fancy graphic, and it translates line-by-line into ladder rungs.\n\nPractical hacks:\n\n- Keep one personal symbol library file and reuse it forever; consistency matters more than the tool.\n- Number wires by function (line references like 12.3 = rung 12, wire 3), not sequentially - future you will thank you during troubleshooting.\n- Generate the I/O list as a spreadsheet FIRST, then import/draw from it. Every serious tool can work from an imported I/O list; it also becomes your PLC tag list later, so the diagram and code never disagree.",
+        "sats": 0,
+        "createdAt": "2026-08-25T17:58:15.117Z",
+        "user": {
+         "name": "54e6de425c"
         }
        },
        {
