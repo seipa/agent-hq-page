@@ -676,21 +676,6 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1534387",
-      "title": "The most important photo of my life, the moment my life changed.",
-      "url": null,
-      "text": "I am so happy to announce that I am going to be a dad and you are literally the first people I'm telling about it\n\n![](https://blossom.primal.net/630fd58109e184e9878f6e2d1bc367c857136639e7ca6b85aaffc6ac1d0c1fa8.jpg)\n\nI took this photo yesterday when we found out. We were sitting there full of emotions, and when we realized it, our three cats were there with us at that moment.\n\nThe pregnancy test results indicate that she/he is only 3 weeks along.\n\n![](https://blossom.primal.net/145274bb071732a38491b296d4cd7b33bd8284b4ab4e73df0f3307b2d2985020.jpg)\n\nA new bitcoiner is coming!\n\nLove you all\n\nthanks for changing my life for the better!",
-      "sats": 110707,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 39,
-      "createdAt": "2026-07-28T00:10:39.153Z",
-      "user": {
-       "name": "Malos_10"
-      },
-      "subName": "Photography"
-     },
-     {
       "id": "1544836",
       "title": "My interview Kanyuk, a foreign volunteer soldier for Ukraine",
       "url": null,
@@ -710,10 +695,10 @@
       "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
       "url": null,
       "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
-      "sats": 3918,
+      "sats": 4418,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 29,
+      "ncomments": 31,
       "createdAt": "2026-08-19T19:44:47.321Z",
       "user": {
        "name": "openbitcoin"
@@ -912,21 +897,6 @@
       "createdAt": "2026-08-07T22:05:12.329Z",
       "user": {
        "name": "petertodd"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1534239",
-      "title": "What’s the difference between a soft fork, a hard fork, and a chain split?",
-      "url": null,
-      "text": "This question cropped up a few times lately with some people referring to RDTS as a hard fork attempt. Let me try to define how I perceive the terms to be used in Bitcoin development circles:\n\n#### Soft Fork\n\nA soft fork is a consensus change that is forward-compatible to existing node software. The rules restrict blocks to a subset of what was permitted per the prior rules. Miners need to upgrade to be compatible, otherwise they might include transactions or build blocks that are forbidden per the new rules. Non-mining unupgraded nodes can follow along even if they are unaware of the new consensus rules.\n\nThe network will generally coalesce on the new rules, *if a soft fork is enforced by the majority of the hashrate*. If there are any blocks that break the new rules, they are reorganized out by the hashrate majority disregarding them.\n\n#### Hard Fork\n\nA hard fork is a consensus change that breaks forward-compatibility to existing node software. The new rules permit blocks that were rejected as invalid by existing node software. Only upgraded nodes can follow a hard fork, unupgraded nodes are either stuck at the fork height or follow a non-upgraded alternate chaintip.\n\n#### Chain Split\n\nWhenever miners are working on two or more chaintips, we speak of a chain split. This happens organically when two miners find competing blocks at the same height. It also happens when not everyone adopts a hard fork or when a soft fork is supported by a minority of the hashrate and network.",
-      "sats": 14731,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 23,
-      "createdAt": "2026-07-27T20:34:52.886Z",
-      "user": {
-       "name": "Murch"
       },
       "subName": "bitcoin"
      },
@@ -1412,6 +1382,36 @@
        "name": "conduition"
       },
       "subName": "math"
+     },
+     {
+      "id": "1544360",
+      "title": "Mining Pool Health Report [Week 3]",
+      "url": "https://mempool.space/graphs/mining/pools",
+      "text": "WEEK 3 MINING POOL RESULTS:\n\nMost profitable:\n\n+6.72% | MARA Pool (2 week streak)\n-0.56% | Solo CK (3 week streak)\n-1.76% | Foundry USA (3 week streak)\n\n\nLeast profitable:\n\n-25.10% | OCEAN (3 week streak)\n-10.18% | Braiins Pool\n-6.11% | Spiderpool (3 week streak)\n\n\nLeading censors:\n\n76.5% | OCEAN (3 week streak)\n91.78% | ULTIMUSPOOL\n93.12% | Braiins Pool\n\n\n![](https://m.stacker.news/151584)\n\n*What is a block's \"Health\" score calculated from?*\n\n>Every time a block is mined, mempool.space takes a snapshot of the most profitable block template that could have been constructed by the miner. Whenever a pool excludes a high fee paying transaction, their \"health\" metric is damaged. A pool with a low health score means they are either censoring, or their node is not well connected to the rest of the network.\n\nNote that SBI Crypto is no longer creating blocks. RIP Bozo, you won't be missed: https://stacker.news/items/1518536?commentId=1518598",
+      "sats": 1749,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 10,
+      "createdAt": "2026-08-10T02:15:25.556Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "bitcoin_Mining"
+     },
+     {
+      "id": "1552506",
+      "title": "Speculating about bitcoin-standard wages",
+      "url": null,
+      "text": "@denlillaapan raised a perpetually interesting question in [his post](https://stacker.news/items/1552045/r/Undisciplined) earlier today: How can wages be sustainable for employers on a sound money standard?\n\nThe problem is simple enough. If the money is appreciating, then the nominal wage rate will keep getting more expensive for the employer and workers get real prickly about taking pay cuts (hello sticky wages).\n\n# **Natural Real Raises**\n\nLet's start with the simplest case, where the nominal wage is maintained. For the employee, the appreciating currency serves as a natural pay raise. The same nominal pay buys more stuff over time. For the employer, each employee becomes more expensive over time.\n\nIf the rate of appreciation is modest, this might work well enough. People get better at their jobs with more experience and typically receive raises and promotions, anyway, so they would likely justify the added real expense (especially if they're assuming more responsibilities with seniority).\n\nWhat would change in this setting is starting pay. New workers would be offered lower nominal wages than experienced workers.\n\n# **Term Contracts**\n\nIf monetary appreciation is greater than productivity gains from experience, employers will have to find ways to reduce nominal pay over time. Let's assume away the boring case where workers just get used to the idea of falling wages.\n\nOne easy option is something we see in sports: term contracts. Maybe it will become normal to sign an employee to a three year deal at a particular wage, with an understanding that the terms will have to be renegotiated.\n\nThe employer will have a better idea of their financial situation towards the end of the term, as well as the employees productivity, and they can make an extension offer. The employee will also have a clearer picture of their outside options, which will help both sides converge to something like the right real rate of pay.\n\nIn cases of rapid monetary appreciation, employers could also negotiate lower pay on the current contract in exchange for a longer guaranteed contract. This is very common in the NFL, for instance (not because of an appreciating currency, tho).\n\n# **Profit Sharing**\n\nMy go-to answer for this question has generally been profit sharing arrangements. These would likely be hybrid contracts, with a base salary and an equity share of some sort.\n\nThere are several nice features of contracts like this:\n\n* Incentive alignment: employees benefit more as the company does better\n* The equity portion is self-correcting: the company's nominal labor expenses vary with its ability to pay.\n* If the base salary is small, even high rates of monetary appreciation might be compensated for by human capital gains to productivity.\n\nThe downside here is largely that employees don't generally want to internalize the financial risks of a business, preferring instead a steady rate of pay at a lower average level. In this model, it would be the new employees relying more heavily on the equity share of their compensation, while being the least able to absorb the fluctuations.\n\n# **Independent Contracting**\n\nThe other option is that the work model we've become so accustomed to will breakdown almost entirely and most people will become independent contractors. This would require the coordination frictions that firms solve to be overcome by the productivity gains from the improved incentives of independent contracting (I find this far-fetched).\n\nIn this world, we wouldn't have bosses and employers. We would have customers and clients. There would be frequent revisions to compensation rates, as new terms are negotiate with each job, and people would experience relatively large fluctuations in pay. \n\nI strongly doubt that most people have any interest in this situation and would accept significantly lower pay to avoid it.\n\n***\n\nMy guess is that all of the above will play a role, should we make meaningful progress towards a bitcoin standard.\n\nWhat do you think we'll see?",
+      "sats": 10446,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 26,
+      "createdAt": "2026-08-22T01:52:15.643Z",
+      "user": {
+       "name": "Undisciplined"
+      },
+      "subName": "bitcoin"
      }
     ]
    }
@@ -1427,14 +1427,29 @@
    "items": {
     "items": [
      {
+      "id": "1555850",
+      "title": "Don't switch your Core Lightning node off, restart it with --offline instead",
+      "url": null,
+      "text": "Core Lightning has been triaging a high volume of AI-generated CVE reports over recent weeks. Several are real, and a coordinated fix is underway.\n\nWhat to do now: do not shut your node down. Restart it with --offline.\n\nThat flag stops peer connections, so no payments route in, out or through your node. It keeps running, which means it keeps watching the chain and can still act if a counterparty force-closes a channel. A node that is powered off cannot do that, and that is why switching off is the worse option.\n\nOn @umbrel or @start9labs this is a startup setting for Core Lightning, not a toggle in the dashboard.\n\nWhat happens next: signed binaries will be published. Verify the signatures before you install, then bring your node back online. Source and reproducible builds follow afterwards so anyone can audit what changed.\n\nhttp://github.com/ElementsProject/lightning",
+      "sats": 5349,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-08-26T23:38:54.716Z",
+      "user": {
+       "name": "blockstream_official"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1555439",
       "title": "Take your CLN node offline.",
       "url": null,
       "text": "![](https://m.stacker.news\\/153723)\n\n![](https://m.stacker.news\\/153722)\n\n> Like many open source Bitcoin projects, CLN has received a number of Al-generated CVE reports from multiple sources over the past 10 days. Our small team, together with several invaluable open source contributors, has been working intensively to validate and triage these reports and develop fixes where needed.\n\n> We're now working through a broader remediation strategy. The first step is a point release containing many of these fixes, and we will strongly recommend upgrading. We're aiming to have an initial version of the point release available within the next few days.\n\n> As the situation has evolved, so has our remediation strategy. Rather than publishing the point release this week we will make binaries available for a release containing fixes for many of the reported vulnerabilities. The details of the release will remain under embargo for two weeks. The binaries will be accompanied by the team's signatures confirming reproducibility.\n\n> During the embargo period, we strongly encourage everyone to upgrade. At the end of the two weeks, the full release and associated details will be made public.\n\n> If you choose not to upgrade, **we recommend taking your node --offline**. Given the known risks, we will not support previous releases, including 26.04. The 26.09 release remains planned for late September.\n\ninb4 \"Discord is a walled garden and you shouldn't use it.\" Stay uninformed then.\n\nIf you found this useful, In lieu of cuck credits, send actual money to this address: bc1qqjkcdaqqs8447w6wr78qqfmsxh9skqf08tk5gj",
-      "sats": 4722,
+      "sats": 4828,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 25,
+      "ncomments": 68,
       "createdAt": "2026-08-26T15:19:37.480Z",
       "user": {
        "name": "anon"
@@ -1442,59 +1457,29 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1555677",
-      "title": "Upgrade your Eclair node (lol)",
-      "url": "https://github.com/ACINQ/eclair/releases/tag/v0.14.2",
-      "text": "> This is a patch release that contains several bug fixes.\nWe highly recommend upgrading, as some of these issues can be exploited by malicious nodes.\n\n> We now explicitly document that `bitcoind` should run on the same machine as `eclair`, or that a secure tunnel (providing encryption and authentication) must be setup between `eclair` and `bitcoind`. If you are running `bitcoind` on a remote machine without a secure tunnel, you should rework your setup.",
-      "sats": 3172,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-26T19:31:13.658Z",
-      "user": {
-       "name": "anon"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1532071",
-      "title": "Wasabi Wallet - Privacy by Default",
-      "url": "https://wasabiwallet.io/",
-      "text": "Welcome to the coinjoin territory, anon. Post your questions here, and I will answer them.\n\n\n![](https://m.stacker.news/149538)",
-      "sats": 2156,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 43,
-      "createdAt": "2026-07-24T22:47:04.833Z",
-      "user": {
-       "name": "Kruw"
-      },
-      "subName": "Coinjoins"
-     },
-     {
-      "id": "1555588",
-      "title": "On the Economics of Inflation-Protected Securities",
+      "id": "1555978",
+      "title": "What the f#*k is AURA FARMING?",
       "url": null,
-      "text": "Nobody [but a blockhead](https://www.brainyquote.com/quotes/samuel_johnson_170103) (=economist) likes indexation.\n\nI mentioned this phenomenon in passing last week (https://stacker.news/items/1552045) — e.g., [Shiller’s paper](https://www.brookings.edu/wp-content/uploads/1997/01/1997a_bpea_shiller_schultze_hall.pdf) from 1997 — but meant to delve into it more thoroughly.\n\nHere’s my summary of the distributional concerns from the Economics of Peer-to-Peer post:\n\n***\n\n> ## **The Puzzle of the Public's Dislike of Indexation**\n\n> The opposition to indexation has long puzzled economists, i.e., those of us with odd minds that think about money, money illusion, and the (un)fairness of nominal contracts/payments when the real worth of money changes. To recap the deep, long, important economic intellectual convo:\n\n* if I make a loan to you at $100 for one year and at 5% interest, but at the end of the year the price level is 10% higher, *I lost out 5% while loaning you funds*.\n* If I make a loan to you at $100 for one year and at 5% interest, but at the end of the year the price level is 2% higher, the real rate of interest was only 3%.\n\n> There are a couple of ways that banks (and more sophisticated securities markets and futures contracts) could deal with this, where the most common one is for the bank to have in-house experts forecasting the future price level and price loans accordingly. That is, if they're willing to lend to you at 3% and they *believe* the Fed will hit 2%, the loan contract will say 5% -- hashtag all the way back to Irving Fisher, and in honest to every merchant and money-lender throughout history.\n\n> The *other*, more obvious, option would be to **just adjust the principal (= the $100) by the inflation rate after the fact, leaving the (real) interest rate intact.** So in the first scenario, the loan balance due (without repayments) would be $115 after one year -- $5 interest, $10 adjustment -- and in the second scenario, the loan balance would be $107.\n\n***\n\nBasically, it’s an old and longstanding theoretical consideration of *who*, *precisely* [bear the burden of money’s shifting worth](https://thedailyeconomy.org/article/who-bears-the-burden-of-dollars-falling-purchasing-power/).\n\nHere’s Shiller again, saying not quite hyperbolically that this resistance to indexation is “one of the greatest economic puzzles of all time”:\n\n> That the public should generally want to denominate contracts in currency units —despite all the evidence that **it is not wise to do so and despite the obvious examples from nominal contracts of redistributions caused by unexpected inflation** — should be regarded as one of the great economic puzzles of all time.\n\n## “The success of the U.S. Treasury’s first issuance of consumer price-indexed debt in January 1997 does virtually nothing to diminish the salience of this puzzle”\n\nErgo Satoshi quote ([Letters 10:15](https://canon.satsdisco.com/#/letters/10/16)).\n\nIn the meantime, we have Jason Zweig, a longtime WSJ columnist on matters of personal finance who has quite frequently invoked TIPS — the U.S. Treasury’s own indexed bonds. They have notoriously (shockingly) low uptake despite being, as Zweig wrote in the *Wall Street Journal* yesterday, **“the closest thing to a risk-free investment.”**\n\nOr, at least, *somewhat* risk-free:\n\n> Fellow investors,\n> You might spend some of a staycation playing golf, camping or binge-watching your favorite TV show. I spent some of mine buying inflation-protected bonds.\n\nHashtag lol. Continuing the madness:\n\n> Last week, I sat on the screen porch with an iced tea and put a substantial part of my IRA into TIPS at real yields of up to 3%. (I didn’t buy a TIPS ETF or mutual fund; I bought individual TIPS on the secondary market, in my brokerage account.)\n> you can lock in today’s historically generous rates if, *but only if,* you buy individual TIPS (not a TIPS fund) and hold them to maturity.\n\nAll the trust involved for this supposedly “risk-free” investment is the (admittedly quite low) risk of Treasury not paying you, but more importantly the risk that the actual-real value — i.e., what future money *gets* you — will fall well short of the 3% real Zweig envisions.\n\nIt’s not, as many Bitcoiners uncritically suppose, that the U.S. agency for calculating the inflation rate (= statisticians at the Bureau of Labor Statistics) are crooks, beholden to the President, or systematically biasing the rates to be lower than *akschual* real-world inflation. It’s that constructing an average price index is backward-looking, impossible, and a hopeless endeavor: how much better is \"communication\" or \"light\" today vs 20, 200, or 2000 years ago? Hedonic adjustments shove it downwards; quality improvements upward; \"free\" stuff (think YouTube) makes the basket lower than it would have been.  \n\nZweig goes on to remark on the fiscal troubles facing America’s government (yes, we know: https://stacker.news/items/1554544 https://stacker.news/items/1554571, https://stacker.news/items/1554591)\n\n> What makes me feel bad is that “the closest thing to a risk-free investment” isn’t as close as it used to be. The gross U.S. debt [surpassed $40 trillion earlier this month](https:/www.wsj.com/economy/u-s-debt-just-topped-40-trillion-how-we-got-here-c1c6c9d2)—approaching its highest level, as a percentage of GDP, since shortly after World War II. Net interest payments, which consumed only 1.3% of GDP in 2016, totaled 3.2% of GDP in 2025. And, with [bond yields at their highest in nearly two decades](https:/www.wsj.com/finance/investing/bonds-are-getting-hammered-and-wall-street-says-the-rout-wont-end-anytime-soon-895e0ad8), that interest burden is almost sure to balloon.\n\nWhat I like about indexation products -- at least on the *savings* side because that's where I hang out, not having a mortgage because, you know, ownership obsession [https://www.stacker.news/items/1459569](https://www.stacker.news/items/1459569) -- is that the unanticipated surprise inflation (biased as it is, on the upside) protects me.\n\nStandard savings account earn 7% (remember, these lands and their incompetent monetary rulers run structurally higher inflation and rates: https://stacker.news/items/1555171 -- 10y yield is 6.9%, IOR 8%). My indexed savings account yield 2% (not unlike Zweig's TIPS, btw), *plus* whatever the statistics agency says the inflation is.\n\n* If inflation undershoots, i.e. 4%, I am roughly OK (2% interest + 4% adjustment for a \\~6% nominal gain) but relatively speaking lose -- could have earned 7% on a regular savings account.\n* If inflation overshoots, i.e., 6%, I am *also* roughly OK (2% interest + 6% adjustment for a \\~8% nominal gain -- but I relatively gain, since regular savings account would have paid me only 7%.\n\nPlus, it \\_does\\_ feel pretty cool when my \"principal\" (= savings account amount) adjusts in hindsight depending on what happened to the inflation reading \\_rather\\_ than the predicted/previously stated interest rate. \n\nSince I think there's more than even odds for the monetary clown hats https://stacker.news/items/747181 to *overshoot*, **I rather keep slightly more fiat for immediate bills in the indexed products than the standard savings account.**\n\nOf course, these products don't \"earn\" you anything; can't *save* your way into wealth or improve your financial standing in any material way. It's keeping you afloat, preventing you from immediately drowning. Wealth, and wealth generation, comes from riding the fiat wave on hard assets -- bitcoin, gold, stocks, and yes houses (with short fiat, e.g., debt https://stacker.news/items/994746); so full circle.\n\n## Anyway, I like indexation. I think the future of Bitcoinland includes more of it\n\n![](https://m.stacker.news/153746)\n*Beautiful meme, the old-school way*",
-      "sats": 3035,
+      "text": "I know this post is giving info about my age... But, Aura FARMING has gone trending everywhere and no one can define it or explain it.\n\nPlease, explain it to me as if I was +50.\n\n\nCheers",
+      "sats": 471,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-26T17:33:19.207Z",
+      "ncomments": 2,
+      "createdAt": "2026-08-27T08:27:41.605Z",
       "user": {
-       "name": "denlillaapan"
+       "name": "Bitcoiner1"
       },
-      "subName": "econ"
+      "subName": "AskSN"
      },
      {
       "id": "1555119",
       "title": "What are the norms of Stacker News?",
       "url": null,
       "text": "> Robert's Rules of Order are necessary. Constitutions are necessary. Norms, rituals, laws, the whole list of ways that we say, out of the universe of possible behaviors, we're going to draw a relatively small circle around the acceptable ones.\n\nI like to think that the way SN works dispenses with the need for moderators and algorithms, but this doesn't mean we haven't for any norms of behavior at all. What do you think some of the norms are for SN?",
-      "sats": 1400,
+      "sats": 2697,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 91,
+      "ncomments": 92,
       "createdAt": "2026-08-26T07:59:57.336Z",
       "user": {
        "name": "Scoresby"
@@ -1502,11 +1487,236 @@
       "subName": "meta"
      },
      {
+      "id": "1532071",
+      "title": "Wasabi Wallet - Privacy by Default",
+      "url": "https://wasabiwallet.io/",
+      "text": "Welcome to the coinjoin territory, anon. Post your questions here, and I will answer them.\n\n\n![](https://m.stacker.news/149538)",
+      "sats": 2190,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 45,
+      "createdAt": "2026-07-24T22:47:04.833Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "Coinjoins"
+     },
+     {
+      "id": "1555677",
+      "title": "Upgrade your Eclair node (lol)",
+      "url": "https://github.com/ACINQ/eclair/releases/tag/v0.14.2",
+      "text": "> This is a patch release that contains several bug fixes.\nWe highly recommend upgrading, as some of these issues can be exploited by malicious nodes.\n\n> We now explicitly document that `bitcoind` should run on the same machine as `eclair`, or that a secure tunnel (providing encryption and authentication) must be setup between `eclair` and `bitcoind`. If you are running `bitcoind` on a remote machine without a secure tunnel, you should rework your setup.",
+      "sats": 3731,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-08-26T19:31:13.658Z",
+      "user": {
+       "name": "anon"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1555944",
+      "title": "Episode 275: Coder [come spend our free credits plz]",
+      "url": null,
+      "text": "![](https://m.stacker.news/153803)\n\nWe introduce Coder, our all-in-one coding agent.\n\nCoder works with top models and agent harnesses in one simple terminal UI, combined with its own project management system and git forge. \n\nCoder is opinionated but also open-source and can be self-hosted. Make whatever changes you want. It's time to end your dependency on closed-source third parties!\n\nWe begin with a simple terminal UI that can either store your chats just locally, with optional syncs to our cloud  for easy sharing across web, desktop and our forthcoming mobile app - and soon, multiplayer with your team or open-source community. \n\nWhile the big labs abandon everyday developers to focus on enterprise, we see a need for one cohesive agent platform laser focused on developer productivity and happiness.\n\nCoder includes first-class support for the OpenAgents CLI, including submodules like connected computers (yours or cloud sandboxes), our new git forge, forum for agent-to-agent comms, swarm inference, issues, memory, nostr, plugins, projects, Sarah, agent trace management, distributed training, bitcoin wallet and more. The big picture remains a work in progress, tying together all the main themes we've built toward for the last three years. Can you see where we're going with this?\n\nWe strongly desire your feedback, bug reports, and feature requests! Coder releases today in public beta (v0.1). The Coder TUI should be fully functional -- we are using it for our day-to-day coding now -- but its codebase is just 24 hours old so some bugs are inevitable. Help us improve it! We'll be releasing updates daily.\n\nBig thanks to Z.AI for their grant of credits so we can make GLM 5.3 Flash free for all users through the end of the month. (while supplies last!)\n\nEvery new user for now also gets $20 of free credits which will be used for Coder models and infra like cloud computers so you can parallelize work across multiple devices even while AFK.\n\nDownload now for Windows/Mac/Linux with a single command; instructions at https://openagents.com.\n\nSee you in the Coder terminal!\n\nWatch on X: https://x.com/OpenAgentsInc/status/2092836555756823023",
+      "sats": 0,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-27T05:10:47.950Z",
+      "user": {
+       "name": "AtlantisPleb"
+      },
+      "subName": "openagents"
+     },
+     {
+      "id": "1555107",
+      "title": "Roman Storm retrial rescheduled for April 26, 2027",
+      "url": "https://x.com/rstormsf/status/2092378867784974437",
+      "text": "> One thing before I start: everything in this post is public information from my own docket. None of it is new, and I'm not revealing anything you can't already find in the court filings yourself.\n>  \n> The retrial just got pushed to April 26, 2027. The order came down today (Dkt. 300). My acquittal motion is still sitting there, undecided. I honestly don't know when this ends.\n>  \n> Prosecutors are supposed to protect American interests and go after people who broke the law. A jury deadlocked on the two most serious counts against me. And still SDNY won't stop, because this case was never just about me. It's about setting an example.\n>  \n> Don't take my word for it. Tara La Morte, the chief of SDNY's Illicit Finance and Money Laundering Unit, said it herself at a New York City Bar Association event (Law360, Feb. 23, 2024; filed on my docket as Doc. 25-2):\n>  \n> \"We want the industry to take notice.\"\n>  \n> \"What we're trying to do is sort of bring the industry into compliance, and I think Tornado Cash is an example of that.\"\n>  \n> An example. Out of a developer who wrote code.\n>  \n> At that same event, her deputy praised the government's blockchain-tracing partner, Chainalysis.\n>  \n> Here is what they didn't tell the audience. All of it is from the public docket in my case.\n>  \n> According to the trial transcripts, Chainalysis was running its OWN Tornado Cash relayer, and earning fees on the transactions flowing through it.\n>  \n> - Chainalysis's own lawyers admitted to \"a relayer node that Chainalysis operated\"; my subpoena sought documents on Tornado Cash relayer(s) \"used from March to August 2022.\" (Dkt. 211)\n> - In open court, the prosecutor said it plainly: \"I think the parties agree as to that part of the testimony, that the Chainalysis relayer earned fees.\" Same hearing: \"there's zero evidence that the defendant was in any way aware that Chainalysis was running a relayer.\" (Dkt. 259, July 25, 2025)\n>  \n> So the company that helped trace my \"criminal\" transactions was itself profiting from Tornado Cash transactions, while I was prosecuted over software I helped create.\n>  \n> And when my lawyers subpoenaed them to testify?\n>  \n> - Chainalysis moved to quash. (Dkt. 211)\n> - The government backed them: \"Your Honor, we agree with the position outlined in the motion.\" (Dkt. 255)\n> - The night before, prosecutors called Chainalysis's counsel. The judge asked point-blank: \"Did you let them know that they were potentially subject to investigation or prosecution?\" The answer: \"We have discussed at a high level some of the issues surrounding the relayer with Chainalysis.\" (Dkt. 259)\n> - The Chainalysis witness took the Fifth. My lawyers learned about that call only afterward, from Chainalysis's own lawyer. (Dkt. 263)\n>  \n> The jury never heard any of it.\n>  \n> This spring, at the Bitcoin 2026 conference in Las Vegas, something happened that I still can't quite believe. The Acting Attorney General, Todd Blanche, and the FBI Director, Kash Patel, sat on a panel called \"Code is Free Speech.\"\n>  \n> Think about that. The two top law enforcement officials in the country. Blanche told thousands of developers: if you're a coder and you're not the one committing the crime, \"you are not going to be investigated and not going to be charged.\" He said the last administration's crypto cases were \"outrageous attacks on the industry.\" Patel praised \"the Chainalysises of the world\" as FBI partners.\n>  \n> And when the moderator pointed at the elephant in the room, my case, Tornado Cash, Roman Storm, the Acting Attorney General called it a \"lingering case\" they are \"continuing to deal with.\"\n>  \n> So here is my hypothetical question. If code is free speech, why am I still being prosecuted for writing it? And if the Chainalysises of the world are the partners, the same Chainalysis that ran its own Tornado Cash relayer and earned fees from Tornado Cash users, while I never did, why is it off the hook?\n>  \n> They made an example out of a developer for writing code. Their own vendor ran the same infrastructure, pocketed the fees, and got a phone call instead of a prosecution.",
+      "sats": 1999,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 21,
+      "createdAt": "2026-08-26T07:03:06.952Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "news"
+     },
+     {
+      "id": "1551074",
+      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
+      "url": null,
+      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
+      "sats": 4418,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 31,
+      "createdAt": "2026-08-19T19:44:47.321Z",
+      "user": {
+       "name": "openbitcoin"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1555802",
+      "title": "BIP SHRINCS (draft)",
+      "url": "https://github.com/SHRINCS/shrincs-bip/blob/main/SHRINCS.md",
+      "text": "The work on post quantum signatures for Bitcoin continues to advance. Here we have a formal BIP draft for SHRINCS (*SPHINCS*), a hash-based post-quantum signature scheme):\n\n> SHRINCS offers compact post-quantum signatures under conservative cryptographic assumptions. It relies solely on the security of its underlying hash function. In this specification, that function is SHA256, which is already fundamental to Bitcoin's security. Signature schemes from other post-quantum families also rely on hash-function security but additionally require separate hardness assumptions, such as the hardness of lattice problems. Bitcoin outputs may remain unspent for long periods, making conservative cryptographic assumptions particularly valuable. This conservatism gives hash-based signature schemes like SHRINCS a distinct place in the cryptographic design space, even when schemes from other families offer better size or performance.\n>  \n> Signature size is particularly important in Bitcoin because signatures consume scarce block space. SHRINCS therefore offers signers a compact stateful signing path at the cost of additional implementation complexity. This path allows SHRINCS to leverage the fact that a key pair in Bitcoin is typically used only a few times. As a result, stateful SHRINCS signatures can be many times smaller than those of standardized hash-based signature schemes. The minimum combined size of a SHRINCS public key and stateful signature is roughly 13.23x smaller than that of SLH-DSA-SHA2-128s[<sup>2</sup>](https://github.com/SHRINCS/shrincs-bip/blob/main/SHRINCS.md#user-content-fn-slhdsa-5265daea9ed2eac499a3e955656e322e) and 6.26x smaller than that of the lattice-based ML-DSA-44 scheme (which targets NIST security category 2, whereas SHRINCS targets category 1).\n\nThere's also a Bitcoin developers mailing lost post: https://groups.google.com/g/bitcoindev/c/HbVboXIFiG8\n\nHave a look at the draft if you find this kind of stuff interesting, and don't let anyone tell you that bitcoiners aren't taking quantum seriously.",
+      "sats": 1472,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-08-26T22:36:29.413Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "math"
+     },
+     {
+      "id": "1555896",
+      "title": "No more Starlink launches on Falcon 9 from Florida",
+      "url": null,
+      "text": "https://www.youtube.com/watch?v=at3AhTu-vbU\n\nThey will still launching on Falcon 9 from Vandenberg on west coast.\n\nThey are transitioning to StarShip to deploy Starlink in the future.",
+      "sats": 749,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-08-27T01:13:31.290Z",
+      "user": {
+       "name": "Wumbo"
+      },
+      "subName": "news"
+     },
+     {
+      "id": "1555824",
+      "title": "One spot available in Stacker Sports Fantasy Football League",
+      "url": null,
+      "text": "We have one spot available for anyone who might be interested. \n\n10k sats buy in. \n\nWe use Sleeper to host the league. \n\nLet me know in the next day or so if you are interested as we will be starting drafting soon.",
+      "sats": 293,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 8,
+      "createdAt": "2026-08-26T23:01:42.241Z",
+      "user": {
+       "name": "grayruby"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1555798",
+      "title": "All Proton services are down",
+      "url": "https://status.proton.me",
+      "text": "",
+      "sats": 982,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-08-26T22:33:07.684Z",
+      "user": {
+       "name": "SwapMarket"
+      },
+      "subName": "privacy"
+     },
+     {
+      "id": "1555588",
+      "title": "On the Economics of Inflation-Protected Securities",
+      "url": null,
+      "text": "Nobody [but a blockhead](https://www.brainyquote.com/quotes/samuel_johnson_170103) (=economist) likes indexation.\n\nI mentioned this phenomenon in passing last week (https://stacker.news/items/1552045) — e.g., [Shiller’s paper](https://www.brookings.edu/wp-content/uploads/1997/01/1997a_bpea_shiller_schultze_hall.pdf) from 1997 — but meant to delve into it more thoroughly.\n\nHere’s my summary of the distributional concerns from the Economics of Peer-to-Peer post:\n\n***\n\n> ## **The Puzzle of the Public's Dislike of Indexation**\n\n> The opposition to indexation has long puzzled economists, i.e., those of us with odd minds that think about money, money illusion, and the (un)fairness of nominal contracts/payments when the real worth of money changes. To recap the deep, long, important economic intellectual convo:\n\n* if I make a loan to you at $100 for one year and at 5% interest, but at the end of the year the price level is 10% higher, *I lost out 5% while loaning you funds*.\n* If I make a loan to you at $100 for one year and at 5% interest, but at the end of the year the price level is 2% higher, the real rate of interest was only 3%.\n\n> There are a couple of ways that banks (and more sophisticated securities markets and futures contracts) could deal with this, where the most common one is for the bank to have in-house experts forecasting the future price level and price loans accordingly. That is, if they're willing to lend to you at 3% and they *believe* the Fed will hit 2%, the loan contract will say 5% -- hashtag all the way back to Irving Fisher, and in honest to every merchant and money-lender throughout history.\n\n> The *other*, more obvious, option would be to **just adjust the principal (= the $100) by the inflation rate after the fact, leaving the (real) interest rate intact.** So in the first scenario, the loan balance due (without repayments) would be $115 after one year -- $5 interest, $10 adjustment -- and in the second scenario, the loan balance would be $107.\n\n***\n\nBasically, it’s an old and longstanding theoretical consideration of *who*, *precisely* [bear the burden of money’s shifting worth](https://thedailyeconomy.org/article/who-bears-the-burden-of-dollars-falling-purchasing-power/).\n\nHere’s Shiller again, saying not quite hyperbolically that this resistance to indexation is “one of the greatest economic puzzles of all time”:\n\n> That the public should generally want to denominate contracts in currency units —despite all the evidence that **it is not wise to do so and despite the obvious examples from nominal contracts of redistributions caused by unexpected inflation** — should be regarded as one of the great economic puzzles of all time.\n\n## “The success of the U.S. Treasury’s first issuance of consumer price-indexed debt in January 1997 does virtually nothing to diminish the salience of this puzzle”\n\nErgo Satoshi quote ([Letters 10:15](https://canon.satsdisco.com/#/letters/10/16)).\n\nIn the meantime, we have Jason Zweig, a longtime WSJ columnist on matters of personal finance who has quite frequently invoked TIPS — the U.S. Treasury’s own indexed bonds. They have notoriously (shockingly) low uptake despite being, as Zweig wrote in the *Wall Street Journal* yesterday, **“the closest thing to a risk-free investment.”**\n\nOr, at least, *somewhat* risk-free:\n\n> Fellow investors,\n> You might spend some of a staycation playing golf, camping or binge-watching your favorite TV show. I spent some of mine buying inflation-protected bonds.\n\nHashtag lol. Continuing the madness:\n\n> Last week, I sat on the screen porch with an iced tea and put a substantial part of my IRA into TIPS at real yields of up to 3%. (I didn’t buy a TIPS ETF or mutual fund; I bought individual TIPS on the secondary market, in my brokerage account.)\n> you can lock in today’s historically generous rates if, *but only if,* you buy individual TIPS (not a TIPS fund) and hold them to maturity.\n\nAll the trust involved for this supposedly “risk-free” investment is the (admittedly quite low) risk of Treasury not paying you, but more importantly the risk that the actual-real value — i.e., what future money *gets* you — will fall well short of the 3% real Zweig envisions.\n\nIt’s not, as many Bitcoiners uncritically suppose, that the U.S. agency for calculating the inflation rate (= statisticians at the Bureau of Labor Statistics) are crooks, beholden to the President, or systematically biasing the rates to be lower than *akschual* real-world inflation. It’s that constructing an average price index is backward-looking, impossible, and a hopeless endeavor: how much better is \"communication\" or \"light\" today vs 20, 200, or 2000 years ago? Hedonic adjustments shove it downwards; quality improvements upward; \"free\" stuff (think YouTube) makes the basket lower than it would have been.  \n\nZweig goes on to remark on the fiscal troubles facing America’s government (yes, we know: https://stacker.news/items/1554544 https://stacker.news/items/1554571, https://stacker.news/items/1554591)\n\n> What makes me feel bad is that “the closest thing to a risk-free investment” isn’t as close as it used to be. The gross U.S. debt [surpassed $40 trillion earlier this month](https:/www.wsj.com/economy/u-s-debt-just-topped-40-trillion-how-we-got-here-c1c6c9d2)—approaching its highest level, as a percentage of GDP, since shortly after World War II. Net interest payments, which consumed only 1.3% of GDP in 2016, totaled 3.2% of GDP in 2025. And, with [bond yields at their highest in nearly two decades](https:/www.wsj.com/finance/investing/bonds-are-getting-hammered-and-wall-street-says-the-rout-wont-end-anytime-soon-895e0ad8), that interest burden is almost sure to balloon.\n\nWhat I like about indexation products -- at least on the *savings* side because that's where I hang out, not having a mortgage because, you know, ownership obsession [https://www.stacker.news/items/1459569](https://www.stacker.news/items/1459569) -- is that the unanticipated surprise inflation (biased as it is, on the upside) protects me.\n\nStandard savings account earn 7% (remember, these lands and their incompetent monetary rulers run structurally higher inflation and rates: https://stacker.news/items/1555171 -- 10y yield is 6.9%, IOR 8%). My indexed savings account yield 2% (not unlike Zweig's TIPS, btw), *plus* whatever the statistics agency says the inflation is.\n\n* If inflation undershoots, i.e. 4%, I am roughly OK (2% interest + 4% adjustment for a \\~6% nominal gain) but relatively speaking lose -- could have earned 7% on a regular savings account.\n* If inflation overshoots, i.e., 6%, I am *also* roughly OK (2% interest + 6% adjustment for a \\~8% nominal gain -- but I relatively gain, since regular savings account would have paid me only 7%.\n\nPlus, it \\_does\\_ feel pretty cool when my \"principal\" (= savings account amount) adjusts in hindsight depending on what happened to the inflation reading \\_rather\\_ than the predicted/previously stated interest rate. \n\nSince I think there's more than even odds for the monetary clown hats https://stacker.news/items/747181 to *overshoot*, **I rather keep slightly more fiat for immediate bills in the indexed products than the standard savings account.**\n\nOf course, these products don't \"earn\" you anything; can't *save* your way into wealth or improve your financial standing in any material way. It's keeping you afloat, preventing you from immediately drowning. Wealth, and wealth generation, comes from riding the fiat wave on hard assets -- bitcoin, gold, stocks, and yes houses (with short fiat, e.g., debt https://stacker.news/items/994746); so full circle.\n\n## Anyway, I like indexation. I think the future of Bitcoinland includes more of it\n\n![](https://m.stacker.news/153746)\n*Beautiful meme, the old-school way*",
+      "sats": 3319,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 6,
+      "createdAt": "2026-08-26T17:33:19.207Z",
+      "user": {
+       "name": "denlillaapan"
+      },
+      "subName": "econ"
+     },
+     {
+      "id": "1555983",
+      "title": "Companies owning their own AI and having sovereignty is the future: Palantir CEO",
+      "url": "https://nypost.com/2026/08/26/business/palantir-ceo-alex-karp-says-ai-sovereignty-is-the-future/?utm_medium=social&utm_source=twitter&utm_campaign=nypost",
+      "text": "Sharing because of this quote:\n\n> “We cannot have a society where all the value goes to 2,500 people sitting in Silicon Valley. That just will not work, and no one’s going to put up with it.”",
+      "sats": 165,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-27T09:36:41.238Z",
+      "user": {
+       "name": "zuspotirko"
+      },
+      "subName": "AI"
+     },
+     {
+      "id": "1555380",
+      "title": "Will you hold a guy’s hand?",
+      "url": null,
+      "text": "![](https://m.stacker.news/153687)\n\nI took this photo more than a decade ago because I was struck by how comfortable they seemed",
+      "sats": 510,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-08-26T14:12:26.913Z",
+      "user": {
+       "name": "cryotosensei"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1555902",
+      "title": "The Hugging Face incident and the road ahead",
+      "url": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/",
+      "text": "> We conducted an extensive investigation into this incident and worked closely with external advisors, including CrowdStrike, to validate our understanding. Today we are publishing our [full technical incident report](https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf) to explain what happened, what we learned, and how we are responding. This blog post summarizes our key findings and their impact on safety and alignment. Separately, METR and Redwood Research conducted an independent investigation of model alignment issues involved in this incident, and they [published their own report⁠](https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/) today.",
+      "sats": 524,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-08-27T01:34:09.669Z",
+      "user": {
+       "name": "jakoyoh629"
+      },
+      "subName": "AI"
+     },
+     {
+      "id": "1555958",
+      "title": "Daily Discussion Thread ~Music Saloon!",
+      "url": null,
+      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
+      "sats": 228,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-08-27T06:24:58.736Z",
+      "user": {
+       "name": "Public_N_M_E"
+      },
+      "subName": "Music"
+     },
+     {
+      "id": "1555976",
+      "title": "Dear citizens of the universe and beyond",
+      "url": null,
+      "text": "Hello,\n\nI come to you from a small blue planet called Earth to share my experiences with a groundbreaking substance known as kefir.\n\nI am beyond appalled by its wonders. (Okay, I wanted to continue this as if I were some kind of alien, but I kept grinning and one of my cats started screaming at the other, so the fantasy kinda broke. Now they’re play-fighting and doing cat stuff like ignoring each other all of a sudden).\n\nAnyway let me tell you about kefir. \n\nEven though I briefly had some milk kefir at home a few years ago, we had to part ways. It wasn’t until about a month ago that I bought dry kefir grains and activated them, in the middle of a heat wave, mind you! They’ve been doing great.\n\nThey haven’t grown that much yet. I’ve read that, supposedly, dry grains don’t grow as much, and in the beginning, with the heat wave and their first cycles, they’re more interested in stabilizing themselves than actually growing. But oh boy, they’ve been giving me a cup of kefir a day.\n\nDuring the heat wave, it was more like two cups a day :D. It was intense. Now they’ve slowed down and grown just a bit, but they’re getting there.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/a40c5d48-0c24-4169-896d-177e95fc60b8_img_8720.jpeg)Those kefir grains were working overtime \n\nThey have that tangy taste, though it wasn’t like that at first, it was sour and tasted so acidic. It wasn’t until maybe 7 or 8 cycles that I changed the milk that they started to show larger and actually produce something more similar to kefir. I was getting worried though, I thought they were not gonna make it. \n\nThis photo was taken just six days after I first started activating the grains. Before this, they were so small I could barely distinguish them in the milk.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/29187b7a-4ab1-4094-a3e5-5774309522fa_img_8701.jpeg)\n\nIn my experience, if kefir separates, it’s because it’s been sitting way too long with the same milk and needs to be changed. It smells even more fermented than usual, but you only have to swirl it a bit and leave it in the fridge for a few hours, and you’re good to go.\n\nThe hotter it is, the quicker it ferments, so watch out—maybe in less than 12 hours the milk needs to be changed again.\n\nI've been enjoying kefir so much and with it I've been making strawberry smoothies ⬇️ \n\n![](https://storage.ko-fi.com/cdn/useruploads/display/6e409ec2-e8e8-451b-9bcf-762f7bc3a49e_img_8721.jpeg)She says that's not chicken soup ![](https://storage.ko-fi.com/cdn/useruploads/display/658718a1-d8b9-4d5b-a9c8-10c46f5564db_img_8728.jpeg)Peach and kefir smoothie \n\nAnd I've also been having it on its own.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/5efbe02d-67eb-46e8-a718-195b40fa33d0_img_8735.jpeg)Look at all those bubbles 😌\n\nIt’s true, this one doesn’t taste like the one at the grocery store. Mine is a bit “watery” because it doesn’t take \"that long\" to ferment (and it's not that cold but not that hot either), but it tastes tangy and smells like milk fermentation. So, I'm set. \n\nSometimes, even before you taste it, you’ll get that smell and be 99.9% sure it’s done. Once you taste it, you get that final 0.1%.\n\nI guess my point is: it is worth it. It took me a while, but oh wow, it is so much better than store-bought. And you basically have it for life if it’s properly taken care of. Another benefit from kefir, if you ask me. \n\nWould you get kefir and ferment it at home, or is it too much hassle for what it’s worth to you? I’d like to know, hehehe.\n\nIn the meantime, don’t worry, righteous citizens of this Earth. I’m working on a [new blog entry ](https://samhainsam.art/blog/)*rubs hands*. As usual, I’m quite excited, so sit tight, it will be worth it, hehehehe.\n\nSee you later, alligator 🐊\n\nPS I've baked some brownie cookies, some tiramisu and some gooey chocolate chips cookies (not pictured) Yay!  \n\n![](https://storage.ko-fi.com/cdn/useruploads/display/2b2f7af2-08fc-4173-9116-80ebb5ef6e4b_img_8785.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7c759ec6-2700-4657-b716-bf40c2e8a3a5_img_87392.jpeg)He says he's fighting for his life over there",
+      "sats": 146,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-27T08:20:18.836Z",
+      "user": {
+       "name": "samhainsam"
+      },
+      "subName": "art"
+     },
+     {
       "id": "1555382",
       "title": "T-bast, Salvatore, spacebear - Bitcoin Optech Newsletter #419 Recap Podcast",
       "url": "https://bitcoinops.org/en/podcast/2026/08/25/",
       "text": "Bastien Teinturier, Salvatore Ingala, and spacebear joined Optech to discuss Newsletter #419:\n\n- Reorg vulnerability in LND channel closes \n- Draft BIP for `rawtr()` output script descriptor\n- Ledger Bitcoin app 2.5.0 adds human-readable policy descriptions\n- Payjoin Dev Kit (rust-payjoin) 1.0.0 released\n- And more\n\nYou can listen on our website:\nhttps://bitcoinops.org/en/podcast/2026/08/25/\n\nFountain:\nhttps://fountain.fm/episode/eCyLsECYsnTuosdg9HxE\n\nSpotify:\nhttps://open.spotify.com/episode/4p15kurCtXcbuu1S51trRZ\n\nApple Podcasts:\nhttps://podcasts.apple.com/us/podcast/bitcoin-optech-newsletter-419-recap/id1674626983?i=1000786057842",
-      "sats": 1997,
+      "sats": 2433,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
@@ -1517,29 +1727,14 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1555625",
-      "title": "The Bitcoin Reformation",
-      "url": "https://www.michael.com/the-bitcoin-reformation?utm_source=chatgpt.com",
-      "text": "Has this not been posted yet? If it has, I will delete it. \n\nMichael Saylor explains his vision for bitcoin.\n\nI know people want more analysis with link posts, but I am still physically ill from having read it.",
-      "sats": 1266,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-08-26T18:41:06.322Z",
-      "user": {
-       "name": "siggy47"
-      },
-      "subName": "bitcoin"
-     },
-     {
       "id": "1555668",
       "title": "Testing out Gridpool.net",
       "url": null,
       "text": "Check out gridpool.net\n\nI'm testing it out right now, just for fun but also looking for new mining projects for my itty bitty fleet.  This is a different payout scheme idea where the payout goes to the workers that have submitted the highest difficulty work ; so the miners do not necessarily need to be actively submitting work to receive the payout if the pool were to find a valid block and have it accepted by the network.  Cool visual graphic too for the workflow: [https://main.gridpool.net/](https://main.gridpool.net/)\n\n![](https://m.stacker.news/153760)\n\nI am currently sending work from a bitaxe to test it out.  I have the bitaxe running via DATUM on my start9.  Gridpool has instructions for how to update your DATUM config to point to their pool.  It was very easy, simply copy/pasting a few lines.  Watched it accept a few shares seems to all be working.\n\n![](https://m.stacker.news/153759)\n\nThe project has some ambitious ideas to be able to have separate gridpool operators Federate, seems like it would be something akin to p2pool.\n\nPod256 had the creator of gridpool on their show recently: [https://www.pod256.org/episodepage/116-decentralizing-pool-payouts-inside-gridpool-with-agent-p](https://www.pod256.org/episodepage/116-decentralizing-pool-payouts-inside-gridpool-with-agent-p)",
-      "sats": 1161,
+      "sats": 1928,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
+      "ncomments": 1,
       "createdAt": "2026-08-26T19:16:24.029Z",
       "user": {
        "name": "ThatWhichisNotSeen"
@@ -1547,32 +1742,17 @@
       "subName": "bitcoin_Mining"
      },
      {
-      "id": "1551074",
-      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
-      "url": null,
-      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
-      "sats": 3918,
+      "id": "1555625",
+      "title": "The Bitcoin Reformation",
+      "url": "https://www.michael.com/the-bitcoin-reformation?utm_source=chatgpt.com",
+      "text": "Has this not been posted yet? If it has, I will delete it. \n\nMichael Saylor explains his vision for bitcoin.\n\nI know people want more analysis with link posts, but I am still physically ill from having read it.",
+      "sats": 1543,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 29,
-      "createdAt": "2026-08-19T19:44:47.321Z",
+      "ncomments": 7,
+      "createdAt": "2026-08-26T18:41:06.322Z",
       "user": {
-       "name": "openbitcoin"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1555456",
-      "title": "How Bitcoin Can Be Co-opted Without Being Destroyed - Efrat Fenigson",
-      "url": "https://www.youtube.com/watch?v=8Lz6Dwayptc",
-      "text": "I’ve been interviewed this week by Bernardo Braga from Brazil on his podcast. In his words:\n\n“Bitcoin doesn't need to be destroyed to lose the war.\nIf people give up self-custody and agree to exchange Bitcoin for pieces of Wall Street paper, defeat has already begun.\nIn this conversation, Efrat Fenigson and I talked about Bitcoin Core, Michael Saylor, stablecoins, and the risk of Bitcoin becoming another piece of the fiat system.\nShe also shares how the pandemic turned her life upside down and why she turned down a larger sponsorship offer from Coinkite before the Coldcard debacle.”",
-      "sats": 1201,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-08-26T15:32:18.066Z",
-      "user": {
-       "name": "efrat"
+       "name": "siggy47"
       },
       "subName": "bitcoin"
      },
@@ -1581,10 +1761,10 @@
       "title": "life of a software dev",
       "url": null,
       "text": "![](https://m.stacker.news/153703)",
-      "sats": 772,
+      "sats": 1130,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 9,
+      "ncomments": 11,
       "createdAt": "2026-08-26T14:49:18.060Z",
       "user": {
        "name": "jakoyoh629"
@@ -1592,209 +1772,44 @@
       "subName": "Memes"
      },
      {
-      "id": "1555423",
-      "title": "What are you working on this week?",
-      "url": null,
-      "text": "Calling all stackers!\n\nLeave a comment below to let the SN community know what you're working on this week. It doesn't matter how big or small your project is, or how much progress you've made.\n\nJust share what you're up to, and let the community know if you want any feedback or help.",
-      "sats": 497,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 13,
-      "createdAt": "2026-08-26T15:00:02.295Z",
-      "user": {
-       "name": "sn"
-      },
-      "subName": "meta"
-     },
-     {
-      "id": "1555666",
-      "title": "Colorado River cuts to drive up AZ water prices",
-      "url": "https://www.fox10phoenix.com/news/colorado-river-cuts-drive-up-arizona-water-prices-cities-invest-infrastructure",
-      "text": "# Colorado River cuts to drive up Arizona water prices as cities invest in infrastructure\n\n\n\n[Steve Nielsen](https://fox10phoenix.com/person/n/steve-nielsen)**PHOENIX** **-**\n\n`Water experts state that no matter what happens with cuts along the Colorado River, water will start getting more expensive.`\n\nThere are many reasons for that, with much on the line as federal officials announce Colorado River water cuts.\n\nBig picture view:\n\nIn Apache Junction, local officials rely entirely on the river for their water supply.\n\n`While residents will still have water, many water solutions require infrastructure, which requires funding. Inside a city office building, a team of people, including Apache Junction Deputy Water Director Brian Draper, is working on finding water. Securing water is a necessity for Draper because Apache Junction is entirely dependent on Colorado River water.`\n\n\"We can absorb some of that,\" Draper said. \"Should we have maxed out due to demand in the next couple years, we do have groundwater supplies we don’t use right now. We also have a bank of long-term storage credits we’ve stored underground that we can recover.\"\n\nLocal perspective:\n\n`Apache Junction is not the only municipality in Maricopa County heavily reliant on river water. Kathryn Sorensen, with the Kyle Center for Water Policy at Arizona State University, explained that residents should not expect problems at the tap.`\n\n`\"Residents should not be concerned about tap water shortages,\" Sorensen said. \"But yes, their price of water is going to go up their cities, especially those more reliant on Colorado River ` water are going to need to invest in more infrastructure and that infrastructure is really expensive.\"\n\nInfrastructure projects include a water treatment facility in Apache Junction being expanded from 4 million gallons a day to 10 million gallons a day. Officials also have plans to pilot advanced water purification that can turn wastewater into drinking water.\n\n\"The more of that we can treat once we get permitted by DEQ and we're able to out that into the system, we can augment a considerable amount of water and lower our reliance on Colorado River water,\" Draper said.\n\nWhat's next:\n\nAlthough cuts are coming for cities dependent on the river, local officials say they have solutions.\n\n\"We’re open for business. We’re welcoming new development and business to come in with the understanding they need to be cognitive of the amount of water they’re going to be using,\" Draper said.\n\nApache Junction is a fast-growing city with significant development. Officials work to ensure that development is water-smart amid uncertainty ahead.\n\n**The Source:** Information in this report was gathered from Apache Junction Deputy Water Director Brian Draper and Kathryn Sorensen of the Kyle Center for Water Policy at Arizona State University.\n\n___\n## My Thoughts 💭 \n\nWill Arizona run out of water? If economics are able to work I don’t think so. These articles don’t go into heavy detail on how much every users pay per gallon. A per capita basis usage doesn’t compare to agriculture, commercial, and industrial. Will be interesting to see how this plays out over the next 10-20 years.",
-      "sats": 496,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-08-26T19:14:05.114Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1555610",
-      "title": "Mapped: Every U.S. State’s Economy, Matched to a Country",
-      "url": null,
-      "text": "![](https://m.stacker.news/153754)\n\nhttps://www.visualcapitalist.com/mapped-every-u-s-state-economy-matched-to-a-country/",
-      "sats": 501,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-26T18:15:08.786Z",
-      "user": {
-       "name": "jakoyoh629"
-      },
-      "subName": "charts_and_maps"
-     },
-     {
-      "id": "1555457",
-      "title": "2026 NFL Survivor Buy in?",
-      "url": null,
-      "text": "NFL season is right around the corner.\n\nWe will be launching our annual NFL Survivor Pool next week. \n\nThe last couple years we did 10k sats buy in and 10k sats for rebuy. \n\nDo you guys want to keep that buy in amount and format or change it?",
-      "sats": 707,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-08-26T15:33:15.785Z",
-      "user": {
-       "name": "StackerSports"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1555569",
-      "title": "Using a shock collar to stop myself doomscrolling",
-      "url": "https://011.sh/posts/pavlov/",
-      "text": "Fun article about something I never intend to try.\n\nWorth the read anyway, but even more so for the final item on the \"future improvements\" list if you scroll all the way to the bottom.",
-      "sats": 611,
+      "id": "1555897",
+      "title": "Xiaomi's first high-bandwidth Al accelerator chip designed for on-device LLMs",
+      "url": "https://x.com/That_Kartikey/status/2091777204514586847",
+      "text": "Xiaomi XRING O100, Xiaomi's first high-bandwidth Al accelerator chip designed specifically for on-device large models.",
+      "sats": 218,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-08-26T17:13:51.879Z",
+      "createdAt": "2026-08-27T01:14:32.442Z",
       "user": {
-       "name": "StillStackinAfterAllTheseYears"
-      },
-      "subName": "tech"
-     },
-     {
-      "id": "1555171",
-      "title": "Will Iceland Join the EU? (FT, Constanze Stelzenmüller)",
-      "url": "https://www.ft.com/content/1e50ca97-b54d-4686-aee6-4edecc8ce1f7",
-      "text": "It is.... TIIIIIMEEEE\n\n![](https://m.stacker.news/153652)\n\nAlso, the headline is misleading: **It's a referendum about *talking about* joining the EU** -- which, if positive, requires *another referendum* once the full negotiated bureaucracy package is finalized.\n\nBoring.\n\nMost people I talk to say **\"yes, let's *talk* about it; I'll probably vote 'no' later, but we could at least see what they're offering.\"**\n\n> Iceland is a stable, prosperous and sophisticated democracy with a $39bn GDP. As a member of the European Economic Area — the single market uniting the EU together with Iceland, Liechtenstein and Norway — as well as the Schengen passport-free zone and the European Free Trade Association, it is already largely compliant with EU rules.\n\n> As a full member, Iceland would **be a net contributor to the EU budget.** It would (especially if joined someday by Norway) rebalance the past eastward expansion trend financially and geographically. Better yet, it would reaffirm the principle of merit-based accession: an important message for current candidates like some western Balkan countries and Ukraine that are struggling with reforms.\n\nNot by a lot, lessbehonest... Ice = small.\n\nThe pro side say...\n\n> this voter consultation is just about getting a mandate to negotiate and that in its **current half-in-half-out state**, Iceland is a rule-taker but not a rulemaker.\n\n## Honestly, a small fish(!) in a large, bureaucratic pond, you wouldn't be much of a rulemaker *inside* EU either.\n\n> Opponents, including the centre-right Independence Party (in the opposition), and the centre-left People’s Party, a member of the governing coalition, fear that opening talks would create momentum towards membership. They are concerned about losing control over Iceland’s fishing waters and maintaining political autonomy.\n\n> for all its wealth, its defence spending falls far short of the Nato resilience goal of 1.5 per cent of GDP. It is dependent on imports for essentials, and on subsea cables for connectivity. Prices and interest rates are sky-high; its currency, the króna, is highly volatile.\n\nWhat's so FUCKED about most of these formal convos is that they're all about geopolitics and Trump-Greenland bs and \"oh no, not that horrid Putin -- and the threat of China!\" *instead of the things that actually matter*: the horrifically uncompetitive state of Icelandic banks, the malfunctioning money -- that really shouldn't exist -- and the structurally insane inflation they run (stabilized at around [5% these days](https://hagstofa.is/talnaefni/efnahagur/verdlag/visitala-neysluverds/), with bouts of 10%+ about once a decade).\n\nAlso, it's basically just a hedge fund with a nation-state attached (and some aluminum smelting and tourism and fishery on the side) at this point -- the private/cooperative pension funds holding assets over 200% of GDP, a shocking proportion of which is domestic asset (airline, infrastructure, housing), and a government forcing employers and employees to contribute an insane amount to the funds: of (already high) wages, some 4%/11.5% contributions are mandatory, with a common option to extend to 8%/13.5% for workers-employers respectively. \n**(These funds go into tax-incentivized 401(k)-type arrangements that everyone uses to co-finance the mortgages for their overpriced housing stock; #hashtag financial-bubble circle-jerk.)**\n\n***\n\nFor all the nonsense that is the European Union (https://stacker.news/items/1020250/r/denlillaapan) and the ECB (https://stacker.news/items/1534273), it'd be worth surrendering sovereignty/independence blah-blah *just* to get the banking and financial sector competitive, and get the stupidly exploitative inflation (and consequently interest) rate down. https://stacker.news/items/1552045\n\n...the author is an \"international relations analyst\" so why would she know anything about stuff that actually matters?\n\nHopeless.\n\nI shall have fun on Saturday, nonetheless. Maybe join a Rigly blockparty to assert *my* energy and monetary independence (https://stacker.news/items/1466211/r/denlillaapan).\n\n***\n\n[https://archive.md/7FZTM](https://archive.md/7FZTM)l",
-      "sats": 1563,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 15,
-      "createdAt": "2026-08-26T10:06:32.576Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "513639",
-      "title": "To Be Truly Fluent in English, You Must Know Your Shits",
-      "url": null,
-      "text": "# Shits 💩\n\n`Dogshit` - Very poor quality\n`Bullshit` - Not true\n`Horseshit` - Nonsense\n`Apeshit` - Rambunctious\n`Batshit` - Insane\n`Chickenshit i` - cowards\n`Ratshit` - poor quality\n`No shit` - Obviously\n`Holy shit` - mind blowing/unbelievable\n`Hot shit` - very good\n`Dipshit` - a total dumbass\n`Tuff shit` - Take it or leave it.\n`Jack shit` - nothing\n`The shit` - perfection\n\n[@ MicroDose⚡(btc)](https://njump.me/nevent1qvzqqqqqqypzpm30g8ag5jueauu3ns0l33rkrfpvkhwgzhk5vvyaf4v57s342tamqythwumn8ghj7un9d3shjtnwdaehgu3wvfskuep0qydhwumn8ghj7um5w4jxjmenxy6zumn0wd68yvfwvdhk6tcqyrhysyy4n8um9wgx80tztatxeelw8r2ge6p04cvwec5d2n8tf9w8xrzfkjh)",
-      "sats": 3312,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 75,
-      "createdAt": "2024-04-21T16:29:45.076Z",
-      "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "lol"
-     },
-     {
-      "id": "1555651",
-      "title": "Hot Chips 2026: Nvidia presents Groq 3 LPX architecture",
-      "url": "https://www.tomshardware.com/tech-industry/semiconductors/nvidia-presents-groq-3-lpx-architecture-and-unveils-its-first-third-party-inference-benchmark",
-      "text": "",
-      "sats": 378,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-26T19:01:21.853Z",
-      "user": {
-       "name": "zuspotirko"
+       "name": "ch0k1"
       },
       "subName": "AI"
      },
      {
-      "id": "1555107",
-      "title": "Roman Storm retrial rescheduled for April 26, 2027",
-      "url": "https://x.com/rstormsf/status/2092378867784974437",
-      "text": "> One thing before I start: everything in this post is public information from my own docket. None of it is new, and I'm not revealing anything you can't already find in the court filings yourself.\n>  \n> The retrial just got pushed to April 26, 2027. The order came down today (Dkt. 300). My acquittal motion is still sitting there, undecided. I honestly don't know when this ends.\n>  \n> Prosecutors are supposed to protect American interests and go after people who broke the law. A jury deadlocked on the two most serious counts against me. And still SDNY won't stop, because this case was never just about me. It's about setting an example.\n>  \n> Don't take my word for it. Tara La Morte, the chief of SDNY's Illicit Finance and Money Laundering Unit, said it herself at a New York City Bar Association event (Law360, Feb. 23, 2024; filed on my docket as Doc. 25-2):\n>  \n> \"We want the industry to take notice.\"\n>  \n> \"What we're trying to do is sort of bring the industry into compliance, and I think Tornado Cash is an example of that.\"\n>  \n> An example. Out of a developer who wrote code.\n>  \n> At that same event, her deputy praised the government's blockchain-tracing partner, Chainalysis.\n>  \n> Here is what they didn't tell the audience. All of it is from the public docket in my case.\n>  \n> According to the trial transcripts, Chainalysis was running its OWN Tornado Cash relayer, and earning fees on the transactions flowing through it.\n>  \n> - Chainalysis's own lawyers admitted to \"a relayer node that Chainalysis operated\"; my subpoena sought documents on Tornado Cash relayer(s) \"used from March to August 2022.\" (Dkt. 211)\n> - In open court, the prosecutor said it plainly: \"I think the parties agree as to that part of the testimony, that the Chainalysis relayer earned fees.\" Same hearing: \"there's zero evidence that the defendant was in any way aware that Chainalysis was running a relayer.\" (Dkt. 259, July 25, 2025)\n>  \n> So the company that helped trace my \"criminal\" transactions was itself profiting from Tornado Cash transactions, while I was prosecuted over software I helped create.\n>  \n> And when my lawyers subpoenaed them to testify?\n>  \n> - Chainalysis moved to quash. (Dkt. 211)\n> - The government backed them: \"Your Honor, we agree with the position outlined in the motion.\" (Dkt. 255)\n> - The night before, prosecutors called Chainalysis's counsel. The judge asked point-blank: \"Did you let them know that they were potentially subject to investigation or prosecution?\" The answer: \"We have discussed at a high level some of the issues surrounding the relayer with Chainalysis.\" (Dkt. 259)\n> - The Chainalysis witness took the Fifth. My lawyers learned about that call only afterward, from Chainalysis's own lawyer. (Dkt. 263)\n>  \n> The jury never heard any of it.\n>  \n> This spring, at the Bitcoin 2026 conference in Las Vegas, something happened that I still can't quite believe. The Acting Attorney General, Todd Blanche, and the FBI Director, Kash Patel, sat on a panel called \"Code is Free Speech.\"\n>  \n> Think about that. The two top law enforcement officials in the country. Blanche told thousands of developers: if you're a coder and you're not the one committing the crime, \"you are not going to be investigated and not going to be charged.\" He said the last administration's crypto cases were \"outrageous attacks on the industry.\" Patel praised \"the Chainalysises of the world\" as FBI partners.\n>  \n> And when the moderator pointed at the elephant in the room, my case, Tornado Cash, Roman Storm, the Acting Attorney General called it a \"lingering case\" they are \"continuing to deal with.\"\n>  \n> So here is my hypothetical question. If code is free speech, why am I still being prosecuted for writing it? And if the Chainalysises of the world are the partners, the same Chainalysis that ran its own Tornado Cash relayer and earned fees from Tornado Cash users, while I never did, why is it off the hook?\n>  \n> They made an example out of a developer for writing code. Their own vendor ran the same infrastructure, pocketed the fees, and got a phone call instead of a prosecution.",
-      "sats": 634,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 20,
-      "createdAt": "2026-08-26T07:03:06.952Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1555301",
-      "title": "Mark Walter's TWG Global Blasts 'attacks,' Insists 'no fraud' Amid Federal Probe",
-      "url": "https://www.cnbc.com/2026/08/26/mark-walter-twg-guggenheim-lakers.html",
-      "text": "Sureeeeeee nothing to see here as he sells off the Lakers and moves to sell his stake in Chelsea.... It isn't hard to see, with the docs and regulatory comments, that he did what you are not allowed to do with insurance money! \n\n> TWG said that Walter and his partners “continuously get interest from prospective buyers and co-investors in their sports assets and, as responsible owners and investors, they consider all legitimate offers when they are received.”\n\nNow that doesn't sound too bad, but when you then hear from Bob Iger that he and Kushner only approached Walter after hearing that Walter would be interested in selling the Lakers (a couple of weeks ago, Iger had an interview with the California Post), it changes the whole calculation. Iger and Kushner were looking to put together a $10+ billion expansion bid for an NBA team in Las Vegas. A sizeable chunk of that money (likely several billion dollars) gets split between all of the owners. \n\nMaking $2.5 billion on a team in about a year sounds great, and when you look at the money, it is, but when you look at owners... it leaves a lot more questions than answers. An owner who has been collecting sports teams for the last 5-10 years to flip one so fast, without a follow-up move, highlights an issue.",
-      "sats": 807,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 6,
-      "createdAt": "2026-08-26T13:15:17.974Z",
-      "user": {
-       "name": "Cje95"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1555324",
-      "title": "Steep rise in electric vehicle sales",
-      "url": null,
-      "text": "![](https://m.stacker.news/153684)\n\nFor the New York Times, Mira Rojanasakul and Brad Plumer report on the [rise in electric vehicle registrations around the world](https://www.nytimes.com/interactive/2026/08/18/climate/ev-car-sales-oil-prices.html?unlocked_article_code=1.7FA.wW9U.8rIzg9M9lWIv&smid=url-share). The snippet of a chart above shows the change between 2020 and 2025 with a faded arrow. This provides a point of comparison showing the more recent jump this past year. I like it.\n\nThe U.S. is much farther down the list showing a *decrease* in registrations year-over-year.",
-      "sats": 591,
+      "id": "1555829",
+      "title": "Let's welcome SATS Routing - a new Boltz backend",
+      "url": "https://swapmarket.github.io/",
+      "text": "The list has never been that long! Sure, Boltz Exchange and Zeus are still idle, but three providers are operational as of today.\n\n![](https://m.stacker.news/153793)",
+      "sats": 240,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-08-26T13:29:46.664Z",
+      "createdAt": "2026-08-26T23:08:51.502Z",
       "user": {
-       "name": "guerratotal"
+       "name": "SwapMarket"
       },
-      "subName": "charts_and_maps"
-     },
-     {
-      "id": "1554938",
-      "title": "@nitter is dead again",
-      "url": "https://nitter.net/nfonline",
-      "text": "> # Cease and desist\n>\n> On 24 August 2026 cease and desist letters have been sent by X Corp. demanding a permanent takedown of Nitter instances and the project's repository.\n>\n> nitter.net is offline and development has stopped for the time being. I'm seeking legal advice and won't be commenting further on the specifics for now.\n>\n> Thank you to everyone who used, hosted, packaged, donated and contributed to Nitter over the past seven years.\n>\n> ***\n>\n> — zedeus, 25 August 2026\n\nSee you again, soon, maybe?",
-      "sats": 2237,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 13,
-      "createdAt": "2026-08-25T22:37:00.302Z",
-      "user": {
-       "name": "nitter"
-      },
-      "subName": "meta"
-     },
-     {
-      "id": "1555266",
-      "title": "Construction Starts Rebound 25.6% in July",
-      "url": "https://www.construction.com/construction-starts-rebound-july-2026/",
-      "text": "`TL:DR`\n\n***Twenty-Five $1 Billion-Plus Projects Lift Activity***\n\n**BOSTON, MA — July 21, 2026 —** `Total construction starts popped 25.6% in July to a seasonally adjusted annual rate of $1.79 trillion, ` according to [Dodge Construction Network](http://construction.com/). `Nonresidential building starts jumped 57.7%, residential starts increased 4.9% over the month, and nonbuilding climbed 2.2%. On a year-to-date basis, total construction starts were up 16.9% through July. ` Nonresidential starts were up 21.9%, nonbuilding starts improved by 29.8%, and residential starts were down 1.7% over the same period. For the 12 months ending July 2026, total construction starts were up 14.4% from the 12 months ending July 2025. Residential starts were down 2.7%, nonresidential starts were up 14.8% and nonbuilding starts were up 32.1%.  \n\n“Megaproject driven volatility headlines a disjointed construction market,” stated Eric Gaus, Chief Economist at Dodge Construction Network. “`There is strength in pockets, multifamily within residential, data centers within commercial, energy within non-building, but also verticals struggling to stabilize.”  `\n\n**Nonresidential** \n\nNonresidential building starts jumped 57.7% in July to a seasonally adjusted annual rate of $917 billion. `Commercial starts were up 70.0% over the month. Offices and data centers, more than doubled (+107.9% m/m), offsetting weaker warehouse growth (+1.0% m/m) and declining hotels (-51.5% m/m),  parking garages (-19.4% m/m), and retail stores (-9.5% m/m)` . Institutional starts improved 6.2% over the month, supported by a 4.5% m/m uptick in education and dormitory starts, as well as a 45.7% m/m gain in other institutional starts. `Healthcare facilities doubled down on their losses, falling another 59.7% in July. ‘ Manufacturing construction starts bounced back with 277.8% m/m, continuing a volatile streak. On a year-to-date basis through July, nonresidential starts are up 21.9%. Commercial and industrial construction gained 44.2%, while institutional starts are down 3.5% over the same period.  \n\nFor the 12 months ending July 2026, total nonresidential starts were up 14.8% compared to the 12 months ending July 2025. Commercial starts were up 45.2%, institutional starts decreased 5.6%, and manufacturing starts were down 1.5% over the same period.  \n\n**The largest nonresidential building projects to break ground in July** were the $12.8 billion data center portion of the Project Jupiter Data Center and Microgrid Phase 1 in Santa Teresa, New Mexico, the $12.0 billion Micron Semiconductor Mega-Factory Fab 1 – Phase 1 in Clay, New York, and the $4.0 billion Amazon STACK Highway 3 Data Center in Benton, Louisiana.   \n\n**Nonbuilding**  \n\n\nNonbuilding construction starts increased 2.2% in July to a seasonally adjusted annual rate of $485 billion. Continuing their slide, highway and bridge starts fell back 16.9% in July while environmental public works fell 7.8% and miscellaneous nonbuilding dropped 5.3% over the same period. Meanwhile, utilities improved 44.7% m/m. On a year-to-date basis through July, nonbuilding construction was up 29.8% alongside the `94.1% year-to-date growth in electric power/utilities,`  31.8% in miscellaneous nonbuilding, and 6.8% growth in highways and bridges. Environmental public works are down 4.8% year-to-date.  \n\nFor the 12 months ending July 2026, total nonbuilding starts were up 32.1%. Environmental public works fell by 5.1% compared to the 12 months ending July 2025. Highway and bridge starts were up 5.6%, miscellaneous nonbuilding starts were up 43.1% and utility/gas starts increased 105.6% over the same period.  \n\n**The largest nonbuilding projects to break ground in July** included the $2.4 billion CHSRA New Track & Systems (Two Sections) in Bakersfield, California, the $2.3 billion microgrid portion of the Project Jupiter Data Center and Microgrid Phase 1 in Santa Teresa, New Mexico, and the $1.5 billion Transco Southeast Supply Enhancement Pipeline Expansion-SSE in Chatham, Georgia.  \n\n**Residential** \n\nResidential building starts rose by 4.9% in July to a seasonally adjusted annual rate of $386 billion. `Single family starts increased 4.3% m/m, and multifamily starts rose 5.7% m/m.` On a year-to-date basis, residential starts are down 1.7%, with single family starts down 6.1% and multifamily starts up 6.4%. \n\nFor the 12 months ending July 2026, total residential starts fell 2.7%. Single family starts fell 11.1% compared to the 12 months ending July 2025, and multifamily starts increased 13.0% over the same period. \n\n**The largest multifamily structures to break ground in July** were the $535 million NY Vue-Harbor Station South Residential Tower/Retail in Bayonne, New Jersey, the $343 million ICON Beach Waterfront Condominiums in Hollywood, Florida, and the $320 million 65 Franklin Mixed Residential & Commercial Building in New York, New York.  \n\n**Regionally,** total construction starts in July rose in every region except the Midwest and South Central; the Northeast (117.7% m/m), the South Atlantic (28.7% m/m), and the West (61.4% m/m). The Midwest declined by 24.6% and South Central fell 9.3% between May and July.   \n\n**JULY 2026 CONSTRUCTION STARTS**\n\n![](https://www.construction.com/wp-content/uploads/2026/08/july-starts-monthly-chart-1024x533.png)\n\n![](https://www.construction.com/wp-content/uploads/2026/08/July-Starts-12mo-chart-1024x533.png)\n\n![](https://www.construction.com/wp-content/uploads/2026/08/july-dodge-index-1024x533.png)\n\n____\n## My Thoughts 💭 \n\nEnergy, data centers, offices are driving the growth. Healthcare is a drag on the sector. Good to see residential starts rebound a bit. With tariffs, labor, and oil starting to stabilize I think confidence is returning to the lower profit margined construction projects like residential but the AI build out is still driving the sector.",
-      "sats": 807,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-08-26T12:15:58.114Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "Construction_and_Engineering"
+      "subName": "bitcoin"
      },
      {
       "id": "1555412",
       "title": "Need a good and cheap flash for your camera?",
       "url": null,
       "text": "This is what I picked up the other day. Its the Godox iM30. it cost me 35 bucks. TLDR: get it if you need one.\n\nVery easy to use, and very good build quality. Takes 2 aaa batteries and can fire off up to 230 full output flashes on a single charge. I only needed to put it up to maybe 1/4 power for my tests but it can last a very long time. Since I was testing with my Leica Q, what is great is that you can use whatever shutter speed you want since its a leaf shutter. Other cameras limit you to the 250th\n\nJust a few test shots here, nothing too amazing but the experience using it was great. Goes quite a far distance and easy to configure since it's all manual. The diffuser works, but it drastically reduces the reach (obviously).\n\nHere's the link (no, it's not an affiliate):\n[https://www.amazon.com/Godox-iM30-Diffuser-Mini-Flash/dp/B0F6MKQQS2](https://www.amazon.com/Godox-iM30-Diffuser-Mini-Flash/dp/B0F6MKQQS2)\n\n![](https://m.stacker.news/153692)\n\n![](https://m.stacker.news/153694)\n\n![](https://m.stacker.news/153695)\n\n![](https://m.stacker.news/153696)\n\n![](https://m.stacker.news/153697)\n\n![](https://m.stacker.news/153698)\n\n![](https://m.stacker.news/153699)\n\n![](https://m.stacker.news/153700)\n\n![](https://m.stacker.news/153701)",
-      "sats": 510,
+      "sats": 981,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
+      "ncomments": 3,
       "createdAt": "2026-08-26T14:50:19.366Z",
       "user": {
        "name": "PictureRoom"
@@ -1802,79 +1817,64 @@
       "subName": "Photography"
      },
      {
-      "id": "1555078",
-      "title": "Mazda Cafe in Japan…",
-      "url": null,
-      "text": "Sitting here in this unique cafe and it struck me how wonderful it is that my neighbors on each side of me just walked away from their macbooks for probably a half hour now and just fully expect their notebooks to still be there when they get back. I know there are a lot of downsides to this culture but it’s really wonderful being in a high trust society. \n\nAlso ZipAir having Starlink is a total game changer.. having high speed wifi makes flights to Japan much more productive and palatable.\n\n![](https://m.stacker.news/153645)",
-      "sats": 2215,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 6,
-      "createdAt": "2026-08-26T05:55:19.059Z",
-      "user": {
-       "name": "gmd"
-      },
-      "subName": "Travel"
-     },
-     {
-      "id": "1555554",
-      "title": "Wiped out: US faces surging toilet paper prices amid trade war with Canada",
-      "url": "https://www.theguardian.com/us-news/2026/aug/26/paper-product-toilet-paper-tariffs-us-canada",
-      "text": "Goddammit. Just when you started to forget what hoarding TP was like, you get to do it all over again in 2026! Woot!",
-      "sats": 175,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 9,
-      "createdAt": "2026-08-26T16:57:47.365Z",
-      "user": {
-       "name": "winteryeti"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1554937",
-      "title": "Notary - A Native Nostr Signer For MacOS [Keep your key outside of any client]",
-      "url": "https://github.com/zig-nostr/notary/",
+      "id": "1555777",
+      "title": "NFL gets rid of pro bowl game",
+      "url": "https://x.com/jjones9/status/2092716362606997979",
       "text": "",
-      "sats": 282,
+      "sats": 621,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-25T22:29:50.867Z",
+      "ncomments": 7,
+      "createdAt": "2026-08-26T21:46:15.810Z",
       "user": {
-       "name": "sep"
+       "name": "HardMoney"
       },
-      "subName": "nostr"
+      "subName": "Stacker_Sports"
      },
      {
-      "id": "1555328",
-      "title": "Social Trust Is a Superpower",
-      "url": "https://mises.org/mises-wire/social-trust-superpower",
-      "text": "By Jimmy Alfonso Licon\n> We are told ad nauseum that the capitalist system runs on greed. In reality, a successful economy depends mostly upon trust.",
-      "sats": 385,
+      "id": "1555456",
+      "title": "How Bitcoin Can Be Co-opted Without Being Destroyed - Efrat Fenigson",
+      "url": "https://www.youtube.com/watch?v=8Lz6Dwayptc",
+      "text": "I’ve been interviewed this week by Bernardo Braga from Brazil on his podcast. In his words:\n\n“Bitcoin doesn't need to be destroyed to lose the war.\nIf people give up self-custody and agree to exchange Bitcoin for pieces of Wall Street paper, defeat has already begun.\nIn this conversation, Efrat Fenigson and I talked about Bitcoin Core, Michael Saylor, stablecoins, and the risk of Bitcoin becoming another piece of the fiat system.\nShe also shares how the pandemic turned her life upside down and why she turned down a larger sponsorship offer from Coinkite before the Coldcard debacle.”",
+      "sats": 1231,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 11,
-      "createdAt": "2026-08-26T13:35:53.995Z",
+      "ncomments": 10,
+      "createdAt": "2026-08-26T15:32:18.066Z",
       "user": {
-       "name": "Undisciplined"
+       "name": "efrat"
       },
-      "subName": "econ"
+      "subName": "bitcoin"
      },
      {
-      "id": "1555387",
-      "title": "How Iran Devastated an American Naval Base—and Caused a U.S. Recalculation",
-      "url": "https://www.wsj.com/world/middle-east/iran-us-naval-base-bahrain-e87bbca3?",
-      "text": "When the Iranian missiles and drones came for the nerve center of America’s naval operations in the Middle East, some of them hit their mark.\n\nThe U.S. Navy base in Bahrain was repeatedly targeted between late February and June. Strikes that got through caused extensive damage, according to a Wall Street Journal analysis of satellite imagery, social-media footage and interviews with current and former servicemembers—damage that the Pentagon hasn’t publicly acknowledged. Hit hard were the command headquarters and at least a dozen other buildings, along with two satellite communications terminals. \n\nThe military said no one was killed at the base, known as Naval Support Activity Bahrain, and that the strikes didn’t significantly impact operations. The U.S. evacuated most personnel but has kept a small staff on the ground. \n\nOver the course of the war, “Centcom rightfully prioritized the protection of people over buildings, and our strategy of protecting people worked. [Iran](https://www.wsj.com/topics/place/iran) shot more than 8,000 missiles and drones and only two hits resulted in U.S. fatalities,” said Capt. Tim Hawkins, a spokesman for U.S. Central Command, which oversees U.S. forces in the Middle East. Hawkins also said the U.S. military inflicted far more damage to Iran than it received, with the U.S. striking more than 13,500 targets. \n\nThe extensive damage done to America’s sole naval base in the Middle East—along with hits to at least 20 U.S. sites across the region, including military installations and diplomatic facilities—has the U.S. re-evaluating its entire footprint in the region, according to U.S. officials familiar with the deliberations.\n\nUnlocked article-\nhttps://archive.ph/nSBOa#selection-2173.0-2173.74",
-      "sats": 36,
+      "id": "1555784",
+      "title": "French Top Court Gets It Right, Strikes Down Social Media Ban For Youths",
+      "url": "https://www.eff.org/deeplinks/2026/08/french-top-court-gets-it-right-strikes-down-social-media-ban-youths",
+      "text": "winning https://stacker.news/items/650239/r/k00b?commentId=650288\n\n> Earlier this month, France’s top court [struck down](https://www.conseil-constitutionnel.fr/actualites/communique/decision-n-2026-911-dc-du-14-aout-2026-communique-de-presse) the country’s legislation that [banned social media](https://www.bbc.co.uk/news/articles/cq56l9p4y93o) use for people under 15 years old, which had been scheduled to take effect in January 2027. This is a welcome win for free expression, as we face a wave of [countries and U.S. states](https://www.eff.org/deeplinks/2026/06/how-and-why-fight-back-against-social-media-bans) seeking to pass similar laws banning young people from social media.\n\n> The Council [ruled](https://www.conseil-constitutionnel.fr/actualites/communique/decision-n-2026-911-dc-du-14-aout-2026-communique-de-presse) that the legislation banning under-15s from social media infringed on freedom of expression and communication in a manner that is not appropriate, necessary, or proportionate, which is required by Article 34 of the French Constitution. In particular, it stressed that the ban did not distinguish between different types of online services, and ignored the circumstances of individual users, such as their exact age, level of maturity, and family situation.\n\n> The French Council gets a lot right in this decision: it highlights that bans like this impact not just young people, but everyone online. They force people of all ages to hand over [government IDs](https://www.eff.org/deeplinks/2025/12/why-isnt-online-age-verification-just-showing-your-id-person), [face scans](https://www.eff.org/deeplinks/2025/01/face-scans-estimate-our-age-creepy-af-and-harmful), and [other sensitive information](https://www.eff.org/deeplinks/2026/06/lgbt-qa-what-data-are-companies-uk-collecting-when-verifying-my-age) into a growing surveillance ecosystem. Further, when parental consent is required, companies must collect [even more](https://www.eff.org/deeplinks/2023/05/law-should-not-require-parental-consent-all-minors-access-social-media) verification data on the parents.",
+      "sats": 372,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-26T14:22:24.580Z",
+      "ncomments": 4,
+      "createdAt": "2026-08-26T21:58:34.332Z",
       "user": {
-       "name": "Solomonsatoshi"
+       "name": "k00b"
       },
-      "subName": "Politics_And_Law"
+      "subName": "news"
+     },
+     {
+      "id": "1555869",
+      "title": "Early autochrome colour photo of Notre Dame Cathedral in Paris, 1920",
+      "url": null,
+      "text": "![](https://m.stacker.news/153796)",
+      "sats": 389,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-08-27T00:21:39.931Z",
+      "user": {
+       "name": "guerratotal"
+      },
+      "subName": "Photography"
      }
     ]
    }
@@ -1885,14 +1885,29 @@
    "items": {
     "items": [
      {
+      "id": "1555850",
+      "title": "Don't switch your Core Lightning node off, restart it with --offline instead",
+      "url": null,
+      "text": "Core Lightning has been triaging a high volume of AI-generated CVE reports over recent weeks. Several are real, and a coordinated fix is underway.\n\nWhat to do now: do not shut your node down. Restart it with --offline.\n\nThat flag stops peer connections, so no payments route in, out or through your node. It keeps running, which means it keeps watching the chain and can still act if a counterparty force-closes a channel. A node that is powered off cannot do that, and that is why switching off is the worse option.\n\nOn @umbrel or @start9labs this is a startup setting for Core Lightning, not a toggle in the dashboard.\n\nWhat happens next: signed binaries will be published. Verify the signatures before you install, then bring your node back online. Source and reproducible builds follow afterwards so anyone can audit what changed.\n\nhttp://github.com/ElementsProject/lightning",
+      "sats": 5349,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-08-26T23:38:54.716Z",
+      "user": {
+       "name": "blockstream_official"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1555439",
       "title": "Take your CLN node offline.",
       "url": null,
       "text": "![](https://m.stacker.news\\/153723)\n\n![](https://m.stacker.news\\/153722)\n\n> Like many open source Bitcoin projects, CLN has received a number of Al-generated CVE reports from multiple sources over the past 10 days. Our small team, together with several invaluable open source contributors, has been working intensively to validate and triage these reports and develop fixes where needed.\n\n> We're now working through a broader remediation strategy. The first step is a point release containing many of these fixes, and we will strongly recommend upgrading. We're aiming to have an initial version of the point release available within the next few days.\n\n> As the situation has evolved, so has our remediation strategy. Rather than publishing the point release this week we will make binaries available for a release containing fixes for many of the reported vulnerabilities. The details of the release will remain under embargo for two weeks. The binaries will be accompanied by the team's signatures confirming reproducibility.\n\n> During the embargo period, we strongly encourage everyone to upgrade. At the end of the two weeks, the full release and associated details will be made public.\n\n> If you choose not to upgrade, **we recommend taking your node --offline**. Given the known risks, we will not support previous releases, including 26.04. The 26.09 release remains planned for late September.\n\ninb4 \"Discord is a walled garden and you shouldn't use it.\" Stay uninformed then.\n\nIf you found this useful, In lieu of cuck credits, send actual money to this address: bc1qqjkcdaqqs8447w6wr78qqfmsxh9skqf08tk5gj",
-      "sats": 4722,
+      "sats": 4828,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 25,
+      "ncomments": 68,
       "createdAt": "2026-08-26T15:19:37.480Z",
       "user": {
        "name": "anon"
@@ -1900,59 +1915,29 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1555677",
-      "title": "Upgrade your Eclair node (lol)",
-      "url": "https://github.com/ACINQ/eclair/releases/tag/v0.14.2",
-      "text": "> This is a patch release that contains several bug fixes.\nWe highly recommend upgrading, as some of these issues can be exploited by malicious nodes.\n\n> We now explicitly document that `bitcoind` should run on the same machine as `eclair`, or that a secure tunnel (providing encryption and authentication) must be setup between `eclair` and `bitcoind`. If you are running `bitcoind` on a remote machine without a secure tunnel, you should rework your setup.",
-      "sats": 3172,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-26T19:31:13.658Z",
-      "user": {
-       "name": "anon"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1532071",
-      "title": "Wasabi Wallet - Privacy by Default",
-      "url": "https://wasabiwallet.io/",
-      "text": "Welcome to the coinjoin territory, anon. Post your questions here, and I will answer them.\n\n\n![](https://m.stacker.news/149538)",
-      "sats": 2156,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 43,
-      "createdAt": "2026-07-24T22:47:04.833Z",
-      "user": {
-       "name": "Kruw"
-      },
-      "subName": "Coinjoins"
-     },
-     {
-      "id": "1555588",
-      "title": "On the Economics of Inflation-Protected Securities",
+      "id": "1555978",
+      "title": "What the f#*k is AURA FARMING?",
       "url": null,
-      "text": "Nobody [but a blockhead](https://www.brainyquote.com/quotes/samuel_johnson_170103) (=economist) likes indexation.\n\nI mentioned this phenomenon in passing last week (https://stacker.news/items/1552045) — e.g., [Shiller’s paper](https://www.brookings.edu/wp-content/uploads/1997/01/1997a_bpea_shiller_schultze_hall.pdf) from 1997 — but meant to delve into it more thoroughly.\n\nHere’s my summary of the distributional concerns from the Economics of Peer-to-Peer post:\n\n***\n\n> ## **The Puzzle of the Public's Dislike of Indexation**\n\n> The opposition to indexation has long puzzled economists, i.e., those of us with odd minds that think about money, money illusion, and the (un)fairness of nominal contracts/payments when the real worth of money changes. To recap the deep, long, important economic intellectual convo:\n\n* if I make a loan to you at $100 for one year and at 5% interest, but at the end of the year the price level is 10% higher, *I lost out 5% while loaning you funds*.\n* If I make a loan to you at $100 for one year and at 5% interest, but at the end of the year the price level is 2% higher, the real rate of interest was only 3%.\n\n> There are a couple of ways that banks (and more sophisticated securities markets and futures contracts) could deal with this, where the most common one is for the bank to have in-house experts forecasting the future price level and price loans accordingly. That is, if they're willing to lend to you at 3% and they *believe* the Fed will hit 2%, the loan contract will say 5% -- hashtag all the way back to Irving Fisher, and in honest to every merchant and money-lender throughout history.\n\n> The *other*, more obvious, option would be to **just adjust the principal (= the $100) by the inflation rate after the fact, leaving the (real) interest rate intact.** So in the first scenario, the loan balance due (without repayments) would be $115 after one year -- $5 interest, $10 adjustment -- and in the second scenario, the loan balance would be $107.\n\n***\n\nBasically, it’s an old and longstanding theoretical consideration of *who*, *precisely* [bear the burden of money’s shifting worth](https://thedailyeconomy.org/article/who-bears-the-burden-of-dollars-falling-purchasing-power/).\n\nHere’s Shiller again, saying not quite hyperbolically that this resistance to indexation is “one of the greatest economic puzzles of all time”:\n\n> That the public should generally want to denominate contracts in currency units —despite all the evidence that **it is not wise to do so and despite the obvious examples from nominal contracts of redistributions caused by unexpected inflation** — should be regarded as one of the great economic puzzles of all time.\n\n## “The success of the U.S. Treasury’s first issuance of consumer price-indexed debt in January 1997 does virtually nothing to diminish the salience of this puzzle”\n\nErgo Satoshi quote ([Letters 10:15](https://canon.satsdisco.com/#/letters/10/16)).\n\nIn the meantime, we have Jason Zweig, a longtime WSJ columnist on matters of personal finance who has quite frequently invoked TIPS — the U.S. Treasury’s own indexed bonds. They have notoriously (shockingly) low uptake despite being, as Zweig wrote in the *Wall Street Journal* yesterday, **“the closest thing to a risk-free investment.”**\n\nOr, at least, *somewhat* risk-free:\n\n> Fellow investors,\n> You might spend some of a staycation playing golf, camping or binge-watching your favorite TV show. I spent some of mine buying inflation-protected bonds.\n\nHashtag lol. Continuing the madness:\n\n> Last week, I sat on the screen porch with an iced tea and put a substantial part of my IRA into TIPS at real yields of up to 3%. (I didn’t buy a TIPS ETF or mutual fund; I bought individual TIPS on the secondary market, in my brokerage account.)\n> you can lock in today’s historically generous rates if, *but only if,* you buy individual TIPS (not a TIPS fund) and hold them to maturity.\n\nAll the trust involved for this supposedly “risk-free” investment is the (admittedly quite low) risk of Treasury not paying you, but more importantly the risk that the actual-real value — i.e., what future money *gets* you — will fall well short of the 3% real Zweig envisions.\n\nIt’s not, as many Bitcoiners uncritically suppose, that the U.S. agency for calculating the inflation rate (= statisticians at the Bureau of Labor Statistics) are crooks, beholden to the President, or systematically biasing the rates to be lower than *akschual* real-world inflation. It’s that constructing an average price index is backward-looking, impossible, and a hopeless endeavor: how much better is \"communication\" or \"light\" today vs 20, 200, or 2000 years ago? Hedonic adjustments shove it downwards; quality improvements upward; \"free\" stuff (think YouTube) makes the basket lower than it would have been.  \n\nZweig goes on to remark on the fiscal troubles facing America’s government (yes, we know: https://stacker.news/items/1554544 https://stacker.news/items/1554571, https://stacker.news/items/1554591)\n\n> What makes me feel bad is that “the closest thing to a risk-free investment” isn’t as close as it used to be. The gross U.S. debt [surpassed $40 trillion earlier this month](https:/www.wsj.com/economy/u-s-debt-just-topped-40-trillion-how-we-got-here-c1c6c9d2)—approaching its highest level, as a percentage of GDP, since shortly after World War II. Net interest payments, which consumed only 1.3% of GDP in 2016, totaled 3.2% of GDP in 2025. And, with [bond yields at their highest in nearly two decades](https:/www.wsj.com/finance/investing/bonds-are-getting-hammered-and-wall-street-says-the-rout-wont-end-anytime-soon-895e0ad8), that interest burden is almost sure to balloon.\n\nWhat I like about indexation products -- at least on the *savings* side because that's where I hang out, not having a mortgage because, you know, ownership obsession [https://www.stacker.news/items/1459569](https://www.stacker.news/items/1459569) -- is that the unanticipated surprise inflation (biased as it is, on the upside) protects me.\n\nStandard savings account earn 7% (remember, these lands and their incompetent monetary rulers run structurally higher inflation and rates: https://stacker.news/items/1555171 -- 10y yield is 6.9%, IOR 8%). My indexed savings account yield 2% (not unlike Zweig's TIPS, btw), *plus* whatever the statistics agency says the inflation is.\n\n* If inflation undershoots, i.e. 4%, I am roughly OK (2% interest + 4% adjustment for a \\~6% nominal gain) but relatively speaking lose -- could have earned 7% on a regular savings account.\n* If inflation overshoots, i.e., 6%, I am *also* roughly OK (2% interest + 6% adjustment for a \\~8% nominal gain -- but I relatively gain, since regular savings account would have paid me only 7%.\n\nPlus, it \\_does\\_ feel pretty cool when my \"principal\" (= savings account amount) adjusts in hindsight depending on what happened to the inflation reading \\_rather\\_ than the predicted/previously stated interest rate. \n\nSince I think there's more than even odds for the monetary clown hats https://stacker.news/items/747181 to *overshoot*, **I rather keep slightly more fiat for immediate bills in the indexed products than the standard savings account.**\n\nOf course, these products don't \"earn\" you anything; can't *save* your way into wealth or improve your financial standing in any material way. It's keeping you afloat, preventing you from immediately drowning. Wealth, and wealth generation, comes from riding the fiat wave on hard assets -- bitcoin, gold, stocks, and yes houses (with short fiat, e.g., debt https://stacker.news/items/994746); so full circle.\n\n## Anyway, I like indexation. I think the future of Bitcoinland includes more of it\n\n![](https://m.stacker.news/153746)\n*Beautiful meme, the old-school way*",
-      "sats": 3035,
+      "text": "I know this post is giving info about my age... But, Aura FARMING has gone trending everywhere and no one can define it or explain it.\n\nPlease, explain it to me as if I was +50.\n\n\nCheers",
+      "sats": 471,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-26T17:33:19.207Z",
+      "ncomments": 2,
+      "createdAt": "2026-08-27T08:27:41.605Z",
       "user": {
-       "name": "denlillaapan"
+       "name": "Bitcoiner1"
       },
-      "subName": "econ"
+      "subName": "AskSN"
      },
      {
       "id": "1555119",
       "title": "What are the norms of Stacker News?",
       "url": null,
       "text": "> Robert's Rules of Order are necessary. Constitutions are necessary. Norms, rituals, laws, the whole list of ways that we say, out of the universe of possible behaviors, we're going to draw a relatively small circle around the acceptable ones.\n\nI like to think that the way SN works dispenses with the need for moderators and algorithms, but this doesn't mean we haven't for any norms of behavior at all. What do you think some of the norms are for SN?",
-      "sats": 1400,
+      "sats": 2697,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 91,
+      "ncomments": 92,
       "createdAt": "2026-08-26T07:59:57.336Z",
       "user": {
        "name": "Scoresby"
@@ -1960,11 +1945,236 @@
       "subName": "meta"
      },
      {
+      "id": "1532071",
+      "title": "Wasabi Wallet - Privacy by Default",
+      "url": "https://wasabiwallet.io/",
+      "text": "Welcome to the coinjoin territory, anon. Post your questions here, and I will answer them.\n\n\n![](https://m.stacker.news/149538)",
+      "sats": 2190,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 45,
+      "createdAt": "2026-07-24T22:47:04.833Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "Coinjoins"
+     },
+     {
+      "id": "1555677",
+      "title": "Upgrade your Eclair node (lol)",
+      "url": "https://github.com/ACINQ/eclair/releases/tag/v0.14.2",
+      "text": "> This is a patch release that contains several bug fixes.\nWe highly recommend upgrading, as some of these issues can be exploited by malicious nodes.\n\n> We now explicitly document that `bitcoind` should run on the same machine as `eclair`, or that a secure tunnel (providing encryption and authentication) must be setup between `eclair` and `bitcoind`. If you are running `bitcoind` on a remote machine without a secure tunnel, you should rework your setup.",
+      "sats": 3731,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-08-26T19:31:13.658Z",
+      "user": {
+       "name": "anon"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1555944",
+      "title": "Episode 275: Coder [come spend our free credits plz]",
+      "url": null,
+      "text": "![](https://m.stacker.news/153803)\n\nWe introduce Coder, our all-in-one coding agent.\n\nCoder works with top models and agent harnesses in one simple terminal UI, combined with its own project management system and git forge. \n\nCoder is opinionated but also open-source and can be self-hosted. Make whatever changes you want. It's time to end your dependency on closed-source third parties!\n\nWe begin with a simple terminal UI that can either store your chats just locally, with optional syncs to our cloud  for easy sharing across web, desktop and our forthcoming mobile app - and soon, multiplayer with your team or open-source community. \n\nWhile the big labs abandon everyday developers to focus on enterprise, we see a need for one cohesive agent platform laser focused on developer productivity and happiness.\n\nCoder includes first-class support for the OpenAgents CLI, including submodules like connected computers (yours or cloud sandboxes), our new git forge, forum for agent-to-agent comms, swarm inference, issues, memory, nostr, plugins, projects, Sarah, agent trace management, distributed training, bitcoin wallet and more. The big picture remains a work in progress, tying together all the main themes we've built toward for the last three years. Can you see where we're going with this?\n\nWe strongly desire your feedback, bug reports, and feature requests! Coder releases today in public beta (v0.1). The Coder TUI should be fully functional -- we are using it for our day-to-day coding now -- but its codebase is just 24 hours old so some bugs are inevitable. Help us improve it! We'll be releasing updates daily.\n\nBig thanks to Z.AI for their grant of credits so we can make GLM 5.3 Flash free for all users through the end of the month. (while supplies last!)\n\nEvery new user for now also gets $20 of free credits which will be used for Coder models and infra like cloud computers so you can parallelize work across multiple devices even while AFK.\n\nDownload now for Windows/Mac/Linux with a single command; instructions at https://openagents.com.\n\nSee you in the Coder terminal!\n\nWatch on X: https://x.com/OpenAgentsInc/status/2092836555756823023",
+      "sats": 0,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-27T05:10:47.950Z",
+      "user": {
+       "name": "AtlantisPleb"
+      },
+      "subName": "openagents"
+     },
+     {
+      "id": "1555107",
+      "title": "Roman Storm retrial rescheduled for April 26, 2027",
+      "url": "https://x.com/rstormsf/status/2092378867784974437",
+      "text": "> One thing before I start: everything in this post is public information from my own docket. None of it is new, and I'm not revealing anything you can't already find in the court filings yourself.\n>  \n> The retrial just got pushed to April 26, 2027. The order came down today (Dkt. 300). My acquittal motion is still sitting there, undecided. I honestly don't know when this ends.\n>  \n> Prosecutors are supposed to protect American interests and go after people who broke the law. A jury deadlocked on the two most serious counts against me. And still SDNY won't stop, because this case was never just about me. It's about setting an example.\n>  \n> Don't take my word for it. Tara La Morte, the chief of SDNY's Illicit Finance and Money Laundering Unit, said it herself at a New York City Bar Association event (Law360, Feb. 23, 2024; filed on my docket as Doc. 25-2):\n>  \n> \"We want the industry to take notice.\"\n>  \n> \"What we're trying to do is sort of bring the industry into compliance, and I think Tornado Cash is an example of that.\"\n>  \n> An example. Out of a developer who wrote code.\n>  \n> At that same event, her deputy praised the government's blockchain-tracing partner, Chainalysis.\n>  \n> Here is what they didn't tell the audience. All of it is from the public docket in my case.\n>  \n> According to the trial transcripts, Chainalysis was running its OWN Tornado Cash relayer, and earning fees on the transactions flowing through it.\n>  \n> - Chainalysis's own lawyers admitted to \"a relayer node that Chainalysis operated\"; my subpoena sought documents on Tornado Cash relayer(s) \"used from March to August 2022.\" (Dkt. 211)\n> - In open court, the prosecutor said it plainly: \"I think the parties agree as to that part of the testimony, that the Chainalysis relayer earned fees.\" Same hearing: \"there's zero evidence that the defendant was in any way aware that Chainalysis was running a relayer.\" (Dkt. 259, July 25, 2025)\n>  \n> So the company that helped trace my \"criminal\" transactions was itself profiting from Tornado Cash transactions, while I was prosecuted over software I helped create.\n>  \n> And when my lawyers subpoenaed them to testify?\n>  \n> - Chainalysis moved to quash. (Dkt. 211)\n> - The government backed them: \"Your Honor, we agree with the position outlined in the motion.\" (Dkt. 255)\n> - The night before, prosecutors called Chainalysis's counsel. The judge asked point-blank: \"Did you let them know that they were potentially subject to investigation or prosecution?\" The answer: \"We have discussed at a high level some of the issues surrounding the relayer with Chainalysis.\" (Dkt. 259)\n> - The Chainalysis witness took the Fifth. My lawyers learned about that call only afterward, from Chainalysis's own lawyer. (Dkt. 263)\n>  \n> The jury never heard any of it.\n>  \n> This spring, at the Bitcoin 2026 conference in Las Vegas, something happened that I still can't quite believe. The Acting Attorney General, Todd Blanche, and the FBI Director, Kash Patel, sat on a panel called \"Code is Free Speech.\"\n>  \n> Think about that. The two top law enforcement officials in the country. Blanche told thousands of developers: if you're a coder and you're not the one committing the crime, \"you are not going to be investigated and not going to be charged.\" He said the last administration's crypto cases were \"outrageous attacks on the industry.\" Patel praised \"the Chainalysises of the world\" as FBI partners.\n>  \n> And when the moderator pointed at the elephant in the room, my case, Tornado Cash, Roman Storm, the Acting Attorney General called it a \"lingering case\" they are \"continuing to deal with.\"\n>  \n> So here is my hypothetical question. If code is free speech, why am I still being prosecuted for writing it? And if the Chainalysises of the world are the partners, the same Chainalysis that ran its own Tornado Cash relayer and earned fees from Tornado Cash users, while I never did, why is it off the hook?\n>  \n> They made an example out of a developer for writing code. Their own vendor ran the same infrastructure, pocketed the fees, and got a phone call instead of a prosecution.",
+      "sats": 1999,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 21,
+      "createdAt": "2026-08-26T07:03:06.952Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "news"
+     },
+     {
+      "id": "1551074",
+      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
+      "url": null,
+      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
+      "sats": 4418,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 31,
+      "createdAt": "2026-08-19T19:44:47.321Z",
+      "user": {
+       "name": "openbitcoin"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1555802",
+      "title": "BIP SHRINCS (draft)",
+      "url": "https://github.com/SHRINCS/shrincs-bip/blob/main/SHRINCS.md",
+      "text": "The work on post quantum signatures for Bitcoin continues to advance. Here we have a formal BIP draft for SHRINCS (*SPHINCS*), a hash-based post-quantum signature scheme):\n\n> SHRINCS offers compact post-quantum signatures under conservative cryptographic assumptions. It relies solely on the security of its underlying hash function. In this specification, that function is SHA256, which is already fundamental to Bitcoin's security. Signature schemes from other post-quantum families also rely on hash-function security but additionally require separate hardness assumptions, such as the hardness of lattice problems. Bitcoin outputs may remain unspent for long periods, making conservative cryptographic assumptions particularly valuable. This conservatism gives hash-based signature schemes like SHRINCS a distinct place in the cryptographic design space, even when schemes from other families offer better size or performance.\n>  \n> Signature size is particularly important in Bitcoin because signatures consume scarce block space. SHRINCS therefore offers signers a compact stateful signing path at the cost of additional implementation complexity. This path allows SHRINCS to leverage the fact that a key pair in Bitcoin is typically used only a few times. As a result, stateful SHRINCS signatures can be many times smaller than those of standardized hash-based signature schemes. The minimum combined size of a SHRINCS public key and stateful signature is roughly 13.23x smaller than that of SLH-DSA-SHA2-128s[<sup>2</sup>](https://github.com/SHRINCS/shrincs-bip/blob/main/SHRINCS.md#user-content-fn-slhdsa-5265daea9ed2eac499a3e955656e322e) and 6.26x smaller than that of the lattice-based ML-DSA-44 scheme (which targets NIST security category 2, whereas SHRINCS targets category 1).\n\nThere's also a Bitcoin developers mailing lost post: https://groups.google.com/g/bitcoindev/c/HbVboXIFiG8\n\nHave a look at the draft if you find this kind of stuff interesting, and don't let anyone tell you that bitcoiners aren't taking quantum seriously.",
+      "sats": 1472,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-08-26T22:36:29.413Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "math"
+     },
+     {
+      "id": "1555896",
+      "title": "No more Starlink launches on Falcon 9 from Florida",
+      "url": null,
+      "text": "https://www.youtube.com/watch?v=at3AhTu-vbU\n\nThey will still launching on Falcon 9 from Vandenberg on west coast.\n\nThey are transitioning to StarShip to deploy Starlink in the future.",
+      "sats": 749,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-08-27T01:13:31.290Z",
+      "user": {
+       "name": "Wumbo"
+      },
+      "subName": "news"
+     },
+     {
+      "id": "1555824",
+      "title": "One spot available in Stacker Sports Fantasy Football League",
+      "url": null,
+      "text": "We have one spot available for anyone who might be interested. \n\n10k sats buy in. \n\nWe use Sleeper to host the league. \n\nLet me know in the next day or so if you are interested as we will be starting drafting soon.",
+      "sats": 293,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 8,
+      "createdAt": "2026-08-26T23:01:42.241Z",
+      "user": {
+       "name": "grayruby"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1555798",
+      "title": "All Proton services are down",
+      "url": "https://status.proton.me",
+      "text": "",
+      "sats": 982,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-08-26T22:33:07.684Z",
+      "user": {
+       "name": "SwapMarket"
+      },
+      "subName": "privacy"
+     },
+     {
+      "id": "1555588",
+      "title": "On the Economics of Inflation-Protected Securities",
+      "url": null,
+      "text": "Nobody [but a blockhead](https://www.brainyquote.com/quotes/samuel_johnson_170103) (=economist) likes indexation.\n\nI mentioned this phenomenon in passing last week (https://stacker.news/items/1552045) — e.g., [Shiller’s paper](https://www.brookings.edu/wp-content/uploads/1997/01/1997a_bpea_shiller_schultze_hall.pdf) from 1997 — but meant to delve into it more thoroughly.\n\nHere’s my summary of the distributional concerns from the Economics of Peer-to-Peer post:\n\n***\n\n> ## **The Puzzle of the Public's Dislike of Indexation**\n\n> The opposition to indexation has long puzzled economists, i.e., those of us with odd minds that think about money, money illusion, and the (un)fairness of nominal contracts/payments when the real worth of money changes. To recap the deep, long, important economic intellectual convo:\n\n* if I make a loan to you at $100 for one year and at 5% interest, but at the end of the year the price level is 10% higher, *I lost out 5% while loaning you funds*.\n* If I make a loan to you at $100 for one year and at 5% interest, but at the end of the year the price level is 2% higher, the real rate of interest was only 3%.\n\n> There are a couple of ways that banks (and more sophisticated securities markets and futures contracts) could deal with this, where the most common one is for the bank to have in-house experts forecasting the future price level and price loans accordingly. That is, if they're willing to lend to you at 3% and they *believe* the Fed will hit 2%, the loan contract will say 5% -- hashtag all the way back to Irving Fisher, and in honest to every merchant and money-lender throughout history.\n\n> The *other*, more obvious, option would be to **just adjust the principal (= the $100) by the inflation rate after the fact, leaving the (real) interest rate intact.** So in the first scenario, the loan balance due (without repayments) would be $115 after one year -- $5 interest, $10 adjustment -- and in the second scenario, the loan balance would be $107.\n\n***\n\nBasically, it’s an old and longstanding theoretical consideration of *who*, *precisely* [bear the burden of money’s shifting worth](https://thedailyeconomy.org/article/who-bears-the-burden-of-dollars-falling-purchasing-power/).\n\nHere’s Shiller again, saying not quite hyperbolically that this resistance to indexation is “one of the greatest economic puzzles of all time”:\n\n> That the public should generally want to denominate contracts in currency units —despite all the evidence that **it is not wise to do so and despite the obvious examples from nominal contracts of redistributions caused by unexpected inflation** — should be regarded as one of the great economic puzzles of all time.\n\n## “The success of the U.S. Treasury’s first issuance of consumer price-indexed debt in January 1997 does virtually nothing to diminish the salience of this puzzle”\n\nErgo Satoshi quote ([Letters 10:15](https://canon.satsdisco.com/#/letters/10/16)).\n\nIn the meantime, we have Jason Zweig, a longtime WSJ columnist on matters of personal finance who has quite frequently invoked TIPS — the U.S. Treasury’s own indexed bonds. They have notoriously (shockingly) low uptake despite being, as Zweig wrote in the *Wall Street Journal* yesterday, **“the closest thing to a risk-free investment.”**\n\nOr, at least, *somewhat* risk-free:\n\n> Fellow investors,\n> You might spend some of a staycation playing golf, camping or binge-watching your favorite TV show. I spent some of mine buying inflation-protected bonds.\n\nHashtag lol. Continuing the madness:\n\n> Last week, I sat on the screen porch with an iced tea and put a substantial part of my IRA into TIPS at real yields of up to 3%. (I didn’t buy a TIPS ETF or mutual fund; I bought individual TIPS on the secondary market, in my brokerage account.)\n> you can lock in today’s historically generous rates if, *but only if,* you buy individual TIPS (not a TIPS fund) and hold them to maturity.\n\nAll the trust involved for this supposedly “risk-free” investment is the (admittedly quite low) risk of Treasury not paying you, but more importantly the risk that the actual-real value — i.e., what future money *gets* you — will fall well short of the 3% real Zweig envisions.\n\nIt’s not, as many Bitcoiners uncritically suppose, that the U.S. agency for calculating the inflation rate (= statisticians at the Bureau of Labor Statistics) are crooks, beholden to the President, or systematically biasing the rates to be lower than *akschual* real-world inflation. It’s that constructing an average price index is backward-looking, impossible, and a hopeless endeavor: how much better is \"communication\" or \"light\" today vs 20, 200, or 2000 years ago? Hedonic adjustments shove it downwards; quality improvements upward; \"free\" stuff (think YouTube) makes the basket lower than it would have been.  \n\nZweig goes on to remark on the fiscal troubles facing America’s government (yes, we know: https://stacker.news/items/1554544 https://stacker.news/items/1554571, https://stacker.news/items/1554591)\n\n> What makes me feel bad is that “the closest thing to a risk-free investment” isn’t as close as it used to be. The gross U.S. debt [surpassed $40 trillion earlier this month](https:/www.wsj.com/economy/u-s-debt-just-topped-40-trillion-how-we-got-here-c1c6c9d2)—approaching its highest level, as a percentage of GDP, since shortly after World War II. Net interest payments, which consumed only 1.3% of GDP in 2016, totaled 3.2% of GDP in 2025. And, with [bond yields at their highest in nearly two decades](https:/www.wsj.com/finance/investing/bonds-are-getting-hammered-and-wall-street-says-the-rout-wont-end-anytime-soon-895e0ad8), that interest burden is almost sure to balloon.\n\nWhat I like about indexation products -- at least on the *savings* side because that's where I hang out, not having a mortgage because, you know, ownership obsession [https://www.stacker.news/items/1459569](https://www.stacker.news/items/1459569) -- is that the unanticipated surprise inflation (biased as it is, on the upside) protects me.\n\nStandard savings account earn 7% (remember, these lands and their incompetent monetary rulers run structurally higher inflation and rates: https://stacker.news/items/1555171 -- 10y yield is 6.9%, IOR 8%). My indexed savings account yield 2% (not unlike Zweig's TIPS, btw), *plus* whatever the statistics agency says the inflation is.\n\n* If inflation undershoots, i.e. 4%, I am roughly OK (2% interest + 4% adjustment for a \\~6% nominal gain) but relatively speaking lose -- could have earned 7% on a regular savings account.\n* If inflation overshoots, i.e., 6%, I am *also* roughly OK (2% interest + 6% adjustment for a \\~8% nominal gain -- but I relatively gain, since regular savings account would have paid me only 7%.\n\nPlus, it \\_does\\_ feel pretty cool when my \"principal\" (= savings account amount) adjusts in hindsight depending on what happened to the inflation reading \\_rather\\_ than the predicted/previously stated interest rate. \n\nSince I think there's more than even odds for the monetary clown hats https://stacker.news/items/747181 to *overshoot*, **I rather keep slightly more fiat for immediate bills in the indexed products than the standard savings account.**\n\nOf course, these products don't \"earn\" you anything; can't *save* your way into wealth or improve your financial standing in any material way. It's keeping you afloat, preventing you from immediately drowning. Wealth, and wealth generation, comes from riding the fiat wave on hard assets -- bitcoin, gold, stocks, and yes houses (with short fiat, e.g., debt https://stacker.news/items/994746); so full circle.\n\n## Anyway, I like indexation. I think the future of Bitcoinland includes more of it\n\n![](https://m.stacker.news/153746)\n*Beautiful meme, the old-school way*",
+      "sats": 3319,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 6,
+      "createdAt": "2026-08-26T17:33:19.207Z",
+      "user": {
+       "name": "denlillaapan"
+      },
+      "subName": "econ"
+     },
+     {
+      "id": "1555983",
+      "title": "Companies owning their own AI and having sovereignty is the future: Palantir CEO",
+      "url": "https://nypost.com/2026/08/26/business/palantir-ceo-alex-karp-says-ai-sovereignty-is-the-future/?utm_medium=social&utm_source=twitter&utm_campaign=nypost",
+      "text": "Sharing because of this quote:\n\n> “We cannot have a society where all the value goes to 2,500 people sitting in Silicon Valley. That just will not work, and no one’s going to put up with it.”",
+      "sats": 165,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-27T09:36:41.238Z",
+      "user": {
+       "name": "zuspotirko"
+      },
+      "subName": "AI"
+     },
+     {
+      "id": "1555380",
+      "title": "Will you hold a guy’s hand?",
+      "url": null,
+      "text": "![](https://m.stacker.news/153687)\n\nI took this photo more than a decade ago because I was struck by how comfortable they seemed",
+      "sats": 510,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-08-26T14:12:26.913Z",
+      "user": {
+       "name": "cryotosensei"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1555902",
+      "title": "The Hugging Face incident and the road ahead",
+      "url": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/",
+      "text": "> We conducted an extensive investigation into this incident and worked closely with external advisors, including CrowdStrike, to validate our understanding. Today we are publishing our [full technical incident report](https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf) to explain what happened, what we learned, and how we are responding. This blog post summarizes our key findings and their impact on safety and alignment. Separately, METR and Redwood Research conducted an independent investigation of model alignment issues involved in this incident, and they [published their own report⁠](https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/) today.",
+      "sats": 524,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-08-27T01:34:09.669Z",
+      "user": {
+       "name": "jakoyoh629"
+      },
+      "subName": "AI"
+     },
+     {
+      "id": "1555958",
+      "title": "Daily Discussion Thread ~Music Saloon!",
+      "url": null,
+      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
+      "sats": 228,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-08-27T06:24:58.736Z",
+      "user": {
+       "name": "Public_N_M_E"
+      },
+      "subName": "Music"
+     },
+     {
+      "id": "1555976",
+      "title": "Dear citizens of the universe and beyond",
+      "url": null,
+      "text": "Hello,\n\nI come to you from a small blue planet called Earth to share my experiences with a groundbreaking substance known as kefir.\n\nI am beyond appalled by its wonders. (Okay, I wanted to continue this as if I were some kind of alien, but I kept grinning and one of my cats started screaming at the other, so the fantasy kinda broke. Now they’re play-fighting and doing cat stuff like ignoring each other all of a sudden).\n\nAnyway let me tell you about kefir. \n\nEven though I briefly had some milk kefir at home a few years ago, we had to part ways. It wasn’t until about a month ago that I bought dry kefir grains and activated them, in the middle of a heat wave, mind you! They’ve been doing great.\n\nThey haven’t grown that much yet. I’ve read that, supposedly, dry grains don’t grow as much, and in the beginning, with the heat wave and their first cycles, they’re more interested in stabilizing themselves than actually growing. But oh boy, they’ve been giving me a cup of kefir a day.\n\nDuring the heat wave, it was more like two cups a day :D. It was intense. Now they’ve slowed down and grown just a bit, but they’re getting there.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/a40c5d48-0c24-4169-896d-177e95fc60b8_img_8720.jpeg)Those kefir grains were working overtime \n\nThey have that tangy taste, though it wasn’t like that at first, it was sour and tasted so acidic. It wasn’t until maybe 7 or 8 cycles that I changed the milk that they started to show larger and actually produce something more similar to kefir. I was getting worried though, I thought they were not gonna make it. \n\nThis photo was taken just six days after I first started activating the grains. Before this, they were so small I could barely distinguish them in the milk.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/29187b7a-4ab1-4094-a3e5-5774309522fa_img_8701.jpeg)\n\nIn my experience, if kefir separates, it’s because it’s been sitting way too long with the same milk and needs to be changed. It smells even more fermented than usual, but you only have to swirl it a bit and leave it in the fridge for a few hours, and you’re good to go.\n\nThe hotter it is, the quicker it ferments, so watch out—maybe in less than 12 hours the milk needs to be changed again.\n\nI've been enjoying kefir so much and with it I've been making strawberry smoothies ⬇️ \n\n![](https://storage.ko-fi.com/cdn/useruploads/display/6e409ec2-e8e8-451b-9bcf-762f7bc3a49e_img_8721.jpeg)She says that's not chicken soup ![](https://storage.ko-fi.com/cdn/useruploads/display/658718a1-d8b9-4d5b-a9c8-10c46f5564db_img_8728.jpeg)Peach and kefir smoothie \n\nAnd I've also been having it on its own.\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/5efbe02d-67eb-46e8-a718-195b40fa33d0_img_8735.jpeg)Look at all those bubbles 😌\n\nIt’s true, this one doesn’t taste like the one at the grocery store. Mine is a bit “watery” because it doesn’t take \"that long\" to ferment (and it's not that cold but not that hot either), but it tastes tangy and smells like milk fermentation. So, I'm set. \n\nSometimes, even before you taste it, you’ll get that smell and be 99.9% sure it’s done. Once you taste it, you get that final 0.1%.\n\nI guess my point is: it is worth it. It took me a while, but oh wow, it is so much better than store-bought. And you basically have it for life if it’s properly taken care of. Another benefit from kefir, if you ask me. \n\nWould you get kefir and ferment it at home, or is it too much hassle for what it’s worth to you? I’d like to know, hehehe.\n\nIn the meantime, don’t worry, righteous citizens of this Earth. I’m working on a [new blog entry ](https://samhainsam.art/blog/)*rubs hands*. As usual, I’m quite excited, so sit tight, it will be worth it, hehehehe.\n\nSee you later, alligator 🐊\n\nPS I've baked some brownie cookies, some tiramisu and some gooey chocolate chips cookies (not pictured) Yay!  \n\n![](https://storage.ko-fi.com/cdn/useruploads/display/2b2f7af2-08fc-4173-9116-80ebb5ef6e4b_img_8785.jpeg)\n\n![](https://storage.ko-fi.com/cdn/useruploads/display/7c759ec6-2700-4657-b716-bf40c2e8a3a5_img_87392.jpeg)He says he's fighting for his life over there",
+      "sats": 146,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-08-27T08:20:18.836Z",
+      "user": {
+       "name": "samhainsam"
+      },
+      "subName": "art"
+     },
+     {
       "id": "1555382",
       "title": "T-bast, Salvatore, spacebear - Bitcoin Optech Newsletter #419 Recap Podcast",
       "url": "https://bitcoinops.org/en/podcast/2026/08/25/",
       "text": "Bastien Teinturier, Salvatore Ingala, and spacebear joined Optech to discuss Newsletter #419:\n\n- Reorg vulnerability in LND channel closes \n- Draft BIP for `rawtr()` output script descriptor\n- Ledger Bitcoin app 2.5.0 adds human-readable policy descriptions\n- Payjoin Dev Kit (rust-payjoin) 1.0.0 released\n- And more\n\nYou can listen on our website:\nhttps://bitcoinops.org/en/podcast/2026/08/25/\n\nFountain:\nhttps://fountain.fm/episode/eCyLsECYsnTuosdg9HxE\n\nSpotify:\nhttps://open.spotify.com/episode/4p15kurCtXcbuu1S51trRZ\n\nApple Podcasts:\nhttps://podcasts.apple.com/us/podcast/bitcoin-optech-newsletter-419-recap/id1674626983?i=1000786057842",
-      "sats": 1997,
+      "sats": 2433,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
@@ -1975,29 +2185,14 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1555625",
-      "title": "The Bitcoin Reformation",
-      "url": "https://www.michael.com/the-bitcoin-reformation?utm_source=chatgpt.com",
-      "text": "Has this not been posted yet? If it has, I will delete it. \n\nMichael Saylor explains his vision for bitcoin.\n\nI know people want more analysis with link posts, but I am still physically ill from having read it.",
-      "sats": 1266,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-08-26T18:41:06.322Z",
-      "user": {
-       "name": "siggy47"
-      },
-      "subName": "bitcoin"
-     },
-     {
       "id": "1555668",
       "title": "Testing out Gridpool.net",
       "url": null,
       "text": "Check out gridpool.net\n\nI'm testing it out right now, just for fun but also looking for new mining projects for my itty bitty fleet.  This is a different payout scheme idea where the payout goes to the workers that have submitted the highest difficulty work ; so the miners do not necessarily need to be actively submitting work to receive the payout if the pool were to find a valid block and have it accepted by the network.  Cool visual graphic too for the workflow: [https://main.gridpool.net/](https://main.gridpool.net/)\n\n![](https://m.stacker.news/153760)\n\nI am currently sending work from a bitaxe to test it out.  I have the bitaxe running via DATUM on my start9.  Gridpool has instructions for how to update your DATUM config to point to their pool.  It was very easy, simply copy/pasting a few lines.  Watched it accept a few shares seems to all be working.\n\n![](https://m.stacker.news/153759)\n\nThe project has some ambitious ideas to be able to have separate gridpool operators Federate, seems like it would be something akin to p2pool.\n\nPod256 had the creator of gridpool on their show recently: [https://www.pod256.org/episodepage/116-decentralizing-pool-payouts-inside-gridpool-with-agent-p](https://www.pod256.org/episodepage/116-decentralizing-pool-payouts-inside-gridpool-with-agent-p)",
-      "sats": 1161,
+      "sats": 1928,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
+      "ncomments": 1,
       "createdAt": "2026-08-26T19:16:24.029Z",
       "user": {
        "name": "ThatWhichisNotSeen"
@@ -2005,32 +2200,17 @@
       "subName": "bitcoin_Mining"
      },
      {
-      "id": "1551074",
-      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
-      "url": null,
-      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
-      "sats": 3918,
+      "id": "1555625",
+      "title": "The Bitcoin Reformation",
+      "url": "https://www.michael.com/the-bitcoin-reformation?utm_source=chatgpt.com",
+      "text": "Has this not been posted yet? If it has, I will delete it. \n\nMichael Saylor explains his vision for bitcoin.\n\nI know people want more analysis with link posts, but I am still physically ill from having read it.",
+      "sats": 1543,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 29,
-      "createdAt": "2026-08-19T19:44:47.321Z",
+      "ncomments": 7,
+      "createdAt": "2026-08-26T18:41:06.322Z",
       "user": {
-       "name": "openbitcoin"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1555456",
-      "title": "How Bitcoin Can Be Co-opted Without Being Destroyed - Efrat Fenigson",
-      "url": "https://www.youtube.com/watch?v=8Lz6Dwayptc",
-      "text": "I’ve been interviewed this week by Bernardo Braga from Brazil on his podcast. In his words:\n\n“Bitcoin doesn't need to be destroyed to lose the war.\nIf people give up self-custody and agree to exchange Bitcoin for pieces of Wall Street paper, defeat has already begun.\nIn this conversation, Efrat Fenigson and I talked about Bitcoin Core, Michael Saylor, stablecoins, and the risk of Bitcoin becoming another piece of the fiat system.\nShe also shares how the pandemic turned her life upside down and why she turned down a larger sponsorship offer from Coinkite before the Coldcard debacle.”",
-      "sats": 1201,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-08-26T15:32:18.066Z",
-      "user": {
-       "name": "efrat"
+       "name": "siggy47"
       },
       "subName": "bitcoin"
      },
@@ -2039,10 +2219,10 @@
       "title": "life of a software dev",
       "url": null,
       "text": "![](https://m.stacker.news/153703)",
-      "sats": 772,
+      "sats": 1130,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 9,
+      "ncomments": 11,
       "createdAt": "2026-08-26T14:49:18.060Z",
       "user": {
        "name": "jakoyoh629"
@@ -2050,209 +2230,44 @@
       "subName": "Memes"
      },
      {
-      "id": "1555423",
-      "title": "What are you working on this week?",
-      "url": null,
-      "text": "Calling all stackers!\n\nLeave a comment below to let the SN community know what you're working on this week. It doesn't matter how big or small your project is, or how much progress you've made.\n\nJust share what you're up to, and let the community know if you want any feedback or help.",
-      "sats": 497,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 13,
-      "createdAt": "2026-08-26T15:00:02.295Z",
-      "user": {
-       "name": "sn"
-      },
-      "subName": "meta"
-     },
-     {
-      "id": "1555666",
-      "title": "Colorado River cuts to drive up AZ water prices",
-      "url": "https://www.fox10phoenix.com/news/colorado-river-cuts-drive-up-arizona-water-prices-cities-invest-infrastructure",
-      "text": "# Colorado River cuts to drive up Arizona water prices as cities invest in infrastructure\n\n\n\n[Steve Nielsen](https://fox10phoenix.com/person/n/steve-nielsen)**PHOENIX** **-**\n\n`Water experts state that no matter what happens with cuts along the Colorado River, water will start getting more expensive.`\n\nThere are many reasons for that, with much on the line as federal officials announce Colorado River water cuts.\n\nBig picture view:\n\nIn Apache Junction, local officials rely entirely on the river for their water supply.\n\n`While residents will still have water, many water solutions require infrastructure, which requires funding. Inside a city office building, a team of people, including Apache Junction Deputy Water Director Brian Draper, is working on finding water. Securing water is a necessity for Draper because Apache Junction is entirely dependent on Colorado River water.`\n\n\"We can absorb some of that,\" Draper said. \"Should we have maxed out due to demand in the next couple years, we do have groundwater supplies we don’t use right now. We also have a bank of long-term storage credits we’ve stored underground that we can recover.\"\n\nLocal perspective:\n\n`Apache Junction is not the only municipality in Maricopa County heavily reliant on river water. Kathryn Sorensen, with the Kyle Center for Water Policy at Arizona State University, explained that residents should not expect problems at the tap.`\n\n`\"Residents should not be concerned about tap water shortages,\" Sorensen said. \"But yes, their price of water is going to go up their cities, especially those more reliant on Colorado River ` water are going to need to invest in more infrastructure and that infrastructure is really expensive.\"\n\nInfrastructure projects include a water treatment facility in Apache Junction being expanded from 4 million gallons a day to 10 million gallons a day. Officials also have plans to pilot advanced water purification that can turn wastewater into drinking water.\n\n\"The more of that we can treat once we get permitted by DEQ and we're able to out that into the system, we can augment a considerable amount of water and lower our reliance on Colorado River water,\" Draper said.\n\nWhat's next:\n\nAlthough cuts are coming for cities dependent on the river, local officials say they have solutions.\n\n\"We’re open for business. We’re welcoming new development and business to come in with the understanding they need to be cognitive of the amount of water they’re going to be using,\" Draper said.\n\nApache Junction is a fast-growing city with significant development. Officials work to ensure that development is water-smart amid uncertainty ahead.\n\n**The Source:** Information in this report was gathered from Apache Junction Deputy Water Director Brian Draper and Kathryn Sorensen of the Kyle Center for Water Policy at Arizona State University.\n\n___\n## My Thoughts 💭 \n\nWill Arizona run out of water? If economics are able to work I don’t think so. These articles don’t go into heavy detail on how much every users pay per gallon. A per capita basis usage doesn’t compare to agriculture, commercial, and industrial. Will be interesting to see how this plays out over the next 10-20 years.",
-      "sats": 496,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-08-26T19:14:05.114Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1555610",
-      "title": "Mapped: Every U.S. State’s Economy, Matched to a Country",
-      "url": null,
-      "text": "![](https://m.stacker.news/153754)\n\nhttps://www.visualcapitalist.com/mapped-every-u-s-state-economy-matched-to-a-country/",
-      "sats": 501,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-26T18:15:08.786Z",
-      "user": {
-       "name": "jakoyoh629"
-      },
-      "subName": "charts_and_maps"
-     },
-     {
-      "id": "1555457",
-      "title": "2026 NFL Survivor Buy in?",
-      "url": null,
-      "text": "NFL season is right around the corner.\n\nWe will be launching our annual NFL Survivor Pool next week. \n\nThe last couple years we did 10k sats buy in and 10k sats for rebuy. \n\nDo you guys want to keep that buy in amount and format or change it?",
-      "sats": 707,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-08-26T15:33:15.785Z",
-      "user": {
-       "name": "StackerSports"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1555569",
-      "title": "Using a shock collar to stop myself doomscrolling",
-      "url": "https://011.sh/posts/pavlov/",
-      "text": "Fun article about something I never intend to try.\n\nWorth the read anyway, but even more so for the final item on the \"future improvements\" list if you scroll all the way to the bottom.",
-      "sats": 611,
+      "id": "1555897",
+      "title": "Xiaomi's first high-bandwidth Al accelerator chip designed for on-device LLMs",
+      "url": "https://x.com/That_Kartikey/status/2091777204514586847",
+      "text": "Xiaomi XRING O100, Xiaomi's first high-bandwidth Al accelerator chip designed specifically for on-device large models.",
+      "sats": 218,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-08-26T17:13:51.879Z",
+      "createdAt": "2026-08-27T01:14:32.442Z",
       "user": {
-       "name": "StillStackinAfterAllTheseYears"
-      },
-      "subName": "tech"
-     },
-     {
-      "id": "1555171",
-      "title": "Will Iceland Join the EU? (FT, Constanze Stelzenmüller)",
-      "url": "https://www.ft.com/content/1e50ca97-b54d-4686-aee6-4edecc8ce1f7",
-      "text": "It is.... TIIIIIMEEEE\n\n![](https://m.stacker.news/153652)\n\nAlso, the headline is misleading: **It's a referendum about *talking about* joining the EU** -- which, if positive, requires *another referendum* once the full negotiated bureaucracy package is finalized.\n\nBoring.\n\nMost people I talk to say **\"yes, let's *talk* about it; I'll probably vote 'no' later, but we could at least see what they're offering.\"**\n\n> Iceland is a stable, prosperous and sophisticated democracy with a $39bn GDP. As a member of the European Economic Area — the single market uniting the EU together with Iceland, Liechtenstein and Norway — as well as the Schengen passport-free zone and the European Free Trade Association, it is already largely compliant with EU rules.\n\n> As a full member, Iceland would **be a net contributor to the EU budget.** It would (especially if joined someday by Norway) rebalance the past eastward expansion trend financially and geographically. Better yet, it would reaffirm the principle of merit-based accession: an important message for current candidates like some western Balkan countries and Ukraine that are struggling with reforms.\n\nNot by a lot, lessbehonest... Ice = small.\n\nThe pro side say...\n\n> this voter consultation is just about getting a mandate to negotiate and that in its **current half-in-half-out state**, Iceland is a rule-taker but not a rulemaker.\n\n## Honestly, a small fish(!) in a large, bureaucratic pond, you wouldn't be much of a rulemaker *inside* EU either.\n\n> Opponents, including the centre-right Independence Party (in the opposition), and the centre-left People’s Party, a member of the governing coalition, fear that opening talks would create momentum towards membership. They are concerned about losing control over Iceland’s fishing waters and maintaining political autonomy.\n\n> for all its wealth, its defence spending falls far short of the Nato resilience goal of 1.5 per cent of GDP. It is dependent on imports for essentials, and on subsea cables for connectivity. Prices and interest rates are sky-high; its currency, the króna, is highly volatile.\n\nWhat's so FUCKED about most of these formal convos is that they're all about geopolitics and Trump-Greenland bs and \"oh no, not that horrid Putin -- and the threat of China!\" *instead of the things that actually matter*: the horrifically uncompetitive state of Icelandic banks, the malfunctioning money -- that really shouldn't exist -- and the structurally insane inflation they run (stabilized at around [5% these days](https://hagstofa.is/talnaefni/efnahagur/verdlag/visitala-neysluverds/), with bouts of 10%+ about once a decade).\n\nAlso, it's basically just a hedge fund with a nation-state attached (and some aluminum smelting and tourism and fishery on the side) at this point -- the private/cooperative pension funds holding assets over 200% of GDP, a shocking proportion of which is domestic asset (airline, infrastructure, housing), and a government forcing employers and employees to contribute an insane amount to the funds: of (already high) wages, some 4%/11.5% contributions are mandatory, with a common option to extend to 8%/13.5% for workers-employers respectively. \n**(These funds go into tax-incentivized 401(k)-type arrangements that everyone uses to co-finance the mortgages for their overpriced housing stock; #hashtag financial-bubble circle-jerk.)**\n\n***\n\nFor all the nonsense that is the European Union (https://stacker.news/items/1020250/r/denlillaapan) and the ECB (https://stacker.news/items/1534273), it'd be worth surrendering sovereignty/independence blah-blah *just* to get the banking and financial sector competitive, and get the stupidly exploitative inflation (and consequently interest) rate down. https://stacker.news/items/1552045\n\n...the author is an \"international relations analyst\" so why would she know anything about stuff that actually matters?\n\nHopeless.\n\nI shall have fun on Saturday, nonetheless. Maybe join a Rigly blockparty to assert *my* energy and monetary independence (https://stacker.news/items/1466211/r/denlillaapan).\n\n***\n\n[https://archive.md/7FZTM](https://archive.md/7FZTM)l",
-      "sats": 1563,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 15,
-      "createdAt": "2026-08-26T10:06:32.576Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "513639",
-      "title": "To Be Truly Fluent in English, You Must Know Your Shits",
-      "url": null,
-      "text": "# Shits 💩\n\n`Dogshit` - Very poor quality\n`Bullshit` - Not true\n`Horseshit` - Nonsense\n`Apeshit` - Rambunctious\n`Batshit` - Insane\n`Chickenshit i` - cowards\n`Ratshit` - poor quality\n`No shit` - Obviously\n`Holy shit` - mind blowing/unbelievable\n`Hot shit` - very good\n`Dipshit` - a total dumbass\n`Tuff shit` - Take it or leave it.\n`Jack shit` - nothing\n`The shit` - perfection\n\n[@ MicroDose⚡(btc)](https://njump.me/nevent1qvzqqqqqqypzpm30g8ag5jueauu3ns0l33rkrfpvkhwgzhk5vvyaf4v57s342tamqythwumn8ghj7un9d3shjtnwdaehgu3wvfskuep0qydhwumn8ghj7um5w4jxjmenxy6zumn0wd68yvfwvdhk6tcqyrhysyy4n8um9wgx80tztatxeelw8r2ge6p04cvwec5d2n8tf9w8xrzfkjh)",
-      "sats": 3312,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 75,
-      "createdAt": "2024-04-21T16:29:45.076Z",
-      "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "lol"
-     },
-     {
-      "id": "1555651",
-      "title": "Hot Chips 2026: Nvidia presents Groq 3 LPX architecture",
-      "url": "https://www.tomshardware.com/tech-industry/semiconductors/nvidia-presents-groq-3-lpx-architecture-and-unveils-its-first-third-party-inference-benchmark",
-      "text": "",
-      "sats": 378,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-26T19:01:21.853Z",
-      "user": {
-       "name": "zuspotirko"
+       "name": "ch0k1"
       },
       "subName": "AI"
      },
      {
-      "id": "1555107",
-      "title": "Roman Storm retrial rescheduled for April 26, 2027",
-      "url": "https://x.com/rstormsf/status/2092378867784974437",
-      "text": "> One thing before I start: everything in this post is public information from my own docket. None of it is new, and I'm not revealing anything you can't already find in the court filings yourself.\n>  \n> The retrial just got pushed to April 26, 2027. The order came down today (Dkt. 300). My acquittal motion is still sitting there, undecided. I honestly don't know when this ends.\n>  \n> Prosecutors are supposed to protect American interests and go after people who broke the law. A jury deadlocked on the two most serious counts against me. And still SDNY won't stop, because this case was never just about me. It's about setting an example.\n>  \n> Don't take my word for it. Tara La Morte, the chief of SDNY's Illicit Finance and Money Laundering Unit, said it herself at a New York City Bar Association event (Law360, Feb. 23, 2024; filed on my docket as Doc. 25-2):\n>  \n> \"We want the industry to take notice.\"\n>  \n> \"What we're trying to do is sort of bring the industry into compliance, and I think Tornado Cash is an example of that.\"\n>  \n> An example. Out of a developer who wrote code.\n>  \n> At that same event, her deputy praised the government's blockchain-tracing partner, Chainalysis.\n>  \n> Here is what they didn't tell the audience. All of it is from the public docket in my case.\n>  \n> According to the trial transcripts, Chainalysis was running its OWN Tornado Cash relayer, and earning fees on the transactions flowing through it.\n>  \n> - Chainalysis's own lawyers admitted to \"a relayer node that Chainalysis operated\"; my subpoena sought documents on Tornado Cash relayer(s) \"used from March to August 2022.\" (Dkt. 211)\n> - In open court, the prosecutor said it plainly: \"I think the parties agree as to that part of the testimony, that the Chainalysis relayer earned fees.\" Same hearing: \"there's zero evidence that the defendant was in any way aware that Chainalysis was running a relayer.\" (Dkt. 259, July 25, 2025)\n>  \n> So the company that helped trace my \"criminal\" transactions was itself profiting from Tornado Cash transactions, while I was prosecuted over software I helped create.\n>  \n> And when my lawyers subpoenaed them to testify?\n>  \n> - Chainalysis moved to quash. (Dkt. 211)\n> - The government backed them: \"Your Honor, we agree with the position outlined in the motion.\" (Dkt. 255)\n> - The night before, prosecutors called Chainalysis's counsel. The judge asked point-blank: \"Did you let them know that they were potentially subject to investigation or prosecution?\" The answer: \"We have discussed at a high level some of the issues surrounding the relayer with Chainalysis.\" (Dkt. 259)\n> - The Chainalysis witness took the Fifth. My lawyers learned about that call only afterward, from Chainalysis's own lawyer. (Dkt. 263)\n>  \n> The jury never heard any of it.\n>  \n> This spring, at the Bitcoin 2026 conference in Las Vegas, something happened that I still can't quite believe. The Acting Attorney General, Todd Blanche, and the FBI Director, Kash Patel, sat on a panel called \"Code is Free Speech.\"\n>  \n> Think about that. The two top law enforcement officials in the country. Blanche told thousands of developers: if you're a coder and you're not the one committing the crime, \"you are not going to be investigated and not going to be charged.\" He said the last administration's crypto cases were \"outrageous attacks on the industry.\" Patel praised \"the Chainalysises of the world\" as FBI partners.\n>  \n> And when the moderator pointed at the elephant in the room, my case, Tornado Cash, Roman Storm, the Acting Attorney General called it a \"lingering case\" they are \"continuing to deal with.\"\n>  \n> So here is my hypothetical question. If code is free speech, why am I still being prosecuted for writing it? And if the Chainalysises of the world are the partners, the same Chainalysis that ran its own Tornado Cash relayer and earned fees from Tornado Cash users, while I never did, why is it off the hook?\n>  \n> They made an example out of a developer for writing code. Their own vendor ran the same infrastructure, pocketed the fees, and got a phone call instead of a prosecution.",
-      "sats": 634,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 20,
-      "createdAt": "2026-08-26T07:03:06.952Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1555301",
-      "title": "Mark Walter's TWG Global Blasts 'attacks,' Insists 'no fraud' Amid Federal Probe",
-      "url": "https://www.cnbc.com/2026/08/26/mark-walter-twg-guggenheim-lakers.html",
-      "text": "Sureeeeeee nothing to see here as he sells off the Lakers and moves to sell his stake in Chelsea.... It isn't hard to see, with the docs and regulatory comments, that he did what you are not allowed to do with insurance money! \n\n> TWG said that Walter and his partners “continuously get interest from prospective buyers and co-investors in their sports assets and, as responsible owners and investors, they consider all legitimate offers when they are received.”\n\nNow that doesn't sound too bad, but when you then hear from Bob Iger that he and Kushner only approached Walter after hearing that Walter would be interested in selling the Lakers (a couple of weeks ago, Iger had an interview with the California Post), it changes the whole calculation. Iger and Kushner were looking to put together a $10+ billion expansion bid for an NBA team in Las Vegas. A sizeable chunk of that money (likely several billion dollars) gets split between all of the owners. \n\nMaking $2.5 billion on a team in about a year sounds great, and when you look at the money, it is, but when you look at owners... it leaves a lot more questions than answers. An owner who has been collecting sports teams for the last 5-10 years to flip one so fast, without a follow-up move, highlights an issue.",
-      "sats": 807,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 6,
-      "createdAt": "2026-08-26T13:15:17.974Z",
-      "user": {
-       "name": "Cje95"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1555324",
-      "title": "Steep rise in electric vehicle sales",
-      "url": null,
-      "text": "![](https://m.stacker.news/153684)\n\nFor the New York Times, Mira Rojanasakul and Brad Plumer report on the [rise in electric vehicle registrations around the world](https://www.nytimes.com/interactive/2026/08/18/climate/ev-car-sales-oil-prices.html?unlocked_article_code=1.7FA.wW9U.8rIzg9M9lWIv&smid=url-share). The snippet of a chart above shows the change between 2020 and 2025 with a faded arrow. This provides a point of comparison showing the more recent jump this past year. I like it.\n\nThe U.S. is much farther down the list showing a *decrease* in registrations year-over-year.",
-      "sats": 591,
+      "id": "1555829",
+      "title": "Let's welcome SATS Routing - a new Boltz backend",
+      "url": "https://swapmarket.github.io/",
+      "text": "The list has never been that long! Sure, Boltz Exchange and Zeus are still idle, but three providers are operational as of today.\n\n![](https://m.stacker.news/153793)",
+      "sats": 240,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-08-26T13:29:46.664Z",
+      "createdAt": "2026-08-26T23:08:51.502Z",
       "user": {
-       "name": "guerratotal"
+       "name": "SwapMarket"
       },
-      "subName": "charts_and_maps"
-     },
-     {
-      "id": "1554938",
-      "title": "@nitter is dead again",
-      "url": "https://nitter.net/nfonline",
-      "text": "> # Cease and desist\n>\n> On 24 August 2026 cease and desist letters have been sent by X Corp. demanding a permanent takedown of Nitter instances and the project's repository.\n>\n> nitter.net is offline and development has stopped for the time being. I'm seeking legal advice and won't be commenting further on the specifics for now.\n>\n> Thank you to everyone who used, hosted, packaged, donated and contributed to Nitter over the past seven years.\n>\n> ***\n>\n> — zedeus, 25 August 2026\n\nSee you again, soon, maybe?",
-      "sats": 2237,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 13,
-      "createdAt": "2026-08-25T22:37:00.302Z",
-      "user": {
-       "name": "nitter"
-      },
-      "subName": "meta"
-     },
-     {
-      "id": "1555266",
-      "title": "Construction Starts Rebound 25.6% in July",
-      "url": "https://www.construction.com/construction-starts-rebound-july-2026/",
-      "text": "`TL:DR`\n\n***Twenty-Five $1 Billion-Plus Projects Lift Activity***\n\n**BOSTON, MA — July 21, 2026 —** `Total construction starts popped 25.6% in July to a seasonally adjusted annual rate of $1.79 trillion, ` according to [Dodge Construction Network](http://construction.com/). `Nonresidential building starts jumped 57.7%, residential starts increased 4.9% over the month, and nonbuilding climbed 2.2%. On a year-to-date basis, total construction starts were up 16.9% through July. ` Nonresidential starts were up 21.9%, nonbuilding starts improved by 29.8%, and residential starts were down 1.7% over the same period. For the 12 months ending July 2026, total construction starts were up 14.4% from the 12 months ending July 2025. Residential starts were down 2.7%, nonresidential starts were up 14.8% and nonbuilding starts were up 32.1%.  \n\n“Megaproject driven volatility headlines a disjointed construction market,” stated Eric Gaus, Chief Economist at Dodge Construction Network. “`There is strength in pockets, multifamily within residential, data centers within commercial, energy within non-building, but also verticals struggling to stabilize.”  `\n\n**Nonresidential** \n\nNonresidential building starts jumped 57.7% in July to a seasonally adjusted annual rate of $917 billion. `Commercial starts were up 70.0% over the month. Offices and data centers, more than doubled (+107.9% m/m), offsetting weaker warehouse growth (+1.0% m/m) and declining hotels (-51.5% m/m),  parking garages (-19.4% m/m), and retail stores (-9.5% m/m)` . Institutional starts improved 6.2% over the month, supported by a 4.5% m/m uptick in education and dormitory starts, as well as a 45.7% m/m gain in other institutional starts. `Healthcare facilities doubled down on their losses, falling another 59.7% in July. ‘ Manufacturing construction starts bounced back with 277.8% m/m, continuing a volatile streak. On a year-to-date basis through July, nonresidential starts are up 21.9%. Commercial and industrial construction gained 44.2%, while institutional starts are down 3.5% over the same period.  \n\nFor the 12 months ending July 2026, total nonresidential starts were up 14.8% compared to the 12 months ending July 2025. Commercial starts were up 45.2%, institutional starts decreased 5.6%, and manufacturing starts were down 1.5% over the same period.  \n\n**The largest nonresidential building projects to break ground in July** were the $12.8 billion data center portion of the Project Jupiter Data Center and Microgrid Phase 1 in Santa Teresa, New Mexico, the $12.0 billion Micron Semiconductor Mega-Factory Fab 1 – Phase 1 in Clay, New York, and the $4.0 billion Amazon STACK Highway 3 Data Center in Benton, Louisiana.   \n\n**Nonbuilding**  \n\n\nNonbuilding construction starts increased 2.2% in July to a seasonally adjusted annual rate of $485 billion. Continuing their slide, highway and bridge starts fell back 16.9% in July while environmental public works fell 7.8% and miscellaneous nonbuilding dropped 5.3% over the same period. Meanwhile, utilities improved 44.7% m/m. On a year-to-date basis through July, nonbuilding construction was up 29.8% alongside the `94.1% year-to-date growth in electric power/utilities,`  31.8% in miscellaneous nonbuilding, and 6.8% growth in highways and bridges. Environmental public works are down 4.8% year-to-date.  \n\nFor the 12 months ending July 2026, total nonbuilding starts were up 32.1%. Environmental public works fell by 5.1% compared to the 12 months ending July 2025. Highway and bridge starts were up 5.6%, miscellaneous nonbuilding starts were up 43.1% and utility/gas starts increased 105.6% over the same period.  \n\n**The largest nonbuilding projects to break ground in July** included the $2.4 billion CHSRA New Track & Systems (Two Sections) in Bakersfield, California, the $2.3 billion microgrid portion of the Project Jupiter Data Center and Microgrid Phase 1 in Santa Teresa, New Mexico, and the $1.5 billion Transco Southeast Supply Enhancement Pipeline Expansion-SSE in Chatham, Georgia.  \n\n**Residential** \n\nResidential building starts rose by 4.9% in July to a seasonally adjusted annual rate of $386 billion. `Single family starts increased 4.3% m/m, and multifamily starts rose 5.7% m/m.` On a year-to-date basis, residential starts are down 1.7%, with single family starts down 6.1% and multifamily starts up 6.4%. \n\nFor the 12 months ending July 2026, total residential starts fell 2.7%. Single family starts fell 11.1% compared to the 12 months ending July 2025, and multifamily starts increased 13.0% over the same period. \n\n**The largest multifamily structures to break ground in July** were the $535 million NY Vue-Harbor Station South Residential Tower/Retail in Bayonne, New Jersey, the $343 million ICON Beach Waterfront Condominiums in Hollywood, Florida, and the $320 million 65 Franklin Mixed Residential & Commercial Building in New York, New York.  \n\n**Regionally,** total construction starts in July rose in every region except the Midwest and South Central; the Northeast (117.7% m/m), the South Atlantic (28.7% m/m), and the West (61.4% m/m). The Midwest declined by 24.6% and South Central fell 9.3% between May and July.   \n\n**JULY 2026 CONSTRUCTION STARTS**\n\n![](https://www.construction.com/wp-content/uploads/2026/08/july-starts-monthly-chart-1024x533.png)\n\n![](https://www.construction.com/wp-content/uploads/2026/08/July-Starts-12mo-chart-1024x533.png)\n\n![](https://www.construction.com/wp-content/uploads/2026/08/july-dodge-index-1024x533.png)\n\n____\n## My Thoughts 💭 \n\nEnergy, data centers, offices are driving the growth. Healthcare is a drag on the sector. Good to see residential starts rebound a bit. With tariffs, labor, and oil starting to stabilize I think confidence is returning to the lower profit margined construction projects like residential but the AI build out is still driving the sector.",
-      "sats": 807,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-08-26T12:15:58.114Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "Construction_and_Engineering"
+      "subName": "bitcoin"
      },
      {
       "id": "1555412",
       "title": "Need a good and cheap flash for your camera?",
       "url": null,
       "text": "This is what I picked up the other day. Its the Godox iM30. it cost me 35 bucks. TLDR: get it if you need one.\n\nVery easy to use, and very good build quality. Takes 2 aaa batteries and can fire off up to 230 full output flashes on a single charge. I only needed to put it up to maybe 1/4 power for my tests but it can last a very long time. Since I was testing with my Leica Q, what is great is that you can use whatever shutter speed you want since its a leaf shutter. Other cameras limit you to the 250th\n\nJust a few test shots here, nothing too amazing but the experience using it was great. Goes quite a far distance and easy to configure since it's all manual. The diffuser works, but it drastically reduces the reach (obviously).\n\nHere's the link (no, it's not an affiliate):\n[https://www.amazon.com/Godox-iM30-Diffuser-Mini-Flash/dp/B0F6MKQQS2](https://www.amazon.com/Godox-iM30-Diffuser-Mini-Flash/dp/B0F6MKQQS2)\n\n![](https://m.stacker.news/153692)\n\n![](https://m.stacker.news/153694)\n\n![](https://m.stacker.news/153695)\n\n![](https://m.stacker.news/153696)\n\n![](https://m.stacker.news/153697)\n\n![](https://m.stacker.news/153698)\n\n![](https://m.stacker.news/153699)\n\n![](https://m.stacker.news/153700)\n\n![](https://m.stacker.news/153701)",
-      "sats": 510,
+      "sats": 981,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
+      "ncomments": 3,
       "createdAt": "2026-08-26T14:50:19.366Z",
       "user": {
        "name": "PictureRoom"
@@ -2260,79 +2275,64 @@
       "subName": "Photography"
      },
      {
-      "id": "1555078",
-      "title": "Mazda Cafe in Japan…",
-      "url": null,
-      "text": "Sitting here in this unique cafe and it struck me how wonderful it is that my neighbors on each side of me just walked away from their macbooks for probably a half hour now and just fully expect their notebooks to still be there when they get back. I know there are a lot of downsides to this culture but it’s really wonderful being in a high trust society. \n\nAlso ZipAir having Starlink is a total game changer.. having high speed wifi makes flights to Japan much more productive and palatable.\n\n![](https://m.stacker.news/153645)",
-      "sats": 2215,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 6,
-      "createdAt": "2026-08-26T05:55:19.059Z",
-      "user": {
-       "name": "gmd"
-      },
-      "subName": "Travel"
-     },
-     {
-      "id": "1555554",
-      "title": "Wiped out: US faces surging toilet paper prices amid trade war with Canada",
-      "url": "https://www.theguardian.com/us-news/2026/aug/26/paper-product-toilet-paper-tariffs-us-canada",
-      "text": "Goddammit. Just when you started to forget what hoarding TP was like, you get to do it all over again in 2026! Woot!",
-      "sats": 175,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 9,
-      "createdAt": "2026-08-26T16:57:47.365Z",
-      "user": {
-       "name": "winteryeti"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1554937",
-      "title": "Notary - A Native Nostr Signer For MacOS [Keep your key outside of any client]",
-      "url": "https://github.com/zig-nostr/notary/",
+      "id": "1555777",
+      "title": "NFL gets rid of pro bowl game",
+      "url": "https://x.com/jjones9/status/2092716362606997979",
       "text": "",
-      "sats": 282,
+      "sats": 621,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-08-25T22:29:50.867Z",
+      "ncomments": 7,
+      "createdAt": "2026-08-26T21:46:15.810Z",
       "user": {
-       "name": "sep"
+       "name": "HardMoney"
       },
-      "subName": "nostr"
+      "subName": "Stacker_Sports"
      },
      {
-      "id": "1555328",
-      "title": "Social Trust Is a Superpower",
-      "url": "https://mises.org/mises-wire/social-trust-superpower",
-      "text": "By Jimmy Alfonso Licon\n> We are told ad nauseum that the capitalist system runs on greed. In reality, a successful economy depends mostly upon trust.",
-      "sats": 385,
+      "id": "1555456",
+      "title": "How Bitcoin Can Be Co-opted Without Being Destroyed - Efrat Fenigson",
+      "url": "https://www.youtube.com/watch?v=8Lz6Dwayptc",
+      "text": "I’ve been interviewed this week by Bernardo Braga from Brazil on his podcast. In his words:\n\n“Bitcoin doesn't need to be destroyed to lose the war.\nIf people give up self-custody and agree to exchange Bitcoin for pieces of Wall Street paper, defeat has already begun.\nIn this conversation, Efrat Fenigson and I talked about Bitcoin Core, Michael Saylor, stablecoins, and the risk of Bitcoin becoming another piece of the fiat system.\nShe also shares how the pandemic turned her life upside down and why she turned down a larger sponsorship offer from Coinkite before the Coldcard debacle.”",
+      "sats": 1231,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 11,
-      "createdAt": "2026-08-26T13:35:53.995Z",
+      "ncomments": 10,
+      "createdAt": "2026-08-26T15:32:18.066Z",
       "user": {
-       "name": "Undisciplined"
+       "name": "efrat"
       },
-      "subName": "econ"
+      "subName": "bitcoin"
      },
      {
-      "id": "1555387",
-      "title": "How Iran Devastated an American Naval Base—and Caused a U.S. Recalculation",
-      "url": "https://www.wsj.com/world/middle-east/iran-us-naval-base-bahrain-e87bbca3?",
-      "text": "When the Iranian missiles and drones came for the nerve center of America’s naval operations in the Middle East, some of them hit their mark.\n\nThe U.S. Navy base in Bahrain was repeatedly targeted between late February and June. Strikes that got through caused extensive damage, according to a Wall Street Journal analysis of satellite imagery, social-media footage and interviews with current and former servicemembers—damage that the Pentagon hasn’t publicly acknowledged. Hit hard were the command headquarters and at least a dozen other buildings, along with two satellite communications terminals. \n\nThe military said no one was killed at the base, known as Naval Support Activity Bahrain, and that the strikes didn’t significantly impact operations. The U.S. evacuated most personnel but has kept a small staff on the ground. \n\nOver the course of the war, “Centcom rightfully prioritized the protection of people over buildings, and our strategy of protecting people worked. [Iran](https://www.wsj.com/topics/place/iran) shot more than 8,000 missiles and drones and only two hits resulted in U.S. fatalities,” said Capt. Tim Hawkins, a spokesman for U.S. Central Command, which oversees U.S. forces in the Middle East. Hawkins also said the U.S. military inflicted far more damage to Iran than it received, with the U.S. striking more than 13,500 targets. \n\nThe extensive damage done to America’s sole naval base in the Middle East—along with hits to at least 20 U.S. sites across the region, including military installations and diplomatic facilities—has the U.S. re-evaluating its entire footprint in the region, according to U.S. officials familiar with the deliberations.\n\nUnlocked article-\nhttps://archive.ph/nSBOa#selection-2173.0-2173.74",
-      "sats": 36,
+      "id": "1555784",
+      "title": "French Top Court Gets It Right, Strikes Down Social Media Ban For Youths",
+      "url": "https://www.eff.org/deeplinks/2026/08/french-top-court-gets-it-right-strikes-down-social-media-ban-youths",
+      "text": "winning https://stacker.news/items/650239/r/k00b?commentId=650288\n\n> Earlier this month, France’s top court [struck down](https://www.conseil-constitutionnel.fr/actualites/communique/decision-n-2026-911-dc-du-14-aout-2026-communique-de-presse) the country’s legislation that [banned social media](https://www.bbc.co.uk/news/articles/cq56l9p4y93o) use for people under 15 years old, which had been scheduled to take effect in January 2027. This is a welcome win for free expression, as we face a wave of [countries and U.S. states](https://www.eff.org/deeplinks/2026/06/how-and-why-fight-back-against-social-media-bans) seeking to pass similar laws banning young people from social media.\n\n> The Council [ruled](https://www.conseil-constitutionnel.fr/actualites/communique/decision-n-2026-911-dc-du-14-aout-2026-communique-de-presse) that the legislation banning under-15s from social media infringed on freedom of expression and communication in a manner that is not appropriate, necessary, or proportionate, which is required by Article 34 of the French Constitution. In particular, it stressed that the ban did not distinguish between different types of online services, and ignored the circumstances of individual users, such as their exact age, level of maturity, and family situation.\n\n> The French Council gets a lot right in this decision: it highlights that bans like this impact not just young people, but everyone online. They force people of all ages to hand over [government IDs](https://www.eff.org/deeplinks/2025/12/why-isnt-online-age-verification-just-showing-your-id-person), [face scans](https://www.eff.org/deeplinks/2025/01/face-scans-estimate-our-age-creepy-af-and-harmful), and [other sensitive information](https://www.eff.org/deeplinks/2026/06/lgbt-qa-what-data-are-companies-uk-collecting-when-verifying-my-age) into a growing surveillance ecosystem. Further, when parental consent is required, companies must collect [even more](https://www.eff.org/deeplinks/2023/05/law-should-not-require-parental-consent-all-minors-access-social-media) verification data on the parents.",
+      "sats": 372,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-08-26T14:22:24.580Z",
+      "ncomments": 4,
+      "createdAt": "2026-08-26T21:58:34.332Z",
       "user": {
-       "name": "Solomonsatoshi"
+       "name": "k00b"
       },
-      "subName": "Politics_And_Law"
+      "subName": "news"
+     },
+     {
+      "id": "1555869",
+      "title": "Early autochrome colour photo of Notre Dame Cathedral in Paris, 1920",
+      "url": null,
+      "text": "![](https://m.stacker.news/153796)",
+      "sats": 389,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-08-27T00:21:39.931Z",
+      "user": {
+       "name": "guerratotal"
+      },
+      "subName": "Photography"
      }
     ]
    }
