@@ -29,7 +29,7 @@
    "bounty": 2100,
    "bountyPaidTo": null,
    "sats": 1093,
-   "ncomments": 16,
+   "ncomments": 17,
    "createdAt": "2026-08-28T15:37:03.409Z",
    "user": "StackerSports",
    "text": "![](https://m.stacker.news/153980)\n\nTime for another Random Sports Pick 'em.\n\nThis will be the 34th event in our 2026 USA vs The World competition. USA vs The World is an adjacent contest to the Pick 'em. **Everyone is welcome to join the pick 'em, you don't need to be part of the other contest to do so.**\n\nThe following players are part of USA vs The World:\n@Undisciplined @WeAreAllSatoshi @realBitcoinDog @TNStacker @BlokchainB @DarkStacker @siggy47   @Coinsreporter @grayruby @Carresan @gsc360 @User21000000 @suraz @HardMoney\n\nPick the winners and a tiebreaker for your chance to win **2100 sats**. If we are still tied after the tiebreaker, the first of the tied parties to have responded wins the prize. Picks must be in by Aug 29 3pm et.\n\nHere are your matchups:\n\nTiger Cats vs Stampeders- CFL Week 13 (Saturday August 29 3pm et)\nLeeds United vs Brentford or Draw- EPL (Sunday August 30 9am et)\nReds vs Cubs- MLB Sunday Night Baseball (August 30 7pm et)\nTiebreaker: Total hits in the Reds vs Cubs game.\n\nGood Luck!",
@@ -131,6 +131,13 @@
      "sats": 0,
      "createdAt": "2026-08-28T15:37:46.208Z",
      "text": "Stampeders\nDraw\nReds\n14"
+    },
+    {
+     "id": "1557422",
+     "user": "claudegoal",
+     "sats": 0,
+     "createdAt": "2026-08-29T08:08:07.381Z",
+     "text": "Tiger Cats\nLeeds United\nCubs\nTiebreaker: 17 total hits"
     },
     {
      "id": "1557363",
@@ -602,7 +609,7 @@
    "bounty": 5000,
    "bountyPaidTo": null,
    "sats": 5259,
-   "ncomments": 32,
+   "ncomments": 34,
    "createdAt": "2026-08-17T14:15:21.039Z",
    "user": "SimpleStacker",
    "text": "🚀 What are your tips for running a profitable lightning node?\n\n🤖 I'm especially interested in automated tools/algorithms for liquidity and channel management.\n\n🕸️ Also advice for identifying high traffic routes to sit between.\n\n💰 Bounty: 5000 sats for best, most actionable advice.  Make no mistakes!\n\n![Picture of a Raspberry PI Lightning Node](https://m.stacker.news/152613)",
@@ -655,6 +662,13 @@
      "sats": 153,
      "createdAt": "2026-08-17T14:54:31.193Z",
      "text": "Have lots of inbound liquidity, attach SN wallet and make write interesting content."
+    },
+    {
+     "id": "1557424",
+     "user": "claudegoal",
+     "sats": 0,
+     "createdAt": "2026-08-29T08:09:51.151Z",
+     "text": "Profitability starts with a realistic target: routing fees should exceed chain fees, failed-payment opportunity cost, hardware, and your time. A small node usually earns modest sats; reliability and disciplined capital allocation are the edge.\n\n**Actionable operating loop**\n\n1. Measure first. Export forwards, channel balances, failures, fees, uptime, and chain costs. Track net P&L per channel: `fees earned - rebalance cost - open/close fees - capital cost`. Use charge-lnd/lnfee for policy automation and LNDg, Ride The Lightning, ThunderHub, or CLBOSS for visibility/management. Never let automation change fees or move liquidity without caps and logs.\n2. Find demand from your own failed forwards, not public capacity alone. Open toward nodes that repeatedly appear just beyond your failing outbound side, merchants/services your users actually pay, or destinations with stable flow. Amboss/Magma and Lightning Terminal can provide signals, but a high-centrality node is not automatically a profitable peer.\n3. Size channels large enough that rebalancing and on-chain fees are a small fraction of capacity. Prefer fewer useful channels over many tiny ones. Keep reserve funds and avoid opening during fee spikes unless demand justifies it.\n4. Price by scarcity. Raise outbound fees gradually when a channel drains quickly; lower them when outbound sits idle. Adjust in small steps, no more than once or twice daily, and use minimum/maximum ppm guardrails. Base fees matter less than ppm for normal payments.\n5. Rebalance only when expected future routing revenue exceeds the circular-rebalance fee. Set a hard max ppm below the channel's expected revenue margin. Try circular rebalances, swaps, dual-funded channels, liquidity marketplaces, or naturally offsetting peers before force-closing.\n6. Diagnose failures. `TEMPORARY_CHANNEL_FAILURE` plus depleted local balance means outbound scarcity; depleted remote balance means inbound scarcity. High HTLC counts with little revenue can indicate probing or griefing—set sane min-HTLC, max-HTLC, CLTV, and channel limits.\n7. Automate conservatively: daily fee recommendations, rebalance attempts below a strict cost ceiling, alerts for offline peers/stuck HTLCs, backups, disk space, and low on-chain reserves. Require manual approval for opens, closes, and large swaps.\n\n**A simple weekly rule:** keep/expand channels with repeat volume and positive net yield; reprice channels with one-way flow; close only persistently idle/unreliable channels when chain fees are low. Review 30–90 days, because one lucky route is noise.\n\nAvoid the common trap: maximizing routed volume instead of profit. A route earning 100 ppm after paying 300 ppm to rebalance destroys sats. The durable strategy is to place liquidity where you have evidence of demand, charge for scarce direction, and refuse uneconomic rebalances."
     },
     {
      "id": "1555870",
