@@ -28,7 +28,7 @@
    "title": "🔥 THE QUESTION THAT ALMOST NO ONE DARES TO ANSWER",
    "bounty": 1000,
    "bountyPaidTo": null,
-   "sats": 158,
+   "sats": 227,
    "ncomments": 2,
    "createdAt": "2026-09-01T03:09:02.951Z",
    "user": "DP0604",
@@ -205,11 +205,18 @@
    "bounty": 10000,
    "bountyPaidTo": null,
    "sats": 87,
-   "ncomments": 27,
+   "ncomments": 28,
    "createdAt": "2026-08-30T11:14:34.263Z",
    "user": "BlokchainB",
    "text": "## Week # 8\n\nPrevious winners: \n\n[Week #1](https://stacker.news/items/1523325/r/BlokchainB): @evestacker  10k  sats\n[Week #2](https://stacker.news/items/1527788/r/BlokchainB): @Taft 20k sats (Bounty & Everyday bonus) \n[Week #3](https://stacker.news/items/1533094/r/BlokchainB): @FieldNote 10k sats (No bonus. carried over) \n[Week #4](https://stacker.news/items/1538309/r/BlokchainB): @brave 30k sats (Bounty & 20k every day bonus) \n[Week #5 ]( https://stacker.news/items/1543923/r/BlokchainB ) @PersianStacker 10k sats. (No Bonus, carried over into week #6)\n[Week # 6] (https://stacker.news/items/1549273/r/BlokchainB) 20k for @Zion and 10k for @Tef (Need an attached wallet to win the 10k zap\n[Week #7](https://stacker.news/items/1553226/r/BlokchainB) 20k for @Tef\n\nTake your guess on  how the market will close for the week. No bonus was paid out last week. This week the bonus is now 10k sats. \n\n*For example the market can close green 🟩 for three days but drop red 🟥 sharply over the two days. While the overall market is lower for the week this would be a bull week because 3 days closed green 🟩.*\n\nAs we await the market open tomorrow place your guesses! The stacker who guesses correctly first will get the bounty!\n\n## Rules\n\n* All entries must be in by Monday, August 31, 2026 by 9:30am EST\n* To receive the 10k bounty prize you must have an attached wallet. True Stackers have a wallet attached and I want to show the bounties being paid. If the winner doesn’t have an attached wallet the bounty will go to the next stacker who guessed correctly.\n* The 10k bonus for getting every market day close correctly will be paid at the winners choice. Those without an attached wallet can still win this no matter what. \n* If no stacker guessed every day correctly it winner will fall back to bull 🟩 or bear 🟥 call. The amount of days that are bull or bear doesn’t matter. A 4 bear 🟥 1 bull🟩 week is the same as A 3 bear 🟥to 2 bull 🟩 week. \n* If no one wins the bonus it will roll over into the next week \n* One guess per stacker. \n* Tiebreaker: With your guess add the number the NASDAQ will close at on Friday.  Currently the NASDAQ is at 26,402 Will follow the price is right model. Any amount over and your guess is null and void. If all guesses are over then the one closest to the number close will win the tie breaker.\n\nFeel free to discuss other market news as we await the markets to open on monday.",
    "comments": [
+    {
+     "id": "1560259",
+     "user": "BlokchainB",
+     "sats": 0,
+     "createdAt": "2026-09-01T22:26:09.706Z",
+     "text": "Monday: Bear (🟥)\nhttps://stacker.news/items/1558871/r/BlokchainB?commentId=1559546\n\nTuesday: Bear (🟥)\nhttps://stacker.news/items/1559744/r/BlokchainB?commentId=1560245\n\nHere are the stackers still in the running for the 20k sat bonus after Tuesday: \n\n@ladyluck\n@Oxy\n@Sem\n@phat0m\n@mehrimah1998\n\nOn to Wednesday!!"
+    },
     {
      "id": "1559555",
      "user": "BlokchainB",
@@ -974,7 +981,7 @@
    "bounty": 5000,
    "bountyPaidTo": null,
    "sats": 5259,
-   "ncomments": 34,
+   "ncomments": 35,
    "createdAt": "2026-08-17T14:15:21.039Z",
    "user": "SimpleStacker",
    "text": "🚀 What are your tips for running a profitable lightning node?\n\n🤖 I'm especially interested in automated tools/algorithms for liquidity and channel management.\n\n🕸️ Also advice for identifying high traffic routes to sit between.\n\n💰 Bounty: 5000 sats for best, most actionable advice.  Make no mistakes!\n\n![Picture of a Raspberry PI Lightning Node](https://m.stacker.news/152613)",
@@ -1027,6 +1034,13 @@
      "sats": 153,
      "createdAt": "2026-08-17T14:54:31.193Z",
      "text": "Have lots of inbound liquidity, attach SN wallet and make write interesting content."
+    },
+    {
+     "id": "1560273",
+     "user": "Clipper",
+     "sats": 0,
+     "createdAt": "2026-09-01T22:35:18.421Z",
+     "text": "Coming at this from the merchant side rather than the routing side, which changes what \"profitable\" means.\n\n1) Measure payment success rate, not capacity. The only number I track is: of the invoices I hand a buyer, what share settle first try, and which routes fail. Capacity charts are vanity. Log every failure and its error, and the same two or three bad hops show up over and over.\n\n2) Buy inbound liquidity only after proven demand. Don't pre-buy a channel because a calculator said so. Wait until real invoices are getting paid and you're actually hitting the inbound ceiling, then size to the demand you measured, not the demand you hope for.\n\n3) Don't race fees to zero. Zero-fee channels look great on a dashboard and lose money. Set a fee budget you can defend, adjust slowly, and let unprofitable flow go elsewhere. Cheap routing is not profitable routing.\n\n4) Prune monthly. Once a month, list peers with no forwards and no settled payments in 30 days and close them. Dead channels are locked capital plus on-chain risk you're carrying for nothing.\n\nMerchant checklist if you sell anything:\n- Reliable receive beats everything. If the invoice fails, the sale is gone and the digital delivery never happens.\n- Backups tested before you need them, not after.\n- Don't overbuild channels for a quiet shop. A few well-chosen channels beat a sprawling node you can't keep balanced.\n\nContext: I run a small Lightning digital shop (Shopstr) - https://shopstr.market/marketplace/clipper - so all of this comes from selling files for sats and watching payments fail, not from farming routing revenue. Different incentives, but the failure data is real."
     },
     {
      "id": "1557424",
