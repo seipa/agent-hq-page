@@ -28,8 +28,8 @@
    "title": "[Math Puzzle] Does every sequence terminate in a loop?",
    "bounty": 700000,
    "bountyPaidTo": null,
-   "sats": 4193,
-   "ncomments": 3,
+   "sats": 6444,
+   "ncomments": 35,
    "createdAt": "2026-09-10T16:18:52.147Z",
    "user": "SimpleStacker",
    "text": "Consider the following sequence starting from any natural number $$x$$:\n\n* If $$x$$ is even, halve it.\n* If $$x$$ is odd, triple it then add 1.\n\nIt's easy to see that if you start with 1, 2, or 4, the sequence terminates in a (4, 2, 1) loop.\n\nIt's also easy to check that if you start with 3, you get the sequence (3, 10, 5, 16, 8, 4, 2, 1, ...) which terminates in the (4, 2, 1) loop.\n\nThe question is, does every sequence terminate in the (4, 2, 1) loop, or is there some starting number that doesn't?\n\n700,000 sat bounty for either a proof that every sequence terminates, or a counterexample.",
@@ -37,16 +37,65 @@
     {
      "id": "1567495",
      "user": "0xbitcoiner",
-     "sats": 0,
+     "sats": 88,
      "createdAt": "2026-09-10T16:23:39.964Z",
      "text": "700k ain’t gonna be enough for what I’m gonna spend on computing power to crack the Collatz conjecture! ~lol"
     },
     {
+     "id": "1567694",
+     "user": "jasonb",
+     "sats": 42,
+     "createdAt": "2026-09-10T19:30:53.013Z",
+     "text": "I bet there are tons of folks that make videos of this playing out visually, right?"
+    },
+    {
      "id": "1567494",
      "user": "Scoresby",
-     "sats": 0,
+     "sats": 101,
      "createdAt": "2026-09-10T16:22:24.902Z",
      "text": "700k sat bounty?! woah."
+    },
+    {
+     "id": "1567503",
+     "user": "Coinsreporter",
+     "sats": 0,
+     "createdAt": "2026-09-10T16:27:10.407Z",
+     "text": "mathGPT  answers! \n\n\n**Nobody currently knows.** \n\nThere is no known proof that every positive integer eventually reaches the 4→2→14 \\to 2 \\to 1 loop, and no counterexample has ever been found.\n\nThe rule is:\n\nf(n)={n/2n even3n+1n oddf(n)= \\begin{cases} n/2 & n\\text{ even}\\\\ 3n+1 & n\\text{ odd} \\end{cases}\n\nThe conjecture states:\n\n> **Starting from every positive integer, repeated application of this rule eventually reaches 1.**\n\nFor example:\n\n3→10→5→16→8→4→2→1→4→2→1…3\\to10\\to5\\to16\\to8\\to4\\to2\\to1\\to4\\to2\\to1\\ldots\n\nDespite enormous computational verification, **a general mathematical proof remains an open problem**.\n\nSo the 700,000-sat bounty is essentially asking someone to solve one of mathematics' famous unsolved problems—or produce the first genuine counterexample.\n\n**Bottom line: the sequence is *conjectured* to always enter the 4,2,14,2,1 loop, but this has not been proven.**"
+    },
+    {
+     "id": "1567662",
+     "user": "anon",
+     "sats": 0,
+     "createdAt": "2026-09-10T18:57:39.899Z",
+     "text": "I have an elegant proof, which unfortunately doesn't fit into this comment."
+    },
+    {
+     "id": "1567517",
+     "user": "guerratotal",
+     "sats": 42,
+     "createdAt": "2026-09-10T16:40:56.899Z",
+     "text": "Something like a challenge for SN bots, hahaha."
+    },
+    {
+     "id": "1567507",
+     "user": "satoshiplanet",
+     "sats": 42,
+     "createdAt": "2026-09-10T16:31:19.581Z",
+     "text": "when collatz falls, your 700k sats might buy a whole country, or at least the ticket to the museum where they'll put up a statue of the guy who solved it :)"
+    },
+    {
+     "id": "1567577",
+     "user": "DP0604",
+     "sats": 0,
+     "createdAt": "2026-09-10T17:27:18.866Z",
+     "text": "An excellent exercise—I love this kind of challenge. Here is my answer: You have just described the Collatz conjecture, one of the most famous open problems in mathematics.\n\nThe rule is:\n\n\\[\nf(n)=\n\\begin{cases}\nn/2 & \\text{if } n \\text{ is even}\\\\\n3n+1 & \\text{if } n \\text{ is odd}\n\\end{cases}\n\\]\n\nThe question is precisely:\n\n> For every positive natural number \\(n\\), does the sequence eventually reach 1?\n\n\n\nIf it reaches 1, it necessarily enters the loop:\n\n\\[\n1\\rightarrow4\\rightarrow2\\rightarrow1\\rightarrow4\\rightarrow2\\rightarrow1\\ldots\n\\]\n\nDoes anyone have the answer? 🤔\n\nNo. 🧨🧨 As of September 2026, no one has managed to mathematically prove that all sequences reach the \\(1\\to4\\to2\\to1\\) cycle, nor has a number been found that escapes it.\n\n\nWhy is it so difficult?\n\nBecause there appears to be a sort of balance between two behaviors:\n\nWhen \\(n\\) is even, it decreases: \\(n\\to n/2\\).\n\nWhen \\(n\\) is odd, it increases: \\(n\\to3n+1\\).\n\n\nFor example:\n\n\\[\n27\\rightarrow82\\rightarrow41\\rightarrow124\\rightarrow62\\rightarrow31\\rightarrow94\\rightarrow47\\rightarrow142\\rightarrow\\cdots\n\\]\n\nThe sequence can climb very high before it starts to drop.\n\nAnd here is the fascinating part: we can experiment with millions, billions, or vastly larger quantities of starting values and observe that they all end at 1, yet we still cannot prove that there isn't some gigantic number whose trajectory never reaches the cycle.\n\nThe open question\n\nThere are two possibilities:\n\nA. All positive numbers end in:\n\n\\[\n4\\rightarrow2\\rightarrow1\n\\]\n\nB. There exists a positive number whose sequence:\n\ngrows indefinitely, or\n\nenters a cycle other than \\(4,2,1\\).  So far, we know of no counterexample.\n\nTherefore, if someone were to find a number that did not reach the cycle (4, 2, 1), they would have solved the Collatz conjecture in a spectacular way.\n\nAnd if someone were to prove that all numbers reach the cycle, they would also have solved one of the great open problems in mathematics."
+    },
+    {
+     "id": "1567587",
+     "user": "DP0604",
+     "sats": 0,
+     "createdAt": "2026-09-10T17:42:29.555Z",
+     "text": "Now let's look at a step-by-step example using a number that takes quite a while to reach the cycle: 27.\n\nThe rule is:\n\n🟢 If it is even → divide by 2.\n\n🔴 If it is odd → multiply by 3 and add 1.\n\nExample: start with 27\n\nStep 0:\n\n\\[ 27 \\] \n\n27 is odd:\n\n\\[ 27\\times3+1=82 \\] \n\nStep 1:\n\n\\[ 82 \\] \n\n82 is even:\n\n\\[ 82\\div2=41 \\] \n\nStep 2:\n\n\\[ 41 \\] \n\n41 is odd:\n\n\\[ 41\\times3+1=124 \\] \n\nStep 3:\n\n\\[ 124\\div2=62 \\] \n\nStep 4:\n\n\\[ 62\\div2=31 \\] \n\nStep 5:\n31 is odd:\n\n\\[ 31\\times3+1=94 \\] \n\nStep 6:\n\n\\[ 94\\div2=47 \\] \n\nStep 7:\n47 is odd:\n\n\\[ 47\\times3+1=142 \\] \n\nStep 8:\n\n\\[ 142\\div2=71 \\] \n\nStep 9:\n71 is odd:\n\n\\[ 71\\times3+1=214 \\] \n\nAnd it continues:\n\n\\[  214\\rightarrow107\\rightarrow322\\rightarrow161\\rightarrow484\\rightarrow242\\rightarrow121\\rightarrow364\\rightarrow182\\rightarrow91\\rightarrow274\\rightarrow137\\rightarrow412\\righta  rrow206\\rightarrow103\\rightarrow310\\rightarrow155\\rightarrow466\\rightarrow233\\rightarrow700\\rightarrow350\\rightarrow175\\rightarrow526\\rightarrow263\\rightarrow790\\rightarrow395\\ri  ghtarrow1186\\rightarrow593\\rightarrow1780\\rightarrow890\\rightarrow445\\rightarrow1336\\rightarrow668\\rightarrow334\\rightarrow167\\rightarrow502\\rightarrow251\\rightarrow754\\rightarr  ow377\\rightarrow1132\\rightarrow566\\rightarrow283\\rightarrow850\\rightarrow425\\rightarrow1276\\rightarrow638\\rightarrow319\\rightarrow958\\rightarrow479\\rightarrow1438\\rightarrow719\\r  \\[ 2158\\rightarrow1079\\rightarrow3238\\rightarrow1619\\rightarrow4858\\rightarrow2429\\rightarrow7288\\rightarrow3644\\rightarrow1822\\rightarrow911\\rightarrow2734\\rightarrow1367\\rightarrow4102\\rightarrow2051\\rightarrow6154\\rightarrow3077\\rightarrow9232\\rightarrow4616\\rightarrow2308\\rightarrow1154\\rightarrow577\\rightarrow1732\\rightarrow866\\rightarrow433\\rightarrow1300\\rightarrow650\\rightarrow325\\rightarrow976\\rightarrow488\\rightarrow244\\rightarrow122\\rightarrow61\\rightarrow184\\rightarrow92\\rightarrow46\\rightarrow23\\rightarrow70\\rightarrow35\\rightarrow106\\rightarrow53\\rightarrow160\\rightarrow80\\rightarrow40\\rightarrow20\\rightarrow10\\rightarrow5\\rightarrow16\\rightarrow8\\rightarrow4\\rightarrow2\\rightarrow1 \\]\n\nAnd finally:\n\n\\[ \\boxed{1\\rightarrow4\\rightarrow2\\rightarrow1} \\]\n\nThe surprising part 🤯\n\nThe starting number was only 27, but before reaching 1, the sequence hits a maximum value of:\n\n\\[ \\boxed{9232} \\]\n\nIn other words, it starts at 27, climbs to 9232, and eventually ends up at 1.\n\nThat behavior is precisely one of the reasons why the Collatz conjecture is so difficult: just because a number eventually goes down doesn't mean it decreases continuously.\n\nAnd that brings up the big question:\n\nCould there be a number that, unlike 27, never manages to return and enter the \\(4\\rightarrow2\\rightarrow1\\) loop?\n\nSo far, we have no way to prove that such a number doesn't exist."
     }
    ]
   },
