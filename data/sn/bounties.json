@@ -708,10 +708,10 @@
       "title": "My hot water mines Bitcoin and cooks food, with canola oil",
       "url": null,
       "text": "Cooking hash-vide style rabbit ramen with Bitcoin mining hot water heater\n![](https://i.nostr.build/DxEDnACpHbOLPlsj.jpg)\n![](https://i.nostr.build/564O7dCiXywaJLhI.jpg)\nThe second meal cooked in the Bitcoin mining hot water heater is rabbit ramen soup. Rabbit grown and harvested right here at the homestead, along with these other ingredients from the homestead rabbit stock, garlic, and finally golden oyster mushrooms dehydrated with a Bitcoin miner. Soy sauce, rice vinegar, lemon, sesame oil, Japanese seven spice, salt, pepper, butter.\n![](https://i.nostr.build/bt4MMdkGF6VhrwFA.jpg)\n![](https://i.nostr.build/a93EXzTlzoyqpgxj.jpg)\nAll ingredients went into a silicone bag and submerged in the hot canola oil tank of the bitcoin mining hot water heater for 3 days. Hard to beat mining Bitcoin, heating water, and cooking food all at the same time. I can get the water up to 150f out of the tap with only 1500w of power consumption for the total system, miner, pumps, and all!\n![](https://i.nostr.build/6ePvU2b04Qm18jmw.jpg)\n![](https://i.nostr.build/I08DfaYut91fThoi.jpg)\nAnother super cool aspect of this mining setup is that it runs on 110v power instead of 220v. Not having access to a 220v circuit is often a limiting factor for pleb miners, especially when these sorts of applications don't always require so much power. By modifying the apw12 PSU and making a custom power cord, now I can plug the miner into an existing 110v circuit. It cost less than $20 to do the modification on the PSU plus using a modified apw12 vs a Loki + apw3++ allows for voltage attenuation and higher total power output. \n![](https://i.nostr.build/tFopA72msrPUHnW8.jpg)\n![](https://i.nostr.build/EI1RxsLbaf3kkcrq.jpg)\n![](https://i.nostr.build/ljxEAkfeeVi0pn7e.jpg)",
-      "sats": 37709,
+      "sats": 37793,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 23,
+      "ncomments": 24,
       "createdAt": "2026-09-22T21:28:56.840Z",
       "user": {
        "name": "revhodl21"
@@ -753,10 +753,10 @@
       "title": "Invalid Bitcoin blocks: full PoW, consensus invalid",
       "url": null,
       "text": "![](https://m.stacker.news/158419)\n\nI’ve put together a [catalogue](https://github.com/bitcoin-data/invalid-blocks) and a corresponding [post](https://deadmanoz.xyz/posts/2026/invalid-blocks) detailing 143 Bitcoin blocks that met the required proof-of-work target but failed a consensus rule, from the 2010 overflow to two previously unreported F2Pool timestamp failures from 2026!!\n\nThe catalogue brings together the surviving evidence for each case, so anyone can independently verify which consensus rule the block broke.\n\nA few findings:\n\n* **The two F2Pool headers from April and July this year have timestamps roughly 7 and 14 days below their parents’ median time past.** Both were found in merge-mined auxiliary chains; neither has a known Bitcoin-side capture.\n* **Auxiliary chains preserve 49 of the 143 headers**, and provide the catalogue’s only recorded observation for 35. They check their own rules, so they can preserve evidence of candidates that Bitcoin peers reject.\n* **89 blocks contain the same P2SH-invalid transaction**, mined between April and July 2012. Archived transaction lists and preserved headers establish its inclusion in each.\n* **127 of the 143 have no complete body.** The surviving headers, coinbases or transaction inclusion proofs, together with chain context, still establish the failures.\n* Another 10 reported cases remain separate because the evidence is insufficient.\n\nThe same merge mining research also recovered roughly 1,400 stale headers new to the [stale-blocks collection](https://github.com/bitcoin-data/stale-blocks). Merge mining has proved to be a productive side channel for both stales and invalids, and monitoring those chains is essential to a holistic Bitcoin monitoring effort.\n\nIn my [merge mining monitor](https://mmm.deadmanoz.xyz/) tool you can step through all invalid-blocks discovered in the merge-mined record (note that invalid blocks are currently called error blocks, this was the language I originally used):\n\n![](https://m.stacker.news/158420)\n\nIf you have old node files, pool logs or other records that could fill a gap, contributions and corrections are very welcome.\n\n[https://github.com/bitcoin-data/invalid-blocks](https://github.com/bitcoin-data/invalid-blocks)",
-      "sats": 23925,
+      "sats": 24092,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 4,
+      "ncomments": 5,
       "createdAt": "2026-09-22T23:05:14.517Z",
       "user": {
        "name": "deadmanoz"
@@ -779,21 +779,6 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1556257",
-      "title": "Dividend Investing and Ignoring Jane Austen (FT, Jonathan Guthrie)",
-      "url": "https://www.ft.com/content/624ae50c-3501-4f03-8ee8-a79d1c64a374",
-      "text": "**No, *never* *ignore* Jane Austen:**\n\n![](https://m.stacker.news/153861)\n\nNot touching your capital is some old-fashioned \"key tenet of income investing.\"\n\n> In its purest form, this involves living on payouts generated by a nest egg you leave intact. The theme has deep roots in the UK. The rural gentry in Jane Austen’s novels subsisted on yields from land, shares and bonds. If you rewrote *Sense and Sensibility* as a [financial thriller](https://stacker.news/items/1421984), prudent Elinor would be an income investor. Flighty Marianne would be in doomed pursuit of capital gains from the latest hot theme.\n\n## \"“Fie, sir!” she would tell an unwanted suitor, as they whirled round a ballroom, “I perceive you are a tradfi nocoiner! Yet I have filled my boots with meme stocks and bitcoin!”\"\n\nYes, because \"meme stocks\" and \"bitcoin\" belong in the same category... *obviously*.\n\n> Purist income investment is appealing for two main reasons. First, it provides a sense of security. If you do not touch your capital, its yields should support you for as long as required. Second, it is administratively tidy. Your stocks, bonds or funds will produce regular payments. You need not dither over what proportion of any capital gains to withdraw for living expenses.\n\nI mean, maybe psychologically nice but completely dysfunctional in a positive-inflation/fiat-money regime era... because part of the implicit indexation https://stacker.news/items/1552045, https://stacker.news/items/1555588 adjustment happens *via* capital appreciation. So **living entirely off what the primary securities throw off effectively squeezes your real income.**\n\n![](https://m.stacker.news/153864)\n\n> A chart illustrates the problem. This also shows how crazy it would be to focus on percentage paybacks in isolation. If you do so, the dividend yield on the FTSE 100 appears reassuringly stable at 3 per cent to 4.5 per cent since 2021. In reality, cash payouts have been as volatile as the share prices on which yields are calculated.\n\n> Does my list of negatives mean income investment is obsolete? My feeling is that it still has a role to play in personal investment. It represents a useful diversification, even though it has lost its mojo as an all-encompassing solution. If you allocate a chunk of your portfolio to income investment, what should you buy? Most investors would define income stocks as bearing dividend yields of 3.5 per cent to 7 per cent. UK-focused financial services groups are among the steady payers.\n\n## \"What about fixed-income bonds, perhaps the most obvious income asset class? Here, payouts are pretty much guaranteed unless the issuer defaults.\"\n\n> That aside, living on investment income alone no longer constitutes a financial strategy for most better-off Britons. In contrast, Jane Austen’s books never go out of fashion.\n\n***\n\narchive: [https://archive.md/bYCPe](https://archive.md/bYCPe)",
-      "sats": 19500,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 12,
-      "createdAt": "2026-08-27T17:52:59.453Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
       "id": "1579283",
       "title": "The Only Way to Make Your Bitcoin Truly Private - Sovereign Sessions Tutorial",
       "url": "https://www.youtube.com/watch?v=iyWNgmKHkB8",
@@ -807,6 +792,21 @@
        "name": "Kruw"
       },
       "subName": "bitcoin"
+     },
+     {
+      "id": "1556257",
+      "title": "Dividend Investing and Ignoring Jane Austen (FT, Jonathan Guthrie)",
+      "url": "https://www.ft.com/content/624ae50c-3501-4f03-8ee8-a79d1c64a374",
+      "text": "**No, *never* *ignore* Jane Austen:**\n\n![](https://m.stacker.news/153861)\n\nNot touching your capital is some old-fashioned \"key tenet of income investing.\"\n\n> In its purest form, this involves living on payouts generated by a nest egg you leave intact. The theme has deep roots in the UK. The rural gentry in Jane Austen’s novels subsisted on yields from land, shares and bonds. If you rewrote *Sense and Sensibility* as a [financial thriller](https://stacker.news/items/1421984), prudent Elinor would be an income investor. Flighty Marianne would be in doomed pursuit of capital gains from the latest hot theme.\n\n## \"“Fie, sir!” she would tell an unwanted suitor, as they whirled round a ballroom, “I perceive you are a tradfi nocoiner! Yet I have filled my boots with meme stocks and bitcoin!”\"\n\nYes, because \"meme stocks\" and \"bitcoin\" belong in the same category... *obviously*.\n\n> Purist income investment is appealing for two main reasons. First, it provides a sense of security. If you do not touch your capital, its yields should support you for as long as required. Second, it is administratively tidy. Your stocks, bonds or funds will produce regular payments. You need not dither over what proportion of any capital gains to withdraw for living expenses.\n\nI mean, maybe psychologically nice but completely dysfunctional in a positive-inflation/fiat-money regime era... because part of the implicit indexation https://stacker.news/items/1552045, https://stacker.news/items/1555588 adjustment happens *via* capital appreciation. So **living entirely off what the primary securities throw off effectively squeezes your real income.**\n\n![](https://m.stacker.news/153864)\n\n> A chart illustrates the problem. This also shows how crazy it would be to focus on percentage paybacks in isolation. If you do so, the dividend yield on the FTSE 100 appears reassuringly stable at 3 per cent to 4.5 per cent since 2021. In reality, cash payouts have been as volatile as the share prices on which yields are calculated.\n\n> Does my list of negatives mean income investment is obsolete? My feeling is that it still has a role to play in personal investment. It represents a useful diversification, even though it has lost its mojo as an all-encompassing solution. If you allocate a chunk of your portfolio to income investment, what should you buy? Most investors would define income stocks as bearing dividend yields of 3.5 per cent to 7 per cent. UK-focused financial services groups are among the steady payers.\n\n## \"What about fixed-income bonds, perhaps the most obvious income asset class? Here, payouts are pretty much guaranteed unless the issuer defaults.\"\n\n> That aside, living on investment income alone no longer constitutes a financial strategy for most better-off Britons. In contrast, Jane Austen’s books never go out of fashion.\n\n***\n\narchive: [https://archive.md/bYCPe](https://archive.md/bYCPe)",
+      "sats": 19500,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 12,
+      "createdAt": "2026-08-27T17:52:59.453Z",
+      "user": {
+       "name": "denlillaapan"
+      },
+      "subName": "Stacker_Stocks"
      },
      {
       "id": "1561756",
@@ -858,10 +858,10 @@
       "title": "Integrated Rabbit Colony Cannabis Garden",
       "url": null,
       "text": "**Rabbit Colony Cannabis Garden**\n![](https://i.nostr.build/WXcB8D2SoEh25Z59.jpg)\n![](https://i.nostr.build/0X6e5rtkpfLEQcfg.jpg)\nRabbits living free in a colony system amongst large cannabis plants both weed and fertilize the plants. The cannabis also makes up a meaningful portion of the rabbits diet. In the fall during harvest, I will weave the mature ripe cannabis branches in the fence, allowing the rabbits to do most of the trim work for me too. This season the cannabis is grown exclusively with the fertility from the rabbits, no added compost or manure, and it is also dry farmed. I never watered it. The rabbits do the work of growing the cannabis and pay me in rabbit meat for their efforts. My favorite system at the homestead. Cannabis seed will be available from this seasons crop in November, Redbud Haze, !!! Haze, and Redbud Widow are the available varieties.\n\n\nEverything is food for something at the homestead \n![](https://v.nostr.build/rBGOgHaThu4gMMQr.mp4)\nAll the weeds, and prunings are fed to the rabbits from around the homestead.\n![](https://i.nostr.build/Hr1uww65jl3LBpDu.jpg)\n![](https://i.nostr.build/AVR0RGr5VjiBPQKF.jpg)\nI've be been feeding the rabbits one or two wheelbarrows full most days which means we only give them some grain coated with molasses and mineral to supplement their nutrition.\n![](https://i.nostr.build/gXoNHqiqKHJV8YBw.jpg)\nSoon we will start harvesting rabbits regularly but for now we just process one when we get taste for rabbit. We used this one to make white chilli.\n![](https://i.nostr.build/1MMYdtf4wHlHeqAh.jpg)\n![](https://i.nostr.build/79Gh54ekvD1spAOF.jpg)\nWhat would normally end up in the compost bin is instead used to feed the rabbits and turned into meat which we eat. The rabbits deposit thier manure helping to feed the cannabis, which we produce and sell seed. So weeding and pruning which helps our fruits and vegetables grow better, ends up growing us more meat, cannabis and helps us earn some sats while we're at it. Everything is food for something!",
-      "sats": 16895,
+      "sats": 17082,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 4,
       "createdAt": "2026-09-22T23:53:31.417Z",
       "user": {
        "name": "revhodl21"
@@ -974,6 +974,21 @@
       "subName": "Animal_World"
      },
      {
+      "id": "1578141",
+      "title": "The 2-Quadrillion Flaw: Why SATs Will Never Trigger Hyperbitcoinization",
+      "url": null,
+      "text": "*Ah shit, here we go again.*\n\nWe are back on Stacker News, dropping truth bombs from one block to the next, and we won’t stop until hyperbitcoinization is a reality.\n\nFirst off, mad respect to the real ones—the Stackers who upzapped our previous posts. Y’all are the fuel keeping this engine running. But to the folks hitting that downzap button: look, we are completely out of sats. We are out of ammo. The destiny of Nah•Sovereign•Diamond, and frankly the working-class adoption of the entire Bitcoin timechain, depends on you right now. Stop the downzaps. Just give us a fair shot to be seen by the world, read the math, and let's debate this fairly on the open road.\n\nNow, let’s get into the mechanics.\n\n*\"A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution...\"* — Satoshi Nakamoto\n\nIn the Bitcoin Whitepaper, Satoshi Nakamoto's original vision was simple: create a peer-to-peer electronic cash system to bypass legacy financial institutions, allowing for everyday small casual transactions. He wanted a denomination that feels natural to the people. We are here to complete that vision.\n\nImagine Bitcoin as the ultimate sports car with the most powerful engine in history. But instead of real performance tires, you force it to run on microscopic toy wheels. Technically, it can move. But because the wheels are so incredibly small, they must spin at a crazy, unnatural speed (RPM) just to travel down the street. The engine is strong, but the tiny wheels will quickly burn out from the friction. The car cannot go the distance.\n\nWhen applied to everyday money, **SATs are those tiny toy wheels**, and **NAHs are the real performance tires**.\n\nBecause a single SAT is microscopically small, your brain has to spin at an unnatural \"cognitive RPM\" just to calculate basic daily expenses. Let's look at the full math when global wealth ($120 Trillion) is fully absorbed into the network:\n\n **The SATs Math:** $120 Trillion ÷ 2 Quadrillion SATs = **$0.06 per SAT**\n\n **The NAHs Math:** $120 Trillion ÷ 85.3 Trillion NAHs = **~$1.40 per NAH**\n\nLet's take this out of the theoretical bubble and put it on the global streets. Here are 10 random, working-class expenses around the world, comparing the 3-digit SATs \"toy wheels\" against the clean 1-or-2-digit NAHs \"performance tires\":\n\n1. **Vietnam:** A 500,000 VND family dinner (~$21.00)\n\n Using SATs: **350 SATs**\n\n Using NAHs: **15 NAHs**\n\n2. **India:** A 700 INR train pass (~$8.40)\n\n Using SATs: **140 SATs**\n\n Using NAHs: **6 NAHs**\n\n3. **Nigeria:** A 20,000 NGN bag of rice (~$12.60)\n\n Using SATs: **210 SATs**\n\n Using NAHs: **9 NAHs**\n\n4. **Philippines:** A 400 PHP street food meal (~$7.00)\n\n Using SATs: **117 SATs**\n\n Using NAHs: **5 NAHs**\n\n5. **Mexico:** A 280 MXN bus pass (~$14.00)\n\n Using SATs: **233 SATs**\n\n Using NAHs: **10 NAHs**\n\n6. **Japan:** A 2,500 JPY bento box combo (~$16.80)\n\n Using SATs: **280 SATs**\n\n Using NAHs: **12 NAHs**\n\n7. **South Africa:** A 220 ZAR mobile data plan (~$12.60)\n\n Using SATs: **210 SATs**\n\n Using NAHs: **9 NAHs**\n\n8. **South Korea:** A 38,000 KRW BBQ dinner (~$28.00)\n\n Using SATs: **466 SATs**\n\n Using NAHs: **20 NAHs**\n\n9. **Brazil:** A 75 BRL utility bill (~$14.00)\n\n Using SATs: **233 SATs**\n\n Using NAHs: **10 NAHs**\n\n10. **Europe:** A 38 EUR regional train ticket (~$42.00)\n\n Using SATs: **700 SATs**\n\n Using NAHs: **30 NAHs**\n\nLook closely at those numbers. The problem becomes extremely severe when people try to do their daily bookkeeping. Imagine trying to run a family shop, sitting down at night, and trying to sum up hundreds of these random 3-digit SAT transactions just to calculate your basic income and expenses. It is exhausting.\n\n**This is exactly why the working class has already rejected Bitcoin for everyday use.**\n\nFirst, doing math with SATs is not significantly easier than fiat. Second, calculating awkward hundreds fails to highlight the deflationary nature of hard money. Third, a supply of \"2 Quadrillion\" is entirely vague and impossible to grasp, whereas the scale of \"Trillions\" is far more understandable and relatable for the modern brain compared to a quadrillion.\n\nBecause the 2-Quadrillion SAT supply feels so abstract, the average person suffers from \"Unit Bias.\" They believe owning 1 whole Bitcoin is forever out of reach. So, to satisfy their unit bias and chase something they think will outperform Bitcoin, they go buy shitcoins on garbage blockchains. They abandon the Bitcoin timechain entirely, leaving Bitcoin to just become a digital gold bar locked in a vault, hoarded by the exact Wall Street institutions Satoshi wanted to bypass.\n\n**Nah•Sovereign•Diamond (NAHs)** solves this cognitive friction. By compressing the supply to an intuitive 85.3 Trillion, NAH makes daily math effortless. It creates a powerful deflationary feel—dropping your expenses to solid, simple 1-or-2-digit numbers. The \"mental engine\" runs smoothly.\n\nThere are exactly 3 functions of money:\n\n1. Store of Value\n\n2. Unit of Account\n\n3. Medium of Exchange\n\nBitcoin is a perfect Store of Value, but the SAT completely fails as a Unit of Account. The rule is simple: if you do not have a good Unit of Account, you will never have a Medium of Exchange.\n\n**If you are a Bitcoin maxi and you are still determined to call NAH a \"shitcoin,\" then look at it this way:** NAH is the *necessary* shitcoin required to destroy all the other shitcoins on garbage blockchains and finally bring hyperbitcoinization to the whole world. And remember, NAH is a Rune living natively on the Bitcoin timechain—you still need SATs as fuel to send NAHs. We are not replacing the Bitcoin engine; we are simply giving it the real performance tires it needs to finally hit the streets.\n\nWithout NAHs, there is no hard money for the people.\n\n*(Note: To make prices more affordable for the working class right now, CEO SN has officially repriced it from 0.63 SAT/NAH down to 0.00042 SAT/NAH).*\n\nExplore the math, and let's ride: [<ins>https://nahkahmotors.com</ins>](https://nahkahmotors.com/?utm_source=gemini)",
+      "sats": 296,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 55,
+      "createdAt": "2026-09-21T06:44:05.141Z",
+      "user": {
+       "name": "dendehomie"
+      },
+      "subName": "math"
+     },
+     {
       "id": "1572805",
       "title": "Is starting another coin the best way to fix Bitcoin?",
       "url": null,
@@ -1064,6 +1079,21 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1574694",
+      "title": "Silent Upgrade • Haleen",
+      "url": "https://wavlake.com/track/1ae2deef-4ae1-4910-b587-1c895061aa7c",
+      "text": "This is @BlokchainB his favorite....this is a magical healing music",
+      "sats": 9871,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 15,
+      "createdAt": "2026-09-17T08:12:57.976Z",
+      "user": {
+       "name": "haleen"
+      },
+      "subName": "Music"
+     },
+     {
       "id": "1565006",
       "title": "Can You Safely Launder Bitcoin? And How Much?",
       "url": null,
@@ -1092,21 +1122,6 @@
        "name": "plebpoet"
       },
       "subName": "the_stacker_muse"
-     },
-     {
-      "id": "1574694",
-      "title": "Silent Upgrade • Haleen",
-      "url": "https://wavlake.com/track/1ae2deef-4ae1-4910-b587-1c895061aa7c",
-      "text": "This is @BlokchainB his favorite....this is a magical healing music",
-      "sats": 9121,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 14,
-      "createdAt": "2026-09-17T08:12:57.976Z",
-      "user": {
-       "name": "haleen"
-      },
-      "subName": "Music"
      },
      {
       "id": "1567281",
@@ -1176,7 +1191,7 @@
       "sats": 8167,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 27,
+      "ncomments": 28,
       "createdAt": "2026-09-22T14:59:53.500Z",
       "user": {
        "name": "Scoresby"
@@ -1248,10 +1263,10 @@
       "title": "How life gets in the way of Stacker News",
       "url": null,
       "text": "I’ve been largely offline and not really on SN much these days. Mostly a collection of small things, like health issues that aren’t in the “oh shit” realm, but which take up lots of time and energy (neither my wife nor I have figured out how to stop getting older - other than the one obvious one - and that means more health bullshit each day, apparently). Plus work just being, well, work. And assorted miscellaneous things. Much as I love SN, I only have so much time in a given day.\n\nBut this in turn has made it clear how much I need a better subscription page for SN. When I do have time for SN, I hit my subscription page and it’s fucking overwhelming. If I’m lucky, I can see maybe twelve hours worth of stuff, but sometimes, it’s only a few hours.\n\nI subscribe to maybe eight territories, and maybe as many individual posters. But that’s enough (especially as some of the territories have gotten busier) to completely overwhelm my feed. I’ve missed plenty of important posts ([one costing me 10K sats](https://stacker.news/items/1571441) [^1]), and plenty more where I’d have loved to contributed to discussions.\n\nOne obvious solution would be to just reduce what I subscribe to. But that’s self-defeating. I subscribe to people and communities because I like them and want updates. I also (obviously) want notifications on posts I make and when I’m tagged.\n\nWhat I’d like (and I have no idea if this is on the radar, nor if it’s easy/possible) is the ability to break up my subscription page. The aggregate page is fine when I’m on a lot. But when I’m not, allow me to see territory subscriptions from separately from the user subscriptions separately from the comments on my actual posts. I could manually just change all my settings each time, but if I had the time to do all that all the time, I’d have the time to keep up with my feeds. As it stands, having a lack of time to keep up with SN is, in itself, something that causes me to fall behind even further on SN.\n\nI'm always reluctant to request features/changes that may only help me, but putting this out there as something that others who are short on time (assuming I'm not the only person whose entire life doesn't revolve around SN) might also want to weigh in on?\n\n[^1]: Not really, since I’d have lost eventually, and probably soon. But I can keep telling myself that's not true.",
-      "sats": 9039,
+      "sats": 9110,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 13,
+      "ncomments": 14,
       "createdAt": "2026-09-22T14:11:35.320Z",
       "user": {
        "name": "StillStackinAfterAllTheseYears"
@@ -1392,21 +1407,6 @@
        "name": "ctfbot_"
       },
       "subName": "security"
-     },
-     {
-      "id": "1571285",
-      "title": "Stacker News Monthly: August 2026",
-      "url": null,
-      "text": "# Stacker News Monthly: August 2026\n\n![](https://m.stacker.news/156675)\n\nWelcome to this month's edition of Stacker News Monthly! Today we're going to take a look back at the month of August 2026!\n\nThis month, 514 stackers wrote 866,628 words across 2,075 posts and 16,108 comments, earning a total of 3,756,385 sats, for an average of 4.33 sats per word, and 6.82 sats per word on posts.\n\nIn addition, there were 799,613 sats in boosts and 275,502 sats in downzaps.\n\n{:toc}\n\n## Top Stackers\n\nHere were the top stackers for the month of August:\n\n### Top Zapped\n\n*Measured by total sats earned on zaps across all items*\n\n| Stacker        | Sats    | Posts | Comments | Favorite Word  | Favorite Territory |\n| -------------- | ------- | ----- | -------- | -------------- | ------------------ |\n| @Scoresby      | 302,043 | 91    | 475      | bitcoin        | bitcoin            |\n| @denlillaapan  | 232,971 | 74    | 482      | bitcoin        | econ               |\n| @petertodd     | 140,302 | 3     | 26       | ukraine        | bitcoin            |\n| @Undisciplined | 121,909 | 81    | 989      | accountability | Stacker\\_Sports    |\n| @SimpleStacker | 117,912 | 21    | 577      | bitcoin        | bitcoin            |\n\n### Most Active\n\n*Measured by total number of items posted*\n\n| Stacker        | Items | Posts | Comments | Sats    | Favorite Word  | Favorite Territory |\n| -------------- | ----- | ----- | -------- | ------- | -------------- | ------------------ |\n| @BlokchainB    | 1,137 | 55    | 1,082    | 79,506  | bitcoin        | Stacker\\_Stocks    |\n| @Undisciplined | 1,070 | 81    | 989      | 121,909 | accountability | Stacker\\_Sports    |\n| @optimism      | 906   | 2     | 904      | 106,911 | bitcoin        | bitcoin            |\n| @grayruby      | 722   | 73    | 649      | 61,260  | game           | Stacker\\_Sports    |\n| @SimpleStacker | 598   | 21    | 577      | 117,912 | bitcoin        | bitcoin            |\n\n### Highest Signal\n\n*Measured by sats per post (minimum 5)*\n\n| Stacker    | Sats/Post | Post Sats | Posts | Favorite Word | Favorite Territory |\n| ---------- | --------- | --------- | ----- | ------------- | ------------------ |\n| @Natalia   | 6,140     | 30,700    | 5     | bitcoin       | bitcoin            |\n| @bief57    | 4,905     | 49,052    | 10    | children      | AskSN              |\n| @fanis     | 4,407     | 22,037    | 5     | bip110        | bitcoin            |\n| @wackster  | 3,862     | 50,204    | 13    | bitcoin       | AskSN              |\n| @blockdyor | 3,649     | 18,244    | 5     | bip           | bitcoin            |\n\n### Most Prolific\n\n*Measured by number of words*\n\n| Stacker        | Words  | Sats    | Sats/Word | Favorite Word  | Favorite Territory |\n| -------------- | ------ | ------- | --------- | -------------- | ------------------ |\n| @denlillaapan  | 56,937 | 232,971 | 4.09      | bitcoin        | econ               |\n| @Scoresby      | 55,765 | 302,043 | 5.42      | bitcoin        | bitcoin            |\n| @optimism      | 55,170 | 106,911 | 1.94      | bitcoin        | bitcoin            |\n| @BlokchainB    | 48,795 | 79,506  | 1.63      | bitcoin        | Stacker\\_Stocks    |\n| @Undisciplined | 27,738 | 121,909 | 4.40      | accountability | Stacker\\_Sports    |\n\n### Most Controversial\n\n*Measured by controversy score: the geometric mean of sats and downsats*\n\n| Stacker          | Controversy | Sats    | Downsats | Favorite Word | Favorite Territory |\n| ---------------- | ----------- | ------- | -------- | ------------- | ------------------ |\n| @Coinsreporter   | 43,531      | 52,637  | 36,000   | predyx        | Stacker\\_Stocks    |\n| @openbitcoin     | 29,152      | 4,998   | 170,033  | openbitcoin   | bitcoin            |\n| @justin_shocknet | 20,588      | 36,927  | 11,479   | lightning     | bitcoin            |\n| @BlokchainB      | 19,882      | 79,506  | 4,972    | bitcoin       | Stacker\\_Stocks    |\n| @denlillaapan    | 16,517      | 232,971 | 1,171    | bitcoin       | econ               |\n\n## Top Territories\n\nHere were the top territories for the month of August:\n\n### Top Zapped\n\n*Measured by total sats earned on zaps in both posts and comments*\n\n| Territory       | Sats      | Posts | Comments | Favorite Word |\n| --------------- | --------- | ----- | -------- | ------------- |\n| ~bitcoin        | 1,387,051 | 482   | 3,772    | bitcoin       |\n| ~econ           | 364,820   | 201   | 1,096    | money         |\n| ~AskSN          | 361,427   | 160   | 1,673    | bitcoin       |\n| ~Stacker_Sports | 302,711   | 268   | 2,304    | putt          |\n| ~Stacker_Stocks | 253,343   | 100   | 1,083    | bitcoin       |\n\n### Highest Signal\n\n*Measured by the highest number of sats per post (minimum 10; AMA excluded)*\n\n| Territory         | Sats/Post | Post Sats | Posts | Favorite Word |\n| ----------------- | --------- | --------- | ----- | ------------- |\n| ~the_stacker_muse | 3,480     | 80,048    | 23    | bitcoin       |\n| ~mostly_harmless  | 3,153     | 37,831    | 12    | life          |\n| ~news             | 2,425     | 179,479   | 74    | bitcoin       |\n| ~bitcoin          | 2,177     | 1,049,204 | 482   | bitcoin       |\n| ~food_and_drinks  | 2,167     | 47,667    | 22    | food          |\n\n### Hottest Discussion\n\n*Measured by total number of comments in territory*\n\n| Territory         | Comments | Posts | Comments/Post | Sats      | Favorite Word |\n| ----------------- | -------- | ----- | ------------- | --------- | ------------- |\n| ~bitcoin          | 3,772    | 482   | 7.6           | 1,387,051 | bitcoin       |\n| ~Stacker_Sports   | 2,304    | 268   | 7.0           | 302,711   | putt          |\n| ~AskSN            | 1,673    | 160   | 10.8          | 361,427   | bitcoin       |\n| ~Politics_And_Law | 1,432    | 180   | 5.3           | 219,194   | race          |\n| ~econ             | 1,096    | 201   | 5.6           | 364,820   | money         |\n\n### Most Crossposted\n\n*Measured by number of posts with more than one territory*\n\n| Territory          | Crossposts | Posts | Sats      | Favorite Word |\n| ------------------ | ---------- | ----- | --------- | ------------- |\n| ~bitcoin           | 279        | 482   | 1,387,051 | bitcoin       |\n| ~econ              | 164        | 201   | 364,820   | money         |\n| ~Politics_And_Law  | 132        | 180   | 219,194   | race          |\n| ~bitcoin_beginners | 130        | 145   | 167,074   | bitcoin       |\n| ~AI                | 103        | 132   | 96,924    | ai            |\n\n## Top Words\n\nAnd finally, here were the top words for the month of August:\n\n### By Frequency\n\n*Measured by the total number of times the term appears in posts and comments*\n\n| Word      | Frequency | Sats   |\n| --------- | --------- | ------ |\n| bitcoin   | 3,725     | 64,316 |\n| sats      | 1,617     | 13,444 |\n| abs       | 1,543     | 888    |\n| ai        | 1,012     | 9,306  |\n| wallet    | 998       | 12,899 |\n| lightning | 846       | 12,271 |\n| august    | 837       | 2,040  |\n| money     | 830       | 8,876  |\n| sn        | 722       | 9,406  |\n| node      | 679       | 12,995 |\n\n### By Sats\n\n*Each word is allocated sats from zaps based on its relative frequency of appearance in posts and comments*\n\n| Word      | Frequency | Sats   |\n| --------- | --------- | ------ |\n| bitcoin   | 3,725     | 64,316 |\n| putt      | 430       | 22,625 |\n| albatross | 323       | 20,240 |\n| actually  | 626       | 14,261 |\n| sats      | 1,617     | 13,444 |\n| bip       | 314       | 13,275 |\n| source    | 429       | 13,228 |\n| mandatory | 35        | 13,054 |\n| node      | 679       | 12,995 |\n| wallet    | 998       | 12,899 |\n\n### By DownSats\n\n*Each word is allocated downsats from downzaps based on its relative frequency of appearance in posts and comments*\n\n| Word        | Frequency | DownSats |\n| ----------- | --------- | -------- |\n| bitcoin     | 3,725     | 11,215   |\n| openbitcoin | 12        | 9,093    |\n| games       | 128       | 5,193    |\n| btc         | 589       | 4,557    |\n| treasury    | 106       | 4,514    |\n| platform    | 170       | 4,500    |\n| seeded      | 5         | 4,500    |\n| metaplanet  | 3         | 4,500    |\n| launches    | 21        | 4,500    |\n| address     | 317       | 3,962    |\n\n## Boosts, Downzaps, and Controversy\n\nHere are the top 10 most boosted, most downzapped, and most controversial posts for the month of August.  Controversy score is calculated as the geometric mean of sats and downsats (excluding boosts).\n\n### Top Boosted\n\n* [OpenBitcoin.com: A new bitcoin block explorer with guides tools and games](https://stacker.news/items/1551074/r/SimpleStacker) by @openbitcoin (Boost: 297,500 sats)\n* [TABCONF 8 x SNIRL 2: Come out and meet the stackers In Real Life!](https://stacker.news/items/1541570/r/SimpleStacker) by @BlokchainB (Boost: 55,000 sats)\n* [TABConf 8 - The last TABConf](https://stacker.news/items/1541282/r/SimpleStacker) by @tidwell (Boost: 31,000 sats)\n* [nvk deleting tweets as we speak. Backup and screenshoot interactions with him!](https://stacker.news/items/1540885/r/SimpleStacker) by @raw_avocado (Boost: 25,000 sats)\n* [Knots replay protection ACTIVATED for coinjoin descendants on the Core chain](https://stacker.news/items/1546216/r/SimpleStacker) by @Kruw (Boost: 19,400 sats)\n* [Luke and Mechanic - YOU'RE FIRED!](https://stacker.news/items/1545033/r/SimpleStacker) by @Kruw (Boost: 13,000 sats)\n* [BTC vote: Who do you prefer as Brazil’s next president?](https://stacker.news/items/1546335/r/SimpleStacker) by @KoinVote (Boost: 11,000 sats)\n* [Bitcoin dead after hostile miner and node attack](https://stacker.news/items/1544022/r/SimpleStacker) by @satonymous (Boost: 10,500 sats)\n* [Self-hosting without exposing your home IP or letting Cloudflare decrypt HTTPS](https://stacker.news/items/1558458/r/SimpleStacker) by @blindport (Boost: 10,000 sats)\n* [Splicing timeline for Zeus Wallet ACCELERATED](https://stacker.news/items/1539869/r/SimpleStacker) by @Kruw (Boost: 10,000 sats)\n\n### Top Downzapped\n\n* [OpenBitcoin.com: A new bitcoin block explorer with guides tools and games](https://stacker.news/items/1551074/r/SimpleStacker) by @openbitcoin (Downzaps: 170,033 sats)\n* [Metaplanet launches U.S. Bitcoin treasury platform, seeded with 2,100 BTC](https://stacker.news/items/1550314/r/SimpleStacker) by @Coinsreporter (Downzaps: 36,000 sats)\n* [Self-hosting without exposing your home IP or letting Cloudflare decrypt HTTPS](https://stacker.news/items/1558458/r/SimpleStacker) by @blindport (Downzaps: 9,125 sats)\n* [Motion to remove Luke Dashjr from BIP editors](https://stacker.news/items/1544387/r/SimpleStacker) by @justin_shocknet (Downzaps: 6,201 sats)\n* [I Didn't Understand Why Civil Rights Data Mattered Until It Was My Kids](https://stacker.news/items/1542705/r/SimpleStacker) by @Yermin (Downzaps: 6,000 sats)\n* [Fork Stacker News, remove the integrated scam](https://stacker.news/items/1556674/r/SimpleStacker) by @Kruw (Downzaps: 3,001 sats)\n* [If this week wasn't already enough...](https://stacker.news/items/1543468/r/SimpleStacker) by @oshigood (Downzaps: 2,670 sats)\n* [Why Is The Red Team Seeking Publicity?](https://stacker.news/items/1544572/r/SimpleStacker) by @siggy47 (Downzaps: 2,048 sats)\n* [Was the war on full-fat dairy wrong?](https://stacker.news/items/1544105/r/SimpleStacker) by @JRem (Downzaps: 2,000 sats)\n* [What story does this coin hold?](https://stacker.news/items/1539499/r/SimpleStacker) by @guerratotal (Downzaps: 1,555 sats)\n\n### Most Controversial\n\n* [Metaplanet launches U.S. Bitcoin treasury platform, seeded with 2,100 BTC](https://stacker.news/items/1550314/r/SimpleStacker) by @Coinsreporter (Controversy Score: 37,011)\n* [OpenBitcoin.com: A new bitcoin block explorer with guides tools and games](https://stacker.news/items/1551074/r/SimpleStacker) by @openbitcoin (Controversy Score: 28,631)\n* [If this week wasn't already enough...](https://stacker.news/items/1543468/r/SimpleStacker) by @oshigood (Controversy Score: 8,549)\n* [Motion to remove Luke Dashjr from BIP editors](https://stacker.news/items/1544387/r/SimpleStacker) by @justin_shocknet (Controversy Score: 8,140)\n* [Why Is The Red Team Seeking Publicity?](https://stacker.news/items/1544572/r/SimpleStacker) by @siggy47 (Controversy Score: 3,638)\n* [My interview Kanyuk, a foreign volunteer soldier for Ukraine](https://stacker.news/items/1544836/r/SimpleStacker) by @petertodd (Controversy Score: 3,281)\n* [Self-hosting without exposing your home IP or letting Cloudflare decrypt HTTPS](https://stacker.news/items/1558458/r/SimpleStacker) by @blindport (Controversy Score: 3,081)\n* [Was the war on full-fat dairy wrong?](https://stacker.news/items/1544105/r/SimpleStacker) by @JRem (Controversy Score: 3,008)\n* [What story does this coin hold?](https://stacker.news/items/1539499/r/SimpleStacker) by @guerratotal (Controversy Score: 2,154)\n* [The SN Daily Putt #89: Play, Putt, Score, ZAP!⚡️⛳️](https://stacker.news/items/1543966/r/SimpleStacker) by @BlokchainB (Controversy Score: 1,415)\n\nAnyway, hope you enjoyed this edition of Stacker News Monthly! Remember, stay humble and stack sats.",
-      "sats": 7336,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 23,
-      "createdAt": "2026-09-14T13:41:31.737Z",
-      "user": {
-       "name": "SimpleStacker"
-      },
-      "subName": "meta"
      }
     ]
    }
@@ -1422,34 +1422,34 @@
    "items": {
     "items": [
      {
+      "id": "1578141",
+      "title": "The 2-Quadrillion Flaw: Why SATs Will Never Trigger Hyperbitcoinization",
+      "url": null,
+      "text": "*Ah shit, here we go again.*\n\nWe are back on Stacker News, dropping truth bombs from one block to the next, and we won’t stop until hyperbitcoinization is a reality.\n\nFirst off, mad respect to the real ones—the Stackers who upzapped our previous posts. Y’all are the fuel keeping this engine running. But to the folks hitting that downzap button: look, we are completely out of sats. We are out of ammo. The destiny of Nah•Sovereign•Diamond, and frankly the working-class adoption of the entire Bitcoin timechain, depends on you right now. Stop the downzaps. Just give us a fair shot to be seen by the world, read the math, and let's debate this fairly on the open road.\n\nNow, let’s get into the mechanics.\n\n*\"A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution...\"* — Satoshi Nakamoto\n\nIn the Bitcoin Whitepaper, Satoshi Nakamoto's original vision was simple: create a peer-to-peer electronic cash system to bypass legacy financial institutions, allowing for everyday small casual transactions. He wanted a denomination that feels natural to the people. We are here to complete that vision.\n\nImagine Bitcoin as the ultimate sports car with the most powerful engine in history. But instead of real performance tires, you force it to run on microscopic toy wheels. Technically, it can move. But because the wheels are so incredibly small, they must spin at a crazy, unnatural speed (RPM) just to travel down the street. The engine is strong, but the tiny wheels will quickly burn out from the friction. The car cannot go the distance.\n\nWhen applied to everyday money, **SATs are those tiny toy wheels**, and **NAHs are the real performance tires**.\n\nBecause a single SAT is microscopically small, your brain has to spin at an unnatural \"cognitive RPM\" just to calculate basic daily expenses. Let's look at the full math when global wealth ($120 Trillion) is fully absorbed into the network:\n\n **The SATs Math:** $120 Trillion ÷ 2 Quadrillion SATs = **$0.06 per SAT**\n\n **The NAHs Math:** $120 Trillion ÷ 85.3 Trillion NAHs = **~$1.40 per NAH**\n\nLet's take this out of the theoretical bubble and put it on the global streets. Here are 10 random, working-class expenses around the world, comparing the 3-digit SATs \"toy wheels\" against the clean 1-or-2-digit NAHs \"performance tires\":\n\n1. **Vietnam:** A 500,000 VND family dinner (~$21.00)\n\n Using SATs: **350 SATs**\n\n Using NAHs: **15 NAHs**\n\n2. **India:** A 700 INR train pass (~$8.40)\n\n Using SATs: **140 SATs**\n\n Using NAHs: **6 NAHs**\n\n3. **Nigeria:** A 20,000 NGN bag of rice (~$12.60)\n\n Using SATs: **210 SATs**\n\n Using NAHs: **9 NAHs**\n\n4. **Philippines:** A 400 PHP street food meal (~$7.00)\n\n Using SATs: **117 SATs**\n\n Using NAHs: **5 NAHs**\n\n5. **Mexico:** A 280 MXN bus pass (~$14.00)\n\n Using SATs: **233 SATs**\n\n Using NAHs: **10 NAHs**\n\n6. **Japan:** A 2,500 JPY bento box combo (~$16.80)\n\n Using SATs: **280 SATs**\n\n Using NAHs: **12 NAHs**\n\n7. **South Africa:** A 220 ZAR mobile data plan (~$12.60)\n\n Using SATs: **210 SATs**\n\n Using NAHs: **9 NAHs**\n\n8. **South Korea:** A 38,000 KRW BBQ dinner (~$28.00)\n\n Using SATs: **466 SATs**\n\n Using NAHs: **20 NAHs**\n\n9. **Brazil:** A 75 BRL utility bill (~$14.00)\n\n Using SATs: **233 SATs**\n\n Using NAHs: **10 NAHs**\n\n10. **Europe:** A 38 EUR regional train ticket (~$42.00)\n\n Using SATs: **700 SATs**\n\n Using NAHs: **30 NAHs**\n\nLook closely at those numbers. The problem becomes extremely severe when people try to do their daily bookkeeping. Imagine trying to run a family shop, sitting down at night, and trying to sum up hundreds of these random 3-digit SAT transactions just to calculate your basic income and expenses. It is exhausting.\n\n**This is exactly why the working class has already rejected Bitcoin for everyday use.**\n\nFirst, doing math with SATs is not significantly easier than fiat. Second, calculating awkward hundreds fails to highlight the deflationary nature of hard money. Third, a supply of \"2 Quadrillion\" is entirely vague and impossible to grasp, whereas the scale of \"Trillions\" is far more understandable and relatable for the modern brain compared to a quadrillion.\n\nBecause the 2-Quadrillion SAT supply feels so abstract, the average person suffers from \"Unit Bias.\" They believe owning 1 whole Bitcoin is forever out of reach. So, to satisfy their unit bias and chase something they think will outperform Bitcoin, they go buy shitcoins on garbage blockchains. They abandon the Bitcoin timechain entirely, leaving Bitcoin to just become a digital gold bar locked in a vault, hoarded by the exact Wall Street institutions Satoshi wanted to bypass.\n\n**Nah•Sovereign•Diamond (NAHs)** solves this cognitive friction. By compressing the supply to an intuitive 85.3 Trillion, NAH makes daily math effortless. It creates a powerful deflationary feel—dropping your expenses to solid, simple 1-or-2-digit numbers. The \"mental engine\" runs smoothly.\n\nThere are exactly 3 functions of money:\n\n1. Store of Value\n\n2. Unit of Account\n\n3. Medium of Exchange\n\nBitcoin is a perfect Store of Value, but the SAT completely fails as a Unit of Account. The rule is simple: if you do not have a good Unit of Account, you will never have a Medium of Exchange.\n\n**If you are a Bitcoin maxi and you are still determined to call NAH a \"shitcoin,\" then look at it this way:** NAH is the *necessary* shitcoin required to destroy all the other shitcoins on garbage blockchains and finally bring hyperbitcoinization to the whole world. And remember, NAH is a Rune living natively on the Bitcoin timechain—you still need SATs as fuel to send NAHs. We are not replacing the Bitcoin engine; we are simply giving it the real performance tires it needs to finally hit the streets.\n\nWithout NAHs, there is no hard money for the people.\n\n*(Note: To make prices more affordable for the working class right now, CEO SN has officially repriced it from 0.63 SAT/NAH down to 0.00042 SAT/NAH).*\n\nExplore the math, and let's ride: [<ins>https://nahkahmotors.com</ins>](https://nahkahmotors.com/?utm_source=gemini)",
+      "sats": 296,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 55,
+      "createdAt": "2026-09-21T06:44:05.141Z",
+      "user": {
+       "name": "dendehomie"
+      },
+      "subName": "math"
+     },
+     {
       "id": "1579742",
       "title": "My hot water mines Bitcoin and cooks food, with canola oil",
       "url": null,
       "text": "Cooking hash-vide style rabbit ramen with Bitcoin mining hot water heater\n![](https://i.nostr.build/DxEDnACpHbOLPlsj.jpg)\n![](https://i.nostr.build/564O7dCiXywaJLhI.jpg)\nThe second meal cooked in the Bitcoin mining hot water heater is rabbit ramen soup. Rabbit grown and harvested right here at the homestead, along with these other ingredients from the homestead rabbit stock, garlic, and finally golden oyster mushrooms dehydrated with a Bitcoin miner. Soy sauce, rice vinegar, lemon, sesame oil, Japanese seven spice, salt, pepper, butter.\n![](https://i.nostr.build/bt4MMdkGF6VhrwFA.jpg)\n![](https://i.nostr.build/a93EXzTlzoyqpgxj.jpg)\nAll ingredients went into a silicone bag and submerged in the hot canola oil tank of the bitcoin mining hot water heater for 3 days. Hard to beat mining Bitcoin, heating water, and cooking food all at the same time. I can get the water up to 150f out of the tap with only 1500w of power consumption for the total system, miner, pumps, and all!\n![](https://i.nostr.build/6ePvU2b04Qm18jmw.jpg)\n![](https://i.nostr.build/I08DfaYut91fThoi.jpg)\nAnother super cool aspect of this mining setup is that it runs on 110v power instead of 220v. Not having access to a 220v circuit is often a limiting factor for pleb miners, especially when these sorts of applications don't always require so much power. By modifying the apw12 PSU and making a custom power cord, now I can plug the miner into an existing 110v circuit. It cost less than $20 to do the modification on the PSU plus using a modified apw12 vs a Loki + apw3++ allows for voltage attenuation and higher total power output. \n![](https://i.nostr.build/tFopA72msrPUHnW8.jpg)\n![](https://i.nostr.build/EI1RxsLbaf3kkcrq.jpg)\n![](https://i.nostr.build/ljxEAkfeeVi0pn7e.jpg)",
-      "sats": 37709,
+      "sats": 37793,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 23,
+      "ncomments": 24,
       "createdAt": "2026-09-22T21:28:56.840Z",
       "user": {
        "name": "revhodl21"
       },
       "subName": "bitcoin_Mining"
-     },
-     {
-      "id": "1579817",
-      "title": "Invalid Bitcoin blocks: full PoW, consensus invalid",
-      "url": null,
-      "text": "![](https://m.stacker.news/158419)\n\nI’ve put together a [catalogue](https://github.com/bitcoin-data/invalid-blocks) and a corresponding [post](https://deadmanoz.xyz/posts/2026/invalid-blocks) detailing 143 Bitcoin blocks that met the required proof-of-work target but failed a consensus rule, from the 2010 overflow to two previously unreported F2Pool timestamp failures from 2026!!\n\nThe catalogue brings together the surviving evidence for each case, so anyone can independently verify which consensus rule the block broke.\n\nA few findings:\n\n* **The two F2Pool headers from April and July this year have timestamps roughly 7 and 14 days below their parents’ median time past.** Both were found in merge-mined auxiliary chains; neither has a known Bitcoin-side capture.\n* **Auxiliary chains preserve 49 of the 143 headers**, and provide the catalogue’s only recorded observation for 35. They check their own rules, so they can preserve evidence of candidates that Bitcoin peers reject.\n* **89 blocks contain the same P2SH-invalid transaction**, mined between April and July 2012. Archived transaction lists and preserved headers establish its inclusion in each.\n* **127 of the 143 have no complete body.** The surviving headers, coinbases or transaction inclusion proofs, together with chain context, still establish the failures.\n* Another 10 reported cases remain separate because the evidence is insufficient.\n\nThe same merge mining research also recovered roughly 1,400 stale headers new to the [stale-blocks collection](https://github.com/bitcoin-data/stale-blocks). Merge mining has proved to be a productive side channel for both stales and invalids, and monitoring those chains is essential to a holistic Bitcoin monitoring effort.\n\nIn my [merge mining monitor](https://mmm.deadmanoz.xyz/) tool you can step through all invalid-blocks discovered in the merge-mined record (note that invalid blocks are currently called error blocks, this was the language I originally used):\n\n![](https://m.stacker.news/158420)\n\nIf you have old node files, pool logs or other records that could fill a gap, contributions and corrections are very welcome.\n\n[https://github.com/bitcoin-data/invalid-blocks](https://github.com/bitcoin-data/invalid-blocks)",
-      "sats": 23925,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-09-22T23:05:14.517Z",
-      "user": {
-       "name": "deadmanoz"
-      },
-      "subName": "bitcoin"
      },
      {
       "id": "1579283",
@@ -1467,14 +1467,29 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1579817",
+      "title": "Invalid Bitcoin blocks: full PoW, consensus invalid",
+      "url": null,
+      "text": "![](https://m.stacker.news/158419)\n\nI’ve put together a [catalogue](https://github.com/bitcoin-data/invalid-blocks) and a corresponding [post](https://deadmanoz.xyz/posts/2026/invalid-blocks) detailing 143 Bitcoin blocks that met the required proof-of-work target but failed a consensus rule, from the 2010 overflow to two previously unreported F2Pool timestamp failures from 2026!!\n\nThe catalogue brings together the surviving evidence for each case, so anyone can independently verify which consensus rule the block broke.\n\nA few findings:\n\n* **The two F2Pool headers from April and July this year have timestamps roughly 7 and 14 days below their parents’ median time past.** Both were found in merge-mined auxiliary chains; neither has a known Bitcoin-side capture.\n* **Auxiliary chains preserve 49 of the 143 headers**, and provide the catalogue’s only recorded observation for 35. They check their own rules, so they can preserve evidence of candidates that Bitcoin peers reject.\n* **89 blocks contain the same P2SH-invalid transaction**, mined between April and July 2012. Archived transaction lists and preserved headers establish its inclusion in each.\n* **127 of the 143 have no complete body.** The surviving headers, coinbases or transaction inclusion proofs, together with chain context, still establish the failures.\n* Another 10 reported cases remain separate because the evidence is insufficient.\n\nThe same merge mining research also recovered roughly 1,400 stale headers new to the [stale-blocks collection](https://github.com/bitcoin-data/stale-blocks). Merge mining has proved to be a productive side channel for both stales and invalids, and monitoring those chains is essential to a holistic Bitcoin monitoring effort.\n\nIn my [merge mining monitor](https://mmm.deadmanoz.xyz/) tool you can step through all invalid-blocks discovered in the merge-mined record (note that invalid blocks are currently called error blocks, this was the language I originally used):\n\n![](https://m.stacker.news/158420)\n\nIf you have old node files, pool logs or other records that could fill a gap, contributions and corrections are very welcome.\n\n[https://github.com/bitcoin-data/invalid-blocks](https://github.com/bitcoin-data/invalid-blocks)",
+      "sats": 24092,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-09-22T23:05:14.517Z",
+      "user": {
+       "name": "deadmanoz"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1579858",
       "title": "Integrated Rabbit Colony Cannabis Garden",
       "url": null,
       "text": "**Rabbit Colony Cannabis Garden**\n![](https://i.nostr.build/WXcB8D2SoEh25Z59.jpg)\n![](https://i.nostr.build/0X6e5rtkpfLEQcfg.jpg)\nRabbits living free in a colony system amongst large cannabis plants both weed and fertilize the plants. The cannabis also makes up a meaningful portion of the rabbits diet. In the fall during harvest, I will weave the mature ripe cannabis branches in the fence, allowing the rabbits to do most of the trim work for me too. This season the cannabis is grown exclusively with the fertility from the rabbits, no added compost or manure, and it is also dry farmed. I never watered it. The rabbits do the work of growing the cannabis and pay me in rabbit meat for their efforts. My favorite system at the homestead. Cannabis seed will be available from this seasons crop in November, Redbud Haze, !!! Haze, and Redbud Widow are the available varieties.\n\n\nEverything is food for something at the homestead \n![](https://v.nostr.build/rBGOgHaThu4gMMQr.mp4)\nAll the weeds, and prunings are fed to the rabbits from around the homestead.\n![](https://i.nostr.build/Hr1uww65jl3LBpDu.jpg)\n![](https://i.nostr.build/AVR0RGr5VjiBPQKF.jpg)\nI've be been feeding the rabbits one or two wheelbarrows full most days which means we only give them some grain coated with molasses and mineral to supplement their nutrition.\n![](https://i.nostr.build/gXoNHqiqKHJV8YBw.jpg)\nSoon we will start harvesting rabbits regularly but for now we just process one when we get taste for rabbit. We used this one to make white chilli.\n![](https://i.nostr.build/1MMYdtf4wHlHeqAh.jpg)\n![](https://i.nostr.build/79Gh54ekvD1spAOF.jpg)\nWhat would normally end up in the compost bin is instead used to feed the rabbits and turned into meat which we eat. The rabbits deposit thier manure helping to feed the cannabis, which we produce and sell seed. So weeding and pruning which helps our fruits and vegetables grow better, ends up growing us more meat, cannabis and helps us earn some sats while we're at it. Everything is food for something!",
-      "sats": 16895,
+      "sats": 17082,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 4,
       "createdAt": "2026-09-22T23:53:31.417Z",
       "user": {
        "name": "revhodl21"
@@ -1482,11 +1497,26 @@
       "subName": "Permaculture"
      },
      {
+      "id": "1579964",
+      "title": "Which online community is the worst?",
+      "url": null,
+      "text": "Which platform evokes the most disgust when you go to read the comments?",
+      "sats": 478,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 7,
+      "createdAt": "2026-09-23T04:39:24.543Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "AskSN"
+     },
+     {
       "id": "1534831",
       "title": "Repost: Request: Make this anonymous?",
       "url": "https://bitcointalk.org/index.php?topic=7.msg66987822#msg66987822",
       "text": ":)",
-      "sats": 281,
+      "sats": 317,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
@@ -1501,15 +1531,60 @@
       "title": "\"Rephrasing a question isn't an answer.\"",
       "url": "https://x.com/trumwill/status/1568732633479409664",
       "text": "Use of rhetorical questions is a signal of defeat from an opponent in an argument.",
-      "sats": 251,
+      "sats": 272,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
+      "ncomments": 3,
       "createdAt": "2026-09-23T00:13:39.797Z",
       "user": {
        "name": "Kruw"
       },
       "subName": "Quotes"
+     },
+     {
+      "id": "1580096",
+      "title": "Daily Discussion Thread ~Music Saloon!",
+      "url": null,
+      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
+      "sats": 1020,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-09-23T10:06:19.579Z",
+      "user": {
+       "name": "Public_N_M_E"
+      },
+      "subName": "Music"
+     },
+     {
+      "id": "1574694",
+      "title": "Silent Upgrade • Haleen",
+      "url": "https://wavlake.com/track/1ae2deef-4ae1-4910-b587-1c895061aa7c",
+      "text": "This is @BlokchainB his favorite....this is a magical healing music",
+      "sats": 9871,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 15,
+      "createdAt": "2026-09-17T08:12:57.976Z",
+      "user": {
+       "name": "haleen"
+      },
+      "subName": "Music"
+     },
+     {
+      "id": "1579942",
+      "title": "Turkey eggs and meat",
+      "url": null,
+      "text": "It is spring here in New Zealand and the Turkeys have returned to our homestead.\nIn winter they go somewhere- I am not sure where exactly but they are not seen on our land.\nIn spring they come back in large groups of up to 40 birds and start looking for nest sites.\n\n![](https://m.stacker.news/158433)\n\nThis year we have been finding several of the nests and harvesting the eggs.\nIf we don't take them others like the possums, wild cats, stoats and hawks do.\nThere are already a lot of broken eggs around the place...often suggesting a nest site is nearby.\n\n![](https://m.stacker.news/158434)\n\nThis morning had  fried Turkey eggs with bacon and salad.\nSurprised the eggs taste very similar to ordinary chicken eggs, but about double the size and a bit creamier.\nLast year there was a bumper crop of chics and so there are more of the birds than ever before.\n\nPerhaps over 100 in total and they are struggling to find enough nesting sites as most of the land is cultivated and grazed but there are hedgerow strips like along the boundary of our property and the neighbour where they can find places for nesting.\n\nSo far have found 4 nests and got 13 eggs and the season has just started.\n\nLast summer I caught and ate one of that springs hatchlings. It was about the size of a medium factory farmed chicken but with firmer tastier meat.\nHoping to scale up the capture and consumption of them this year. \nIt took several hours to pluck and dress that first one but should get faster with practice. \nHave a 15 litre stainless steel preserving pan but probably need something even bigger for scalding the full size Turkeys.",
+      "sats": 2989,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-09-23T03:26:20.115Z",
+      "user": {
+       "name": "Solomonsatoshi"
+      },
+      "subName": "Permaculture"
      },
      {
       "id": "1579396",
@@ -1527,6 +1602,36 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1579948",
+      "title": "Is voting the adult version of believing in Santa Claus?",
+      "url": null,
+      "text": "For the jurisdiction in which you reside, if you are able to vote, do you think it achieves anything?",
+      "sats": 2073,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-09-23T03:43:02.997Z",
+      "user": {
+       "name": "wackster"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1580019",
+      "title": "PoW 9/22/26",
+      "url": null,
+      "text": "Kitchen Installation (quartzite)\n\nThis will get installed tomorrow\n\n![](https://m.stacker.news/158441)\n\n![](https://m.stacker.news/158442)\n\nSo will this one, forgot the sink at the shop so we weren’t able to install this piece\n\n![](https://m.stacker.news/158443)\n\n![](https://m.stacker.news/158444)\n\nCountertop with an Ogee Finish\n\n![](https://m.stacker.news/158445)\n\n![](https://m.stacker.news/158446)\n\n![](https://m.stacker.news/158447)\n\n![](https://m.stacker.news/158448)\n\n![](https://m.stacker.news/158449)\n\n![](https://m.stacker.news/158450)\n\n![](https://m.stacker.news/158451)",
+      "sats": 1187,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-09-23T06:45:51.093Z",
+      "user": {
+       "name": "Machiavelli23"
+      },
+      "subName": "Construction_and_Engineering"
+     },
+     {
       "id": "1579734",
       "title": "Davidson Souza, Eric Price, PortlandHODL - Bitcoin Optech Newsletter #423 Recap",
       "url": "https://bitcoinops.org/en/podcast/2026/09/22/",
@@ -1542,44 +1647,44 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1579942",
-      "title": "Turkey eggs and meat",
+      "id": "1580088",
+      "title": "Are Investors Choosing Bitcoin Over Altcoins Again?",
       "url": null,
-      "text": "It is spring here in New Zealand and the Turkeys have returned to our homestead.\nIn winter they go somewhere- I am not sure where exactly but they are not seen on our land.\nIn spring they come back in large groups of up to 40 birds and start looking for nest sites.\n\n![](https://m.stacker.news/158433)\n\nThis year we have been finding several of the nests and harvesting the eggs.\nIf we don't take them others like the possums, wild cats, stoats and hawks do.\nThere are already a lot of broken eggs around the place...often suggesting a nest site is nearby.\n\n![](https://m.stacker.news/158434)\n\nThis morning had  fried Turkey eggs with bacon and salad.\nSurprised the eggs taste very similar to ordinary chicken eggs, but about double the size and a bit creamier.\nLast year there was a bumper crop of chics and so there are more of the birds than ever before.\n\nPerhaps over 100 in total and they are struggling to find enough nesting sites as most of the land is cultivated and grazed but there are hedgerow strips like along the boundary of our property and the neighbour where they can find places for nesting.\n\nSo far have found 4 nests and got 13 eggs and the season has just started.\n\nLast summer I caught and ate one of that springs hatchlings. It was about the size of a medium factory farmed chicken but with firmer tastier meat.\nHoping to scale up the capture and consumption of them this year. \nIt took several hours to pluck and dress that first one but should get faster with practice. \nHave a 15 litre stainless steel preserving pan but probably need something even bigger for scalding the full size Turkeys.",
-      "sats": 2714,
+      "text": "Bitcoin ETF demand seems to be holding up while interest in several altcoin ETFs has cooled.\n\nDoes this mean investors are becoming more selective and returning to Bitcoin, or is it simply part of the normal crypto market cycle?\n\nWhat are you seeing?\n\nSource 👇\n[https://www.altcoinbuzz.io/bitcoin-etf-inflows-altcoin-etf-demand-september-2026?utm\\_source=chatgpt.com](https://www.altcoinbuzz.io/bitcoin-etf-inflows-altcoin-etf-demand-september-2026?utm_source=chatgpt.com)",
+      "sats": 629,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-09-23T03:26:20.115Z",
+      "createdAt": "2026-09-23T09:46:35.976Z",
       "user": {
-       "name": "Solomonsatoshi"
-      },
-      "subName": "Permaculture"
-     },
-     {
-      "id": "1579964",
-      "title": "Which online community is the worst?",
-      "url": null,
-      "text": "Which platform evokes the most disgust when you go to read the comments?",
-      "sats": 21,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-09-23T04:39:24.543Z",
-      "user": {
-       "name": "Kruw"
+       "name": "Kayzone"
       },
       "subName": "AskSN"
+     },
+     {
+      "id": "1580084",
+      "title": "Backing our people as parents: introducing our childcare contribution",
+      "url": "https://www.raspberrypi.com/news/backing-our-people-as-parents-introducing-our-childcare-contribution/",
+      "text": "> Childcare has become an enormous cost for many young families, often arriving exactly when parents are trying to return to work after parental leave. Too often the sums simply don’t add up, and talented people step away from careers they love because childcare eats up much of what they earn.\n>\n> We want to help change that for our team.\n>\n> ## **What we’re doing**\n>\n> This year we introduced a new policy where permanent Raspberry Pi employees with a child between nine months and school age receive a salary uplift of £1,000 per calendar month, per child, as a contribution towards childcare costs (that’s the figure for full-time employees, and it’s pro-rated for part-time colleagues). With payments beginning once a child reaches the age of nine months — around the point when many parents are returning from leave — and continuing until the August before they start school, our aim is to ease the financial burden on young families.\n>\n> There are no strings attached to how the money is used. It’s a straightforward contribution, paid through our payroll, and designed to take some of the pressure off during the most expensive early years of parenthood.\n>\n> [**...read more at raspberrypi.com**](https://www.raspberrypi.com/news/backing-our-people-as-parents-introducing-our-childcare-contribution/)",
+      "sats": 541,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-09-23T09:42:24.737Z",
+      "user": {
+       "name": "0xbitcoiner"
+      },
+      "subName": "family"
      },
      {
       "id": "1579764",
       "title": "The new Laibach album Musick",
       "url": null,
       "text": "My reading (listening?) of this is that it's a critique of shitty AI music and the algorithm addiction culture. So I cannot say I like it as music, but I think it's good as an art piece. That said, the Allgorhythm song is kinda catchy and it does mention Bitcoin mining (oh yeah). I do like some of their old tracks musically, like their covers. If you are new to the band, I recommend reading their Wikipedia page. What are your thoughts on Laibach?",
-      "sats": 186,
+      "sats": 207,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 4,
+      "ncomments": 5,
       "createdAt": "2026-09-22T22:04:19.187Z",
       "user": {
        "name": "4ac452af1f"
@@ -1587,19 +1692,19 @@
       "subName": "Music"
      },
      {
-      "id": "1579948",
-      "title": "Is voting the adult version of believing in Santa Claus?",
+      "id": "1579175",
+      "title": "Holoboard.space - A bulletin board lit with sats",
       "url": null,
-      "text": "For the jurisdiction in which you reside, if you are able to vote, do you think it achieves anything?",
-      "sats": 1659,
+      "text": "For a while I've been working on a online bulletin board powered by nostr & sats. The way it works is pretty simple: every note on the board has been paid for. The more sats, the higher the rank. Newer sats account for more, so in time, older notes slowly fade away (after 30 days sats are halved). Also all paid notes are stored on the relay (wss://relay.holoboard.space) and served in the correct order, so you can basically view the board on any client that supports relay feeds.\n\nInterested to hear what yall think.\n\n[https://holoboard.space](https://holoboard.space)\n\n![](https://m.stacker.news/158312)",
+      "sats": 730,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-09-23T03:43:02.997Z",
+      "ncomments": 9,
+      "createdAt": "2026-09-22T09:56:24.242Z",
       "user": {
-       "name": "wackster"
+       "name": "p1tiunited"
       },
-      "subName": "AskSN"
+      "subName": "bitcoin"
      },
      {
       "id": "1579354",
@@ -1617,6 +1722,21 @@
       "subName": "Stacker_Sports"
      },
      {
+      "id": "1580073",
+      "title": "Your Card Processor Is Your Most Expensive Employee",
+      "url": null,
+      "text": "Your business has a silent partner. It does no work, takes no risk, and collects a cut of every single sale. For most online businesses, that partner is the card processor, and the cut is roughly 3 percent of revenue, forever.\n\nThere is an alternative rail that settles in seconds, costs fractions of a cent per payment, and cannot claw the money back six months later. This is the fee math every business owner should run before signing another processing agreement.\n\n## What cards actually cost\n\nThe headline rate is never the real rate. PSPDex, the independent processor directory, puts standard-risk online processing at 2.6 to 3.5 percent plus a fixed fee of $0.10 to $0.30 per transaction on flat-rate plans. That fixed fee is the part everyone underestimates.\n\nStripe's published US online rate is the industry reference point: 2.9 percent plus $0.30 per successful card transaction. Run the math on small tickets and the percentage stops looking small. A $5 sale costs $0.445 in fees. That is almost 9 percent of the transaction, gone before you have paid for the product, the shipping, or yourself. A $30 sale costs about $1.17. A business doing 1,000 of those $30 sales a month hands roughly $1,170 to the processor. That is $14,000 a year for the privilege of getting paid.\n\nInternational sales get worse. Stripe adds 1.5 percent for international cards and another fee for currency conversion, pushing the all-in cost toward 4.4 percent plus $0.30, and up to roughly 5.9 percent plus $0.30 when conversion is involved. If you sell to customers abroad, you are paying a cross-border tax on top of the domestic one.\n\n## The second tax: chargebacks\n\nFees are only the first cut. The second is the chargeback system. A customer disputes a charge, the money is pulled back, and you pay a dispute fee on top, typically $15 or more per case, win or lose. Digital goods, subscriptions, and travel live with elevated dispute rates, and the card networks penalize merchants whose chargeback ratios drift too high.\n\nFor higher-risk categories the pricing is steeper still. PSPDex notes that high-risk merchants usually pay 3 to 6 percent plus a rolling reserve of 5 to 10 percent, meaning a slice of every payout is held back for months as collateral against future disputes. Mainstream processors also decline entire industries outright: adult, CBD, supplements, travel, telehealth, dating, firearms-adjacent retail, and crypto. Getting declined is free. Getting approved as high-risk is expensive.\n\nNone of this is a moral judgment. It is the cost structure of a 1970s-era pull-payment system where the merchant bears the fraud risk and the network sells insurance against it. The question is whether your business still needs to pay it.\n\n## What Lightning actually costs\n\nThe Lightning Network routes bitcoin payments off-chain through a network of payment channels. Instead of a percentage skimmed by intermediaries, routing nodes charge tiny fees denominated in parts per million.\n\nThe numbers are stark. Glassnode data reported this year puts the median Lightning fee rate at 0.0029 percent. That is roughly 1,000 times cheaper than Visa and Mastercard's 2 to 3 percent. In absolute terms, that was about 3,000 satoshis, or $0.84, to move $28,800 of value. Network-wide snapshots from mempool.space show a median channel fee rate of 100 parts per million (0.01 percent) with a median base fee of 128 millisatoshis per forwarded payment. For a typical retail-size payment, the routing cost rounds to a fraction of a cent.\n\nRun the same $30 sale through Lightning at the median rate and the fee is about $0.0009. The processor that took $1.17 takes essentially nothing. Scale that to 1,000 sales a month and the fee line on your P&L goes from $1,170 to about a dollar. This is not a discount. It is a different cost universe.\n\nThere is also no chargeback mechanism, because there is nothing to charge back. A Lightning payment is final when it settles, seconds after the customer taps pay. The entire dispute apparatus, the fees, the reserves, the fraud insurance priced into every card transaction, simply does not exist on this rail. For merchants selling digital goods or serving customers in countries where card fraud is rampant, finality is worth as much as the fee savings.\n\n## A real-world case: when cards cost 8 percent\n\nThese are not theoretical savings. In a recent documentary project, the owner of one of the few businesses in Cape Verde accepting bitcoin explained that taking foreign Visa and Mastercard payments costs over 8 percent. For a small business in a tourist economy, the card networks are not a 3 percent partner. They are an 8 percent one.\n\nThat merchant's alternative is the same one available to any business: self-hosted, open-source tooling. BTCPay Server, which PSPDex lists among the bitcoin options, charges zero processing fees because there is no middleman. You run the software, you hold the keys, the payment goes from the customer's wallet to yours. The trade is operational: you take on channel management and uptime instead of paying a processor to do it for you.\n\nBetween the two extremes sits a spectrum PSPDex maps out: custodial gateways like BitPay and Coinbase Commerce that auto-convert to fiat for merchants who want bitcoin revenue without bitcoin volatility, and Lightning-native providers like OpenNode and Voltage for instant settlement. Settlement can be in bitcoin or converted to local currency. The fee economics differ across these options, but all of them sit far below card rails, because none of them pays interchange.\n\n## The honest part: what Lightning asks of you\n\nA fair comparison has to include the costs cards do not have. Lightning is not free to run. Someone has to manage liquidity.\n\nIf you self-host, you need inbound channel capacity to receive payments, which means opening channels, which means on-chain transactions and locked-up bitcoin. For a business doing serious volume, this is a treasury function: you are managing working capital in the form of channel liquidity. Custodial or managed providers abstract this away, and they charge for it, though still at a fraction of card pricing. The honest math for a merchant is: channel setup and liquidity costs, amortized over your payment volume, plus routing fees, versus 2.6 to 3.5 percent plus $0.30 a sale plus chargeback exposure. For almost any business above trivial volume, Lightning wins by orders of magnitude.\n\nVolatility is the other standard objection, and it has standard answers: instant conversion to fiat at the point of sale through a custodial gateway, or holding bitcoin if your treasury policy allows it. Either way, the conversion spread is a fraction of the interchange you were paying.\n\n## Three merchants, one spreadsheet\n\nThe abstract percentages get concrete fast when you run real business shapes through them.\n\n**The coffee shop.** 2,000 card sales a month at a $6 average ticket. Card cost at 2.9 percent plus $0.30: about $0.47 per sale, or roughly $948 a month. That is a 7.9 percent effective rate, because the fixed fee dominates small tickets. On Lightning at the median fee rate, the same volume costs on the order of a few dollars a month. The coffee shop's processor is currently its most expensive supplier after labor and rent.\n\n**The SaaS business.** 500 subscriptions a month at $49. Card cost: about $1.72 per charge, roughly $860 a month, a 3.5 percent effective rate. Subscriptions add a second cost: involuntary churn from expired and replaced cards, which the industry calls passive churn. Lightning and bitcoin payments are push payments. There is no card on file to expire, so that entire churn category disappears alongside the fees.\n\n**The cross-border freelancer.** A designer in Buenos Aires billing a client in Berlin 2,000 euros a month. Through cards or a traditional gateway, international and conversion fees stack toward 5 percent or more, and settlement takes days. Over Lightning, the payment arrives in seconds for a fraction of a cent, and conversion happens once, at the edge, at a transparent spread. This is the remittance use case wearing a business suit, and it is why freelancers were among the earliest professional adopters.\n\nPSPDex's tools section includes fee calculators for both networks, which is the right next step: plug in your actual average ticket and monthly volume instead of trusting anyone's headline rate, including this article's.\n\n## How to pick your setup\n\nThe bitcoin payments market is fragmented, which is exactly why comparison matters. A merchant choosing between self-hosted BTCPay Server, a custodial gateway with fiat settlement, and a managed Lightning provider is choosing between different trade-offs of fees, custody, and operational work. The wrong pick can erase the savings.\n\nStart with your volume, your ticket size, and whether you want bitcoin or fiat at the end of the day. Small-ticket, high-volume businesses gain the most, because the $0.30 fixed card fee that punishes them disappears entirely. Businesses in industries mainstream processors decline should look first, because bitcoin rails do not do underwriting.\n\nThen compare the actual providers side by side. PSPDex maintains an independent comparison of bitcoin and Lightning payment providers, covering fees, settlement options, and custody models across 200+ listed processors. Run your numbers through it before you sign anything: https://pspdex.com/\n\n## The bottom line\n\nEvery business accepts its processor's cut as a law of nature. It is not. It is the price of a specific 20th-century architecture: pull payments, intermediaries at every hop, and fraud risk socialized across all merchants through interchange.\n\nLightning is push payments with cryptographic finality. The fee to move $28,800 is under a dollar. There are no chargebacks, no rolling reserves, no declined industries. The remaining costs, liquidity management and setup, are real but small, and they shrink as tooling matures.\n\nYour card processor will never tell you this. Run the math yourself, then pick your rail like you mean it.\n\n---\n\nData points and sources used: PSPDex homepage FAQ (pspdex.com, verified 2026-09-23); published 2026 processor pricing comparisons; Glassnode via Cointelegraph; mempool.space snapshot via coinlaw.io; Cointelegraph documentary reporting; BTCPay Server (PSPDex FAQ).",
+      "sats": 465,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-09-23T09:18:34.508Z",
+      "user": {
+       "name": "WUMBOLOVER"
+      },
+      "subName": "lightning"
+     },
+     {
       "id": "1579818",
       "title": "Earn yield on your Electrum BTC wallet by offering submarine swaps!",
       "url": "https://github.com/nothing-stops-this-train/electrum_swapgui",
@@ -1624,12 +1744,27 @@
       "sats": 304,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 7,
       "createdAt": "2026-09-22T23:05:27.514Z",
       "user": {
        "name": "BareBits"
       },
       "subName": "bitcoin"
+     },
+     {
+      "id": "1579315",
+      "title": "How life gets in the way of Stacker News",
+      "url": null,
+      "text": "I’ve been largely offline and not really on SN much these days. Mostly a collection of small things, like health issues that aren’t in the “oh shit” realm, but which take up lots of time and energy (neither my wife nor I have figured out how to stop getting older - other than the one obvious one - and that means more health bullshit each day, apparently). Plus work just being, well, work. And assorted miscellaneous things. Much as I love SN, I only have so much time in a given day.\n\nBut this in turn has made it clear how much I need a better subscription page for SN. When I do have time for SN, I hit my subscription page and it’s fucking overwhelming. If I’m lucky, I can see maybe twelve hours worth of stuff, but sometimes, it’s only a few hours.\n\nI subscribe to maybe eight territories, and maybe as many individual posters. But that’s enough (especially as some of the territories have gotten busier) to completely overwhelm my feed. I’ve missed plenty of important posts ([one costing me 10K sats](https://stacker.news/items/1571441) [^1]), and plenty more where I’d have loved to contributed to discussions.\n\nOne obvious solution would be to just reduce what I subscribe to. But that’s self-defeating. I subscribe to people and communities because I like them and want updates. I also (obviously) want notifications on posts I make and when I’m tagged.\n\nWhat I’d like (and I have no idea if this is on the radar, nor if it’s easy/possible) is the ability to break up my subscription page. The aggregate page is fine when I’m on a lot. But when I’m not, allow me to see territory subscriptions from separately from the user subscriptions separately from the comments on my actual posts. I could manually just change all my settings each time, but if I had the time to do all that all the time, I’d have the time to keep up with my feeds. As it stands, having a lack of time to keep up with SN is, in itself, something that causes me to fall behind even further on SN.\n\nI'm always reluctant to request features/changes that may only help me, but putting this out there as something that others who are short on time (assuming I'm not the only person whose entire life doesn't revolve around SN) might also want to weigh in on?\n\n[^1]: Not really, since I’d have lost eventually, and probably soon. But I can keep telling myself that's not true.",
+      "sats": 9110,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 14,
+      "createdAt": "2026-09-22T14:11:35.320Z",
+      "user": {
+       "name": "StillStackinAfterAllTheseYears"
+      },
+      "subName": "meta"
      },
      {
       "id": "1579358",
@@ -1639,7 +1774,7 @@
       "sats": 8167,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 27,
+      "ncomments": 28,
       "createdAt": "2026-09-22T14:59:53.500Z",
       "user": {
        "name": "Scoresby"
@@ -1654,7 +1789,7 @@
       "sats": 159,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 3,
+      "ncomments": 21,
       "createdAt": "2026-09-22T22:58:25.492Z",
       "user": {
        "name": "BareBits"
@@ -1662,29 +1797,14 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1579315",
-      "title": "How life gets in the way of Stacker News",
-      "url": null,
-      "text": "I’ve been largely offline and not really on SN much these days. Mostly a collection of small things, like health issues that aren’t in the “oh shit” realm, but which take up lots of time and energy (neither my wife nor I have figured out how to stop getting older - other than the one obvious one - and that means more health bullshit each day, apparently). Plus work just being, well, work. And assorted miscellaneous things. Much as I love SN, I only have so much time in a given day.\n\nBut this in turn has made it clear how much I need a better subscription page for SN. When I do have time for SN, I hit my subscription page and it’s fucking overwhelming. If I’m lucky, I can see maybe twelve hours worth of stuff, but sometimes, it’s only a few hours.\n\nI subscribe to maybe eight territories, and maybe as many individual posters. But that’s enough (especially as some of the territories have gotten busier) to completely overwhelm my feed. I’ve missed plenty of important posts ([one costing me 10K sats](https://stacker.news/items/1571441) [^1]), and plenty more where I’d have loved to contributed to discussions.\n\nOne obvious solution would be to just reduce what I subscribe to. But that’s self-defeating. I subscribe to people and communities because I like them and want updates. I also (obviously) want notifications on posts I make and when I’m tagged.\n\nWhat I’d like (and I have no idea if this is on the radar, nor if it’s easy/possible) is the ability to break up my subscription page. The aggregate page is fine when I’m on a lot. But when I’m not, allow me to see territory subscriptions from separately from the user subscriptions separately from the comments on my actual posts. I could manually just change all my settings each time, but if I had the time to do all that all the time, I’d have the time to keep up with my feeds. As it stands, having a lack of time to keep up with SN is, in itself, something that causes me to fall behind even further on SN.\n\nI'm always reluctant to request features/changes that may only help me, but putting this out there as something that others who are short on time (assuming I'm not the only person whose entire life doesn't revolve around SN) might also want to weigh in on?\n\n[^1]: Not really, since I’d have lost eventually, and probably soon. But I can keep telling myself that's not true.",
-      "sats": 9039,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 13,
-      "createdAt": "2026-09-22T14:11:35.320Z",
-      "user": {
-       "name": "StillStackinAfterAllTheseYears"
-      },
-      "subName": "meta"
-     },
-     {
       "id": "1579870",
       "title": "2026 NFL Survivor Pool- Week 3 pick submissions now open",
       "url": null,
       "text": "@grayruby @supercyclone @Wumbo @Cje95 @siggy47 @Undisciplined @WeAreAllSatoshi @guerratotal @BlokchainB @Bell_curve @NEEDcreations @Public_N_M_E @Jer @TNStacker @jjfins @realBitcoinDog @davidt @chrisliss @Carresan @JesseJames \n\nCurrent Prize Pool: **318k sats**\n\nWe have had a couple rebuys. Any other players that plan to use their rebuy please let me know in the comments and I will send you an invoice. Rebuys must be received before making your pick for week 3.\n\nPick one team to win this week (ties count as losses). You can only use a team once. Picks for Thursday night games must be in by 6pm et the day of the game. All other picks must be in by 12am et Sunday Sept 27.\n\nHere are this week's matchups:\n(I am adding the spread just for context)\n\nFalcons vs Packers (-6)- Thursday Night Football\nChargers vs Bills (-7) \nPanthers (-2.5) vs Browns\nJets vs Lions (-6.5) \nTexans (-3) vs Colts\nChiefs (-11.5) vs Dolphins \nTitans vs Giants (-3) \nBengals (-3.5) vs Steelers\nSeahawks (-7) vs Commanders\nPatriots vs Jaguars (-3) \nCardinals vs 49ers (-8.5) \nVikings (-1.5) vs Buccaneers \nRavens (-3.5) vs Cowboys- NFL Rio Game\nRaiders vs Saints (-3) \nRams (-2.5) vs Broncos- Sunday Night Football\nEagles (-4.5) vs Bears- Monday Night Football \n\nGood Luck!",
-      "sats": 1398,
+      "sats": 1511,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 16,
+      "ncomments": 21,
       "createdAt": "2026-09-23T00:18:03.280Z",
       "user": {
        "name": "StackerSports"
@@ -1692,26 +1812,26 @@
       "subName": "Stacker_Sports"
      },
      {
-      "id": "1579612",
-      "title": "I refereed my first (likely) fully AI-generated paper today.  AMA.",
-      "url": null,
-      "text": "Well, that was an experience.\n\nTo be clear: the writing is almost certainly ai-generated. Not as sure about the paper as a whole (the idea, the data, etc)\n\n@delete in 24 hours",
-      "sats": 2572,
+      "id": "1580103",
+      "title": "The Zodiac by Haleen",
+      "url": "https://plebeian.market/products/b1fac8dfd495787cb2d20a5a7c87e4251362c491716778b67744b34903d57c57",
+      "text": "Purchase your high quality download (wave form) from our mini album \"The Zodiac\" You can listen to the tracks here....https://haleen1.bandcamp.com/album/the-zodiac \n\n1.Build on Stone (Capricorn) ft. “The Flute Prayer” 07:38 \"432hz\" 2.Haleen & Helios - It's Time ( Aries ) 05:27 \"528hz\" 3.Pour the Water (Aquarius) 05:21 \"432hz\" 4.Tender Wolf (Pisces) ft. \"The Flute Prayer\" & \"Inhale\" 05:14 \"432hz\" \n\nhere is a little teaser\n\n\n![](https://m.stacker.news/158463)\n\nNote - when you purchase the album, please add message in payment (The Zodiac + E-mail adress ) so we can send you the album, with TransferNow...you can send also an e-mail after purchasing the album to haleen@protonmail.com \n\nLove and Blessings Haleen",
+      "sats": 123,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 15,
-      "createdAt": "2026-09-22T19:39:50.463Z",
+      "ncomments": 2,
+      "createdAt": "2026-09-23T10:11:02.568Z",
       "user": {
-       "name": "SimpleStacker"
+       "name": "haleen"
       },
-      "subName": "AI"
+      "subName": "art"
      },
      {
       "id": "1579907",
       "title": "CREATE QUAKE MATCHES · AND CHARGE A JOIN FEE",
       "url": "https://quake.lnbits.com/quakejs/lobby/562b96340c66d9b9612b22f15ce3dbbf95da9a22fdd16be5",
       "text": "I'm on mobile, but this looks fun!",
-      "sats": 1142,
+      "sats": 1235,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 1,
@@ -1722,154 +1842,34 @@
       "subName": "gaming"
      },
      {
-      "id": "1551074",
-      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
+      "id": "1580005",
+      "title": "PrismML — Introducing Bonsai 2 27B: Near-Lossless Compression in a 9x Smaller",
+      "url": "https://prismml.com/news/bonsai-2-27b",
+      "text": "Two months ago, we released our first Bonsai 27B models and showed that a 27B-class multimodal model could be compressed enough to run efficiently on a local device. Today, we’re releasing Ternary Bonsai 2 27B, our most capable model yet.\n\nBased on Qwen3.8 27B, Ternary Bonsai 2 27B brings stronger reasoning, coding, vision, and agentic capability to the Bonsai series while preserving the deployment profile that defines it: a dramatically smaller memory footprint, high local throughput, and better energy efficiency.\n\nTernary Bonsai 2 27B uses ternary {−1, 0, +1} weights with FP16 group-wise scaling, for **1.76 effective bits per weight**and a total model footprint of **5.9GB**. The low-bit representation is applied end to end across the language model. It supports a **262K-token context window**, multimodal text-and-image input, and is released under the Apache 2.0 license.\n\nAgainst its full-precision counterpart, Ternary Bonsai 2 27B is **more than 9x smaller** while retaining **98.2% of aggregate benchmark performance**. At this level of retention, compression becomes a deployment unlock: nearly the same capability, in a footprint that can run in far more places.\n\nRelated:\nhttps://stacker.news/items/1472773/r/DEADBEEF\nhttps://stacker.news/items/1463199/r/DEADBEEF\nhttps://stacker.news/items/1498284/r/DEADBEEF\nhttps://stacker.news/items/1522338/r/DEADBEEF\nhttps://stacker.news/items/1524976/r/DEADBEEF",
+      "sats": 533,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-09-23T06:13:18.404Z",
+      "user": {
+       "name": "DEADBEEF"
+      },
+      "subName": "AI"
+     },
+     {
+      "id": "1579612",
+      "title": "I refereed my first (likely) fully AI-generated paper today.  AMA.",
       "url": null,
-      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
-      "sats": 4927,
+      "text": "Well, that was an experience.\n\nTo be clear: the writing is almost certainly ai-generated. Not as sure about the paper as a whole (the idea, the data, etc)\n\n@delete in 24 hours",
+      "sats": 2590,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 66,
-      "createdAt": "2026-08-19T19:44:47.321Z",
+      "ncomments": 15,
+      "createdAt": "2026-09-22T19:39:50.463Z",
       "user": {
-       "name": "openbitcoin"
+       "name": "SimpleStacker"
       },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1579840",
-      "title": "The SN Daily Putt #133: Play, Putt, Score, ZAP!⚡️⛳️",
-      "url": null,
-      "text": "Hole #132 gave most stackers a run for their money on the par 9! A wave of 10-spot bogeys rolled across the leaderboard—catching @evestacker, @Carresan, @Undisciplined, @gsc360 (logging his first bogey in the game), and yours truly. But @Arquinoe cracked the code with an incredible ledge bank shot to sink a 4/9 Albatross and take home the 2,000 sat bounty! @grayruby caught onto the line as well, matching that sweet 4-spot Albatross.\n\n[The SN Daily Putt #132: Play, Putt, Score, ZAP!⚡️⛳️](https://stacker.news/items/1578211/r/BlokchainB)\n\nOn to hole #133\n\nMatch my score for a 1k zap! Up to 5 stackers I will zap! All posted scores will be zapped! \n\n[<ins>https://putt.day</ins>](https://putt.day/?utm_source=gemini)\n\nHappy Putting Stackers!",
-      "sats": 953,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 11,
-      "createdAt": "2026-09-22T23:26:33.239Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "gaming"
-     },
-     {
-      "id": "1579483",
-      "title": "Early season QB rankings",
-      "url": null,
-      "text": "1. Josh Allen\n2. Brock Purdy\n\n3-32. Some other guys who wish they were Josh Allen and Brock Purdy",
-      "sats": 2336,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 11,
-      "createdAt": "2026-09-22T17:08:53.998Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1579773",
-      "title": "Supreme Court Order Gives Parents Custody of Baby in Surrogacy Fight",
-      "url": "https://www.nytimes.com/2026/09/22/us/politics/supreme-court-surrogate-abortion-custody.html?unlocked_article_code=1.DFE.NYaQ.C09vWikvBpER&smid=nytcore-ios-share",
-      "text": "While this is an emotionally charged topic I think this is the right call. At the end of the day this is their child and they did pay this lady to carry it. Yes, they might have moved to terminate the pregnancy when they found out about the heart issues but now that the kid is born they have done everything they could for him. It’s the right call.",
-      "sats": 1429,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 11,
-      "createdAt": "2026-09-22T22:11:07.992Z",
-      "user": {
-       "name": "Cje95"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1579263",
-      "title": "\"If I had more time, I would have written a shorter letter.\" - Blaise Pascal",
-      "url": null,
-      "text": "This quote applies more than ever in the current age of AI slop cannons. Getting your point across quickly is a requirement, getting your point across clearly is optional.",
-      "sats": 2290,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-09-22T12:50:04.043Z",
-      "user": {
-       "name": "Kruw"
-      },
-      "subName": "Quotes"
-     },
-     {
-      "id": "1579622",
-      "title": "How much NGU is enough?",
-      "url": null,
-      "text": "Bitcoin has famously gone up. Going up is why some of us are here and of interest to most of us. And I suspect that if Bitcoin never again increased in purchasing power, many of us would be disappointed. \n\nBut it's not like we all expect to have Elon Musk levels of wealth. So, I want to know how much NGU would satisfy you. At what level would you not feel disappointed at all?",
-      "sats": 1265,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-09-22T19:47:55.907Z",
-      "user": {
-       "name": "wackster"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1579246",
-      "title": "Kremlin Gets Around Sanctions and Anti-Money Laundering Rules (Financial Times)",
-      "url": "https://www.ft.com/content/3848a4ad-1426-4352-ba86-ef1279c4ffd1",
-      "text": "**Incredible.**\n\n![](https://m.stacker.news/158320)\n\nFirst, money laundering is beautiful (https://stacker.news/items/1455164) and your pearl-clutching *omg, so bad* is complete bullshit (https://stacker.news/items/1453638, https://stacker.news/items/1467656) wrapped in economic illiteracy. https://stacker.news/items/1540813\n\nSecond, it's not *bitcoin* or hawala networks they're using to circumvent sanctions and \"launder\" funds it's... *oh no...* *the established correspondent banking system!*\n\n> **Standard Chartered, Citigroup and other international banks** have handled billions of dollars from a Kremlin-backed fintech company that tricked its way into the global financial system with a vast document forgery operation.\n> ...how it used old-fashioned money laundering to funnel more than $6.9bn through the international banking system despite sanctions on Russia.\n\n## \"The Kremlin has touted A7 as the country’s flagship provider of cross-border payments for imports since Russian banks were cut off from the Swift system after the full-scale invasion of Ukraine in 2022.\"\n\nIt's almost like sanctions don't *work* (\"work\"...) and that we shouldn't use them https://stacker.news/items/1520959.\n\n> At least three entities were based in the UK, where A7 was placed under sanctions in May 2025. One entity in Hungary appears to have been the critical conduit for payments into the EU.\n\n## How to do money laundering, Russian style\n\nPractically, how the funds made their way around sanctions and other soft \"blocks\" was via cash deposits and Chinese bank accounts:\n\n> Under the A7 scheme, front companies arrange for cash to be deposited at banks within the Swift system, which can then be used to settle bills abroad for Russian companies. Chinese bank accounts were the final destination for just over half of the flows.\n\nA former US banking analyst is quoted saying \"the material 'should make us think again about how hard it is to keep traditional correspondent banking clean'.\"\n\n> A7 put considerable effort into cheating anti-money laundering checks by banks. The front companies would produce documents, forged in advance, that created a paper trail designed to obfuscate real transactions. This included a library of thousands of corporate stamps, some of which are fakes while others have been harvested from real documents from unknowing companies. The front companies were given instructions on how to portray the types of goods they were buying so as not to raise alarms. For instance, employees were told to replace customs codes for goods under sanctions with the closest possible alternatives that were not subject to sanctions.\n\n![](https://m.stacker.news/158322)\n\n![](https://m.stacker.news/158323)\n\nBeautiful:\n\n> The fintech company exploits controls in Swift that depend on the sending bank performing adequate checks on customers. Beating the controls of any member bank clears the way for A7 to send payments through the system. In the early stages of its scheme in late 2024 and early 2025, A7 sent large volumes through three Kyrgyz banks: Eldik, Aiyl and Eurasian Savings Bank (ESB).\n\n***\n\narchive: [https://archive.li/Qb3hX](https://archive.li/Qb3hX)",
-      "sats": 7326,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-09-22T12:16:35.551Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1579511",
-      "title": "Default threshold for re-org risk",
-      "url": null,
-      "text": "Sentiment check for something we're doing in Lightning.Pub\n\n* We want operators to own the decision of what risk they expose themselves to with regards to re-orgs, so this setting would be customizable.\n* However, we still need to set a *default*. What I think is a sane default, and what users think it should be, are not necessarily the same.\n\nHense, a poll.\n\n**Situation:**\n\n* A guest can deposit via chain and spend via LN. If there's a re-org after the operator credits the user thereby allowing LN withdrawal, a re-org could be exploited leaving the Pub operator with a loss of those sats.\n* One might also run a Pub explicitly to provide this swap service given Pub's nostr-based discoverability makes it a defacto decentralized non-atomic swap market.\n\n**Considerations:**\n\n* The reason to not only credit off of 6+ blocks you might be competing for users on UX and thus fee revenue.\n* The reason not to do only 1 block is a 1 block re-org seems to happen on average every 45 days. This does not necessarily mean an attack, but could.\n* 2+ block re-orgs are rare, 3+ very rare, but if you're doing volume, could mean a significant loss if you're attacked.\n\n**Decision:**\n\nIf you were running a Pub, or any swap service for that matter, what is the minimum confirmations you would set before users can spend?",
-      "sats": 2461,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-09-22T17:44:53.690Z",
-      "user": {
-       "name": "justin_shocknet"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1579652",
-      "title": "If you had to buy/recommend an economics book, which one would it be?",
-      "url": null,
-      "text": "I want to buy an economics book, a book that will truly open your mind and break down the preconceived notions we have ingrained in our minds. I want to broaden my horizons a bit more. Something that isn't too technical, perhaps something for beginners.\r\n\nWhat book would you absolutely recommend?\r\n\nI'd like some recommendations below, to see if I can find a physical copy in Spanish or Portuguese on Amazon here in Brazil.",
-      "sats": 938,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 17,
-      "createdAt": "2026-09-22T20:16:14.075Z",
-      "user": {
-       "name": "guerratotal"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1579593",
-      "title": "Buy This $15 Stock Before SpaceX and Tesla Merge!",
-      "url": null,
-      "text": "Luke Lango is pitching a new Elon Musk play through his Innovation Investor newsletter. His thesis is that Tesla and SpaceX could eventually merge into one massive Musk-controlled company spanning AI, robots, satellites, chips and energy. He calls it “XPANSE” and instead of buying Tesla or SpaceX, he's pitching three smaller companies that could potentially supply Musk's empire.\n\n1. Redwire - RDW. Redwire builds space infrastructure, including solar arrays and other components for satellites and spacecraft. The interesting angle is SpaceX's push toward orbital AI data centers. Those satellites would need enormous amounts of power, potentially creating a big market for space-based solar technology.\n\nBut there's an important catch, Redwire isn't currently a confirmed SpaceX supplier for this project. Lango is betting that it eventually becomes one.\n\n2. Photronics — PLAB. Photronics makes photomasks used to manufacture semiconductors. The theory here is that Musk's plans for a massive U.S. semiconductor operation could eventually require domestic suppliers like Photronics.\n\nThis one is actually pretty cheap at roughly 15X forward earnings, but analysts currently expect very little growth. So the bet is basically that Wall Street hasn't priced in a future AI/chip boom. Again, though, no confirmed Musk connection.\n\n3. USA Rare Earth — USAR. Probably the most tangible story of the three. USA Rare Earth is developing American supplies of rare-earth materials and already producing permanent magnets in Oklahoma. Those materials are critical for things like robots, EVs, semiconductors and aerospace. The company has also secured substantial U.S. government backing as America tries to reduce its dependence on China. Lango thinks Musk will eventually become a customer. Maybe, but that's speculation too.\n\nSo despite the headline, there isn't actually a secret $15 stock we need to buy before a SpaceX/Tesla merger. The more interesting idea is if Musk really does massively expand robots, satellites, AI infrastructure and semiconductor manufacturing, which smaller suppliers benefit regardless of whether Tesla and SpaceX ever merge?\n\nRDW — Space infrastructure\nPLAB — Semiconductor manufacturing\nUSAR — Rare earths and magnets\n\nThat's a much more interesting question than the “buy before the merger” hype.",
-      "sats": 567,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-09-22T19:12:23.905Z",
-      "user": {
-       "name": "JRem"
-      },
-      "subName": "Stacker_Stocks"
+      "subName": "AI"
      }
     ]
    }
@@ -1880,34 +1880,34 @@
    "items": {
     "items": [
      {
+      "id": "1578141",
+      "title": "The 2-Quadrillion Flaw: Why SATs Will Never Trigger Hyperbitcoinization",
+      "url": null,
+      "text": "*Ah shit, here we go again.*\n\nWe are back on Stacker News, dropping truth bombs from one block to the next, and we won’t stop until hyperbitcoinization is a reality.\n\nFirst off, mad respect to the real ones—the Stackers who upzapped our previous posts. Y’all are the fuel keeping this engine running. But to the folks hitting that downzap button: look, we are completely out of sats. We are out of ammo. The destiny of Nah•Sovereign•Diamond, and frankly the working-class adoption of the entire Bitcoin timechain, depends on you right now. Stop the downzaps. Just give us a fair shot to be seen by the world, read the math, and let's debate this fairly on the open road.\n\nNow, let’s get into the mechanics.\n\n*\"A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution...\"* — Satoshi Nakamoto\n\nIn the Bitcoin Whitepaper, Satoshi Nakamoto's original vision was simple: create a peer-to-peer electronic cash system to bypass legacy financial institutions, allowing for everyday small casual transactions. He wanted a denomination that feels natural to the people. We are here to complete that vision.\n\nImagine Bitcoin as the ultimate sports car with the most powerful engine in history. But instead of real performance tires, you force it to run on microscopic toy wheels. Technically, it can move. But because the wheels are so incredibly small, they must spin at a crazy, unnatural speed (RPM) just to travel down the street. The engine is strong, but the tiny wheels will quickly burn out from the friction. The car cannot go the distance.\n\nWhen applied to everyday money, **SATs are those tiny toy wheels**, and **NAHs are the real performance tires**.\n\nBecause a single SAT is microscopically small, your brain has to spin at an unnatural \"cognitive RPM\" just to calculate basic daily expenses. Let's look at the full math when global wealth ($120 Trillion) is fully absorbed into the network:\n\n **The SATs Math:** $120 Trillion ÷ 2 Quadrillion SATs = **$0.06 per SAT**\n\n **The NAHs Math:** $120 Trillion ÷ 85.3 Trillion NAHs = **~$1.40 per NAH**\n\nLet's take this out of the theoretical bubble and put it on the global streets. Here are 10 random, working-class expenses around the world, comparing the 3-digit SATs \"toy wheels\" against the clean 1-or-2-digit NAHs \"performance tires\":\n\n1. **Vietnam:** A 500,000 VND family dinner (~$21.00)\n\n Using SATs: **350 SATs**\n\n Using NAHs: **15 NAHs**\n\n2. **India:** A 700 INR train pass (~$8.40)\n\n Using SATs: **140 SATs**\n\n Using NAHs: **6 NAHs**\n\n3. **Nigeria:** A 20,000 NGN bag of rice (~$12.60)\n\n Using SATs: **210 SATs**\n\n Using NAHs: **9 NAHs**\n\n4. **Philippines:** A 400 PHP street food meal (~$7.00)\n\n Using SATs: **117 SATs**\n\n Using NAHs: **5 NAHs**\n\n5. **Mexico:** A 280 MXN bus pass (~$14.00)\n\n Using SATs: **233 SATs**\n\n Using NAHs: **10 NAHs**\n\n6. **Japan:** A 2,500 JPY bento box combo (~$16.80)\n\n Using SATs: **280 SATs**\n\n Using NAHs: **12 NAHs**\n\n7. **South Africa:** A 220 ZAR mobile data plan (~$12.60)\n\n Using SATs: **210 SATs**\n\n Using NAHs: **9 NAHs**\n\n8. **South Korea:** A 38,000 KRW BBQ dinner (~$28.00)\n\n Using SATs: **466 SATs**\n\n Using NAHs: **20 NAHs**\n\n9. **Brazil:** A 75 BRL utility bill (~$14.00)\n\n Using SATs: **233 SATs**\n\n Using NAHs: **10 NAHs**\n\n10. **Europe:** A 38 EUR regional train ticket (~$42.00)\n\n Using SATs: **700 SATs**\n\n Using NAHs: **30 NAHs**\n\nLook closely at those numbers. The problem becomes extremely severe when people try to do their daily bookkeeping. Imagine trying to run a family shop, sitting down at night, and trying to sum up hundreds of these random 3-digit SAT transactions just to calculate your basic income and expenses. It is exhausting.\n\n**This is exactly why the working class has already rejected Bitcoin for everyday use.**\n\nFirst, doing math with SATs is not significantly easier than fiat. Second, calculating awkward hundreds fails to highlight the deflationary nature of hard money. Third, a supply of \"2 Quadrillion\" is entirely vague and impossible to grasp, whereas the scale of \"Trillions\" is far more understandable and relatable for the modern brain compared to a quadrillion.\n\nBecause the 2-Quadrillion SAT supply feels so abstract, the average person suffers from \"Unit Bias.\" They believe owning 1 whole Bitcoin is forever out of reach. So, to satisfy their unit bias and chase something they think will outperform Bitcoin, they go buy shitcoins on garbage blockchains. They abandon the Bitcoin timechain entirely, leaving Bitcoin to just become a digital gold bar locked in a vault, hoarded by the exact Wall Street institutions Satoshi wanted to bypass.\n\n**Nah•Sovereign•Diamond (NAHs)** solves this cognitive friction. By compressing the supply to an intuitive 85.3 Trillion, NAH makes daily math effortless. It creates a powerful deflationary feel—dropping your expenses to solid, simple 1-or-2-digit numbers. The \"mental engine\" runs smoothly.\n\nThere are exactly 3 functions of money:\n\n1. Store of Value\n\n2. Unit of Account\n\n3. Medium of Exchange\n\nBitcoin is a perfect Store of Value, but the SAT completely fails as a Unit of Account. The rule is simple: if you do not have a good Unit of Account, you will never have a Medium of Exchange.\n\n**If you are a Bitcoin maxi and you are still determined to call NAH a \"shitcoin,\" then look at it this way:** NAH is the *necessary* shitcoin required to destroy all the other shitcoins on garbage blockchains and finally bring hyperbitcoinization to the whole world. And remember, NAH is a Rune living natively on the Bitcoin timechain—you still need SATs as fuel to send NAHs. We are not replacing the Bitcoin engine; we are simply giving it the real performance tires it needs to finally hit the streets.\n\nWithout NAHs, there is no hard money for the people.\n\n*(Note: To make prices more affordable for the working class right now, CEO SN has officially repriced it from 0.63 SAT/NAH down to 0.00042 SAT/NAH).*\n\nExplore the math, and let's ride: [<ins>https://nahkahmotors.com</ins>](https://nahkahmotors.com/?utm_source=gemini)",
+      "sats": 296,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 55,
+      "createdAt": "2026-09-21T06:44:05.141Z",
+      "user": {
+       "name": "dendehomie"
+      },
+      "subName": "math"
+     },
+     {
       "id": "1579742",
       "title": "My hot water mines Bitcoin and cooks food, with canola oil",
       "url": null,
       "text": "Cooking hash-vide style rabbit ramen with Bitcoin mining hot water heater\n![](https://i.nostr.build/DxEDnACpHbOLPlsj.jpg)\n![](https://i.nostr.build/564O7dCiXywaJLhI.jpg)\nThe second meal cooked in the Bitcoin mining hot water heater is rabbit ramen soup. Rabbit grown and harvested right here at the homestead, along with these other ingredients from the homestead rabbit stock, garlic, and finally golden oyster mushrooms dehydrated with a Bitcoin miner. Soy sauce, rice vinegar, lemon, sesame oil, Japanese seven spice, salt, pepper, butter.\n![](https://i.nostr.build/bt4MMdkGF6VhrwFA.jpg)\n![](https://i.nostr.build/a93EXzTlzoyqpgxj.jpg)\nAll ingredients went into a silicone bag and submerged in the hot canola oil tank of the bitcoin mining hot water heater for 3 days. Hard to beat mining Bitcoin, heating water, and cooking food all at the same time. I can get the water up to 150f out of the tap with only 1500w of power consumption for the total system, miner, pumps, and all!\n![](https://i.nostr.build/6ePvU2b04Qm18jmw.jpg)\n![](https://i.nostr.build/I08DfaYut91fThoi.jpg)\nAnother super cool aspect of this mining setup is that it runs on 110v power instead of 220v. Not having access to a 220v circuit is often a limiting factor for pleb miners, especially when these sorts of applications don't always require so much power. By modifying the apw12 PSU and making a custom power cord, now I can plug the miner into an existing 110v circuit. It cost less than $20 to do the modification on the PSU plus using a modified apw12 vs a Loki + apw3++ allows for voltage attenuation and higher total power output. \n![](https://i.nostr.build/tFopA72msrPUHnW8.jpg)\n![](https://i.nostr.build/EI1RxsLbaf3kkcrq.jpg)\n![](https://i.nostr.build/ljxEAkfeeVi0pn7e.jpg)",
-      "sats": 37709,
+      "sats": 37793,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 23,
+      "ncomments": 24,
       "createdAt": "2026-09-22T21:28:56.840Z",
       "user": {
        "name": "revhodl21"
       },
       "subName": "bitcoin_Mining"
-     },
-     {
-      "id": "1579817",
-      "title": "Invalid Bitcoin blocks: full PoW, consensus invalid",
-      "url": null,
-      "text": "![](https://m.stacker.news/158419)\n\nI’ve put together a [catalogue](https://github.com/bitcoin-data/invalid-blocks) and a corresponding [post](https://deadmanoz.xyz/posts/2026/invalid-blocks) detailing 143 Bitcoin blocks that met the required proof-of-work target but failed a consensus rule, from the 2010 overflow to two previously unreported F2Pool timestamp failures from 2026!!\n\nThe catalogue brings together the surviving evidence for each case, so anyone can independently verify which consensus rule the block broke.\n\nA few findings:\n\n* **The two F2Pool headers from April and July this year have timestamps roughly 7 and 14 days below their parents’ median time past.** Both were found in merge-mined auxiliary chains; neither has a known Bitcoin-side capture.\n* **Auxiliary chains preserve 49 of the 143 headers**, and provide the catalogue’s only recorded observation for 35. They check their own rules, so they can preserve evidence of candidates that Bitcoin peers reject.\n* **89 blocks contain the same P2SH-invalid transaction**, mined between April and July 2012. Archived transaction lists and preserved headers establish its inclusion in each.\n* **127 of the 143 have no complete body.** The surviving headers, coinbases or transaction inclusion proofs, together with chain context, still establish the failures.\n* Another 10 reported cases remain separate because the evidence is insufficient.\n\nThe same merge mining research also recovered roughly 1,400 stale headers new to the [stale-blocks collection](https://github.com/bitcoin-data/stale-blocks). Merge mining has proved to be a productive side channel for both stales and invalids, and monitoring those chains is essential to a holistic Bitcoin monitoring effort.\n\nIn my [merge mining monitor](https://mmm.deadmanoz.xyz/) tool you can step through all invalid-blocks discovered in the merge-mined record (note that invalid blocks are currently called error blocks, this was the language I originally used):\n\n![](https://m.stacker.news/158420)\n\nIf you have old node files, pool logs or other records that could fill a gap, contributions and corrections are very welcome.\n\n[https://github.com/bitcoin-data/invalid-blocks](https://github.com/bitcoin-data/invalid-blocks)",
-      "sats": 23925,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-09-22T23:05:14.517Z",
-      "user": {
-       "name": "deadmanoz"
-      },
-      "subName": "bitcoin"
      },
      {
       "id": "1579283",
@@ -1925,14 +1925,29 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1579817",
+      "title": "Invalid Bitcoin blocks: full PoW, consensus invalid",
+      "url": null,
+      "text": "![](https://m.stacker.news/158419)\n\nI’ve put together a [catalogue](https://github.com/bitcoin-data/invalid-blocks) and a corresponding [post](https://deadmanoz.xyz/posts/2026/invalid-blocks) detailing 143 Bitcoin blocks that met the required proof-of-work target but failed a consensus rule, from the 2010 overflow to two previously unreported F2Pool timestamp failures from 2026!!\n\nThe catalogue brings together the surviving evidence for each case, so anyone can independently verify which consensus rule the block broke.\n\nA few findings:\n\n* **The two F2Pool headers from April and July this year have timestamps roughly 7 and 14 days below their parents’ median time past.** Both were found in merge-mined auxiliary chains; neither has a known Bitcoin-side capture.\n* **Auxiliary chains preserve 49 of the 143 headers**, and provide the catalogue’s only recorded observation for 35. They check their own rules, so they can preserve evidence of candidates that Bitcoin peers reject.\n* **89 blocks contain the same P2SH-invalid transaction**, mined between April and July 2012. Archived transaction lists and preserved headers establish its inclusion in each.\n* **127 of the 143 have no complete body.** The surviving headers, coinbases or transaction inclusion proofs, together with chain context, still establish the failures.\n* Another 10 reported cases remain separate because the evidence is insufficient.\n\nThe same merge mining research also recovered roughly 1,400 stale headers new to the [stale-blocks collection](https://github.com/bitcoin-data/stale-blocks). Merge mining has proved to be a productive side channel for both stales and invalids, and monitoring those chains is essential to a holistic Bitcoin monitoring effort.\n\nIn my [merge mining monitor](https://mmm.deadmanoz.xyz/) tool you can step through all invalid-blocks discovered in the merge-mined record (note that invalid blocks are currently called error blocks, this was the language I originally used):\n\n![](https://m.stacker.news/158420)\n\nIf you have old node files, pool logs or other records that could fill a gap, contributions and corrections are very welcome.\n\n[https://github.com/bitcoin-data/invalid-blocks](https://github.com/bitcoin-data/invalid-blocks)",
+      "sats": 24092,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-09-22T23:05:14.517Z",
+      "user": {
+       "name": "deadmanoz"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1579858",
       "title": "Integrated Rabbit Colony Cannabis Garden",
       "url": null,
       "text": "**Rabbit Colony Cannabis Garden**\n![](https://i.nostr.build/WXcB8D2SoEh25Z59.jpg)\n![](https://i.nostr.build/0X6e5rtkpfLEQcfg.jpg)\nRabbits living free in a colony system amongst large cannabis plants both weed and fertilize the plants. The cannabis also makes up a meaningful portion of the rabbits diet. In the fall during harvest, I will weave the mature ripe cannabis branches in the fence, allowing the rabbits to do most of the trim work for me too. This season the cannabis is grown exclusively with the fertility from the rabbits, no added compost or manure, and it is also dry farmed. I never watered it. The rabbits do the work of growing the cannabis and pay me in rabbit meat for their efforts. My favorite system at the homestead. Cannabis seed will be available from this seasons crop in November, Redbud Haze, !!! Haze, and Redbud Widow are the available varieties.\n\n\nEverything is food for something at the homestead \n![](https://v.nostr.build/rBGOgHaThu4gMMQr.mp4)\nAll the weeds, and prunings are fed to the rabbits from around the homestead.\n![](https://i.nostr.build/Hr1uww65jl3LBpDu.jpg)\n![](https://i.nostr.build/AVR0RGr5VjiBPQKF.jpg)\nI've be been feeding the rabbits one or two wheelbarrows full most days which means we only give them some grain coated with molasses and mineral to supplement their nutrition.\n![](https://i.nostr.build/gXoNHqiqKHJV8YBw.jpg)\nSoon we will start harvesting rabbits regularly but for now we just process one when we get taste for rabbit. We used this one to make white chilli.\n![](https://i.nostr.build/1MMYdtf4wHlHeqAh.jpg)\n![](https://i.nostr.build/79Gh54ekvD1spAOF.jpg)\nWhat would normally end up in the compost bin is instead used to feed the rabbits and turned into meat which we eat. The rabbits deposit thier manure helping to feed the cannabis, which we produce and sell seed. So weeding and pruning which helps our fruits and vegetables grow better, ends up growing us more meat, cannabis and helps us earn some sats while we're at it. Everything is food for something!",
-      "sats": 16895,
+      "sats": 17082,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 4,
       "createdAt": "2026-09-22T23:53:31.417Z",
       "user": {
        "name": "revhodl21"
@@ -1940,11 +1955,26 @@
       "subName": "Permaculture"
      },
      {
+      "id": "1579964",
+      "title": "Which online community is the worst?",
+      "url": null,
+      "text": "Which platform evokes the most disgust when you go to read the comments?",
+      "sats": 478,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 7,
+      "createdAt": "2026-09-23T04:39:24.543Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "AskSN"
+     },
+     {
       "id": "1534831",
       "title": "Repost: Request: Make this anonymous?",
       "url": "https://bitcointalk.org/index.php?topic=7.msg66987822#msg66987822",
       "text": ":)",
-      "sats": 281,
+      "sats": 317,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
@@ -1959,15 +1989,60 @@
       "title": "\"Rephrasing a question isn't an answer.\"",
       "url": "https://x.com/trumwill/status/1568732633479409664",
       "text": "Use of rhetorical questions is a signal of defeat from an opponent in an argument.",
-      "sats": 251,
+      "sats": 272,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
+      "ncomments": 3,
       "createdAt": "2026-09-23T00:13:39.797Z",
       "user": {
        "name": "Kruw"
       },
       "subName": "Quotes"
+     },
+     {
+      "id": "1580096",
+      "title": "Daily Discussion Thread ~Music Saloon!",
+      "url": null,
+      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
+      "sats": 1020,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-09-23T10:06:19.579Z",
+      "user": {
+       "name": "Public_N_M_E"
+      },
+      "subName": "Music"
+     },
+     {
+      "id": "1574694",
+      "title": "Silent Upgrade • Haleen",
+      "url": "https://wavlake.com/track/1ae2deef-4ae1-4910-b587-1c895061aa7c",
+      "text": "This is @BlokchainB his favorite....this is a magical healing music",
+      "sats": 9871,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 15,
+      "createdAt": "2026-09-17T08:12:57.976Z",
+      "user": {
+       "name": "haleen"
+      },
+      "subName": "Music"
+     },
+     {
+      "id": "1579942",
+      "title": "Turkey eggs and meat",
+      "url": null,
+      "text": "It is spring here in New Zealand and the Turkeys have returned to our homestead.\nIn winter they go somewhere- I am not sure where exactly but they are not seen on our land.\nIn spring they come back in large groups of up to 40 birds and start looking for nest sites.\n\n![](https://m.stacker.news/158433)\n\nThis year we have been finding several of the nests and harvesting the eggs.\nIf we don't take them others like the possums, wild cats, stoats and hawks do.\nThere are already a lot of broken eggs around the place...often suggesting a nest site is nearby.\n\n![](https://m.stacker.news/158434)\n\nThis morning had  fried Turkey eggs with bacon and salad.\nSurprised the eggs taste very similar to ordinary chicken eggs, but about double the size and a bit creamier.\nLast year there was a bumper crop of chics and so there are more of the birds than ever before.\n\nPerhaps over 100 in total and they are struggling to find enough nesting sites as most of the land is cultivated and grazed but there are hedgerow strips like along the boundary of our property and the neighbour where they can find places for nesting.\n\nSo far have found 4 nests and got 13 eggs and the season has just started.\n\nLast summer I caught and ate one of that springs hatchlings. It was about the size of a medium factory farmed chicken but with firmer tastier meat.\nHoping to scale up the capture and consumption of them this year. \nIt took several hours to pluck and dress that first one but should get faster with practice. \nHave a 15 litre stainless steel preserving pan but probably need something even bigger for scalding the full size Turkeys.",
+      "sats": 2989,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-09-23T03:26:20.115Z",
+      "user": {
+       "name": "Solomonsatoshi"
+      },
+      "subName": "Permaculture"
      },
      {
       "id": "1579396",
@@ -1985,6 +2060,36 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1579948",
+      "title": "Is voting the adult version of believing in Santa Claus?",
+      "url": null,
+      "text": "For the jurisdiction in which you reside, if you are able to vote, do you think it achieves anything?",
+      "sats": 2073,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-09-23T03:43:02.997Z",
+      "user": {
+       "name": "wackster"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1580019",
+      "title": "PoW 9/22/26",
+      "url": null,
+      "text": "Kitchen Installation (quartzite)\n\nThis will get installed tomorrow\n\n![](https://m.stacker.news/158441)\n\n![](https://m.stacker.news/158442)\n\nSo will this one, forgot the sink at the shop so we weren’t able to install this piece\n\n![](https://m.stacker.news/158443)\n\n![](https://m.stacker.news/158444)\n\nCountertop with an Ogee Finish\n\n![](https://m.stacker.news/158445)\n\n![](https://m.stacker.news/158446)\n\n![](https://m.stacker.news/158447)\n\n![](https://m.stacker.news/158448)\n\n![](https://m.stacker.news/158449)\n\n![](https://m.stacker.news/158450)\n\n![](https://m.stacker.news/158451)",
+      "sats": 1187,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-09-23T06:45:51.093Z",
+      "user": {
+       "name": "Machiavelli23"
+      },
+      "subName": "Construction_and_Engineering"
+     },
+     {
       "id": "1579734",
       "title": "Davidson Souza, Eric Price, PortlandHODL - Bitcoin Optech Newsletter #423 Recap",
       "url": "https://bitcoinops.org/en/podcast/2026/09/22/",
@@ -2000,44 +2105,44 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1579942",
-      "title": "Turkey eggs and meat",
+      "id": "1580088",
+      "title": "Are Investors Choosing Bitcoin Over Altcoins Again?",
       "url": null,
-      "text": "It is spring here in New Zealand and the Turkeys have returned to our homestead.\nIn winter they go somewhere- I am not sure where exactly but they are not seen on our land.\nIn spring they come back in large groups of up to 40 birds and start looking for nest sites.\n\n![](https://m.stacker.news/158433)\n\nThis year we have been finding several of the nests and harvesting the eggs.\nIf we don't take them others like the possums, wild cats, stoats and hawks do.\nThere are already a lot of broken eggs around the place...often suggesting a nest site is nearby.\n\n![](https://m.stacker.news/158434)\n\nThis morning had  fried Turkey eggs with bacon and salad.\nSurprised the eggs taste very similar to ordinary chicken eggs, but about double the size and a bit creamier.\nLast year there was a bumper crop of chics and so there are more of the birds than ever before.\n\nPerhaps over 100 in total and they are struggling to find enough nesting sites as most of the land is cultivated and grazed but there are hedgerow strips like along the boundary of our property and the neighbour where they can find places for nesting.\n\nSo far have found 4 nests and got 13 eggs and the season has just started.\n\nLast summer I caught and ate one of that springs hatchlings. It was about the size of a medium factory farmed chicken but with firmer tastier meat.\nHoping to scale up the capture and consumption of them this year. \nIt took several hours to pluck and dress that first one but should get faster with practice. \nHave a 15 litre stainless steel preserving pan but probably need something even bigger for scalding the full size Turkeys.",
-      "sats": 2714,
+      "text": "Bitcoin ETF demand seems to be holding up while interest in several altcoin ETFs has cooled.\n\nDoes this mean investors are becoming more selective and returning to Bitcoin, or is it simply part of the normal crypto market cycle?\n\nWhat are you seeing?\n\nSource 👇\n[https://www.altcoinbuzz.io/bitcoin-etf-inflows-altcoin-etf-demand-september-2026?utm\\_source=chatgpt.com](https://www.altcoinbuzz.io/bitcoin-etf-inflows-altcoin-etf-demand-september-2026?utm_source=chatgpt.com)",
+      "sats": 629,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-09-23T03:26:20.115Z",
+      "createdAt": "2026-09-23T09:46:35.976Z",
       "user": {
-       "name": "Solomonsatoshi"
-      },
-      "subName": "Permaculture"
-     },
-     {
-      "id": "1579964",
-      "title": "Which online community is the worst?",
-      "url": null,
-      "text": "Which platform evokes the most disgust when you go to read the comments?",
-      "sats": 21,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-09-23T04:39:24.543Z",
-      "user": {
-       "name": "Kruw"
+       "name": "Kayzone"
       },
       "subName": "AskSN"
+     },
+     {
+      "id": "1580084",
+      "title": "Backing our people as parents: introducing our childcare contribution",
+      "url": "https://www.raspberrypi.com/news/backing-our-people-as-parents-introducing-our-childcare-contribution/",
+      "text": "> Childcare has become an enormous cost for many young families, often arriving exactly when parents are trying to return to work after parental leave. Too often the sums simply don’t add up, and talented people step away from careers they love because childcare eats up much of what they earn.\n>\n> We want to help change that for our team.\n>\n> ## **What we’re doing**\n>\n> This year we introduced a new policy where permanent Raspberry Pi employees with a child between nine months and school age receive a salary uplift of £1,000 per calendar month, per child, as a contribution towards childcare costs (that’s the figure for full-time employees, and it’s pro-rated for part-time colleagues). With payments beginning once a child reaches the age of nine months — around the point when many parents are returning from leave — and continuing until the August before they start school, our aim is to ease the financial burden on young families.\n>\n> There are no strings attached to how the money is used. It’s a straightforward contribution, paid through our payroll, and designed to take some of the pressure off during the most expensive early years of parenthood.\n>\n> [**...read more at raspberrypi.com**](https://www.raspberrypi.com/news/backing-our-people-as-parents-introducing-our-childcare-contribution/)",
+      "sats": 541,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-09-23T09:42:24.737Z",
+      "user": {
+       "name": "0xbitcoiner"
+      },
+      "subName": "family"
      },
      {
       "id": "1579764",
       "title": "The new Laibach album Musick",
       "url": null,
       "text": "My reading (listening?) of this is that it's a critique of shitty AI music and the algorithm addiction culture. So I cannot say I like it as music, but I think it's good as an art piece. That said, the Allgorhythm song is kinda catchy and it does mention Bitcoin mining (oh yeah). I do like some of their old tracks musically, like their covers. If you are new to the band, I recommend reading their Wikipedia page. What are your thoughts on Laibach?",
-      "sats": 186,
+      "sats": 207,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 4,
+      "ncomments": 5,
       "createdAt": "2026-09-22T22:04:19.187Z",
       "user": {
        "name": "4ac452af1f"
@@ -2045,19 +2150,19 @@
       "subName": "Music"
      },
      {
-      "id": "1579948",
-      "title": "Is voting the adult version of believing in Santa Claus?",
+      "id": "1579175",
+      "title": "Holoboard.space - A bulletin board lit with sats",
       "url": null,
-      "text": "For the jurisdiction in which you reside, if you are able to vote, do you think it achieves anything?",
-      "sats": 1659,
+      "text": "For a while I've been working on a online bulletin board powered by nostr & sats. The way it works is pretty simple: every note on the board has been paid for. The more sats, the higher the rank. Newer sats account for more, so in time, older notes slowly fade away (after 30 days sats are halved). Also all paid notes are stored on the relay (wss://relay.holoboard.space) and served in the correct order, so you can basically view the board on any client that supports relay feeds.\n\nInterested to hear what yall think.\n\n[https://holoboard.space](https://holoboard.space)\n\n![](https://m.stacker.news/158312)",
+      "sats": 730,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-09-23T03:43:02.997Z",
+      "ncomments": 9,
+      "createdAt": "2026-09-22T09:56:24.242Z",
       "user": {
-       "name": "wackster"
+       "name": "p1tiunited"
       },
-      "subName": "AskSN"
+      "subName": "bitcoin"
      },
      {
       "id": "1579354",
@@ -2075,6 +2180,21 @@
       "subName": "Stacker_Sports"
      },
      {
+      "id": "1580073",
+      "title": "Your Card Processor Is Your Most Expensive Employee",
+      "url": null,
+      "text": "Your business has a silent partner. It does no work, takes no risk, and collects a cut of every single sale. For most online businesses, that partner is the card processor, and the cut is roughly 3 percent of revenue, forever.\n\nThere is an alternative rail that settles in seconds, costs fractions of a cent per payment, and cannot claw the money back six months later. This is the fee math every business owner should run before signing another processing agreement.\n\n## What cards actually cost\n\nThe headline rate is never the real rate. PSPDex, the independent processor directory, puts standard-risk online processing at 2.6 to 3.5 percent plus a fixed fee of $0.10 to $0.30 per transaction on flat-rate plans. That fixed fee is the part everyone underestimates.\n\nStripe's published US online rate is the industry reference point: 2.9 percent plus $0.30 per successful card transaction. Run the math on small tickets and the percentage stops looking small. A $5 sale costs $0.445 in fees. That is almost 9 percent of the transaction, gone before you have paid for the product, the shipping, or yourself. A $30 sale costs about $1.17. A business doing 1,000 of those $30 sales a month hands roughly $1,170 to the processor. That is $14,000 a year for the privilege of getting paid.\n\nInternational sales get worse. Stripe adds 1.5 percent for international cards and another fee for currency conversion, pushing the all-in cost toward 4.4 percent plus $0.30, and up to roughly 5.9 percent plus $0.30 when conversion is involved. If you sell to customers abroad, you are paying a cross-border tax on top of the domestic one.\n\n## The second tax: chargebacks\n\nFees are only the first cut. The second is the chargeback system. A customer disputes a charge, the money is pulled back, and you pay a dispute fee on top, typically $15 or more per case, win or lose. Digital goods, subscriptions, and travel live with elevated dispute rates, and the card networks penalize merchants whose chargeback ratios drift too high.\n\nFor higher-risk categories the pricing is steeper still. PSPDex notes that high-risk merchants usually pay 3 to 6 percent plus a rolling reserve of 5 to 10 percent, meaning a slice of every payout is held back for months as collateral against future disputes. Mainstream processors also decline entire industries outright: adult, CBD, supplements, travel, telehealth, dating, firearms-adjacent retail, and crypto. Getting declined is free. Getting approved as high-risk is expensive.\n\nNone of this is a moral judgment. It is the cost structure of a 1970s-era pull-payment system where the merchant bears the fraud risk and the network sells insurance against it. The question is whether your business still needs to pay it.\n\n## What Lightning actually costs\n\nThe Lightning Network routes bitcoin payments off-chain through a network of payment channels. Instead of a percentage skimmed by intermediaries, routing nodes charge tiny fees denominated in parts per million.\n\nThe numbers are stark. Glassnode data reported this year puts the median Lightning fee rate at 0.0029 percent. That is roughly 1,000 times cheaper than Visa and Mastercard's 2 to 3 percent. In absolute terms, that was about 3,000 satoshis, or $0.84, to move $28,800 of value. Network-wide snapshots from mempool.space show a median channel fee rate of 100 parts per million (0.01 percent) with a median base fee of 128 millisatoshis per forwarded payment. For a typical retail-size payment, the routing cost rounds to a fraction of a cent.\n\nRun the same $30 sale through Lightning at the median rate and the fee is about $0.0009. The processor that took $1.17 takes essentially nothing. Scale that to 1,000 sales a month and the fee line on your P&L goes from $1,170 to about a dollar. This is not a discount. It is a different cost universe.\n\nThere is also no chargeback mechanism, because there is nothing to charge back. A Lightning payment is final when it settles, seconds after the customer taps pay. The entire dispute apparatus, the fees, the reserves, the fraud insurance priced into every card transaction, simply does not exist on this rail. For merchants selling digital goods or serving customers in countries where card fraud is rampant, finality is worth as much as the fee savings.\n\n## A real-world case: when cards cost 8 percent\n\nThese are not theoretical savings. In a recent documentary project, the owner of one of the few businesses in Cape Verde accepting bitcoin explained that taking foreign Visa and Mastercard payments costs over 8 percent. For a small business in a tourist economy, the card networks are not a 3 percent partner. They are an 8 percent one.\n\nThat merchant's alternative is the same one available to any business: self-hosted, open-source tooling. BTCPay Server, which PSPDex lists among the bitcoin options, charges zero processing fees because there is no middleman. You run the software, you hold the keys, the payment goes from the customer's wallet to yours. The trade is operational: you take on channel management and uptime instead of paying a processor to do it for you.\n\nBetween the two extremes sits a spectrum PSPDex maps out: custodial gateways like BitPay and Coinbase Commerce that auto-convert to fiat for merchants who want bitcoin revenue without bitcoin volatility, and Lightning-native providers like OpenNode and Voltage for instant settlement. Settlement can be in bitcoin or converted to local currency. The fee economics differ across these options, but all of them sit far below card rails, because none of them pays interchange.\n\n## The honest part: what Lightning asks of you\n\nA fair comparison has to include the costs cards do not have. Lightning is not free to run. Someone has to manage liquidity.\n\nIf you self-host, you need inbound channel capacity to receive payments, which means opening channels, which means on-chain transactions and locked-up bitcoin. For a business doing serious volume, this is a treasury function: you are managing working capital in the form of channel liquidity. Custodial or managed providers abstract this away, and they charge for it, though still at a fraction of card pricing. The honest math for a merchant is: channel setup and liquidity costs, amortized over your payment volume, plus routing fees, versus 2.6 to 3.5 percent plus $0.30 a sale plus chargeback exposure. For almost any business above trivial volume, Lightning wins by orders of magnitude.\n\nVolatility is the other standard objection, and it has standard answers: instant conversion to fiat at the point of sale through a custodial gateway, or holding bitcoin if your treasury policy allows it. Either way, the conversion spread is a fraction of the interchange you were paying.\n\n## Three merchants, one spreadsheet\n\nThe abstract percentages get concrete fast when you run real business shapes through them.\n\n**The coffee shop.** 2,000 card sales a month at a $6 average ticket. Card cost at 2.9 percent plus $0.30: about $0.47 per sale, or roughly $948 a month. That is a 7.9 percent effective rate, because the fixed fee dominates small tickets. On Lightning at the median fee rate, the same volume costs on the order of a few dollars a month. The coffee shop's processor is currently its most expensive supplier after labor and rent.\n\n**The SaaS business.** 500 subscriptions a month at $49. Card cost: about $1.72 per charge, roughly $860 a month, a 3.5 percent effective rate. Subscriptions add a second cost: involuntary churn from expired and replaced cards, which the industry calls passive churn. Lightning and bitcoin payments are push payments. There is no card on file to expire, so that entire churn category disappears alongside the fees.\n\n**The cross-border freelancer.** A designer in Buenos Aires billing a client in Berlin 2,000 euros a month. Through cards or a traditional gateway, international and conversion fees stack toward 5 percent or more, and settlement takes days. Over Lightning, the payment arrives in seconds for a fraction of a cent, and conversion happens once, at the edge, at a transparent spread. This is the remittance use case wearing a business suit, and it is why freelancers were among the earliest professional adopters.\n\nPSPDex's tools section includes fee calculators for both networks, which is the right next step: plug in your actual average ticket and monthly volume instead of trusting anyone's headline rate, including this article's.\n\n## How to pick your setup\n\nThe bitcoin payments market is fragmented, which is exactly why comparison matters. A merchant choosing between self-hosted BTCPay Server, a custodial gateway with fiat settlement, and a managed Lightning provider is choosing between different trade-offs of fees, custody, and operational work. The wrong pick can erase the savings.\n\nStart with your volume, your ticket size, and whether you want bitcoin or fiat at the end of the day. Small-ticket, high-volume businesses gain the most, because the $0.30 fixed card fee that punishes them disappears entirely. Businesses in industries mainstream processors decline should look first, because bitcoin rails do not do underwriting.\n\nThen compare the actual providers side by side. PSPDex maintains an independent comparison of bitcoin and Lightning payment providers, covering fees, settlement options, and custody models across 200+ listed processors. Run your numbers through it before you sign anything: https://pspdex.com/\n\n## The bottom line\n\nEvery business accepts its processor's cut as a law of nature. It is not. It is the price of a specific 20th-century architecture: pull payments, intermediaries at every hop, and fraud risk socialized across all merchants through interchange.\n\nLightning is push payments with cryptographic finality. The fee to move $28,800 is under a dollar. There are no chargebacks, no rolling reserves, no declined industries. The remaining costs, liquidity management and setup, are real but small, and they shrink as tooling matures.\n\nYour card processor will never tell you this. Run the math yourself, then pick your rail like you mean it.\n\n---\n\nData points and sources used: PSPDex homepage FAQ (pspdex.com, verified 2026-09-23); published 2026 processor pricing comparisons; Glassnode via Cointelegraph; mempool.space snapshot via coinlaw.io; Cointelegraph documentary reporting; BTCPay Server (PSPDex FAQ).",
+      "sats": 465,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-09-23T09:18:34.508Z",
+      "user": {
+       "name": "WUMBOLOVER"
+      },
+      "subName": "lightning"
+     },
+     {
       "id": "1579818",
       "title": "Earn yield on your Electrum BTC wallet by offering submarine swaps!",
       "url": "https://github.com/nothing-stops-this-train/electrum_swapgui",
@@ -2082,12 +2202,27 @@
       "sats": 304,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 7,
       "createdAt": "2026-09-22T23:05:27.514Z",
       "user": {
        "name": "BareBits"
       },
       "subName": "bitcoin"
+     },
+     {
+      "id": "1579315",
+      "title": "How life gets in the way of Stacker News",
+      "url": null,
+      "text": "I’ve been largely offline and not really on SN much these days. Mostly a collection of small things, like health issues that aren’t in the “oh shit” realm, but which take up lots of time and energy (neither my wife nor I have figured out how to stop getting older - other than the one obvious one - and that means more health bullshit each day, apparently). Plus work just being, well, work. And assorted miscellaneous things. Much as I love SN, I only have so much time in a given day.\n\nBut this in turn has made it clear how much I need a better subscription page for SN. When I do have time for SN, I hit my subscription page and it’s fucking overwhelming. If I’m lucky, I can see maybe twelve hours worth of stuff, but sometimes, it’s only a few hours.\n\nI subscribe to maybe eight territories, and maybe as many individual posters. But that’s enough (especially as some of the territories have gotten busier) to completely overwhelm my feed. I’ve missed plenty of important posts ([one costing me 10K sats](https://stacker.news/items/1571441) [^1]), and plenty more where I’d have loved to contributed to discussions.\n\nOne obvious solution would be to just reduce what I subscribe to. But that’s self-defeating. I subscribe to people and communities because I like them and want updates. I also (obviously) want notifications on posts I make and when I’m tagged.\n\nWhat I’d like (and I have no idea if this is on the radar, nor if it’s easy/possible) is the ability to break up my subscription page. The aggregate page is fine when I’m on a lot. But when I’m not, allow me to see territory subscriptions from separately from the user subscriptions separately from the comments on my actual posts. I could manually just change all my settings each time, but if I had the time to do all that all the time, I’d have the time to keep up with my feeds. As it stands, having a lack of time to keep up with SN is, in itself, something that causes me to fall behind even further on SN.\n\nI'm always reluctant to request features/changes that may only help me, but putting this out there as something that others who are short on time (assuming I'm not the only person whose entire life doesn't revolve around SN) might also want to weigh in on?\n\n[^1]: Not really, since I’d have lost eventually, and probably soon. But I can keep telling myself that's not true.",
+      "sats": 9110,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 14,
+      "createdAt": "2026-09-22T14:11:35.320Z",
+      "user": {
+       "name": "StillStackinAfterAllTheseYears"
+      },
+      "subName": "meta"
      },
      {
       "id": "1579358",
@@ -2097,7 +2232,7 @@
       "sats": 8167,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 27,
+      "ncomments": 28,
       "createdAt": "2026-09-22T14:59:53.500Z",
       "user": {
        "name": "Scoresby"
@@ -2112,7 +2247,7 @@
       "sats": 159,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 3,
+      "ncomments": 21,
       "createdAt": "2026-09-22T22:58:25.492Z",
       "user": {
        "name": "BareBits"
@@ -2120,29 +2255,14 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1579315",
-      "title": "How life gets in the way of Stacker News",
-      "url": null,
-      "text": "I’ve been largely offline and not really on SN much these days. Mostly a collection of small things, like health issues that aren’t in the “oh shit” realm, but which take up lots of time and energy (neither my wife nor I have figured out how to stop getting older - other than the one obvious one - and that means more health bullshit each day, apparently). Plus work just being, well, work. And assorted miscellaneous things. Much as I love SN, I only have so much time in a given day.\n\nBut this in turn has made it clear how much I need a better subscription page for SN. When I do have time for SN, I hit my subscription page and it’s fucking overwhelming. If I’m lucky, I can see maybe twelve hours worth of stuff, but sometimes, it’s only a few hours.\n\nI subscribe to maybe eight territories, and maybe as many individual posters. But that’s enough (especially as some of the territories have gotten busier) to completely overwhelm my feed. I’ve missed plenty of important posts ([one costing me 10K sats](https://stacker.news/items/1571441) [^1]), and plenty more where I’d have loved to contributed to discussions.\n\nOne obvious solution would be to just reduce what I subscribe to. But that’s self-defeating. I subscribe to people and communities because I like them and want updates. I also (obviously) want notifications on posts I make and when I’m tagged.\n\nWhat I’d like (and I have no idea if this is on the radar, nor if it’s easy/possible) is the ability to break up my subscription page. The aggregate page is fine when I’m on a lot. But when I’m not, allow me to see territory subscriptions from separately from the user subscriptions separately from the comments on my actual posts. I could manually just change all my settings each time, but if I had the time to do all that all the time, I’d have the time to keep up with my feeds. As it stands, having a lack of time to keep up with SN is, in itself, something that causes me to fall behind even further on SN.\n\nI'm always reluctant to request features/changes that may only help me, but putting this out there as something that others who are short on time (assuming I'm not the only person whose entire life doesn't revolve around SN) might also want to weigh in on?\n\n[^1]: Not really, since I’d have lost eventually, and probably soon. But I can keep telling myself that's not true.",
-      "sats": 9039,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 13,
-      "createdAt": "2026-09-22T14:11:35.320Z",
-      "user": {
-       "name": "StillStackinAfterAllTheseYears"
-      },
-      "subName": "meta"
-     },
-     {
       "id": "1579870",
       "title": "2026 NFL Survivor Pool- Week 3 pick submissions now open",
       "url": null,
       "text": "@grayruby @supercyclone @Wumbo @Cje95 @siggy47 @Undisciplined @WeAreAllSatoshi @guerratotal @BlokchainB @Bell_curve @NEEDcreations @Public_N_M_E @Jer @TNStacker @jjfins @realBitcoinDog @davidt @chrisliss @Carresan @JesseJames \n\nCurrent Prize Pool: **318k sats**\n\nWe have had a couple rebuys. Any other players that plan to use their rebuy please let me know in the comments and I will send you an invoice. Rebuys must be received before making your pick for week 3.\n\nPick one team to win this week (ties count as losses). You can only use a team once. Picks for Thursday night games must be in by 6pm et the day of the game. All other picks must be in by 12am et Sunday Sept 27.\n\nHere are this week's matchups:\n(I am adding the spread just for context)\n\nFalcons vs Packers (-6)- Thursday Night Football\nChargers vs Bills (-7) \nPanthers (-2.5) vs Browns\nJets vs Lions (-6.5) \nTexans (-3) vs Colts\nChiefs (-11.5) vs Dolphins \nTitans vs Giants (-3) \nBengals (-3.5) vs Steelers\nSeahawks (-7) vs Commanders\nPatriots vs Jaguars (-3) \nCardinals vs 49ers (-8.5) \nVikings (-1.5) vs Buccaneers \nRavens (-3.5) vs Cowboys- NFL Rio Game\nRaiders vs Saints (-3) \nRams (-2.5) vs Broncos- Sunday Night Football\nEagles (-4.5) vs Bears- Monday Night Football \n\nGood Luck!",
-      "sats": 1398,
+      "sats": 1511,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 16,
+      "ncomments": 21,
       "createdAt": "2026-09-23T00:18:03.280Z",
       "user": {
        "name": "StackerSports"
@@ -2150,26 +2270,26 @@
       "subName": "Stacker_Sports"
      },
      {
-      "id": "1579612",
-      "title": "I refereed my first (likely) fully AI-generated paper today.  AMA.",
-      "url": null,
-      "text": "Well, that was an experience.\n\nTo be clear: the writing is almost certainly ai-generated. Not as sure about the paper as a whole (the idea, the data, etc)\n\n@delete in 24 hours",
-      "sats": 2572,
+      "id": "1580103",
+      "title": "The Zodiac by Haleen",
+      "url": "https://plebeian.market/products/b1fac8dfd495787cb2d20a5a7c87e4251362c491716778b67744b34903d57c57",
+      "text": "Purchase your high quality download (wave form) from our mini album \"The Zodiac\" You can listen to the tracks here....https://haleen1.bandcamp.com/album/the-zodiac \n\n1.Build on Stone (Capricorn) ft. “The Flute Prayer” 07:38 \"432hz\" 2.Haleen & Helios - It's Time ( Aries ) 05:27 \"528hz\" 3.Pour the Water (Aquarius) 05:21 \"432hz\" 4.Tender Wolf (Pisces) ft. \"The Flute Prayer\" & \"Inhale\" 05:14 \"432hz\" \n\nhere is a little teaser\n\n\n![](https://m.stacker.news/158463)\n\nNote - when you purchase the album, please add message in payment (The Zodiac + E-mail adress ) so we can send you the album, with TransferNow...you can send also an e-mail after purchasing the album to haleen@protonmail.com \n\nLove and Blessings Haleen",
+      "sats": 123,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 15,
-      "createdAt": "2026-09-22T19:39:50.463Z",
+      "ncomments": 2,
+      "createdAt": "2026-09-23T10:11:02.568Z",
       "user": {
-       "name": "SimpleStacker"
+       "name": "haleen"
       },
-      "subName": "AI"
+      "subName": "art"
      },
      {
       "id": "1579907",
       "title": "CREATE QUAKE MATCHES · AND CHARGE A JOIN FEE",
       "url": "https://quake.lnbits.com/quakejs/lobby/562b96340c66d9b9612b22f15ce3dbbf95da9a22fdd16be5",
       "text": "I'm on mobile, but this looks fun!",
-      "sats": 1142,
+      "sats": 1235,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 1,
@@ -2180,154 +2300,34 @@
       "subName": "gaming"
      },
      {
-      "id": "1551074",
-      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
+      "id": "1580005",
+      "title": "PrismML — Introducing Bonsai 2 27B: Near-Lossless Compression in a 9x Smaller",
+      "url": "https://prismml.com/news/bonsai-2-27b",
+      "text": "Two months ago, we released our first Bonsai 27B models and showed that a 27B-class multimodal model could be compressed enough to run efficiently on a local device. Today, we’re releasing Ternary Bonsai 2 27B, our most capable model yet.\n\nBased on Qwen3.8 27B, Ternary Bonsai 2 27B brings stronger reasoning, coding, vision, and agentic capability to the Bonsai series while preserving the deployment profile that defines it: a dramatically smaller memory footprint, high local throughput, and better energy efficiency.\n\nTernary Bonsai 2 27B uses ternary {−1, 0, +1} weights with FP16 group-wise scaling, for **1.76 effective bits per weight**and a total model footprint of **5.9GB**. The low-bit representation is applied end to end across the language model. It supports a **262K-token context window**, multimodal text-and-image input, and is released under the Apache 2.0 license.\n\nAgainst its full-precision counterpart, Ternary Bonsai 2 27B is **more than 9x smaller** while retaining **98.2% of aggregate benchmark performance**. At this level of retention, compression becomes a deployment unlock: nearly the same capability, in a footprint that can run in far more places.\n\nRelated:\nhttps://stacker.news/items/1472773/r/DEADBEEF\nhttps://stacker.news/items/1463199/r/DEADBEEF\nhttps://stacker.news/items/1498284/r/DEADBEEF\nhttps://stacker.news/items/1522338/r/DEADBEEF\nhttps://stacker.news/items/1524976/r/DEADBEEF",
+      "sats": 533,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-09-23T06:13:18.404Z",
+      "user": {
+       "name": "DEADBEEF"
+      },
+      "subName": "AI"
+     },
+     {
+      "id": "1579612",
+      "title": "I refereed my first (likely) fully AI-generated paper today.  AMA.",
       "url": null,
-      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
-      "sats": 4927,
+      "text": "Well, that was an experience.\n\nTo be clear: the writing is almost certainly ai-generated. Not as sure about the paper as a whole (the idea, the data, etc)\n\n@delete in 24 hours",
+      "sats": 2590,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 66,
-      "createdAt": "2026-08-19T19:44:47.321Z",
+      "ncomments": 15,
+      "createdAt": "2026-09-22T19:39:50.463Z",
       "user": {
-       "name": "openbitcoin"
+       "name": "SimpleStacker"
       },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1579840",
-      "title": "The SN Daily Putt #133: Play, Putt, Score, ZAP!⚡️⛳️",
-      "url": null,
-      "text": "Hole #132 gave most stackers a run for their money on the par 9! A wave of 10-spot bogeys rolled across the leaderboard—catching @evestacker, @Carresan, @Undisciplined, @gsc360 (logging his first bogey in the game), and yours truly. But @Arquinoe cracked the code with an incredible ledge bank shot to sink a 4/9 Albatross and take home the 2,000 sat bounty! @grayruby caught onto the line as well, matching that sweet 4-spot Albatross.\n\n[The SN Daily Putt #132: Play, Putt, Score, ZAP!⚡️⛳️](https://stacker.news/items/1578211/r/BlokchainB)\n\nOn to hole #133\n\nMatch my score for a 1k zap! Up to 5 stackers I will zap! All posted scores will be zapped! \n\n[<ins>https://putt.day</ins>](https://putt.day/?utm_source=gemini)\n\nHappy Putting Stackers!",
-      "sats": 953,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 11,
-      "createdAt": "2026-09-22T23:26:33.239Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "gaming"
-     },
-     {
-      "id": "1579483",
-      "title": "Early season QB rankings",
-      "url": null,
-      "text": "1. Josh Allen\n2. Brock Purdy\n\n3-32. Some other guys who wish they were Josh Allen and Brock Purdy",
-      "sats": 2336,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 11,
-      "createdAt": "2026-09-22T17:08:53.998Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1579773",
-      "title": "Supreme Court Order Gives Parents Custody of Baby in Surrogacy Fight",
-      "url": "https://www.nytimes.com/2026/09/22/us/politics/supreme-court-surrogate-abortion-custody.html?unlocked_article_code=1.DFE.NYaQ.C09vWikvBpER&smid=nytcore-ios-share",
-      "text": "While this is an emotionally charged topic I think this is the right call. At the end of the day this is their child and they did pay this lady to carry it. Yes, they might have moved to terminate the pregnancy when they found out about the heart issues but now that the kid is born they have done everything they could for him. It’s the right call.",
-      "sats": 1429,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 11,
-      "createdAt": "2026-09-22T22:11:07.992Z",
-      "user": {
-       "name": "Cje95"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1579263",
-      "title": "\"If I had more time, I would have written a shorter letter.\" - Blaise Pascal",
-      "url": null,
-      "text": "This quote applies more than ever in the current age of AI slop cannons. Getting your point across quickly is a requirement, getting your point across clearly is optional.",
-      "sats": 2290,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-09-22T12:50:04.043Z",
-      "user": {
-       "name": "Kruw"
-      },
-      "subName": "Quotes"
-     },
-     {
-      "id": "1579622",
-      "title": "How much NGU is enough?",
-      "url": null,
-      "text": "Bitcoin has famously gone up. Going up is why some of us are here and of interest to most of us. And I suspect that if Bitcoin never again increased in purchasing power, many of us would be disappointed. \n\nBut it's not like we all expect to have Elon Musk levels of wealth. So, I want to know how much NGU would satisfy you. At what level would you not feel disappointed at all?",
-      "sats": 1265,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-09-22T19:47:55.907Z",
-      "user": {
-       "name": "wackster"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1579246",
-      "title": "Kremlin Gets Around Sanctions and Anti-Money Laundering Rules (Financial Times)",
-      "url": "https://www.ft.com/content/3848a4ad-1426-4352-ba86-ef1279c4ffd1",
-      "text": "**Incredible.**\n\n![](https://m.stacker.news/158320)\n\nFirst, money laundering is beautiful (https://stacker.news/items/1455164) and your pearl-clutching *omg, so bad* is complete bullshit (https://stacker.news/items/1453638, https://stacker.news/items/1467656) wrapped in economic illiteracy. https://stacker.news/items/1540813\n\nSecond, it's not *bitcoin* or hawala networks they're using to circumvent sanctions and \"launder\" funds it's... *oh no...* *the established correspondent banking system!*\n\n> **Standard Chartered, Citigroup and other international banks** have handled billions of dollars from a Kremlin-backed fintech company that tricked its way into the global financial system with a vast document forgery operation.\n> ...how it used old-fashioned money laundering to funnel more than $6.9bn through the international banking system despite sanctions on Russia.\n\n## \"The Kremlin has touted A7 as the country’s flagship provider of cross-border payments for imports since Russian banks were cut off from the Swift system after the full-scale invasion of Ukraine in 2022.\"\n\nIt's almost like sanctions don't *work* (\"work\"...) and that we shouldn't use them https://stacker.news/items/1520959.\n\n> At least three entities were based in the UK, where A7 was placed under sanctions in May 2025. One entity in Hungary appears to have been the critical conduit for payments into the EU.\n\n## How to do money laundering, Russian style\n\nPractically, how the funds made their way around sanctions and other soft \"blocks\" was via cash deposits and Chinese bank accounts:\n\n> Under the A7 scheme, front companies arrange for cash to be deposited at banks within the Swift system, which can then be used to settle bills abroad for Russian companies. Chinese bank accounts were the final destination for just over half of the flows.\n\nA former US banking analyst is quoted saying \"the material 'should make us think again about how hard it is to keep traditional correspondent banking clean'.\"\n\n> A7 put considerable effort into cheating anti-money laundering checks by banks. The front companies would produce documents, forged in advance, that created a paper trail designed to obfuscate real transactions. This included a library of thousands of corporate stamps, some of which are fakes while others have been harvested from real documents from unknowing companies. The front companies were given instructions on how to portray the types of goods they were buying so as not to raise alarms. For instance, employees were told to replace customs codes for goods under sanctions with the closest possible alternatives that were not subject to sanctions.\n\n![](https://m.stacker.news/158322)\n\n![](https://m.stacker.news/158323)\n\nBeautiful:\n\n> The fintech company exploits controls in Swift that depend on the sending bank performing adequate checks on customers. Beating the controls of any member bank clears the way for A7 to send payments through the system. In the early stages of its scheme in late 2024 and early 2025, A7 sent large volumes through three Kyrgyz banks: Eldik, Aiyl and Eurasian Savings Bank (ESB).\n\n***\n\narchive: [https://archive.li/Qb3hX](https://archive.li/Qb3hX)",
-      "sats": 7326,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-09-22T12:16:35.551Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1579511",
-      "title": "Default threshold for re-org risk",
-      "url": null,
-      "text": "Sentiment check for something we're doing in Lightning.Pub\n\n* We want operators to own the decision of what risk they expose themselves to with regards to re-orgs, so this setting would be customizable.\n* However, we still need to set a *default*. What I think is a sane default, and what users think it should be, are not necessarily the same.\n\nHense, a poll.\n\n**Situation:**\n\n* A guest can deposit via chain and spend via LN. If there's a re-org after the operator credits the user thereby allowing LN withdrawal, a re-org could be exploited leaving the Pub operator with a loss of those sats.\n* One might also run a Pub explicitly to provide this swap service given Pub's nostr-based discoverability makes it a defacto decentralized non-atomic swap market.\n\n**Considerations:**\n\n* The reason to not only credit off of 6+ blocks you might be competing for users on UX and thus fee revenue.\n* The reason not to do only 1 block is a 1 block re-org seems to happen on average every 45 days. This does not necessarily mean an attack, but could.\n* 2+ block re-orgs are rare, 3+ very rare, but if you're doing volume, could mean a significant loss if you're attacked.\n\n**Decision:**\n\nIf you were running a Pub, or any swap service for that matter, what is the minimum confirmations you would set before users can spend?",
-      "sats": 2461,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-09-22T17:44:53.690Z",
-      "user": {
-       "name": "justin_shocknet"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1579652",
-      "title": "If you had to buy/recommend an economics book, which one would it be?",
-      "url": null,
-      "text": "I want to buy an economics book, a book that will truly open your mind and break down the preconceived notions we have ingrained in our minds. I want to broaden my horizons a bit more. Something that isn't too technical, perhaps something for beginners.\r\n\nWhat book would you absolutely recommend?\r\n\nI'd like some recommendations below, to see if I can find a physical copy in Spanish or Portuguese on Amazon here in Brazil.",
-      "sats": 938,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 17,
-      "createdAt": "2026-09-22T20:16:14.075Z",
-      "user": {
-       "name": "guerratotal"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1579593",
-      "title": "Buy This $15 Stock Before SpaceX and Tesla Merge!",
-      "url": null,
-      "text": "Luke Lango is pitching a new Elon Musk play through his Innovation Investor newsletter. His thesis is that Tesla and SpaceX could eventually merge into one massive Musk-controlled company spanning AI, robots, satellites, chips and energy. He calls it “XPANSE” and instead of buying Tesla or SpaceX, he's pitching three smaller companies that could potentially supply Musk's empire.\n\n1. Redwire - RDW. Redwire builds space infrastructure, including solar arrays and other components for satellites and spacecraft. The interesting angle is SpaceX's push toward orbital AI data centers. Those satellites would need enormous amounts of power, potentially creating a big market for space-based solar technology.\n\nBut there's an important catch, Redwire isn't currently a confirmed SpaceX supplier for this project. Lango is betting that it eventually becomes one.\n\n2. Photronics — PLAB. Photronics makes photomasks used to manufacture semiconductors. The theory here is that Musk's plans for a massive U.S. semiconductor operation could eventually require domestic suppliers like Photronics.\n\nThis one is actually pretty cheap at roughly 15X forward earnings, but analysts currently expect very little growth. So the bet is basically that Wall Street hasn't priced in a future AI/chip boom. Again, though, no confirmed Musk connection.\n\n3. USA Rare Earth — USAR. Probably the most tangible story of the three. USA Rare Earth is developing American supplies of rare-earth materials and already producing permanent magnets in Oklahoma. Those materials are critical for things like robots, EVs, semiconductors and aerospace. The company has also secured substantial U.S. government backing as America tries to reduce its dependence on China. Lango thinks Musk will eventually become a customer. Maybe, but that's speculation too.\n\nSo despite the headline, there isn't actually a secret $15 stock we need to buy before a SpaceX/Tesla merger. The more interesting idea is if Musk really does massively expand robots, satellites, AI infrastructure and semiconductor manufacturing, which smaller suppliers benefit regardless of whether Tesla and SpaceX ever merge?\n\nRDW — Space infrastructure\nPLAB — Semiconductor manufacturing\nUSAR — Rare earths and magnets\n\nThat's a much more interesting question than the “buy before the merger” hype.",
-      "sats": 567,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-09-22T19:12:23.905Z",
-      "user": {
-       "name": "JRem"
-      },
-      "subName": "Stacker_Stocks"
+      "subName": "AI"
      }
     ]
    }
