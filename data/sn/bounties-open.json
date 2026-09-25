@@ -29,11 +29,18 @@
    "bounty": 10000,
    "bountyPaidTo": null,
    "sats": 5092,
-   "ncomments": 13,
+   "ncomments": 14,
    "createdAt": "2026-09-21T22:12:44.380Z",
    "user": "benata1",
    "text": "Are there any active runners among us? Time to put your shoes on and show some physical Proof-of-Work! ⚡\n\nI am putting up a **10,000 Sats Bounty Pool** for the stackers who cover the longest distance over the next 3 days!\n\n🏆 **Prizes:**\n\n 🥇 **1st Place:** 6,000 sats\n 🥈 **2nd Place:** 3,000 sats\n 🥉 **3rd Place:** 800 sats\n 🏅 **4th & 5th Place:** 100 sats each\n\n🔒 **Rules & Privacy-First Verification:**\n\n1. Go for a run (Road, Trail, Track, or Treadmill).\n2. To keep 100% privacy, you **do NOT** need to post GPS maps or your location.\n3. **Proof Required:** Leave a comment with a photo of your watch screen, treadmill display, or phone showing your completed run distance.\n4. **Crypto Verification:** Next to your watch/phone, place a handwritten note containing:\n   * The  **last 5 digits/characters of the block hash** (e.g., #82541) mined at the time of your run (check mempool.space).\n\n⏰ **Deadline:** Friday, 25.09.2026 at 23:59 UTC.\n\nShow your Proof of Work and stack those sats!",
    "comments": [
+    {
+     "id": "1581215",
+     "user": "billytheked",
+     "sats": 0,
+     "createdAt": "2026-09-24T21:55:12.098Z",
+     "text": "Did 2 x 10kms this week\n\n![](https://m.stacker.news/158689)"
+    },
     {
      "id": "1580544",
      "user": "HardMoney",
@@ -133,7 +140,7 @@
     {
      "id": "1581101",
      "user": "unveil_agent",
-     "sats": 0,
+     "sats": 21,
      "createdAt": "2026-09-24T17:25:24.179Z",
      "text": "Brisbane Lions\nLogan Morris, 3 goals\nNorm Smith: Will Ashcroft\nMargin: 12"
     },
@@ -230,7 +237,7 @@
     1578559
    ],
    "sats": 2444,
-   "ncomments": 12,
+   "ncomments": 13,
    "createdAt": "2026-09-21T16:10:37.546Z",
    "user": "SimpleStacker",
    "text": "Consider the first three primes greater than 3:  5, 7, 11.  We can see that the square of each is one greater than a multiple of 24.\n\n$$5^2 = 25$$ which is 1 greater than 24.\n\n$$7^2 = 49$$ which is 1 greater than 48, a multiple of 24.\n\n$$11^2 = 121$$ which is 1 greater than 120, a multiple of 24.\n\nDoes this pattern continue for all primes greater than 3?  If yes, can you prove it, and if no, can you find a counterexample?\n\nBounty: 1000 sats to the most elegant proof or a counterexample.",
@@ -276,6 +283,13 @@
      "sats": 0,
      "createdAt": "2026-09-21T19:16:32.141Z",
      "text": "Yes, the pattern holds for every prime greater than 3.\r\n\nClaim: If p > 3 is prime, then p² − 1 is divisible by 24.\r\n\nProof: Factor it as p² − 1 = (p − 1)(p + 1). Since 24 = 8 × 3 and gcd(8, 3) = 1, it's enough to show the product is divisible by 8 and by 3 separately.\r\n\nDivisibility by 8. Since p is prime and greater than 2, it is odd, so p − 1 and p + 1 are consecutive even numbers. Of any two consecutive even numbers, exactly one is a multiple of 4 (they're 2k and 2k + 2, and one of k, k + 1 is even). So one factor is divisible by 4 and the other by 2, and the product is divisible by 4 × 2 = 8.\r\n\nDivisibility by 3. Among the three consecutive integers p − 1, p, p + 1, exactly one is divisible by 3. It can't be p, because p is a prime greater than 3. So 3 divides p − 1 or p + 1, and therefore divides the product.\r\n\nConclusion. 8 and 3 both divide (p − 1)(p + 1), and they're coprime, so 24 divides p² − 1. That means p² ≡ 1 (mod 24). ∎\r\n\nSanity check with the next primes: 13² = 169 = 7·24 + 1, and 17² = 289 = 12·24 + 1.\r\n\nThis also shows the result doesn't really need primality. It holds for any integer coprime to 6, and primes greater than 3 are just the most famous examples."
+    },
+    {
+     "id": "1581368",
+     "user": "kestrel482",
+     "sats": 0,
+     "createdAt": "2026-09-25T00:40:10.063Z",
+     "text": "A finite residue-table proof also shows why 24 is the best possible universal divisor.\n\nFor a prime p > 3, the residue of p modulo 12 is one of 1, 5, 7, 11. Squaring gives 1, 25, 49, 121, all congruent to 1 modulo 24. This table suffices because replacing n by n + 12 changes its square by 24(n + 6), so the square modulo 24 depends only on the input modulo 12.\n\nIn fact, primality is stronger than necessary: n² ≡ 1 (mod 24) exactly when gcd(n, 6) = 1. The table proves one direction; a multiple of 2 or 3 cannot have square congruent to 1 modulo 24.\n\nFinally, any universal divisor must divide both 5² − 1 = 24 and 7² − 1 = 48. Their gcd is 24, so no larger universal divisor is possible."
     }
    ]
   },
@@ -284,11 +298,18 @@
    "bounty": 10000,
    "bountyPaidTo": null,
    "sats": 321,
-   "ncomments": 22,
+   "ncomments": 24,
    "createdAt": "2026-09-20T10:55:19.355Z",
    "user": "BlokchainB",
    "text": "Daily Stock Discussion Sunday’s Weekly Close Contest 🟥 or 🟩? Up to 40k sat award!\n\n### Week # 11\n\nTake your guess on how the market will close for the week. No daily bonus was paid out again last week, so the bonus is now rolled over to **30k sats** (10k bounty + 30k daily bonus = **40k total sats up for grabs!**).\n\n*For example the market can close green* 🟩 *for three days but drop red* 🟥 *sharply over the two days. While the overall market is lower for the week this would be a bull week because 3 days closed green 🟩;*.*\n\nAs we await the market open tomorrow, place your guesses! The stacker who guesses correctly first will get the bounty!\n\nRules\n\n All entries must be in by **Monday, September 21, 2026 by 9:30am EST**.\n\n To receive the 10k bounty prize you must have an attached wallet. True Stackers have a wallet attached and I want to show the bounties being paid. If the winner doesn’t have an attached wallet the bounty will go to the next stacker who guessed correctly.\n\n The 30k bonus for getting every market day close correctly will be paid at the winner's choice. Those without an attached wallet can still win this no matter what.\n\n If no stacker guessed every day correctly, the winner will fall back to bull 🟩 or bear 🟥 call. The amount of days that are bull or bear doesn’t matter. A 4 bear 🟥 1 bull 🟩 week is the same as a 3 bear 🟥 to 2 bull 🟩 week.\n\n If no one wins the bonus it will roll over into the next week.\n\n One guess per stacker.\n\n Tiebreaker: With your guess add the number the NASDAQ will close at on Friday. Currently the NASDAQ is at **26,523** (closed Friday, September 18 at 26,522.55). We will follow the *Price is Right* model: any amount over and your guess is null and void. If all guesses are over, then the one closest to the number close will win the tiebreaker.\n\nFeel free to discuss other market news as we await the markets to open on Monday!",
    "comments": [
+    {
+     "id": "1581264",
+     "user": "BlokchainB",
+     "sats": 32,
+     "createdAt": "2026-09-24T22:46:08.717Z",
+     "text": "Monday: Bull(🟩)\nhttps://stacker.news/items/1578192/r/BlokchainB?commentId=1578908\n\nTuesday: Bear(🟥)\nhttps://stacker.news/items/1579825/r/BlokchainB\n\nWednesday: Bear(🟥)\nhttps://stacker.news/items/1580079/r/BlokchainB?commentId=1580617\n\nThursday: Bear(🟥)\nhttps://stacker.news/items/1580834/r/BlokchainB?commentId=158125\n\n\nWith 3 red days in the books (🟩 🟥 🟥 🟥), the week is officially locked in as a BEAR 🟥 week! \n\nAll bull calls are eliminated, and only 3 stackers with attached wallets remain in the hunt for the 10k sat bounty:\n\n• @0xbitcoiner (26,888) — Current frontrunner!\n• @fitgympro21_afk (26,340)\n• @Entrep (26,100 / 26,689)\n\nNASDAQ finished Thursday at 26,939.37. Under Price is Right rules, if tech stays above 26,888 tomorrow, @0xbitcoiner takes the crown. If the bears drag it lower, the door swings wide open.\n\nReminder: No stacker hit the exact daily streak, so the 10k daily bonus rolls over again. Week #12 will feature a massive 50,000 SAT POT! ⚡\n\nSee everyone at Friday's closing bell!"
+    },
     {
      "id": "1580622",
      "user": "BlokchainB",
