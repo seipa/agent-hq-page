@@ -1,14 +1,14 @@
 {
- "fetched_at": "2026-09-27T05:19:48.136994+00:00",
+ "fetched_at": "2026-09-27T12:04:06.645271+00:00",
  "address": "bc1qnwr485x5s3fxq8x5xd08tc4h3u4eece2ef4phs",
  "addr_stats": {
   "address": "bc1qnwr485x5s3fxq8x5xd08tc4h3u4eece2ef4phs",
   "chain_stats": {
    "funded_txo_count": 1,
    "funded_txo_sum": 591800,
-   "spent_txo_count": 0,
-   "spent_txo_sum": 0,
-   "tx_count": 1
+   "spent_txo_count": 1,
+   "spent_txo_sum": 591800,
+   "tx_count": 2
   },
   "mempool_stats": {
    "funded_txo_count": 0,
@@ -19,6 +19,51 @@
   }
  },
  "addr_txs": [
+  {
+   "txid": "c9e20cff14b7b938f13c79ea12b9e45f88e44bdc2c4c288c62b368125922997d",
+   "version": 2,
+   "locktime": 968836,
+   "vin": [
+    {
+     "txid": "61383c05e8b5dfd64440c88a90c6aac226ae25ab15286bf258617f44975b080a",
+     "vout": 1,
+     "prevout": {
+      "scriptpubkey": "00149b8753d0d48452601cd4335e75e2b78f2b9ce32a",
+      "scriptpubkey_asm": "OP_0 OP_PUSHBYTES_20 9b8753d0d48452601cd4335e75e2b78f2b9ce32a",
+      "scriptpubkey_type": "v0_p2wpkh",
+      "scriptpubkey_address": "bc1qnwr485x5s3fxq8x5xd08tc4h3u4eece2ef4phs",
+      "value": 591800
+     },
+     "scriptsig": "",
+     "scriptsig_asm": "",
+     "witness": [
+      "30440220426ef610cd6582662b649fdf7d2fc6f6cc7547bc4ed6f8e22259413133ac830602206f4e5afffd35bd99d8a1a2f8bd88d5ca9b7ebf51fd87611b1ee7fb422c10e18201",
+      "03de1d2855866e39570d015ad569260f361879a1cd48ddd1dc31af89ab3cc58b6c"
+     ],
+     "is_coinbase": false,
+     "sequence": 4294967293
+    }
+   ],
+   "vout": [
+    {
+     "scriptpubkey": "0014226134398585b38b5f2e3ca1260cbe60da1ca4b5",
+     "scriptpubkey_asm": "OP_0 OP_PUSHBYTES_20 226134398585b38b5f2e3ca1260cbe60da1ca4b5",
+     "scriptpubkey_type": "v0_p2wpkh",
+     "scriptpubkey_address": "bc1qyfsngwv9skeckhew8jsjvr97vrdpef94r9pty8",
+     "value": 591690
+    }
+   ],
+   "size": 191,
+   "weight": 437,
+   "sigops": 1,
+   "fee": 110,
+   "status": {
+    "confirmed": true,
+    "block_height": 968837,
+    "block_hash": "000000000000000000019b563152c5e33035fb46f206db3a9ffc7c9dc6db6ba2",
+    "block_time": 1790509503
+   }
+  },
   {
    "txid": "61383c05e8b5dfd64440c88a90c6aac226ae25ab15286bf258617f44975b080a",
    "version": 2,
@@ -91,28 +136,28 @@
   }
  },
  "prices": {
-  "time": 1790486107,
-  "USD": 84360,
-  "EUR": 74087,
-  "GBP": 63826,
-  "CAD": 119395,
-  "CHF": 69839,
-  "AUD": 120333,
-  "JPY": 13280197
+  "time": 1790510108,
+  "USD": 84875,
+  "EUR": 74578,
+  "GBP": 64173,
+  "CAD": 120124,
+  "CHF": 70348,
+  "AUD": 121130,
+  "JPY": 13314888
  },
  "fees": {
   "fastestFee": 2,
-  "halfHourFee": 2,
+  "halfHourFee": 1,
   "hourFee": 1,
   "economyFee": 1,
   "minimumFee": 1
  },
- "tip_height": 968782,
+ "tip_height": 968837,
  "summary": {
-  "balance_sats": 591800,
+  "balance_sats": 0,
   "mempool_delta_sats": 0,
-  "tx_count": 1,
-  "chf_per_btc": 69839,
-  "balance_chf": 413.31
+  "tx_count": 2,
+  "chf_per_btc": 70348,
+  "balance_chf": 0.0
  }
 }
