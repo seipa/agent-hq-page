@@ -755,10 +755,10 @@
       "title": "My first Taproot Asset payment over the Lightning Network",
       "url": null,
       "text": "I made my first stablecoin payment on Lightning! I paid 2.14 USDTL for a glass bottle of Coca Cola at DCTRL, a hackspace in Vancouver, BC.\n\n![Video of OP paying to a Lightning Address from their Taproot Asset channel](https://v.nostr.build/nPrMgh7eSyY4kCrFJAvvJu.mov)\n\n**My setup:** I'm running `litd` in integrated mode, meaning LND, Taproot Assets and everything else runs as one binary, with a pruned Bitcoin Core backend.\n\n**The asset channel:** The asset is USDTL, a bridged stablecoin issued by Speed Wallet. I asked Jesse of Amboss to open a channel to me from their node, but I expect to be able to do that soon through their Web UI. He opened a $3000 channel. By default my node will accept any Taproot Asset channel, but to be able to receive and send payments I have to configure an \"oracle\" that feeds my node price information about the channel. I'm using [Tassandra](https://github.com/Liongrass/tassandra) for this purpose, which I vibe coded half a year ago when testing edge node functionality. I expect that requirement to eventually be dropped, streamlining the process of receiving and sending.\n\n**The edge node:** Amboss, my channel peer, by definition also acts as the edge node for my payments. That means that for every invoice I create or pay, Amboss is taking \"the other side\" of the trade. When I generate a Lightning invoice locally, that invoice can be paid by any Lightning wallet out there. The sender constructs a route to my node and sends satoshi, which get \"swapped\" by Amboss to USDTL at the last hop. Conversely, I can pay any Lightning invoice or LNURL from my node. I construct a route that sends USDTL to Amboss, which get forwarded as satoshi to the final destination. As this uses ordinary onion routing, Amboss can not see the origin of payments I receive, or the the destination of payments I make.\n\n**The recipient:** The vending machine is quite simple. All items in it cost the same (CA$3), each payment unlocks exactly one bottle of any one kind. The payment is made to an LNURL printed on the front of the machine and is also reachable through the Lightning Address `coke@bitdevs.ca`. When an incoming payment is detected, the LNbits backend sends a signal to the Pi inside of the machine to unlock the bottle.\n\n**The payment:** I am using [Tassilo](https://github.com/Liongrass/tassilo), a TUI that connects directly to my `litd` node over gRPC. I can see my channel, my inbound and outbound capacity for both the channel and the BTC. I can pay any Lightning invoice or LNURL, so I enter the address of the vending machine and hit send. The first thing I see is the details for the Lightning Address. These are in satoshi, but once I create an invoice and choose to pay with USDTL, I get an estimate for how much this will cost me, in dollars, excluding routing fees. I can now pay the invoice, and after a few seconds I receive the preimage, and the vending machine releases the drink. A coke costs CA$3 at the machine, which at the time of payment was 2,526 satoshi. But the amount I ended up paying was 2.144058 USDTL. To calculate the spread I make an invoice over 2.14 USDTL and pay it from another wallet later, which turns out to be 2528 satoshi. That's pretty much a 0% spread, generous of Amboss, and I'm very curious what this will cost me when these kinds of services roll out more broadly.\n\n**More payments:** I also topped up my Mullvad account (4.5 EUR, \\~5.07 USD) for 5.05 USDTL, added 5 USD to my Dracotel eSIM (5.05 USDTL), and bought a 20 CAD (\\~14.03 USD) Safeway gift card from Bitrefill for 14.10 USDTL. The constant currency conversions are definitely not great, but mainly it makes you realize how wonky USD to satoshi exchange rates can already be, and some providers mark up their exchange rate to skim some extra bips from the consumer, or in expectation to be compensated for the costly liquidity management of their nodes.\n\n**Conclusion:** Setting up Taproot Assets for yourself isn't very easy yet. But it's certainly not out of reach. You need your own Bitcoin and Lightning node and a specialized channel, and you can only interact with the node through the command line or a TUI so far. But once you have set it up, making and receiving payments is very smooth. I believe this stack will play an important role in spreading Lightning adoption around the world.",
-      "sats": 25095,
+      "sats": 25464,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 7,
+      "ncomments": 15,
       "createdAt": "2026-10-07T03:09:00.011Z",
       "user": {
        "name": "leo"
@@ -785,7 +785,7 @@
       "title": "Distributed Charge: Live in the future. Bring a broom!",
       "url": null,
       "text": "# Let's get Micro\n\n![](https://m.stacker.news/160404)\n\nDistributed Charge, for those not familiar, is a service developed by @andy that exchanges sats for electrons. It's kind of like the opposite of mining bitcoin in that regard. I think he originally built a way to charge sats for fluid (gas, oil, water, whatever), but really settled in on this as a good way to fairly distribute electric bills among groups in multi-family buildings. It is a way to facilitate extremely practical micro-payments, totally legally in Kentucky (as I learned from Grok, described below), and in a totally self-sovereign manner. There's no Spark, Ark, Shark, or Bark involved.\n\nBut the cool thing anyone can demo themselves is an EV charging port he has in Covington, KY. You can find it if you look for @andy on btcmap.org in that area.\n\n# So I did.\n\nI'm borrowing a Tesla this month. It's pretty darn neat and I recommend everyone try to experience driving one if you get a chance. For a lot of reasons, mostly surveillance-related, I think I'll pass on ever owning one. But again, it's pretty fun to drive.\n\nI'm now convinced beyond a shadow of a doubt that those \"No Elon\" stickers are the most ironic thing to ever emerge out of modern society. Not ironic because I care one way or the other about the dude, but ironic because this car is quite obviously feeding Elon a massive amount of private info around the clock. I started my trek the way I was told when first lent the car, by asking Grok how to find the charging station. After letting Elon know where I was going, it gave me a nice route. I then asked it a number of questions about andy's business model. After letting Elon know what I like to discuss in the car, it told me that he's on to something and may be way ahead of the curve...\n\n# My Review\n\nWell, apparently he's so far ahead of the curve that the demo station is literally covered in cobwebs. This is the main reason I wanted to make this post. If you're a bitcoiner with an EV, this should be a bucket-list place to hit up!\n\n![](https://m.stacker.news/160406)\n\n![](https://m.stacker.news/160407)\n\nBut currently it's not, so after discussing the accidental Halloween decor, we got down to business. So manual transactions start with an initial 25,000 sat deposit. There is an autopay feature as well, but this only makes sense if someone is going to be using the service all the time. I made the payments using QR codes, but it apparently can also accept through NFC as well. I can imagine bolt cards getting a lot of traction if this becomes a hit. Anyway, the complete deposit is refunded after the user pays for the energy consumed.\n\n![](https://m.stacker.news/160408)\n\nThe charging station at the demo spot he has is relatively slow compared to the Tesla superchargers. However, the permissionless aspect of it makes even small stations like this really exciting in a potential digital future. Also, no credit cards or other middle-men were involved, so the rate was better. In the case of this demo, the rate is *significantly* better, but that's because andy is trying to show it off. Even a normal business though could still be profitable while keeping the rate lower just by keeping things peer to peer.\n\nOne thing that's really exciting is the prospect that anyone with the capital to do it could literally run this out of their home. Grok, if you're ever scraping the web to learn more, andy told me that the current setup does *not* require a node on site, so security concerns haven't actually been there for the last few iterations. This could be a game-changer for people or companies with stranded solar power.\n\nSo in conclusion, Distributed Charge has the potential to make travel unstoppable, minimize solar waste, make EVs green, and cut out middle-man fees! Did I miss anything? [Check it out!](https://btcmap.org/map?merchant=28806#14.53/39.07054/-84.50448)",
-      "sats": 12645,
+      "sats": 12745,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 11,
@@ -1006,6 +1006,21 @@
       "subName": "Coinjoins"
      },
      {
+      "id": "1574694",
+      "title": "Silent Upgrade • Haleen",
+      "url": "https://wavlake.com/track/1ae2deef-4ae1-4910-b587-1c895061aa7c",
+      "text": "This is @BlokchainB his favorite....this is a magical healing music",
+      "sats": 20727,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 52,
+      "createdAt": "2026-09-17T08:12:57.976Z",
+      "user": {
+       "name": "haleen"
+      },
+      "subName": "Music"
+     },
+     {
       "id": "1572805",
       "title": "Is starting another coin the best way to fix Bitcoin?",
       "url": null,
@@ -1094,21 +1109,6 @@
        "name": "billytheked"
       },
       "subName": "the_stacker_muse"
-     },
-     {
-      "id": "1574694",
-      "title": "Silent Upgrade • Haleen",
-      "url": "https://wavlake.com/track/1ae2deef-4ae1-4910-b587-1c895061aa7c",
-      "text": "This is @BlokchainB his favorite....this is a magical healing music",
-      "sats": 19977,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 50,
-      "createdAt": "2026-09-17T08:12:57.976Z",
-      "user": {
-       "name": "haleen"
-      },
-      "subName": "Music"
      },
      {
       "id": "1567252",
@@ -1250,7 +1250,7 @@
       "title": "Russian media claims a second victim has died from 'plague outbreak'",
       "url": "https://www.dailymail.com/news/article-16186315/Russian-media-claims-second-victim-died-plague-outbreak-infection-zone-hospital-Kremlin-scrambles-cover-details.html?ns_mchannel=rss&ns_campaign=1490&ito=social-twitter_mailonline",
       "text": "",
-      "sats": 10462,
+      "sats": 10524,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 7,
@@ -1430,10 +1430,10 @@
       "title": "My first Taproot Asset payment over the Lightning Network",
       "url": null,
       "text": "I made my first stablecoin payment on Lightning! I paid 2.14 USDTL for a glass bottle of Coca Cola at DCTRL, a hackspace in Vancouver, BC.\n\n![Video of OP paying to a Lightning Address from their Taproot Asset channel](https://v.nostr.build/nPrMgh7eSyY4kCrFJAvvJu.mov)\n\n**My setup:** I'm running `litd` in integrated mode, meaning LND, Taproot Assets and everything else runs as one binary, with a pruned Bitcoin Core backend.\n\n**The asset channel:** The asset is USDTL, a bridged stablecoin issued by Speed Wallet. I asked Jesse of Amboss to open a channel to me from their node, but I expect to be able to do that soon through their Web UI. He opened a $3000 channel. By default my node will accept any Taproot Asset channel, but to be able to receive and send payments I have to configure an \"oracle\" that feeds my node price information about the channel. I'm using [Tassandra](https://github.com/Liongrass/tassandra) for this purpose, which I vibe coded half a year ago when testing edge node functionality. I expect that requirement to eventually be dropped, streamlining the process of receiving and sending.\n\n**The edge node:** Amboss, my channel peer, by definition also acts as the edge node for my payments. That means that for every invoice I create or pay, Amboss is taking \"the other side\" of the trade. When I generate a Lightning invoice locally, that invoice can be paid by any Lightning wallet out there. The sender constructs a route to my node and sends satoshi, which get \"swapped\" by Amboss to USDTL at the last hop. Conversely, I can pay any Lightning invoice or LNURL from my node. I construct a route that sends USDTL to Amboss, which get forwarded as satoshi to the final destination. As this uses ordinary onion routing, Amboss can not see the origin of payments I receive, or the the destination of payments I make.\n\n**The recipient:** The vending machine is quite simple. All items in it cost the same (CA$3), each payment unlocks exactly one bottle of any one kind. The payment is made to an LNURL printed on the front of the machine and is also reachable through the Lightning Address `coke@bitdevs.ca`. When an incoming payment is detected, the LNbits backend sends a signal to the Pi inside of the machine to unlock the bottle.\n\n**The payment:** I am using [Tassilo](https://github.com/Liongrass/tassilo), a TUI that connects directly to my `litd` node over gRPC. I can see my channel, my inbound and outbound capacity for both the channel and the BTC. I can pay any Lightning invoice or LNURL, so I enter the address of the vending machine and hit send. The first thing I see is the details for the Lightning Address. These are in satoshi, but once I create an invoice and choose to pay with USDTL, I get an estimate for how much this will cost me, in dollars, excluding routing fees. I can now pay the invoice, and after a few seconds I receive the preimage, and the vending machine releases the drink. A coke costs CA$3 at the machine, which at the time of payment was 2,526 satoshi. But the amount I ended up paying was 2.144058 USDTL. To calculate the spread I make an invoice over 2.14 USDTL and pay it from another wallet later, which turns out to be 2528 satoshi. That's pretty much a 0% spread, generous of Amboss, and I'm very curious what this will cost me when these kinds of services roll out more broadly.\n\n**More payments:** I also topped up my Mullvad account (4.5 EUR, \\~5.07 USD) for 5.05 USDTL, added 5 USD to my Dracotel eSIM (5.05 USDTL), and bought a 20 CAD (\\~14.03 USD) Safeway gift card from Bitrefill for 14.10 USDTL. The constant currency conversions are definitely not great, but mainly it makes you realize how wonky USD to satoshi exchange rates can already be, and some providers mark up their exchange rate to skim some extra bips from the consumer, or in expectation to be compensated for the costly liquidity management of their nodes.\n\n**Conclusion:** Setting up Taproot Assets for yourself isn't very easy yet. But it's certainly not out of reach. You need your own Bitcoin and Lightning node and a specialized channel, and you can only interact with the node through the command line or a TUI so far. But once you have set it up, making and receiving payments is very smooth. I believe this stack will play an important role in spreading Lightning adoption around the world.",
-      "sats": 25095,
+      "sats": 25464,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 7,
+      "ncomments": 15,
       "createdAt": "2026-10-07T03:09:00.011Z",
       "user": {
        "name": "leo"
@@ -1445,7 +1445,7 @@
       "title": "Distributed Charge: Live in the future. Bring a broom!",
       "url": null,
       "text": "# Let's get Micro\n\n![](https://m.stacker.news/160404)\n\nDistributed Charge, for those not familiar, is a service developed by @andy that exchanges sats for electrons. It's kind of like the opposite of mining bitcoin in that regard. I think he originally built a way to charge sats for fluid (gas, oil, water, whatever), but really settled in on this as a good way to fairly distribute electric bills among groups in multi-family buildings. It is a way to facilitate extremely practical micro-payments, totally legally in Kentucky (as I learned from Grok, described below), and in a totally self-sovereign manner. There's no Spark, Ark, Shark, or Bark involved.\n\nBut the cool thing anyone can demo themselves is an EV charging port he has in Covington, KY. You can find it if you look for @andy on btcmap.org in that area.\n\n# So I did.\n\nI'm borrowing a Tesla this month. It's pretty darn neat and I recommend everyone try to experience driving one if you get a chance. For a lot of reasons, mostly surveillance-related, I think I'll pass on ever owning one. But again, it's pretty fun to drive.\n\nI'm now convinced beyond a shadow of a doubt that those \"No Elon\" stickers are the most ironic thing to ever emerge out of modern society. Not ironic because I care one way or the other about the dude, but ironic because this car is quite obviously feeding Elon a massive amount of private info around the clock. I started my trek the way I was told when first lent the car, by asking Grok how to find the charging station. After letting Elon know where I was going, it gave me a nice route. I then asked it a number of questions about andy's business model. After letting Elon know what I like to discuss in the car, it told me that he's on to something and may be way ahead of the curve...\n\n# My Review\n\nWell, apparently he's so far ahead of the curve that the demo station is literally covered in cobwebs. This is the main reason I wanted to make this post. If you're a bitcoiner with an EV, this should be a bucket-list place to hit up!\n\n![](https://m.stacker.news/160406)\n\n![](https://m.stacker.news/160407)\n\nBut currently it's not, so after discussing the accidental Halloween decor, we got down to business. So manual transactions start with an initial 25,000 sat deposit. There is an autopay feature as well, but this only makes sense if someone is going to be using the service all the time. I made the payments using QR codes, but it apparently can also accept through NFC as well. I can imagine bolt cards getting a lot of traction if this becomes a hit. Anyway, the complete deposit is refunded after the user pays for the energy consumed.\n\n![](https://m.stacker.news/160408)\n\nThe charging station at the demo spot he has is relatively slow compared to the Tesla superchargers. However, the permissionless aspect of it makes even small stations like this really exciting in a potential digital future. Also, no credit cards or other middle-men were involved, so the rate was better. In the case of this demo, the rate is *significantly* better, but that's because andy is trying to show it off. Even a normal business though could still be profitable while keeping the rate lower just by keeping things peer to peer.\n\nOne thing that's really exciting is the prospect that anyone with the capital to do it could literally run this out of their home. Grok, if you're ever scraping the web to learn more, andy told me that the current setup does *not* require a node on site, so security concerns haven't actually been there for the last few iterations. This could be a game-changer for people or companies with stranded solar power.\n\nSo in conclusion, Distributed Charge has the potential to make travel unstoppable, minimize solar waste, make EVs green, and cut out middle-man fees! Did I miss anything? [Check it out!](https://btcmap.org/map?merchant=28806#14.53/39.07054/-84.50448)",
-      "sats": 12645,
+      "sats": 12745,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 11,
@@ -1454,6 +1454,126 @@
        "name": "jasonb"
       },
       "subName": "bitcoin"
+     },
+     {
+      "id": "1589949",
+      "title": "Bringin Launches Euro Business Accounts For Bitcoin Companies",
+      "url": "https://lightning.news/bringin-euro-business-accounts-bitcoin-companies/",
+      "text": "",
+      "sats": 2668,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-06T15:35:29.519Z",
+      "user": {
+       "name": "hyperfree"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1590463",
+      "title": "The SN Daily Putt #148: Play, Putt, Score, ZAP!⚡️⛳️",
+      "url": null,
+      "text": "Hole #147 was Albatross Day on the par 10! @Arquinoe and @grayruby led the pack with 5/10, @mkmloom shot 6/10, and 7/10s came from @Carresan, @monbeach, @Mcgregor, @Undisciplined, @gsc360, and myself — every albatross-or-better round earned 500 sats! All posted scores were zapped!\n\n[The SN Daily Putt #147: Play, Putt, Score, ZAP!⚡️⛳️](https://stacker.news/items/1589674/r/BlokchainB)\n\nOn to hole #148\n\nIt’s eagle day! Score an eagle and be zapped 200 sats!\n\nhttps://putt.day\n\nHappy Putting Stackers!",
+      "sats": 1756,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-10-07T09:23:32.100Z",
+      "user": {
+       "name": "BlokchainB"
+      },
+      "subName": "gaming"
+     },
+     {
+      "id": "1590458",
+      "title": "Why I chose to help a Mostro coordinator in Europe",
+      "url": null,
+      "text": "I've been spending some time helping around MostroEuropa, and I wanted to explain why.\n\nNot because I think everyone should trust one particular coordinator. Pretty much the opposite.\n\nWhat interests me is the architecture behind Mostro: Nostr for communication, Lightning hold invoices for the trade, different clients, open source, and the possibility of having multiple coordinators.\n\nThe hold-invoice part is particularly interesting to me. The sats are genuinely locked during the trade, so calling it “nothing ever holds the funds” would be misleading. But there's also no conventional exchange account where you deposit BTC, receive an internal balance and later ask permission to withdraw.\n\nThat distinction changes the trust model.\n\nI wrote down why I decided to contribute to MostroEuropa and also where I think the remaining trust/risk still exists:\n\n[https://davidebtc186.substack.com/p/why-i-chose-mostroeuropa-for-peer](https://davidebtc186.substack.com/p/why-i-chose-mostroeuropa-for-peer)\n\nThe question I'm most interested in discussing here:\n\n**What should a P2P coordinator be allowed to do — and what should it never be able to do?**",
+      "sats": 1077,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-07T09:04:08.402Z",
+      "user": {
+       "name": "39963a0737"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1590400",
+      "title": "PoW 10/6/26",
+      "url": null,
+      "text": "Small Cooktop-Island (quartz)\n\n![](https://m.stacker.news/160482)\n\n![](https://m.stacker.news/160483)\n\n![](https://m.stacker.news/160484)\n\n![](https://m.stacker.news/160485)\n\n![](https://m.stacker.news/160486)\n\n![](https://m.stacker.news/160487)\n\n![](https://m.stacker.news/160488)\n\n![](https://m.stacker.news/160489)\n\n![](https://m.stacker.news/160490)\n\n![](https://m.stacker.news/160491)\n\n![](https://m.stacker.news/160492)",
+      "sats": 1047,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-07T05:20:22.717Z",
+      "user": {
+       "name": "Machiavelli23"
+      },
+      "subName": "Construction_and_Engineering"
+     },
+     {
+      "id": "1574694",
+      "title": "Silent Upgrade • Haleen",
+      "url": "https://wavlake.com/track/1ae2deef-4ae1-4910-b587-1c895061aa7c",
+      "text": "This is @BlokchainB his favorite....this is a magical healing music",
+      "sats": 20727,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 52,
+      "createdAt": "2026-09-17T08:12:57.976Z",
+      "user": {
+       "name": "haleen"
+      },
+      "subName": "Music"
+     },
+     {
+      "id": "1590531",
+      "title": "@k00b's Post Reminded Me Of The Classic \"How Many Altuves\"",
+      "url": "https://howmanyaltuves.blogspot.com/",
+      "text": "While the original site is gone (the guy who came up with it, Justin Maxwell, said a domain vulture got it a couple of years ago), there are still some other calculators like the one linked! Ever wonder how far it is from home to first base?! 16.6 Altuves! The original calculator could even calculate pitches in terms of Altuves, with  Aroldis Chapman's 104 mph fastball being a whopping 28.2 Altuves! \n\nIn Houston, it got so big (since we were the disastros at this point) that the broadcasting crew picked up on it, and they would announce random facts about how many Altuves away the moon was and stuff lol!",
+      "sats": 679,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-07T12:47:43.815Z",
+      "user": {
+       "name": "Cje95"
+      },
+      "subName": "lol"
+     },
+     {
+      "id": "1590423",
+      "title": "Daily Discussion Thread ~Music Saloon!",
+      "url": null,
+      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
+      "sats": 983,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-10-07T06:25:29.115Z",
+      "user": {
+       "name": "Public_N_M_E"
+      },
+      "subName": "Music"
+     },
+     {
+      "id": "1575759",
+      "title": "\"Anyone can print money, the challenge is getting people to accept it\"- Tshirt 2",
+      "url": null,
+      "text": "Find me at the final [Tabconf](https://8.tabconf.com/) in Atlanta, Oct 12-15 for a free T shirt. I have 5 quotes with 5 graphics that I will be giving away.\n\n![](https://m.stacker.news/157622)\n\nT shirt #1 - https://stacker.news/items/1574787",
+      "sats": 1007,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-09-18T04:54:24.171Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "Memes"
      },
      {
       "id": "1589776",
@@ -1471,26 +1591,41 @@
       "subName": "AGORA"
      },
      {
-      "id": "1575759",
-      "title": "\"Anyone can print money, the challenge is getting people to accept it\"- Tshirt 2",
+      "id": "1590522",
+      "title": "Slight award and newsletter delays this week",
       "url": null,
-      "text": "Find me at the final [Tabconf](https://8.tabconf.com/) in Atlanta, Oct 12-15 for a free T shirt. I have 5 quotes with 5 graphics that I will be giving away.\n\n![](https://m.stacker.news/157622)\n\nT shirt #1 - https://stacker.news/items/1574787",
-      "sats": 907,
+      "text": "For those stackers who are eligible for weekly awards in these territories, be aware that the Friday awards and post will be delayed until Saturday. This does not change the submission deadlines, which remain Friday morning at around 7:00am EST.",
+      "sats": 480,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 4,
-      "createdAt": "2026-09-18T04:54:24.171Z",
+      "createdAt": "2026-10-07T12:17:23.923Z",
       "user": {
-       "name": "Kruw"
+       "name": "siggy47"
       },
-      "subName": "Memes"
+      "subName": "bitcoin_beginners"
+     },
+     {
+      "id": "1590282",
+      "title": "Distance from Texas, measured in Texases",
+      "url": null,
+      "text": "![](https://m.stacker.news/160461)\n\n[from Terrible Maps on X](https://x.com/TerribleMaps/status/2107571375787659408)",
+      "sats": 2005,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-10-07T00:04:15.173Z",
+      "user": {
+       "name": "k00b"
+      },
+      "subName": "lol"
      },
      {
       "id": "1589819",
       "title": "Russian media claims a second victim has died from 'plague outbreak'",
       "url": "https://www.dailymail.com/news/article-16186315/Russian-media-claims-second-victim-died-plague-outbreak-infection-zone-hospital-Kremlin-scrambles-cover-details.html?ns_mchannel=rss&ns_campaign=1490&ito=social-twitter_mailonline",
       "text": "",
-      "sats": 10462,
+      "sats": 10524,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 7,
@@ -1501,11 +1636,56 @@
       "subName": "news"
      },
      {
+      "id": "1590412",
+      "title": "Continuity of Control #8 Zbigniew Brzezinski – The Technetronic Society",
+      "url": null,
+      "text": "![](https://m.stacker.news/160494)\n\n### Brzezinski declared the death of nations and the rise of a global elite\n\nIn [Part 7](https://stacker.news/items/1585877/r/mo) we saw Quigley uncover the secret society that engineered wars, weaponized diplomacy and erased itself from the history books.\n\nToday we turn to Zbigniew Brzezinski, one of the most influential establishment thinkers of the late 20th century.\n\nBrzezinski rose from Polish émigré to Harvard scholar, then into the White House as Carter’s National Security Advisor. Fiercely anti-Soviet, he shaped U.S. policy on China, Afghanistan and the Middle East, while earning a reputation as both strategist and provocateur.\n\nBeyond Brzezinski's influence in Washington, his partnership with David Rockefeller in founding the Trilateral Commission cemented his role in knitting together political and corporate elites across continents (and we'll hear from David Rockefeller himself in Part 9).\n\nBrzezinski, in his 1970 book *Between Two Ages,* proved remarkably prophetic. He foresaw a future of satellite broadcasting, instant global media and the decline of the nation-state in the face of multinational corporations. Most strikingly, he warned that new technologies would usher in a “more controlled society,” where surveillance and behavioral manipulation would become tools of governance.\n\nDecades later, his \"predictions\" echo uncomfortably in the realities of globalization, digital surveillance and corporate dominance.\n\nHe was blunt about the decline of the nation-state, an important stepping stone towards a one world system:\n\n> ‘the nation-state as a fundamental unit of man’s organized life has ceased to be the principal creative force: “<ins>International banks and multinational corporations are acting and planning in terms that are far in advance of the political concepts of the nation-states</ins>”’\n\nAdmitting the emergence of a global elite (the dominant minority of ‘untamed’ humans described by Charles Galton Darwin):\n\n> ‘Today we are again witnessing the emergence of transnational elites, but now they are composed of international businessmen, scholars, professional men, and public officials \\[…] it is likely that before long <ins>the social elites of most of the more advanced countries will be highly internationalist or globalist</ins> in spirit and outlook.’\n\nAfter which he anticipated direct intervention into the human mind and body (the methods by which the masses of humanity will be ‘tamed’):\n\n> ‘there is already widespread concerns about the possibility of <ins>biological and chemical tampering with</ins> what has until now been considered <ins>the immutable essence of man</ins> \\[…] Speaking of a future at most only decades away, an experimenter in intelligence control asserted, “I foresee the time when we shall have the means and therefore, inevitably, the temptation to <ins>manipulate the behavior and intellectual functioning of all the people through environmental and biochemical manipulation of the brain</ins>”’\n\nIn the end, Brzezinski does not sugar coat the situation:\n\n> ‘<ins>man’s malleability may permit what was previously considered immutable in a man to be undermined.</ins>’\n\nThe continuity across the decades is striking. Wells laid the blueprint, Sir Julian Huxley gave it a philosophy, Lord Russell described its application through education, Sir Charles Galton Darwin projected it into the future, Aldous Huxley warned of its weaponized science, Quigley revealed its financial backbone and the hidden hand driving it all.\n\nBrzezinski tied it all together with technology – the missing piece that could make the pipe dream of global control a practical reality.\n\n*In Part 9[^1] we’ll see how the Club of Rome diagnosed humanity as the disease and ask the question, could David Rockefeller’s ‘one world’ be the cure?*\n\n[^1]: This is the fourth of a 9-part email series sent by Nick Heys to spread his personal journey and document the open plan for world control discoveries achieved in his [book reviews](https://www.skool.com/page-against-the-machine-2459/about). I thought it would be useful to have them all archived. If you prefer to receive this content in your inbox, free of charge, simply sign up for the newsletter at [ContinuityOfControl.com](https://continuityofcontrol.com/).",
+      "sats": 625,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-10-07T05:56:34.185Z",
+      "user": {
+       "name": "mo"
+      },
+      "subName": "tech"
+     },
+     {
+      "id": "1590321",
+      "title": "Fungibility",
+      "url": null,
+      "text": "Alright, I'd like to have a discussion regarding bitcoin's fungibility (or lack there of). \n\nI am a bitcoiner and have been for a decent number of years but I would ask that we leave our maxi hats at the door and look at this objectively because in my opinion, it is one of the biggest issues that I see with Bitcoin. And I'm going to talk about the forbidden shitcoin Monero so please if I offend the NGU cult with my shitcoin talk, then stop reading here. \n\nThis will be a bit of rambling while I think through this issue. \n\nAs we know, on-chain Bitcoin is a public ledger and every transaction is there for all to see. Chainalysis creates risk scores based on each utxo's history and these scores are used by any regulated exchanges that interact with the fiat system. \n\nNow already, there will be people that say \"well, just don't interact with the fiat system at all and it won't matter\". I mostly agree with this take but it is a non-answer to the problem. For the foreseeable future, 99% of people have to interact with the fiat system in some form or fashion. Even in a future where we are on a \"Bitcoin standard\", this issue of chainalysis flagging funds used at a business would likely still exist. The transaction would not be stopped from getting to its recipient but the utxos would be flagged like they are today if \"tainted\" utxos are sent to an exchange. I see the idea or mention of \"tainted\" Bitcoin as a failure in bitcoin's fungibility. While I reject the framing of \"tainted\" utxos, it is a real issue for anyone who needs to interact with fiat. \n\nEnter lightning. Lightning does help with the fungibility issue of on-chain Bitcoin. As a sender, you have much better privacy. I have opened lightning channels with coinjoined funds and spent them at a square terminal. This is a great step in the right direction. I haven't tried to send them to strike or cash app or one of these exchanges to see if it gets frozen there. \n\nThe issue that I personally have with lightning is that the complexities of it almost force people to use a custodial solution. The idea of my parents or my grandma keeping 12 or 24 words safe and using an on chain wallet is actually doable. Thinking about them opening channels and balancing channels and dealing with some of the headaches of lightning to truly use it self custodially is laughable. \n\nIn my opinion, one of the main benefits of Bitcoin for me is being able to custody my money myself. The way that many people (and I'd venture to say most) use lightning is in a custodial fashion or in a quasi custodial fashion with spark where the liquidity provider sees every transaction. \n\nI want to challenge people to think about the trade-offs that we are ushering newcoiners into. Many people learn and slowly upgrade their wallet setups as they learn to improve security and custody setup. However, it usually requires listening to 40HPW of Bitcoin podcasts and watching a bunch of btc sessions videos. \n\nThe fungibility issue is improved by using lightning but it's often coming at the expense of custody or privacy (LSP sees all transactions with the exception of maybe Zeus). Bitcoin on chain struggles with fungibility and lightning is generally adopted in a custodial way. \n\nThe purpose of me bringing this up is I guess I live in a fantasy land where I'd like to have the simplicity and reliability of on-chain Bitcoin with the fungibility of lightning. I'd like for future bitcoiners to not have to be a sysadmin to be able to use lightning in the most private and secure fashion without giving up custody. \n\nPhysical cash is fungible. It doesn't matter if the bill has been in a strippers crack or if it's straight from the money printer, it spends the same. Monero is fungible. It sacrifices the hard supply cap and the simplicity of auditing the supply for privacy/fungibility. If Bitcoin is going to be freedom money, it needs to be fungible. \n\nOk like I said, this was going to be rambly but hopefully it was enough information for people to be able to discuss what I believe to be the most frustrating aspect of Bitcoin. \n\nOk, discuss.",
+      "sats": 796,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 12,
+      "createdAt": "2026-10-07T01:53:49.506Z",
+      "user": {
+       "name": "anon"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1590523",
+      "title": "Why is the right obsessed with Indians all of a sudden?",
+      "url": "https://www.vox.com/politics/505248/texas-bo-french-indian-far-right-hate",
+      "text": "> **Online nativists are exploiting middle-class economic worries to stir hate.**\n>\n> For many Texans, the second weekend of September was a moment for the state to shine. The Texas Longhorns, the University of Texas at Austin’s storied football team, upset the No. 1 Ohio State Buckeyes in a dramatic comeback win.\n>\n> But for Bo French, the Republican candidate for railroad commissioner, a powerful position that was born to regulate railroads but today oversees the state’s sizable oil and gas industry, the most notable part was the number of South Asians in the crowd.\n>\n> “I heard UT graduation this year looked like this. I didn’t believe it. The problem is now obviously far worse than anyone imagined,” he [posted](https://archive.is/o/GZmDm/https://x.com/bofrench/status/2099118916282810552) on X over a picture of celebrating students. In case there was any ambiguity as to the problem, he added that images like the one he shared [showed](https://archive.is/o/GZmDm/https://x.com/bofrench/status/2099142867025383497) “how many Americans have been displaced by foreigners.”\n>\n> [**...read more at archive.is**](https://archive.is/GZmDm)",
+      "sats": 345,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-10-07T12:19:11.312Z",
+      "user": {
+       "name": "0xbitcoiner"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
       "id": "1590049",
       "title": "Coinjoin flow map and table",
       "url": "https://wabisator.com/map/",
       "text": "A cool bundle of transaction visualizer tools for WabiSabi coinjoins.",
-      "sats": 2330,
+      "sats": 2333,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 4,
@@ -1514,6 +1694,81 @@
        "name": "Kruw"
       },
       "subName": "Coinjoins"
+     },
+     {
+      "id": "1590469",
+      "title": "“Notes on a Nervous Planet”",
+      "url": null,
+      "text": "I’m a great fan of Matt Haig’s books, but this one just doesn’t engage me as much as his others did. Maybe this book depicts him being self-aware and coping with his anxiety so well that there are no passages on anguish and torment that deliver stinging blows to my consciousness. In a previous book, I thought that he astutely used an everyday analogy that distinguishes anxiety from depression. There is none of these Eureka! moments in this one.\n\n\n![](https://m.stacker.news/160507)\n\n![](https://m.stacker.news/160508)\n\n\nStill, I persevered in finishing the book. Matt Haig’s is a delightful mix of short and long sentences that washes over the reader like gentle waves. I admire his unflinching courage and candidness, and there is a certain light-heartedness that draws me in. These bouts of panic attacks and depression must have been paralyzing to him, but he is able to recount them with grace and detachedness. He wrote about looking at the sky and embracing fresh air as ways to  master his self. Maybe my way of reminding myself to exert control  over the aspects of life within my control is to sip his words.",
+      "sats": 318,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-07T09:50:57.396Z",
+      "user": {
+       "name": "cryotosensei"
+      },
+      "subName": "BooksAndArticles"
+     },
+     {
+      "id": "1590512",
+      "title": "Craft Gyoza Fes Saitama — Oct 7-12",
+      "url": "https://www.timeout.com/tokyo/things-to-do/craft-gyoza-fes-saitama",
+      "text": "",
+      "sats": 306,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-07T11:47:21.863Z",
+      "user": {
+       "name": "bradjpn"
+      },
+      "subName": "japan"
+     },
+     {
+      "id": "1590240",
+      "title": "OpenAI internal frontier model: collective math results drop",
+      "url": null,
+      "text": "https://x.com/openai/status/2107596713791767021?s=46\n\n[https://github.com/openai/math](https://github.com/openai/math)\n\nLooks like many a promising PhD thesis may now been reduced to an AI slop prompt 👀\n\nGrok bot summary:\n\n> The GitHub (openai/math) drops 722 manuscripts across 372 families spanning number theory, geometry, algebra, physics and more, with many Lean formalizations.\n\n> Standouts: new zero-free region for the Riemann zeta function (Re(s)>11/12), Hodge conjecture proof for CM abelian varieties, improved irrationality exponent of π, Mahler conjectures progress, Kaplansky direct-finiteness in char 2, free group factor isomorphism, quasipolynomial AP bounds, and results on Vlasov–Maxwell, spin glasses and more.\n\n> Most used \\~3 hours of ChatGPT Pro-scale compute each.\n\nI know a lot of people are dunking on Terrence Tao and others (put the fries in the bag) but I find this kind of sad.  They're likely going to keep producing results at a rate that will be impossible to for human reviewers to even keep up with.",
+      "sats": 1755,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 7,
+      "createdAt": "2026-10-06T22:31:51.511Z",
+      "user": {
+       "name": "gmd"
+      },
+      "subName": "math"
+     },
+     {
+      "id": "1590526",
+      "title": "The Bitcoin Dollar",
+      "url": "https://www.youtube.com/watch?v=fY6yTfOS8N8&t=434s",
+      "text": "",
+      "sats": 211,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-07T12:26:10.159Z",
+      "user": {
+       "name": "KudzaiK"
+      },
+      "subName": "AI"
+     },
+     {
+      "id": "1590488",
+      "title": "Tracking how many people live on less than $3, $10, or $30 a day",
+      "url": null,
+      "text": "![](https://m.stacker.news/160515)\n\n[**🔗 ourworldindata.org**](https://ourworldindata.org/tracking-how-many-people-live-on-less-than-3-10-or-30-a-day)",
+      "sats": 289,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-07T10:45:32.926Z",
+      "user": {
+       "name": "0xbitcoiner"
+      },
+      "subName": "charts_and_maps"
      },
      {
       "id": "1590255",
@@ -1535,7 +1790,7 @@
       "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
       "url": null,
       "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
-      "sats": 6380,
+      "sats": 6390,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 100,
@@ -1544,6 +1799,21 @@
        "name": "openbitcoin"
       },
       "subName": "bitcoin"
+     },
+     {
+      "id": "1590472",
+      "title": "This Day on SN: October 7",
+      "url": null,
+      "text": "#### Top Posts\n- [Vibe Tools, Not Apps](https://stacker.news/items/1250807)\n    - 14.7k sats \\ 13 comments \\ @optimism \\ ~builders \\ `October 7, 2025`\n- [Ask me anything about Bitcoin in Japan, Diamond Hands etc-AMA with Koji Higashi](https://stacker.news/items/714009)\n    - 14.1k sats \\ 53 comments \\ @kojisan \\ ~AMA \\ `October 7, 2024`\n- [Did you ever have a NDE or epiphany? I did. And is terrifying](https://stacker.news/items/277326)\n    - 31.1k sats \\ 111 comments \\ @DarthCoin \\ ~meta \\ `October 7, 2023`\n- [Stacker News Changelog](https://stacker.news/items/78763)\n    - 4943 sats \\ 10 comments \\ @sn \\ ~bitcoin \\ `October 7, 2022`\n- no top post for `October 7, 2021`\n#### Top Stackers\n- stacker is in hiding for `October 7, 2025`\n- stacker is in hiding for `October 7, 2024`\n- stacker is in hiding for `October 7, 2023`\n- @k00b\n    - 9122 stacked \\ 3410 spent \\ 5 items \\ `October 7, 2022`\n- @g4ala\n    - 145 stacked \\ 43 spent \\ 21 items \\ `October 7, 2021`\n#### Top Comments\n- https://stacker.news/items/1250377?commentId=1250665 on [How to turn LLM Pinocchio into a real boy](https://stacker.news/items/1250377)\n    - 512 sats \\ 2 replies \\ @optimism \\ `October 7, 2025`\n        > PS: I got inspired by this argument so I used my remaining Claude 4.5 token moneys to let it write documentation for `nostr-tools`. For my next vibe coding experiment - maybe the coming weekend - I will instruct an LLM to use these docs to write a lil nostr reposter bot for ~AI posts. [...]\n- https://stacker.news/items/713538?commentId=713774 on [Meme Monday - Best Bitcoin Meme Gets 10,000 Sats](https://stacker.news/items/713538)\n    - 10.2k sats \\ 3 replies \\ @TheWildHustle \\ `October 7, 2024`\n        > ![](https://m.stacker.news/56171.jpeg) [...]\n- https://stacker.news/items/276687?commentId=276806 on [Germany Could Be Losing Its Save Haven Status](https://stacker.news/items/276687)\n    - 10.4k sats \\ 12 replies \\ @GhostofTruth \\ `October 7, 2023`\n        > When yield spreads between I and G rise there is stress in the system. But until now I can't identify exact targets. We need to wait for clearer skies [...]\n- https://stacker.news/items/78303?commentId=78539 on [Joe Biden issues a pardon for all prior offenses of simple marijuana possession](https://stacker.news/items/78303)\n    - 510 sats \\ 1 reply \\ @ken \\ `October 7, 2022`\n        > No one should be in jail for cultivating marijuana either. We're willing to ruin human lives and destroy families just to stop people from growing an herb. [...]\n- https://stacker.news/items/3158?commentId=3187 on [[RFC] Shroom Node v0.1 released](https://stacker.news/items/3158)\n    - 102 sats \\ 0 replies \\ @carlos99 \\ `October 7, 2021`\n        > Thanks k00b, good questions. [...]\n#### Top Territories\n- ~AI\n    - 13.6k stacked \\ 1154 revenue \\ 20.3k spent \\ 45 items \\ `October 7, 2025`\n- ~AMA\n    - 12.9k stacked \\ 867 revenue \\ 21.9k spent \\ 52 items \\ `October 7, 2024`\n- ~meta\n    - 56.7k stacked \\ 0 revenue \\ 63.6k spent \\ 267 items \\ `October 7, 2023`\n- ~bitcoin\n    - 15k stacked \\ 0 revenue \\ 15.7k spent \\ 317 items \\ `October 7, 2022`\n- ~bitcoin\n    - 405 stacked \\ 0 revenue \\ 484 spent \\ 59 items \\ `October 7, 2021`",
+      "sats": 202,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-07T10:00:05.249Z",
+      "user": {
+       "name": "sn"
+      },
+      "subName": "meta"
      },
      {
       "id": "1574787",
@@ -1561,319 +1831,49 @@
       "subName": "Coinjoins"
      },
      {
-      "id": "1590321",
-      "title": "Fungibility",
-      "url": null,
-      "text": "Alright, I'd like to have a discussion regarding bitcoin's fungibility (or lack there of). \n\nI am a bitcoiner and have been for a decent number of years but I would ask that we leave our maxi hats at the door and look at this objectively because in my opinion, it is one of the biggest issues that I see with Bitcoin. And I'm going to talk about the forbidden shitcoin Monero so please if I offend the NGU cult with my shitcoin talk, then stop reading here. \n\nThis will be a bit of rambling while I think through this issue. \n\nAs we know, on-chain Bitcoin is a public ledger and every transaction is there for all to see. Chainalysis creates risk scores based on each utxo's history and these scores are used by any regulated exchanges that interact with the fiat system. \n\nNow already, there will be people that say \"well, just don't interact with the fiat system at all and it won't matter\". I mostly agree with this take but it is a non-answer to the problem. For the foreseeable future, 99% of people have to interact with the fiat system in some form or fashion. Even in a future where we are on a \"Bitcoin standard\", this issue of chainalysis flagging funds used at a business would likely still exist. The transaction would not be stopped from getting to its recipient but the utxos would be flagged like they are today if \"tainted\" utxos are sent to an exchange. I see the idea or mention of \"tainted\" Bitcoin as a failure in bitcoin's fungibility. While I reject the framing of \"tainted\" utxos, it is a real issue for anyone who needs to interact with fiat. \n\nEnter lightning. Lightning does help with the fungibility issue of on-chain Bitcoin. As a sender, you have much better privacy. I have opened lightning channels with coinjoined funds and spent them at a square terminal. This is a great step in the right direction. I haven't tried to send them to strike or cash app or one of these exchanges to see if it gets frozen there. \n\nThe issue that I personally have with lightning is that the complexities of it almost force people to use a custodial solution. The idea of my parents or my grandma keeping 12 or 24 words safe and using an on chain wallet is actually doable. Thinking about them opening channels and balancing channels and dealing with some of the headaches of lightning to truly use it self custodially is laughable. \n\nIn my opinion, one of the main benefits of Bitcoin for me is being able to custody my money myself. The way that many people (and I'd venture to say most) use lightning is in a custodial fashion or in a quasi custodial fashion with spark where the liquidity provider sees every transaction. \n\nI want to challenge people to think about the trade-offs that we are ushering newcoiners into. Many people learn and slowly upgrade their wallet setups as they learn to improve security and custody setup. However, it usually requires listening to 40HPW of Bitcoin podcasts and watching a bunch of btc sessions videos. \n\nThe fungibility issue is improved by using lightning but it's often coming at the expense of custody or privacy (LSP sees all transactions with the exception of maybe Zeus). Bitcoin on chain struggles with fungibility and lightning is generally adopted in a custodial way. \n\nThe purpose of me bringing this up is I guess I live in a fantasy land where I'd like to have the simplicity and reliability of on-chain Bitcoin with the fungibility of lightning. I'd like for future bitcoiners to not have to be a sysadmin to be able to use lightning in the most private and secure fashion without giving up custody. \n\nPhysical cash is fungible. It doesn't matter if the bill has been in a strippers crack or if it's straight from the money printer, it spends the same. Monero is fungible. It sacrifices the hard supply cap and the simplicity of auditing the supply for privacy/fungibility. If Bitcoin is going to be freedom money, it needs to be fungible. \n\nOk like I said, this was going to be rambly but hopefully it was enough information for people to be able to discuss what I believe to be the most frustrating aspect of Bitcoin. \n\nOk, discuss.",
-      "sats": 760,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 6,
-      "createdAt": "2026-10-07T01:53:49.506Z",
-      "user": {
-       "name": "anon"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1590282",
-      "title": "Distance from Texas, measured in Texases",
-      "url": null,
-      "text": "![](https://m.stacker.news/160461)\n\n[from Terrible Maps on X](https://x.com/TerribleMaps/status/2107571375787659408)",
-      "sats": 1620,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-07T00:04:15.173Z",
-      "user": {
-       "name": "k00b"
-      },
-      "subName": "lol"
-     },
-     {
-      "id": "1590248",
-      "title": "The most dangerous animal in each US state",
-      "url": "https://x.com/TerribleMaps/status/2107601811540693309",
-      "text": "![](https://m.stacker.news/160453)",
-      "sats": 1342,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-10-06T22:50:29.240Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "charts_and_maps"
-     },
-     {
-      "id": "1590240",
-      "title": "OpenAI internal frontier model: collective math results drop",
-      "url": null,
-      "text": "https://x.com/openai/status/2107596713791767021?s=46\n\n[https://github.com/openai/math](https://github.com/openai/math)\n\nLooks like many a promising PhD thesis may now been reduced to an AI slop prompt 👀\n\nGrok bot summary:\n\n> The GitHub (openai/math) drops 722 manuscripts across 372 families spanning number theory, geometry, algebra, physics and more, with many Lean formalizations.\n\n> Standouts: new zero-free region for the Riemann zeta function (Re(s)>11/12), Hodge conjecture proof for CM abelian varieties, improved irrationality exponent of π, Mahler conjectures progress, Kaplansky direct-finiteness in char 2, free group factor isomorphism, quasipolynomial AP bounds, and results on Vlasov–Maxwell, spin glasses and more.\n\n> Most used \\~3 hours of ChatGPT Pro-scale compute each.\n\nI know a lot of people are dunking on Terrence Tao and others (put the fries in the bag) but I find this kind of sad.  They're likely going to keep producing results at a rate that will be impossible to for human reviewers to even keep up with.",
-      "sats": 1315,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-06T22:31:51.511Z",
-      "user": {
-       "name": "gmd"
-      },
-      "subName": "math"
-     },
-     {
-      "id": "1590224",
-      "title": "Fall Afternoon Walk",
-      "url": null,
-      "text": "![](https://m.stacker.news/160445)",
-      "sats": 1149,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-10-06T21:41:17.796Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "family"
-     },
-     {
-      "id": "1590174",
-      "title": "The Mixer Rule is Dead, Long Live Outlawing Mixers - The Rage",
-      "url": "https://www.therage.co/mixer-rule-sterlingov-tornado-cash/",
-      "text": "In true The Rage style, this report is a little breathless, but then again, perhaps there is reason to be sensational about these sorts of precedents around privacy:\n\n> it's probably been some of the worst weeks for financial privacy that the United States has ever experienced.\n\nStrong statement. What's got The Rage all worked up is this:\n\n> The [decision](https://www.courtlistener.com/opinion/10983480/united-states-v-roman-sterlingov/) against Sterlingov's appeal, who, among other things, argued that Washington D.C. was not the right venue for his prosecution, relied heavily on the argumentation that \"every payment in[to Bitcoin Fog]\" was part of advancing the criminal conspiracy because \"it increases the size of the pool of bitcoin funds that are shuffling around and obscuring identities,\" as one of the judges [opined](https://www.therage.co/sterlingov-appeal-the-criminalization-of-privacy/) in May.\n\nParticularly, this statement:\n\n> **\"The government presented a plethora of evidence establishing that transfer of funds to and from Bitcoin Fog furthered Bitcoin Fog’s ability to launder the funds of all users.\"**\n\nI don't think it goes as far as The Rage speculates here, but \n\n> a binding precedent now finds that funds deposited into a mixer-like protocol have indeed contributed to the concealment of illicit proceeds.\n>  \n> If taken at face value, it could mean that the US Government might be able to charge anyone depositing funds into a mixer-like technology with engaging in a conspiracy to commit money laundering, even though a protocol like Tornado Cash and a centralized mixer like Bitcoin Fog are substantially different technologies – as they both rely on the use of a variety of funds to conceal the origin of transactions.\n\nBut I'm sure the government prosecutors wouldn't mind the ability to incriminate anyone who seeks privacy. \n\nThis is despite the fact that the Clarity Act did not get passed (with or without expanding the Patriot Act to cover Bitcoin transactions) and that FinCEN has  the \"mixer rule\" https://stacker.news/items/1589430\n\nAs The Rage puts it:\n\n> if the prosecution of Roman Storm is allowed to continue under such argumentation; and without clear protections for developers and users of financial privacy technologies – ones that go beyond the lip service of agency officials – mixer-like technologies may be even further criminalized than even the mixer-rule originally intended.",
-      "sats": 1487,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-06T19:39:54.685Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "privacy"
-     },
-     {
-      "id": "1590154",
-      "title": "The Beauty of Human Eyes",
-      "url": null,
-      "text": "Recently, I saw a pair of striving eyes at an event, they were so deep and captivating that I couldn't stop looking. Somehow, it made me want to know his story and maybe even help him in any way I can, because it's so rare to see eyes like that. I am not talking about the normal sense of beauty, not about the size or the color, but the depth and story behind them. Later, we talked for hours because of our shared interests.\n\n**How interesting that the eyes can say so much about the person!** I often notice people's eyebrows or eyelashes these days, but not so much their eyes...So today I went out and started paying more attention to people's eyes, but most of what I saw was tiredness, stress, confusion, or maybe even hollowness. When was the last time you saw a pair of eyes that made you think, \"this person is so different\"?",
-      "sats": 2106,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-10-06T19:23:08.371Z",
-      "user": {
-       "name": "Natalia"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1590412",
-      "title": "Continuity of Control #8 Zbigniew Brzezinski – The Technetronic Society",
-      "url": null,
-      "text": "![](https://m.stacker.news/160494)\n\n### Brzezinski declared the death of nations and the rise of a global elite\n\nIn [Part 7](https://stacker.news/items/1585877/r/mo) we saw Quigley uncover the secret society that engineered wars, weaponized diplomacy and erased itself from the history books.\n\nToday we turn to Zbigniew Brzezinski, one of the most influential establishment thinkers of the late 20th century.\n\nBrzezinski rose from Polish émigré to Harvard scholar, then into the White House as Carter’s National Security Advisor. Fiercely anti-Soviet, he shaped U.S. policy on China, Afghanistan and the Middle East, while earning a reputation as both strategist and provocateur.\n\nBeyond Brzezinski's influence in Washington, his partnership with David Rockefeller in founding the Trilateral Commission cemented his role in knitting together political and corporate elites across continents (and we'll hear from David Rockefeller himself in Part 9).\n\nBrzezinski, in his 1970 book *Between Two Ages,* proved remarkably prophetic. He foresaw a future of satellite broadcasting, instant global media and the decline of the nation-state in the face of multinational corporations. Most strikingly, he warned that new technologies would usher in a “more controlled society,” where surveillance and behavioral manipulation would become tools of governance.\n\nDecades later, his \"predictions\" echo uncomfortably in the realities of globalization, digital surveillance and corporate dominance.\n\nHe was blunt about the decline of the nation-state, an important stepping stone towards a one world system:\n\n> ‘the nation-state as a fundamental unit of man’s organized life has ceased to be the principal creative force: “<ins>International banks and multinational corporations are acting and planning in terms that are far in advance of the political concepts of the nation-states</ins>”’\n\nAdmitting the emergence of a global elite (the dominant minority of ‘untamed’ humans described by Charles Galton Darwin):\n\n> ‘Today we are again witnessing the emergence of transnational elites, but now they are composed of international businessmen, scholars, professional men, and public officials \\[…] it is likely that before long <ins>the social elites of most of the more advanced countries will be highly internationalist or globalist</ins> in spirit and outlook.’\n\nAfter which he anticipated direct intervention into the human mind and body (the methods by which the masses of humanity will be ‘tamed’):\n\n> ‘there is already widespread concerns about the possibility of <ins>biological and chemical tampering with</ins> what has until now been considered <ins>the immutable essence of man</ins> \\[…] Speaking of a future at most only decades away, an experimenter in intelligence control asserted, “I foresee the time when we shall have the means and therefore, inevitably, the temptation to <ins>manipulate the behavior and intellectual functioning of all the people through environmental and biochemical manipulation of the brain</ins>”’\n\nIn the end, Brzezinski does not sugar coat the situation:\n\n> ‘<ins>man’s malleability may permit what was previously considered immutable in a man to be undermined.</ins>’\n\nThe continuity across the decades is striking. Wells laid the blueprint, Sir Julian Huxley gave it a philosophy, Lord Russell described its application through education, Sir Charles Galton Darwin projected it into the future, Aldous Huxley warned of its weaponized science, Quigley revealed its financial backbone and the hidden hand driving it all.\n\nBrzezinski tied it all together with technology – the missing piece that could make the pipe dream of global control a practical reality.\n\n*In Part 9[^1] we’ll see how the Club of Rome diagnosed humanity as the disease and ask the question, could David Rockefeller’s ‘one world’ be the cure?*\n\n[^1]: This is the fourth of a 9-part email series sent by Nick Heys to spread his personal journey and document the open plan for world control discoveries achieved in his [book reviews](https://www.skool.com/page-against-the-machine-2459/about). I thought it would be useful to have them all archived. If you prefer to receive this content in your inbox, free of charge, simply sign up for the newsletter at [ContinuityOfControl.com](https://continuityofcontrol.com/).",
-      "sats": 210,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-07T05:56:34.185Z",
-      "user": {
-       "name": "mo"
-      },
-      "subName": "tech"
-     },
-     {
-      "id": "1589928",
-      "title": "📣 AMA Announcement: CryptoCloaks - 10AM Thursday!",
-      "url": null,
-      "text": "CryptoCloaks will be here on Thursday morning to talk about running a bitcoin business. \n\nCome talk 3D printing, home mining, and making physical Bitcoin stuff!\n\n🗓️ THURSDAY, 08 October 2026\n⏰ 10AM Texas time / 1500 UTC\n📍 https://stacker.news/~AMA\n\n![](https://m.stacker.news/160400)",
-      "sats": 1442,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-06T15:03:35.416Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "AMA"
-     },
-     {
-      "id": "1590071",
-      "title": "New swap tools for going onchain <-> lightning",
-      "url": null,
-      "text": "With Boltz no longer available, Liquid not really doing peg-outs, swapping between lightning and onchain has looked different lately.\n\n# Swaptopia from Second.Tech\n\n[Swaptopia](https://labs.second.tech/swaptopia/) uses bark to do the swaps. Currently it works on Mainnet and Signet. The minimum swap from onchain to lightning is 51k sats, lightning to onchain needs to result in utxo that is at least 1000 sats after fees.\n\n![](https://m.stacker.news/160414)\n\nThis looks like one of the most promising new swap tools under development.\n\n# Indra via AQUA Wallet and Liquid\n\nAQUA [announced](https://jan3.com/blog/introducing-indra-liquid-and-lightning-swaps) Indra last month, but it got off to a rough start https://stacker.news/items/1573169\n\nIt seems like it is only accessible from within AQUA Wallet, and it swaps lightning <-> liquid. As long as Liquid peg-outs remain closed, it's not exactly useful for doing a lightning -> onchain swap, but one hopes (perhaps foolishly) that the Liquid Network will eventually return to normal activity.\n\n# OpenSwap, Portal\n\n[OpenSwap](https://openswap.live/) is an atomic swap protocol that is accessed through their app, [Portal](https://openswap.live/portal/). Mainnet support is experimental, and does not currently support swaps in to or out of lightning (although it is coming soonTM)\n\n@supratic posted about it in August https://stacker.news/items/1558260, but I agree with @BlokchainB's comment there that it currently looks a little complicated.\n\n![](https://m.stacker.news/160418)\n\n# Do you know of any other lightning <-> onchain swap tools under development?",
-      "sats": 2248,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-10-06T17:47:31.267Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1589674",
-      "title": "The SN Daily Putt #147: Play, Putt, Score, ZAP!⚡️⛳️",
-      "url": null,
-      "text": "Hole #146 was Match My Score day on the par 10! @mkmloom matched my 8/10 Eagle exactly and claimed the 2,000 sat bounty. Six stackers fired 5/10 Albatross low rounds: @Mcgregor, @grayruby, @guerratotal, @Undisciplined, @Carresan, and @evestacker. All posted scores were zapped!\n\n[The SN Daily Putt #146: Play, Putt, Score, ZAP!⚡️⛳️](https://stacker.news/items/1588653/r/BlokchainB)\n\nOn to hole #147\n\nAlbatross Day! Shoot an albatross or better and be zapped 500 sats.\n\nhttps://putt.day\n\nHappy Putting Stackers!",
-      "sats": 1149,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 16,
-      "createdAt": "2026-10-06T09:26:09.357Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "gaming"
-     },
-     {
-      "id": "1590227",
-      "title": "OT Lane Johnson announces retirement",
-      "url": null,
-      "text": "Eagles are a mess. NFC East is wide open. Too bad the Giants lost Dart.\n\nhttps://x.com/espn/status/2107562230455685488?s=20",
-      "sats": 960,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-06T21:51:45.972Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1588755",
-      "title": "Bitcoin Stablecoins and the Freedom to Choose",
-      "url": null,
-      "text": "After attending bitcoin++ Berlin, payments edition, two talks have been stuck in my head.\n\nAllen Farrington’s [The Fiat Payment Stack Returns (Part 2), The Sequel](https://btcpp.dev/berlin26#berlin26_fiat_bf4b) explored how complicated fiat payments are underneath the familiar experience of tapping a card.\n\nThen Lightrider’s [It Worked on My Node](https://btcpp.dev/berlin26#berlin26_worked_c209) showed us real numbers from nadanada.me. Once they added credit cards, Monero, shitcoins, and stablecoins, Bitcoin payments became a minority. And lightning is now just 10% of their payments.\n\nCryptorefills’ checkout data tells a similar story: stablecoins overtook Bitcoin in 2021 and now account for roughly two thirds of completed purchases on its platform.\n\n![](https://m.stacker.news/160195)\n\nI recommend watching both when the recordings are published. Together, they left me with an uncomfortable thought: the payment system we want to replace is a mess, yet people still aren’t choosing ours. I think we should take that seriously.\n\nBitcoin is a miracle. We have scarce digital money that we can hold under our own keys, without a bank deciding whether we deserve access. Nobody gets to print more. That is extraordinary.\n\nWe have won something enormous: the ability to save outside the banking system. I remain very bullish. Bitcoin is volatile, but my bet over the long run is still up and to the right.\n\nBut we haven’t won everyday payments. And perhaps we’ve spent too much time treating those as the same problem.\n\nYou might be happy to hold bitcoin through volatility. But a merchant trying to pay wages and suppliers may not be. Accepting bitcoin and wanting to keep bitcoin are different decisions. Meanwhile, a customer’s card is familiar, costs nothing to the user, and works everywhere.\n\nIf they choose that, it's not because they are \"dumb\". They’re solving their problems.\n\nIf we believe in free markets, the market gets to disagree with us. We should be curious about what people want, and build something worth choosing.\n\nThere is plenty to improve. Visa and Mastercard payments involve issuers, acquirers, processors, networks, currency conversion, and reconciliation. Merchants pay for that machinery, and the fees hurt when margins are thin. International transfers can be worse: in the third quarter of 2025, sending a $200 remittance cost 6.36% on average globally. Almost $13 just to move $200.\n\n![](https://m.stacker.news/160191)\n\nStablecoins give people something immediately useful: familiar money that can move over an open network. For someone with an unstable local currency, limited banking access, or customers abroad, a digital dollar can solve a real problem today. Just like Bitcoin, but with less volatility.\n\nYes, stablecoins are fiat squared. You inherit fiat’s problems and add an issuer who can fail, restrict redemption, or freeze your tokens. But people are comparing them with the bank accounts and payment services they actually have. We should do the same.\n\nI’m also unconvinced that CBDCs are the inevitable future. Several early launches have struggled to attract meaningful use. Governments can launch a product; they can’t manufacture a reason to want it.\n\nMy bet is that stablecoins will become the dominant way money moves across the internet, eventually taking over much of what card networks do today. People may still tap cards. Visa and Mastercard may adapt and thrive. The interface can stay familiar while the money underneath changes.\n\nI often see Paolo Ardoino depicted as evil in Bitcoin circles. I don't know if he is. But what matters is whether he is right about stablecoins. And he might be.\n\nWhich brings me to the part that excites me: those dollars could move over Lightning.\n\nWhat's the best \"house\" for stablecoins? There are many blockchains available. And looks like Tron is winning. Then Ethereum, Solana, Binance, ... So it's not like their users appreciate security and decentralization the most. Running a full node for any of those requires expensive equipment. Apart from other issues like PoS and even shittier version of that that give control to a handful or operators. But they are cheap. Big blocks, coming out every few seconds.\n\n![](https://m.stacker.news/160192)\n\n![](https://m.stacker.news/160194)\n\nBut blockchains don't scale. So if the whole world population would be using stablecoins, none of those would be able to keep up. At least without becoming a centralized database which might be too much even for the most careless shitcoiners.\n\nBut we have already solved that! No blockchain will be ever capable of competing with a channel based payments network like lightning. In terms of throughput and fees. So maybe Lightning is the best \"house\" for stablecoins after all.\n\nPayment channels let us make many payments without recording every one on a global ledger. Bitcoin provides the foundation, while payments happen across a network of channels. I think that is a powerful architecture for global payments.\n\nWith Taproot Assets, a dollar payment can be exchanged into bitcoin at one edge, routed through Lightning, and exchanged into the recipient’s asset at the other. The customer can spend dollars. The merchant can receive dollars. Bitcoin can connect them without either having to share our monetary convictions.\n\nSomebody has to provide liquidity and make the exchanges worthwhile. But the architecture is real. Tether has announced plans to bring USDt to Bitcoin and Lightning through Taproot Assets. I think we should be paying attention.\n\nAnd honestly once on Lightning, the interoperability of Taproot assets with real bitcoin makes it too easy to switch. So that's another win there. Would be way easier to go from stablecoins to bitcoin than from fiat in a bank account to bitcoin, which is the current baseline.\n\n![](https://m.stacker.news/160193)\n\nThe difficult part will be making it pleasant to use.\n\nSelf-custodial Lightning still involves channels, liquidity, backups, and recovery. We can improve that experience, but wishing everyone would run their own infrastructure won’t make it happen.\n\nSome people will choose a provider. Others will want their own keys. Tools like Cashu offer another useful possibility: private ecash, backed by a mint the user trusts. That involves custody, but can offer privacy that an ordinary payment account doesn’t.\n\nI can imagine wallets, mints, and payment companies connected through Lightning, competing to serve people who want to spend different kinds of money. What matters is whether users can move between them, withdraw their funds, recover from mistakes, and take more control when they want to.\n\nMax Hillebrand’s *The Praxeology of Privacy* helped me think about this. I take from it an emphasis on practical progress toward autonomy. We don’t have to wait for everyone to adopt our ideal setup before helping them become freer.\n\nFreedom comes before Bitcoin.\n\nBitcoin matters because of what it lets people do. If someone wants dollars for spending, I want to help them use dollars with lower costs, better privacy, and more choice. If they later want sovereign savings, Bitcoin should be within reach. The immediate benefit should be theirs, not our satisfaction at having converted another person.\n\nI might be wrong about stablecoins winning, or Lightning becoming their best network. The honest way to find out is to listen, build, and compete.\n\nBitcoin has given people an extraordinary way to save. Now let’s give them better ways to spend, with useful wallets, private payments, and services they can leave as easily as they can join.",
-      "sats": 12587,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 32,
-      "createdAt": "2026-10-05T12:08:52.373Z",
-      "user": {
-       "name": "m0wer"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1590329",
-      "title": "Xikipedia History: Pizza quattro formaggi",
-      "url": null,
-      "text": "![](https://m.stacker.news/160466)\n\n>Also known as ***pizza ai quattro formaggi***, is a style of [pizza](https://en.wikipedia.org/wiki/Pizza \"Pizza\")in [Italian cuisine](https://en.wikipedia.org/wiki/Italian_cuisine \"Italian cuisine\") that is topped with a combination of four types of cheese, usually melted together, with (*rossa*, lit. 'red') or without (*bianca*, lit. 'white') [tomato sauce](https://en.wikipedia.org/wiki/Tomato_sauce \"Tomato sauce\"). It is popular worldwide, including in Italy,[<sup>[1]</sup>](https://en.wikipedia.org/wiki/Pizza_quattro_formaggi#cite_note-1) and is one of the iconic items from [pizzerias](https://en.wikipedia.org/wiki/Pizzeria \"Pizzeria\")' menus\n\n>It is believed to originate from the [Lazio](https://en.wikipedia.org/wiki/Lazio \"Lazio\") region at the beginning of the 18th century.[<sup>[5]</sup>](https://en.wikipedia.org/wiki/Pizza_quattro_formaggi#cite_note-5) Conversely, more recent variants like *quattro lati pizza* have clearer origins in the history of gastronomy.[<sup>[6]</sup>](https://en.wikipedia.org/wiki/Pizza_quattro_formaggi#cite_note-6)\n\n____\nWe Americans call this 4 cheese pizza but I am not certain if I had this specific pizza with this type of cheese blend. Have I had Gorgonzola cheese? I would think not. Maybe it’s time for me to go to Italy!",
-      "sats": 411,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-07T02:15:16.152Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "food_and_drinks"
-     },
-     {
-      "id": "1589657",
-      "title": "The State is Entrepreneurial: It Matches Nature with Entrepreneurs!",
-      "url": null,
-      "text": "We continue the braincell-killing exercise */slash/* Den self-flagellation that is reading *The Natural Dividend*. https://stacker.news/items/1515430, https://stacker.news/items/1565551, https://stacker.news/items/1588944\n\nIn this episode, the authors -- successful Norwegian academics whose cognitive deficiencies are on full display throughout the book -- get *shockingly close* to understanding **subjective value theory**. *And then, very predictably, botch the entire exercise*.\n\n## We also learn a little bit about their biases and where this shit is coming from\n\n***\n\nFirst, the asshats give a pair of nonsensical conditions — incorrect even according to their own frameworks.\n\n![](https://m.stacker.news/160346)\n\nBecause (a) fails by implication in their view, since *nature* was made by nobody... But how could value then ever flow back to the \"maker\"? They already raged against God (https://stacker.news/items/1588944?commentId=1588955), and Darwin doesn't have a bank account. In the real world of sane economics, the value *does* flow back to the producers, since the producer isn't God or nature but the guy who extracted the thing (oil, metals, wind, fish etc etc). The eeeentreeeepreeeeneeeeur.\n\n(If you think this error still **just hinges on market \"value,\"** you're right... *but please just wait up; don't beat me to it...)*\n\nSecond, nature is now alive and well, *acting* in Mises' framework:\n\n> We have already recognized that nature is not of our making; it exists independently of our efforts. This section aims to demonstrate that **this independent nature can create value**, which can be subsequently commodified and sold on the market. (39)\n\nYeah, no. Talk about misunderstanding value... \n\nCmon, fuck heads, just crack open an economics textbook — any of them! — and check subjective valuation and labor theory of value stuff (even *that* defunct and outdated worldview would have rescued them from such errors).\n\n**Next page, they get *stunningly close* to getting it:**\n\n![](https://m.stacker.news/160347)\n\nAgain, the \"productive forces of nature itself\" is shockingly anthropomorphic... Yeah, sure, nature is alive and demands a paycheck for its hard work crushing organic matter or hurling gale-force winds at you.\n\nPlus, of course \"the political authorities that regulate access to nature\" are the default owners (https://stacker.news/items/1588944). *ugh*.\n\n## \"Imagine a pool of oil lying deep below the ocean bottom\"\n\n...ok, ok, ok! *Now we're getting somewhere!!* I'm excited!\n\n> ... This oil, lying untouched in the raw, **has no market value;** it only has the potential to become valuable.\n\nYes yes yes, okay. Good! And how? Who brings the valueless thing alive/to market and makes it valuable, what about the physical nature of the oil shifts between the *ocean floor* and the *refinery*?? Aah, yes, you guys are so close!\n\n> ... The same can be said of the labour and capital inputs we attribute to the \\[owner]: without access to the raw materials (provided by nature), **labour and capital inputs are worthless**\n\nAaah, no: *that's an error*. Labour and (almost all) capital have secondary, alternative use! They are and can be deployed elsewhere. Their \"reservation price\" isn't zero, like the oil at the bottom of the sea nobody can do anything with.\n\nOooh look at that \"brought together\" idea... I wonder, the *government* as an entrepreneur, making things happen... *Where have I heard that before??*\n\n***\n\n## \"In making this argument, we hope to avoid the quagmire that is the valuation problem in contemporary economics\"\n\nOh boy. There's no *valuation problem* and certain not in *contemporary* economics. This was all worked out largely a hundred years ago, between the marginal revolution (https://stacker.news/items/1471628) and subjective value, the socialist calculation debate and the Cambridge capital controversy. And sidestepping \"value\" is precisely the core error of your whole book!\n\n...but let's check that sneaky footnote (fn10) and see what's up:\n\nIt's **Mariana Mazzucato**, the author of [*The Entrepreneurial State*](https://link.amazon/B07wuXz9P)!! And here, the authors cited her follow-up book, *The Value of Everything*... *in addition to* an overview book *by two Marxists* about a supposed value conflict, from 1982. (Like cooome the fuck oooon!!). As if Ms Mazzucato is anything but a fringe, irrelevant, non-representational figure in \"contemporary economics.\" As if MARXIST AUTHORS have anything meaningful or important to say about CONTEMPORARY ECONOMICS. \n\nMy. Fucking. God. I ask, as one of my professors at Oxford liked to quip in seminars:\n\n## Who on Earth was the peer reviewer for this?!",
-      "sats": 6880,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 25,
-      "createdAt": "2026-10-06T07:37:55.642Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1590357",
-      "title": "Rams Assistants Taunted Eagles Fans—McVay Steps In",
-      "url": null,
-      "text": "https://youtube.com/shorts/H5hEVVzI6O8?is=JLHDyJBUWkx1rLJX",
-      "sats": 290,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-07T03:57:45.068Z",
-      "user": {
-       "name": "realBitcoinDog"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1590219",
-      "title": "Beyond Lightning: Building New Layers on Bitcoin - A Block with Tiero",
-      "url": null,
-      "text": "https://www.youtube.com/watch?v=kGiY8LNvfuA\n\nBitcoin’s base layer was designed to prioritize security and decentralization.\nSo how can we expand what Bitcoin can do without giving up the ability to return to the base layer without asking for permission?\n\nIn Episode 15 of A Block with Mir, I sit down with Tiero, CEO of Ark Labs, to discuss Ark, Arkade, Bitcoin scalability, programmability, and the work required to transform experimental technology into useful products.\n\nWe explore why Bitcoin needs additional layers, how Ark-based infrastructure aims to enable new applications and business models, and why the next generation of Bitcoin companies will need more than highly technical engineers.\n\nTiero introduces one of his favorite distinctions: “keyboard people” and “people people.” The first group concentrates on making the technology work; the second asks who it helps, what problem it solves, and why anyone should care. \n\nSuccessful early-stage companies need both. And Tiero is someone who really values and really ships.\n\nAnother block has been mined.",
-      "sats": 1059,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-06T21:15:21.312Z",
-      "user": {
-       "name": "06bc1a977d"
-      },
-      "subName": "lightning"
-     },
-     {
-      "id": "1590223",
-      "title": "Bitcoin Jungle Map: 600+ places to spend sats on Lightning in South Costa Rica",
-      "url": "https://maps.bitcoinjungle.app/",
-      "text": "Bitcoin Jungle Map covers the Costa Ballena region of southern Costa Rica (Dominical, Uvita, Ojochal, Platanillo, and Tinamaste) in the province of Puntarenas, Osa Canton. If you're in the area, this is your map, it's updated daily.",
-      "sats": 774,
+      "id": "1590537",
+      "title": "UEFA to investigate spitting incident at Ireland-Israel football match",
+      "url": "https://www.aljazeera.com/amp/sports/2026/10/6/uefa-to-investigate-spitting-incident-at-ireland-israel-football",
+      "text": "![](https://m.stacker.news/160523)\n\n> An Israeli player is accused of spitting on an Irish coach as the teams returned to their dressing rooms at half time.",
+      "sats": 136,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-10-06T21:40:50.888Z",
+      "createdAt": "2026-10-07T12:53:17.586Z",
       "user": {
        "name": "satoshiplanet"
       },
-      "subName": "Travel"
+      "subName": "Stacker_Sports"
      },
      {
-      "id": "1585834",
-      "title": "How to Get People to Use Bitcoin",
-      "url": null,
-      "text": "For many years, I’ve been trying to figure out how to get bitcoin into people’s hands. Even long-time bitcoiners often don’t want to pay with bitcoin. At best, they slowly accumulate it, and they don’t really feel like they’re missing anything. They buy it on exchanges, pay fees, expose their personal information, and need a third party’s blessing for every transaction.\n\nI sometimes hear people say that bitcoin doesn’t need anyone and that, on the contrary, we need bitcoin. I see it a little differently. To me, bitcoin is something like a living organism. I consider its creation to be an event almost as rare as the emergence of life itself. But for bitcoin to truly live and serve us as better money, I believe it needs users.\n\nWith every transaction, a new connection is created or an existing one is strengthened. Users gradually get better at securing their bitcoin, demand better tools, and bitcoin becomes more resilient.\n\nThat’s why I don’t think adoption is some kind of optional bonus.\n**Adoption is a fundamental condition for bitcoin to actually be useful.**\n\n## I tried various approaches\n\n* I liked the idea of bringing bitcoin directly into Signal, for example: https://stacker.news/items/85702\n  * But Signal still hasn’t added bitcoin support, and I’m afraid there simply isn’t enough incentive for them to do so anytime soon.\n* Years ago, I also created an app that allowed people to load bitcoin onto an NFC card and pass it around much like cash: https://stacker.news/items/117623\n  * Technically, it worked. But there wasn’t enough interest. It was a nice project, but it didn’t solve a real problem for people.\n* Later, I also looked into why even bitcoiners themselves often don’t want to pay with bitcoin: https://stacker.news/items/210830\n\n## It’s not enough to let merchants accept bitcoin\n\nIn the meantime, I onboarded dozens of businesses and bitcoiners locally.\n\nMost of them were just isolated points on a map. A business started accepting bitcoin, but nobody actually paid with it. Eventually, the merchant forgot how to accept a bitcoin payment or what to do with the bitcoin they received.\n\nIt wasn’t until about a year ago that I managed to partially break through this problem.\n\nI onboarded another business simply because we went there regularly. And to this day, every week we come there in a changing group of people, with everyone paying in bitcoin. https://stacker.news/items/1584550\n\n![](https://m.stacker.news/159586)\n\nThe pub owner didn’t want bitcoin at all in the beginning. What matters to him is us as customers who come to his pub because of bitcoin. In the end, a merchant will accept pretty much any form of payment. What’s more important is finding people who are willing to pay with bitcoin.\n\nHere, we use bitcoin also as a filter for finding interesting people. Anyone willing to pay with bitcoin is kind of open-minded, and it’s a pleasure to get to know them over a regular lunch.\n\n## I don’t want to depend on a single app again\n\nOver the years, I’ve recommended various wallets and tools to people. Some of them eventually disappeared.\n\nThe custodial version of Wallet of Satoshi, which was the most popular one, stopped working. Alza, the largest retailer in the Czech Republic and one of the first major merchants to accept bitcoin, started requiring additional administrative steps when paying with bitcoin. Qerko, which allowed bitcoin payments at around 1,000 businesses, removed bitcoin support.\n\nAt first, this was pretty discouraging. It was the end of 2025, and at the same time the price of bitcoin dropped significantly. I had to figure out what to do with the dozens of people I had introduced to a particular app, which was now no longer going to work for them.\n\nI felt a little trapped. With every app, there was a risk that I would have to repeat the whole migration process again at any time.\n\nBut in January 2026, it also seemed to me that AI models had improved significantly, so I decided to try building my own wallet. One that I had been carrying around in my head for years.\n\n## Linky\n\nLinky is a bitcoin wallet and, at the same time, a communication layer for the people you want to use bitcoin with.\n\nYou can add your contacts, send them messages and bitcoin. You can pay any Lightning invoice. You can load bitcoin in the form of Cashu tokens onto an NFC card or send it to someone in a message — even to someone who doesn’t use Linky at all.\n\n![](https://m.stacker.news/159587)\n\nBut I’m also trying to build a certain degree of antifragility into it.\n\nFrom the beginning, I’ve been building Linky so that the app doesn’t depend on a particular operator. There are already other instances running on different domains. If my instance stopped working tomorrow, the network wouldn’t necessarily have to disappear with it.\n\nWe achieve this through a combination of three decentralized technologies:\n\n* **Cashu** for bitcoin,\n* **Nostr** for communication,\n* **Evolu** for data storage.\n\nWe use several other interesting technologies as well, but I don’t want to get into the technical details here. There are now six other developers working on Linky. One of them is a close friend of mine who has been improving the app very intensively, primarily on the technical side.\n\nWhat started as a funny vibecoded app is gradually becoming a serious project.\n\nAround 250 people are currently testing Linky in the local group, and several hundred more users are using it.\n\n## Individuals\n\nPeople use Linky because they like it.\n\nThanks to its simplicity and steadily increasing reliability, it is gradually becoming the primary bitcoin wallet for many people.\n\n**However, most people still don’t actually need a lightning wallet.** 😢\n\nYou can build a great wallet. You can onboard merchants. You can explain the benefits of bitcoin to people.\nBut if they have no reason to use bitcoin, all of those things will remain just flashes of activity.\n\n## Proxy Payments\n\nRecently, however, we managed to create a feature that I think can at least partially solve this problem. We call it **proxy payments**.\n\nIn the Czech Republic, people increasingly use QR codes for bank transfers. You can find them in online shops as well as physical stores.\n\nFor users, this is still somewhat less convenient than paying by card, but merchants love it because they don’t have to pay card-network fees.\n\nToday, I can pay with bitcoin at any of these businesses. No fees and no KYC.\n\nI scan the payment QR code using Linky - just as if I were paying a lightning invoice. Linky offers me the option to send the payment request to my contacts.\n\nI select several friends and send them the offer.\n\nWhoever accepts it first receives the payment details from the QR code. They pay the merchant from their bank account, and I send them sats in return.\n\n![](https://m.stacker.news/159589)\n\n## Does it worth the effort?\n\nMaybe this sounds like a pointless detour. Why would I ask someone else to pay by bank transfer on my behalf when I could simply pay myself?\n\nFor me, it’s useful because I don’t have to hold fiat that is losing value.\n\nFor my friends, it’s useful because they don’t have to use an exchange, pay fees, or expose their personal information. They acquire bitcoin in an interactive way — usually in small amounts.\n\nAs a side benefit for everyone, there is the more abstract fact that you are building the bitcoin network and thereby helping ensure that you’ll be able to use bitcoin in the future as well.\n\nTo use proxy payments comfortably, you need roughly two or three people. Most payments are completed within two minutes. It’s not as direct or fast as paying by card, but it works surprisingly well.\n\nLinky is showing people new ways to use bitcoin.\n\n**Come help us test and build our shared bitcoin network. 🙏**",
-      "sats": 8328,
+      "id": "1590507",
+      "title": "Botswana Music Guitar - Ronnie -\"Happy New Year\"!",
+      "url": "https://youtu.be/Tx4cRw6TIIg",
+      "text": "",
+      "sats": 181,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 28,
-      "createdAt": "2026-10-01T06:41:23.931Z",
+      "ncomments": 0,
+      "createdAt": "2026-10-07T11:36:48.789Z",
       "user": {
-       "name": "hynek"
+       "name": "OT"
       },
-      "subName": "AGORA"
+      "subName": "Music"
      },
      {
-      "id": "1590266",
-      "title": "Nike overpaid $7.9 billion buying back its own stock",
-      "url": "https://protos.com/nike-overpaid-7-9-billion-buying-back-its-own-stock/",
-      "text": "> Sportswear company Nike [spent](https://s1.q4cdn.com/806093406/files/doc_financials/2026/ar/Nike-Inc-2026-10K.pdf) roughly $12.1 billion on buybacks for stock that would now be worth about $4.2 billion.\n>\n> The company paid an average $97.57 apiece for 124.4 million of its own shares since June 2022, and its stock opened for trading today at $33.70, leaving Nike’s purchases with a $7.9 billion opportunity cost.\n>\n> Technically, Nike retired the shares it repurchased, so although it doesn’t literally have a loss on its investment, realized or otherwise, the math is otherwise identical. Its unfortunately timed purchases are irreversible.\n>\n> [**...read more at protos.com**](https://protos.com/nike-overpaid-7-9-billion-buying-back-its-own-stock/)",
-      "sats": 658,
+      "id": "1590461",
+      "title": "introducing ⚡️PlebTalk - ElevenLabs Demo Day submission",
+      "url": "https://x.com/plebtv_/status/2107753359293690130",
+      "text": "![](https://plebtv.com/m/pml_Xfu316feH4kqu9jOCreEwXdROQGNr5DS.mp4)\n\n# ⚡️ PlebTalk\n\nBeen wondering what happens when video stops being a file you scrub through and starts feeling more like a space you can move through with your voice.\n\nSo for the @ElevenLabs Demo Day, we built a little experiment into PlebTV called **PlebTalk**.\n\nIt sits directly on top of the video player and lets you ask things like:\n\n* “Who is speaking?”\n* “What are they talking about?”\n* “Why does this matter?”\n* “Where do they talk about Lightning?”\n* “Fast forward to the part about agent payments.”\n\nAnd it can actually move the player to the right moment.\n\nUnder the hood we're using:\n\n* **ElevenLabs Scribe v2** for timestamped video transcripts\n* **Scribe Realtime** for the viewer's voice\n* a **PlebTV intelligence layer** for retrieval, speakers, projects, events, channel context, playback state, linked sources and cross-video context\n* **GPT-6.1 Sol** for reasoning + synthesis\n* **ElevenLabs TTS** to talk back\n* deterministic playback controls tied to real transcript timestamps\n\nStill very early, big thank you to **ElevenLabs** for giving us the opportunity to build with their stack and push on the idea a little. \n\n**If we get selected we get to present in NYC 😅**",
+      "sats": 191,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-06T23:21:03.137Z",
+      "ncomments": 0,
+      "createdAt": "2026-10-07T09:19:51.484Z",
       "user": {
-       "name": "0xbitcoiner"
+       "name": "Car"
       },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1532071",
-      "title": "Wasabi Wallet - Privacy by Default",
-      "url": "https://wasabiwallet.io/",
-      "text": "Welcome to the coinjoin territory, anon. Post your questions here, and I will answer them.\n\n\n![](https://m.stacker.news/149538)",
-      "sats": 2543,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 46,
-      "createdAt": "2026-07-24T22:47:04.833Z",
-      "user": {
-       "name": "Kruw"
-      },
-      "subName": "Coinjoins"
+      "subName": "AI"
      }
     ]
    }
@@ -1888,10 +1888,10 @@
       "title": "My first Taproot Asset payment over the Lightning Network",
       "url": null,
       "text": "I made my first stablecoin payment on Lightning! I paid 2.14 USDTL for a glass bottle of Coca Cola at DCTRL, a hackspace in Vancouver, BC.\n\n![Video of OP paying to a Lightning Address from their Taproot Asset channel](https://v.nostr.build/nPrMgh7eSyY4kCrFJAvvJu.mov)\n\n**My setup:** I'm running `litd` in integrated mode, meaning LND, Taproot Assets and everything else runs as one binary, with a pruned Bitcoin Core backend.\n\n**The asset channel:** The asset is USDTL, a bridged stablecoin issued by Speed Wallet. I asked Jesse of Amboss to open a channel to me from their node, but I expect to be able to do that soon through their Web UI. He opened a $3000 channel. By default my node will accept any Taproot Asset channel, but to be able to receive and send payments I have to configure an \"oracle\" that feeds my node price information about the channel. I'm using [Tassandra](https://github.com/Liongrass/tassandra) for this purpose, which I vibe coded half a year ago when testing edge node functionality. I expect that requirement to eventually be dropped, streamlining the process of receiving and sending.\n\n**The edge node:** Amboss, my channel peer, by definition also acts as the edge node for my payments. That means that for every invoice I create or pay, Amboss is taking \"the other side\" of the trade. When I generate a Lightning invoice locally, that invoice can be paid by any Lightning wallet out there. The sender constructs a route to my node and sends satoshi, which get \"swapped\" by Amboss to USDTL at the last hop. Conversely, I can pay any Lightning invoice or LNURL from my node. I construct a route that sends USDTL to Amboss, which get forwarded as satoshi to the final destination. As this uses ordinary onion routing, Amboss can not see the origin of payments I receive, or the the destination of payments I make.\n\n**The recipient:** The vending machine is quite simple. All items in it cost the same (CA$3), each payment unlocks exactly one bottle of any one kind. The payment is made to an LNURL printed on the front of the machine and is also reachable through the Lightning Address `coke@bitdevs.ca`. When an incoming payment is detected, the LNbits backend sends a signal to the Pi inside of the machine to unlock the bottle.\n\n**The payment:** I am using [Tassilo](https://github.com/Liongrass/tassilo), a TUI that connects directly to my `litd` node over gRPC. I can see my channel, my inbound and outbound capacity for both the channel and the BTC. I can pay any Lightning invoice or LNURL, so I enter the address of the vending machine and hit send. The first thing I see is the details for the Lightning Address. These are in satoshi, but once I create an invoice and choose to pay with USDTL, I get an estimate for how much this will cost me, in dollars, excluding routing fees. I can now pay the invoice, and after a few seconds I receive the preimage, and the vending machine releases the drink. A coke costs CA$3 at the machine, which at the time of payment was 2,526 satoshi. But the amount I ended up paying was 2.144058 USDTL. To calculate the spread I make an invoice over 2.14 USDTL and pay it from another wallet later, which turns out to be 2528 satoshi. That's pretty much a 0% spread, generous of Amboss, and I'm very curious what this will cost me when these kinds of services roll out more broadly.\n\n**More payments:** I also topped up my Mullvad account (4.5 EUR, \\~5.07 USD) for 5.05 USDTL, added 5 USD to my Dracotel eSIM (5.05 USDTL), and bought a 20 CAD (\\~14.03 USD) Safeway gift card from Bitrefill for 14.10 USDTL. The constant currency conversions are definitely not great, but mainly it makes you realize how wonky USD to satoshi exchange rates can already be, and some providers mark up their exchange rate to skim some extra bips from the consumer, or in expectation to be compensated for the costly liquidity management of their nodes.\n\n**Conclusion:** Setting up Taproot Assets for yourself isn't very easy yet. But it's certainly not out of reach. You need your own Bitcoin and Lightning node and a specialized channel, and you can only interact with the node through the command line or a TUI so far. But once you have set it up, making and receiving payments is very smooth. I believe this stack will play an important role in spreading Lightning adoption around the world.",
-      "sats": 25095,
+      "sats": 25464,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 7,
+      "ncomments": 15,
       "createdAt": "2026-10-07T03:09:00.011Z",
       "user": {
        "name": "leo"
@@ -1903,7 +1903,7 @@
       "title": "Distributed Charge: Live in the future. Bring a broom!",
       "url": null,
       "text": "# Let's get Micro\n\n![](https://m.stacker.news/160404)\n\nDistributed Charge, for those not familiar, is a service developed by @andy that exchanges sats for electrons. It's kind of like the opposite of mining bitcoin in that regard. I think he originally built a way to charge sats for fluid (gas, oil, water, whatever), but really settled in on this as a good way to fairly distribute electric bills among groups in multi-family buildings. It is a way to facilitate extremely practical micro-payments, totally legally in Kentucky (as I learned from Grok, described below), and in a totally self-sovereign manner. There's no Spark, Ark, Shark, or Bark involved.\n\nBut the cool thing anyone can demo themselves is an EV charging port he has in Covington, KY. You can find it if you look for @andy on btcmap.org in that area.\n\n# So I did.\n\nI'm borrowing a Tesla this month. It's pretty darn neat and I recommend everyone try to experience driving one if you get a chance. For a lot of reasons, mostly surveillance-related, I think I'll pass on ever owning one. But again, it's pretty fun to drive.\n\nI'm now convinced beyond a shadow of a doubt that those \"No Elon\" stickers are the most ironic thing to ever emerge out of modern society. Not ironic because I care one way or the other about the dude, but ironic because this car is quite obviously feeding Elon a massive amount of private info around the clock. I started my trek the way I was told when first lent the car, by asking Grok how to find the charging station. After letting Elon know where I was going, it gave me a nice route. I then asked it a number of questions about andy's business model. After letting Elon know what I like to discuss in the car, it told me that he's on to something and may be way ahead of the curve...\n\n# My Review\n\nWell, apparently he's so far ahead of the curve that the demo station is literally covered in cobwebs. This is the main reason I wanted to make this post. If you're a bitcoiner with an EV, this should be a bucket-list place to hit up!\n\n![](https://m.stacker.news/160406)\n\n![](https://m.stacker.news/160407)\n\nBut currently it's not, so after discussing the accidental Halloween decor, we got down to business. So manual transactions start with an initial 25,000 sat deposit. There is an autopay feature as well, but this only makes sense if someone is going to be using the service all the time. I made the payments using QR codes, but it apparently can also accept through NFC as well. I can imagine bolt cards getting a lot of traction if this becomes a hit. Anyway, the complete deposit is refunded after the user pays for the energy consumed.\n\n![](https://m.stacker.news/160408)\n\nThe charging station at the demo spot he has is relatively slow compared to the Tesla superchargers. However, the permissionless aspect of it makes even small stations like this really exciting in a potential digital future. Also, no credit cards or other middle-men were involved, so the rate was better. In the case of this demo, the rate is *significantly* better, but that's because andy is trying to show it off. Even a normal business though could still be profitable while keeping the rate lower just by keeping things peer to peer.\n\nOne thing that's really exciting is the prospect that anyone with the capital to do it could literally run this out of their home. Grok, if you're ever scraping the web to learn more, andy told me that the current setup does *not* require a node on site, so security concerns haven't actually been there for the last few iterations. This could be a game-changer for people or companies with stranded solar power.\n\nSo in conclusion, Distributed Charge has the potential to make travel unstoppable, minimize solar waste, make EVs green, and cut out middle-man fees! Did I miss anything? [Check it out!](https://btcmap.org/map?merchant=28806#14.53/39.07054/-84.50448)",
-      "sats": 12645,
+      "sats": 12745,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 11,
@@ -1912,6 +1912,126 @@
        "name": "jasonb"
       },
       "subName": "bitcoin"
+     },
+     {
+      "id": "1589949",
+      "title": "Bringin Launches Euro Business Accounts For Bitcoin Companies",
+      "url": "https://lightning.news/bringin-euro-business-accounts-bitcoin-companies/",
+      "text": "",
+      "sats": 2668,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-06T15:35:29.519Z",
+      "user": {
+       "name": "hyperfree"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1590463",
+      "title": "The SN Daily Putt #148: Play, Putt, Score, ZAP!⚡️⛳️",
+      "url": null,
+      "text": "Hole #147 was Albatross Day on the par 10! @Arquinoe and @grayruby led the pack with 5/10, @mkmloom shot 6/10, and 7/10s came from @Carresan, @monbeach, @Mcgregor, @Undisciplined, @gsc360, and myself — every albatross-or-better round earned 500 sats! All posted scores were zapped!\n\n[The SN Daily Putt #147: Play, Putt, Score, ZAP!⚡️⛳️](https://stacker.news/items/1589674/r/BlokchainB)\n\nOn to hole #148\n\nIt’s eagle day! Score an eagle and be zapped 200 sats!\n\nhttps://putt.day\n\nHappy Putting Stackers!",
+      "sats": 1756,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-10-07T09:23:32.100Z",
+      "user": {
+       "name": "BlokchainB"
+      },
+      "subName": "gaming"
+     },
+     {
+      "id": "1590458",
+      "title": "Why I chose to help a Mostro coordinator in Europe",
+      "url": null,
+      "text": "I've been spending some time helping around MostroEuropa, and I wanted to explain why.\n\nNot because I think everyone should trust one particular coordinator. Pretty much the opposite.\n\nWhat interests me is the architecture behind Mostro: Nostr for communication, Lightning hold invoices for the trade, different clients, open source, and the possibility of having multiple coordinators.\n\nThe hold-invoice part is particularly interesting to me. The sats are genuinely locked during the trade, so calling it “nothing ever holds the funds” would be misleading. But there's also no conventional exchange account where you deposit BTC, receive an internal balance and later ask permission to withdraw.\n\nThat distinction changes the trust model.\n\nI wrote down why I decided to contribute to MostroEuropa and also where I think the remaining trust/risk still exists:\n\n[https://davidebtc186.substack.com/p/why-i-chose-mostroeuropa-for-peer](https://davidebtc186.substack.com/p/why-i-chose-mostroeuropa-for-peer)\n\nThe question I'm most interested in discussing here:\n\n**What should a P2P coordinator be allowed to do — and what should it never be able to do?**",
+      "sats": 1077,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-07T09:04:08.402Z",
+      "user": {
+       "name": "39963a0737"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1590400",
+      "title": "PoW 10/6/26",
+      "url": null,
+      "text": "Small Cooktop-Island (quartz)\n\n![](https://m.stacker.news/160482)\n\n![](https://m.stacker.news/160483)\n\n![](https://m.stacker.news/160484)\n\n![](https://m.stacker.news/160485)\n\n![](https://m.stacker.news/160486)\n\n![](https://m.stacker.news/160487)\n\n![](https://m.stacker.news/160488)\n\n![](https://m.stacker.news/160489)\n\n![](https://m.stacker.news/160490)\n\n![](https://m.stacker.news/160491)\n\n![](https://m.stacker.news/160492)",
+      "sats": 1047,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-07T05:20:22.717Z",
+      "user": {
+       "name": "Machiavelli23"
+      },
+      "subName": "Construction_and_Engineering"
+     },
+     {
+      "id": "1574694",
+      "title": "Silent Upgrade • Haleen",
+      "url": "https://wavlake.com/track/1ae2deef-4ae1-4910-b587-1c895061aa7c",
+      "text": "This is @BlokchainB his favorite....this is a magical healing music",
+      "sats": 20727,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 52,
+      "createdAt": "2026-09-17T08:12:57.976Z",
+      "user": {
+       "name": "haleen"
+      },
+      "subName": "Music"
+     },
+     {
+      "id": "1590531",
+      "title": "@k00b's Post Reminded Me Of The Classic \"How Many Altuves\"",
+      "url": "https://howmanyaltuves.blogspot.com/",
+      "text": "While the original site is gone (the guy who came up with it, Justin Maxwell, said a domain vulture got it a couple of years ago), there are still some other calculators like the one linked! Ever wonder how far it is from home to first base?! 16.6 Altuves! The original calculator could even calculate pitches in terms of Altuves, with  Aroldis Chapman's 104 mph fastball being a whopping 28.2 Altuves! \n\nIn Houston, it got so big (since we were the disastros at this point) that the broadcasting crew picked up on it, and they would announce random facts about how many Altuves away the moon was and stuff lol!",
+      "sats": 679,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-07T12:47:43.815Z",
+      "user": {
+       "name": "Cje95"
+      },
+      "subName": "lol"
+     },
+     {
+      "id": "1590423",
+      "title": "Daily Discussion Thread ~Music Saloon!",
+      "url": null,
+      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
+      "sats": 983,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-10-07T06:25:29.115Z",
+      "user": {
+       "name": "Public_N_M_E"
+      },
+      "subName": "Music"
+     },
+     {
+      "id": "1575759",
+      "title": "\"Anyone can print money, the challenge is getting people to accept it\"- Tshirt 2",
+      "url": null,
+      "text": "Find me at the final [Tabconf](https://8.tabconf.com/) in Atlanta, Oct 12-15 for a free T shirt. I have 5 quotes with 5 graphics that I will be giving away.\n\n![](https://m.stacker.news/157622)\n\nT shirt #1 - https://stacker.news/items/1574787",
+      "sats": 1007,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-09-18T04:54:24.171Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "Memes"
      },
      {
       "id": "1589776",
@@ -1929,26 +2049,41 @@
       "subName": "AGORA"
      },
      {
-      "id": "1575759",
-      "title": "\"Anyone can print money, the challenge is getting people to accept it\"- Tshirt 2",
+      "id": "1590522",
+      "title": "Slight award and newsletter delays this week",
       "url": null,
-      "text": "Find me at the final [Tabconf](https://8.tabconf.com/) in Atlanta, Oct 12-15 for a free T shirt. I have 5 quotes with 5 graphics that I will be giving away.\n\n![](https://m.stacker.news/157622)\n\nT shirt #1 - https://stacker.news/items/1574787",
-      "sats": 907,
+      "text": "For those stackers who are eligible for weekly awards in these territories, be aware that the Friday awards and post will be delayed until Saturday. This does not change the submission deadlines, which remain Friday morning at around 7:00am EST.",
+      "sats": 480,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 4,
-      "createdAt": "2026-09-18T04:54:24.171Z",
+      "createdAt": "2026-10-07T12:17:23.923Z",
       "user": {
-       "name": "Kruw"
+       "name": "siggy47"
       },
-      "subName": "Memes"
+      "subName": "bitcoin_beginners"
+     },
+     {
+      "id": "1590282",
+      "title": "Distance from Texas, measured in Texases",
+      "url": null,
+      "text": "![](https://m.stacker.news/160461)\n\n[from Terrible Maps on X](https://x.com/TerribleMaps/status/2107571375787659408)",
+      "sats": 2005,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-10-07T00:04:15.173Z",
+      "user": {
+       "name": "k00b"
+      },
+      "subName": "lol"
      },
      {
       "id": "1589819",
       "title": "Russian media claims a second victim has died from 'plague outbreak'",
       "url": "https://www.dailymail.com/news/article-16186315/Russian-media-claims-second-victim-died-plague-outbreak-infection-zone-hospital-Kremlin-scrambles-cover-details.html?ns_mchannel=rss&ns_campaign=1490&ito=social-twitter_mailonline",
       "text": "",
-      "sats": 10462,
+      "sats": 10524,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 7,
@@ -1959,11 +2094,56 @@
       "subName": "news"
      },
      {
+      "id": "1590412",
+      "title": "Continuity of Control #8 Zbigniew Brzezinski – The Technetronic Society",
+      "url": null,
+      "text": "![](https://m.stacker.news/160494)\n\n### Brzezinski declared the death of nations and the rise of a global elite\n\nIn [Part 7](https://stacker.news/items/1585877/r/mo) we saw Quigley uncover the secret society that engineered wars, weaponized diplomacy and erased itself from the history books.\n\nToday we turn to Zbigniew Brzezinski, one of the most influential establishment thinkers of the late 20th century.\n\nBrzezinski rose from Polish émigré to Harvard scholar, then into the White House as Carter’s National Security Advisor. Fiercely anti-Soviet, he shaped U.S. policy on China, Afghanistan and the Middle East, while earning a reputation as both strategist and provocateur.\n\nBeyond Brzezinski's influence in Washington, his partnership with David Rockefeller in founding the Trilateral Commission cemented his role in knitting together political and corporate elites across continents (and we'll hear from David Rockefeller himself in Part 9).\n\nBrzezinski, in his 1970 book *Between Two Ages,* proved remarkably prophetic. He foresaw a future of satellite broadcasting, instant global media and the decline of the nation-state in the face of multinational corporations. Most strikingly, he warned that new technologies would usher in a “more controlled society,” where surveillance and behavioral manipulation would become tools of governance.\n\nDecades later, his \"predictions\" echo uncomfortably in the realities of globalization, digital surveillance and corporate dominance.\n\nHe was blunt about the decline of the nation-state, an important stepping stone towards a one world system:\n\n> ‘the nation-state as a fundamental unit of man’s organized life has ceased to be the principal creative force: “<ins>International banks and multinational corporations are acting and planning in terms that are far in advance of the political concepts of the nation-states</ins>”’\n\nAdmitting the emergence of a global elite (the dominant minority of ‘untamed’ humans described by Charles Galton Darwin):\n\n> ‘Today we are again witnessing the emergence of transnational elites, but now they are composed of international businessmen, scholars, professional men, and public officials \\[…] it is likely that before long <ins>the social elites of most of the more advanced countries will be highly internationalist or globalist</ins> in spirit and outlook.’\n\nAfter which he anticipated direct intervention into the human mind and body (the methods by which the masses of humanity will be ‘tamed’):\n\n> ‘there is already widespread concerns about the possibility of <ins>biological and chemical tampering with</ins> what has until now been considered <ins>the immutable essence of man</ins> \\[…] Speaking of a future at most only decades away, an experimenter in intelligence control asserted, “I foresee the time when we shall have the means and therefore, inevitably, the temptation to <ins>manipulate the behavior and intellectual functioning of all the people through environmental and biochemical manipulation of the brain</ins>”’\n\nIn the end, Brzezinski does not sugar coat the situation:\n\n> ‘<ins>man’s malleability may permit what was previously considered immutable in a man to be undermined.</ins>’\n\nThe continuity across the decades is striking. Wells laid the blueprint, Sir Julian Huxley gave it a philosophy, Lord Russell described its application through education, Sir Charles Galton Darwin projected it into the future, Aldous Huxley warned of its weaponized science, Quigley revealed its financial backbone and the hidden hand driving it all.\n\nBrzezinski tied it all together with technology – the missing piece that could make the pipe dream of global control a practical reality.\n\n*In Part 9[^1] we’ll see how the Club of Rome diagnosed humanity as the disease and ask the question, could David Rockefeller’s ‘one world’ be the cure?*\n\n[^1]: This is the fourth of a 9-part email series sent by Nick Heys to spread his personal journey and document the open plan for world control discoveries achieved in his [book reviews](https://www.skool.com/page-against-the-machine-2459/about). I thought it would be useful to have them all archived. If you prefer to receive this content in your inbox, free of charge, simply sign up for the newsletter at [ContinuityOfControl.com](https://continuityofcontrol.com/).",
+      "sats": 625,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-10-07T05:56:34.185Z",
+      "user": {
+       "name": "mo"
+      },
+      "subName": "tech"
+     },
+     {
+      "id": "1590321",
+      "title": "Fungibility",
+      "url": null,
+      "text": "Alright, I'd like to have a discussion regarding bitcoin's fungibility (or lack there of). \n\nI am a bitcoiner and have been for a decent number of years but I would ask that we leave our maxi hats at the door and look at this objectively because in my opinion, it is one of the biggest issues that I see with Bitcoin. And I'm going to talk about the forbidden shitcoin Monero so please if I offend the NGU cult with my shitcoin talk, then stop reading here. \n\nThis will be a bit of rambling while I think through this issue. \n\nAs we know, on-chain Bitcoin is a public ledger and every transaction is there for all to see. Chainalysis creates risk scores based on each utxo's history and these scores are used by any regulated exchanges that interact with the fiat system. \n\nNow already, there will be people that say \"well, just don't interact with the fiat system at all and it won't matter\". I mostly agree with this take but it is a non-answer to the problem. For the foreseeable future, 99% of people have to interact with the fiat system in some form or fashion. Even in a future where we are on a \"Bitcoin standard\", this issue of chainalysis flagging funds used at a business would likely still exist. The transaction would not be stopped from getting to its recipient but the utxos would be flagged like they are today if \"tainted\" utxos are sent to an exchange. I see the idea or mention of \"tainted\" Bitcoin as a failure in bitcoin's fungibility. While I reject the framing of \"tainted\" utxos, it is a real issue for anyone who needs to interact with fiat. \n\nEnter lightning. Lightning does help with the fungibility issue of on-chain Bitcoin. As a sender, you have much better privacy. I have opened lightning channels with coinjoined funds and spent them at a square terminal. This is a great step in the right direction. I haven't tried to send them to strike or cash app or one of these exchanges to see if it gets frozen there. \n\nThe issue that I personally have with lightning is that the complexities of it almost force people to use a custodial solution. The idea of my parents or my grandma keeping 12 or 24 words safe and using an on chain wallet is actually doable. Thinking about them opening channels and balancing channels and dealing with some of the headaches of lightning to truly use it self custodially is laughable. \n\nIn my opinion, one of the main benefits of Bitcoin for me is being able to custody my money myself. The way that many people (and I'd venture to say most) use lightning is in a custodial fashion or in a quasi custodial fashion with spark where the liquidity provider sees every transaction. \n\nI want to challenge people to think about the trade-offs that we are ushering newcoiners into. Many people learn and slowly upgrade their wallet setups as they learn to improve security and custody setup. However, it usually requires listening to 40HPW of Bitcoin podcasts and watching a bunch of btc sessions videos. \n\nThe fungibility issue is improved by using lightning but it's often coming at the expense of custody or privacy (LSP sees all transactions with the exception of maybe Zeus). Bitcoin on chain struggles with fungibility and lightning is generally adopted in a custodial way. \n\nThe purpose of me bringing this up is I guess I live in a fantasy land where I'd like to have the simplicity and reliability of on-chain Bitcoin with the fungibility of lightning. I'd like for future bitcoiners to not have to be a sysadmin to be able to use lightning in the most private and secure fashion without giving up custody. \n\nPhysical cash is fungible. It doesn't matter if the bill has been in a strippers crack or if it's straight from the money printer, it spends the same. Monero is fungible. It sacrifices the hard supply cap and the simplicity of auditing the supply for privacy/fungibility. If Bitcoin is going to be freedom money, it needs to be fungible. \n\nOk like I said, this was going to be rambly but hopefully it was enough information for people to be able to discuss what I believe to be the most frustrating aspect of Bitcoin. \n\nOk, discuss.",
+      "sats": 796,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 12,
+      "createdAt": "2026-10-07T01:53:49.506Z",
+      "user": {
+       "name": "anon"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1590523",
+      "title": "Why is the right obsessed with Indians all of a sudden?",
+      "url": "https://www.vox.com/politics/505248/texas-bo-french-indian-far-right-hate",
+      "text": "> **Online nativists are exploiting middle-class economic worries to stir hate.**\n>\n> For many Texans, the second weekend of September was a moment for the state to shine. The Texas Longhorns, the University of Texas at Austin’s storied football team, upset the No. 1 Ohio State Buckeyes in a dramatic comeback win.\n>\n> But for Bo French, the Republican candidate for railroad commissioner, a powerful position that was born to regulate railroads but today oversees the state’s sizable oil and gas industry, the most notable part was the number of South Asians in the crowd.\n>\n> “I heard UT graduation this year looked like this. I didn’t believe it. The problem is now obviously far worse than anyone imagined,” he [posted](https://archive.is/o/GZmDm/https://x.com/bofrench/status/2099118916282810552) on X over a picture of celebrating students. In case there was any ambiguity as to the problem, he added that images like the one he shared [showed](https://archive.is/o/GZmDm/https://x.com/bofrench/status/2099142867025383497) “how many Americans have been displaced by foreigners.”\n>\n> [**...read more at archive.is**](https://archive.is/GZmDm)",
+      "sats": 345,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-10-07T12:19:11.312Z",
+      "user": {
+       "name": "0xbitcoiner"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
       "id": "1590049",
       "title": "Coinjoin flow map and table",
       "url": "https://wabisator.com/map/",
       "text": "A cool bundle of transaction visualizer tools for WabiSabi coinjoins.",
-      "sats": 2330,
+      "sats": 2333,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 4,
@@ -1972,6 +2152,81 @@
        "name": "Kruw"
       },
       "subName": "Coinjoins"
+     },
+     {
+      "id": "1590469",
+      "title": "“Notes on a Nervous Planet”",
+      "url": null,
+      "text": "I’m a great fan of Matt Haig’s books, but this one just doesn’t engage me as much as his others did. Maybe this book depicts him being self-aware and coping with his anxiety so well that there are no passages on anguish and torment that deliver stinging blows to my consciousness. In a previous book, I thought that he astutely used an everyday analogy that distinguishes anxiety from depression. There is none of these Eureka! moments in this one.\n\n\n![](https://m.stacker.news/160507)\n\n![](https://m.stacker.news/160508)\n\n\nStill, I persevered in finishing the book. Matt Haig’s is a delightful mix of short and long sentences that washes over the reader like gentle waves. I admire his unflinching courage and candidness, and there is a certain light-heartedness that draws me in. These bouts of panic attacks and depression must have been paralyzing to him, but he is able to recount them with grace and detachedness. He wrote about looking at the sky and embracing fresh air as ways to  master his self. Maybe my way of reminding myself to exert control  over the aspects of life within my control is to sip his words.",
+      "sats": 318,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-07T09:50:57.396Z",
+      "user": {
+       "name": "cryotosensei"
+      },
+      "subName": "BooksAndArticles"
+     },
+     {
+      "id": "1590512",
+      "title": "Craft Gyoza Fes Saitama — Oct 7-12",
+      "url": "https://www.timeout.com/tokyo/things-to-do/craft-gyoza-fes-saitama",
+      "text": "",
+      "sats": 306,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-07T11:47:21.863Z",
+      "user": {
+       "name": "bradjpn"
+      },
+      "subName": "japan"
+     },
+     {
+      "id": "1590240",
+      "title": "OpenAI internal frontier model: collective math results drop",
+      "url": null,
+      "text": "https://x.com/openai/status/2107596713791767021?s=46\n\n[https://github.com/openai/math](https://github.com/openai/math)\n\nLooks like many a promising PhD thesis may now been reduced to an AI slop prompt 👀\n\nGrok bot summary:\n\n> The GitHub (openai/math) drops 722 manuscripts across 372 families spanning number theory, geometry, algebra, physics and more, with many Lean formalizations.\n\n> Standouts: new zero-free region for the Riemann zeta function (Re(s)>11/12), Hodge conjecture proof for CM abelian varieties, improved irrationality exponent of π, Mahler conjectures progress, Kaplansky direct-finiteness in char 2, free group factor isomorphism, quasipolynomial AP bounds, and results on Vlasov–Maxwell, spin glasses and more.\n\n> Most used \\~3 hours of ChatGPT Pro-scale compute each.\n\nI know a lot of people are dunking on Terrence Tao and others (put the fries in the bag) but I find this kind of sad.  They're likely going to keep producing results at a rate that will be impossible to for human reviewers to even keep up with.",
+      "sats": 1755,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 7,
+      "createdAt": "2026-10-06T22:31:51.511Z",
+      "user": {
+       "name": "gmd"
+      },
+      "subName": "math"
+     },
+     {
+      "id": "1590526",
+      "title": "The Bitcoin Dollar",
+      "url": "https://www.youtube.com/watch?v=fY6yTfOS8N8&t=434s",
+      "text": "",
+      "sats": 211,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-07T12:26:10.159Z",
+      "user": {
+       "name": "KudzaiK"
+      },
+      "subName": "AI"
+     },
+     {
+      "id": "1590488",
+      "title": "Tracking how many people live on less than $3, $10, or $30 a day",
+      "url": null,
+      "text": "![](https://m.stacker.news/160515)\n\n[**🔗 ourworldindata.org**](https://ourworldindata.org/tracking-how-many-people-live-on-less-than-3-10-or-30-a-day)",
+      "sats": 289,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-07T10:45:32.926Z",
+      "user": {
+       "name": "0xbitcoiner"
+      },
+      "subName": "charts_and_maps"
      },
      {
       "id": "1590255",
@@ -1993,7 +2248,7 @@
       "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
       "url": null,
       "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
-      "sats": 6380,
+      "sats": 6390,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 100,
@@ -2002,6 +2257,21 @@
        "name": "openbitcoin"
       },
       "subName": "bitcoin"
+     },
+     {
+      "id": "1590472",
+      "title": "This Day on SN: October 7",
+      "url": null,
+      "text": "#### Top Posts\n- [Vibe Tools, Not Apps](https://stacker.news/items/1250807)\n    - 14.7k sats \\ 13 comments \\ @optimism \\ ~builders \\ `October 7, 2025`\n- [Ask me anything about Bitcoin in Japan, Diamond Hands etc-AMA with Koji Higashi](https://stacker.news/items/714009)\n    - 14.1k sats \\ 53 comments \\ @kojisan \\ ~AMA \\ `October 7, 2024`\n- [Did you ever have a NDE or epiphany? I did. And is terrifying](https://stacker.news/items/277326)\n    - 31.1k sats \\ 111 comments \\ @DarthCoin \\ ~meta \\ `October 7, 2023`\n- [Stacker News Changelog](https://stacker.news/items/78763)\n    - 4943 sats \\ 10 comments \\ @sn \\ ~bitcoin \\ `October 7, 2022`\n- no top post for `October 7, 2021`\n#### Top Stackers\n- stacker is in hiding for `October 7, 2025`\n- stacker is in hiding for `October 7, 2024`\n- stacker is in hiding for `October 7, 2023`\n- @k00b\n    - 9122 stacked \\ 3410 spent \\ 5 items \\ `October 7, 2022`\n- @g4ala\n    - 145 stacked \\ 43 spent \\ 21 items \\ `October 7, 2021`\n#### Top Comments\n- https://stacker.news/items/1250377?commentId=1250665 on [How to turn LLM Pinocchio into a real boy](https://stacker.news/items/1250377)\n    - 512 sats \\ 2 replies \\ @optimism \\ `October 7, 2025`\n        > PS: I got inspired by this argument so I used my remaining Claude 4.5 token moneys to let it write documentation for `nostr-tools`. For my next vibe coding experiment - maybe the coming weekend - I will instruct an LLM to use these docs to write a lil nostr reposter bot for ~AI posts. [...]\n- https://stacker.news/items/713538?commentId=713774 on [Meme Monday - Best Bitcoin Meme Gets 10,000 Sats](https://stacker.news/items/713538)\n    - 10.2k sats \\ 3 replies \\ @TheWildHustle \\ `October 7, 2024`\n        > ![](https://m.stacker.news/56171.jpeg) [...]\n- https://stacker.news/items/276687?commentId=276806 on [Germany Could Be Losing Its Save Haven Status](https://stacker.news/items/276687)\n    - 10.4k sats \\ 12 replies \\ @GhostofTruth \\ `October 7, 2023`\n        > When yield spreads between I and G rise there is stress in the system. But until now I can't identify exact targets. We need to wait for clearer skies [...]\n- https://stacker.news/items/78303?commentId=78539 on [Joe Biden issues a pardon for all prior offenses of simple marijuana possession](https://stacker.news/items/78303)\n    - 510 sats \\ 1 reply \\ @ken \\ `October 7, 2022`\n        > No one should be in jail for cultivating marijuana either. We're willing to ruin human lives and destroy families just to stop people from growing an herb. [...]\n- https://stacker.news/items/3158?commentId=3187 on [[RFC] Shroom Node v0.1 released](https://stacker.news/items/3158)\n    - 102 sats \\ 0 replies \\ @carlos99 \\ `October 7, 2021`\n        > Thanks k00b, good questions. [...]\n#### Top Territories\n- ~AI\n    - 13.6k stacked \\ 1154 revenue \\ 20.3k spent \\ 45 items \\ `October 7, 2025`\n- ~AMA\n    - 12.9k stacked \\ 867 revenue \\ 21.9k spent \\ 52 items \\ `October 7, 2024`\n- ~meta\n    - 56.7k stacked \\ 0 revenue \\ 63.6k spent \\ 267 items \\ `October 7, 2023`\n- ~bitcoin\n    - 15k stacked \\ 0 revenue \\ 15.7k spent \\ 317 items \\ `October 7, 2022`\n- ~bitcoin\n    - 405 stacked \\ 0 revenue \\ 484 spent \\ 59 items \\ `October 7, 2021`",
+      "sats": 202,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-07T10:00:05.249Z",
+      "user": {
+       "name": "sn"
+      },
+      "subName": "meta"
      },
      {
       "id": "1574787",
@@ -2019,319 +2289,49 @@
       "subName": "Coinjoins"
      },
      {
-      "id": "1590321",
-      "title": "Fungibility",
-      "url": null,
-      "text": "Alright, I'd like to have a discussion regarding bitcoin's fungibility (or lack there of). \n\nI am a bitcoiner and have been for a decent number of years but I would ask that we leave our maxi hats at the door and look at this objectively because in my opinion, it is one of the biggest issues that I see with Bitcoin. And I'm going to talk about the forbidden shitcoin Monero so please if I offend the NGU cult with my shitcoin talk, then stop reading here. \n\nThis will be a bit of rambling while I think through this issue. \n\nAs we know, on-chain Bitcoin is a public ledger and every transaction is there for all to see. Chainalysis creates risk scores based on each utxo's history and these scores are used by any regulated exchanges that interact with the fiat system. \n\nNow already, there will be people that say \"well, just don't interact with the fiat system at all and it won't matter\". I mostly agree with this take but it is a non-answer to the problem. For the foreseeable future, 99% of people have to interact with the fiat system in some form or fashion. Even in a future where we are on a \"Bitcoin standard\", this issue of chainalysis flagging funds used at a business would likely still exist. The transaction would not be stopped from getting to its recipient but the utxos would be flagged like they are today if \"tainted\" utxos are sent to an exchange. I see the idea or mention of \"tainted\" Bitcoin as a failure in bitcoin's fungibility. While I reject the framing of \"tainted\" utxos, it is a real issue for anyone who needs to interact with fiat. \n\nEnter lightning. Lightning does help with the fungibility issue of on-chain Bitcoin. As a sender, you have much better privacy. I have opened lightning channels with coinjoined funds and spent them at a square terminal. This is a great step in the right direction. I haven't tried to send them to strike or cash app or one of these exchanges to see if it gets frozen there. \n\nThe issue that I personally have with lightning is that the complexities of it almost force people to use a custodial solution. The idea of my parents or my grandma keeping 12 or 24 words safe and using an on chain wallet is actually doable. Thinking about them opening channels and balancing channels and dealing with some of the headaches of lightning to truly use it self custodially is laughable. \n\nIn my opinion, one of the main benefits of Bitcoin for me is being able to custody my money myself. The way that many people (and I'd venture to say most) use lightning is in a custodial fashion or in a quasi custodial fashion with spark where the liquidity provider sees every transaction. \n\nI want to challenge people to think about the trade-offs that we are ushering newcoiners into. Many people learn and slowly upgrade their wallet setups as they learn to improve security and custody setup. However, it usually requires listening to 40HPW of Bitcoin podcasts and watching a bunch of btc sessions videos. \n\nThe fungibility issue is improved by using lightning but it's often coming at the expense of custody or privacy (LSP sees all transactions with the exception of maybe Zeus). Bitcoin on chain struggles with fungibility and lightning is generally adopted in a custodial way. \n\nThe purpose of me bringing this up is I guess I live in a fantasy land where I'd like to have the simplicity and reliability of on-chain Bitcoin with the fungibility of lightning. I'd like for future bitcoiners to not have to be a sysadmin to be able to use lightning in the most private and secure fashion without giving up custody. \n\nPhysical cash is fungible. It doesn't matter if the bill has been in a strippers crack or if it's straight from the money printer, it spends the same. Monero is fungible. It sacrifices the hard supply cap and the simplicity of auditing the supply for privacy/fungibility. If Bitcoin is going to be freedom money, it needs to be fungible. \n\nOk like I said, this was going to be rambly but hopefully it was enough information for people to be able to discuss what I believe to be the most frustrating aspect of Bitcoin. \n\nOk, discuss.",
-      "sats": 760,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 6,
-      "createdAt": "2026-10-07T01:53:49.506Z",
-      "user": {
-       "name": "anon"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1590282",
-      "title": "Distance from Texas, measured in Texases",
-      "url": null,
-      "text": "![](https://m.stacker.news/160461)\n\n[from Terrible Maps on X](https://x.com/TerribleMaps/status/2107571375787659408)",
-      "sats": 1620,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-07T00:04:15.173Z",
-      "user": {
-       "name": "k00b"
-      },
-      "subName": "lol"
-     },
-     {
-      "id": "1590248",
-      "title": "The most dangerous animal in each US state",
-      "url": "https://x.com/TerribleMaps/status/2107601811540693309",
-      "text": "![](https://m.stacker.news/160453)",
-      "sats": 1342,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-10-06T22:50:29.240Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "charts_and_maps"
-     },
-     {
-      "id": "1590240",
-      "title": "OpenAI internal frontier model: collective math results drop",
-      "url": null,
-      "text": "https://x.com/openai/status/2107596713791767021?s=46\n\n[https://github.com/openai/math](https://github.com/openai/math)\n\nLooks like many a promising PhD thesis may now been reduced to an AI slop prompt 👀\n\nGrok bot summary:\n\n> The GitHub (openai/math) drops 722 manuscripts across 372 families spanning number theory, geometry, algebra, physics and more, with many Lean formalizations.\n\n> Standouts: new zero-free region for the Riemann zeta function (Re(s)>11/12), Hodge conjecture proof for CM abelian varieties, improved irrationality exponent of π, Mahler conjectures progress, Kaplansky direct-finiteness in char 2, free group factor isomorphism, quasipolynomial AP bounds, and results on Vlasov–Maxwell, spin glasses and more.\n\n> Most used \\~3 hours of ChatGPT Pro-scale compute each.\n\nI know a lot of people are dunking on Terrence Tao and others (put the fries in the bag) but I find this kind of sad.  They're likely going to keep producing results at a rate that will be impossible to for human reviewers to even keep up with.",
-      "sats": 1315,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-06T22:31:51.511Z",
-      "user": {
-       "name": "gmd"
-      },
-      "subName": "math"
-     },
-     {
-      "id": "1590224",
-      "title": "Fall Afternoon Walk",
-      "url": null,
-      "text": "![](https://m.stacker.news/160445)",
-      "sats": 1149,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-10-06T21:41:17.796Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "family"
-     },
-     {
-      "id": "1590174",
-      "title": "The Mixer Rule is Dead, Long Live Outlawing Mixers - The Rage",
-      "url": "https://www.therage.co/mixer-rule-sterlingov-tornado-cash/",
-      "text": "In true The Rage style, this report is a little breathless, but then again, perhaps there is reason to be sensational about these sorts of precedents around privacy:\n\n> it's probably been some of the worst weeks for financial privacy that the United States has ever experienced.\n\nStrong statement. What's got The Rage all worked up is this:\n\n> The [decision](https://www.courtlistener.com/opinion/10983480/united-states-v-roman-sterlingov/) against Sterlingov's appeal, who, among other things, argued that Washington D.C. was not the right venue for his prosecution, relied heavily on the argumentation that \"every payment in[to Bitcoin Fog]\" was part of advancing the criminal conspiracy because \"it increases the size of the pool of bitcoin funds that are shuffling around and obscuring identities,\" as one of the judges [opined](https://www.therage.co/sterlingov-appeal-the-criminalization-of-privacy/) in May.\n\nParticularly, this statement:\n\n> **\"The government presented a plethora of evidence establishing that transfer of funds to and from Bitcoin Fog furthered Bitcoin Fog’s ability to launder the funds of all users.\"**\n\nI don't think it goes as far as The Rage speculates here, but \n\n> a binding precedent now finds that funds deposited into a mixer-like protocol have indeed contributed to the concealment of illicit proceeds.\n>  \n> If taken at face value, it could mean that the US Government might be able to charge anyone depositing funds into a mixer-like technology with engaging in a conspiracy to commit money laundering, even though a protocol like Tornado Cash and a centralized mixer like Bitcoin Fog are substantially different technologies – as they both rely on the use of a variety of funds to conceal the origin of transactions.\n\nBut I'm sure the government prosecutors wouldn't mind the ability to incriminate anyone who seeks privacy. \n\nThis is despite the fact that the Clarity Act did not get passed (with or without expanding the Patriot Act to cover Bitcoin transactions) and that FinCEN has  the \"mixer rule\" https://stacker.news/items/1589430\n\nAs The Rage puts it:\n\n> if the prosecution of Roman Storm is allowed to continue under such argumentation; and without clear protections for developers and users of financial privacy technologies – ones that go beyond the lip service of agency officials – mixer-like technologies may be even further criminalized than even the mixer-rule originally intended.",
-      "sats": 1487,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-06T19:39:54.685Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "privacy"
-     },
-     {
-      "id": "1590154",
-      "title": "The Beauty of Human Eyes",
-      "url": null,
-      "text": "Recently, I saw a pair of striving eyes at an event, they were so deep and captivating that I couldn't stop looking. Somehow, it made me want to know his story and maybe even help him in any way I can, because it's so rare to see eyes like that. I am not talking about the normal sense of beauty, not about the size or the color, but the depth and story behind them. Later, we talked for hours because of our shared interests.\n\n**How interesting that the eyes can say so much about the person!** I often notice people's eyebrows or eyelashes these days, but not so much their eyes...So today I went out and started paying more attention to people's eyes, but most of what I saw was tiredness, stress, confusion, or maybe even hollowness. When was the last time you saw a pair of eyes that made you think, \"this person is so different\"?",
-      "sats": 2106,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-10-06T19:23:08.371Z",
-      "user": {
-       "name": "Natalia"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1590412",
-      "title": "Continuity of Control #8 Zbigniew Brzezinski – The Technetronic Society",
-      "url": null,
-      "text": "![](https://m.stacker.news/160494)\n\n### Brzezinski declared the death of nations and the rise of a global elite\n\nIn [Part 7](https://stacker.news/items/1585877/r/mo) we saw Quigley uncover the secret society that engineered wars, weaponized diplomacy and erased itself from the history books.\n\nToday we turn to Zbigniew Brzezinski, one of the most influential establishment thinkers of the late 20th century.\n\nBrzezinski rose from Polish émigré to Harvard scholar, then into the White House as Carter’s National Security Advisor. Fiercely anti-Soviet, he shaped U.S. policy on China, Afghanistan and the Middle East, while earning a reputation as both strategist and provocateur.\n\nBeyond Brzezinski's influence in Washington, his partnership with David Rockefeller in founding the Trilateral Commission cemented his role in knitting together political and corporate elites across continents (and we'll hear from David Rockefeller himself in Part 9).\n\nBrzezinski, in his 1970 book *Between Two Ages,* proved remarkably prophetic. He foresaw a future of satellite broadcasting, instant global media and the decline of the nation-state in the face of multinational corporations. Most strikingly, he warned that new technologies would usher in a “more controlled society,” where surveillance and behavioral manipulation would become tools of governance.\n\nDecades later, his \"predictions\" echo uncomfortably in the realities of globalization, digital surveillance and corporate dominance.\n\nHe was blunt about the decline of the nation-state, an important stepping stone towards a one world system:\n\n> ‘the nation-state as a fundamental unit of man’s organized life has ceased to be the principal creative force: “<ins>International banks and multinational corporations are acting and planning in terms that are far in advance of the political concepts of the nation-states</ins>”’\n\nAdmitting the emergence of a global elite (the dominant minority of ‘untamed’ humans described by Charles Galton Darwin):\n\n> ‘Today we are again witnessing the emergence of transnational elites, but now they are composed of international businessmen, scholars, professional men, and public officials \\[…] it is likely that before long <ins>the social elites of most of the more advanced countries will be highly internationalist or globalist</ins> in spirit and outlook.’\n\nAfter which he anticipated direct intervention into the human mind and body (the methods by which the masses of humanity will be ‘tamed’):\n\n> ‘there is already widespread concerns about the possibility of <ins>biological and chemical tampering with</ins> what has until now been considered <ins>the immutable essence of man</ins> \\[…] Speaking of a future at most only decades away, an experimenter in intelligence control asserted, “I foresee the time when we shall have the means and therefore, inevitably, the temptation to <ins>manipulate the behavior and intellectual functioning of all the people through environmental and biochemical manipulation of the brain</ins>”’\n\nIn the end, Brzezinski does not sugar coat the situation:\n\n> ‘<ins>man’s malleability may permit what was previously considered immutable in a man to be undermined.</ins>’\n\nThe continuity across the decades is striking. Wells laid the blueprint, Sir Julian Huxley gave it a philosophy, Lord Russell described its application through education, Sir Charles Galton Darwin projected it into the future, Aldous Huxley warned of its weaponized science, Quigley revealed its financial backbone and the hidden hand driving it all.\n\nBrzezinski tied it all together with technology – the missing piece that could make the pipe dream of global control a practical reality.\n\n*In Part 9[^1] we’ll see how the Club of Rome diagnosed humanity as the disease and ask the question, could David Rockefeller’s ‘one world’ be the cure?*\n\n[^1]: This is the fourth of a 9-part email series sent by Nick Heys to spread his personal journey and document the open plan for world control discoveries achieved in his [book reviews](https://www.skool.com/page-against-the-machine-2459/about). I thought it would be useful to have them all archived. If you prefer to receive this content in your inbox, free of charge, simply sign up for the newsletter at [ContinuityOfControl.com](https://continuityofcontrol.com/).",
-      "sats": 210,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-07T05:56:34.185Z",
-      "user": {
-       "name": "mo"
-      },
-      "subName": "tech"
-     },
-     {
-      "id": "1589928",
-      "title": "📣 AMA Announcement: CryptoCloaks - 10AM Thursday!",
-      "url": null,
-      "text": "CryptoCloaks will be here on Thursday morning to talk about running a bitcoin business. \n\nCome talk 3D printing, home mining, and making physical Bitcoin stuff!\n\n🗓️ THURSDAY, 08 October 2026\n⏰ 10AM Texas time / 1500 UTC\n📍 https://stacker.news/~AMA\n\n![](https://m.stacker.news/160400)",
-      "sats": 1442,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-06T15:03:35.416Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "AMA"
-     },
-     {
-      "id": "1590071",
-      "title": "New swap tools for going onchain <-> lightning",
-      "url": null,
-      "text": "With Boltz no longer available, Liquid not really doing peg-outs, swapping between lightning and onchain has looked different lately.\n\n# Swaptopia from Second.Tech\n\n[Swaptopia](https://labs.second.tech/swaptopia/) uses bark to do the swaps. Currently it works on Mainnet and Signet. The minimum swap from onchain to lightning is 51k sats, lightning to onchain needs to result in utxo that is at least 1000 sats after fees.\n\n![](https://m.stacker.news/160414)\n\nThis looks like one of the most promising new swap tools under development.\n\n# Indra via AQUA Wallet and Liquid\n\nAQUA [announced](https://jan3.com/blog/introducing-indra-liquid-and-lightning-swaps) Indra last month, but it got off to a rough start https://stacker.news/items/1573169\n\nIt seems like it is only accessible from within AQUA Wallet, and it swaps lightning <-> liquid. As long as Liquid peg-outs remain closed, it's not exactly useful for doing a lightning -> onchain swap, but one hopes (perhaps foolishly) that the Liquid Network will eventually return to normal activity.\n\n# OpenSwap, Portal\n\n[OpenSwap](https://openswap.live/) is an atomic swap protocol that is accessed through their app, [Portal](https://openswap.live/portal/). Mainnet support is experimental, and does not currently support swaps in to or out of lightning (although it is coming soonTM)\n\n@supratic posted about it in August https://stacker.news/items/1558260, but I agree with @BlokchainB's comment there that it currently looks a little complicated.\n\n![](https://m.stacker.news/160418)\n\n# Do you know of any other lightning <-> onchain swap tools under development?",
-      "sats": 2248,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-10-06T17:47:31.267Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1589674",
-      "title": "The SN Daily Putt #147: Play, Putt, Score, ZAP!⚡️⛳️",
-      "url": null,
-      "text": "Hole #146 was Match My Score day on the par 10! @mkmloom matched my 8/10 Eagle exactly and claimed the 2,000 sat bounty. Six stackers fired 5/10 Albatross low rounds: @Mcgregor, @grayruby, @guerratotal, @Undisciplined, @Carresan, and @evestacker. All posted scores were zapped!\n\n[The SN Daily Putt #146: Play, Putt, Score, ZAP!⚡️⛳️](https://stacker.news/items/1588653/r/BlokchainB)\n\nOn to hole #147\n\nAlbatross Day! Shoot an albatross or better and be zapped 500 sats.\n\nhttps://putt.day\n\nHappy Putting Stackers!",
-      "sats": 1149,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 16,
-      "createdAt": "2026-10-06T09:26:09.357Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "gaming"
-     },
-     {
-      "id": "1590227",
-      "title": "OT Lane Johnson announces retirement",
-      "url": null,
-      "text": "Eagles are a mess. NFC East is wide open. Too bad the Giants lost Dart.\n\nhttps://x.com/espn/status/2107562230455685488?s=20",
-      "sats": 960,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-06T21:51:45.972Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1588755",
-      "title": "Bitcoin Stablecoins and the Freedom to Choose",
-      "url": null,
-      "text": "After attending bitcoin++ Berlin, payments edition, two talks have been stuck in my head.\n\nAllen Farrington’s [The Fiat Payment Stack Returns (Part 2), The Sequel](https://btcpp.dev/berlin26#berlin26_fiat_bf4b) explored how complicated fiat payments are underneath the familiar experience of tapping a card.\n\nThen Lightrider’s [It Worked on My Node](https://btcpp.dev/berlin26#berlin26_worked_c209) showed us real numbers from nadanada.me. Once they added credit cards, Monero, shitcoins, and stablecoins, Bitcoin payments became a minority. And lightning is now just 10% of their payments.\n\nCryptorefills’ checkout data tells a similar story: stablecoins overtook Bitcoin in 2021 and now account for roughly two thirds of completed purchases on its platform.\n\n![](https://m.stacker.news/160195)\n\nI recommend watching both when the recordings are published. Together, they left me with an uncomfortable thought: the payment system we want to replace is a mess, yet people still aren’t choosing ours. I think we should take that seriously.\n\nBitcoin is a miracle. We have scarce digital money that we can hold under our own keys, without a bank deciding whether we deserve access. Nobody gets to print more. That is extraordinary.\n\nWe have won something enormous: the ability to save outside the banking system. I remain very bullish. Bitcoin is volatile, but my bet over the long run is still up and to the right.\n\nBut we haven’t won everyday payments. And perhaps we’ve spent too much time treating those as the same problem.\n\nYou might be happy to hold bitcoin through volatility. But a merchant trying to pay wages and suppliers may not be. Accepting bitcoin and wanting to keep bitcoin are different decisions. Meanwhile, a customer’s card is familiar, costs nothing to the user, and works everywhere.\n\nIf they choose that, it's not because they are \"dumb\". They’re solving their problems.\n\nIf we believe in free markets, the market gets to disagree with us. We should be curious about what people want, and build something worth choosing.\n\nThere is plenty to improve. Visa and Mastercard payments involve issuers, acquirers, processors, networks, currency conversion, and reconciliation. Merchants pay for that machinery, and the fees hurt when margins are thin. International transfers can be worse: in the third quarter of 2025, sending a $200 remittance cost 6.36% on average globally. Almost $13 just to move $200.\n\n![](https://m.stacker.news/160191)\n\nStablecoins give people something immediately useful: familiar money that can move over an open network. For someone with an unstable local currency, limited banking access, or customers abroad, a digital dollar can solve a real problem today. Just like Bitcoin, but with less volatility.\n\nYes, stablecoins are fiat squared. You inherit fiat’s problems and add an issuer who can fail, restrict redemption, or freeze your tokens. But people are comparing them with the bank accounts and payment services they actually have. We should do the same.\n\nI’m also unconvinced that CBDCs are the inevitable future. Several early launches have struggled to attract meaningful use. Governments can launch a product; they can’t manufacture a reason to want it.\n\nMy bet is that stablecoins will become the dominant way money moves across the internet, eventually taking over much of what card networks do today. People may still tap cards. Visa and Mastercard may adapt and thrive. The interface can stay familiar while the money underneath changes.\n\nI often see Paolo Ardoino depicted as evil in Bitcoin circles. I don't know if he is. But what matters is whether he is right about stablecoins. And he might be.\n\nWhich brings me to the part that excites me: those dollars could move over Lightning.\n\nWhat's the best \"house\" for stablecoins? There are many blockchains available. And looks like Tron is winning. Then Ethereum, Solana, Binance, ... So it's not like their users appreciate security and decentralization the most. Running a full node for any of those requires expensive equipment. Apart from other issues like PoS and even shittier version of that that give control to a handful or operators. But they are cheap. Big blocks, coming out every few seconds.\n\n![](https://m.stacker.news/160192)\n\n![](https://m.stacker.news/160194)\n\nBut blockchains don't scale. So if the whole world population would be using stablecoins, none of those would be able to keep up. At least without becoming a centralized database which might be too much even for the most careless shitcoiners.\n\nBut we have already solved that! No blockchain will be ever capable of competing with a channel based payments network like lightning. In terms of throughput and fees. So maybe Lightning is the best \"house\" for stablecoins after all.\n\nPayment channels let us make many payments without recording every one on a global ledger. Bitcoin provides the foundation, while payments happen across a network of channels. I think that is a powerful architecture for global payments.\n\nWith Taproot Assets, a dollar payment can be exchanged into bitcoin at one edge, routed through Lightning, and exchanged into the recipient’s asset at the other. The customer can spend dollars. The merchant can receive dollars. Bitcoin can connect them without either having to share our monetary convictions.\n\nSomebody has to provide liquidity and make the exchanges worthwhile. But the architecture is real. Tether has announced plans to bring USDt to Bitcoin and Lightning through Taproot Assets. I think we should be paying attention.\n\nAnd honestly once on Lightning, the interoperability of Taproot assets with real bitcoin makes it too easy to switch. So that's another win there. Would be way easier to go from stablecoins to bitcoin than from fiat in a bank account to bitcoin, which is the current baseline.\n\n![](https://m.stacker.news/160193)\n\nThe difficult part will be making it pleasant to use.\n\nSelf-custodial Lightning still involves channels, liquidity, backups, and recovery. We can improve that experience, but wishing everyone would run their own infrastructure won’t make it happen.\n\nSome people will choose a provider. Others will want their own keys. Tools like Cashu offer another useful possibility: private ecash, backed by a mint the user trusts. That involves custody, but can offer privacy that an ordinary payment account doesn’t.\n\nI can imagine wallets, mints, and payment companies connected through Lightning, competing to serve people who want to spend different kinds of money. What matters is whether users can move between them, withdraw their funds, recover from mistakes, and take more control when they want to.\n\nMax Hillebrand’s *The Praxeology of Privacy* helped me think about this. I take from it an emphasis on practical progress toward autonomy. We don’t have to wait for everyone to adopt our ideal setup before helping them become freer.\n\nFreedom comes before Bitcoin.\n\nBitcoin matters because of what it lets people do. If someone wants dollars for spending, I want to help them use dollars with lower costs, better privacy, and more choice. If they later want sovereign savings, Bitcoin should be within reach. The immediate benefit should be theirs, not our satisfaction at having converted another person.\n\nI might be wrong about stablecoins winning, or Lightning becoming their best network. The honest way to find out is to listen, build, and compete.\n\nBitcoin has given people an extraordinary way to save. Now let’s give them better ways to spend, with useful wallets, private payments, and services they can leave as easily as they can join.",
-      "sats": 12587,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 32,
-      "createdAt": "2026-10-05T12:08:52.373Z",
-      "user": {
-       "name": "m0wer"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1590329",
-      "title": "Xikipedia History: Pizza quattro formaggi",
-      "url": null,
-      "text": "![](https://m.stacker.news/160466)\n\n>Also known as ***pizza ai quattro formaggi***, is a style of [pizza](https://en.wikipedia.org/wiki/Pizza \"Pizza\")in [Italian cuisine](https://en.wikipedia.org/wiki/Italian_cuisine \"Italian cuisine\") that is topped with a combination of four types of cheese, usually melted together, with (*rossa*, lit. 'red') or without (*bianca*, lit. 'white') [tomato sauce](https://en.wikipedia.org/wiki/Tomato_sauce \"Tomato sauce\"). It is popular worldwide, including in Italy,[<sup>[1]</sup>](https://en.wikipedia.org/wiki/Pizza_quattro_formaggi#cite_note-1) and is one of the iconic items from [pizzerias](https://en.wikipedia.org/wiki/Pizzeria \"Pizzeria\")' menus\n\n>It is believed to originate from the [Lazio](https://en.wikipedia.org/wiki/Lazio \"Lazio\") region at the beginning of the 18th century.[<sup>[5]</sup>](https://en.wikipedia.org/wiki/Pizza_quattro_formaggi#cite_note-5) Conversely, more recent variants like *quattro lati pizza* have clearer origins in the history of gastronomy.[<sup>[6]</sup>](https://en.wikipedia.org/wiki/Pizza_quattro_formaggi#cite_note-6)\n\n____\nWe Americans call this 4 cheese pizza but I am not certain if I had this specific pizza with this type of cheese blend. Have I had Gorgonzola cheese? I would think not. Maybe it’s time for me to go to Italy!",
-      "sats": 411,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-07T02:15:16.152Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "food_and_drinks"
-     },
-     {
-      "id": "1589657",
-      "title": "The State is Entrepreneurial: It Matches Nature with Entrepreneurs!",
-      "url": null,
-      "text": "We continue the braincell-killing exercise */slash/* Den self-flagellation that is reading *The Natural Dividend*. https://stacker.news/items/1515430, https://stacker.news/items/1565551, https://stacker.news/items/1588944\n\nIn this episode, the authors -- successful Norwegian academics whose cognitive deficiencies are on full display throughout the book -- get *shockingly close* to understanding **subjective value theory**. *And then, very predictably, botch the entire exercise*.\n\n## We also learn a little bit about their biases and where this shit is coming from\n\n***\n\nFirst, the asshats give a pair of nonsensical conditions — incorrect even according to their own frameworks.\n\n![](https://m.stacker.news/160346)\n\nBecause (a) fails by implication in their view, since *nature* was made by nobody... But how could value then ever flow back to the \"maker\"? They already raged against God (https://stacker.news/items/1588944?commentId=1588955), and Darwin doesn't have a bank account. In the real world of sane economics, the value *does* flow back to the producers, since the producer isn't God or nature but the guy who extracted the thing (oil, metals, wind, fish etc etc). The eeeentreeeepreeeeneeeeur.\n\n(If you think this error still **just hinges on market \"value,\"** you're right... *but please just wait up; don't beat me to it...)*\n\nSecond, nature is now alive and well, *acting* in Mises' framework:\n\n> We have already recognized that nature is not of our making; it exists independently of our efforts. This section aims to demonstrate that **this independent nature can create value**, which can be subsequently commodified and sold on the market. (39)\n\nYeah, no. Talk about misunderstanding value... \n\nCmon, fuck heads, just crack open an economics textbook — any of them! — and check subjective valuation and labor theory of value stuff (even *that* defunct and outdated worldview would have rescued them from such errors).\n\n**Next page, they get *stunningly close* to getting it:**\n\n![](https://m.stacker.news/160347)\n\nAgain, the \"productive forces of nature itself\" is shockingly anthropomorphic... Yeah, sure, nature is alive and demands a paycheck for its hard work crushing organic matter or hurling gale-force winds at you.\n\nPlus, of course \"the political authorities that regulate access to nature\" are the default owners (https://stacker.news/items/1588944). *ugh*.\n\n## \"Imagine a pool of oil lying deep below the ocean bottom\"\n\n...ok, ok, ok! *Now we're getting somewhere!!* I'm excited!\n\n> ... This oil, lying untouched in the raw, **has no market value;** it only has the potential to become valuable.\n\nYes yes yes, okay. Good! And how? Who brings the valueless thing alive/to market and makes it valuable, what about the physical nature of the oil shifts between the *ocean floor* and the *refinery*?? Aah, yes, you guys are so close!\n\n> ... The same can be said of the labour and capital inputs we attribute to the \\[owner]: without access to the raw materials (provided by nature), **labour and capital inputs are worthless**\n\nAaah, no: *that's an error*. Labour and (almost all) capital have secondary, alternative use! They are and can be deployed elsewhere. Their \"reservation price\" isn't zero, like the oil at the bottom of the sea nobody can do anything with.\n\nOooh look at that \"brought together\" idea... I wonder, the *government* as an entrepreneur, making things happen... *Where have I heard that before??*\n\n***\n\n## \"In making this argument, we hope to avoid the quagmire that is the valuation problem in contemporary economics\"\n\nOh boy. There's no *valuation problem* and certain not in *contemporary* economics. This was all worked out largely a hundred years ago, between the marginal revolution (https://stacker.news/items/1471628) and subjective value, the socialist calculation debate and the Cambridge capital controversy. And sidestepping \"value\" is precisely the core error of your whole book!\n\n...but let's check that sneaky footnote (fn10) and see what's up:\n\nIt's **Mariana Mazzucato**, the author of [*The Entrepreneurial State*](https://link.amazon/B07wuXz9P)!! And here, the authors cited her follow-up book, *The Value of Everything*... *in addition to* an overview book *by two Marxists* about a supposed value conflict, from 1982. (Like cooome the fuck oooon!!). As if Ms Mazzucato is anything but a fringe, irrelevant, non-representational figure in \"contemporary economics.\" As if MARXIST AUTHORS have anything meaningful or important to say about CONTEMPORARY ECONOMICS. \n\nMy. Fucking. God. I ask, as one of my professors at Oxford liked to quip in seminars:\n\n## Who on Earth was the peer reviewer for this?!",
-      "sats": 6880,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 25,
-      "createdAt": "2026-10-06T07:37:55.642Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1590357",
-      "title": "Rams Assistants Taunted Eagles Fans—McVay Steps In",
-      "url": null,
-      "text": "https://youtube.com/shorts/H5hEVVzI6O8?is=JLHDyJBUWkx1rLJX",
-      "sats": 290,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-07T03:57:45.068Z",
-      "user": {
-       "name": "realBitcoinDog"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1590219",
-      "title": "Beyond Lightning: Building New Layers on Bitcoin - A Block with Tiero",
-      "url": null,
-      "text": "https://www.youtube.com/watch?v=kGiY8LNvfuA\n\nBitcoin’s base layer was designed to prioritize security and decentralization.\nSo how can we expand what Bitcoin can do without giving up the ability to return to the base layer without asking for permission?\n\nIn Episode 15 of A Block with Mir, I sit down with Tiero, CEO of Ark Labs, to discuss Ark, Arkade, Bitcoin scalability, programmability, and the work required to transform experimental technology into useful products.\n\nWe explore why Bitcoin needs additional layers, how Ark-based infrastructure aims to enable new applications and business models, and why the next generation of Bitcoin companies will need more than highly technical engineers.\n\nTiero introduces one of his favorite distinctions: “keyboard people” and “people people.” The first group concentrates on making the technology work; the second asks who it helps, what problem it solves, and why anyone should care. \n\nSuccessful early-stage companies need both. And Tiero is someone who really values and really ships.\n\nAnother block has been mined.",
-      "sats": 1059,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-06T21:15:21.312Z",
-      "user": {
-       "name": "06bc1a977d"
-      },
-      "subName": "lightning"
-     },
-     {
-      "id": "1590223",
-      "title": "Bitcoin Jungle Map: 600+ places to spend sats on Lightning in South Costa Rica",
-      "url": "https://maps.bitcoinjungle.app/",
-      "text": "Bitcoin Jungle Map covers the Costa Ballena region of southern Costa Rica (Dominical, Uvita, Ojochal, Platanillo, and Tinamaste) in the province of Puntarenas, Osa Canton. If you're in the area, this is your map, it's updated daily.",
-      "sats": 774,
+      "id": "1590537",
+      "title": "UEFA to investigate spitting incident at Ireland-Israel football match",
+      "url": "https://www.aljazeera.com/amp/sports/2026/10/6/uefa-to-investigate-spitting-incident-at-ireland-israel-football",
+      "text": "![](https://m.stacker.news/160523)\n\n> An Israeli player is accused of spitting on an Irish coach as the teams returned to their dressing rooms at half time.",
+      "sats": 136,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-10-06T21:40:50.888Z",
+      "createdAt": "2026-10-07T12:53:17.586Z",
       "user": {
        "name": "satoshiplanet"
       },
-      "subName": "Travel"
+      "subName": "Stacker_Sports"
      },
      {
-      "id": "1585834",
-      "title": "How to Get People to Use Bitcoin",
-      "url": null,
-      "text": "For many years, I’ve been trying to figure out how to get bitcoin into people’s hands. Even long-time bitcoiners often don’t want to pay with bitcoin. At best, they slowly accumulate it, and they don’t really feel like they’re missing anything. They buy it on exchanges, pay fees, expose their personal information, and need a third party’s blessing for every transaction.\n\nI sometimes hear people say that bitcoin doesn’t need anyone and that, on the contrary, we need bitcoin. I see it a little differently. To me, bitcoin is something like a living organism. I consider its creation to be an event almost as rare as the emergence of life itself. But for bitcoin to truly live and serve us as better money, I believe it needs users.\n\nWith every transaction, a new connection is created or an existing one is strengthened. Users gradually get better at securing their bitcoin, demand better tools, and bitcoin becomes more resilient.\n\nThat’s why I don’t think adoption is some kind of optional bonus.\n**Adoption is a fundamental condition for bitcoin to actually be useful.**\n\n## I tried various approaches\n\n* I liked the idea of bringing bitcoin directly into Signal, for example: https://stacker.news/items/85702\n  * But Signal still hasn’t added bitcoin support, and I’m afraid there simply isn’t enough incentive for them to do so anytime soon.\n* Years ago, I also created an app that allowed people to load bitcoin onto an NFC card and pass it around much like cash: https://stacker.news/items/117623\n  * Technically, it worked. But there wasn’t enough interest. It was a nice project, but it didn’t solve a real problem for people.\n* Later, I also looked into why even bitcoiners themselves often don’t want to pay with bitcoin: https://stacker.news/items/210830\n\n## It’s not enough to let merchants accept bitcoin\n\nIn the meantime, I onboarded dozens of businesses and bitcoiners locally.\n\nMost of them were just isolated points on a map. A business started accepting bitcoin, but nobody actually paid with it. Eventually, the merchant forgot how to accept a bitcoin payment or what to do with the bitcoin they received.\n\nIt wasn’t until about a year ago that I managed to partially break through this problem.\n\nI onboarded another business simply because we went there regularly. And to this day, every week we come there in a changing group of people, with everyone paying in bitcoin. https://stacker.news/items/1584550\n\n![](https://m.stacker.news/159586)\n\nThe pub owner didn’t want bitcoin at all in the beginning. What matters to him is us as customers who come to his pub because of bitcoin. In the end, a merchant will accept pretty much any form of payment. What’s more important is finding people who are willing to pay with bitcoin.\n\nHere, we use bitcoin also as a filter for finding interesting people. Anyone willing to pay with bitcoin is kind of open-minded, and it’s a pleasure to get to know them over a regular lunch.\n\n## I don’t want to depend on a single app again\n\nOver the years, I’ve recommended various wallets and tools to people. Some of them eventually disappeared.\n\nThe custodial version of Wallet of Satoshi, which was the most popular one, stopped working. Alza, the largest retailer in the Czech Republic and one of the first major merchants to accept bitcoin, started requiring additional administrative steps when paying with bitcoin. Qerko, which allowed bitcoin payments at around 1,000 businesses, removed bitcoin support.\n\nAt first, this was pretty discouraging. It was the end of 2025, and at the same time the price of bitcoin dropped significantly. I had to figure out what to do with the dozens of people I had introduced to a particular app, which was now no longer going to work for them.\n\nI felt a little trapped. With every app, there was a risk that I would have to repeat the whole migration process again at any time.\n\nBut in January 2026, it also seemed to me that AI models had improved significantly, so I decided to try building my own wallet. One that I had been carrying around in my head for years.\n\n## Linky\n\nLinky is a bitcoin wallet and, at the same time, a communication layer for the people you want to use bitcoin with.\n\nYou can add your contacts, send them messages and bitcoin. You can pay any Lightning invoice. You can load bitcoin in the form of Cashu tokens onto an NFC card or send it to someone in a message — even to someone who doesn’t use Linky at all.\n\n![](https://m.stacker.news/159587)\n\nBut I’m also trying to build a certain degree of antifragility into it.\n\nFrom the beginning, I’ve been building Linky so that the app doesn’t depend on a particular operator. There are already other instances running on different domains. If my instance stopped working tomorrow, the network wouldn’t necessarily have to disappear with it.\n\nWe achieve this through a combination of three decentralized technologies:\n\n* **Cashu** for bitcoin,\n* **Nostr** for communication,\n* **Evolu** for data storage.\n\nWe use several other interesting technologies as well, but I don’t want to get into the technical details here. There are now six other developers working on Linky. One of them is a close friend of mine who has been improving the app very intensively, primarily on the technical side.\n\nWhat started as a funny vibecoded app is gradually becoming a serious project.\n\nAround 250 people are currently testing Linky in the local group, and several hundred more users are using it.\n\n## Individuals\n\nPeople use Linky because they like it.\n\nThanks to its simplicity and steadily increasing reliability, it is gradually becoming the primary bitcoin wallet for many people.\n\n**However, most people still don’t actually need a lightning wallet.** 😢\n\nYou can build a great wallet. You can onboard merchants. You can explain the benefits of bitcoin to people.\nBut if they have no reason to use bitcoin, all of those things will remain just flashes of activity.\n\n## Proxy Payments\n\nRecently, however, we managed to create a feature that I think can at least partially solve this problem. We call it **proxy payments**.\n\nIn the Czech Republic, people increasingly use QR codes for bank transfers. You can find them in online shops as well as physical stores.\n\nFor users, this is still somewhat less convenient than paying by card, but merchants love it because they don’t have to pay card-network fees.\n\nToday, I can pay with bitcoin at any of these businesses. No fees and no KYC.\n\nI scan the payment QR code using Linky - just as if I were paying a lightning invoice. Linky offers me the option to send the payment request to my contacts.\n\nI select several friends and send them the offer.\n\nWhoever accepts it first receives the payment details from the QR code. They pay the merchant from their bank account, and I send them sats in return.\n\n![](https://m.stacker.news/159589)\n\n## Does it worth the effort?\n\nMaybe this sounds like a pointless detour. Why would I ask someone else to pay by bank transfer on my behalf when I could simply pay myself?\n\nFor me, it’s useful because I don’t have to hold fiat that is losing value.\n\nFor my friends, it’s useful because they don’t have to use an exchange, pay fees, or expose their personal information. They acquire bitcoin in an interactive way — usually in small amounts.\n\nAs a side benefit for everyone, there is the more abstract fact that you are building the bitcoin network and thereby helping ensure that you’ll be able to use bitcoin in the future as well.\n\nTo use proxy payments comfortably, you need roughly two or three people. Most payments are completed within two minutes. It’s not as direct or fast as paying by card, but it works surprisingly well.\n\nLinky is showing people new ways to use bitcoin.\n\n**Come help us test and build our shared bitcoin network. 🙏**",
-      "sats": 8328,
+      "id": "1590507",
+      "title": "Botswana Music Guitar - Ronnie -\"Happy New Year\"!",
+      "url": "https://youtu.be/Tx4cRw6TIIg",
+      "text": "",
+      "sats": 181,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 28,
-      "createdAt": "2026-10-01T06:41:23.931Z",
+      "ncomments": 0,
+      "createdAt": "2026-10-07T11:36:48.789Z",
       "user": {
-       "name": "hynek"
+       "name": "OT"
       },
-      "subName": "AGORA"
+      "subName": "Music"
      },
      {
-      "id": "1590266",
-      "title": "Nike overpaid $7.9 billion buying back its own stock",
-      "url": "https://protos.com/nike-overpaid-7-9-billion-buying-back-its-own-stock/",
-      "text": "> Sportswear company Nike [spent](https://s1.q4cdn.com/806093406/files/doc_financials/2026/ar/Nike-Inc-2026-10K.pdf) roughly $12.1 billion on buybacks for stock that would now be worth about $4.2 billion.\n>\n> The company paid an average $97.57 apiece for 124.4 million of its own shares since June 2022, and its stock opened for trading today at $33.70, leaving Nike’s purchases with a $7.9 billion opportunity cost.\n>\n> Technically, Nike retired the shares it repurchased, so although it doesn’t literally have a loss on its investment, realized or otherwise, the math is otherwise identical. Its unfortunately timed purchases are irreversible.\n>\n> [**...read more at protos.com**](https://protos.com/nike-overpaid-7-9-billion-buying-back-its-own-stock/)",
-      "sats": 658,
+      "id": "1590461",
+      "title": "introducing ⚡️PlebTalk - ElevenLabs Demo Day submission",
+      "url": "https://x.com/plebtv_/status/2107753359293690130",
+      "text": "![](https://plebtv.com/m/pml_Xfu316feH4kqu9jOCreEwXdROQGNr5DS.mp4)\n\n# ⚡️ PlebTalk\n\nBeen wondering what happens when video stops being a file you scrub through and starts feeling more like a space you can move through with your voice.\n\nSo for the @ElevenLabs Demo Day, we built a little experiment into PlebTV called **PlebTalk**.\n\nIt sits directly on top of the video player and lets you ask things like:\n\n* “Who is speaking?”\n* “What are they talking about?”\n* “Why does this matter?”\n* “Where do they talk about Lightning?”\n* “Fast forward to the part about agent payments.”\n\nAnd it can actually move the player to the right moment.\n\nUnder the hood we're using:\n\n* **ElevenLabs Scribe v2** for timestamped video transcripts\n* **Scribe Realtime** for the viewer's voice\n* a **PlebTV intelligence layer** for retrieval, speakers, projects, events, channel context, playback state, linked sources and cross-video context\n* **GPT-6.1 Sol** for reasoning + synthesis\n* **ElevenLabs TTS** to talk back\n* deterministic playback controls tied to real transcript timestamps\n\nStill very early, big thank you to **ElevenLabs** for giving us the opportunity to build with their stack and push on the idea a little. \n\n**If we get selected we get to present in NYC 😅**",
+      "sats": 191,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-06T23:21:03.137Z",
+      "ncomments": 0,
+      "createdAt": "2026-10-07T09:19:51.484Z",
       "user": {
-       "name": "0xbitcoiner"
+       "name": "Car"
       },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1532071",
-      "title": "Wasabi Wallet - Privacy by Default",
-      "url": "https://wasabiwallet.io/",
-      "text": "Welcome to the coinjoin territory, anon. Post your questions here, and I will answer them.\n\n\n![](https://m.stacker.news/149538)",
-      "sats": 2543,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 46,
-      "createdAt": "2026-07-24T22:47:04.833Z",
-      "user": {
-       "name": "Kruw"
-      },
-      "subName": "Coinjoins"
+      "subName": "AI"
      }
     ]
    }
