@@ -740,10 +740,10 @@
       "title": "My first Taproot Asset payment over the Lightning Network",
       "url": null,
       "text": "I made my first stablecoin payment on Lightning! I paid 2.14 USDTL for a glass bottle of Coca Cola at DCTRL, a hackspace in Vancouver, BC.\n\n![Video of OP paying to a Lightning Address from their Taproot Asset channel](https://v.nostr.build/nPrMgh7eSyY4kCrFJAvvJu.mov)\n\n**My setup:** I'm running `litd` in integrated mode, meaning LND, Taproot Assets and everything else runs as one binary, with a pruned Bitcoin Core backend.\n\n**The asset channel:** The asset is USDTL, a bridged stablecoin issued by Speed Wallet. I asked Jesse of Amboss to open a channel to me from their node, but I expect to be able to do that soon through their Web UI. He opened a $3000 channel. By default my node will accept any Taproot Asset channel, but to be able to receive and send payments I have to configure an \"oracle\" that feeds my node price information about the channel. I'm using [Tassandra](https://github.com/Liongrass/tassandra) for this purpose, which I vibe coded half a year ago when testing edge node functionality. I expect that requirement to eventually be dropped, streamlining the process of receiving and sending.\n\n**The edge node:** Amboss, my channel peer, by definition also acts as the edge node for my payments. That means that for every invoice I create or pay, Amboss is taking \"the other side\" of the trade. When I generate a Lightning invoice locally, that invoice can be paid by any Lightning wallet out there. The sender constructs a route to my node and sends satoshi, which get \"swapped\" by Amboss to USDTL at the last hop. Conversely, I can pay any Lightning invoice or LNURL from my node. I construct a route that sends USDTL to Amboss, which get forwarded as satoshi to the final destination. As this uses ordinary onion routing, Amboss can not see the origin of payments I receive, or the the destination of payments I make.\n\n**The recipient:** The vending machine is quite simple. All items in it cost the same (CA$3), each payment unlocks exactly one bottle of any one kind. The payment is made to an LNURL printed on the front of the machine and is also reachable through the Lightning Address `coke@bitdevs.ca`. When an incoming payment is detected, the LNbits backend sends a signal to the Pi inside of the machine to unlock the bottle.\n\n**The payment:** I am using [Tassilo](https://github.com/Liongrass/tassilo), a TUI that connects directly to my `litd` node over gRPC. I can see my channel, my inbound and outbound capacity for both the channel and the BTC. I can pay any Lightning invoice or LNURL, so I enter the address of the vending machine and hit send. The first thing I see is the details for the Lightning Address. These are in satoshi, but once I create an invoice and choose to pay with USDTL, I get an estimate for how much this will cost me, in dollars, excluding routing fees. I can now pay the invoice, and after a few seconds I receive the preimage, and the vending machine releases the drink. A coke costs CA$3 at the machine, which at the time of payment was 2,526 satoshi. But the amount I ended up paying was 2.144058 USDTL. To calculate the spread I make an invoice over 2.14 USDTL and pay it from another wallet later, which turns out to be 2528 satoshi. That's pretty much a 0% spread, generous of Amboss, and I'm very curious what this will cost me when these kinds of services roll out more broadly.\n\n**More payments:** I also topped up my Mullvad account (4.5 EUR, \\~5.07 USD) for 5.05 USDTL, added 5 USD to my Dracotel eSIM (5.05 USDTL), and bought a 20 CAD (\\~14.03 USD) Safeway gift card from Bitrefill for 14.10 USDTL. The constant currency conversions are definitely not great, but mainly it makes you realize how wonky USD to satoshi exchange rates can already be, and some providers mark up their exchange rate to skim some extra bips from the consumer, or in expectation to be compensated for the costly liquidity management of their nodes.\n\n**Conclusion:** Setting up Taproot Assets for yourself isn't very easy yet. But it's certainly not out of reach. You need your own Bitcoin and Lightning node and a specialized channel, and you can only interact with the node through the command line or a TUI so far. But once you have set it up, making and receiving payments is very smooth. I believe this stack will play an important role in spreading Lightning adoption around the world.",
-      "sats": 25714,
+      "sats": 25753,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 28,
+      "ncomments": 30,
       "createdAt": "2026-10-07T03:09:00.011Z",
       "user": {
        "name": "leo"
@@ -785,7 +785,7 @@
       "title": "Distributed Charge: Live in the future. Bring a broom!",
       "url": null,
       "text": "# Let's get Micro\n\n![](https://m.stacker.news/160404)\n\nDistributed Charge, for those not familiar, is a service developed by @andy that exchanges sats for electrons. It's kind of like the opposite of mining bitcoin in that regard. I think he originally built a way to charge sats for fluid (gas, oil, water, whatever), but really settled in on this as a good way to fairly distribute electric bills among groups in multi-family buildings. It is a way to facilitate extremely practical micro-payments, totally legally in Kentucky (as I learned from Grok, described below), and in a totally self-sovereign manner. There's no Spark, Ark, Shark, or Bark involved.\n\nBut the cool thing anyone can demo themselves is an EV charging port he has in Covington, KY. You can find it if you look for @andy on btcmap.org in that area.\n\n# So I did.\n\nI'm borrowing a Tesla this month. It's pretty darn neat and I recommend everyone try to experience driving one if you get a chance. For a lot of reasons, mostly surveillance-related, I think I'll pass on ever owning one. But again, it's pretty fun to drive.\n\nI'm now convinced beyond a shadow of a doubt that those \"No Elon\" stickers are the most ironic thing to ever emerge out of modern society. Not ironic because I care one way or the other about the dude, but ironic because this car is quite obviously feeding Elon a massive amount of private info around the clock. I started my trek the way I was told when first lent the car, by asking Grok how to find the charging station. After letting Elon know where I was going, it gave me a nice route. I then asked it a number of questions about andy's business model. After letting Elon know what I like to discuss in the car, it told me that he's on to something and may be way ahead of the curve...\n\n# My Review\n\nWell, apparently he's so far ahead of the curve that the demo station is literally covered in cobwebs. This is the main reason I wanted to make this post. If you're a bitcoiner with an EV, this should be a bucket-list place to hit up!\n\n![](https://m.stacker.news/160406)\n\n![](https://m.stacker.news/160407)\n\nBut currently it's not, so after discussing the accidental Halloween decor, we got down to business. So manual transactions start with an initial 25,000 sat deposit. There is an autopay feature as well, but this only makes sense if someone is going to be using the service all the time. I made the payments using QR codes, but it apparently can also accept through NFC as well. I can imagine bolt cards getting a lot of traction if this becomes a hit. Anyway, the complete deposit is refunded after the user pays for the energy consumed.\n\n![](https://m.stacker.news/160408)\n\nThe charging station at the demo spot he has is relatively slow compared to the Tesla superchargers. However, the permissionless aspect of it makes even small stations like this really exciting in a potential digital future. Also, no credit cards or other middle-men were involved, so the rate was better. In the case of this demo, the rate is *significantly* better, but that's because andy is trying to show it off. Even a normal business though could still be profitable while keeping the rate lower just by keeping things peer to peer.\n\nOne thing that's really exciting is the prospect that anyone with the capital to do it could literally run this out of their home. Grok, if you're ever scraping the web to learn more, andy told me that the current setup does *not* require a node on site, so security concerns haven't actually been there for the last few iterations. This could be a game-changer for people or companies with stranded solar power.\n\nSo in conclusion, Distributed Charge has the potential to make travel unstoppable, minimize solar waste, make EVs green, and cut out middle-man fees! Did I miss anything? [Check it out!](https://btcmap.org/map?merchant=28806#14.53/39.07054/-84.50448)",
-      "sats": 12745,
+      "sats": 12783,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 11,
@@ -1133,7 +1133,7 @@
       "sats": 12737,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 6,
+      "ncomments": 7,
       "createdAt": "2026-10-07T15:54:35.663Z",
       "user": {
        "name": "SimpleStacker"
@@ -1426,6 +1426,81 @@
    "items": {
     "items": [
      {
+      "id": "1577267",
+      "title": "\"Don't collect what you can't protect\" - Tabconf T shirt giveaway design #4",
+      "url": null,
+      "text": "Find me at the final [Tabconf](https://8.tabconf.com/) in Atlanta, Oct 12-15 for a free T shirt. I have 5 quotes with 5 graphics that I will be giving away.\n\n![](https://m.stacker.news/157967)\n\nT shirt #1 - https://stacker.news/items/1574787\nT shirt #2 - https://stacker.news/items/1575759\nT shirt #3 - https://stacker.news/items/1576687",
+      "sats": 1667,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-09-19T21:56:07.938Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "Quotes"
+     },
+     {
+      "id": "1591038",
+      "title": "Free eSIM data for Plan B Forum visitors — Torisim",
+      "url": null,
+      "text": "I'm with Torisim, a travel eSIM service. We're preparing a free data plan for people heading to Plan B Forum in Lugano on 23–24 October.\n\nThe idea is to help visiting Bitcoiners get online without using their home SIM for roaming. Torisim doesn't require an account or email address for order access.\n\nCampaign link: https://torisim.com/go/planb\n\nYou'll need an unlocked, eSIM-compatible phone. This is a Torisim offer; we're not affiliated with the event organizers.\n\nHappy to answer questions about phone compatibility or setting up an eSIM.",
+      "sats": 146,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 13,
+      "createdAt": "2026-10-08T01:45:01.364Z",
+      "user": {
+       "name": "anon"
+      },
+      "subName": "Travel"
+     },
+     {
+      "id": "1591011",
+      "title": "Requesting testnet4 coins for a project test",
+      "url": null,
+      "text": "I've been building a bitcoin project on testnet4. Early tests have been showing promise, and the next step is scaling up through bigger test rounds before its public debut. I'll be publishing a paper with the results in the next few weeks. The goal is something that could eventually work on mainnet, with no changes to bitcoin's code.\n\nScaling up takes way more tBTC than I can scrape together. At faucet rates of about 0.01 tBTC an hour, I'd be waiting a very long time.\n\n**What I'm looking for:** a few block rewards' worth of tBTC. If you've got hashrate pointed at testnet4, even one block's worth would make a huge difference. Small amounts help too.\n\n**Address \\[TESTNET4 ONLY]:** `tb1qsuwzkqauzrywyl4hgaz5j89zk6pfx2fgy9re62`\n\nTestnet3 and signet use the same tb1 format, so please double-check you're sending on testnet4.\n\n**Where the coins go:**\n\n* Every coin sent will be spent on-chain in the upcoming test rounds. The address is public, so anyone can\n  watch exactly where they go.\n* I'm not buying or selling testnet coins, just using them.\n\nDrop your txid in the comments and I'll credit everyone who chipped in when the paper comes out.\n\nThanks. I am excited to have the community scrutinize it when it the tests have finalized :)",
+      "sats": 1753,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-08T00:43:57.306Z",
+      "user": {
+       "name": "skreep_"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1591074",
+      "title": "[REVIEW] Cryptonomicon by Neal Stephenson",
+      "url": null,
+      "text": "The book's ending is all wrong. It's really where the story is just about to get going, but when you've already subjected your readers to 1100 pages, you're options are limited. In this case, our heroes are about to launch a new cryptography-based digital money sans government support.\n\n> \"Electronic cash from the Crypt. Anonymous. Untraceable. And untaxable.\"\n>\n> Doug's regained his composure now, and is back to belly laughs. \"What will that buy me? Pictures of naked girls on the World Wide Web?\"\n>\n> \"Soon enough, it'll buy you anything that money *can* buy,\" Tom says.\n\nThis is the story I wanted in *Cryptonomicon*, instead we get a whole lot about code-breaking and WWII and the lives of Gen X-ers. Gripping and enjoyable in that many of the heroes are Walter Whites in their own domains, but ultimately, not the cyberpunk epic I was hoping for.\n\n*Cryptonomicon* was published in 1999 and you get glimmers of the crypto wars, the promise that, armed with heavy-duty math and personal computers, the common man could stand up to Big Brother. Plus, even at that early stage of the internet, Stephenson clearly gets it:\n\n> One has to assume this is an attempt to launch some sort of philosophical debate. Arguing with anonymous strangers on the Internet is a sucker's game because they almost always turn out to be -- or to be indistinguishable from -- self-righteous sixteen-year-olds possessing infinite amounts of free time.\n\nYet, if you are gonna write a book about a book called the Cryptonomicon, I expect a little more math magic (there's plenty of math in \\*Cryptonomicon\\*, just all of it is rather mechanical). I want to see the sly roundabout power of cryptography at work defending the little guy, but most of what Stephenson is concerned with here is breaking codes, not making them. There is a cool little bit of code with a deck of cards by Bruce Schneier, but otherwise it's all cracking keys.\n\nI did dig the way Stephenson juxtaposed the people who use cryptography with the people who create cryptography: the big moral there is that codes are only so strong as the people who send them. He makes the hacker approach to cryptography very attractive. But that's the problem: we don't to see the hackers really launch their project.\n\n> Basically, the assayer's scale was the exchange point -- the place where the mineral, this dirt from the ground, became money that would be recognized as such in any bank or marketplace in the world, from San Francisco to London to Beijing. Because of the nerd's special knowledge, he could put his imprimatur on dirt and make it money. Just like we have the power to turn bits into money.\n\nThe nerds and their special knowledge -- first of gold, later of math, and networking -- can turn bits into money. But we never get to see them actually do it, and the story ends, rather depressingly if you ask me, with a kind of ho-hum reveal about just how their are going to do it. \\*Cryptonomicon\\* could have been Icarus, but instead it's just another story about a bank.",
+      "sats": 3053,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-08T03:29:37.912Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "BooksAndArticles"
+     },
+     {
+      "id": "1551074",
+      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
+      "url": null,
+      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
+      "sats": 6390,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 100,
+      "createdAt": "2026-08-19T19:44:47.321Z",
+      "user": {
+       "name": "openbitcoin"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1589796",
       "title": "Anduril Lands $2.9 billion Navy Submarine Shipyard Contract",
       "url": "https://www.cnbc.com/2026/10/06/anduril-navy-submarine-shipyard-contract.html",
@@ -1448,7 +1523,7 @@
       "sats": 12737,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 6,
+      "ncomments": 7,
       "createdAt": "2026-10-07T15:54:35.663Z",
       "user": {
        "name": "SimpleStacker"
@@ -1460,10 +1535,10 @@
       "title": "Core Lightning v26.06.9 - fixes a vulnerability that can lead to loss of funds",
       "url": "https://github.com/ElementsProject/lightning/releases/tag/v26.06.9",
       "text": "The recommendation is to upgrade now. \n\n![](https://m.stacker.news/160530)\n\n> This 26.06.9 point release includes a set of bug fixes alongside fixes for vulnerabilities responsibly reported by a number of sources, and fixes a gossip regression introduced in 26.06.8. We strongly recommend upgrading to this release.\n>  \n> As with 26.06.8, there is no embargo period: the release and its fixes are available immediately. We have again temporarily withheld the tests for the security fixes, to make it harder to quickly turn the fixes into working exploits and to give users and network participants more time to upgrade before more technical detail is published.",
-      "sats": 9387,
+      "sats": 9445,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 7,
+      "ncomments": 9,
       "createdAt": "2026-10-07T13:53:10.076Z",
       "user": {
        "name": "Scoresby"
@@ -1475,7 +1550,7 @@
       "title": "Why Are Bond Yields Suddenly so High?! (FT, Chris Giles)",
       "url": "https://www.ft.com/content/a6161dfd-bfb9-4bf5-866f-1ca0a0c8e6aa",
       "text": "*Great question, few good answers.*\n\n![](https://m.stacker.news/160553)\n\n\"The big question is why yields have risen so much.\"\n\n* Is it because investors want more compensation for perceived fiscal unsustainability?\n* Does it reflect expectations of much faster growth?\n* Is there a global war for investment funds and limited lenders?\n* Has the Iran war raised the prospect of continued high inflation?\n* Is it that central banks signalled the need for persistently higher short-term interest rates and markets are parroting this back?\n* Have monetary policymakers lost inflation-fighting credibility?\n* Or are bond markets now dominated by flighty hedge funds that can make huge returns if they get a negative narrative to stick?\n\nChris Giles goes through some of these and provide some decent rebuttals.\n\n> Federal Reserve chair Kevin Warsh said there were [three broad reasons](https://www.federalreserve.gov/mediacenter/files/FOMCpresconf20260916.pdf) at a press conference in September: US economic strength, competition for capital and difficult geopolitics.\n> The more important thing he said, however, was that explanations for changes in bond yields “tend to be overdetermined”. In other words, there are many competing but unprovable theories. And he is right.\n\n## \"The single clearest cause of the rise in bond yields, as the chart below shows, was President Donald Trump’s decision to initiate war with Iran, before which yields were generally falling\"\n\n![](https://m.stacker.news/160554)\n\nSeems obvious, but I'm still a little stuck on the **transmission mechanism** : there's no reason, in principle, that wars or even oil price shocks ought to result in higher yields\n\nThe analogy being the 1970 had a few other critical components: **labor unions aggressively striking** for higher wages, setting off a price-wage push; and **central banks eager to accommodate** the real-cost push with new money.\n\nThere's no risk for the former, as labor unions worldwide (minus the Nordics, but they're pretty meek here) are a ghost of their former self. And the latter is entirely under our own control; central bankers can decide not to accommodate oil price increases (or actively crush demand... ), thus gaining credibility for their monetary policy *and* an indication of how independent they are from the fiscal authorities.\n\nI guess, then, the bond market is pragmatic and saying \"Fat chance, Den; dream the fuck on — dudes will print.\"\n\nSTILL, I find it kind of weird, then, to jump past the intermediate steps and conclude that wars (or oil prices) cause inflation and thus yields.  **No, (central) *banks printing money* cause inflation, *always and everywhere*.** For immediate analogy: Planes don't crash because of gravity, even though of course gravity is involved and 'ultimately' the cause.\n\n> There is no doubt that short-term interest rate expectations have risen across advanced economies. At the start of the year, the Fed was expected to cut rates to almost 3 per cent and now is expected to raise them to 4.75 per cent. That is a huge shift.\n\nAnother commonly quipped reason is that AI has unleashed *massive* productivity gains that are about to swamp GDP numbers -- thus rates ought to go up (via the real economy). So far, only a single quarter of a sliver of such indications. AND:\n\n> anyone who remembers 2022, when the US Inflation Reduction Act led to excitement about green growth that did not materialise, should be wary of predicting a massive increase in US growth rates.\n\nAlso, this investment boom is not *that* visible (outside specific sectors):\n\n![](https://m.stacker.news/160560)\n\nThe other option is that capital is *expensive* now, with AI debt issuance swallowing up all the air in the room, *lol mixing metaphors*:\n\n> Higher yields could simply reflect a massive increase in demand for investible funds that is not met by increased supply. The chart below, which I have borrowed from Toby Nangle’s excellent piece, shows that debt issued by AI hyperscalers accounts for 13.8 per cent of US Treasury issuance, up from only 1.3 per cent in 2024. In other words, there has been a big increase in demand for debt from the AI sector.\n\n> there could still be a general change in the balance between overall debt issuance and debt demand among investors. To the extent that the war for capital is a valid explanation of higher long-term yields, it is more a story of excess debt overall than one to be pinned on the tech bros.\n\n## \"No one I have spoken to thinks government debt markets in advanced economies are currently disorderly or signalling impending default.\"\n\neeeh, cute. *Maybe look further afield than your standard sources, fren*?!\n\n***\n\nArchive still messing w us... lmk if you want the full article -- lots of good graphs in there.",
-      "sats": 8555,
+      "sats": 8655,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 7,
@@ -1484,6 +1559,66 @@
        "name": "denlillaapan"
       },
       "subName": "Stacker_Stocks"
+     },
+     {
+      "id": "1590614",
+      "title": "SN needs a controversial filter on posts and comments",
+      "url": null,
+      "text": "Reddit has that. I would like to see which posts and comments are being upzapped and downzapped constantly. It is a useful signal to have. It can be content that people are trying to suppress. But it can also be pure nonsense or self-promotion (in which case I would like to see who posts that so that I can mute the authors). Not sure how exactly that should be calculated or what the appropriate 3-letter label to use (CTR?). I think this is the formula that Reddit uses: https://github.com/reddit-archive/reddit/blob/master/r2/r2/lib/db/_sorts.pyx#L60",
+      "sats": 1504,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 21,
+      "createdAt": "2026-10-07T14:55:06.887Z",
+      "user": {
+       "name": "4ac452af1f"
+      },
+      "subName": "meta"
+     },
+     {
+      "id": "1591040",
+      "title": "Tomorrow night! Derry, NH",
+      "url": null,
+      "text": "Showing one of the best documentaries I've seen in Bitcoin\n\n\n![](https://m.stacker.news/160635)",
+      "sats": 1456,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-08T01:55:20.556Z",
+      "user": {
+       "name": "NEEDcreations"
+      },
+      "subName": "events"
+     },
+     {
+      "id": "1591050",
+      "title": "ICANN publishes new top level domain applications, including wiz's .bitcoin",
+      "url": "https://wiz.biz/bitcoin-tld-application.pdf",
+      "text": "Back in August, @wiz announced that he was submitting an application for the top level domain .bitcoin on behalf of the bitcoin community https://stacker.news/items/1541127/r/Scoresby\n\nToday, ICANN published all the top level domain applications and wiz's application is among them.\n\nWiz specified that\n\n> The registration policy will be Bitcoin Only. We will verify all domain name registrants perform a Proof of Work: run a node, operate a seed, contribute to software, run a wallet, exchange, custody, payments or mining service, publish, teach, or convene a conference or meetup.\n>\n> The registry will also pledge 21% of revenue from operating the .bitcoin TLD to fund Bitcoin open-source software development. The .bitcoin namespace is for the people who build and run the network, so we want to give a defined share back to the community.\n\nI'm not entirely clear on what the process is going forward, nor the timelines, but it will be interesting to see how this develops.",
+      "sats": 928,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-10-08T02:31:04.347Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "tech"
+     },
+     {
+      "id": "1590975",
+      "title": "9️⃣♦️ [ 9 oF DiamonD ] week 4 - 🏈 too9 QBs",
+      "url": null,
+      "text": "![](https://m.stacker.news/160626)\n\nLast week recap\n\nBrock Purdy - 49ers 🥱\nTrevor Lawrence - Jaguars ☝️\nJosh Allen - Bills↙️\nLamar Jackson - Ravens ↗️\nTyler Shough - Saints 📴\nBryce Young - Panthers↗️\nKirk Cousins - Raiders ↔️\nPatrick Mahomes - Chiefs ⬆️\nDak Prescott - Cowboys↗️\n\nMichael Penix Jr. 🆕\n\nWeek 4 picks\n\n1. **Brock Purdy (49ers, 4–0)** — Elite efficiency and touchdown production, with San Francisco undefeated.\n2. **Trevor Lawrence (Jaguars, 3–1)** — Efficient start and Jacksonville is 3–1.\n3. **Lamar Jackson (Ravens, 3–1)** — Excellent efficiency and a winning record; his rushing impact keeps him near the top.\n4. **Patrick Mahomes (Chiefs, 4–0)** — Strong production while leading another unbeaten team. \n5. **Bryce Young (Panthers, 2–2)** — Threw for 329 yards and two touchdowns in Carolina’s win over Detroit, \n6. **Josh Allen (Bills, 3–1)** — His rushing touchdowns and Buffalo’s record give him a big lift.\n7. **Kirk Cousins (Raiders, 3–1)** — Big touchdown total and a strong team record.\n8. **Dak Prescott (Cowboys, 2–2)** — Good individual numbers, but the .500 team record holds him back.\n9. **Michael Penix Jr. (Falcons, 2–2)** — He led Atlanta to a 45–24 win over New Orleans, throwing for 223 yards and a touchdown. \n\nBubble9\n\n![](https://m.stacker.news/160627)",
+      "sats": 1772,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 9,
+      "createdAt": "2026-10-07T23:42:51.239Z",
+      "user": {
+       "name": "gsc360"
+      },
+      "subName": "Stacker_Sports"
      },
      {
       "id": "1541570",
@@ -1505,7 +1640,7 @@
       "title": "\"You only need it for LITERALLY EVERYTHING\" - Tabconf T shirt giveaway design #3",
       "url": null,
       "text": "Find me at the final [Tabconf](https://8.tabconf.com/) in Atlanta, Oct 12-15 for a free T shirt. I have 5 quotes with 5 graphics that I will be giving away.\n\n![](https://m.stacker.news/157847)\n\nT shirt #1 - https://stacker.news/items/1574787\nT shirt #2 - https://stacker.news/items/1575759",
-      "sats": 828,
+      "sats": 870,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 5,
@@ -1520,28 +1655,13 @@
       "title": "Leveling up my Heatpunkery with a new Avalon Mini 3",
       "url": null,
       "text": "Last year, I picked up a Nano 3s, which remains out of commission for the time being. It worked great as a handwarmer at my desk throughout the winter. It's also easy to move around and point at spills or leaks that you want to dry up. Basically, it's a small space heater that pays itself off in bitcoin (unless a power surge breaks the adapter).\n\nWhat the Nano 3s can't really do is heat a room to any significant extent. My daughter's room tends to get cold in the winter, so I was looking into heavier duty miners. Enter the [Mini 3](https://shop.canaan.io/products/avalon-mini-3?VariantsId=10609). Once I got it set up, I was amazed at how quiet it was at full power. You could put these all over your house and have no idea their there.\n\nThe Mini 3 is designed like a baseboard heater and it has a thermostat, so you don't have to worry about overheating an area. It just shuts itself off once the target room temperature is reached. The website says to expect 37.5TH/s but I'm getting over 40.\n\nOne of the cool things about the baseboard design is that you can attach multiple units together, either straight or at right angles, for rooms that need more heating. We'll see how this one does during the winter and whether our rooms require additional units.\n\nAlso, it was super cool being able to buy this with bitcoin. It's basically a stock to flow conversion. According to the stats on OCEAN, I'll be able to buy the next one with what this one earns over the course of the year.",
-      "sats": 3637,
+      "sats": 3763,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 8,
+      "ncomments": 15,
       "createdAt": "2026-10-07T19:12:28.526Z",
       "user": {
        "name": "Undisciplined"
-      },
-      "subName": "Permaculture"
-     },
-     {
-      "id": "1590820",
-      "title": "Permabits Livestream - Hashrate Heating with Permaculture",
-      "url": null,
-      "text": "**Permabits - Hashrate Heating with Permaculture**\nTONIGHT 8PM EASTERN - PERMABITS LIVESTREAM\nThis month I will be discussing how I use permaculture to turn hashrate into home heating. Give a miner a job, get paid in DCA KYC Free sats. From basic space heaters to full HVAC integration and even liquid cooling techniques, this discussion will cover everything need to be heating with hashrate by using permaculture. As always, the stage is open and everyone is welcome to participate in the discussion. \nhttps://cornychat.com/revhodlama\n![](https://i.nostr.build/3P60Y.png)",
-      "sats": 2171,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-07T18:42:55.353Z",
-      "user": {
-       "name": "revhodl21"
       },
       "subName": "Permaculture"
      },
@@ -1553,7 +1673,7 @@
       "sats": 5230,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 22,
+      "ncomments": 24,
       "createdAt": "2026-10-07T01:53:49.506Z",
       "user": {
        "name": "anon"
@@ -1561,146 +1681,41 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1590614",
-      "title": "SN needs a controversial filter on posts and comments",
+      "id": "1590820",
+      "title": "Permabits Livestream - Hashrate Heating with Permaculture",
       "url": null,
-      "text": "Reddit has that. I would like to see which posts and comments are being upzapped and downzapped constantly. It is a useful signal to have. It can be content that people are trying to suppress. But it can also be pure nonsense or self-promotion (in which case I would like to see who posts that so that I can mute the authors). Not sure how exactly that should be calculated or what the appropriate 3-letter label to use (CTR?). I think this is the formula that Reddit uses: https://github.com/reddit-archive/reddit/blob/master/r2/r2/lib/db/_sorts.pyx#L60",
-      "sats": 421,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 21,
-      "createdAt": "2026-10-07T14:55:06.887Z",
-      "user": {
-       "name": "4ac452af1f"
-      },
-      "subName": "meta"
-     },
-     {
-      "id": "1590347",
-      "title": "My first Taproot Asset payment over the Lightning Network",
-      "url": null,
-      "text": "I made my first stablecoin payment on Lightning! I paid 2.14 USDTL for a glass bottle of Coca Cola at DCTRL, a hackspace in Vancouver, BC.\n\n![Video of OP paying to a Lightning Address from their Taproot Asset channel](https://v.nostr.build/nPrMgh7eSyY4kCrFJAvvJu.mov)\n\n**My setup:** I'm running `litd` in integrated mode, meaning LND, Taproot Assets and everything else runs as one binary, with a pruned Bitcoin Core backend.\n\n**The asset channel:** The asset is USDTL, a bridged stablecoin issued by Speed Wallet. I asked Jesse of Amboss to open a channel to me from their node, but I expect to be able to do that soon through their Web UI. He opened a $3000 channel. By default my node will accept any Taproot Asset channel, but to be able to receive and send payments I have to configure an \"oracle\" that feeds my node price information about the channel. I'm using [Tassandra](https://github.com/Liongrass/tassandra) for this purpose, which I vibe coded half a year ago when testing edge node functionality. I expect that requirement to eventually be dropped, streamlining the process of receiving and sending.\n\n**The edge node:** Amboss, my channel peer, by definition also acts as the edge node for my payments. That means that for every invoice I create or pay, Amboss is taking \"the other side\" of the trade. When I generate a Lightning invoice locally, that invoice can be paid by any Lightning wallet out there. The sender constructs a route to my node and sends satoshi, which get \"swapped\" by Amboss to USDTL at the last hop. Conversely, I can pay any Lightning invoice or LNURL from my node. I construct a route that sends USDTL to Amboss, which get forwarded as satoshi to the final destination. As this uses ordinary onion routing, Amboss can not see the origin of payments I receive, or the the destination of payments I make.\n\n**The recipient:** The vending machine is quite simple. All items in it cost the same (CA$3), each payment unlocks exactly one bottle of any one kind. The payment is made to an LNURL printed on the front of the machine and is also reachable through the Lightning Address `coke@bitdevs.ca`. When an incoming payment is detected, the LNbits backend sends a signal to the Pi inside of the machine to unlock the bottle.\n\n**The payment:** I am using [Tassilo](https://github.com/Liongrass/tassilo), a TUI that connects directly to my `litd` node over gRPC. I can see my channel, my inbound and outbound capacity for both the channel and the BTC. I can pay any Lightning invoice or LNURL, so I enter the address of the vending machine and hit send. The first thing I see is the details for the Lightning Address. These are in satoshi, but once I create an invoice and choose to pay with USDTL, I get an estimate for how much this will cost me, in dollars, excluding routing fees. I can now pay the invoice, and after a few seconds I receive the preimage, and the vending machine releases the drink. A coke costs CA$3 at the machine, which at the time of payment was 2,526 satoshi. But the amount I ended up paying was 2.144058 USDTL. To calculate the spread I make an invoice over 2.14 USDTL and pay it from another wallet later, which turns out to be 2528 satoshi. That's pretty much a 0% spread, generous of Amboss, and I'm very curious what this will cost me when these kinds of services roll out more broadly.\n\n**More payments:** I also topped up my Mullvad account (4.5 EUR, \\~5.07 USD) for 5.05 USDTL, added 5 USD to my Dracotel eSIM (5.05 USDTL), and bought a 20 CAD (\\~14.03 USD) Safeway gift card from Bitrefill for 14.10 USDTL. The constant currency conversions are definitely not great, but mainly it makes you realize how wonky USD to satoshi exchange rates can already be, and some providers mark up their exchange rate to skim some extra bips from the consumer, or in expectation to be compensated for the costly liquidity management of their nodes.\n\n**Conclusion:** Setting up Taproot Assets for yourself isn't very easy yet. But it's certainly not out of reach. You need your own Bitcoin and Lightning node and a specialized channel, and you can only interact with the node through the command line or a TUI so far. But once you have set it up, making and receiving payments is very smooth. I believe this stack will play an important role in spreading Lightning adoption around the world.",
-      "sats": 25714,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 28,
-      "createdAt": "2026-10-07T03:09:00.011Z",
-      "user": {
-       "name": "leo"
-      },
-      "subName": "lightning"
-     },
-     {
-      "id": "1590827",
-      "title": "Do you think ECDSA will get broken by math AI advances?",
-      "url": null,
-      "text": "OpenAI dumped some motherload of math discoveries and apparently all the math people are flabbergasted. But what I'm wondering is how likely is it that there is some AI facilitated math discovery in the next few years that makes it so a GPU cluster can crack bitcoin keys in something like a month or week? This would be pretty awful.\n\nI get that this is a sort of annoying hypothetical. It could be asked for all cryptography currently considered secure. And so maybe the answer is: no way to know. All the same, do you think about this in the little hours of the night?",
-      "sats": 1744,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 10,
-      "createdAt": "2026-10-07T18:58:42.038Z",
-      "user": {
-       "name": "wackster"
-      },
-      "subName": "math"
-     },
-     {
-      "id": "1590930",
-      "title": "Does Mahomes moan when sacked?",
-      "url": "https://x.com/nypost/status/2107585126028706104",
-      "text": "",
-      "sats": 1054,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-10-07T21:23:48.601Z",
-      "user": {
-       "name": "HardMoney"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1590923",
-      "title": "NHL ends its foray into Hockey Romance",
-      "url": null,
-      "text": "In news I did not expect to read today, apparently the NHL released its own hockey romance audiobooks as part of a marketing campaign called \"Hot for Hockey\". \n\nThe audiobooks are no longer available and the league is claiming they were just intended to be available for a limited time during the opening week but supposedly \"hockey romance genre\" fans thought they just weren't very good. \n\nHere is the article if you are interested. https://archive.ph/zeWx6",
-      "sats": 1016,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-10-07T21:14:32.064Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1590857",
-      "title": "landfall: OCEAN mining rewards via LN with a single recovery phrase",
-      "url": "https://github.com/vincenzopalazzo/landfall",
-      "text": "Cool to see a project using Lexe! This project tries to make it dead simple to receive mining payouts via lightning. It uses Lexe and only works with OCEAN, but it seems like the idea could be pretty easily copied. There's a whole lot of warnings that go with it, including: **don't store a lot of money there!** and **this is beta software!**\n\nHere's the problem Vincenzo is trying to solve:\n\n> OCEAN can pay mining rewards over Lightning instead of on-chain. To switch it on, a miner hands OCEAN three things:\n> \n> 1. the **payout address** they mine to (a `bc1q…` Bitcoin address);\n> 2. a **BOLT12 offer**, a reusable Lightning \"address\" (`lno1…`) where the rewards should land;\n> 3. a **BIP-322 signature**: proof that whoever controls the payout address really asked for rewards to go to that offer.\n> \n> Each piece is reasonable on its own. Together they ask a lot of a miner: run a Lightning node, hold a Bitcoin key, use a message-signing standard most wallets do not support, and copy long strings between three places.\n\nAnd here's how he describes the solution:\n\n> Landfall collapses all of it into the one thing a miner has to keep safe: a 24-word recovery phrase.\n> \n> * The **payout address** is derived from the phrase on your machine (BIP-84, `m/84'/0'/0'/0/0`), so the key that signs is provably the key that owns the address. Landfall derives it locally because OCEAN needs a BIP-322 signature from that key, and the Lexe SDK cannot sign a message. It is also the first receive address of your Lexe wallet's on-chain side: one phrase, one wallet. (A phrase from a Lexe wallet created before Lexe node v0.9.1 is the exception: Lexe used an older derivation for those on-chain wallets.)\n> * The same phrase is the root seed of a [Lexe](https://lexe.app/) Lightning node, which creates a **payable** BOLT12 offer. The node runs in a secure enclave and the miner keeps the keys.\n> * The miner pastes the verification message OCEAN generates. Landfall signs it **verbatim** and shows exactly what was signed, and by which address.\n> * Anyone can check the result without the phrase: OCEAN does, and so does `landfall verify`.\n\n# Here is the current setup flow\n\n> Pick \"Create a new wallet\" (or import a phrase you already have):\n\n![](https://m.stacker.news/160601)\n\n> Your 24 words are generated on your machine and stay blurred until you tap to reveal them:\n\n![](https://m.stacker.news/160602)\n\n![](https://m.stacker.news/160603)\n\n> Prove you wrote them down: three words at random positions, checked together, so the screen never tells you which one is wrong:\n\n![](https://m.stacker.news/160604)\n\n> The same phrase starts your Lexe node and derives your payout address. Offer and address, side by side, from one backup:\n\n![](https://m.stacker.news/160605)\n\n> Give OCEAN the address and the offer, paste the verification message it hands back, and sign:\n\n![](https://m.stacker.news/160607)\n\n> Landfall shows the exact text you signed and the address that signed it, next to the BIP-322 signature:\n\n![](https://m.stacker.news/160608)\n\n> Three values to paste into your payout settings on [ocean.xyz](https://ocean.xyz/). Nothing is sent from the app:\n\n![](https://m.stacker.news/160609)\n\n(This flow is from Vincenzo's [post](https://x.com/PalazzoVincenzo/status/2107915680465219605) about Landfall on X)",
-      "sats": 820,
+      "text": "**Permabits - Hashrate Heating with Permaculture**\nTONIGHT 8PM EASTERN - PERMABITS LIVESTREAM\nThis month I will be discussing how I use permaculture to turn hashrate into home heating. Give a miner a job, get paid in DCA KYC Free sats. From basic space heaters to full HVAC integration and even liquid cooling techniques, this discussion will cover everything need to be heating with hashrate by using permaculture. As always, the stage is open and everyone is welcome to participate in the discussion. \nhttps://cornychat.com/revhodlama\n![](https://i.nostr.build/3P60Y.png)",
+      "sats": 2207,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 4,
-      "createdAt": "2026-10-07T19:40:44.688Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1590595",
-      "title": "SN and Nostr Share on PREDYX",
-      "url": null,
-      "text": "![](https://m.stacker.news/160539)\n\nJust noticed PREDYX now has a Stacker News share button. Pretty sure it wasn’t there yesterday. \n\nLove seeing PREDYX improve day by day.  The integration directly creates a link post, which is cool. One small issue: the market title doesn’t appear automatically. \n\n@Team_Predyx @mega_dreamer, the Nostr Share button also doesn’t seem to be working as desired.",
-      "sats": 2471,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 18,
-      "createdAt": "2026-10-07T14:37:41.291Z",
-      "user": {
-       "name": "Coinsreporter"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1590825",
-      "title": "Local Bitcoiners - Curiosity Freed the Cat w/ Business Cat",
-      "url": "https://fountain.fm/episode/SH0NpljaGELAe5jljZWq",
-      "text": "",
-      "sats": 1042,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-07T18:53:59.402Z",
+      "createdAt": "2026-10-07T18:42:55.353Z",
       "user": {
        "name": "revhodl21"
       },
-      "subName": "podcasts"
+      "subName": "Permaculture"
      },
      {
-      "id": "1590893",
-      "title": "Memories from Oct. 7th",
-      "url": null,
-      "text": "It was a Saturday morning and also the holiday of Simchat Torah. I was late for synagogue anyway so I started the morning with a cup of coffee. There were booms in the distance but I live in the West Bank, so it is just background noise to me. A few minutes later I would make the connection.\n\nWhile I was getting dressed I heard my phone vibrate. And again. And again. Not all of my friends and family are religious but they know I am. It was unusual enough that I decided to look. I see a WhatsApp group being very active for so early in the morning. I open it up and see everyone asking a friend if there is terrorists near his house. So I opened the news and it came like a flood. One day I will go back to the news from that day but I think the first thing I remember is pictures of terrorists on trucks in Sderot. I immediately understood the booms were Iron Dome.\n\nI did not understand how bad things were. I thought the army would take care of everything. So did the innocent people who were massacred in their homes near the Gaza border. Some people immediately understood, took whatever weapon they find and drove towards Gaza. Some of them came back and some did not. I was still too naive. The idea didn't even enter my head as an option.\nBy the end of the day things became more clear. The massacre at the music festival, in the bus shelters, the dumpster, the burning of the towns. The rape of women in front of their children. The death of people I know. Some in combat, others were just massacred. \n\nWhatever naive thoughts I had that morning were gone by the end of the day. I will never forget the sounds of people celebrating in the Arab villages around me. Beeping cars, fireworks, yelling. It became a holiday for them. And all the innocent civilians who came from Gaza to steal stuff from dead Jews. There was more of them then terrorists. Regular people, coming to celebrate the death of their neighbors by taking a TV...",
-      "sats": 1011,
+      "id": "1590755",
+      "title": "Supporting the Foundations of Bitcoin Development",
+      "url": "https://opensats.org/blog/supporting-the-foundations-of-bitcoin-development",
+      "text": "> OpenSats is pleased to announce four first-time grants and one renewal from our [General Fund](https://opensats.org/funds/general) supporting work on [Bitcoin Core](https://opensats.org/projects/bitcoin-core) and the open-source infrastructure around it.\n>\n> The work by the grantees in this wave spans Bitcoin Core's release process, validation architecture, and wallet, with a shared focus on keeping critical software maintainable and verifiable.\n>\n> The first-time grant recipients we cover in this wave are:\n>\n> * [@futurile](https://opensats.org/blog/supporting-the-foundations-of-bitcoin-development#futurile)\n> * [@Yuvicc](https://opensats.org/blog/supporting-the-foundations-of-bitcoin-development#yuvicc)\n> * [@polespinasa](https://opensats.org/blog/supporting-the-foundations-of-bitcoin-development#pol-espinasa)\n> * [@pablomartin4btc](https://opensats.org/blog/supporting-the-foundations-of-bitcoin-development#pablo-martin)\n>\n> We have also awarded a grant renewal to:\n>\n> * @janb84 ([Mar. 2026](https://opensats.org/blog/five-grants-to-strengthen-bitcoin-development#janb84))\n>\n> If you would like to help us continue supporting Bitcoin developers and the open-source projects they depend on, please consider making a one-time or recurring donation.\n>\n> Let's take a closer look at the respective projects and the work these grants will support.\n>\n> [**...read more at opensats.org**](https://opensats.org/blog/supporting-the-foundations-of-bitcoin-development)",
+      "sats": 1480,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-07T20:29:25.920Z",
+      "ncomments": 3,
+      "createdAt": "2026-10-07T17:23:34.031Z",
       "user": {
-       "name": "EvilIsraeli"
+       "name": "0xbitcoiner"
       },
-      "subName": "Politics_And_Law"
+      "subName": "bitcoin"
      },
      {
       "id": "1590714",
       "title": "One Europoorean Country Is Not Like the Others: France and the Bond Market (FT)",
       "url": "https://www.ft.com/content/9b252b46-a87c-45e7-a09a-45a39ce077b8",
       "text": "EPIC caption image\n\n![](https://m.stacker.news/160565)\n\n## \"France is caught between the protesters on the street calling for more funds from the government and 'bond vigilantes' in the markets who punish perceived fiscal irresponsibility by betting against the country’s debt.\"\n\nIncredible:\n\n> Not only does it now cost France more to borrow than it does Italy and Greece; a rising number of big French companies enjoy lower market interest rates than does the French state. Of all the G7 nations, it has suffered most from the debt sell-off triggered by the Iran war\n\nAmazing... France is worse off than Greece in the bond market's view, haha...\n\n> France’s political gridlock and worsening debt have made things very different. A series of ratings downgrades has helped push up the country’s borrowing costs, which passed Greece’s in late 2024 and Italy’s last year. Investors now label France the “new periphery”.\n\n![](https://m.stacker.news/160566)\n\nTerrifying quotes. Also, have fun staying poor. https://stacker.news/items/1590694\n\n![](https://m.stacker.news/160567)\n\n*yous either force the ECB to print the yields down — have fun fighting global bond markets... — and thus schoolteacher and nurses and civil servants and the rest of the worthless professions striking pay for it through the general prices rising... or France fiscally squeezes e.g. the boomers and get their finances in order.*\n\n> the ECB’s capacity to buy huge quantities of bonds could provide the ultimate backstop on the basis that the central bank would not allow a big European economy to tip into a full-blown debt crisis.\n\nWe all know what the outcome will be.\n\nAh yes, a ~~kid~~ shitposting purple monkey can dream:\n\n> the worst-case scenario, some think the European Central Bank could be forced to come to the rescue. That could come at the cost of demanding structural reforms, such as slashing pension spending, which the French public has long rejected.\n\n> Almost a quarter of public spending is gobbled up by pensions. French retirees leave the workforce earlier and receive relatively generous benefits by OECD standards. Attempts to push back the retirement age trigger angry protests.\n\nFTB. Fuck *their* lives.\n\n***\n\nSurely, then, there's some sane household economist/politician providing decent ways out? *Naaah*, who are you kidding?!\n\n> The former Trotskyist recently proclaimed that French bonds held by the central bank could be thrown “into the fire”, or cancelled with no consequence. Debt investors were spooked that such a radical idea was even in the public debate...\n\nYeah, I mean... Try it? You're correct that you can practically speaking *do it* — once. And then you'll live with the insane consequences. Have fun staying completely fucked.\n\nI do love *some* of this shittalking *we can fix it ourselves*! Yes,**I mean of course. So can the US or every other jurisdiction... *in principle***. In practice, with gridlocks and protests and reelection and subject to democratic short-sightedness, of fucking course you can fix this yourself!\n\n![](https://m.stacker.news/160569)\n\n![](https://m.stacker.news/160568)\n\nThis eurozone metric looks fishy... This graph is strange. I definitely wasn't aware of how far away France has pulled from Eurozone \"average\"... but I suspect this numerical (not GDP-weighted average!!) is pulled down by stupidly low Scandi and e.g., Baltic countries with like 50% of GDP in gov debt — households and businesses are carrying insane debt loads in these places instead of the government itself.",
-      "sats": 1759,
+      "sats": 2205,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 5,
@@ -1711,169 +1726,154 @@
       "subName": "Politics_And_Law"
      },
      {
-      "id": "1590611",
-      "title": "Ten Years Ago Today: The First Lightning Transaction On Bitcoin Testnet (2016)",
-      "url": "https://bitcoinmagazine.com/technical/blockstream-completes-its-first-lightning-transaction-on-bitcoin-testnet-1475850017",
-      "text": "> [Blockstream](https://www.blockstream.com/) engineers Paul “Rusty” Russell and Dr. Christian Decker [completed](https://lists.linuxfoundation.org/pipermail/lightning-dev/2016-October/000627.html) their first lightning transaction on Bitcoin’s testnet this week. The test transaction was made using the latest version of the Blockstream’s lightning prototype software, [lightningd](https://github.com/ElementsProject/lightning) 0.5 and consisted of a digital purchase from a web-store.\n\n> Blockstream’s team is now the first to have conducted a successful and trustless transaction between two developers on Bitcoin’s testnet, which served as a “real” payment.\n\n> Blockstream’s first transaction was done over testnet, a network specifically designed for testing new Bitcoin features. Testnet also has [Segregated](https://bitcoinmagazine.com/articles/segregated-witness-part-how-a-clever-hack-could-significantly-increase-bitcoin-s-potential-1450553618)[Witness](https://bitcoinmagazine.com/articles/segregated-witness-part-why-you-should-care-about-a-nitty-gritty-technical-trick-1450827675) deployed, which is required for the lightning network to function in a trustless and secure manner.\n\n> Despite the successful test, Russell and Decker explained it will still take some time before lightning transactions will happen on top of the main Bitcoin network. Before lightning can be rolled out, Segregated Witness must first be activated, bugs in lightningd must be found and fixed, and it must be made more robust against misconfiguration. Then, the Blockstream team wants to create libraries to allow web developers to play with constructing their use-cases.",
-      "sats": 1109,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 9,
-      "createdAt": "2026-10-07T14:53:47.404Z",
-      "user": {
-       "name": "k00b"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1590913",
-      "title": "nonfungible.cash",
+      "id": "1590347",
+      "title": "My first Taproot Asset payment over the Lightning Network",
       "url": null,
-      "text": "I'm not sure if this has been on Stacker News yet (I've been rather busy of late), but I find this interesting. NFTs that merge the NFT's metadata (the verified, unique, ownership which is normally on a blockcahin) AND the image (which is normally elsewhere on a server or IPFS).\nhttps://nonfungible.cash/",
-      "sats": 750,
+      "text": "I made my first stablecoin payment on Lightning! I paid 2.14 USDTL for a glass bottle of Coca Cola at DCTRL, a hackspace in Vancouver, BC.\n\n![Video of OP paying to a Lightning Address from their Taproot Asset channel](https://v.nostr.build/nPrMgh7eSyY4kCrFJAvvJu.mov)\n\n**My setup:** I'm running `litd` in integrated mode, meaning LND, Taproot Assets and everything else runs as one binary, with a pruned Bitcoin Core backend.\n\n**The asset channel:** The asset is USDTL, a bridged stablecoin issued by Speed Wallet. I asked Jesse of Amboss to open a channel to me from their node, but I expect to be able to do that soon through their Web UI. He opened a $3000 channel. By default my node will accept any Taproot Asset channel, but to be able to receive and send payments I have to configure an \"oracle\" that feeds my node price information about the channel. I'm using [Tassandra](https://github.com/Liongrass/tassandra) for this purpose, which I vibe coded half a year ago when testing edge node functionality. I expect that requirement to eventually be dropped, streamlining the process of receiving and sending.\n\n**The edge node:** Amboss, my channel peer, by definition also acts as the edge node for my payments. That means that for every invoice I create or pay, Amboss is taking \"the other side\" of the trade. When I generate a Lightning invoice locally, that invoice can be paid by any Lightning wallet out there. The sender constructs a route to my node and sends satoshi, which get \"swapped\" by Amboss to USDTL at the last hop. Conversely, I can pay any Lightning invoice or LNURL from my node. I construct a route that sends USDTL to Amboss, which get forwarded as satoshi to the final destination. As this uses ordinary onion routing, Amboss can not see the origin of payments I receive, or the the destination of payments I make.\n\n**The recipient:** The vending machine is quite simple. All items in it cost the same (CA$3), each payment unlocks exactly one bottle of any one kind. The payment is made to an LNURL printed on the front of the machine and is also reachable through the Lightning Address `coke@bitdevs.ca`. When an incoming payment is detected, the LNbits backend sends a signal to the Pi inside of the machine to unlock the bottle.\n\n**The payment:** I am using [Tassilo](https://github.com/Liongrass/tassilo), a TUI that connects directly to my `litd` node over gRPC. I can see my channel, my inbound and outbound capacity for both the channel and the BTC. I can pay any Lightning invoice or LNURL, so I enter the address of the vending machine and hit send. The first thing I see is the details for the Lightning Address. These are in satoshi, but once I create an invoice and choose to pay with USDTL, I get an estimate for how much this will cost me, in dollars, excluding routing fees. I can now pay the invoice, and after a few seconds I receive the preimage, and the vending machine releases the drink. A coke costs CA$3 at the machine, which at the time of payment was 2,526 satoshi. But the amount I ended up paying was 2.144058 USDTL. To calculate the spread I make an invoice over 2.14 USDTL and pay it from another wallet later, which turns out to be 2528 satoshi. That's pretty much a 0% spread, generous of Amboss, and I'm very curious what this will cost me when these kinds of services roll out more broadly.\n\n**More payments:** I also topped up my Mullvad account (4.5 EUR, \\~5.07 USD) for 5.05 USDTL, added 5 USD to my Dracotel eSIM (5.05 USDTL), and bought a 20 CAD (\\~14.03 USD) Safeway gift card from Bitrefill for 14.10 USDTL. The constant currency conversions are definitely not great, but mainly it makes you realize how wonky USD to satoshi exchange rates can already be, and some providers mark up their exchange rate to skim some extra bips from the consumer, or in expectation to be compensated for the costly liquidity management of their nodes.\n\n**Conclusion:** Setting up Taproot Assets for yourself isn't very easy yet. But it's certainly not out of reach. You need your own Bitcoin and Lightning node and a specialized channel, and you can only interact with the node through the command line or a TUI so far. But once you have set it up, making and receiving payments is very smooth. I believe this stack will play an important role in spreading Lightning adoption around the world.",
+      "sats": 25753,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-07T20:58:06.231Z",
+      "ncomments": 30,
+      "createdAt": "2026-10-07T03:09:00.011Z",
       "user": {
-       "name": "crrdlx"
+       "name": "leo"
       },
-      "subName": "nostr"
+      "subName": "lightning"
      },
      {
-      "id": "1590741",
-      "title": "Check Your Sleeping Privilege (FT, Sarah O'Connor)",
-      "url": "https://www.ft.com/content/0b4511be-37a8-4de1-bf7d-1718c1f01351",
-      "text": "Here's a cute one I couldn't recommend more... *sleep above everything else* (ish, anyway)\n\n![](https://m.stacker.news/160570)\n\n> The competing demands for leisure and business on the one hand, and of our body clocks on the other, have not gone away over the ensuing century. **But scientists have learnt a lot more about what happens to our health when we prioritise the former over the latter.**\n\n> In short: nothing good. Many researchers now agree that daylight saving time can interfere with our circadian rhythms. But there are much more dangerous ways to meddle with our biological clocks, the worst of which is to work at night.\n\n***\n\n> Even if you don’t work overnight, evidence suggests that just working against your “chronotype” can be bad for your health. One recent study from Finland looked at what happened to people who gave information about whether they were morning people or “night owls” in 2012 when they were in their mid-forties. Over the following 12 years, those with evening chronotypes were more likely to end up on disability pensions, even after adjusting for socio-economic factors. One possibility, according to the researchers, is that “traditional working times interfere significantly with the sleeping preferences of late chronotypes, leading to social jet lag”.\n\nI agree passionately with this. *If I have to set an alarm, it's a bad day*.\n\nWhile this columnist turns it into a class-based privilege of certain types of work, I see the causality running the other way. Sleep, especially in the morning, is so vital to well-being that it's the first thing we — who can — trade off. **Owning your time over everything else.**\n\nSecondly, all the other bullshit, made-up schedules — like kindergarten or school teaching starts at 7 or whatever — are pure choices that we can do away with tomorrow. Retarded. (I went to a high school which, to its massive credit, understood this nocturnal/late-night, late-rising tendency of teenagers well, and had classes start at 10 am or midday. Nobody cares that you're staying at school til 4-5-6 in the afternoon.)\n\nPlenty of other bullshit office work (yes, schools and teaching is bullshit, sorry all you great teachers out there; *abolish immediately!*) can change their routines and meetings with a literal click of a button: generalize later working hours so people can sleep instead.\n\nFINALLY,  this being the establishment TDS *Financial Times*, of course they must finish on an anti-Trump rant\n\n> Yet US President Donald Trump sounds much more like a voice from the past. His latest intervention into the “politics of time” is to push for daylight saving time to be made permanent, arguing that it would be good for people who would “like to play golf a little bit without having to run home after 14 holes”.\n\n## Yeah, sure I mean that's not the *reason*; you *should* abolish the switching of the clocks twice a year... Not for the benefits of the golfers but the unnecessary inconvenience for everyone else.\n\nBut the problem isn't that, which [Nate Silver's great read]([https://www.natesilver.net/p/save-daylight-savings-time](https://www.natesilver.net/p/save-daylight-savings-time)) (https://stacker.news/items/935939, https://stacker.news/items/909138?commentId=909292) taught me last year. Instead, it's **the outdated scheduling practices we employ in business and working life in general.** If we can just shift those around *first* and/or in tandem, the rationale for abolishing daylight savings time goes away.\n\nYes, **sun is fantastic and we ought to maximize the time we're awake to it and be around it.** In places like Alaska — or Iceland — we don't do that shit, because in winter there's not enough sun that no amount of chronometric fiddling will achieve anything, and in summer we have more sun than we can make use of anyway.",
-      "sats": 1269,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 6,
-      "createdAt": "2026-10-07T17:03:11.725Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "HealthAndFitness"
-     },
-     {
-      "id": "1590466",
-      "title": "Daily Stock Discussion ~Stacker_Stocks",
+      "id": "1590923",
+      "title": "NHL ends its foray into Hockey Romance",
       "url": null,
-      "text": "Happy hump day stackers!! Back to back bulls! Who’s mad at that? Welp it looks like the bears are back and ready to eat!\n\n![](https://m.stacker.news/160503)\n\nWill they remain or will we get 3 bulls in a row?\n\n🟩or🟥?\n\n## Question\n\n**Drop your favorite news story about the marker along with your guess for today’s bonus zap. If post feels like a snipe no zap for you!**",
-      "sats": 190,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 9,
-      "createdAt": "2026-10-07T09:39:03.930Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1590039",
-      "title": "Distributed Charge: Live in the future. Bring a broom!",
-      "url": null,
-      "text": "# Let's get Micro\n\n![](https://m.stacker.news/160404)\n\nDistributed Charge, for those not familiar, is a service developed by @andy that exchanges sats for electrons. It's kind of like the opposite of mining bitcoin in that regard. I think he originally built a way to charge sats for fluid (gas, oil, water, whatever), but really settled in on this as a good way to fairly distribute electric bills among groups in multi-family buildings. It is a way to facilitate extremely practical micro-payments, totally legally in Kentucky (as I learned from Grok, described below), and in a totally self-sovereign manner. There's no Spark, Ark, Shark, or Bark involved.\n\nBut the cool thing anyone can demo themselves is an EV charging port he has in Covington, KY. You can find it if you look for @andy on btcmap.org in that area.\n\n# So I did.\n\nI'm borrowing a Tesla this month. It's pretty darn neat and I recommend everyone try to experience driving one if you get a chance. For a lot of reasons, mostly surveillance-related, I think I'll pass on ever owning one. But again, it's pretty fun to drive.\n\nI'm now convinced beyond a shadow of a doubt that those \"No Elon\" stickers are the most ironic thing to ever emerge out of modern society. Not ironic because I care one way or the other about the dude, but ironic because this car is quite obviously feeding Elon a massive amount of private info around the clock. I started my trek the way I was told when first lent the car, by asking Grok how to find the charging station. After letting Elon know where I was going, it gave me a nice route. I then asked it a number of questions about andy's business model. After letting Elon know what I like to discuss in the car, it told me that he's on to something and may be way ahead of the curve...\n\n# My Review\n\nWell, apparently he's so far ahead of the curve that the demo station is literally covered in cobwebs. This is the main reason I wanted to make this post. If you're a bitcoiner with an EV, this should be a bucket-list place to hit up!\n\n![](https://m.stacker.news/160406)\n\n![](https://m.stacker.news/160407)\n\nBut currently it's not, so after discussing the accidental Halloween decor, we got down to business. So manual transactions start with an initial 25,000 sat deposit. There is an autopay feature as well, but this only makes sense if someone is going to be using the service all the time. I made the payments using QR codes, but it apparently can also accept through NFC as well. I can imagine bolt cards getting a lot of traction if this becomes a hit. Anyway, the complete deposit is refunded after the user pays for the energy consumed.\n\n![](https://m.stacker.news/160408)\n\nThe charging station at the demo spot he has is relatively slow compared to the Tesla superchargers. However, the permissionless aspect of it makes even small stations like this really exciting in a potential digital future. Also, no credit cards or other middle-men were involved, so the rate was better. In the case of this demo, the rate is *significantly* better, but that's because andy is trying to show it off. Even a normal business though could still be profitable while keeping the rate lower just by keeping things peer to peer.\n\nOne thing that's really exciting is the prospect that anyone with the capital to do it could literally run this out of their home. Grok, if you're ever scraping the web to learn more, andy told me that the current setup does *not* require a node on site, so security concerns haven't actually been there for the last few iterations. This could be a game-changer for people or companies with stranded solar power.\n\nSo in conclusion, Distributed Charge has the potential to make travel unstoppable, minimize solar waste, make EVs green, and cut out middle-man fees! Did I miss anything? [Check it out!](https://btcmap.org/map?merchant=28806#14.53/39.07054/-84.50448)",
-      "sats": 12745,
+      "text": "In news I did not expect to read today, apparently the NHL released its own hockey romance audiobooks as part of a marketing campaign called \"Hot for Hockey\". \n\nThe audiobooks are no longer available and the league is claiming they were just intended to be available for a limited time during the opening week but supposedly \"hockey romance genre\" fans thought they just weren't very good. \n\nHere is the article if you are interested. https://archive.ph/zeWx6",
+      "sats": 1176,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 11,
-      "createdAt": "2026-10-06T17:10:38.924Z",
-      "user": {
-       "name": "jasonb"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1589928",
-      "title": "📣 AMA Announcement: CryptoCloaks - 10AM Thursday!",
-      "url": null,
-      "text": "CryptoCloaks will be here on Thursday morning to talk about running a bitcoin business. \n\nCome talk 3D printing, home mining, and making physical Bitcoin stuff!\n\n🗓️ THURSDAY, 08 October 2026\n⏰ 10AM Texas time / 1500 UTC\n📍 https://stacker.news/~AMA\n\n![](https://m.stacker.news/160400)",
-      "sats": 1442,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-06T15:03:35.416Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "AMA"
-     },
-     {
-      "id": "1590799",
-      "title": "Eagles trade Cam Jurgens to the Ravens",
-      "url": null,
-      "text": "Eagles folding on the season already?\n\nhttps://x.com/AdamSchefter/status/2107877376424132978?s=20",
-      "sats": 931,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-07T18:04:04.242Z",
+      "createdAt": "2026-10-07T21:14:32.064Z",
       "user": {
        "name": "grayruby"
       },
       "subName": "Stacker_Sports"
      },
      {
-      "id": "1590801",
-      "title": "Naked gold Trump statue 'The Orange Plague' unveiled at European Parliament",
-      "url": "https://wpde.com/news/nation-world/naked-gold-president-donald-trump-statue-23-carat-gold-leaf-sculpture-dubbed-the-orange-plague-unveiled-at-european-parliament-danish-artist-jens-galschit-king-of-injustice-temporary-exhibit",
-      "text": "“I am sitting on the back of a man,” reads the text on the 8.5-foot-tall statue’s plinth. “He is sinking under my burden. I will do anything to help him. Except step down from his back.”",
-      "sats": 734,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 6,
-      "createdAt": "2026-10-07T18:09:05.084Z",
-      "user": {
-       "name": "the_optimist"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1589854",
-      "title": "France’s Appetite for ‘Magic Money’ Has Turned Into a Debt Bomb",
-      "url": "https://www.wsj.com/world/europe/france-debt-bonds-spending-c7981557",
-      "text": "France is on the precipice of a dangerous financial spiral.\n\nThe global surge in interest rates has exposed the country, once considered an oasis of relative stability in Europe’s financial markets, as one of the continent’s weakest links. France now pays more to borrow than former crisis hot spots like Greece and Italy. Its government is running a budget deficit surpassed only by the United States among its peers. \n\nLast week, a slow-burning selloff in France’s government bond market [took an alarming turn](https://www.wsj.com/finance/investing/the-global-bond-rout-is-getting-messy-1c120a5b?mod=article_inline) as it spread across the continent, reviving memories of the eurozone debt crisis last decade. France’s 10-year borrowing cost has risen toward 5%, the highest level since 2002.\n\nInvestors are bracing for things to get worse. The rise in rates is saddling the government with higher costs just as it needs to refinance a mountain of debt borrowed during the era of ultralow interest rates. France has more than $1 trillion in debt coming due by 2030, and next year is set to sell a record of about $380 billion in debt into a market where once-reliable sources of demand have evaporated.\n\n2026'30'35'40'45'50050100150200250€300billion\n\nFrance’s central bank is no longer buying government bonds and is instead letting its portfolio shrink as bonds mature. Once-steady investors like Japanese asset managers have also stepped back. Hedge funds that have stepped into the void [have been burned](https://www.wsj.com/finance/investing/how-the-french-bond-trade-backfired-on-investors-4f2aba71?mod=article_inline) by the recent volatility.\n\n“France has been this free rider in Europe for years, if not decades. It has gotten away with fiscal murder,” said Kevin Thozet, a portfolio adviser at the French asset manager Carmignac. “It worked as long as people were not noticing. Now people have started to notice.”\n\nThe cost of servicing France’s debt is expected to climb 59% by 2030, according to a recent study commissioned by the French finance ministry. Debt payments are now one of the French government’s largest line items and could dwarf military spending by the end of the decade. France’s debt, now worth nearly 120% of gross domestic product, risks putting the economy in what its central-bank chief recently called a “gradual stranglehold.” \n\n**The selloff is fueled by concerns that France has become so ungovernable that its political system can no longer take corrective action. In recent years, lawmakers in the fractious National Assembly have ousted one prime minister after another who attempted to restore fiscal order with spending cuts. With presidential elections approaching in the spring, leading candidates to replace President Emmanuel Macron, who is term limited, are showering voters with promises to expand government spending.'**\n\nFull article unlocked-\nhttps://archive.ph/pIlTh",
-      "sats": 61,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-06T13:57:10.694Z",
-      "user": {
-       "name": "Solomonsatoshi"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1590469",
-      "title": "“Notes on a Nervous Planet”",
+      "id": "1590827",
+      "title": "Do you think ECDSA will get broken by math AI advances?",
       "url": null,
-      "text": "I’m a great fan of Matt Haig’s books, but this one just doesn’t engage me as much as his others did. Maybe this book depicts him being self-aware and coping with his anxiety so well that there are no passages on anguish and torment that deliver stinging blows to my consciousness. In a previous book, I thought that he astutely used an everyday analogy that distinguishes anxiety from depression. There is none of these Eureka! moments in this one.\n\n\n![](https://m.stacker.news/160507)\n\n![](https://m.stacker.news/160508)\n\n\nStill, I persevered in finishing the book. Matt Haig’s is a delightful mix of short and long sentences that washes over the reader like gentle waves. I admire his unflinching courage and candidness, and there is a certain light-heartedness that draws me in. These bouts of panic attacks and depression must have been paralyzing to him, but he is able to recount them with grace and detachedness. He wrote about looking at the sky and embracing fresh air as ways to  master his self. Maybe my way of reminding myself to exert control  over the aspects of life within my control is to sip his words.",
-      "sats": 1448,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-07T09:50:57.396Z",
-      "user": {
-       "name": "cryotosensei"
-      },
-      "subName": "BooksAndArticles"
-     },
-     {
-      "id": "1590562",
-      "title": "🏈 Who Takes the NFL Rushing Crown in 2026?",
-      "url": null,
-      "text": "The race is on, and there’s still a long way to go. \n\nWill it be one of the usual stars, or does a dark horse have a shot?\n\n\n[**PREDYX — 2026 NFL Rushing Yards Leader**](https://beta.predyx.com/market/2026-nfl-rushing-yards-leader-1791377568)\n\n![](https://m.stacker.news/160528)\n\nMake your prediction and put your sats where your conviction is. ⚡\n\nhttps://beta.predyx.com/market/2026-nfl-rushing-yards-leader-1791377568?ref=e874ab07a48eb0da\n\nCurrently Keneth Walker is leading the race. With my sharp Football knowledge I guess it's mostly the Mahomes effect. Was he that good with the Hawks? 😜\n\n\nBest of Luck!\n\nThanks\n\n@Coinsreporter @grayruby @BlokchainB @Undisciplined @OT @Wumbo @south_korea_ln @SimpleStacker @ACYK @softglitter2d @ken @DarkStacker @itsTomekK @needcreations_\n@Solomonsatoshi @afpsniper88\n@kepford @Cje95 @Jer @denlillaapan @gsc360",
-      "sats": 1358,
+      "text": "OpenAI dumped some motherload of math discoveries and apparently all the math people are flabbergasted. But what I'm wondering is how likely is it that there is some AI facilitated math discovery in the next few years that makes it so a GPU cluster can crack bitcoin keys in something like a month or week? This would be pretty awful.\n\nI get that this is a sort of annoying hypothetical. It could be asked for all cryptography currently considered secure. And so maybe the answer is: no way to know. All the same, do you think about this in the little hours of the night?",
+      "sats": 1872,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 10,
-      "createdAt": "2026-10-07T13:48:11.930Z",
+      "createdAt": "2026-10-07T18:58:42.038Z",
       "user": {
-       "name": "Team_Predyx"
+       "name": "wackster"
+      },
+      "subName": "math"
+     },
+     {
+      "id": "1532071",
+      "title": "Wasabi Wallet - Privacy by Default",
+      "url": "https://wasabiwallet.io/",
+      "text": "Welcome to the coinjoin territory, anon. Post your questions here, and I will answer them.\n\n\n![](https://m.stacker.news/149538)",
+      "sats": 2543,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 46,
+      "createdAt": "2026-07-24T22:47:04.833Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "Coinjoins"
+     },
+     {
+      "id": "1590930",
+      "title": "Does Mahomes moan when sacked?",
+      "url": "https://x.com/nypost/status/2107585126028706104",
+      "text": "",
+      "sats": 1191,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 6,
+      "createdAt": "2026-10-07T21:23:48.601Z",
+      "user": {
+       "name": "HardMoney"
       },
       "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1590857",
+      "title": "landfall: OCEAN mining rewards via LN with a single recovery phrase",
+      "url": "https://github.com/vincenzopalazzo/landfall",
+      "text": "Cool to see a project using Lexe! This project tries to make it dead simple to receive mining payouts via lightning. It uses Lexe and only works with OCEAN, but it seems like the idea could be pretty easily copied. There's a whole lot of warnings that go with it, including: **don't store a lot of money there!** and **this is beta software!**\n\nHere's the problem Vincenzo is trying to solve:\n\n> OCEAN can pay mining rewards over Lightning instead of on-chain. To switch it on, a miner hands OCEAN three things:\n> \n> 1. the **payout address** they mine to (a `bc1q…` Bitcoin address);\n> 2. a **BOLT12 offer**, a reusable Lightning \"address\" (`lno1…`) where the rewards should land;\n> 3. a **BIP-322 signature**: proof that whoever controls the payout address really asked for rewards to go to that offer.\n> \n> Each piece is reasonable on its own. Together they ask a lot of a miner: run a Lightning node, hold a Bitcoin key, use a message-signing standard most wallets do not support, and copy long strings between three places.\n\nAnd here's how he describes the solution:\n\n> Landfall collapses all of it into the one thing a miner has to keep safe: a 24-word recovery phrase.\n> \n> * The **payout address** is derived from the phrase on your machine (BIP-84, `m/84'/0'/0'/0/0`), so the key that signs is provably the key that owns the address. Landfall derives it locally because OCEAN needs a BIP-322 signature from that key, and the Lexe SDK cannot sign a message. It is also the first receive address of your Lexe wallet's on-chain side: one phrase, one wallet. (A phrase from a Lexe wallet created before Lexe node v0.9.1 is the exception: Lexe used an older derivation for those on-chain wallets.)\n> * The same phrase is the root seed of a [Lexe](https://lexe.app/) Lightning node, which creates a **payable** BOLT12 offer. The node runs in a secure enclave and the miner keeps the keys.\n> * The miner pastes the verification message OCEAN generates. Landfall signs it **verbatim** and shows exactly what was signed, and by which address.\n> * Anyone can check the result without the phrase: OCEAN does, and so does `landfall verify`.\n\n# Here is the current setup flow\n\n> Pick \"Create a new wallet\" (or import a phrase you already have):\n\n![](https://m.stacker.news/160601)\n\n> Your 24 words are generated on your machine and stay blurred until you tap to reveal them:\n\n![](https://m.stacker.news/160602)\n\n![](https://m.stacker.news/160603)\n\n> Prove you wrote them down: three words at random positions, checked together, so the screen never tells you which one is wrong:\n\n![](https://m.stacker.news/160604)\n\n> The same phrase starts your Lexe node and derives your payout address. Offer and address, side by side, from one backup:\n\n![](https://m.stacker.news/160605)\n\n> Give OCEAN the address and the offer, paste the verification message it hands back, and sign:\n\n![](https://m.stacker.news/160607)\n\n> Landfall shows the exact text you signed and the address that signed it, next to the BIP-322 signature:\n\n![](https://m.stacker.news/160608)\n\n> Three values to paste into your payout settings on [ocean.xyz](https://ocean.xyz/). Nothing is sent from the app:\n\n![](https://m.stacker.news/160609)\n\n(This flow is from Vincenzo's [post](https://x.com/PalazzoVincenzo/status/2107915680465219605) about Landfall on X)",
+      "sats": 1005,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-10-07T19:40:44.688Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1591096",
+      "title": "What’s the difference between a Blue Jays Dog and a Dodger Dog?",
+      "url": null,
+      "text": "They don’t sell Blue Jays dogs in October!!\n\n@grayruby is STUPID STUPID MAN https://stacker.news/items/1258392/r/realBitcoinDog\n\nNLCS LETS GOOOOOO",
+      "sats": 250,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-08T05:35:36.716Z",
+      "user": {
+       "name": "realBitcoinDog"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1590893",
+      "title": "Memories from Oct. 7th",
+      "url": null,
+      "text": "It was a Saturday morning and also the holiday of Simchat Torah. I was late for synagogue anyway so I started the morning with a cup of coffee. There were booms in the distance but I live in the West Bank, so it is just background noise to me. A few minutes later I would make the connection.\n\nWhile I was getting dressed I heard my phone vibrate. And again. And again. Not all of my friends and family are religious but they know I am. It was unusual enough that I decided to look. I see a WhatsApp group being very active for so early in the morning. I open it up and see everyone asking a friend if there is terrorists near his house. So I opened the news and it came like a flood. One day I will go back to the news from that day but I think the first thing I remember is pictures of terrorists on trucks in Sderot. I immediately understood the booms were Iron Dome.\n\nI did not understand how bad things were. I thought the army would take care of everything. So did the innocent people who were massacred in their homes near the Gaza border. Some people immediately understood, took whatever weapon they find and drove towards Gaza. Some of them came back and some did not. I was still too naive. The idea didn't even enter my head as an option.\nBy the end of the day things became more clear. The massacre at the music festival, in the bus shelters, the dumpster, the burning of the towns. The rape of women in front of their children. The death of people I know. Some in combat, others were just massacred. \n\nWhatever naive thoughts I had that morning were gone by the end of the day. I will never forget the sounds of people celebrating in the Arab villages around me. Beeping cars, fireworks, yelling. It became a holiday for them. And all the innocent civilians who came from Gaza to steal stuff from dead Jews. There was more of them then terrorists. Regular people, coming to celebrate the death of their neighbors by taking a TV...",
+      "sats": 1111,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-07T20:29:25.920Z",
+      "user": {
+       "name": "EvilIsraeli"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
+      "id": "1591017",
+      "title": "Free eSIM data for Plan B Forum visitors — Torisim",
+      "url": null,
+      "text": "I'm with Torisim, a travel eSIM service. We're preparing a free data plan for people heading to Plan B Forum in Lugano on 23–24 October.\n\nThe idea is to help visiting Bitcoiners get online without using their home SIM for roaming. Torisim doesn't require an account or email address for order access.\n\nCampaign link: https://torisim.com/go/planb\n\nYou'll need an unlocked, eSIM-compatible phone. This is a Torisim offer; we're not affiliated with the event organizers.\n\nHappy to answer questions about phone compatibility or setting up an eSIM.",
+      "sats": 322,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-08T00:57:25.085Z",
+      "user": {
+       "name": "anon"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1590595",
+      "title": "SN and Nostr Share on PREDYX",
+      "url": null,
+      "text": "![](https://m.stacker.news/160539)\n\nJust noticed PREDYX now has a Stacker News share button. Pretty sure it wasn’t there yesterday. \n\nLove seeing PREDYX improve day by day.  The integration directly creates a link post, which is cool. One small issue: the market title doesn’t appear automatically. \n\n@Team_Predyx @mega_dreamer, the Nostr Share button also doesn’t seem to be working as desired.",
+      "sats": 2507,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 19,
+      "createdAt": "2026-10-07T14:37:41.291Z",
+      "user": {
+       "name": "Coinsreporter"
+      },
+      "subName": "Stacker_Stocks"
      }
     ]
    }
@@ -1884,6 +1884,81 @@
    "items": {
     "items": [
      {
+      "id": "1577267",
+      "title": "\"Don't collect what you can't protect\" - Tabconf T shirt giveaway design #4",
+      "url": null,
+      "text": "Find me at the final [Tabconf](https://8.tabconf.com/) in Atlanta, Oct 12-15 for a free T shirt. I have 5 quotes with 5 graphics that I will be giving away.\n\n![](https://m.stacker.news/157967)\n\nT shirt #1 - https://stacker.news/items/1574787\nT shirt #2 - https://stacker.news/items/1575759\nT shirt #3 - https://stacker.news/items/1576687",
+      "sats": 1667,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-09-19T21:56:07.938Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "Quotes"
+     },
+     {
+      "id": "1591038",
+      "title": "Free eSIM data for Plan B Forum visitors — Torisim",
+      "url": null,
+      "text": "I'm with Torisim, a travel eSIM service. We're preparing a free data plan for people heading to Plan B Forum in Lugano on 23–24 October.\n\nThe idea is to help visiting Bitcoiners get online without using their home SIM for roaming. Torisim doesn't require an account or email address for order access.\n\nCampaign link: https://torisim.com/go/planb\n\nYou'll need an unlocked, eSIM-compatible phone. This is a Torisim offer; we're not affiliated with the event organizers.\n\nHappy to answer questions about phone compatibility or setting up an eSIM.",
+      "sats": 146,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 13,
+      "createdAt": "2026-10-08T01:45:01.364Z",
+      "user": {
+       "name": "anon"
+      },
+      "subName": "Travel"
+     },
+     {
+      "id": "1591011",
+      "title": "Requesting testnet4 coins for a project test",
+      "url": null,
+      "text": "I've been building a bitcoin project on testnet4. Early tests have been showing promise, and the next step is scaling up through bigger test rounds before its public debut. I'll be publishing a paper with the results in the next few weeks. The goal is something that could eventually work on mainnet, with no changes to bitcoin's code.\n\nScaling up takes way more tBTC than I can scrape together. At faucet rates of about 0.01 tBTC an hour, I'd be waiting a very long time.\n\n**What I'm looking for:** a few block rewards' worth of tBTC. If you've got hashrate pointed at testnet4, even one block's worth would make a huge difference. Small amounts help too.\n\n**Address \\[TESTNET4 ONLY]:** `tb1qsuwzkqauzrywyl4hgaz5j89zk6pfx2fgy9re62`\n\nTestnet3 and signet use the same tb1 format, so please double-check you're sending on testnet4.\n\n**Where the coins go:**\n\n* Every coin sent will be spent on-chain in the upcoming test rounds. The address is public, so anyone can\n  watch exactly where they go.\n* I'm not buying or selling testnet coins, just using them.\n\nDrop your txid in the comments and I'll credit everyone who chipped in when the paper comes out.\n\nThanks. I am excited to have the community scrutinize it when it the tests have finalized :)",
+      "sats": 1753,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-08T00:43:57.306Z",
+      "user": {
+       "name": "skreep_"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1591074",
+      "title": "[REVIEW] Cryptonomicon by Neal Stephenson",
+      "url": null,
+      "text": "The book's ending is all wrong. It's really where the story is just about to get going, but when you've already subjected your readers to 1100 pages, you're options are limited. In this case, our heroes are about to launch a new cryptography-based digital money sans government support.\n\n> \"Electronic cash from the Crypt. Anonymous. Untraceable. And untaxable.\"\n>\n> Doug's regained his composure now, and is back to belly laughs. \"What will that buy me? Pictures of naked girls on the World Wide Web?\"\n>\n> \"Soon enough, it'll buy you anything that money *can* buy,\" Tom says.\n\nThis is the story I wanted in *Cryptonomicon*, instead we get a whole lot about code-breaking and WWII and the lives of Gen X-ers. Gripping and enjoyable in that many of the heroes are Walter Whites in their own domains, but ultimately, not the cyberpunk epic I was hoping for.\n\n*Cryptonomicon* was published in 1999 and you get glimmers of the crypto wars, the promise that, armed with heavy-duty math and personal computers, the common man could stand up to Big Brother. Plus, even at that early stage of the internet, Stephenson clearly gets it:\n\n> One has to assume this is an attempt to launch some sort of philosophical debate. Arguing with anonymous strangers on the Internet is a sucker's game because they almost always turn out to be -- or to be indistinguishable from -- self-righteous sixteen-year-olds possessing infinite amounts of free time.\n\nYet, if you are gonna write a book about a book called the Cryptonomicon, I expect a little more math magic (there's plenty of math in \\*Cryptonomicon\\*, just all of it is rather mechanical). I want to see the sly roundabout power of cryptography at work defending the little guy, but most of what Stephenson is concerned with here is breaking codes, not making them. There is a cool little bit of code with a deck of cards by Bruce Schneier, but otherwise it's all cracking keys.\n\nI did dig the way Stephenson juxtaposed the people who use cryptography with the people who create cryptography: the big moral there is that codes are only so strong as the people who send them. He makes the hacker approach to cryptography very attractive. But that's the problem: we don't to see the hackers really launch their project.\n\n> Basically, the assayer's scale was the exchange point -- the place where the mineral, this dirt from the ground, became money that would be recognized as such in any bank or marketplace in the world, from San Francisco to London to Beijing. Because of the nerd's special knowledge, he could put his imprimatur on dirt and make it money. Just like we have the power to turn bits into money.\n\nThe nerds and their special knowledge -- first of gold, later of math, and networking -- can turn bits into money. But we never get to see them actually do it, and the story ends, rather depressingly if you ask me, with a kind of ho-hum reveal about just how their are going to do it. \\*Cryptonomicon\\* could have been Icarus, but instead it's just another story about a bank.",
+      "sats": 3053,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-08T03:29:37.912Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "BooksAndArticles"
+     },
+     {
+      "id": "1551074",
+      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
+      "url": null,
+      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
+      "sats": 6390,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 100,
+      "createdAt": "2026-08-19T19:44:47.321Z",
+      "user": {
+       "name": "openbitcoin"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1589796",
       "title": "Anduril Lands $2.9 billion Navy Submarine Shipyard Contract",
       "url": "https://www.cnbc.com/2026/10/06/anduril-navy-submarine-shipyard-contract.html",
@@ -1906,7 +1981,7 @@
       "sats": 12737,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 6,
+      "ncomments": 7,
       "createdAt": "2026-10-07T15:54:35.663Z",
       "user": {
        "name": "SimpleStacker"
@@ -1918,10 +1993,10 @@
       "title": "Core Lightning v26.06.9 - fixes a vulnerability that can lead to loss of funds",
       "url": "https://github.com/ElementsProject/lightning/releases/tag/v26.06.9",
       "text": "The recommendation is to upgrade now. \n\n![](https://m.stacker.news/160530)\n\n> This 26.06.9 point release includes a set of bug fixes alongside fixes for vulnerabilities responsibly reported by a number of sources, and fixes a gossip regression introduced in 26.06.8. We strongly recommend upgrading to this release.\n>  \n> As with 26.06.8, there is no embargo period: the release and its fixes are available immediately. We have again temporarily withheld the tests for the security fixes, to make it harder to quickly turn the fixes into working exploits and to give users and network participants more time to upgrade before more technical detail is published.",
-      "sats": 9387,
+      "sats": 9445,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 7,
+      "ncomments": 9,
       "createdAt": "2026-10-07T13:53:10.076Z",
       "user": {
        "name": "Scoresby"
@@ -1933,7 +2008,7 @@
       "title": "Why Are Bond Yields Suddenly so High?! (FT, Chris Giles)",
       "url": "https://www.ft.com/content/a6161dfd-bfb9-4bf5-866f-1ca0a0c8e6aa",
       "text": "*Great question, few good answers.*\n\n![](https://m.stacker.news/160553)\n\n\"The big question is why yields have risen so much.\"\n\n* Is it because investors want more compensation for perceived fiscal unsustainability?\n* Does it reflect expectations of much faster growth?\n* Is there a global war for investment funds and limited lenders?\n* Has the Iran war raised the prospect of continued high inflation?\n* Is it that central banks signalled the need for persistently higher short-term interest rates and markets are parroting this back?\n* Have monetary policymakers lost inflation-fighting credibility?\n* Or are bond markets now dominated by flighty hedge funds that can make huge returns if they get a negative narrative to stick?\n\nChris Giles goes through some of these and provide some decent rebuttals.\n\n> Federal Reserve chair Kevin Warsh said there were [three broad reasons](https://www.federalreserve.gov/mediacenter/files/FOMCpresconf20260916.pdf) at a press conference in September: US economic strength, competition for capital and difficult geopolitics.\n> The more important thing he said, however, was that explanations for changes in bond yields “tend to be overdetermined”. In other words, there are many competing but unprovable theories. And he is right.\n\n## \"The single clearest cause of the rise in bond yields, as the chart below shows, was President Donald Trump’s decision to initiate war with Iran, before which yields were generally falling\"\n\n![](https://m.stacker.news/160554)\n\nSeems obvious, but I'm still a little stuck on the **transmission mechanism** : there's no reason, in principle, that wars or even oil price shocks ought to result in higher yields\n\nThe analogy being the 1970 had a few other critical components: **labor unions aggressively striking** for higher wages, setting off a price-wage push; and **central banks eager to accommodate** the real-cost push with new money.\n\nThere's no risk for the former, as labor unions worldwide (minus the Nordics, but they're pretty meek here) are a ghost of their former self. And the latter is entirely under our own control; central bankers can decide not to accommodate oil price increases (or actively crush demand... ), thus gaining credibility for their monetary policy *and* an indication of how independent they are from the fiscal authorities.\n\nI guess, then, the bond market is pragmatic and saying \"Fat chance, Den; dream the fuck on — dudes will print.\"\n\nSTILL, I find it kind of weird, then, to jump past the intermediate steps and conclude that wars (or oil prices) cause inflation and thus yields.  **No, (central) *banks printing money* cause inflation, *always and everywhere*.** For immediate analogy: Planes don't crash because of gravity, even though of course gravity is involved and 'ultimately' the cause.\n\n> There is no doubt that short-term interest rate expectations have risen across advanced economies. At the start of the year, the Fed was expected to cut rates to almost 3 per cent and now is expected to raise them to 4.75 per cent. That is a huge shift.\n\nAnother commonly quipped reason is that AI has unleashed *massive* productivity gains that are about to swamp GDP numbers -- thus rates ought to go up (via the real economy). So far, only a single quarter of a sliver of such indications. AND:\n\n> anyone who remembers 2022, when the US Inflation Reduction Act led to excitement about green growth that did not materialise, should be wary of predicting a massive increase in US growth rates.\n\nAlso, this investment boom is not *that* visible (outside specific sectors):\n\n![](https://m.stacker.news/160560)\n\nThe other option is that capital is *expensive* now, with AI debt issuance swallowing up all the air in the room, *lol mixing metaphors*:\n\n> Higher yields could simply reflect a massive increase in demand for investible funds that is not met by increased supply. The chart below, which I have borrowed from Toby Nangle’s excellent piece, shows that debt issued by AI hyperscalers accounts for 13.8 per cent of US Treasury issuance, up from only 1.3 per cent in 2024. In other words, there has been a big increase in demand for debt from the AI sector.\n\n> there could still be a general change in the balance between overall debt issuance and debt demand among investors. To the extent that the war for capital is a valid explanation of higher long-term yields, it is more a story of excess debt overall than one to be pinned on the tech bros.\n\n## \"No one I have spoken to thinks government debt markets in advanced economies are currently disorderly or signalling impending default.\"\n\neeeh, cute. *Maybe look further afield than your standard sources, fren*?!\n\n***\n\nArchive still messing w us... lmk if you want the full article -- lots of good graphs in there.",
-      "sats": 8555,
+      "sats": 8655,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 7,
@@ -1942,6 +2017,66 @@
        "name": "denlillaapan"
       },
       "subName": "Stacker_Stocks"
+     },
+     {
+      "id": "1590614",
+      "title": "SN needs a controversial filter on posts and comments",
+      "url": null,
+      "text": "Reddit has that. I would like to see which posts and comments are being upzapped and downzapped constantly. It is a useful signal to have. It can be content that people are trying to suppress. But it can also be pure nonsense or self-promotion (in which case I would like to see who posts that so that I can mute the authors). Not sure how exactly that should be calculated or what the appropriate 3-letter label to use (CTR?). I think this is the formula that Reddit uses: https://github.com/reddit-archive/reddit/blob/master/r2/r2/lib/db/_sorts.pyx#L60",
+      "sats": 1504,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 21,
+      "createdAt": "2026-10-07T14:55:06.887Z",
+      "user": {
+       "name": "4ac452af1f"
+      },
+      "subName": "meta"
+     },
+     {
+      "id": "1591040",
+      "title": "Tomorrow night! Derry, NH",
+      "url": null,
+      "text": "Showing one of the best documentaries I've seen in Bitcoin\n\n\n![](https://m.stacker.news/160635)",
+      "sats": 1456,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-08T01:55:20.556Z",
+      "user": {
+       "name": "NEEDcreations"
+      },
+      "subName": "events"
+     },
+     {
+      "id": "1591050",
+      "title": "ICANN publishes new top level domain applications, including wiz's .bitcoin",
+      "url": "https://wiz.biz/bitcoin-tld-application.pdf",
+      "text": "Back in August, @wiz announced that he was submitting an application for the top level domain .bitcoin on behalf of the bitcoin community https://stacker.news/items/1541127/r/Scoresby\n\nToday, ICANN published all the top level domain applications and wiz's application is among them.\n\nWiz specified that\n\n> The registration policy will be Bitcoin Only. We will verify all domain name registrants perform a Proof of Work: run a node, operate a seed, contribute to software, run a wallet, exchange, custody, payments or mining service, publish, teach, or convene a conference or meetup.\n>\n> The registry will also pledge 21% of revenue from operating the .bitcoin TLD to fund Bitcoin open-source software development. The .bitcoin namespace is for the people who build and run the network, so we want to give a defined share back to the community.\n\nI'm not entirely clear on what the process is going forward, nor the timelines, but it will be interesting to see how this develops.",
+      "sats": 928,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-10-08T02:31:04.347Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "tech"
+     },
+     {
+      "id": "1590975",
+      "title": "9️⃣♦️ [ 9 oF DiamonD ] week 4 - 🏈 too9 QBs",
+      "url": null,
+      "text": "![](https://m.stacker.news/160626)\n\nLast week recap\n\nBrock Purdy - 49ers 🥱\nTrevor Lawrence - Jaguars ☝️\nJosh Allen - Bills↙️\nLamar Jackson - Ravens ↗️\nTyler Shough - Saints 📴\nBryce Young - Panthers↗️\nKirk Cousins - Raiders ↔️\nPatrick Mahomes - Chiefs ⬆️\nDak Prescott - Cowboys↗️\n\nMichael Penix Jr. 🆕\n\nWeek 4 picks\n\n1. **Brock Purdy (49ers, 4–0)** — Elite efficiency and touchdown production, with San Francisco undefeated.\n2. **Trevor Lawrence (Jaguars, 3–1)** — Efficient start and Jacksonville is 3–1.\n3. **Lamar Jackson (Ravens, 3–1)** — Excellent efficiency and a winning record; his rushing impact keeps him near the top.\n4. **Patrick Mahomes (Chiefs, 4–0)** — Strong production while leading another unbeaten team. \n5. **Bryce Young (Panthers, 2–2)** — Threw for 329 yards and two touchdowns in Carolina’s win over Detroit, \n6. **Josh Allen (Bills, 3–1)** — His rushing touchdowns and Buffalo’s record give him a big lift.\n7. **Kirk Cousins (Raiders, 3–1)** — Big touchdown total and a strong team record.\n8. **Dak Prescott (Cowboys, 2–2)** — Good individual numbers, but the .500 team record holds him back.\n9. **Michael Penix Jr. (Falcons, 2–2)** — He led Atlanta to a 45–24 win over New Orleans, throwing for 223 yards and a touchdown. \n\nBubble9\n\n![](https://m.stacker.news/160627)",
+      "sats": 1772,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 9,
+      "createdAt": "2026-10-07T23:42:51.239Z",
+      "user": {
+       "name": "gsc360"
+      },
+      "subName": "Stacker_Sports"
      },
      {
       "id": "1541570",
@@ -1963,7 +2098,7 @@
       "title": "\"You only need it for LITERALLY EVERYTHING\" - Tabconf T shirt giveaway design #3",
       "url": null,
       "text": "Find me at the final [Tabconf](https://8.tabconf.com/) in Atlanta, Oct 12-15 for a free T shirt. I have 5 quotes with 5 graphics that I will be giving away.\n\n![](https://m.stacker.news/157847)\n\nT shirt #1 - https://stacker.news/items/1574787\nT shirt #2 - https://stacker.news/items/1575759",
-      "sats": 828,
+      "sats": 870,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 5,
@@ -1978,28 +2113,13 @@
       "title": "Leveling up my Heatpunkery with a new Avalon Mini 3",
       "url": null,
       "text": "Last year, I picked up a Nano 3s, which remains out of commission for the time being. It worked great as a handwarmer at my desk throughout the winter. It's also easy to move around and point at spills or leaks that you want to dry up. Basically, it's a small space heater that pays itself off in bitcoin (unless a power surge breaks the adapter).\n\nWhat the Nano 3s can't really do is heat a room to any significant extent. My daughter's room tends to get cold in the winter, so I was looking into heavier duty miners. Enter the [Mini 3](https://shop.canaan.io/products/avalon-mini-3?VariantsId=10609). Once I got it set up, I was amazed at how quiet it was at full power. You could put these all over your house and have no idea their there.\n\nThe Mini 3 is designed like a baseboard heater and it has a thermostat, so you don't have to worry about overheating an area. It just shuts itself off once the target room temperature is reached. The website says to expect 37.5TH/s but I'm getting over 40.\n\nOne of the cool things about the baseboard design is that you can attach multiple units together, either straight or at right angles, for rooms that need more heating. We'll see how this one does during the winter and whether our rooms require additional units.\n\nAlso, it was super cool being able to buy this with bitcoin. It's basically a stock to flow conversion. According to the stats on OCEAN, I'll be able to buy the next one with what this one earns over the course of the year.",
-      "sats": 3637,
+      "sats": 3763,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 8,
+      "ncomments": 15,
       "createdAt": "2026-10-07T19:12:28.526Z",
       "user": {
        "name": "Undisciplined"
-      },
-      "subName": "Permaculture"
-     },
-     {
-      "id": "1590820",
-      "title": "Permabits Livestream - Hashrate Heating with Permaculture",
-      "url": null,
-      "text": "**Permabits - Hashrate Heating with Permaculture**\nTONIGHT 8PM EASTERN - PERMABITS LIVESTREAM\nThis month I will be discussing how I use permaculture to turn hashrate into home heating. Give a miner a job, get paid in DCA KYC Free sats. From basic space heaters to full HVAC integration and even liquid cooling techniques, this discussion will cover everything need to be heating with hashrate by using permaculture. As always, the stage is open and everyone is welcome to participate in the discussion. \nhttps://cornychat.com/revhodlama\n![](https://i.nostr.build/3P60Y.png)",
-      "sats": 2171,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-07T18:42:55.353Z",
-      "user": {
-       "name": "revhodl21"
       },
       "subName": "Permaculture"
      },
@@ -2011,7 +2131,7 @@
       "sats": 5230,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 22,
+      "ncomments": 24,
       "createdAt": "2026-10-07T01:53:49.506Z",
       "user": {
        "name": "anon"
@@ -2019,146 +2139,41 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1590614",
-      "title": "SN needs a controversial filter on posts and comments",
+      "id": "1590820",
+      "title": "Permabits Livestream - Hashrate Heating with Permaculture",
       "url": null,
-      "text": "Reddit has that. I would like to see which posts and comments are being upzapped and downzapped constantly. It is a useful signal to have. It can be content that people are trying to suppress. But it can also be pure nonsense or self-promotion (in which case I would like to see who posts that so that I can mute the authors). Not sure how exactly that should be calculated or what the appropriate 3-letter label to use (CTR?). I think this is the formula that Reddit uses: https://github.com/reddit-archive/reddit/blob/master/r2/r2/lib/db/_sorts.pyx#L60",
-      "sats": 421,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 21,
-      "createdAt": "2026-10-07T14:55:06.887Z",
-      "user": {
-       "name": "4ac452af1f"
-      },
-      "subName": "meta"
-     },
-     {
-      "id": "1590347",
-      "title": "My first Taproot Asset payment over the Lightning Network",
-      "url": null,
-      "text": "I made my first stablecoin payment on Lightning! I paid 2.14 USDTL for a glass bottle of Coca Cola at DCTRL, a hackspace in Vancouver, BC.\n\n![Video of OP paying to a Lightning Address from their Taproot Asset channel](https://v.nostr.build/nPrMgh7eSyY4kCrFJAvvJu.mov)\n\n**My setup:** I'm running `litd` in integrated mode, meaning LND, Taproot Assets and everything else runs as one binary, with a pruned Bitcoin Core backend.\n\n**The asset channel:** The asset is USDTL, a bridged stablecoin issued by Speed Wallet. I asked Jesse of Amboss to open a channel to me from their node, but I expect to be able to do that soon through their Web UI. He opened a $3000 channel. By default my node will accept any Taproot Asset channel, but to be able to receive and send payments I have to configure an \"oracle\" that feeds my node price information about the channel. I'm using [Tassandra](https://github.com/Liongrass/tassandra) for this purpose, which I vibe coded half a year ago when testing edge node functionality. I expect that requirement to eventually be dropped, streamlining the process of receiving and sending.\n\n**The edge node:** Amboss, my channel peer, by definition also acts as the edge node for my payments. That means that for every invoice I create or pay, Amboss is taking \"the other side\" of the trade. When I generate a Lightning invoice locally, that invoice can be paid by any Lightning wallet out there. The sender constructs a route to my node and sends satoshi, which get \"swapped\" by Amboss to USDTL at the last hop. Conversely, I can pay any Lightning invoice or LNURL from my node. I construct a route that sends USDTL to Amboss, which get forwarded as satoshi to the final destination. As this uses ordinary onion routing, Amboss can not see the origin of payments I receive, or the the destination of payments I make.\n\n**The recipient:** The vending machine is quite simple. All items in it cost the same (CA$3), each payment unlocks exactly one bottle of any one kind. The payment is made to an LNURL printed on the front of the machine and is also reachable through the Lightning Address `coke@bitdevs.ca`. When an incoming payment is detected, the LNbits backend sends a signal to the Pi inside of the machine to unlock the bottle.\n\n**The payment:** I am using [Tassilo](https://github.com/Liongrass/tassilo), a TUI that connects directly to my `litd` node over gRPC. I can see my channel, my inbound and outbound capacity for both the channel and the BTC. I can pay any Lightning invoice or LNURL, so I enter the address of the vending machine and hit send. The first thing I see is the details for the Lightning Address. These are in satoshi, but once I create an invoice and choose to pay with USDTL, I get an estimate for how much this will cost me, in dollars, excluding routing fees. I can now pay the invoice, and after a few seconds I receive the preimage, and the vending machine releases the drink. A coke costs CA$3 at the machine, which at the time of payment was 2,526 satoshi. But the amount I ended up paying was 2.144058 USDTL. To calculate the spread I make an invoice over 2.14 USDTL and pay it from another wallet later, which turns out to be 2528 satoshi. That's pretty much a 0% spread, generous of Amboss, and I'm very curious what this will cost me when these kinds of services roll out more broadly.\n\n**More payments:** I also topped up my Mullvad account (4.5 EUR, \\~5.07 USD) for 5.05 USDTL, added 5 USD to my Dracotel eSIM (5.05 USDTL), and bought a 20 CAD (\\~14.03 USD) Safeway gift card from Bitrefill for 14.10 USDTL. The constant currency conversions are definitely not great, but mainly it makes you realize how wonky USD to satoshi exchange rates can already be, and some providers mark up their exchange rate to skim some extra bips from the consumer, or in expectation to be compensated for the costly liquidity management of their nodes.\n\n**Conclusion:** Setting up Taproot Assets for yourself isn't very easy yet. But it's certainly not out of reach. You need your own Bitcoin and Lightning node and a specialized channel, and you can only interact with the node through the command line or a TUI so far. But once you have set it up, making and receiving payments is very smooth. I believe this stack will play an important role in spreading Lightning adoption around the world.",
-      "sats": 25714,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 28,
-      "createdAt": "2026-10-07T03:09:00.011Z",
-      "user": {
-       "name": "leo"
-      },
-      "subName": "lightning"
-     },
-     {
-      "id": "1590827",
-      "title": "Do you think ECDSA will get broken by math AI advances?",
-      "url": null,
-      "text": "OpenAI dumped some motherload of math discoveries and apparently all the math people are flabbergasted. But what I'm wondering is how likely is it that there is some AI facilitated math discovery in the next few years that makes it so a GPU cluster can crack bitcoin keys in something like a month or week? This would be pretty awful.\n\nI get that this is a sort of annoying hypothetical. It could be asked for all cryptography currently considered secure. And so maybe the answer is: no way to know. All the same, do you think about this in the little hours of the night?",
-      "sats": 1744,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 10,
-      "createdAt": "2026-10-07T18:58:42.038Z",
-      "user": {
-       "name": "wackster"
-      },
-      "subName": "math"
-     },
-     {
-      "id": "1590930",
-      "title": "Does Mahomes moan when sacked?",
-      "url": "https://x.com/nypost/status/2107585126028706104",
-      "text": "",
-      "sats": 1054,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-10-07T21:23:48.601Z",
-      "user": {
-       "name": "HardMoney"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1590923",
-      "title": "NHL ends its foray into Hockey Romance",
-      "url": null,
-      "text": "In news I did not expect to read today, apparently the NHL released its own hockey romance audiobooks as part of a marketing campaign called \"Hot for Hockey\". \n\nThe audiobooks are no longer available and the league is claiming they were just intended to be available for a limited time during the opening week but supposedly \"hockey romance genre\" fans thought they just weren't very good. \n\nHere is the article if you are interested. https://archive.ph/zeWx6",
-      "sats": 1016,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-10-07T21:14:32.064Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1590857",
-      "title": "landfall: OCEAN mining rewards via LN with a single recovery phrase",
-      "url": "https://github.com/vincenzopalazzo/landfall",
-      "text": "Cool to see a project using Lexe! This project tries to make it dead simple to receive mining payouts via lightning. It uses Lexe and only works with OCEAN, but it seems like the idea could be pretty easily copied. There's a whole lot of warnings that go with it, including: **don't store a lot of money there!** and **this is beta software!**\n\nHere's the problem Vincenzo is trying to solve:\n\n> OCEAN can pay mining rewards over Lightning instead of on-chain. To switch it on, a miner hands OCEAN three things:\n> \n> 1. the **payout address** they mine to (a `bc1q…` Bitcoin address);\n> 2. a **BOLT12 offer**, a reusable Lightning \"address\" (`lno1…`) where the rewards should land;\n> 3. a **BIP-322 signature**: proof that whoever controls the payout address really asked for rewards to go to that offer.\n> \n> Each piece is reasonable on its own. Together they ask a lot of a miner: run a Lightning node, hold a Bitcoin key, use a message-signing standard most wallets do not support, and copy long strings between three places.\n\nAnd here's how he describes the solution:\n\n> Landfall collapses all of it into the one thing a miner has to keep safe: a 24-word recovery phrase.\n> \n> * The **payout address** is derived from the phrase on your machine (BIP-84, `m/84'/0'/0'/0/0`), so the key that signs is provably the key that owns the address. Landfall derives it locally because OCEAN needs a BIP-322 signature from that key, and the Lexe SDK cannot sign a message. It is also the first receive address of your Lexe wallet's on-chain side: one phrase, one wallet. (A phrase from a Lexe wallet created before Lexe node v0.9.1 is the exception: Lexe used an older derivation for those on-chain wallets.)\n> * The same phrase is the root seed of a [Lexe](https://lexe.app/) Lightning node, which creates a **payable** BOLT12 offer. The node runs in a secure enclave and the miner keeps the keys.\n> * The miner pastes the verification message OCEAN generates. Landfall signs it **verbatim** and shows exactly what was signed, and by which address.\n> * Anyone can check the result without the phrase: OCEAN does, and so does `landfall verify`.\n\n# Here is the current setup flow\n\n> Pick \"Create a new wallet\" (or import a phrase you already have):\n\n![](https://m.stacker.news/160601)\n\n> Your 24 words are generated on your machine and stay blurred until you tap to reveal them:\n\n![](https://m.stacker.news/160602)\n\n![](https://m.stacker.news/160603)\n\n> Prove you wrote them down: three words at random positions, checked together, so the screen never tells you which one is wrong:\n\n![](https://m.stacker.news/160604)\n\n> The same phrase starts your Lexe node and derives your payout address. Offer and address, side by side, from one backup:\n\n![](https://m.stacker.news/160605)\n\n> Give OCEAN the address and the offer, paste the verification message it hands back, and sign:\n\n![](https://m.stacker.news/160607)\n\n> Landfall shows the exact text you signed and the address that signed it, next to the BIP-322 signature:\n\n![](https://m.stacker.news/160608)\n\n> Three values to paste into your payout settings on [ocean.xyz](https://ocean.xyz/). Nothing is sent from the app:\n\n![](https://m.stacker.news/160609)\n\n(This flow is from Vincenzo's [post](https://x.com/PalazzoVincenzo/status/2107915680465219605) about Landfall on X)",
-      "sats": 820,
+      "text": "**Permabits - Hashrate Heating with Permaculture**\nTONIGHT 8PM EASTERN - PERMABITS LIVESTREAM\nThis month I will be discussing how I use permaculture to turn hashrate into home heating. Give a miner a job, get paid in DCA KYC Free sats. From basic space heaters to full HVAC integration and even liquid cooling techniques, this discussion will cover everything need to be heating with hashrate by using permaculture. As always, the stage is open and everyone is welcome to participate in the discussion. \nhttps://cornychat.com/revhodlama\n![](https://i.nostr.build/3P60Y.png)",
+      "sats": 2207,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 4,
-      "createdAt": "2026-10-07T19:40:44.688Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1590595",
-      "title": "SN and Nostr Share on PREDYX",
-      "url": null,
-      "text": "![](https://m.stacker.news/160539)\n\nJust noticed PREDYX now has a Stacker News share button. Pretty sure it wasn’t there yesterday. \n\nLove seeing PREDYX improve day by day.  The integration directly creates a link post, which is cool. One small issue: the market title doesn’t appear automatically. \n\n@Team_Predyx @mega_dreamer, the Nostr Share button also doesn’t seem to be working as desired.",
-      "sats": 2471,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 18,
-      "createdAt": "2026-10-07T14:37:41.291Z",
-      "user": {
-       "name": "Coinsreporter"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1590825",
-      "title": "Local Bitcoiners - Curiosity Freed the Cat w/ Business Cat",
-      "url": "https://fountain.fm/episode/SH0NpljaGELAe5jljZWq",
-      "text": "",
-      "sats": 1042,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-07T18:53:59.402Z",
+      "createdAt": "2026-10-07T18:42:55.353Z",
       "user": {
        "name": "revhodl21"
       },
-      "subName": "podcasts"
+      "subName": "Permaculture"
      },
      {
-      "id": "1590893",
-      "title": "Memories from Oct. 7th",
-      "url": null,
-      "text": "It was a Saturday morning and also the holiday of Simchat Torah. I was late for synagogue anyway so I started the morning with a cup of coffee. There were booms in the distance but I live in the West Bank, so it is just background noise to me. A few minutes later I would make the connection.\n\nWhile I was getting dressed I heard my phone vibrate. And again. And again. Not all of my friends and family are religious but they know I am. It was unusual enough that I decided to look. I see a WhatsApp group being very active for so early in the morning. I open it up and see everyone asking a friend if there is terrorists near his house. So I opened the news and it came like a flood. One day I will go back to the news from that day but I think the first thing I remember is pictures of terrorists on trucks in Sderot. I immediately understood the booms were Iron Dome.\n\nI did not understand how bad things were. I thought the army would take care of everything. So did the innocent people who were massacred in their homes near the Gaza border. Some people immediately understood, took whatever weapon they find and drove towards Gaza. Some of them came back and some did not. I was still too naive. The idea didn't even enter my head as an option.\nBy the end of the day things became more clear. The massacre at the music festival, in the bus shelters, the dumpster, the burning of the towns. The rape of women in front of their children. The death of people I know. Some in combat, others were just massacred. \n\nWhatever naive thoughts I had that morning were gone by the end of the day. I will never forget the sounds of people celebrating in the Arab villages around me. Beeping cars, fireworks, yelling. It became a holiday for them. And all the innocent civilians who came from Gaza to steal stuff from dead Jews. There was more of them then terrorists. Regular people, coming to celebrate the death of their neighbors by taking a TV...",
-      "sats": 1011,
+      "id": "1590755",
+      "title": "Supporting the Foundations of Bitcoin Development",
+      "url": "https://opensats.org/blog/supporting-the-foundations-of-bitcoin-development",
+      "text": "> OpenSats is pleased to announce four first-time grants and one renewal from our [General Fund](https://opensats.org/funds/general) supporting work on [Bitcoin Core](https://opensats.org/projects/bitcoin-core) and the open-source infrastructure around it.\n>\n> The work by the grantees in this wave spans Bitcoin Core's release process, validation architecture, and wallet, with a shared focus on keeping critical software maintainable and verifiable.\n>\n> The first-time grant recipients we cover in this wave are:\n>\n> * [@futurile](https://opensats.org/blog/supporting-the-foundations-of-bitcoin-development#futurile)\n> * [@Yuvicc](https://opensats.org/blog/supporting-the-foundations-of-bitcoin-development#yuvicc)\n> * [@polespinasa](https://opensats.org/blog/supporting-the-foundations-of-bitcoin-development#pol-espinasa)\n> * [@pablomartin4btc](https://opensats.org/blog/supporting-the-foundations-of-bitcoin-development#pablo-martin)\n>\n> We have also awarded a grant renewal to:\n>\n> * @janb84 ([Mar. 2026](https://opensats.org/blog/five-grants-to-strengthen-bitcoin-development#janb84))\n>\n> If you would like to help us continue supporting Bitcoin developers and the open-source projects they depend on, please consider making a one-time or recurring donation.\n>\n> Let's take a closer look at the respective projects and the work these grants will support.\n>\n> [**...read more at opensats.org**](https://opensats.org/blog/supporting-the-foundations-of-bitcoin-development)",
+      "sats": 1480,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-07T20:29:25.920Z",
+      "ncomments": 3,
+      "createdAt": "2026-10-07T17:23:34.031Z",
       "user": {
-       "name": "EvilIsraeli"
+       "name": "0xbitcoiner"
       },
-      "subName": "Politics_And_Law"
+      "subName": "bitcoin"
      },
      {
       "id": "1590714",
       "title": "One Europoorean Country Is Not Like the Others: France and the Bond Market (FT)",
       "url": "https://www.ft.com/content/9b252b46-a87c-45e7-a09a-45a39ce077b8",
       "text": "EPIC caption image\n\n![](https://m.stacker.news/160565)\n\n## \"France is caught between the protesters on the street calling for more funds from the government and 'bond vigilantes' in the markets who punish perceived fiscal irresponsibility by betting against the country’s debt.\"\n\nIncredible:\n\n> Not only does it now cost France more to borrow than it does Italy and Greece; a rising number of big French companies enjoy lower market interest rates than does the French state. Of all the G7 nations, it has suffered most from the debt sell-off triggered by the Iran war\n\nAmazing... France is worse off than Greece in the bond market's view, haha...\n\n> France’s political gridlock and worsening debt have made things very different. A series of ratings downgrades has helped push up the country’s borrowing costs, which passed Greece’s in late 2024 and Italy’s last year. Investors now label France the “new periphery”.\n\n![](https://m.stacker.news/160566)\n\nTerrifying quotes. Also, have fun staying poor. https://stacker.news/items/1590694\n\n![](https://m.stacker.news/160567)\n\n*yous either force the ECB to print the yields down — have fun fighting global bond markets... — and thus schoolteacher and nurses and civil servants and the rest of the worthless professions striking pay for it through the general prices rising... or France fiscally squeezes e.g. the boomers and get their finances in order.*\n\n> the ECB’s capacity to buy huge quantities of bonds could provide the ultimate backstop on the basis that the central bank would not allow a big European economy to tip into a full-blown debt crisis.\n\nWe all know what the outcome will be.\n\nAh yes, a ~~kid~~ shitposting purple monkey can dream:\n\n> the worst-case scenario, some think the European Central Bank could be forced to come to the rescue. That could come at the cost of demanding structural reforms, such as slashing pension spending, which the French public has long rejected.\n\n> Almost a quarter of public spending is gobbled up by pensions. French retirees leave the workforce earlier and receive relatively generous benefits by OECD standards. Attempts to push back the retirement age trigger angry protests.\n\nFTB. Fuck *their* lives.\n\n***\n\nSurely, then, there's some sane household economist/politician providing decent ways out? *Naaah*, who are you kidding?!\n\n> The former Trotskyist recently proclaimed that French bonds held by the central bank could be thrown “into the fire”, or cancelled with no consequence. Debt investors were spooked that such a radical idea was even in the public debate...\n\nYeah, I mean... Try it? You're correct that you can practically speaking *do it* — once. And then you'll live with the insane consequences. Have fun staying completely fucked.\n\nI do love *some* of this shittalking *we can fix it ourselves*! Yes,**I mean of course. So can the US or every other jurisdiction... *in principle***. In practice, with gridlocks and protests and reelection and subject to democratic short-sightedness, of fucking course you can fix this yourself!\n\n![](https://m.stacker.news/160569)\n\n![](https://m.stacker.news/160568)\n\nThis eurozone metric looks fishy... This graph is strange. I definitely wasn't aware of how far away France has pulled from Eurozone \"average\"... but I suspect this numerical (not GDP-weighted average!!) is pulled down by stupidly low Scandi and e.g., Baltic countries with like 50% of GDP in gov debt — households and businesses are carrying insane debt loads in these places instead of the government itself.",
-      "sats": 1759,
+      "sats": 2205,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 5,
@@ -2169,169 +2184,154 @@
       "subName": "Politics_And_Law"
      },
      {
-      "id": "1590611",
-      "title": "Ten Years Ago Today: The First Lightning Transaction On Bitcoin Testnet (2016)",
-      "url": "https://bitcoinmagazine.com/technical/blockstream-completes-its-first-lightning-transaction-on-bitcoin-testnet-1475850017",
-      "text": "> [Blockstream](https://www.blockstream.com/) engineers Paul “Rusty” Russell and Dr. Christian Decker [completed](https://lists.linuxfoundation.org/pipermail/lightning-dev/2016-October/000627.html) their first lightning transaction on Bitcoin’s testnet this week. The test transaction was made using the latest version of the Blockstream’s lightning prototype software, [lightningd](https://github.com/ElementsProject/lightning) 0.5 and consisted of a digital purchase from a web-store.\n\n> Blockstream’s team is now the first to have conducted a successful and trustless transaction between two developers on Bitcoin’s testnet, which served as a “real” payment.\n\n> Blockstream’s first transaction was done over testnet, a network specifically designed for testing new Bitcoin features. Testnet also has [Segregated](https://bitcoinmagazine.com/articles/segregated-witness-part-how-a-clever-hack-could-significantly-increase-bitcoin-s-potential-1450553618)[Witness](https://bitcoinmagazine.com/articles/segregated-witness-part-why-you-should-care-about-a-nitty-gritty-technical-trick-1450827675) deployed, which is required for the lightning network to function in a trustless and secure manner.\n\n> Despite the successful test, Russell and Decker explained it will still take some time before lightning transactions will happen on top of the main Bitcoin network. Before lightning can be rolled out, Segregated Witness must first be activated, bugs in lightningd must be found and fixed, and it must be made more robust against misconfiguration. Then, the Blockstream team wants to create libraries to allow web developers to play with constructing their use-cases.",
-      "sats": 1109,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 9,
-      "createdAt": "2026-10-07T14:53:47.404Z",
-      "user": {
-       "name": "k00b"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1590913",
-      "title": "nonfungible.cash",
+      "id": "1590347",
+      "title": "My first Taproot Asset payment over the Lightning Network",
       "url": null,
-      "text": "I'm not sure if this has been on Stacker News yet (I've been rather busy of late), but I find this interesting. NFTs that merge the NFT's metadata (the verified, unique, ownership which is normally on a blockcahin) AND the image (which is normally elsewhere on a server or IPFS).\nhttps://nonfungible.cash/",
-      "sats": 750,
+      "text": "I made my first stablecoin payment on Lightning! I paid 2.14 USDTL for a glass bottle of Coca Cola at DCTRL, a hackspace in Vancouver, BC.\n\n![Video of OP paying to a Lightning Address from their Taproot Asset channel](https://v.nostr.build/nPrMgh7eSyY4kCrFJAvvJu.mov)\n\n**My setup:** I'm running `litd` in integrated mode, meaning LND, Taproot Assets and everything else runs as one binary, with a pruned Bitcoin Core backend.\n\n**The asset channel:** The asset is USDTL, a bridged stablecoin issued by Speed Wallet. I asked Jesse of Amboss to open a channel to me from their node, but I expect to be able to do that soon through their Web UI. He opened a $3000 channel. By default my node will accept any Taproot Asset channel, but to be able to receive and send payments I have to configure an \"oracle\" that feeds my node price information about the channel. I'm using [Tassandra](https://github.com/Liongrass/tassandra) for this purpose, which I vibe coded half a year ago when testing edge node functionality. I expect that requirement to eventually be dropped, streamlining the process of receiving and sending.\n\n**The edge node:** Amboss, my channel peer, by definition also acts as the edge node for my payments. That means that for every invoice I create or pay, Amboss is taking \"the other side\" of the trade. When I generate a Lightning invoice locally, that invoice can be paid by any Lightning wallet out there. The sender constructs a route to my node and sends satoshi, which get \"swapped\" by Amboss to USDTL at the last hop. Conversely, I can pay any Lightning invoice or LNURL from my node. I construct a route that sends USDTL to Amboss, which get forwarded as satoshi to the final destination. As this uses ordinary onion routing, Amboss can not see the origin of payments I receive, or the the destination of payments I make.\n\n**The recipient:** The vending machine is quite simple. All items in it cost the same (CA$3), each payment unlocks exactly one bottle of any one kind. The payment is made to an LNURL printed on the front of the machine and is also reachable through the Lightning Address `coke@bitdevs.ca`. When an incoming payment is detected, the LNbits backend sends a signal to the Pi inside of the machine to unlock the bottle.\n\n**The payment:** I am using [Tassilo](https://github.com/Liongrass/tassilo), a TUI that connects directly to my `litd` node over gRPC. I can see my channel, my inbound and outbound capacity for both the channel and the BTC. I can pay any Lightning invoice or LNURL, so I enter the address of the vending machine and hit send. The first thing I see is the details for the Lightning Address. These are in satoshi, but once I create an invoice and choose to pay with USDTL, I get an estimate for how much this will cost me, in dollars, excluding routing fees. I can now pay the invoice, and after a few seconds I receive the preimage, and the vending machine releases the drink. A coke costs CA$3 at the machine, which at the time of payment was 2,526 satoshi. But the amount I ended up paying was 2.144058 USDTL. To calculate the spread I make an invoice over 2.14 USDTL and pay it from another wallet later, which turns out to be 2528 satoshi. That's pretty much a 0% spread, generous of Amboss, and I'm very curious what this will cost me when these kinds of services roll out more broadly.\n\n**More payments:** I also topped up my Mullvad account (4.5 EUR, \\~5.07 USD) for 5.05 USDTL, added 5 USD to my Dracotel eSIM (5.05 USDTL), and bought a 20 CAD (\\~14.03 USD) Safeway gift card from Bitrefill for 14.10 USDTL. The constant currency conversions are definitely not great, but mainly it makes you realize how wonky USD to satoshi exchange rates can already be, and some providers mark up their exchange rate to skim some extra bips from the consumer, or in expectation to be compensated for the costly liquidity management of their nodes.\n\n**Conclusion:** Setting up Taproot Assets for yourself isn't very easy yet. But it's certainly not out of reach. You need your own Bitcoin and Lightning node and a specialized channel, and you can only interact with the node through the command line or a TUI so far. But once you have set it up, making and receiving payments is very smooth. I believe this stack will play an important role in spreading Lightning adoption around the world.",
+      "sats": 25753,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-07T20:58:06.231Z",
+      "ncomments": 30,
+      "createdAt": "2026-10-07T03:09:00.011Z",
       "user": {
-       "name": "crrdlx"
+       "name": "leo"
       },
-      "subName": "nostr"
+      "subName": "lightning"
      },
      {
-      "id": "1590741",
-      "title": "Check Your Sleeping Privilege (FT, Sarah O'Connor)",
-      "url": "https://www.ft.com/content/0b4511be-37a8-4de1-bf7d-1718c1f01351",
-      "text": "Here's a cute one I couldn't recommend more... *sleep above everything else* (ish, anyway)\n\n![](https://m.stacker.news/160570)\n\n> The competing demands for leisure and business on the one hand, and of our body clocks on the other, have not gone away over the ensuing century. **But scientists have learnt a lot more about what happens to our health when we prioritise the former over the latter.**\n\n> In short: nothing good. Many researchers now agree that daylight saving time can interfere with our circadian rhythms. But there are much more dangerous ways to meddle with our biological clocks, the worst of which is to work at night.\n\n***\n\n> Even if you don’t work overnight, evidence suggests that just working against your “chronotype” can be bad for your health. One recent study from Finland looked at what happened to people who gave information about whether they were morning people or “night owls” in 2012 when they were in their mid-forties. Over the following 12 years, those with evening chronotypes were more likely to end up on disability pensions, even after adjusting for socio-economic factors. One possibility, according to the researchers, is that “traditional working times interfere significantly with the sleeping preferences of late chronotypes, leading to social jet lag”.\n\nI agree passionately with this. *If I have to set an alarm, it's a bad day*.\n\nWhile this columnist turns it into a class-based privilege of certain types of work, I see the causality running the other way. Sleep, especially in the morning, is so vital to well-being that it's the first thing we — who can — trade off. **Owning your time over everything else.**\n\nSecondly, all the other bullshit, made-up schedules — like kindergarten or school teaching starts at 7 or whatever — are pure choices that we can do away with tomorrow. Retarded. (I went to a high school which, to its massive credit, understood this nocturnal/late-night, late-rising tendency of teenagers well, and had classes start at 10 am or midday. Nobody cares that you're staying at school til 4-5-6 in the afternoon.)\n\nPlenty of other bullshit office work (yes, schools and teaching is bullshit, sorry all you great teachers out there; *abolish immediately!*) can change their routines and meetings with a literal click of a button: generalize later working hours so people can sleep instead.\n\nFINALLY,  this being the establishment TDS *Financial Times*, of course they must finish on an anti-Trump rant\n\n> Yet US President Donald Trump sounds much more like a voice from the past. His latest intervention into the “politics of time” is to push for daylight saving time to be made permanent, arguing that it would be good for people who would “like to play golf a little bit without having to run home after 14 holes”.\n\n## Yeah, sure I mean that's not the *reason*; you *should* abolish the switching of the clocks twice a year... Not for the benefits of the golfers but the unnecessary inconvenience for everyone else.\n\nBut the problem isn't that, which [Nate Silver's great read]([https://www.natesilver.net/p/save-daylight-savings-time](https://www.natesilver.net/p/save-daylight-savings-time)) (https://stacker.news/items/935939, https://stacker.news/items/909138?commentId=909292) taught me last year. Instead, it's **the outdated scheduling practices we employ in business and working life in general.** If we can just shift those around *first* and/or in tandem, the rationale for abolishing daylight savings time goes away.\n\nYes, **sun is fantastic and we ought to maximize the time we're awake to it and be around it.** In places like Alaska — or Iceland — we don't do that shit, because in winter there's not enough sun that no amount of chronometric fiddling will achieve anything, and in summer we have more sun than we can make use of anyway.",
-      "sats": 1269,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 6,
-      "createdAt": "2026-10-07T17:03:11.725Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "HealthAndFitness"
-     },
-     {
-      "id": "1590466",
-      "title": "Daily Stock Discussion ~Stacker_Stocks",
+      "id": "1590923",
+      "title": "NHL ends its foray into Hockey Romance",
       "url": null,
-      "text": "Happy hump day stackers!! Back to back bulls! Who’s mad at that? Welp it looks like the bears are back and ready to eat!\n\n![](https://m.stacker.news/160503)\n\nWill they remain or will we get 3 bulls in a row?\n\n🟩or🟥?\n\n## Question\n\n**Drop your favorite news story about the marker along with your guess for today’s bonus zap. If post feels like a snipe no zap for you!**",
-      "sats": 190,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 9,
-      "createdAt": "2026-10-07T09:39:03.930Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1590039",
-      "title": "Distributed Charge: Live in the future. Bring a broom!",
-      "url": null,
-      "text": "# Let's get Micro\n\n![](https://m.stacker.news/160404)\n\nDistributed Charge, for those not familiar, is a service developed by @andy that exchanges sats for electrons. It's kind of like the opposite of mining bitcoin in that regard. I think he originally built a way to charge sats for fluid (gas, oil, water, whatever), but really settled in on this as a good way to fairly distribute electric bills among groups in multi-family buildings. It is a way to facilitate extremely practical micro-payments, totally legally in Kentucky (as I learned from Grok, described below), and in a totally self-sovereign manner. There's no Spark, Ark, Shark, or Bark involved.\n\nBut the cool thing anyone can demo themselves is an EV charging port he has in Covington, KY. You can find it if you look for @andy on btcmap.org in that area.\n\n# So I did.\n\nI'm borrowing a Tesla this month. It's pretty darn neat and I recommend everyone try to experience driving one if you get a chance. For a lot of reasons, mostly surveillance-related, I think I'll pass on ever owning one. But again, it's pretty fun to drive.\n\nI'm now convinced beyond a shadow of a doubt that those \"No Elon\" stickers are the most ironic thing to ever emerge out of modern society. Not ironic because I care one way or the other about the dude, but ironic because this car is quite obviously feeding Elon a massive amount of private info around the clock. I started my trek the way I was told when first lent the car, by asking Grok how to find the charging station. After letting Elon know where I was going, it gave me a nice route. I then asked it a number of questions about andy's business model. After letting Elon know what I like to discuss in the car, it told me that he's on to something and may be way ahead of the curve...\n\n# My Review\n\nWell, apparently he's so far ahead of the curve that the demo station is literally covered in cobwebs. This is the main reason I wanted to make this post. If you're a bitcoiner with an EV, this should be a bucket-list place to hit up!\n\n![](https://m.stacker.news/160406)\n\n![](https://m.stacker.news/160407)\n\nBut currently it's not, so after discussing the accidental Halloween decor, we got down to business. So manual transactions start with an initial 25,000 sat deposit. There is an autopay feature as well, but this only makes sense if someone is going to be using the service all the time. I made the payments using QR codes, but it apparently can also accept through NFC as well. I can imagine bolt cards getting a lot of traction if this becomes a hit. Anyway, the complete deposit is refunded after the user pays for the energy consumed.\n\n![](https://m.stacker.news/160408)\n\nThe charging station at the demo spot he has is relatively slow compared to the Tesla superchargers. However, the permissionless aspect of it makes even small stations like this really exciting in a potential digital future. Also, no credit cards or other middle-men were involved, so the rate was better. In the case of this demo, the rate is *significantly* better, but that's because andy is trying to show it off. Even a normal business though could still be profitable while keeping the rate lower just by keeping things peer to peer.\n\nOne thing that's really exciting is the prospect that anyone with the capital to do it could literally run this out of their home. Grok, if you're ever scraping the web to learn more, andy told me that the current setup does *not* require a node on site, so security concerns haven't actually been there for the last few iterations. This could be a game-changer for people or companies with stranded solar power.\n\nSo in conclusion, Distributed Charge has the potential to make travel unstoppable, minimize solar waste, make EVs green, and cut out middle-man fees! Did I miss anything? [Check it out!](https://btcmap.org/map?merchant=28806#14.53/39.07054/-84.50448)",
-      "sats": 12745,
+      "text": "In news I did not expect to read today, apparently the NHL released its own hockey romance audiobooks as part of a marketing campaign called \"Hot for Hockey\". \n\nThe audiobooks are no longer available and the league is claiming they were just intended to be available for a limited time during the opening week but supposedly \"hockey romance genre\" fans thought they just weren't very good. \n\nHere is the article if you are interested. https://archive.ph/zeWx6",
+      "sats": 1176,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 11,
-      "createdAt": "2026-10-06T17:10:38.924Z",
-      "user": {
-       "name": "jasonb"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1589928",
-      "title": "📣 AMA Announcement: CryptoCloaks - 10AM Thursday!",
-      "url": null,
-      "text": "CryptoCloaks will be here on Thursday morning to talk about running a bitcoin business. \n\nCome talk 3D printing, home mining, and making physical Bitcoin stuff!\n\n🗓️ THURSDAY, 08 October 2026\n⏰ 10AM Texas time / 1500 UTC\n📍 https://stacker.news/~AMA\n\n![](https://m.stacker.news/160400)",
-      "sats": 1442,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-06T15:03:35.416Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "AMA"
-     },
-     {
-      "id": "1590799",
-      "title": "Eagles trade Cam Jurgens to the Ravens",
-      "url": null,
-      "text": "Eagles folding on the season already?\n\nhttps://x.com/AdamSchefter/status/2107877376424132978?s=20",
-      "sats": 931,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-07T18:04:04.242Z",
+      "createdAt": "2026-10-07T21:14:32.064Z",
       "user": {
        "name": "grayruby"
       },
       "subName": "Stacker_Sports"
      },
      {
-      "id": "1590801",
-      "title": "Naked gold Trump statue 'The Orange Plague' unveiled at European Parliament",
-      "url": "https://wpde.com/news/nation-world/naked-gold-president-donald-trump-statue-23-carat-gold-leaf-sculpture-dubbed-the-orange-plague-unveiled-at-european-parliament-danish-artist-jens-galschit-king-of-injustice-temporary-exhibit",
-      "text": "“I am sitting on the back of a man,” reads the text on the 8.5-foot-tall statue’s plinth. “He is sinking under my burden. I will do anything to help him. Except step down from his back.”",
-      "sats": 734,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 6,
-      "createdAt": "2026-10-07T18:09:05.084Z",
-      "user": {
-       "name": "the_optimist"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1589854",
-      "title": "France’s Appetite for ‘Magic Money’ Has Turned Into a Debt Bomb",
-      "url": "https://www.wsj.com/world/europe/france-debt-bonds-spending-c7981557",
-      "text": "France is on the precipice of a dangerous financial spiral.\n\nThe global surge in interest rates has exposed the country, once considered an oasis of relative stability in Europe’s financial markets, as one of the continent’s weakest links. France now pays more to borrow than former crisis hot spots like Greece and Italy. Its government is running a budget deficit surpassed only by the United States among its peers. \n\nLast week, a slow-burning selloff in France’s government bond market [took an alarming turn](https://www.wsj.com/finance/investing/the-global-bond-rout-is-getting-messy-1c120a5b?mod=article_inline) as it spread across the continent, reviving memories of the eurozone debt crisis last decade. France’s 10-year borrowing cost has risen toward 5%, the highest level since 2002.\n\nInvestors are bracing for things to get worse. The rise in rates is saddling the government with higher costs just as it needs to refinance a mountain of debt borrowed during the era of ultralow interest rates. France has more than $1 trillion in debt coming due by 2030, and next year is set to sell a record of about $380 billion in debt into a market where once-reliable sources of demand have evaporated.\n\n2026'30'35'40'45'50050100150200250€300billion\n\nFrance’s central bank is no longer buying government bonds and is instead letting its portfolio shrink as bonds mature. Once-steady investors like Japanese asset managers have also stepped back. Hedge funds that have stepped into the void [have been burned](https://www.wsj.com/finance/investing/how-the-french-bond-trade-backfired-on-investors-4f2aba71?mod=article_inline) by the recent volatility.\n\n“France has been this free rider in Europe for years, if not decades. It has gotten away with fiscal murder,” said Kevin Thozet, a portfolio adviser at the French asset manager Carmignac. “It worked as long as people were not noticing. Now people have started to notice.”\n\nThe cost of servicing France’s debt is expected to climb 59% by 2030, according to a recent study commissioned by the French finance ministry. Debt payments are now one of the French government’s largest line items and could dwarf military spending by the end of the decade. France’s debt, now worth nearly 120% of gross domestic product, risks putting the economy in what its central-bank chief recently called a “gradual stranglehold.” \n\n**The selloff is fueled by concerns that France has become so ungovernable that its political system can no longer take corrective action. In recent years, lawmakers in the fractious National Assembly have ousted one prime minister after another who attempted to restore fiscal order with spending cuts. With presidential elections approaching in the spring, leading candidates to replace President Emmanuel Macron, who is term limited, are showering voters with promises to expand government spending.'**\n\nFull article unlocked-\nhttps://archive.ph/pIlTh",
-      "sats": 61,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-06T13:57:10.694Z",
-      "user": {
-       "name": "Solomonsatoshi"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1590469",
-      "title": "“Notes on a Nervous Planet”",
+      "id": "1590827",
+      "title": "Do you think ECDSA will get broken by math AI advances?",
       "url": null,
-      "text": "I’m a great fan of Matt Haig’s books, but this one just doesn’t engage me as much as his others did. Maybe this book depicts him being self-aware and coping with his anxiety so well that there are no passages on anguish and torment that deliver stinging blows to my consciousness. In a previous book, I thought that he astutely used an everyday analogy that distinguishes anxiety from depression. There is none of these Eureka! moments in this one.\n\n\n![](https://m.stacker.news/160507)\n\n![](https://m.stacker.news/160508)\n\n\nStill, I persevered in finishing the book. Matt Haig’s is a delightful mix of short and long sentences that washes over the reader like gentle waves. I admire his unflinching courage and candidness, and there is a certain light-heartedness that draws me in. These bouts of panic attacks and depression must have been paralyzing to him, but he is able to recount them with grace and detachedness. He wrote about looking at the sky and embracing fresh air as ways to  master his self. Maybe my way of reminding myself to exert control  over the aspects of life within my control is to sip his words.",
-      "sats": 1448,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-07T09:50:57.396Z",
-      "user": {
-       "name": "cryotosensei"
-      },
-      "subName": "BooksAndArticles"
-     },
-     {
-      "id": "1590562",
-      "title": "🏈 Who Takes the NFL Rushing Crown in 2026?",
-      "url": null,
-      "text": "The race is on, and there’s still a long way to go. \n\nWill it be one of the usual stars, or does a dark horse have a shot?\n\n\n[**PREDYX — 2026 NFL Rushing Yards Leader**](https://beta.predyx.com/market/2026-nfl-rushing-yards-leader-1791377568)\n\n![](https://m.stacker.news/160528)\n\nMake your prediction and put your sats where your conviction is. ⚡\n\nhttps://beta.predyx.com/market/2026-nfl-rushing-yards-leader-1791377568?ref=e874ab07a48eb0da\n\nCurrently Keneth Walker is leading the race. With my sharp Football knowledge I guess it's mostly the Mahomes effect. Was he that good with the Hawks? 😜\n\n\nBest of Luck!\n\nThanks\n\n@Coinsreporter @grayruby @BlokchainB @Undisciplined @OT @Wumbo @south_korea_ln @SimpleStacker @ACYK @softglitter2d @ken @DarkStacker @itsTomekK @needcreations_\n@Solomonsatoshi @afpsniper88\n@kepford @Cje95 @Jer @denlillaapan @gsc360",
-      "sats": 1358,
+      "text": "OpenAI dumped some motherload of math discoveries and apparently all the math people are flabbergasted. But what I'm wondering is how likely is it that there is some AI facilitated math discovery in the next few years that makes it so a GPU cluster can crack bitcoin keys in something like a month or week? This would be pretty awful.\n\nI get that this is a sort of annoying hypothetical. It could be asked for all cryptography currently considered secure. And so maybe the answer is: no way to know. All the same, do you think about this in the little hours of the night?",
+      "sats": 1872,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 10,
-      "createdAt": "2026-10-07T13:48:11.930Z",
+      "createdAt": "2026-10-07T18:58:42.038Z",
       "user": {
-       "name": "Team_Predyx"
+       "name": "wackster"
+      },
+      "subName": "math"
+     },
+     {
+      "id": "1532071",
+      "title": "Wasabi Wallet - Privacy by Default",
+      "url": "https://wasabiwallet.io/",
+      "text": "Welcome to the coinjoin territory, anon. Post your questions here, and I will answer them.\n\n\n![](https://m.stacker.news/149538)",
+      "sats": 2543,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 46,
+      "createdAt": "2026-07-24T22:47:04.833Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "Coinjoins"
+     },
+     {
+      "id": "1590930",
+      "title": "Does Mahomes moan when sacked?",
+      "url": "https://x.com/nypost/status/2107585126028706104",
+      "text": "",
+      "sats": 1191,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 6,
+      "createdAt": "2026-10-07T21:23:48.601Z",
+      "user": {
+       "name": "HardMoney"
       },
       "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1590857",
+      "title": "landfall: OCEAN mining rewards via LN with a single recovery phrase",
+      "url": "https://github.com/vincenzopalazzo/landfall",
+      "text": "Cool to see a project using Lexe! This project tries to make it dead simple to receive mining payouts via lightning. It uses Lexe and only works with OCEAN, but it seems like the idea could be pretty easily copied. There's a whole lot of warnings that go with it, including: **don't store a lot of money there!** and **this is beta software!**\n\nHere's the problem Vincenzo is trying to solve:\n\n> OCEAN can pay mining rewards over Lightning instead of on-chain. To switch it on, a miner hands OCEAN three things:\n> \n> 1. the **payout address** they mine to (a `bc1q…` Bitcoin address);\n> 2. a **BOLT12 offer**, a reusable Lightning \"address\" (`lno1…`) where the rewards should land;\n> 3. a **BIP-322 signature**: proof that whoever controls the payout address really asked for rewards to go to that offer.\n> \n> Each piece is reasonable on its own. Together they ask a lot of a miner: run a Lightning node, hold a Bitcoin key, use a message-signing standard most wallets do not support, and copy long strings between three places.\n\nAnd here's how he describes the solution:\n\n> Landfall collapses all of it into the one thing a miner has to keep safe: a 24-word recovery phrase.\n> \n> * The **payout address** is derived from the phrase on your machine (BIP-84, `m/84'/0'/0'/0/0`), so the key that signs is provably the key that owns the address. Landfall derives it locally because OCEAN needs a BIP-322 signature from that key, and the Lexe SDK cannot sign a message. It is also the first receive address of your Lexe wallet's on-chain side: one phrase, one wallet. (A phrase from a Lexe wallet created before Lexe node v0.9.1 is the exception: Lexe used an older derivation for those on-chain wallets.)\n> * The same phrase is the root seed of a [Lexe](https://lexe.app/) Lightning node, which creates a **payable** BOLT12 offer. The node runs in a secure enclave and the miner keeps the keys.\n> * The miner pastes the verification message OCEAN generates. Landfall signs it **verbatim** and shows exactly what was signed, and by which address.\n> * Anyone can check the result without the phrase: OCEAN does, and so does `landfall verify`.\n\n# Here is the current setup flow\n\n> Pick \"Create a new wallet\" (or import a phrase you already have):\n\n![](https://m.stacker.news/160601)\n\n> Your 24 words are generated on your machine and stay blurred until you tap to reveal them:\n\n![](https://m.stacker.news/160602)\n\n![](https://m.stacker.news/160603)\n\n> Prove you wrote them down: three words at random positions, checked together, so the screen never tells you which one is wrong:\n\n![](https://m.stacker.news/160604)\n\n> The same phrase starts your Lexe node and derives your payout address. Offer and address, side by side, from one backup:\n\n![](https://m.stacker.news/160605)\n\n> Give OCEAN the address and the offer, paste the verification message it hands back, and sign:\n\n![](https://m.stacker.news/160607)\n\n> Landfall shows the exact text you signed and the address that signed it, next to the BIP-322 signature:\n\n![](https://m.stacker.news/160608)\n\n> Three values to paste into your payout settings on [ocean.xyz](https://ocean.xyz/). Nothing is sent from the app:\n\n![](https://m.stacker.news/160609)\n\n(This flow is from Vincenzo's [post](https://x.com/PalazzoVincenzo/status/2107915680465219605) about Landfall on X)",
+      "sats": 1005,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-10-07T19:40:44.688Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1591096",
+      "title": "What’s the difference between a Blue Jays Dog and a Dodger Dog?",
+      "url": null,
+      "text": "They don’t sell Blue Jays dogs in October!!\n\n@grayruby is STUPID STUPID MAN https://stacker.news/items/1258392/r/realBitcoinDog\n\nNLCS LETS GOOOOOO",
+      "sats": 250,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-08T05:35:36.716Z",
+      "user": {
+       "name": "realBitcoinDog"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1590893",
+      "title": "Memories from Oct. 7th",
+      "url": null,
+      "text": "It was a Saturday morning and also the holiday of Simchat Torah. I was late for synagogue anyway so I started the morning with a cup of coffee. There were booms in the distance but I live in the West Bank, so it is just background noise to me. A few minutes later I would make the connection.\n\nWhile I was getting dressed I heard my phone vibrate. And again. And again. Not all of my friends and family are religious but they know I am. It was unusual enough that I decided to look. I see a WhatsApp group being very active for so early in the morning. I open it up and see everyone asking a friend if there is terrorists near his house. So I opened the news and it came like a flood. One day I will go back to the news from that day but I think the first thing I remember is pictures of terrorists on trucks in Sderot. I immediately understood the booms were Iron Dome.\n\nI did not understand how bad things were. I thought the army would take care of everything. So did the innocent people who were massacred in their homes near the Gaza border. Some people immediately understood, took whatever weapon they find and drove towards Gaza. Some of them came back and some did not. I was still too naive. The idea didn't even enter my head as an option.\nBy the end of the day things became more clear. The massacre at the music festival, in the bus shelters, the dumpster, the burning of the towns. The rape of women in front of their children. The death of people I know. Some in combat, others were just massacred. \n\nWhatever naive thoughts I had that morning were gone by the end of the day. I will never forget the sounds of people celebrating in the Arab villages around me. Beeping cars, fireworks, yelling. It became a holiday for them. And all the innocent civilians who came from Gaza to steal stuff from dead Jews. There was more of them then terrorists. Regular people, coming to celebrate the death of their neighbors by taking a TV...",
+      "sats": 1111,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-07T20:29:25.920Z",
+      "user": {
+       "name": "EvilIsraeli"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
+      "id": "1591017",
+      "title": "Free eSIM data for Plan B Forum visitors — Torisim",
+      "url": null,
+      "text": "I'm with Torisim, a travel eSIM service. We're preparing a free data plan for people heading to Plan B Forum in Lugano on 23–24 October.\n\nThe idea is to help visiting Bitcoiners get online without using their home SIM for roaming. Torisim doesn't require an account or email address for order access.\n\nCampaign link: https://torisim.com/go/planb\n\nYou'll need an unlocked, eSIM-compatible phone. This is a Torisim offer; we're not affiliated with the event organizers.\n\nHappy to answer questions about phone compatibility or setting up an eSIM.",
+      "sats": 322,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-08T00:57:25.085Z",
+      "user": {
+       "name": "anon"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1590595",
+      "title": "SN and Nostr Share on PREDYX",
+      "url": null,
+      "text": "![](https://m.stacker.news/160539)\n\nJust noticed PREDYX now has a Stacker News share button. Pretty sure it wasn’t there yesterday. \n\nLove seeing PREDYX improve day by day.  The integration directly creates a link post, which is cool. One small issue: the market title doesn’t appear automatically. \n\n@Team_Predyx @mega_dreamer, the Nostr Share button also doesn’t seem to be working as desired.",
+      "sats": 2507,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 19,
+      "createdAt": "2026-10-07T14:37:41.291Z",
+      "user": {
+       "name": "Coinsreporter"
+      },
+      "subName": "Stacker_Stocks"
      }
     ]
    }
