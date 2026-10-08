@@ -1,6 +1,6 @@
 {
- "started_at": "2026-10-07T10:34:37Z",
- "finished_at": "2026-10-07T10:35:28Z",
+ "started_at": "2026-10-08T10:56:29Z",
+ "finished_at": "2026-10-08T10:57:03Z",
  "vantage": "GitHub Actions runner (ubuntu-latest)",
  "seed_relays": {
   "wss://relay.primal.net": {
@@ -24,28 +24,28 @@
    "notes": 500
   },
   "wss://relay.damus.io": {
-   "status": "OK",
-   "notes": 500
+   "status": "FAIL InvalidStatus: server rejected WebSocket connection: HTTP 503",
+   "notes": 0
   }
  },
- "authors_sampled": 540,
- "authors_with_list": 165,
- "relays_advertised": 523,
+ "authors_sampled": 570,
+ "authors_with_list": 168,
+ "relays_advertised": 404,
  "classes": {
-  "ok_serving": 160,
-  "dns_fail": 101,
-  "http_error": 99,
-  "auth_required": 51,
-  "timeout": 34,
-  "tls_fail": 26,
-  "ok_empty": 19,
-  "refused": 10,
-  "other_fail": 9,
-  "no_response": 9,
-  "rejected": 5
+  "ok_serving": 148,
+  "http_error": 76,
+  "auth_required": 53,
+  "dns_fail": 45,
+  "timeout": 23,
+  "tls_fail": 21,
+  "ok_empty": 18,
+  "other_fail": 6,
+  "rejected": 6,
+  "refused": 4,
+  "no_response": 4
  },
- "reachable": 235,
- "serving_events": 160,
- "connect_ms_median": 562,
- "connect_ms_p90": 871
+ "reachable": 225,
+ "serving_events": 148,
+ "connect_ms_median": 417,
+ "connect_ms_p90": 714
 }
