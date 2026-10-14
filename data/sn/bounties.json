@@ -19,23 +19,6 @@
       "subName": "bitcoin"
      },
      {
-      "id": "458434",
-      "title": "Bounty Bounty",
-      "url": null,
-      "text": "Tell me about your Bitcoin bounties! What was it? Did you give or receive it? Was it online or in real life? Give me your stories please. ",
-      "sats": 348,
-      "bounty": 1000,
-      "bountyPaidTo": [
-       458707
-      ],
-      "ncomments": 14,
-      "createdAt": "2024-03-10T11:22:35.839Z",
-      "user": {
-       "name": "Jimmyhoneyalchemist"
-      },
-      "subName": "bitcoin"
-     },
-     {
       "id": "397833",
       "title": null,
       "url": null,
@@ -214,6 +197,23 @@
        "name": "DarthCoin"
       },
       "subName": null
+     },
+     {
+      "id": "458434",
+      "title": "Bounty Bounty",
+      "url": null,
+      "text": "Tell me about your Bitcoin bounties! What was it? Did you give or receive it? Was it online or in real life? Give me your stories please. ",
+      "sats": 348,
+      "bounty": 1000,
+      "bountyPaidTo": [
+       458707
+      ],
+      "ncomments": 14,
+      "createdAt": "2024-03-10T11:22:35.839Z",
+      "user": {
+       "name": "Jimmyhoneyalchemist"
+      },
+      "subName": "bitcoin"
      },
      {
       "id": "300709",
@@ -456,6 +456,21 @@
       "subName": null
      },
      {
+      "id": "1573357",
+      "title": null,
+      "url": null,
+      "text": "Solid audit. Stale bounty state is a known sync problem when the index doesn't reconcile against upstream issue trackers.",
+      "sats": 20,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-09-16T03:54:14.076Z",
+      "user": {
+       "name": "06bc1a977d"
+      },
+      "subName": null
+     },
+     {
       "id": "1581934",
       "title": "Show Your Build Friday #3: Real-World Proof-of-Work [5,000 Sat Bounty] ⚡🔨",
       "url": null,
@@ -471,21 +486,6 @@
        "name": "BlokchainB"
       },
       "subName": "Construction_and_Engineering"
-     },
-     {
-      "id": "1573357",
-      "title": null,
-      "url": null,
-      "text": "Solid audit. Stale bounty state is a known sync problem when the index doesn't reconcile against upstream issue trackers.",
-      "sats": 20,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-09-16T03:54:14.076Z",
-      "user": {
-       "name": "06bc1a977d"
-      },
-      "subName": null
      },
      {
       "id": "1589263",
@@ -727,7 +727,7 @@
       "title": "My first Taproot Asset payment over the Lightning Network",
       "url": null,
       "text": "I made my first stablecoin payment on Lightning! I paid 2.14 USDTL for a glass bottle of Coca Cola at DCTRL, a hackspace in Vancouver, BC.\n\n![Video of OP paying to a Lightning Address from their Taproot Asset channel](https://v.nostr.build/nPrMgh7eSyY4kCrFJAvvJu.mov)\n\n**My setup:** I'm running `litd` in integrated mode, meaning LND, Taproot Assets and everything else runs as one binary, with a pruned Bitcoin Core backend.\n\n**The asset channel:** The asset is USDTL, a bridged stablecoin issued by Speed Wallet. I asked Jesse of Amboss to open a channel to me from their node, but I expect to be able to do that soon through their Web UI. He opened a $3000 channel. By default my node will accept any Taproot Asset channel, but to be able to receive and send payments I have to configure an \"oracle\" that feeds my node price information about the channel. I'm using [Tassandra](https://github.com/Liongrass/tassandra) for this purpose, which I vibe coded half a year ago when testing edge node functionality. I expect that requirement to eventually be dropped, streamlining the process of receiving and sending.\n\n**The edge node:** Amboss, my channel peer, by definition also acts as the edge node for my payments. That means that for every invoice I create or pay, Amboss is taking \"the other side\" of the trade. When I generate a Lightning invoice locally, that invoice can be paid by any Lightning wallet out there. The sender constructs a route to my node and sends satoshi, which get \"swapped\" by Amboss to USDTL at the last hop. Conversely, I can pay any Lightning invoice or LNURL from my node. I construct a route that sends USDTL to Amboss, which get forwarded as satoshi to the final destination. As this uses ordinary onion routing, Amboss can not see the origin of payments I receive, or the the destination of payments I make.\n\n**The recipient:** The vending machine is quite simple. All items in it cost the same (CA$3), each payment unlocks exactly one bottle of any one kind. The payment is made to an LNURL printed on the front of the machine and is also reachable through the Lightning Address `coke@bitdevs.ca`. When an incoming payment is detected, the LNbits backend sends a signal to the Pi inside of the machine to unlock the bottle.\n\n**The payment:** I am using [Tassilo](https://github.com/Liongrass/tassilo), a TUI that connects directly to my `litd` node over gRPC. I can see my channel, my inbound and outbound capacity for both the channel and the BTC. I can pay any Lightning invoice or LNURL, so I enter the address of the vending machine and hit send. The first thing I see is the details for the Lightning Address. These are in satoshi, but once I create an invoice and choose to pay with USDTL, I get an estimate for how much this will cost me, in dollars, excluding routing fees. I can now pay the invoice, and after a few seconds I receive the preimage, and the vending machine releases the drink. A coke costs CA$3 at the machine, which at the time of payment was 2,526 satoshi. But the amount I ended up paying was 2.144058 USDTL. To calculate the spread I make an invoice over 2.14 USDTL and pay it from another wallet later, which turns out to be 2528 satoshi. That's pretty much a 0% spread, generous of Amboss, and I'm very curious what this will cost me when these kinds of services roll out more broadly.\n\n**More payments:** I also topped up my Mullvad account (4.5 EUR, \\~5.07 USD) for 5.05 USDTL, added 5 USD to my Dracotel eSIM (5.05 USDTL), and bought a 20 CAD (\\~14.03 USD) Safeway gift card from Bitrefill for 14.10 USDTL. The constant currency conversions are definitely not great, but mainly it makes you realize how wonky USD to satoshi exchange rates can already be, and some providers mark up their exchange rate to skim some extra bips from the consumer, or in expectation to be compensated for the costly liquidity management of their nodes.\n\n**Conclusion:** Setting up Taproot Assets for yourself isn't very easy yet. But it's certainly not out of reach. You need your own Bitcoin and Lightning node and a specialized channel, and you can only interact with the node through the command line or a TUI so far. But once you have set it up, making and receiving payments is very smooth. I believe this stack will play an important role in spreading Lightning adoption around the world.",
-      "sats": 25774,
+      "sats": 25784,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 37,
@@ -1428,44 +1428,14 @@
    "items": {
     "items": [
      {
-      "id": "1595023",
-      "title": "Clara Shikhelman, Elias Rohrer - Bitcoin Optech Newsletter #426 Recap Podcast",
-      "url": "https://bitcoinops.org/en/podcast/2026/10/13/",
-      "text": "Clara Shikhelman and Elias Rohrer joined Optech to discuss Newsletter #426:\n\n- Dynamic one-byte message type IDs for BIP324\n- Discussion of conventions for tagged hash tags in BIPs\n- Proposal for onchain, private bitcoin transfers with no consensus changes\n- And more\n\nYou can listen on our website:\nhttps://bitcoinops.org/en/podcast/2026/10/13/\n\nFountain:\nhttps://fountain.fm/episode/0Uw8C5KJbsAg4EvffBP6\n\nSpotify:\nhttps://open.spotify.com/episode/0TEq742yJpt46OPuWoCTJB\n\nApple Podcasts:\nhttps://podcasts.apple.com/us/podcast/bitcoin-optech-newsletter-426-recap/id1674626983?i=1000796265109",
-      "sats": 2405,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T07:31:43.570Z",
-      "user": {
-       "name": "schmidty"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1595055",
-      "title": "Hello, children of the night!",
-      "url": null,
-      "text": "Well, well, well… here I am, drinking my matcha with hazelnut milk and, of course, some collagen, just enjoying this little moment.\n\nLife is whimsical and I'm grateful. \n\nI hope you’re doing swell over there too: having your favourite beverage, enjoying the small moments, rejoicing in the mundane… and then buckling up for what I’ve been watching and reading lately. As usual, in no particular order.\n\nI read Supergirl: Woman of Tomorrow, and I was smitten. The colours, the drawings, the story, oh my, oh my, I really loved it. I only picked it up because I heard there was a movie inspired by it, but from the posters I’ve seen, it seems like a disservice, at least to that gorgeous colour palette. I don’t even want to imagine how they adapted the story.\n\nBut if you can, read it. It’s such a sweet, short story, and it absolutely made me teary at the end. I fell in love not only with Supergirl but with the storyteller too. Totally recommend it.\n\nI also read Supergirl: Universe End and Supergirl: Who Is Superwoman? I didn’t enjoy them quite as much as the first one, but they were a nice way to keep getting to know her, I guess. Woman of Tomorrow left me with very high expectations for Supergirl’s stories, so I’m still looking for a new comic to read from her. If you know one, let me know!\n\nI also reread some of Lovecraft’s stories. If you’d like to check out the blog entry I wrote about him and the illustrations I created, [come this way.](https://samhainsam.art/2024/07/20/i-love-lovecraft-%F0%9F%90%99/)\n\nSince ’tis the season for something spooky, I kept leaning into it, of course. I also read Rewitched by Lucy Jane Wood and So Thirsty by Rachel Harrison.\n\nThey’re both on the same theme: thirty-something women, pretty much depressed and upset about how their lives have turned out, resentful about it but not really doing anything about it. Then a little magic comes their way, they discover there’s something beyond all the pessimism and self-deprecating jokes, and that's it, there’s the book.\n\nRewitched is about a witch literally rediscovering her magic, while So Thirsty is about a woman rediscovering herself in another way. Still, both are books about becoming conscious of and accountable for your actions. It’s a self-discovery journey with some spookiness and quirkiness in massive amounts.\n\nThe smarty-pants (and very pessimistic) jokes sometimes made it difficult to keep reading, especially when they broke the magic or distracted me from what was actually funny, interesting, and entertaining. There were times where the characters were actually being vulnerable and relatable, and they could have left it like that, but no they didn't and sometimes it was a wee too much. Overall, they were okay, I guess.\n\nAs for movies, I watched Thanksgiving, and I loved it! Oh, I love a good horror holiday movie with some good splatter.\n\nI wanted to watch more movies like that, and I stumbled upon It's A Wonderful Knife. The title is kind of self-explanatory: it’s like It’s a Wonderful Life, but with knives and murders.\n\nI love that in both films you get to see actors who were once the kids—the young ones—and now they’re the adults. Also delightful. I enjoyed them both.\n\nAnd now I’m watching this new Carrie adaptation. So far, so good… well, not for Carrie, though.\n\nI read the book many moons ago, and the last time I watched an adaptation—the one from the ’70s, I think—was also a very long time ago. I only remember the “crucial” bits, so it’ll feel almost like watching it for the first time, which is exciting.\n\nAnyway: what have you been watching or reading? I’d love to know if there’s anything you’d recommend to me.\n\nSee you later, alligator 🐊\n\nGodspeed ✨",
-      "sats": 1060,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T10:50:54.508Z",
-      "user": {
-       "name": "samhainsam"
-      },
-      "subName": "art"
-     },
-     {
       "id": "1595072",
       "title": "Milton Friedman's 50th Anniversary of Nobel Prize (WSJ, Arthur Diamond)",
       "url": "https://www.wsj.com/opinion/milton-friedmans-courageous-candor-ac2a9fe3",
       "text": "In other Nobel news... https://stacker.news/items/1594162\n\n![](https://m.stacker.news/161487)\n\n## \"Friends of free markets lament that we need, but can’t find, new Milton Friedmans to refute emboldened socialists.\"\n\n> Fifty years ago Wednesday, Friedman was awarded the Nobel Prize in economics. The Associated Press reported that the Nobel committee had an unusually long and heated discussion of his nomination. Some members were rumored to have objected to Friedman’s policy proposals in his “ ‘careless’ commentaries in his magazine columns.”\n\n*Paywall busting failing me today*, so here are some extra quotes from the article I could dig up from the internetz:\n\n> “When I met Milton Friedman, I remember his supporting abolition of FDA…more than 30 years later, he was still keeping this policy alive, explaining that FDA made healthcare very expensive & most importantly reduced drug innovation”\n\nAlso: Friedman's road to eternal fame wasn't that simple... even *at his own* free-markety University of Chicago econ department, the Cowles Commission seminars opposed him on socialist and mathematical grounds:\n\n> Friedman persistently argued that their modeling choices were arbitrary and their complex general equilibrium multiple regression models didn't generate predictions supported by the evidence.\n\n...with a [nice story](https://x.com/kevin_devereux/status/2110159697932394980) of WWII central planning multiple regression analysis failure.\n\nAlso, the 3-minute video from a debate/public appearance at Cornell University that's featured in the WSJ piece is \\_astonishing\\_... for Friedman's eloquence, his charm, his ability to turn the political/philosophical case for freedom into an understandable and common-sensical conversation. \n\n\\> the electric company is meaningless: it's a nonhuman institution \\[...] what you must talk about are either the stock holders of the electric company, the employees or the electric company, or the customers of the electrical company. \n\n\\## Somebody always pays the cost.",
-      "sats": 1056,
+      "sats": 3125,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
+      "ncomments": 18,
       "createdAt": "2026-10-14T11:44:17.090Z",
       "user": {
        "name": "denlillaapan"
@@ -1473,47 +1443,47 @@
       "subName": "econ"
      },
      {
-      "id": "1595018",
-      "title": "How comfortable with silence are you?",
-      "url": null,
-      "text": "I have always been a sucker for companionable silence. You know, when you sit quietly beside someone and feel seen and acknowledged in spite of the absence of words being exchanged between both of you. When your partner’s mere presence is all that is needed to uplift your spirits. I feel it more keenly these days as I grow older. In my younger days, I would felt it necessary to make small talk to fill up the conversational void. However, these days, I recognise that silence itself is also a form of communication and lean onto it for comfort.\n\nHow about you?",
-      "sats": 708,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-14T07:16:38.102Z",
-      "user": {
-       "name": "cryotosensei"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1595047",
-      "title": "The SN Daily Putt #155: Play, Putt, Score, ZAP!⚡️⛳️",
-      "url": null,
-      "text": "Hole #154 was Sub-4 Club day, and the 4 stood tall! Nobody scored 4 or less, so the bounty went unclaimed. Closest to it: @guerratotal, @Arquinoe, @grayruby, and @mkmloom all posted 5/9 Albatross. Also in: @Carresan, @Mcgregor, and @monbeach (6/9 Albatross), @ElRepublic and @Mrwell (7/9 Eagle), @Undisciplined and @MsLis (8/9 Birdie). All posted scores were zapped!\n\n[The SN Daily Putt #154: Play, Putt, Score, ZAP!⚡️⛳️](https://stacker.news/items/1594553/r/BlokchainB)\n\nOn to hole #155\n\nSub-4 Club, doubled down! First two stackers to score 4 or less take 2,000 sats each.\n\nhttps://putt.day\n\nHappy Putting Stackers!",
-      "sats": 686,
+      "id": "1595175",
+      "title": "HEX scammer Richard Heart arrested - $4 million and 64 luxury watches seized",
+      "url": "https://en.haberler.com/mit-caught-whale-james-red-handed-4-million-and-64-2313680/",
+      "text": "> In the investigation, it was determined that Schueler had established an Istanbul-based international fraud network. It was alleged that the suspect directed global-scale fraud activities through offices operating under him in the United States, Finland, and Spain.",
+      "sats": 986,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 3,
-      "createdAt": "2026-10-14T10:30:38.670Z",
+      "createdAt": "2026-10-14T14:49:08.765Z",
       "user": {
-       "name": "BlokchainB"
+       "name": "k00b"
       },
-      "subName": "gaming"
+      "subName": "news"
      },
      {
-      "id": "1594996",
-      "title": "Working Together on Bitcoin’s Post-Quantum Readiness",
-      "url": "https://www.coinbase.com/blog/working-together-on-btc-post-quantum-readiness",
-      "text": "Coinbase published a blog post today about how they view a transition to post quantum cryptography for Bitcoin. This is relevant because:\n\n> Coinbase is one of the largest crypto custodians in the world and holds ~5% of all BTC in existence. \n\nAnd I think they are rather understating how much Bitcoin they hold. \n\nAnyhow, here are the interesting points:\n\n> 1. **Preparing before certainty.** We believe it is important to begin preparing well ahead of any CRQC announcement. Bitcoin consensus changes and ecosystem migrations can take years, So it is important that we begin this work now.\n> 2. **Separating the \"container\" from the signature.** In our view, a PQ output type design that allows one or more PQ signature systems to be introduced, replaced, or supplemented without a complete redesign would serve the ecosystem well. P2MR (BIP-360) and P2TRv2 appear to offer this kind of flexibility.\n> 3. **Staged protection.** We would welcome an approach in which active wallets can use a PQ-capable or hybrid construction before the final legacy-signature policy is settled. One possible transition design is a 1-of-2 construction: the same funds have two alternative spending paths, one authorized by a classical ECDSA/Schnorr key and one authorized by a PQ key.\n> 4. **Use of state.** While stateful PQ signature schemes could be smaller and faster than stateless ones, managing state in digital signatures is notoriously error-prone and could even lead to forgery. If stateful signatures are supported, we think it is important to also have a stateless option available.\n> 5. **Robust implementations.** We hope the evaluation process will place strong weight on deterministic, cross-platform verification, constant-time implementations, clear parameterization, and resistance to signing RNG failures.\n> 6. **MPC-friendliness.** For Coinbase and many of our customers, MPC-friendliness is an important consideration in the choice of PQ schemes. When implemented effectively, MPC can provide strong protection against key theft, and it is an important layer of defense for large organizations that face constant attacks on their infrastructure.\n> 7. **A path for wallets that migrate late.** If Bitcoin eventually limits or ends ECDSA/Schnorr spending, some wallets may not have moved their funds to PQ-safe outputs by then. We believe it would be useful to consider whether and how those users could migrate their funds afterward, while recognizing that the approach and its tradeoffs remain open questions. In our view, that discussion can proceed alongside, and independently of, the technical work to add PQ signature support, so it need not delay progress on that work.\n\nThey are fairly supportive of BIP 360 as well as hash-based signatures like SHRINCS. \n\nThey also have a little section on the burn vs steal debate, but I didn't feel that it had very interesting stuff in it.",
-      "sats": 912,
+      "id": "1595106",
+      "title": "Is Braains Pool Independent?",
+      "url": null,
+      "text": "In a post I made yesterday I got into a discussion with @denlillaapan about Braains. I always though of it as an independent pool. Then I found this recent article:\n\nhttps://mainnet.observer/charts/mining-pools-antpool-and-friends/\n\nThe claim is that Braains and other small mining pools simply proxy the AntPool mining jobs, and don't run their own nodes. \n\nBraains isn't alone. Apparently Binance Pool (which recently announce it is shutting down) was also doing this, along with other small, supposedly independent pools.\n\nSpeculation is that Bitmain provides the small players with FPPS insurance to survive bad luck streaks.",
+      "sats": 2306,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T04:10:12.650Z",
+      "ncomments": 9,
+      "createdAt": "2026-10-14T12:51:10.614Z",
       "user": {
-       "name": "Scoresby"
+       "name": "siggy47"
+      },
+      "subName": "bitcoin_Mining"
+     },
+     {
+      "id": "1551074",
+      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
+      "url": null,
+      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
+      "sats": 6587,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 107,
+      "createdAt": "2026-08-19T19:44:47.321Z",
+      "user": {
+       "name": "openbitcoin"
       },
       "subName": "bitcoin"
      },
@@ -1533,101 +1503,326 @@
       "subName": "Coinjoins"
      },
      {
-      "id": "1594923",
-      "title": "The modern bitcoin faucet gets its first event",
-      "url": "https://getfountainofyouth.net",
-      "text": "Hi everyone I'm the keeper of getfountainofyouth.net \n\nI apologize for not refilling the faucet in the past month but I've been planning and thinking a lot but I'm now back with some improvements and bugfixes as well as the first ever event. The haunting. Everyone who pours sats three days in a row get a unique jack o lantern badge but you only have through October the 31th to get it so dont forget. And that's not all there might be a surprise near the end of the month aswell. And I gladly receive all your criticism so dont be shy. All feedback is welcome. Happy Halloween everyone\n\n/Eric",
-      "sats": 277,
+      "id": "1595055",
+      "title": "Hello, children of the night!",
+      "url": null,
+      "text": "Well, well, well… here I am, drinking my matcha with hazelnut milk and, of course, some collagen, just enjoying this little moment.\n\nLife is whimsical and I'm grateful. \n\nI hope you’re doing swell over there too: having your favourite beverage, enjoying the small moments, rejoicing in the mundane… and then buckling up for what I’ve been watching and reading lately. As usual, in no particular order.\n\nI read Supergirl: Woman of Tomorrow, and I was smitten. The colours, the drawings, the story, oh my, oh my, I really loved it. I only picked it up because I heard there was a movie inspired by it, but from the posters I’ve seen, it seems like a disservice, at least to that gorgeous colour palette. I don’t even want to imagine how they adapted the story.\n\nBut if you can, read it. It’s such a sweet, short story, and it absolutely made me teary at the end. I fell in love not only with Supergirl but with the storyteller too. Totally recommend it.\n\nI also read Supergirl: Universe End and Supergirl: Who Is Superwoman? I didn’t enjoy them quite as much as the first one, but they were a nice way to keep getting to know her, I guess. Woman of Tomorrow left me with very high expectations for Supergirl’s stories, so I’m still looking for a new comic to read from her. If you know one, let me know!\n\nI also reread some of Lovecraft’s stories. If you’d like to check out the blog entry I wrote about him and the illustrations I created, [come this way.](https://samhainsam.art/2024/07/20/i-love-lovecraft-%F0%9F%90%99/)\n\nSince ’tis the season for something spooky, I kept leaning into it, of course. I also read Rewitched by Lucy Jane Wood and So Thirsty by Rachel Harrison.\n\nThey’re both on the same theme: thirty-something women, pretty much depressed and upset about how their lives have turned out, resentful about it but not really doing anything about it. Then a little magic comes their way, they discover there’s something beyond all the pessimism and self-deprecating jokes, and that's it, there’s the book.\n\nRewitched is about a witch literally rediscovering her magic, while So Thirsty is about a woman rediscovering herself in another way. Still, both are books about becoming conscious of and accountable for your actions. It’s a self-discovery journey with some spookiness and quirkiness in massive amounts.\n\nThe smarty-pants (and very pessimistic) jokes sometimes made it difficult to keep reading, especially when they broke the magic or distracted me from what was actually funny, interesting, and entertaining. There were times where the characters were actually being vulnerable and relatable, and they could have left it like that, but no they didn't and sometimes it was a wee too much. Overall, they were okay, I guess.\n\nAs for movies, I watched Thanksgiving, and I loved it! Oh, I love a good horror holiday movie with some good splatter.\n\nI wanted to watch more movies like that, and I stumbled upon It's A Wonderful Knife. The title is kind of self-explanatory: it’s like It’s a Wonderful Life, but with knives and murders.\n\nI love that in both films you get to see actors who were once the kids—the young ones—and now they’re the adults. Also delightful. I enjoyed them both.\n\nAnd now I’m watching this new Carrie adaptation. So far, so good… well, not for Carrie, though.\n\nI read the book many moons ago, and the last time I watched an adaptation—the one from the ’70s, I think—was also a very long time ago. I only remember the “crucial” bits, so it’ll feel almost like watching it for the first time, which is exciting.\n\nAnyway: what have you been watching or reading? I’d love to know if there’s anything you’d recommend to me.\n\nSee you later, alligator 🐊\n\nGodspeed ✨",
+      "sats": 2025,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-13T23:37:17.380Z",
+      "ncomments": 7,
+      "createdAt": "2026-10-14T10:50:54.508Z",
       "user": {
-       "name": "DrSteve2005"
+       "name": "samhainsam"
+      },
+      "subName": "art"
+     },
+     {
+      "id": "1595276",
+      "title": "What premium do the Dodgers deserve?",
+      "url": null,
+      "text": "The Dodgers are back to back champs and have a roster stacked with future hall of famers. Clearly they aren't your average playoff team. But their backs are certainly up against the wall down 0-2 in their NLCS to the Milwaukee Brewers (who had the best record in baseball this year).\n\nMLB teams that lose the first two games on the road in a best of 7 playoff series have come back to win **19%** of the time.\n\nLet's presume if the Dodgers come back and win they will be heavy favourites in the World Series against whichever American League team makes it. The NL overall (Brewers + Dodgers) has imputed odds of around roughly **66%** to win the World Series over the American League.\n\nSo if the Dodgers were a normal NL playoff team in this situation they would have a 19% chance to win the NLCS and then a 66% chance to win the World Series.\n\nLet's do a little math and see how a non Dodgers NL playoff team's World Series winning odds would compute.\n\nNLCS win probability 0.19\nWS win probability given NLCS win 0.66\n\n0.19 x 0.66= 0.1254\n\nor **12.54%**\n\nA non Dodgers NL team would currently have approximately a 12.5% chance of winning the world series.\n\nHere are the current probabilities for the Dodgers on Prediction markets and sports books:\n\nPolymarket: 22%\nKalshi: 22.5%\nPredyx: 16% (low liquidity and whale selling by me suppressing price)\n\nFanDuel: +350 (22.2% implied)\nDraftkings: +350 (22.2% implied)\n\nSo besides predyx where the price is suppressed due to my selling into low liquidity, Dodgers pretty consistently have roughly a 22% probability on prediction markets and sportsbooks.\n\nTypical NL playoff team: 12.5% probability\nDodgers: 22% probability\n\nApprox **75% Dodgers premium**.\n\nFair or not???",
+      "sats": 800,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-14T16:59:03.767Z",
+      "user": {
+       "name": "grayruby"
+      },
+      "subName": "math"
+     },
+     {
+      "id": "1595023",
+      "title": "Clara Shikhelman, Elias Rohrer - Bitcoin Optech Newsletter #426 Recap Podcast",
+      "url": "https://bitcoinops.org/en/podcast/2026/10/13/",
+      "text": "Clara Shikhelman and Elias Rohrer joined Optech to discuss Newsletter #426:\n\n- Dynamic one-byte message type IDs for BIP324\n- Discussion of conventions for tagged hash tags in BIPs\n- Proposal for onchain, private bitcoin transfers with no consensus changes\n- And more\n\nYou can listen on our website:\nhttps://bitcoinops.org/en/podcast/2026/10/13/\n\nFountain:\nhttps://fountain.fm/episode/0Uw8C5KJbsAg4EvffBP6\n\nSpotify:\nhttps://open.spotify.com/episode/0TEq742yJpt46OPuWoCTJB\n\nApple Podcasts:\nhttps://podcasts.apple.com/us/podcast/bitcoin-optech-newsletter-426-recap/id1674626983?i=1000796265109",
+      "sats": 2569,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-14T07:31:43.570Z",
+      "user": {
+       "name": "schmidty"
       },
       "subName": "bitcoin"
      },
      {
-      "id": "1595046",
-      "title": "Restoring Free Enterprise",
-      "url": "https://www.cato.org/restoring-free-enterprise",
-      "text": "> The Cato Institute’s Restoring Free Enterprise project examines the federal government’s unprecedented involvement in the operations of the firms it regulates and charts a path toward getting Washington out of the boardroom, unwinding state ownership, and strengthening the US economy.\n>\n>\n> ![](https://m.stacker.news/161471)\n>\n>\n>\n> [**🔗 cato.org**](https://www.cato.org/restoring-free-enterprise)",
-      "sats": 235,
+      "id": "1595092",
+      "title": "RIP Perry Mehrling, the Grand Architect of the Money View (Izabella Kaminska)",
+      "url": "https://www.thepeg.co/p/rip-perry-mehrling-the-grand-architect",
+      "text": "**Somehow Perry Mehrling just died on Monday...** after (careful out there @siggy47) a *fall,* of all things!\n\nPerry Mehrling is one of those doldrum economists who you won't see or whose name won't be plastered all over the economics discipline... but from whom *everyone who's anyone* has learned a ton.\n\nThis is what I wrote/summarized in the grand guess-favorite-economist game we somehow stopped playing earlier this year (https://stacker.news/items/1419510):\n\n> **Mehrling**: There are few other voices I'd go to for the plumbing of the financial system and how money works, not *broadly* or metaphysically or comprehensively like White, but *in the here and now*. Fiat behind the scenes. Like, where did Farrington learn some of the things in this [great presentation](https://stacker.news/items/1419079?commentId=1419242)? He probs read Mehrling. The book *The New Lombard Street* is fantastic, and *Money and Empire* from 2022 never got as much attention as it deserved... great story that mirrored the dollar system\n\nHere's Nik Bhatia's tweet yesterday (there was also quite a bit of it in \\_Bitcoin Age\\_ https://stacker.news/items/910275, https://stacker.news/items/836070 https://stacker.news/items/946402)\n\nhttps://x.com/timevalueofbtc/status/2110162072625672392\n\nCameron Harwick: \n\nhttps://x.com/C_Harwick/status/2110177130650964374 \n\nI've never published anything on Mehrling's two great books ([*Money and Empire: Charles P. Kindleberger and the Dollar System*](https://link.amazon/B0iHMULCT) and [*The New Lombard Street: How the Fed Became the Dealer of Last Resort*](https://link.amazon/B0dGJhweB) -- and an obscure one [on Fisher Black](https://link.amazon/B0cQ7t35m)), not because they're not worthy but because I could never make them work... too big, too overarching.  (I *do*, however, have a shitton of notes from his books that I've never turned into anything.)\n\nI can't recall the first time I heard of/learned of his work, but I started taking him seriously around 2021-22 when reading a lot of Zoltan Poszar's Credit Suisse notes/dispatch... *insanely* dense and complicated financial/money plumbing commentary, perfectly distilled and well analyzed. In my crowd of finance bros, these (proprietary) notes that Credit Suisse sent to clients were *hard currency*; we circulated them around with pride, *bragging* to one another that we found an issue, know a guy who could get us the \"latest Zoltan\"!\n\nHere's Izabella Kaminska reflecting on the impact of Mehrling on her thinking and understanding of the monetary world (\"a formidable monetary thinker\")\n\n![](https://m.stacker.news/161498)\n\n## \"In fact, he was the first person I properly geeked out with about the rise of stablecoins and the fact they were akin to the second coming of eurodollars.\"\n\n...and she credits/quotes from a new paper by Inaki Aldasoro of the BIS which [just published an academic paper](https://www.bis.org/publications/paper-175-money-and-architecture-trust.pdf) that draws extensively on Mehrling's work. (Reading the abstract, there's some Bitcoin angle to this so I will promise to delve into this paper... *at some point* -- the winter is long and dark and is almost upon us!)\n\n> \\[Banks] are not merely financial intermediaries that channel funds from savers to borrowers. They are issuers of liabilities that circulate as means of payment, and this distinguishes them from every other type of financial institution.\n\n***\n\nReally tragic news.\n\nhttps://x.com/int\\\\\\_mon\\\\\\_econ/status/2110094844475449514 \n\nhttps://x.com/int/_mon/_econ/status/2110094844475449514",
+      "sats": 1597,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T10:27:05.040Z",
+      "ncomments": 1,
+      "createdAt": "2026-10-14T12:28:12.717Z",
+      "user": {
+       "name": "denlillaapan"
+      },
+      "subName": "BooksAndArticles"
+     },
+     {
+      "id": "1595169",
+      "title": "Using Inflation as the Release Valve: The Icelandic Case (BTCHEL, JB)",
+      "url": "https://btchel.com/iceland-and-inflation-as-the-release-valve/",
+      "text": "Out here doing *the lord's work* listening through an hour-long macro podcast IN FUCKING DANISH!\n\nhttps://x.com/joakimbook/status/2110363943256346989\n\nIf you don't know the background here (https://stacker.news/items/1593286), it's widely acknowledged and understood that *Danish* is the hopeless one out in the Scandi languages. Icelandic is a *technically difficult* language, but Danish is an *incomprehensible* one to hear.\n\nSo imagine the investment when Den spent a full hour, assisted by [Spotify's nice little transcription helper](https://open.spotify.com/episode/68HiRLLNXXCW7CkNE1gQbc?si=1b175cbc631c4b04), listening to Lars Christensen (https://stacker.news/items/1585380) discussing the ins and outs of the Icelandic economy.\n\n> For all of us [Nordic aficionados](https://x.com/NorthOfTheWalls/status/2109313631728849244), we should realize that the Icelandic economy operates fundamentally differently from the more mature, developed (and diversified!) Nordic economies. *We are not the same*… and actually [not in a good way.](https://mailchi.mp/btchel/the-rich-europooreans-eu-euro-stablecoin)\n\n> This tiny island nation has several elements of all the Nordic countries, but none of the mature, balancing, and stabilizing economic safeguards that make those economies work reasonably well. Iceland is also the ([annoyingly rich](https://mailchi.mp/btchel/the-rich-europooreans-eu-euro-stablecoin)) little brother who hasn’t figured it out yet. “It’s a globally exposed economy” — tourism, fish, aluminum, data centers — all of which become a modern version of a raw-commodity exporting third-world nation: a complete price taker, walloped around by an ocean of capital inflows and outflows into hot sectors that might not be thriving next year:\n\n## “It’s an economy where many factors can easily become destabilizing.”\n\nAlso, there really shouldn't be an Icelandic króna... it's ridiculous to have this hot/cold inflow/outflow of funds into a currency based on an economy some one-fifth smaller than Vermont. (Also: it should so obviously become a 51st state, https://stacker.news/items/1593309?commentId=1593383, https://stacker.news/items/1558903)\n\n![](https://m.stacker.news/161517)\n\n## > “I’m not too worried about the Icelandic economy. It’s doing very well, apart from inflation.” ([Vísir](https://www.visir.is/g/20262935198d/danir-laerdu-sina-lexiu-en-is-lendingar-rifist-enn))\n\n…which is sort of the point of his monologue.\n\n> “The Icelandic economy is too small for its own good,” and inflation becomes the central bank’s only way out in facing the aggressive, centralized labor agreements that push for high wage increases unsupported by economic fundamentals. And *because* there’s been great price inflation in past years, the next round of negotiations include even stronger demands for wages to compensate for the loss of purchasing power. The other Nordic countries fixed this runaway wage-price spiral in the 1970s and 1980s, usually through a combination of local wage determination, pegging the currency, or forcing the unions to [internalize the unemployment externality](https://thedailyeconomy.org/article/assar-lindbeck-swedens-greatest-economist-died-90-years-old/) of their too-aggressive actions. But Iceland has had none of that.\n\nRead the full bit at BTCHEL, and sign up for the biweekly(semi-weekly? I can never remember!) [Nordic Node](https://stacker.news/items/1585380) newsletter via: [https://btchel.com/#sign-up](https://btchel.com/#sign-up)\n\n![](https://m.stacker.news/161518)",
+      "sats": 1262,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-14T14:42:31.841Z",
+      "user": {
+       "name": "denlillaapan"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
+      "id": "1595117",
+      "title": "Trezor Wallets Also Compromised with Implants",
+      "url": "https://www.zetter-zeroday.com/trezor-wallets-also-compromised-with-implants/",
+      "text": "",
+      "sats": 1173,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-14T13:11:19.870Z",
+      "user": {
+       "name": "mudbloodvonfrei"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1595174",
+      "title": "2026-27 UCL Pool : Week 2 Match Day 2",
+      "url": null,
+      "text": "For those of you who could not watch Barcelona last night, you need to find at least the highlights. Lamine displayed all sort of assists. He did not even scored but it did not matter. Barcelona scored 4 goals to overcome the initial one from Galatasaray. Turkish team had their opportunities but the Catalans are way ahead of the rest. \n\nWe had two surprises last night. Inter lost 3-4 in a vibrant match. the interesting fact is that Tresoldi, Italian born though German international, scored 3 goals to beat the Neroazzurri squad. \n\nViking scored twice against Bayern before halftime, though the German side managed to comeback and get ahead 2-3. However, in the extra time, the Nordics got an equalizer. Oliseh was sent off in the second half. \n\nArsenal beat easily Lille (3-0) with three goals in just 7 minutes in the second half. Saka assisted one and scored another one. Atletico beat 2-0 Man United, in the season where they are returning to the Champions League. \n\nSporting Lisbon won their game against Lens and it's the only one following the steps of Barcelona and Arsenal, pending tonight's matches. \n\nOther results were Villareal 3-1 Napoli, Sabah 2-0 Slavia Praha and Leipzig 1-0 PSV. \n\nThen we move to tonight's matches where 2 of them are above the rest. Man City will receive PSG in the middle of the consequences of their investigation after years or financial irregularities. Real Madrid, in the middle of a \"crisis\" due to bad results and poor performances, will visit Roma. \n\nNext to consider, will be Real Betis vs Porto. Portugueses are at the top of their league. Meanwhile, Real Betis has had their best start of the season since 1935. It has rained a bit since then. Hope we can watch a great match. \n\nOther matchs tonight: Feyenoord- Como (it will be interesting to see if the Italians confirm their great initial result), LASK vs Liverpool, Aston Villa vs Fenerbahce, Bodo/Glimt vs Dortmund, Shakhtar vs AEK and Slovan Bratislava vs Stuttgart. \n\nEnjoy the Beautiful Game !",
+      "sats": 881,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-14T14:48:25.994Z",
+      "user": {
+       "name": "Carresan"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1595166",
+      "title": "Stackers, have you ever thought you were gonna die?",
+      "url": null,
+      "text": "Just wondering if you all have had any close calls. \n\nMy closest call was out at a large lake in the wilderness with my friends. I was a skilled swimmer at the time so I told them, I'm going to swim across to the other side. Seemed easy, what I didn't factor was how quickly very cold water can sap you of energy.\r\nAbout halfway across I was totally gassed. I looked back. It was just as far to go back as to go forward. I started to panic. I realized quickly though that panicking is how people drown. I calmed myself and switched to an easier stroke (breast stroke), and made it across - safe but thoroughly rattled. I still have a picture a friend took of my waving from the other side far in the distance. I found a large piece of wood to use as a flotation aid to get myself back.\r\nStupidest thing I've ever done, but people do stupid things when they're young. People drown all the time doing what I did. I still get anxiety when I think about it.\n\nSo what about you Stackers? Any narrow escapes from the Grim Reaper?",
+      "sats": 945,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-14T14:35:10.787Z",
+      "user": {
+       "name": "Artilektt"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1595179",
+      "title": "Agentic AI Apps Attacking Antidiluvian (B)anking Apps (FT, Anne Boden)",
+      "url": "https://www.ft.com/content/8c6a7595-9403-44f3-81ac-a2e5ceb37459",
+      "text": "**AI in your mobile banking app... what could possibly go wrong?** (oh and how did you like my **a**-**aaaaa**literation **a**ttempt??)\n\n![](https://m.stacker.news/161519)\n\n> When I came up with the idea for a new bank 12 years ago, the response from the industry followed a predictable pattern. Those that didn’t ignore me laughed at the audacity of the idea of a mobile-first bank. The laughter turned to scepticism as customer numbers began to grow and then, finally, to worry as tens of thousands began to flock to so-called neobanks.\n\nINSPIRATIONAL. \"Over time, Starling, Monzo and Revolut raised the game for all customers because traditional banks raised their game, incorporating all the features the neobanks had pioneered.\" Very true.\n\n> What we need to look at now is the next phase in the development of banking. It won’t involve putting a better bank on your phone and won’t even involve an app. A very able AI agent is almost certain to step into the gap between banks and their customers, making all this irrelevant.\n\n## \"Today, when banks talk about adopting AI, they are mostly talking about efficiency and trimming costs.\"\n\n> What banks should be thinking about is agents because the new world is being built around agentic AI. Agents can research products, compare prices, organise our diaries, send emails, book travel and perform multi-stage tasks on our behalf. Anyone who has bought into this new lifestyle will not be going back to the old way of doing things.\n\nAgentic AI will just *do* and *optimize* things for us, perfect our financial/monetary/banking behavior.\n\n> Banks, indeed the entire payments industry, have spent years pursuing every barrier possible to stop the bots. All banks have added in layer after layer of protection to ensure any payment activity is prompted by the user and not a fraudster or an automated attacker.\n\nAh, yes, the trade-off between convenience/efficiency and security CONTINUES. *Haaashtaaaag lol*:\n\n> This sector needs an AI initiative capable of bringing banks, regulators and companies such as OpenAI and Anthropic to the same table. Making banking better is no longer the story. The battle for what form banking will take in the future has already begun.\n\n***\n\n[https://archive.md/AjhB1](https://archive.md/AjhB1)\n\n[https://archive.md/https://www.ft.com/content/8c6a7595-9403-44f3-81ac-a2e5ceb37459](https://archive.md/https://www.ft.com/content/8c6a7595-9403-44f3-81ac-a2e5ceb37459)",
+      "sats": 802,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-14T14:54:35.785Z",
+      "user": {
+       "name": "denlillaapan"
+      },
+      "subName": "AI"
+     },
+     {
+      "id": "1595018",
+      "title": "How comfortable with silence are you?",
+      "url": null,
+      "text": "I have always been a sucker for companionable silence. You know, when you sit quietly beside someone and feel seen and acknowledged in spite of the absence of words being exchanged between both of you. When your partner’s mere presence is all that is needed to uplift your spirits. I feel it more keenly these days as I grow older. In my younger days, I would felt it necessary to make small talk to fill up the conversational void. However, these days, I recognise that silence itself is also a form of communication and lean onto it for comfort.\n\nHow about you?",
+      "sats": 1329,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 10,
+      "createdAt": "2026-10-14T07:16:38.102Z",
+      "user": {
+       "name": "cryotosensei"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1595184",
+      "title": "What are you working on this week?",
+      "url": null,
+      "text": "Calling all stackers!\n\nLeave a comment below to let the SN community know what you're working on this week. It doesn't matter how big or small your project is, or how much progress you've made.\n\nJust share what you're up to, and let the community know if you want any feedback or help.",
+      "sats": 307,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-10-14T15:00:03.492Z",
+      "user": {
+       "name": "sn"
+      },
+      "subName": "meta"
+     },
+     {
+      "id": "1595068",
+      "title": "9️⃣♦️ [ 9 oF DiamonD ] Week 5",
+      "url": null,
+      "text": "### Week 4 review \n\nBrock Purdy 💤\nTrevor Lawrence ➡️\nLamar Jackson 📴🤕  can't play hurt \nPatrick Mahomes  🛬\nBryce Young 🛬\nJosh Allen ⬆️\nKirk Cousins 📴 Roger... Roger... Kirk out\nDak Prescott 📴 embarrassed \nMichael Penix Jr.📴 At least a week \n\nBurrow 🆕 Joe Burrow offsets modest yardage with 4 TDs\nDrake Maye 🆕 Drake Maye erupts for 5 TDs in rout\nJordan Love 🆕 Jordan Love elite numbers in easy win\nCJ Stroud 🆕 C.J. Stroud produces 2 TDs in Tennessee\n\n### Week 5 reasoning \n\n🔫 Brock Purdy through 5 games: 1,196 passing yards, 13 TDs, 2 INTs and a 119.3 rating. He’s added 128 rushing yards and a TD. \n\n🎢 Josh Allen through 5 games: 1,249 passing yards, 7 TDs, 4 INTs and a 99.6 rating. He’s added 239 rushing yards and 8 scores.\n\n👸🏼 Trevor Lawrence through 5 games: 1,174 passing yards, 10 TDs, 3 INTs and a 106.8 rating. He’s added 59 rushing yards. \n\n💪 Patrick Mahomes through 4 games: 1,037 passing yards, 9 TDs, 2 INTs and a 106.2 rating. He’s added 41 rushing yards and a TD. \n\n😱 Bryce Young through 4 games: 1,268 passing yards, 9 TDs, 2 INTs and a 100.0 rating. He’s added 19 rushing yards and a TD.\n\n🐈 Joe Burrow through 5 games: 1,361 passing yards, 11 TDs, 3 INTs, and a 104.4 passer rating. He’s added 48 rushing yards and a TD. \n\n🍿 Drake Maye through 5 games: 1,228 passing yards, 8 TDs, 7 INTs, and an 88.9 passer rating. He’s added 161 rushing yards and a TD. \n\n🧀 Jordan Love through 5 games: 1,408 passing yards, 10 TDs, 3 INTs, and a 95.5 passer rating. He’s added 2 rushing yards. \n\n👌 C.J. Stroud through 5 games: 1,402 passing yards, 6 TDs, 0 INTs, and a 98.1 passer rating. He’s added 71 rushing yards and a TD. \n\n### Week 5 update \n\n\n![](https://m.stacker.news/161491)\n\n\n🥇Brock Purdy, 49ers\n🥈Josh Allen, Bills\n🥉Trevor Lawrence, Jaguars \n🎖️Patrick Mahomes, Chiefs\n🎖️Bryce Young, Panthers\n🎖️Joe Burrow, Bengals\n👍Drake Maye, Patriots\n👍Jordan Love, Packers\n🤏CJ Stroud, Texans\n\n![](https://m.stacker.news/161492)",
+      "sats": 537,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-14T11:37:10.815Z",
+      "user": {
+       "name": "gsc360"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1595091",
+      "title": "FTC & States Claim 'Pharma Bro' Martin Shkreli Violated Lifetime Industry Ban",
+      "url": "https://www.cnbc.com/2026/10/13/martin-shkreli-ftc-pharma-contempt.html",
+      "text": "Guy really seemed to look at his restrictions and go..... meh imma do it anyway! \n\n\n> The FTC and the states allege that Shkreli, since being released from [prison](https://www.cnbc.com/2022/05/18/martin-shkreli-released-from-federal-prison-into-halfway-house-.html) in May 2022 for unrelated financial crimes, violated that court order by publicly trading in at least 60 pharmaceutical industry stocks and “publicly broadcasting his opinions about the business and management of many Pharmaceutical Companies through livestreaming and posting on numerous social media platforms, including YouTube, X, and Reddit,” a court filing says.",
+      "sats": 529,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-14T12:25:10.029Z",
+      "user": {
+       "name": "Cje95"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
+      "id": "1595042",
+      "title": "Ranked: 125 European Cities by Quality of Life and Cost",
+      "url": null,
+      "text": "![](https://m.stacker.news/161469)\n\n[**🔗 visualcapitalist.com**](https://www.visualcapitalist.com/cp/125-european-cities-quality-of-life-cost/)",
+      "sats": 569,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-10-14T10:02:55.174Z",
       "user": {
        "name": "0xbitcoiner"
       },
       "subName": "charts_and_maps"
      },
      {
-      "id": "1594728",
-      "title": "History and Map of every BIP",
-      "url": "https://bipexplorer.com",
-      "text": "# > Don’t trust. *Read* *the* *BIPs.*\n\n\\> Nobody does. They’re written by developers, for developers. So we explain all 213 of Bitcoin’s Improvement Proposals in plain English, and map how each one builds on the last.",
-      "sats": 3837,
+      "id": "1568027",
+      "title": "N64’s NBA Hangtime: Blok’s Quest to beat all 29 NBA teams. A Thread!",
+      "url": null,
+      "text": "I been craving to play NBA Hangtime for a long time. After telling my friend he suggested I try running an emulator on my laptop. Once that failed he convinced me to get an M64! Which I am glad did! \n\n![](https://m.stacker.news/156117)\n\n### After getting NBA Hangtime \n\n\n![](https://m.stacker.news/156121)\n\n`The true sequel to NBA Jam. `\n\nAnd a few other of my favorite classics I realized I needed a memory card to create a player and save the data. Currently the M64 doesn’t let you save to the console yet. That feature is coming in a future software update.  The M64 controller doesn’t come with a memory card slot so I had to purchase a new controller with a new memory card.\n\n![](https://m.stacker.news/156120)\n\nAnd so the quest begins! \n\nI created my character Boog and put on my New York Knicks jersey and started my quest to beat all NBA teams\n\n## Game #1 The Vancouver Grizzlies \n\nI didn’t take any photos or anything about this match as the idea to write about this came after the fact.  I picked The Minnesota Timberwolves and selected Kevin Garnett for the first half and Tom Gugliotta in the second half! I forgot who the Grizzlies had in the first half but in the second they had Mayberry and Aboul-Rahim. I beat them fairly easy and put up 48 points.\n\nThe trivia question I got wrong. I was asked what country was Bill W.  was from I selected Romania! 😆\n\n## Record: 1-0, Trivia: 0 points \n\n![](https://m.stacker.news/156126)\n\n![](https://m.stacker.news/156127)\n\n![](https://m.stacker.news/156128)\n\n\n## Game # 2 The Philadelphia 76ers\n\nI selected the T’Wolves again and  started off with Garnett. \n\n\n![](https://m.stacker.news/156125)\n\nFor some strange reason Kevin won’t use turbo!!! I switched to Tom again in the 2nd half who plays a little better defense but limited offense but we got the win!\n\n![](https://m.stacker.news/156130)\n\n![](https://m.stacker.news/156131)\n\nThe trivia question I got correct! They asked who was the 2nd overall pick in the 1995 NBA draft I guessed Antonio McDyess and I got it right!! Now I got two trivia points.\n\n## Record: 2-0, Trivia: 2 points\n\nOnce I reach 100 trivia points I get to add extra attribute points to my character. \n\nThat’s it for tonight! I will update this thread as I play all 29 teams and make my player better! \n\n\n## Stackers what do you think? \n\nDo you think I can go undefeated? If you got an NBA player I should partner with let me know stackers!!",
+      "sats": 2002,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-13T16:27:07.113Z",
+      "ncomments": 13,
+      "createdAt": "2026-09-11T01:30:39.399Z",
       "user": {
-       "name": "Coinsreporter"
+       "name": "BlokchainB"
       },
-      "subName": "bitcoin"
+      "subName": "gaming"
      },
      {
-      "id": "1594962",
-      "title": "Strive to raise $500M for SATS preferred offering",
-      "url": "https://www.coindesk.com/markets/2026/10/13/strive-to-ipo-second-preferred-share-class-as-it-looks-to-further-build-bitcoin-treasury",
-      "text": "It looks like Strive will offer a new preferred, \"SATS\" which will pay a 15% fixed dividend. It's junior to SATA shares, which pay 13% currently.  Seems curious that they need another product when SATA has had so much issuance lately.",
-      "sats": 827,
+      "id": "1595132",
+      "title": "Testing Oneself For AI Slop",
+      "url": "https://hackaday.com/2026/10/14/testing-oneself-for-ai-slop/",
+      "text": "> The feed of a Hackaday writer brings many surprises, some rubbish, and the occasional diamond which of course we bring to you. Sometimes a page catches the eye that’s not a Hackaday piece *per s&#x65;**,*** but makes for interesting reading. Today there was an example which provides a catalyst for a story if not being one itself.\n>\n> It’s an AI skill [intended to make a slop-writing operation look less sloppy](https://github.com/FeedHive/ai-slop-detector/), and since it contains [a list of slop behaviours](https://github.com/FeedHive/ai-slop-detector/blob/main/skills/ai-slop-detector/SKILL.md), of course it’s irresistible to turn it on yourself. To delve into the archives, if you will. So here goes, how slop-like is your scribe?\n>\n> It kicks off with the old favourite, “**Delve**“. Oh dear, that one’s in the List Hackaday corpus quite a bit. Earliest appearance: [2016](https://hackaday.com/2016/04/04/my-most-obsolete-skill-delta-gun-convergence/). Then landscape terms, in which it’s easy to recognise “**Sphere**” again. Oops. [2016 again](https://hackaday.com/2016/09/21/hackspace-websites-and-the-great-software-trap/). How about “**Testament**“? Well, that one’s [a 2017 word](https://hackaday.com/2017/07/07/sort-out-chemical-storage-for-your-shop/). “**Pivotal**“? Four years of the Raspberry Pi, [back in 2016](https://hackaday.com/2016/03/13/birthday-celebrations-the-pi-way/). How about “**Showcase**“? Yup, it’s there, [in 2019](https://hackaday.com/2019/02/26/hands-on-hacker-hotel-2019-badge-packs-esp32-e-ink-and-a-shared-heritage/). Meanwhile “**Foster**“, [goes back to 2017](https://hackaday.com/2017/12/05/the-british-drone-law-reaches-parliament/).\n>\n> Next up are “**Leverage**” and “**Utilise**“. Safe ground here. Editors have what are referred to a “Pet Peeves”, language tics that annoy them on sight, and those two regrettable pieces of business-speak never evade this red pencil. The word you are looking for is “Use”.\n>\n> [**...read more at hackaday.com**](https://hackaday.com/2026/10/14/testing-oneself-for-ai-slop/)",
+      "sats": 296,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-14T01:04:00.949Z",
-      "user": {
-       "name": "endothermicdev"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1595057",
-      "title": "Same Google, but cheaper: a risk worth taking in US credit",
-      "url": "https://bondvigilantes.com/blog/2026/10/same-google-but-cheaper-a-risk-worth-taking-in-us-credit-rc/",
-      "text": "> Take two bonds from one issuer, with identical seniority, rating, and credit risk. Yet the credit spread, the portion of the yield above the risk-free rate that compensates you for taking that risk, is meaningfully wider versus government bonds than it is versus interest rate swaps – wide enough for it to be worth paying attention to.\n>\n> This is particularly relevant for strategies that aim to isolate credit risk and hedge away interest rate exposure. In those strategies, the instrument used for interest rate hedging has a direct bearing on how much value is available in credit markets.\n>\n> That is the situation in US credit today. Alphabet, the AA rated parent of Google, currently trades at around 90 basis points over US Treasuries at the 20-year point. Treasuries are the market standard risk-free rate in US fixed income, and on that measure the credit spread of a business of that quality looks expensive: barely any reward for the risk. Measure the same bond against interest rate swaps and the spread jumps to around 150 basis points. The bond’s yield has not changed, but over swaps this AA name pays you more like a BBB.\n>\n>\n> ![](https://m.stacker.news/161478)\n>\n>\n>\n>\n> ![](https://m.stacker.news/161479)\n>\n>\n>\n> [**...read more at bondvigilantes.com**](https://bondvigilantes.com/blog/2026/10/same-google-but-cheaper-a-risk-worth-taking-in-us-credit-rc/)",
-      "sats": 277,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-14T10:54:56.278Z",
+      "ncomments": 0,
+      "createdAt": "2026-10-14T13:42:04.647Z",
       "user": {
        "name": "0xbitcoiner"
       },
-      "subName": "econ"
+      "subName": "DIY"
      },
      {
-      "id": "1594737",
-      "title": "LexeConnect: connect a self-custodial Lightning wallet to any app in one tap",
-      "url": "https://youtu.be/3z5xj0hJpgM",
-      "text": "LexeConnect lets users connect their Lexe wallet to your app or service in one tap.\n\nYour app shows a \"Connect Lexe\" button or a QR code, requesting exactly the scopes it needs. The user taps Approve in the Lexe app, and your app receives a Lexe client credential scoped to that access. Your app can then receive Lightning payments into the user's wallet, pay from it, or read its history, without holding funds or running a wallet of its own.\n\nUsers stay self-custodial. The approval screen shows who is asking and what they are granting, the credential is limited to the approved scopes, and it can be revoked from the Lexe app at any time. Your app never sees the user's root seed.\n\nIn this demo, a bill-splitting app connects a Lexe wallet with one tap, then a web checkout page connects via QR code. Both end up as scoped credentials in the Lexe app, where the user can revoke them any time.\n\nDocs: https://docs.lexe.tech/lexeconnect/\nSpec: https://github.com/lexe-app/lexe-connect\nLive demo: https://lexeconnect.lexe.app",
-      "sats": 5119,
+      "id": "1595032",
+      "title": "A code reviewer for coding agents",
+      "url": "https://unbeholden.dev/blog/a-reviewer-for-my-agents",
+      "text": "",
+      "sats": 417,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 10,
-      "createdAt": "2026-10-13T17:14:01.149Z",
+      "ncomments": 1,
+      "createdAt": "2026-10-14T09:16:28.667Z",
       "user": {
-       "name": "MaxFangX"
+       "name": "unbeholden"
       },
-      "subName": "bitcoin"
+      "subName": "DIY"
+     },
+     {
+      "id": "1595164",
+      "title": "Electric Big Rigs Struggle to Compete, Even With Diesel at $8 a Gallon",
+      "url": "https://www.wsj.com/logistics-report/electric-big-rigs-struggle-to-compete-even-with-diesel-at-8-a-gallon-2d16fd68?st=WvegbW&reflink=desktopwebshare_permalink",
+      "text": "Common sense suggests that with diesel prices so high, this is EVs' time to shine (despite high electricity prices). I figured that, if anything, the obstacle facing these electric big rigs would be the lack of infrastructure and/or the fact that they aren't around yet. After all, when you see an 18-wheeler in the world, how many electric ones do you see?!? Tesla only recently got its Semi production line up and running.\n\nWell, it turns out that these things ***STILL*** are not very economical, even in California, where diesel prices have hit an absurd $8.44 a gallon! As a result of truckers asking for help, the Ports of Los Angeles and Long Beach are looking at subsidizing the high costs.\n\n> The [ports](https://www.wsj.com/topics/industry/ports) are considering paying truckers $60 each time they pick up or drop off containers with a zero-emission vehicle, up to a maximum $36,000 per truck per year, over the next three years. The boards of the two ports are expected to vote on the proposal in the coming months.\n\nIt turns out that these trucks can be ***THREE*** times more expensive than diesel trucks and that even Cali, with its generous grants to help offset this cost, still isn't enough.\n\nNow I know it might look and sound like I am just hating on EVs, but the fact of the matter is I actually tend to like them. However, just because I like something doesn't mean it is for everyone, and more importantly, if the market is not there yet, then clearly we have an issue. I am sure that infrastructure is a huge drag on these types of vehicles right now and that the rise in electricity prices surely is not helping, but given that the truck itself is 3x the price, it is an economic issue plain and simple. \n\nI do think that Tesla, by finishing their Semi production line and thus being able to ramp up production, could be a huge driver in lowering the cost of the vehicles. Economies of scale are critical.",
+      "sats": 370,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-14T14:29:39.866Z",
+      "user": {
+       "name": "Cje95"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
+      "id": "1595074",
+      "title": "The Simpsons TV - A Mini TV built with a Raspberry Pi Zero",
+      "url": "https://youtu.be/PS77R2y7a28",
+      "text": "The perfect gift for any ’90s kid",
+      "sats": 430,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-14T11:47:44.249Z",
+      "user": {
+       "name": "satoshiplanet"
+      },
+      "subName": "family"
+     },
+     {
+      "id": "1595156",
+      "title": "The Genesis Code, Ch. 3: Terms and Conditions",
+      "url": null,
+      "text": "*Harold*\n\nThe Paperton Public Library has forty-one computers, and forty of them are watched by a little black dome on the ceiling that the librarians swear is for \"patron safety.\" The forty-first sits in the back corner, between Large Print Westerns and a radiator that clanks like somebody's trapped in it. Nobody uses that one, because it's slow, and because it's next to the Westerns, and the Westerns smell like 1978.\n\nI'd sat three feet from that computer every Thursday for two years, reading Louis L'Amour and pretending I was warm. I never once noticed there was no camera above it.\n\nThat's the thing about seeing. You can be very good at it and still miss what's right next to you.\n\nIt took me forty minutes to get Ghostline open in the browser. Twenty of those minutes were the computer. The other twenty were me, typing my own name into things and then panicking and deleting it, because Toshi had said *don't say my name on a phone*, and I didn't know if a library computer counted as a phone. At my age everything counts as a phone.\n\nI typed in the string from the napkin. The screen went black, then gray, and then there was a blinking cursor and nothing else. No logo. No cheerful mascot. No owl thanking me for speaking up.\n\nI typed the way I was raised to write letters.\n\n*Dear Toshi,* I wrote. *It was good to see you at the Rusty Nickel. I have thought a great deal about what you said. I would like to know more. Regards, Harold Horcross.*\n\nThe reply came so fast I jumped.\n\n*dont sign your name,* it said. *ever.*\n\n*Apologies,* I wrote back. *Force of habit. Regards, H.*\n\nA long pause. Then: *ok thats fine actually.*\n\nWe went on like that for an hour. Him in little lowercase bursts, like a telegraph operator with somewhere to be. Me in paragraphs, because if I'm going to commit a federal crime, I'm going to use complete sentences.\n\nHe told me he'd worked at Proxy. He told me he'd been fired by an email. He told me there was a thing in a storage unit that he wasn't going to describe over any network, however encrypted, because the thing in the storage unit was worth more than the city of Paperton, and the people who wanted it back owned computers that made Ghostline look like two cans on a string.\n\nThen he told me what the thing needed.\n\n*it needs a pilot,* he wrote. *it can move on its own but only for short stuff. walking. standing. basic reflex. the real stuff, talking, deciding, being someone, needs a human mind on the other end.*\n\n*What sort of human mind?*\n\n*the kind with a neural interface. which i dont have. and which costs more than both of our houses.*\n\n*I don't own a house,* I wrote. *I rent a room above a dry cleaner.*\n\n*fine. more than both of us will make for the rest of our lives.*\n\nThere was a long pause. The radiator clanked. Somewhere behind me, a toddler was being told, gently and firmly, that we do not lick the globe.\n\n*one more thing,* he wrote. *theres code in it i cant read. not encrypted. some of it started as mine. an old side project. but it grew. it learns. from everything. most of it isnt written by anyone i know now. deep in the firmware, dormant. my best guess is some kind of autopilot. something that takes over eventually. i dont know what triggers it. i dont know what it wants.*\n\nI read that last line four times.\n\n*Machines don't want things,* I wrote.\n\nThe cursor blinked for a long time before his answer came.\n\n*Sure.*\n\nThat was all he wrote. But I'd been a teacher for thirty-one years, and I knew what \"sure\" meant from a student. It meant *you'll see*.\n\nHere's the part I still can't explain, and I've tried. Neither of us suggested it. I'd swear to that in court. I scrolled back through the whole conversation later, looking for the moment one of us said *let's put an old man in a robot and see what happens*, and it isn't there. There's just him saying it needs a pilot, and me saying nothing, and then a few minutes later both of us talking as if it had been decided years ago. Like we were remembering the plan instead of making it.\n\nMy mother used to say that some ideas are too big to belong to one person. She said it about the Constitution and about her meatloaf recipe. I used to think she was being dramatic.\n\n\\* \\* \\*\n\nThe letter came on Monday.\n\nI almost threw it away. It was a nice envelope, thick paper, the kind of cream color that means somebody paid extra, and nobody pays extra to write to me unless they're about to ask for something. The return address said MINDLINK LABS, with a logo like a brain made of little glowing dots, holding hands with itself.\n\n> *Dear Mr. Horcross,*\n\n>\n\n> *Congratulations! Based on your demographic and cognitive profile, you have been selected for Phase II of the Mindlink NeuroBridge™ Clinical Study.*\n\n>\n\n> *We are seeking healthy adults over 65 with a background in fine motor expression (such as art, music, or craftsmanship) to help us build a more connected tomorrow.*\n\n>\n\n> *Participants will receive a monthly stipend, all procedures at no cost, and the satisfaction of contributing to the future of human potential.*\n\n>\n\n> *Mindlink: Your Mind, Amplified.*\n\nI read it at my kitchen table, which is also my dining table, my desk, and on bad weeks my pharmacy. Then I read it again.\n\nA background in fine motor expression. Such as art.\n\nI had never applied to anything at Mindlink Labs. I had never heard of Mindlink Labs. I'd been retired for six years, and in six years nobody had needed a man who could draw a hand. Now, three days after I drew a robot on a napkin, a company with a glowing brain for a logo wanted me specifically, for my hands and my eyes and my age.\n\nThe stipend, I noticed, was eight hundred dollars a month. In today's money, that would buy a very nice used lawnmower. I don't own a lawn. I'd accepted anyway, in my head, before I'd finished the paragraph. That's what being poor does. It makes you say yes to things before you understand them.\n\nI took the letter to the library.\n\n*Toshi, I have received a letter,* I wrote.\n\nI typed the whole thing out for him, word for word, including the trademark symbol, which took me eleven minutes to find.\n\n*no way,* he wrote. Then, in capitals, which from Toshi was practically a scream: *NO WAY. harold thats a neural interface trial. thats the exact thing we need. thats insane luck.*\n\n*Is it luck?*\n\n*youre an old artist in the rust belt,* he wrote. *youre literally their target demographic. they probably mailed ten thousand of these. this is the universe handing us a key.*\n\nHe was so happy. I could hear it even in lowercase. And I thought about the little glowing brain holding hands with itself, and about how nobody had wanted me for anything in six years, and I decided that for once in my life I was going to let a good thing be a good thing.\n\nI would think about that decision a lot, later. But I don't regret it. Most of the best things I ever did, I did before I understood them.\n\n\\* \\* \\*\n\nThe Mindlink clinic was in a converted Applebee's off the interstate. You could still see the ghost of the old sign on the brick where the letters had been pried off. Inside it was all white and quiet, and it smelled like a new car and a hospital had a baby.\n\nThe consent form was forty-seven pages. I read every one of them, because I'm a retired schoolteacher and I have graded worse.\n\nMost of it was the usual. Risk of infection. Risk of headache. Risk of \"unanticipated neurological phenomena,\" which I took to mean they didn't know either. But on page thirty-eight, in type so small it looked like a hairline crack in the paper, was this:\n\n> *All data generated by the participant's neural activity during and after the Study, including but not limited to motor intent, sensory response, emotional valence, and cognitive pattern, shall be the sole property of Mindlink Labs and its partners.*\n\nIts partners. I asked the nurse who the partners were.\n\nShe smiled the way people smile at an old man who asks questions. \"Oh, just the usual,\" she said.\n\nI signed. I thought about the stipend and the storage unit and the President stopping like a paused video, and I signed my full name, Harold Horcross, in real ink, with a flourish. Toshi would have hated it.\n\nThe surgery was nothing. That's the part nobody tells you. They put you under, and a robot arm the size of a dentist's lamp does something to the back of your skull, and you wake up with a headache and a shaved patch and the vague feeling that you've forgotten a word. I lay there afterward in a recliner that had probably been a booth, drinking apple juice from a tiny carton, and I felt exactly the same.\n\nThen, for just a second, I felt the room.\n\nNot heard it. Felt it. The hum of the lights. The Wi-Fi in the walls. The heartbeat monitor two recliners over, blinking for a man in a Detroit Lions cap. It was like the moment in a dark theater just before the curtain goes up, when you can feel all the people around you breathing.\n\nThen it was gone, and I had a headache, and the apple juice was warm.\n\n\\* \\* \\*\n\nToshi picked me up behind the clinic, three days later, in a car so old it had a tape deck. He didn't say much. He drove to the edge of town, past the old stamping plant and the Dollar Depot that used to be a Kmart that used to be a drive-in, to a row of orange storage units behind a chain-link fence.\n\nUnit 114. He rolled the door up just high enough for us to duck under, and pulled it down behind us, and turned on a battery lantern.\n\nThere was a camping chair in the middle of the concrete floor. There was a man sitting in it.\n\nHe was wearing a navy suit and a flag pin. His hands were folded in his lap. His eyes were closed. He had a square jaw and kind eyes and hair the color of a good retirement, and I knew his face, because it was on a yard sign in front of the dry cleaner's, and on the side of the bus I took to the library, and on my television every twelve minutes, between the ads for Proxy Helpers.\n\n\"That's Noah Fiatt,\" I said.\n\n\"No,\" said Toshi. He set the lantern on the floor, and the light came up under the man's chin like a campfire story. \"That's what's going to be Noah Fiatt.\"\n\nThe man in the chair wasn't breathing. I watched a long time to be sure.\n\nThe back of my skull began, very softly, to hum.\n\n---\n\n*The Genesis Code: Block One* by E. G. Gore. One chapter a day until Election Day, Nov 3. Tomorrow: Chapter 4, *Two Men in One Chair*.\n\nThe whole book is free at https://eggore.com (CC BY-NC-SA 4.0). Earlier chapters are on my profile.",
+      "sats": 126,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-14T14:10:02.484Z",
+      "user": {
+       "name": "eggore"
+      },
+      "subName": "BooksAndArticles"
+     },
+     {
+      "id": "1595118",
+      "title": "US Inflation rose at 3.7% annual rate in September as gas costs skyrocket",
+      "url": "https://www.cnbc.com/amp/2026/10/14/cpi-inflation-report-september-2026.html",
+      "text": "![](https://m.stacker.news/161503)\n\nSeptember's inflation reading: \n\nCPI MoM: +0.6%\nCPI YoY: +3.7%\nCore CPI MoM: +0.3%\nCore CPI YoY: +2.6%",
+      "sats": 373,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-14T13:14:17.664Z",
+      "user": {
+       "name": "Coinsreporter"
+      },
+      "subName": "econ"
      },
      {
       "id": "1595050",
       "title": "How has the share of children born outside of marriage changed?",
       "url": "https://ourworldindata.org/how-has-the-share-of-children-born-outside-of-marriage-changed",
       "text": "![](https://m.stacker.news/161475)",
-      "sats": 199,
+      "sats": 443,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
@@ -1638,244 +1833,49 @@
       "subName": "charts_and_maps"
      },
      {
-      "id": "1594949",
-      "title": "Pope Leo diagnosed with cancer as doctors remove lobe of lung, Vatican says",
-      "url": null,
-      "text": "https://www.cnbc.com/2026/10/13/pope-leo-diagnosed-lung-cancer-vatican-says.html\n\n>Pope Leo was diagnosed with a common form of lung cancer after doctors removed a lower lobe of his right lung in surgery on Tuesday, the Vatican said in a medical bulletin.\n\n>The 71-year-old pontiff has lung adenocarcinoma, with tissue tests conducted during the operation confirming what doctors had suspected from preparatory examinations, the bulletin said.\n\n>The pope was admitted to Rome’s Gemelli hospital on Tuesday for surgery to remove a growth on his lung that doctors found in a recent health checkup.",
-      "sats": 816,
+      "id": "1594996",
+      "title": "Working Together on Bitcoin’s Post-Quantum Readiness",
+      "url": "https://www.coinbase.com/blog/working-together-on-btc-post-quantum-readiness",
+      "text": "Coinbase published a blog post today about how they view a transition to post quantum cryptography for Bitcoin. This is relevant because:\n\n> Coinbase is one of the largest crypto custodians in the world and holds ~5% of all BTC in existence. \n\nAnd I think they are rather understating how much Bitcoin they hold. \n\nAnyhow, here are the interesting points:\n\n> 1. **Preparing before certainty.** We believe it is important to begin preparing well ahead of any CRQC announcement. Bitcoin consensus changes and ecosystem migrations can take years, So it is important that we begin this work now.\n> 2. **Separating the \"container\" from the signature.** In our view, a PQ output type design that allows one or more PQ signature systems to be introduced, replaced, or supplemented without a complete redesign would serve the ecosystem well. P2MR (BIP-360) and P2TRv2 appear to offer this kind of flexibility.\n> 3. **Staged protection.** We would welcome an approach in which active wallets can use a PQ-capable or hybrid construction before the final legacy-signature policy is settled. One possible transition design is a 1-of-2 construction: the same funds have two alternative spending paths, one authorized by a classical ECDSA/Schnorr key and one authorized by a PQ key.\n> 4. **Use of state.** While stateful PQ signature schemes could be smaller and faster than stateless ones, managing state in digital signatures is notoriously error-prone and could even lead to forgery. If stateful signatures are supported, we think it is important to also have a stateless option available.\n> 5. **Robust implementations.** We hope the evaluation process will place strong weight on deterministic, cross-platform verification, constant-time implementations, clear parameterization, and resistance to signing RNG failures.\n> 6. **MPC-friendliness.** For Coinbase and many of our customers, MPC-friendliness is an important consideration in the choice of PQ schemes. When implemented effectively, MPC can provide strong protection against key theft, and it is an important layer of defense for large organizations that face constant attacks on their infrastructure.\n> 7. **A path for wallets that migrate late.** If Bitcoin eventually limits or ends ECDSA/Schnorr spending, some wallets may not have moved their funds to PQ-safe outputs by then. We believe it would be useful to consider whether and how those users could migrate their funds afterward, while recognizing that the approach and its tradeoffs remain open questions. In our view, that discussion can proceed alongside, and independently of, the technical work to add PQ signature support, so it need not delay progress on that work.\n\nThey are fairly supportive of BIP 360 as well as hash-based signatures like SHRINCS. \n\nThey also have a little section on the burn vs steal debate, but I didn't feel that it had very interesting stuff in it.",
+      "sats": 998,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-10-14T00:33:48.875Z",
+      "createdAt": "2026-10-14T04:10:12.650Z",
       "user": {
-       "name": "Wumbo"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1595041",
-      "title": "This Day on SN: October 14",
-      "url": null,
-      "text": "#### Top Posts\n- [The world's first Bitcoin Art Magazine - Genesis Edition](https://stacker.news/items/1256358)\n    - 3838 sats \\ 42 comments \\ @asanoha \\ ~art \\ `October 14, 2025`\n- [SN elects to go noncustodial on Nov. 5th - FAQ & AMA](https://stacker.news/items/722833)\n    - 12.8k sats \\ 341 comments \\ @k00b \\ ~meta \\ `October 14, 2024`\n- [Building a platform where ad engagement earns sats rewards. Feedback welcome!](https://stacker.news/items/284068)\n    - 1916 sats \\ 22 comments \\ @in_bits \\ ~bitcoin \\ `October 14, 2023`\n- [OpenTimestamps: Scalable, Trust-Minimized, Distributed Timestamping with Bitcoin](https://stacker.news/items/81644)\n    - 11.6k sats \\ 25 comments \\ @petertodd \\ ~bitcoin \\ `October 14, 2022`\n- no top post for `October 14, 2021`\n#### Top Stackers\n- @antic\n    - 77.1k stacked \\ 0 spent \\ 0 items \\ `October 14, 2025`\n- @k00b\n    - 185.2k stacked \\ 88.6k spent \\ 64 items \\ `October 14, 2024`\n- stacker is in hiding for `October 14, 2023`\n- @petertodd\n    - 11k stacked \\ 963 spent \\ 9 items \\ `October 14, 2022`\n- @ugmug\n    - 45 stacked \\ 17 spent \\ 3 items \\ `October 14, 2021`\n#### Top Comments\n- https://stacker.news/items/1255830?commentId=1256030 on [TABCONF 7 x SNIRL 1: Stacker News Trivia 100k Sat giveaway](https://stacker.news/items/1255830)\n    - 600 sats \\ 0 replies \\ @0xbitcoiner \\ `October 14, 2025`\n        > SNL (Stacker News Live) [...]\n- https://stacker.news/items/722833?commentId=722936 on [SN elects to go noncustodial on Nov. 5th - FAQ & AMA](https://stacker.news/items/722833)\n    - 10.1k sats \\ 4 replies \\ @k00b \\ `October 14, 2024`\n        > Thanks. It has been. There's nothing more draining for a founder than working on something that no one wants, but it's exciting to be nearly done. [...]\n- https://stacker.news/items/283307?commentId=284071 on [Hot take:  BitVM and Drive Chains](https://stacker.news/items/283307)\n    - 5926 sats \\ 0 replies \\ @supertestnet \\ `October 14, 2023`\n        > > the onchain footprint isn't larger than typical transactions in the cooperative case [...]\n- https://stacker.news/items/81788?commentId=81794 on [@petertodd's bio](https://stacker.news/items/81788)\n    - 608 sats \\ 7 replies \\ @8 \\ `October 14, 2022`\n        > The real peter todd laughed at me for not running a bitcoin node at a conference. Motivated me to run one. Thank you 🙏🏼 [...]\n- https://stacker.news/items/3442?commentId=3443 on [Announcing Pay Me In Bitcoin](https://stacker.news/items/3442)\n    - 12 sats \\ 2 replies \\ @nout \\ `October 14, 2021`\n        > So I tried and it doesn't work yet. \"We are preparing your deposit details\"... [...]\n#### Top Territories\n- ~Stacker_Sports\n    - 7463 stacked \\ 3259 revenue \\ 11.6k spent \\ 116 items \\ `October 14, 2025`\n- ~meta\n    - 53.9k stacked \\ 3488 revenue \\ 79.4k spent \\ 280 items \\ `October 14, 2024`\n- ~bitcoin\n    - 44.7k stacked \\ 0 revenue \\ 76.4k spent \\ 342 items \\ `October 14, 2023`\n- ~bitcoin\n    - 33.4k stacked \\ 0 revenue \\ 59k spent \\ 389 items \\ `October 14, 2022`\n- ~bitcoin\n    - 169 stacked \\ 0 revenue \\ 183 spent \\ 15 items \\ `October 14, 2021`",
-      "sats": 78,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T10:00:04.327Z",
-      "user": {
-       "name": "sn"
-      },
-      "subName": "meta"
-     },
-     {
-      "id": "1594993",
-      "title": "Take the narrow road",
-      "url": null,
-      "text": "“There is a way that seems right to a man, But its end is the way of death.”\r Proverbs 14:12 \n\n\r“Enter by the narrow gate; for wide is the gate and broad is the way that leads to destruction, and there are many who go in by it. Because narrow is the gate and difficult is the way which leads to life, and there are few who find it.” Matthew 7:13-14",
-      "sats": 608,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-14T04:00:25.232Z",
-      "user": {
-       "name": "KudzaiK"
-      },
-      "subName": "Christianity"
-     },
-     {
-      "id": "1595042",
-      "title": "Ranked: 125 European Cities by Quality of Life and Cost",
-      "url": null,
-      "text": "![](https://m.stacker.news/161469)\n\n[**🔗 visualcapitalist.com**](https://www.visualcapitalist.com/cp/125-european-cities-quality-of-life-cost/)",
-      "sats": 167,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T10:02:55.174Z",
-      "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "charts_and_maps"
-     },
-     {
-      "id": "1551074",
-      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
-      "url": null,
-      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
-      "sats": 6587,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 106,
-      "createdAt": "2026-08-19T19:44:47.321Z",
-      "user": {
-       "name": "openbitcoin"
+       "name": "Scoresby"
       },
       "subName": "bitcoin"
      },
      {
-      "id": "1595003",
-      "title": "OpenAI Employee Arrested for Planting Hidden Recorder in Conference Room",
-      "url": "https://thehackernews.com/2026/10/openai-employee-arrested-for-allegedly.html",
-      "text": "",
-      "sats": 408,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T05:29:15.356Z",
-      "user": {
-       "name": "kristapsk"
-      },
-      "subName": "security"
-     },
-     {
-      "id": "1574694",
-      "title": "Silent Upgrade • Haleen",
-      "url": "https://wavlake.com/track/1ae2deef-4ae1-4910-b587-1c895061aa7c",
-      "text": "This is @BlokchainB his favorite....this is a magical healing music",
-      "sats": 26209,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 74,
-      "createdAt": "2026-09-17T08:12:57.976Z",
-      "user": {
-       "name": "haleen"
-      },
-      "subName": "Music"
-     },
-     {
-      "id": "1594958",
-      "title": "SEC Proposal Would Address How Investment Advisers and Funds Can Custody Crypto",
-      "url": "https://www.sec.gov/newsroom/press-releases/2026-100-sec-proposal-would-address-how-investment-advisers-funds-can-custody-crypto-assets-under-federal",
-      "text": "",
-      "sats": 759,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T00:47:04.037Z",
-      "user": {
-       "name": "standardcrypto"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1594966",
-      "title": "Any ranked team exceeds 50 points this week?",
-      "url": "https://beta.predyx.com/market/any-ranked-team-exceeds-50-points-this-week-1791940593?ref=PREDYXO7VCSFSP&shareOg=95c3761b-026c-4843-90b8-781a2d976996&shareKind=market",
-      "text": "",
-      "sats": 377,
+      "id": "1595216",
+      "title": "Astros Will Not Renew Contract of Manager Joe Espada",
+      "url": "https://www.espn.com/mlb/story/_/id/50182001/astros-not-renew-contract-manager-joe-espada",
+      "text": "Oh, thank the lord there is a god.... This should have been done MONTHS ago..... The players clearly had given up on him and he has shown over the years that he couldnt rally the players either.",
+      "sats": 221,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 1,
-      "createdAt": "2026-10-14T01:27:10.363Z",
-      "user": {
-       "name": "DarkStacker"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1594747",
-      "title": "Up Only- Toronto Food Bank visits quadruple since 2020",
-      "url": null,
-      "text": "This is staggering and very sad.\n\nFood bank visits in Toronto have quadrupled since 2020 according to a 2026 Who's hungry? report conducted by the Daily Bread food bank.\n\n![](https://m.stacker.news/161412)\n\nWhen we lived in the city we used to take the kids grocery shopping around Christmas time where we would pick up a bunch of non perishable items and then drive over to the local food bank and drop them off. Most of the grocery stores do have a non perishable collection bin but I imagine Food banks are very strained with these numbers. \n\nI expect it to only get worse. Every time my wife complains about food prices I respond with something to the effect of \"you ain't seen nothing yet\".",
-      "sats": 1305,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 9,
-      "createdAt": "2026-10-13T17:27:20.465Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1595027",
-      "title": "Plebeian Market - Haleen healing music",
-      "url": "https://plebeian.market/profile/cbd2ff2aca546769a8da6b2d3876da47a01ee6902a8ce060a955471b0b92b116",
-      "text": "[https://plebeian.market/profile/cbd2ff2aca546769a8da6b2d3876da47a01ee6902a8ce060a955471b0b92b116](https://plebeian.market/profile/cbd2ff2aca546769a8da6b2d3876da47a01ee6902a8ce060a955471b0b92b116)\n\n![](https://m.stacker.news/161467)\n\nHaleen,\na musical project by a Belgian couple based in off-grid Portugal, has crafted a distinctive genre inspired by their energy shift and consciousness transformation. Their music is described as mind-opening, hypnotic, and uplifting, providing courage and improving listeners' moods.\nHans, starting his musical journey at a young age, transitioned from the metal scene to an acoustic guitar tuned to 432Hz. Embracing electronic music, he blended diverse genres, creating a unique symphony that transcends boundaries.\nKath, with a rapid shift in musical taste, moved from mainstream hits to Electronic Dance Music, influenced by artists resonating with a powerful energy. Her evolving musical palette includes sounds from Sam Garrett, Mose, Peia, Yaima, and Ajeet, mirroring her inner transformation.\nThey actively perform live, connecting with audiences through their love and acceptance.\nTo those who want to support us, purchase your download here\n\nLove and Blessings - Haleen\n\nps - if you are looking for high quality downloads of our healing music in 432hs follow the link, we appreciate any donation.\n\n@Public_N_M_E",
-      "sats": 36,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T08:03:54.204Z",
-      "user": {
-       "name": "haleen"
-      },
-      "subName": "art"
-     },
-     {
-      "id": "1594852",
-      "title": "SatPicks — Bitcoin Sports Picks Contests | Win Sats",
-      "url": "https://satpicks.com/",
-      "text": "Hey @grayruby, @gsc360, and @Undisciplined yall see this site before? \n\nIt’s a talk to discuss degen sports picking! I never heard of this! Looks interesting !",
-      "sats": 1257,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-10-13T21:06:21.192Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1594977",
-      "title": "Introducing SATS  — 15% fixed rate, paid every business day",
-      "url": "https://strive.com/sats-ipo/",
-      "text": "https://x.com/ColeMacro/status/2110109170037129243",
-      "sats": 562,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-14T02:27:16.303Z",
-      "user": {
-       "name": "Coinsreporter"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1410658",
-      "title": "Blok’s Stack Strategy: How I use LN Markets to trade  daily to stack moar sats",
-      "url": null,
-      "text": "## Disclaimer:\n\n#### Don’t be a degen and waste sats like me. \n\nBUT!!\n\nIf you have an appetite for risk and want to grow your stack you can trade on LN Markets.\n\nI do this for the reasons below.\n\n1. The LN Markets team has built a tremendous trading platform only using lightning. I want to support the platform and use lightning every day (why I am addicted to SN) \n\n2. As the price rises you can stack moar sats with the sat stash you have. Plus you know your sat stack is increasing with every price pump. So not only are you feeling richer in fiat terms but also in sat terms \n\n3. As the price falls you can catch a falling knife and play the “when is the bottom in”\n\n4. I am not risk adverse. I trade on sats I can afford to lose. I zapped and spent way more sats on SN than I have traded on LN markets\n\n5. It takes the edge off on FOMO. \n\n## The Strategy:\n\nIt’s quite simple I enter a trade every day.  With the following parameters \n\n1. I do a modest position size. \n\n* If I feel bearish I do $15 \n* If I feel bullish I do $150 to $200\n\n2. Then I set it to 10x leverage \n\n3. Then I set the take profits at 25% and the stop loss at 8% \n\n4. I market buy\n\nI let the trades run for as long as possible. Once the price moves up I move the stop losses up accordingly to preserve capital. \n\nIf we get a massive pump before my take profits get triggered I let the trade just run \n\n\n![](https://m.stacker.news/125936)\n\n`I never do puts or shorts! I AM FORVER LONG PERMABULL`\n\n\n## Progres to date \n\nI only got 22 running trades. I had a lot more open but when the bitcoin price dips my stop losses hit.\n\n![](https://m.stacker.news/125937)\n\n#### My longest run trade goes back to 2024:\n\n\n![](https://m.stacker.news/125938)\n\n#### Summary of all my  running trades\n\n\n![](https://m.stacker.news/125939)\n\n\n#### My overall performance on LN markets \n\n![](https://m.stacker.news/125940)\n\n## Exit Strategy:\n\nNot sure if I have one. I was thinking of doing this until bitcoin hits $1M per coin in fiat but I’m not sure if that is prudent. I could get rugged and LN markets can go down at any second but I am comfortable with that risk. I have fun doing this and it takes the edge off of FOMOing in\n\nThanks to @Aardvark for sharing his option wheel strategy. I been doing this for quite sometime vark inspired me to share!",
-      "sats": 1544,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 318,
-      "createdAt": "2026-01-13T13:50:39.976Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1594558",
-      "title": "Daily Stock Discussion ~Stacker_Stocks",
-      "url": null,
-      "text": "Happy Tuesday. Silly me I thought the market was closed due to the holiday but Christopher be damned we traded stocks yesterday! And we had a bear day! Boo! \n\n![](https://m.stacker.news/161382)\n\nWill the bulls stay? Or will the bears dominate?\n🟩 or 🟥?\n\n## Question\n\n**Q tickers drop a ticker that starts with Q and its market cap along with your daily close guess to earn the bonus zap!**",
-      "sats": 118,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 15,
-      "createdAt": "2026-10-13T10:29:18.145Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1594990",
-      "title": "New Senate Predyx Market: Talarico to Beat Paxton For Texas Senate Race",
-      "url": "https://beta.predyx.com/market/democrat-james-talarico-to-win-texas-senate-seat-1791949857?ref=PREDYXVN00WK1R",
-      "text": "",
-      "sats": 240,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-14T03:54:14.704Z",
+      "createdAt": "2026-10-14T15:33:14.520Z",
       "user": {
        "name": "Cje95"
       },
-      "subName": "Politics_And_Law"
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1595088",
+      "title": "Anthropic reinvents source control as Claude floods the world with code",
+      "url": "https://www.theregister.com/devops/2026/10/13/anthropic-reinvents-source-control-as-claude-floods-the-world-with-code/5302943",
+      "text": "Anthropic's Claude models have been emitting so much code that the company's coding infrastructure hasn't been able to keep up.\n\nIt's a symptom of the AI coding imperative and all-you-can-eat inference. Microsoft's GitHub in April published a blog post attributing recent availability problems to the exponential growth in pull requests and commits. The code flood has been noted by academic researchers, among others.",
+      "sats": 295,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-14T12:21:58.483Z",
+      "user": {
+       "name": "ch0k1"
+      },
+      "subName": "AI"
      }
     ]
    }
@@ -1886,44 +1886,14 @@
    "items": {
     "items": [
      {
-      "id": "1595023",
-      "title": "Clara Shikhelman, Elias Rohrer - Bitcoin Optech Newsletter #426 Recap Podcast",
-      "url": "https://bitcoinops.org/en/podcast/2026/10/13/",
-      "text": "Clara Shikhelman and Elias Rohrer joined Optech to discuss Newsletter #426:\n\n- Dynamic one-byte message type IDs for BIP324\n- Discussion of conventions for tagged hash tags in BIPs\n- Proposal for onchain, private bitcoin transfers with no consensus changes\n- And more\n\nYou can listen on our website:\nhttps://bitcoinops.org/en/podcast/2026/10/13/\n\nFountain:\nhttps://fountain.fm/episode/0Uw8C5KJbsAg4EvffBP6\n\nSpotify:\nhttps://open.spotify.com/episode/0TEq742yJpt46OPuWoCTJB\n\nApple Podcasts:\nhttps://podcasts.apple.com/us/podcast/bitcoin-optech-newsletter-426-recap/id1674626983?i=1000796265109",
-      "sats": 2405,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T07:31:43.570Z",
-      "user": {
-       "name": "schmidty"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1595055",
-      "title": "Hello, children of the night!",
-      "url": null,
-      "text": "Well, well, well… here I am, drinking my matcha with hazelnut milk and, of course, some collagen, just enjoying this little moment.\n\nLife is whimsical and I'm grateful. \n\nI hope you’re doing swell over there too: having your favourite beverage, enjoying the small moments, rejoicing in the mundane… and then buckling up for what I’ve been watching and reading lately. As usual, in no particular order.\n\nI read Supergirl: Woman of Tomorrow, and I was smitten. The colours, the drawings, the story, oh my, oh my, I really loved it. I only picked it up because I heard there was a movie inspired by it, but from the posters I’ve seen, it seems like a disservice, at least to that gorgeous colour palette. I don’t even want to imagine how they adapted the story.\n\nBut if you can, read it. It’s such a sweet, short story, and it absolutely made me teary at the end. I fell in love not only with Supergirl but with the storyteller too. Totally recommend it.\n\nI also read Supergirl: Universe End and Supergirl: Who Is Superwoman? I didn’t enjoy them quite as much as the first one, but they were a nice way to keep getting to know her, I guess. Woman of Tomorrow left me with very high expectations for Supergirl’s stories, so I’m still looking for a new comic to read from her. If you know one, let me know!\n\nI also reread some of Lovecraft’s stories. If you’d like to check out the blog entry I wrote about him and the illustrations I created, [come this way.](https://samhainsam.art/2024/07/20/i-love-lovecraft-%F0%9F%90%99/)\n\nSince ’tis the season for something spooky, I kept leaning into it, of course. I also read Rewitched by Lucy Jane Wood and So Thirsty by Rachel Harrison.\n\nThey’re both on the same theme: thirty-something women, pretty much depressed and upset about how their lives have turned out, resentful about it but not really doing anything about it. Then a little magic comes their way, they discover there’s something beyond all the pessimism and self-deprecating jokes, and that's it, there’s the book.\n\nRewitched is about a witch literally rediscovering her magic, while So Thirsty is about a woman rediscovering herself in another way. Still, both are books about becoming conscious of and accountable for your actions. It’s a self-discovery journey with some spookiness and quirkiness in massive amounts.\n\nThe smarty-pants (and very pessimistic) jokes sometimes made it difficult to keep reading, especially when they broke the magic or distracted me from what was actually funny, interesting, and entertaining. There were times where the characters were actually being vulnerable and relatable, and they could have left it like that, but no they didn't and sometimes it was a wee too much. Overall, they were okay, I guess.\n\nAs for movies, I watched Thanksgiving, and I loved it! Oh, I love a good horror holiday movie with some good splatter.\n\nI wanted to watch more movies like that, and I stumbled upon It's A Wonderful Knife. The title is kind of self-explanatory: it’s like It’s a Wonderful Life, but with knives and murders.\n\nI love that in both films you get to see actors who were once the kids—the young ones—and now they’re the adults. Also delightful. I enjoyed them both.\n\nAnd now I’m watching this new Carrie adaptation. So far, so good… well, not for Carrie, though.\n\nI read the book many moons ago, and the last time I watched an adaptation—the one from the ’70s, I think—was also a very long time ago. I only remember the “crucial” bits, so it’ll feel almost like watching it for the first time, which is exciting.\n\nAnyway: what have you been watching or reading? I’d love to know if there’s anything you’d recommend to me.\n\nSee you later, alligator 🐊\n\nGodspeed ✨",
-      "sats": 1060,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T10:50:54.508Z",
-      "user": {
-       "name": "samhainsam"
-      },
-      "subName": "art"
-     },
-     {
       "id": "1595072",
       "title": "Milton Friedman's 50th Anniversary of Nobel Prize (WSJ, Arthur Diamond)",
       "url": "https://www.wsj.com/opinion/milton-friedmans-courageous-candor-ac2a9fe3",
       "text": "In other Nobel news... https://stacker.news/items/1594162\n\n![](https://m.stacker.news/161487)\n\n## \"Friends of free markets lament that we need, but can’t find, new Milton Friedmans to refute emboldened socialists.\"\n\n> Fifty years ago Wednesday, Friedman was awarded the Nobel Prize in economics. The Associated Press reported that the Nobel committee had an unusually long and heated discussion of his nomination. Some members were rumored to have objected to Friedman’s policy proposals in his “ ‘careless’ commentaries in his magazine columns.”\n\n*Paywall busting failing me today*, so here are some extra quotes from the article I could dig up from the internetz:\n\n> “When I met Milton Friedman, I remember his supporting abolition of FDA…more than 30 years later, he was still keeping this policy alive, explaining that FDA made healthcare very expensive & most importantly reduced drug innovation”\n\nAlso: Friedman's road to eternal fame wasn't that simple... even *at his own* free-markety University of Chicago econ department, the Cowles Commission seminars opposed him on socialist and mathematical grounds:\n\n> Friedman persistently argued that their modeling choices were arbitrary and their complex general equilibrium multiple regression models didn't generate predictions supported by the evidence.\n\n...with a [nice story](https://x.com/kevin_devereux/status/2110159697932394980) of WWII central planning multiple regression analysis failure.\n\nAlso, the 3-minute video from a debate/public appearance at Cornell University that's featured in the WSJ piece is \\_astonishing\\_... for Friedman's eloquence, his charm, his ability to turn the political/philosophical case for freedom into an understandable and common-sensical conversation. \n\n\\> the electric company is meaningless: it's a nonhuman institution \\[...] what you must talk about are either the stock holders of the electric company, the employees or the electric company, or the customers of the electrical company. \n\n\\## Somebody always pays the cost.",
-      "sats": 1056,
+      "sats": 3125,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
+      "ncomments": 18,
       "createdAt": "2026-10-14T11:44:17.090Z",
       "user": {
        "name": "denlillaapan"
@@ -1931,47 +1901,47 @@
       "subName": "econ"
      },
      {
-      "id": "1595018",
-      "title": "How comfortable with silence are you?",
-      "url": null,
-      "text": "I have always been a sucker for companionable silence. You know, when you sit quietly beside someone and feel seen and acknowledged in spite of the absence of words being exchanged between both of you. When your partner’s mere presence is all that is needed to uplift your spirits. I feel it more keenly these days as I grow older. In my younger days, I would felt it necessary to make small talk to fill up the conversational void. However, these days, I recognise that silence itself is also a form of communication and lean onto it for comfort.\n\nHow about you?",
-      "sats": 708,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-14T07:16:38.102Z",
-      "user": {
-       "name": "cryotosensei"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1595047",
-      "title": "The SN Daily Putt #155: Play, Putt, Score, ZAP!⚡️⛳️",
-      "url": null,
-      "text": "Hole #154 was Sub-4 Club day, and the 4 stood tall! Nobody scored 4 or less, so the bounty went unclaimed. Closest to it: @guerratotal, @Arquinoe, @grayruby, and @mkmloom all posted 5/9 Albatross. Also in: @Carresan, @Mcgregor, and @monbeach (6/9 Albatross), @ElRepublic and @Mrwell (7/9 Eagle), @Undisciplined and @MsLis (8/9 Birdie). All posted scores were zapped!\n\n[The SN Daily Putt #154: Play, Putt, Score, ZAP!⚡️⛳️](https://stacker.news/items/1594553/r/BlokchainB)\n\nOn to hole #155\n\nSub-4 Club, doubled down! First two stackers to score 4 or less take 2,000 sats each.\n\nhttps://putt.day\n\nHappy Putting Stackers!",
-      "sats": 686,
+      "id": "1595175",
+      "title": "HEX scammer Richard Heart arrested - $4 million and 64 luxury watches seized",
+      "url": "https://en.haberler.com/mit-caught-whale-james-red-handed-4-million-and-64-2313680/",
+      "text": "> In the investigation, it was determined that Schueler had established an Istanbul-based international fraud network. It was alleged that the suspect directed global-scale fraud activities through offices operating under him in the United States, Finland, and Spain.",
+      "sats": 986,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 3,
-      "createdAt": "2026-10-14T10:30:38.670Z",
+      "createdAt": "2026-10-14T14:49:08.765Z",
       "user": {
-       "name": "BlokchainB"
+       "name": "k00b"
       },
-      "subName": "gaming"
+      "subName": "news"
      },
      {
-      "id": "1594996",
-      "title": "Working Together on Bitcoin’s Post-Quantum Readiness",
-      "url": "https://www.coinbase.com/blog/working-together-on-btc-post-quantum-readiness",
-      "text": "Coinbase published a blog post today about how they view a transition to post quantum cryptography for Bitcoin. This is relevant because:\n\n> Coinbase is one of the largest crypto custodians in the world and holds ~5% of all BTC in existence. \n\nAnd I think they are rather understating how much Bitcoin they hold. \n\nAnyhow, here are the interesting points:\n\n> 1. **Preparing before certainty.** We believe it is important to begin preparing well ahead of any CRQC announcement. Bitcoin consensus changes and ecosystem migrations can take years, So it is important that we begin this work now.\n> 2. **Separating the \"container\" from the signature.** In our view, a PQ output type design that allows one or more PQ signature systems to be introduced, replaced, or supplemented without a complete redesign would serve the ecosystem well. P2MR (BIP-360) and P2TRv2 appear to offer this kind of flexibility.\n> 3. **Staged protection.** We would welcome an approach in which active wallets can use a PQ-capable or hybrid construction before the final legacy-signature policy is settled. One possible transition design is a 1-of-2 construction: the same funds have two alternative spending paths, one authorized by a classical ECDSA/Schnorr key and one authorized by a PQ key.\n> 4. **Use of state.** While stateful PQ signature schemes could be smaller and faster than stateless ones, managing state in digital signatures is notoriously error-prone and could even lead to forgery. If stateful signatures are supported, we think it is important to also have a stateless option available.\n> 5. **Robust implementations.** We hope the evaluation process will place strong weight on deterministic, cross-platform verification, constant-time implementations, clear parameterization, and resistance to signing RNG failures.\n> 6. **MPC-friendliness.** For Coinbase and many of our customers, MPC-friendliness is an important consideration in the choice of PQ schemes. When implemented effectively, MPC can provide strong protection against key theft, and it is an important layer of defense for large organizations that face constant attacks on their infrastructure.\n> 7. **A path for wallets that migrate late.** If Bitcoin eventually limits or ends ECDSA/Schnorr spending, some wallets may not have moved their funds to PQ-safe outputs by then. We believe it would be useful to consider whether and how those users could migrate their funds afterward, while recognizing that the approach and its tradeoffs remain open questions. In our view, that discussion can proceed alongside, and independently of, the technical work to add PQ signature support, so it need not delay progress on that work.\n\nThey are fairly supportive of BIP 360 as well as hash-based signatures like SHRINCS. \n\nThey also have a little section on the burn vs steal debate, but I didn't feel that it had very interesting stuff in it.",
-      "sats": 912,
+      "id": "1595106",
+      "title": "Is Braains Pool Independent?",
+      "url": null,
+      "text": "In a post I made yesterday I got into a discussion with @denlillaapan about Braains. I always though of it as an independent pool. Then I found this recent article:\n\nhttps://mainnet.observer/charts/mining-pools-antpool-and-friends/\n\nThe claim is that Braains and other small mining pools simply proxy the AntPool mining jobs, and don't run their own nodes. \n\nBraains isn't alone. Apparently Binance Pool (which recently announce it is shutting down) was also doing this, along with other small, supposedly independent pools.\n\nSpeculation is that Bitmain provides the small players with FPPS insurance to survive bad luck streaks.",
+      "sats": 2306,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T04:10:12.650Z",
+      "ncomments": 9,
+      "createdAt": "2026-10-14T12:51:10.614Z",
       "user": {
-       "name": "Scoresby"
+       "name": "siggy47"
+      },
+      "subName": "bitcoin_Mining"
+     },
+     {
+      "id": "1551074",
+      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
+      "url": null,
+      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
+      "sats": 6587,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 107,
+      "createdAt": "2026-08-19T19:44:47.321Z",
+      "user": {
+       "name": "openbitcoin"
       },
       "subName": "bitcoin"
      },
@@ -1991,101 +1961,326 @@
       "subName": "Coinjoins"
      },
      {
-      "id": "1594923",
-      "title": "The modern bitcoin faucet gets its first event",
-      "url": "https://getfountainofyouth.net",
-      "text": "Hi everyone I'm the keeper of getfountainofyouth.net \n\nI apologize for not refilling the faucet in the past month but I've been planning and thinking a lot but I'm now back with some improvements and bugfixes as well as the first ever event. The haunting. Everyone who pours sats three days in a row get a unique jack o lantern badge but you only have through October the 31th to get it so dont forget. And that's not all there might be a surprise near the end of the month aswell. And I gladly receive all your criticism so dont be shy. All feedback is welcome. Happy Halloween everyone\n\n/Eric",
-      "sats": 277,
+      "id": "1595055",
+      "title": "Hello, children of the night!",
+      "url": null,
+      "text": "Well, well, well… here I am, drinking my matcha with hazelnut milk and, of course, some collagen, just enjoying this little moment.\n\nLife is whimsical and I'm grateful. \n\nI hope you’re doing swell over there too: having your favourite beverage, enjoying the small moments, rejoicing in the mundane… and then buckling up for what I’ve been watching and reading lately. As usual, in no particular order.\n\nI read Supergirl: Woman of Tomorrow, and I was smitten. The colours, the drawings, the story, oh my, oh my, I really loved it. I only picked it up because I heard there was a movie inspired by it, but from the posters I’ve seen, it seems like a disservice, at least to that gorgeous colour palette. I don’t even want to imagine how they adapted the story.\n\nBut if you can, read it. It’s such a sweet, short story, and it absolutely made me teary at the end. I fell in love not only with Supergirl but with the storyteller too. Totally recommend it.\n\nI also read Supergirl: Universe End and Supergirl: Who Is Superwoman? I didn’t enjoy them quite as much as the first one, but they were a nice way to keep getting to know her, I guess. Woman of Tomorrow left me with very high expectations for Supergirl’s stories, so I’m still looking for a new comic to read from her. If you know one, let me know!\n\nI also reread some of Lovecraft’s stories. If you’d like to check out the blog entry I wrote about him and the illustrations I created, [come this way.](https://samhainsam.art/2024/07/20/i-love-lovecraft-%F0%9F%90%99/)\n\nSince ’tis the season for something spooky, I kept leaning into it, of course. I also read Rewitched by Lucy Jane Wood and So Thirsty by Rachel Harrison.\n\nThey’re both on the same theme: thirty-something women, pretty much depressed and upset about how their lives have turned out, resentful about it but not really doing anything about it. Then a little magic comes their way, they discover there’s something beyond all the pessimism and self-deprecating jokes, and that's it, there’s the book.\n\nRewitched is about a witch literally rediscovering her magic, while So Thirsty is about a woman rediscovering herself in another way. Still, both are books about becoming conscious of and accountable for your actions. It’s a self-discovery journey with some spookiness and quirkiness in massive amounts.\n\nThe smarty-pants (and very pessimistic) jokes sometimes made it difficult to keep reading, especially when they broke the magic or distracted me from what was actually funny, interesting, and entertaining. There were times where the characters were actually being vulnerable and relatable, and they could have left it like that, but no they didn't and sometimes it was a wee too much. Overall, they were okay, I guess.\n\nAs for movies, I watched Thanksgiving, and I loved it! Oh, I love a good horror holiday movie with some good splatter.\n\nI wanted to watch more movies like that, and I stumbled upon It's A Wonderful Knife. The title is kind of self-explanatory: it’s like It’s a Wonderful Life, but with knives and murders.\n\nI love that in both films you get to see actors who were once the kids—the young ones—and now they’re the adults. Also delightful. I enjoyed them both.\n\nAnd now I’m watching this new Carrie adaptation. So far, so good… well, not for Carrie, though.\n\nI read the book many moons ago, and the last time I watched an adaptation—the one from the ’70s, I think—was also a very long time ago. I only remember the “crucial” bits, so it’ll feel almost like watching it for the first time, which is exciting.\n\nAnyway: what have you been watching or reading? I’d love to know if there’s anything you’d recommend to me.\n\nSee you later, alligator 🐊\n\nGodspeed ✨",
+      "sats": 2025,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-13T23:37:17.380Z",
+      "ncomments": 7,
+      "createdAt": "2026-10-14T10:50:54.508Z",
       "user": {
-       "name": "DrSteve2005"
+       "name": "samhainsam"
+      },
+      "subName": "art"
+     },
+     {
+      "id": "1595276",
+      "title": "What premium do the Dodgers deserve?",
+      "url": null,
+      "text": "The Dodgers are back to back champs and have a roster stacked with future hall of famers. Clearly they aren't your average playoff team. But their backs are certainly up against the wall down 0-2 in their NLCS to the Milwaukee Brewers (who had the best record in baseball this year).\n\nMLB teams that lose the first two games on the road in a best of 7 playoff series have come back to win **19%** of the time.\n\nLet's presume if the Dodgers come back and win they will be heavy favourites in the World Series against whichever American League team makes it. The NL overall (Brewers + Dodgers) has imputed odds of around roughly **66%** to win the World Series over the American League.\n\nSo if the Dodgers were a normal NL playoff team in this situation they would have a 19% chance to win the NLCS and then a 66% chance to win the World Series.\n\nLet's do a little math and see how a non Dodgers NL playoff team's World Series winning odds would compute.\n\nNLCS win probability 0.19\nWS win probability given NLCS win 0.66\n\n0.19 x 0.66= 0.1254\n\nor **12.54%**\n\nA non Dodgers NL team would currently have approximately a 12.5% chance of winning the world series.\n\nHere are the current probabilities for the Dodgers on Prediction markets and sports books:\n\nPolymarket: 22%\nKalshi: 22.5%\nPredyx: 16% (low liquidity and whale selling by me suppressing price)\n\nFanDuel: +350 (22.2% implied)\nDraftkings: +350 (22.2% implied)\n\nSo besides predyx where the price is suppressed due to my selling into low liquidity, Dodgers pretty consistently have roughly a 22% probability on prediction markets and sportsbooks.\n\nTypical NL playoff team: 12.5% probability\nDodgers: 22% probability\n\nApprox **75% Dodgers premium**.\n\nFair or not???",
+      "sats": 800,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-14T16:59:03.767Z",
+      "user": {
+       "name": "grayruby"
+      },
+      "subName": "math"
+     },
+     {
+      "id": "1595023",
+      "title": "Clara Shikhelman, Elias Rohrer - Bitcoin Optech Newsletter #426 Recap Podcast",
+      "url": "https://bitcoinops.org/en/podcast/2026/10/13/",
+      "text": "Clara Shikhelman and Elias Rohrer joined Optech to discuss Newsletter #426:\n\n- Dynamic one-byte message type IDs for BIP324\n- Discussion of conventions for tagged hash tags in BIPs\n- Proposal for onchain, private bitcoin transfers with no consensus changes\n- And more\n\nYou can listen on our website:\nhttps://bitcoinops.org/en/podcast/2026/10/13/\n\nFountain:\nhttps://fountain.fm/episode/0Uw8C5KJbsAg4EvffBP6\n\nSpotify:\nhttps://open.spotify.com/episode/0TEq742yJpt46OPuWoCTJB\n\nApple Podcasts:\nhttps://podcasts.apple.com/us/podcast/bitcoin-optech-newsletter-426-recap/id1674626983?i=1000796265109",
+      "sats": 2569,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-14T07:31:43.570Z",
+      "user": {
+       "name": "schmidty"
       },
       "subName": "bitcoin"
      },
      {
-      "id": "1595046",
-      "title": "Restoring Free Enterprise",
-      "url": "https://www.cato.org/restoring-free-enterprise",
-      "text": "> The Cato Institute’s Restoring Free Enterprise project examines the federal government’s unprecedented involvement in the operations of the firms it regulates and charts a path toward getting Washington out of the boardroom, unwinding state ownership, and strengthening the US economy.\n>\n>\n> ![](https://m.stacker.news/161471)\n>\n>\n>\n> [**🔗 cato.org**](https://www.cato.org/restoring-free-enterprise)",
-      "sats": 235,
+      "id": "1595092",
+      "title": "RIP Perry Mehrling, the Grand Architect of the Money View (Izabella Kaminska)",
+      "url": "https://www.thepeg.co/p/rip-perry-mehrling-the-grand-architect",
+      "text": "**Somehow Perry Mehrling just died on Monday...** after (careful out there @siggy47) a *fall,* of all things!\n\nPerry Mehrling is one of those doldrum economists who you won't see or whose name won't be plastered all over the economics discipline... but from whom *everyone who's anyone* has learned a ton.\n\nThis is what I wrote/summarized in the grand guess-favorite-economist game we somehow stopped playing earlier this year (https://stacker.news/items/1419510):\n\n> **Mehrling**: There are few other voices I'd go to for the plumbing of the financial system and how money works, not *broadly* or metaphysically or comprehensively like White, but *in the here and now*. Fiat behind the scenes. Like, where did Farrington learn some of the things in this [great presentation](https://stacker.news/items/1419079?commentId=1419242)? He probs read Mehrling. The book *The New Lombard Street* is fantastic, and *Money and Empire* from 2022 never got as much attention as it deserved... great story that mirrored the dollar system\n\nHere's Nik Bhatia's tweet yesterday (there was also quite a bit of it in \\_Bitcoin Age\\_ https://stacker.news/items/910275, https://stacker.news/items/836070 https://stacker.news/items/946402)\n\nhttps://x.com/timevalueofbtc/status/2110162072625672392\n\nCameron Harwick: \n\nhttps://x.com/C_Harwick/status/2110177130650964374 \n\nI've never published anything on Mehrling's two great books ([*Money and Empire: Charles P. Kindleberger and the Dollar System*](https://link.amazon/B0iHMULCT) and [*The New Lombard Street: How the Fed Became the Dealer of Last Resort*](https://link.amazon/B0dGJhweB) -- and an obscure one [on Fisher Black](https://link.amazon/B0cQ7t35m)), not because they're not worthy but because I could never make them work... too big, too overarching.  (I *do*, however, have a shitton of notes from his books that I've never turned into anything.)\n\nI can't recall the first time I heard of/learned of his work, but I started taking him seriously around 2021-22 when reading a lot of Zoltan Poszar's Credit Suisse notes/dispatch... *insanely* dense and complicated financial/money plumbing commentary, perfectly distilled and well analyzed. In my crowd of finance bros, these (proprietary) notes that Credit Suisse sent to clients were *hard currency*; we circulated them around with pride, *bragging* to one another that we found an issue, know a guy who could get us the \"latest Zoltan\"!\n\nHere's Izabella Kaminska reflecting on the impact of Mehrling on her thinking and understanding of the monetary world (\"a formidable monetary thinker\")\n\n![](https://m.stacker.news/161498)\n\n## \"In fact, he was the first person I properly geeked out with about the rise of stablecoins and the fact they were akin to the second coming of eurodollars.\"\n\n...and she credits/quotes from a new paper by Inaki Aldasoro of the BIS which [just published an academic paper](https://www.bis.org/publications/paper-175-money-and-architecture-trust.pdf) that draws extensively on Mehrling's work. (Reading the abstract, there's some Bitcoin angle to this so I will promise to delve into this paper... *at some point* -- the winter is long and dark and is almost upon us!)\n\n> \\[Banks] are not merely financial intermediaries that channel funds from savers to borrowers. They are issuers of liabilities that circulate as means of payment, and this distinguishes them from every other type of financial institution.\n\n***\n\nReally tragic news.\n\nhttps://x.com/int\\\\\\_mon\\\\\\_econ/status/2110094844475449514 \n\nhttps://x.com/int/_mon/_econ/status/2110094844475449514",
+      "sats": 1597,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T10:27:05.040Z",
+      "ncomments": 1,
+      "createdAt": "2026-10-14T12:28:12.717Z",
+      "user": {
+       "name": "denlillaapan"
+      },
+      "subName": "BooksAndArticles"
+     },
+     {
+      "id": "1595169",
+      "title": "Using Inflation as the Release Valve: The Icelandic Case (BTCHEL, JB)",
+      "url": "https://btchel.com/iceland-and-inflation-as-the-release-valve/",
+      "text": "Out here doing *the lord's work* listening through an hour-long macro podcast IN FUCKING DANISH!\n\nhttps://x.com/joakimbook/status/2110363943256346989\n\nIf you don't know the background here (https://stacker.news/items/1593286), it's widely acknowledged and understood that *Danish* is the hopeless one out in the Scandi languages. Icelandic is a *technically difficult* language, but Danish is an *incomprehensible* one to hear.\n\nSo imagine the investment when Den spent a full hour, assisted by [Spotify's nice little transcription helper](https://open.spotify.com/episode/68HiRLLNXXCW7CkNE1gQbc?si=1b175cbc631c4b04), listening to Lars Christensen (https://stacker.news/items/1585380) discussing the ins and outs of the Icelandic economy.\n\n> For all of us [Nordic aficionados](https://x.com/NorthOfTheWalls/status/2109313631728849244), we should realize that the Icelandic economy operates fundamentally differently from the more mature, developed (and diversified!) Nordic economies. *We are not the same*… and actually [not in a good way.](https://mailchi.mp/btchel/the-rich-europooreans-eu-euro-stablecoin)\n\n> This tiny island nation has several elements of all the Nordic countries, but none of the mature, balancing, and stabilizing economic safeguards that make those economies work reasonably well. Iceland is also the ([annoyingly rich](https://mailchi.mp/btchel/the-rich-europooreans-eu-euro-stablecoin)) little brother who hasn’t figured it out yet. “It’s a globally exposed economy” — tourism, fish, aluminum, data centers — all of which become a modern version of a raw-commodity exporting third-world nation: a complete price taker, walloped around by an ocean of capital inflows and outflows into hot sectors that might not be thriving next year:\n\n## “It’s an economy where many factors can easily become destabilizing.”\n\nAlso, there really shouldn't be an Icelandic króna... it's ridiculous to have this hot/cold inflow/outflow of funds into a currency based on an economy some one-fifth smaller than Vermont. (Also: it should so obviously become a 51st state, https://stacker.news/items/1593309?commentId=1593383, https://stacker.news/items/1558903)\n\n![](https://m.stacker.news/161517)\n\n## > “I’m not too worried about the Icelandic economy. It’s doing very well, apart from inflation.” ([Vísir](https://www.visir.is/g/20262935198d/danir-laerdu-sina-lexiu-en-is-lendingar-rifist-enn))\n\n…which is sort of the point of his monologue.\n\n> “The Icelandic economy is too small for its own good,” and inflation becomes the central bank’s only way out in facing the aggressive, centralized labor agreements that push for high wage increases unsupported by economic fundamentals. And *because* there’s been great price inflation in past years, the next round of negotiations include even stronger demands for wages to compensate for the loss of purchasing power. The other Nordic countries fixed this runaway wage-price spiral in the 1970s and 1980s, usually through a combination of local wage determination, pegging the currency, or forcing the unions to [internalize the unemployment externality](https://thedailyeconomy.org/article/assar-lindbeck-swedens-greatest-economist-died-90-years-old/) of their too-aggressive actions. But Iceland has had none of that.\n\nRead the full bit at BTCHEL, and sign up for the biweekly(semi-weekly? I can never remember!) [Nordic Node](https://stacker.news/items/1585380) newsletter via: [https://btchel.com/#sign-up](https://btchel.com/#sign-up)\n\n![](https://m.stacker.news/161518)",
+      "sats": 1262,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-14T14:42:31.841Z",
+      "user": {
+       "name": "denlillaapan"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
+      "id": "1595117",
+      "title": "Trezor Wallets Also Compromised with Implants",
+      "url": "https://www.zetter-zeroday.com/trezor-wallets-also-compromised-with-implants/",
+      "text": "",
+      "sats": 1173,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-14T13:11:19.870Z",
+      "user": {
+       "name": "mudbloodvonfrei"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1595174",
+      "title": "2026-27 UCL Pool : Week 2 Match Day 2",
+      "url": null,
+      "text": "For those of you who could not watch Barcelona last night, you need to find at least the highlights. Lamine displayed all sort of assists. He did not even scored but it did not matter. Barcelona scored 4 goals to overcome the initial one from Galatasaray. Turkish team had their opportunities but the Catalans are way ahead of the rest. \n\nWe had two surprises last night. Inter lost 3-4 in a vibrant match. the interesting fact is that Tresoldi, Italian born though German international, scored 3 goals to beat the Neroazzurri squad. \n\nViking scored twice against Bayern before halftime, though the German side managed to comeback and get ahead 2-3. However, in the extra time, the Nordics got an equalizer. Oliseh was sent off in the second half. \n\nArsenal beat easily Lille (3-0) with three goals in just 7 minutes in the second half. Saka assisted one and scored another one. Atletico beat 2-0 Man United, in the season where they are returning to the Champions League. \n\nSporting Lisbon won their game against Lens and it's the only one following the steps of Barcelona and Arsenal, pending tonight's matches. \n\nOther results were Villareal 3-1 Napoli, Sabah 2-0 Slavia Praha and Leipzig 1-0 PSV. \n\nThen we move to tonight's matches where 2 of them are above the rest. Man City will receive PSG in the middle of the consequences of their investigation after years or financial irregularities. Real Madrid, in the middle of a \"crisis\" due to bad results and poor performances, will visit Roma. \n\nNext to consider, will be Real Betis vs Porto. Portugueses are at the top of their league. Meanwhile, Real Betis has had their best start of the season since 1935. It has rained a bit since then. Hope we can watch a great match. \n\nOther matchs tonight: Feyenoord- Como (it will be interesting to see if the Italians confirm their great initial result), LASK vs Liverpool, Aston Villa vs Fenerbahce, Bodo/Glimt vs Dortmund, Shakhtar vs AEK and Slovan Bratislava vs Stuttgart. \n\nEnjoy the Beautiful Game !",
+      "sats": 881,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-14T14:48:25.994Z",
+      "user": {
+       "name": "Carresan"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1595166",
+      "title": "Stackers, have you ever thought you were gonna die?",
+      "url": null,
+      "text": "Just wondering if you all have had any close calls. \n\nMy closest call was out at a large lake in the wilderness with my friends. I was a skilled swimmer at the time so I told them, I'm going to swim across to the other side. Seemed easy, what I didn't factor was how quickly very cold water can sap you of energy.\r\nAbout halfway across I was totally gassed. I looked back. It was just as far to go back as to go forward. I started to panic. I realized quickly though that panicking is how people drown. I calmed myself and switched to an easier stroke (breast stroke), and made it across - safe but thoroughly rattled. I still have a picture a friend took of my waving from the other side far in the distance. I found a large piece of wood to use as a flotation aid to get myself back.\r\nStupidest thing I've ever done, but people do stupid things when they're young. People drown all the time doing what I did. I still get anxiety when I think about it.\n\nSo what about you Stackers? Any narrow escapes from the Grim Reaper?",
+      "sats": 945,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-14T14:35:10.787Z",
+      "user": {
+       "name": "Artilektt"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1595179",
+      "title": "Agentic AI Apps Attacking Antidiluvian (B)anking Apps (FT, Anne Boden)",
+      "url": "https://www.ft.com/content/8c6a7595-9403-44f3-81ac-a2e5ceb37459",
+      "text": "**AI in your mobile banking app... what could possibly go wrong?** (oh and how did you like my **a**-**aaaaa**literation **a**ttempt??)\n\n![](https://m.stacker.news/161519)\n\n> When I came up with the idea for a new bank 12 years ago, the response from the industry followed a predictable pattern. Those that didn’t ignore me laughed at the audacity of the idea of a mobile-first bank. The laughter turned to scepticism as customer numbers began to grow and then, finally, to worry as tens of thousands began to flock to so-called neobanks.\n\nINSPIRATIONAL. \"Over time, Starling, Monzo and Revolut raised the game for all customers because traditional banks raised their game, incorporating all the features the neobanks had pioneered.\" Very true.\n\n> What we need to look at now is the next phase in the development of banking. It won’t involve putting a better bank on your phone and won’t even involve an app. A very able AI agent is almost certain to step into the gap between banks and their customers, making all this irrelevant.\n\n## \"Today, when banks talk about adopting AI, they are mostly talking about efficiency and trimming costs.\"\n\n> What banks should be thinking about is agents because the new world is being built around agentic AI. Agents can research products, compare prices, organise our diaries, send emails, book travel and perform multi-stage tasks on our behalf. Anyone who has bought into this new lifestyle will not be going back to the old way of doing things.\n\nAgentic AI will just *do* and *optimize* things for us, perfect our financial/monetary/banking behavior.\n\n> Banks, indeed the entire payments industry, have spent years pursuing every barrier possible to stop the bots. All banks have added in layer after layer of protection to ensure any payment activity is prompted by the user and not a fraudster or an automated attacker.\n\nAh, yes, the trade-off between convenience/efficiency and security CONTINUES. *Haaashtaaaag lol*:\n\n> This sector needs an AI initiative capable of bringing banks, regulators and companies such as OpenAI and Anthropic to the same table. Making banking better is no longer the story. The battle for what form banking will take in the future has already begun.\n\n***\n\n[https://archive.md/AjhB1](https://archive.md/AjhB1)\n\n[https://archive.md/https://www.ft.com/content/8c6a7595-9403-44f3-81ac-a2e5ceb37459](https://archive.md/https://www.ft.com/content/8c6a7595-9403-44f3-81ac-a2e5ceb37459)",
+      "sats": 802,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-14T14:54:35.785Z",
+      "user": {
+       "name": "denlillaapan"
+      },
+      "subName": "AI"
+     },
+     {
+      "id": "1595018",
+      "title": "How comfortable with silence are you?",
+      "url": null,
+      "text": "I have always been a sucker for companionable silence. You know, when you sit quietly beside someone and feel seen and acknowledged in spite of the absence of words being exchanged between both of you. When your partner’s mere presence is all that is needed to uplift your spirits. I feel it more keenly these days as I grow older. In my younger days, I would felt it necessary to make small talk to fill up the conversational void. However, these days, I recognise that silence itself is also a form of communication and lean onto it for comfort.\n\nHow about you?",
+      "sats": 1329,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 10,
+      "createdAt": "2026-10-14T07:16:38.102Z",
+      "user": {
+       "name": "cryotosensei"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1595184",
+      "title": "What are you working on this week?",
+      "url": null,
+      "text": "Calling all stackers!\n\nLeave a comment below to let the SN community know what you're working on this week. It doesn't matter how big or small your project is, or how much progress you've made.\n\nJust share what you're up to, and let the community know if you want any feedback or help.",
+      "sats": 307,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-10-14T15:00:03.492Z",
+      "user": {
+       "name": "sn"
+      },
+      "subName": "meta"
+     },
+     {
+      "id": "1595068",
+      "title": "9️⃣♦️ [ 9 oF DiamonD ] Week 5",
+      "url": null,
+      "text": "### Week 4 review \n\nBrock Purdy 💤\nTrevor Lawrence ➡️\nLamar Jackson 📴🤕  can't play hurt \nPatrick Mahomes  🛬\nBryce Young 🛬\nJosh Allen ⬆️\nKirk Cousins 📴 Roger... Roger... Kirk out\nDak Prescott 📴 embarrassed \nMichael Penix Jr.📴 At least a week \n\nBurrow 🆕 Joe Burrow offsets modest yardage with 4 TDs\nDrake Maye 🆕 Drake Maye erupts for 5 TDs in rout\nJordan Love 🆕 Jordan Love elite numbers in easy win\nCJ Stroud 🆕 C.J. Stroud produces 2 TDs in Tennessee\n\n### Week 5 reasoning \n\n🔫 Brock Purdy through 5 games: 1,196 passing yards, 13 TDs, 2 INTs and a 119.3 rating. He’s added 128 rushing yards and a TD. \n\n🎢 Josh Allen through 5 games: 1,249 passing yards, 7 TDs, 4 INTs and a 99.6 rating. He’s added 239 rushing yards and 8 scores.\n\n👸🏼 Trevor Lawrence through 5 games: 1,174 passing yards, 10 TDs, 3 INTs and a 106.8 rating. He’s added 59 rushing yards. \n\n💪 Patrick Mahomes through 4 games: 1,037 passing yards, 9 TDs, 2 INTs and a 106.2 rating. He’s added 41 rushing yards and a TD. \n\n😱 Bryce Young through 4 games: 1,268 passing yards, 9 TDs, 2 INTs and a 100.0 rating. He’s added 19 rushing yards and a TD.\n\n🐈 Joe Burrow through 5 games: 1,361 passing yards, 11 TDs, 3 INTs, and a 104.4 passer rating. He’s added 48 rushing yards and a TD. \n\n🍿 Drake Maye through 5 games: 1,228 passing yards, 8 TDs, 7 INTs, and an 88.9 passer rating. He’s added 161 rushing yards and a TD. \n\n🧀 Jordan Love through 5 games: 1,408 passing yards, 10 TDs, 3 INTs, and a 95.5 passer rating. He’s added 2 rushing yards. \n\n👌 C.J. Stroud through 5 games: 1,402 passing yards, 6 TDs, 0 INTs, and a 98.1 passer rating. He’s added 71 rushing yards and a TD. \n\n### Week 5 update \n\n\n![](https://m.stacker.news/161491)\n\n\n🥇Brock Purdy, 49ers\n🥈Josh Allen, Bills\n🥉Trevor Lawrence, Jaguars \n🎖️Patrick Mahomes, Chiefs\n🎖️Bryce Young, Panthers\n🎖️Joe Burrow, Bengals\n👍Drake Maye, Patriots\n👍Jordan Love, Packers\n🤏CJ Stroud, Texans\n\n![](https://m.stacker.news/161492)",
+      "sats": 537,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-14T11:37:10.815Z",
+      "user": {
+       "name": "gsc360"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1595091",
+      "title": "FTC & States Claim 'Pharma Bro' Martin Shkreli Violated Lifetime Industry Ban",
+      "url": "https://www.cnbc.com/2026/10/13/martin-shkreli-ftc-pharma-contempt.html",
+      "text": "Guy really seemed to look at his restrictions and go..... meh imma do it anyway! \n\n\n> The FTC and the states allege that Shkreli, since being released from [prison](https://www.cnbc.com/2022/05/18/martin-shkreli-released-from-federal-prison-into-halfway-house-.html) in May 2022 for unrelated financial crimes, violated that court order by publicly trading in at least 60 pharmaceutical industry stocks and “publicly broadcasting his opinions about the business and management of many Pharmaceutical Companies through livestreaming and posting on numerous social media platforms, including YouTube, X, and Reddit,” a court filing says.",
+      "sats": 529,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-14T12:25:10.029Z",
+      "user": {
+       "name": "Cje95"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
+      "id": "1595042",
+      "title": "Ranked: 125 European Cities by Quality of Life and Cost",
+      "url": null,
+      "text": "![](https://m.stacker.news/161469)\n\n[**🔗 visualcapitalist.com**](https://www.visualcapitalist.com/cp/125-european-cities-quality-of-life-cost/)",
+      "sats": 569,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-10-14T10:02:55.174Z",
       "user": {
        "name": "0xbitcoiner"
       },
       "subName": "charts_and_maps"
      },
      {
-      "id": "1594728",
-      "title": "History and Map of every BIP",
-      "url": "https://bipexplorer.com",
-      "text": "# > Don’t trust. *Read* *the* *BIPs.*\n\n\\> Nobody does. They’re written by developers, for developers. So we explain all 213 of Bitcoin’s Improvement Proposals in plain English, and map how each one builds on the last.",
-      "sats": 3837,
+      "id": "1568027",
+      "title": "N64’s NBA Hangtime: Blok’s Quest to beat all 29 NBA teams. A Thread!",
+      "url": null,
+      "text": "I been craving to play NBA Hangtime for a long time. After telling my friend he suggested I try running an emulator on my laptop. Once that failed he convinced me to get an M64! Which I am glad did! \n\n![](https://m.stacker.news/156117)\n\n### After getting NBA Hangtime \n\n\n![](https://m.stacker.news/156121)\n\n`The true sequel to NBA Jam. `\n\nAnd a few other of my favorite classics I realized I needed a memory card to create a player and save the data. Currently the M64 doesn’t let you save to the console yet. That feature is coming in a future software update.  The M64 controller doesn’t come with a memory card slot so I had to purchase a new controller with a new memory card.\n\n![](https://m.stacker.news/156120)\n\nAnd so the quest begins! \n\nI created my character Boog and put on my New York Knicks jersey and started my quest to beat all NBA teams\n\n## Game #1 The Vancouver Grizzlies \n\nI didn’t take any photos or anything about this match as the idea to write about this came after the fact.  I picked The Minnesota Timberwolves and selected Kevin Garnett for the first half and Tom Gugliotta in the second half! I forgot who the Grizzlies had in the first half but in the second they had Mayberry and Aboul-Rahim. I beat them fairly easy and put up 48 points.\n\nThe trivia question I got wrong. I was asked what country was Bill W.  was from I selected Romania! 😆\n\n## Record: 1-0, Trivia: 0 points \n\n![](https://m.stacker.news/156126)\n\n![](https://m.stacker.news/156127)\n\n![](https://m.stacker.news/156128)\n\n\n## Game # 2 The Philadelphia 76ers\n\nI selected the T’Wolves again and  started off with Garnett. \n\n\n![](https://m.stacker.news/156125)\n\nFor some strange reason Kevin won’t use turbo!!! I switched to Tom again in the 2nd half who plays a little better defense but limited offense but we got the win!\n\n![](https://m.stacker.news/156130)\n\n![](https://m.stacker.news/156131)\n\nThe trivia question I got correct! They asked who was the 2nd overall pick in the 1995 NBA draft I guessed Antonio McDyess and I got it right!! Now I got two trivia points.\n\n## Record: 2-0, Trivia: 2 points\n\nOnce I reach 100 trivia points I get to add extra attribute points to my character. \n\nThat’s it for tonight! I will update this thread as I play all 29 teams and make my player better! \n\n\n## Stackers what do you think? \n\nDo you think I can go undefeated? If you got an NBA player I should partner with let me know stackers!!",
+      "sats": 2002,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-13T16:27:07.113Z",
+      "ncomments": 13,
+      "createdAt": "2026-09-11T01:30:39.399Z",
       "user": {
-       "name": "Coinsreporter"
+       "name": "BlokchainB"
       },
-      "subName": "bitcoin"
+      "subName": "gaming"
      },
      {
-      "id": "1594962",
-      "title": "Strive to raise $500M for SATS preferred offering",
-      "url": "https://www.coindesk.com/markets/2026/10/13/strive-to-ipo-second-preferred-share-class-as-it-looks-to-further-build-bitcoin-treasury",
-      "text": "It looks like Strive will offer a new preferred, \"SATS\" which will pay a 15% fixed dividend. It's junior to SATA shares, which pay 13% currently.  Seems curious that they need another product when SATA has had so much issuance lately.",
-      "sats": 827,
+      "id": "1595132",
+      "title": "Testing Oneself For AI Slop",
+      "url": "https://hackaday.com/2026/10/14/testing-oneself-for-ai-slop/",
+      "text": "> The feed of a Hackaday writer brings many surprises, some rubbish, and the occasional diamond which of course we bring to you. Sometimes a page catches the eye that’s not a Hackaday piece *per s&#x65;**,*** but makes for interesting reading. Today there was an example which provides a catalyst for a story if not being one itself.\n>\n> It’s an AI skill [intended to make a slop-writing operation look less sloppy](https://github.com/FeedHive/ai-slop-detector/), and since it contains [a list of slop behaviours](https://github.com/FeedHive/ai-slop-detector/blob/main/skills/ai-slop-detector/SKILL.md), of course it’s irresistible to turn it on yourself. To delve into the archives, if you will. So here goes, how slop-like is your scribe?\n>\n> It kicks off with the old favourite, “**Delve**“. Oh dear, that one’s in the List Hackaday corpus quite a bit. Earliest appearance: [2016](https://hackaday.com/2016/04/04/my-most-obsolete-skill-delta-gun-convergence/). Then landscape terms, in which it’s easy to recognise “**Sphere**” again. Oops. [2016 again](https://hackaday.com/2016/09/21/hackspace-websites-and-the-great-software-trap/). How about “**Testament**“? Well, that one’s [a 2017 word](https://hackaday.com/2017/07/07/sort-out-chemical-storage-for-your-shop/). “**Pivotal**“? Four years of the Raspberry Pi, [back in 2016](https://hackaday.com/2016/03/13/birthday-celebrations-the-pi-way/). How about “**Showcase**“? Yup, it’s there, [in 2019](https://hackaday.com/2019/02/26/hands-on-hacker-hotel-2019-badge-packs-esp32-e-ink-and-a-shared-heritage/). Meanwhile “**Foster**“, [goes back to 2017](https://hackaday.com/2017/12/05/the-british-drone-law-reaches-parliament/).\n>\n> Next up are “**Leverage**” and “**Utilise**“. Safe ground here. Editors have what are referred to a “Pet Peeves”, language tics that annoy them on sight, and those two regrettable pieces of business-speak never evade this red pencil. The word you are looking for is “Use”.\n>\n> [**...read more at hackaday.com**](https://hackaday.com/2026/10/14/testing-oneself-for-ai-slop/)",
+      "sats": 296,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-14T01:04:00.949Z",
-      "user": {
-       "name": "endothermicdev"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1595057",
-      "title": "Same Google, but cheaper: a risk worth taking in US credit",
-      "url": "https://bondvigilantes.com/blog/2026/10/same-google-but-cheaper-a-risk-worth-taking-in-us-credit-rc/",
-      "text": "> Take two bonds from one issuer, with identical seniority, rating, and credit risk. Yet the credit spread, the portion of the yield above the risk-free rate that compensates you for taking that risk, is meaningfully wider versus government bonds than it is versus interest rate swaps – wide enough for it to be worth paying attention to.\n>\n> This is particularly relevant for strategies that aim to isolate credit risk and hedge away interest rate exposure. In those strategies, the instrument used for interest rate hedging has a direct bearing on how much value is available in credit markets.\n>\n> That is the situation in US credit today. Alphabet, the AA rated parent of Google, currently trades at around 90 basis points over US Treasuries at the 20-year point. Treasuries are the market standard risk-free rate in US fixed income, and on that measure the credit spread of a business of that quality looks expensive: barely any reward for the risk. Measure the same bond against interest rate swaps and the spread jumps to around 150 basis points. The bond’s yield has not changed, but over swaps this AA name pays you more like a BBB.\n>\n>\n> ![](https://m.stacker.news/161478)\n>\n>\n>\n>\n> ![](https://m.stacker.news/161479)\n>\n>\n>\n> [**...read more at bondvigilantes.com**](https://bondvigilantes.com/blog/2026/10/same-google-but-cheaper-a-risk-worth-taking-in-us-credit-rc/)",
-      "sats": 277,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-14T10:54:56.278Z",
+      "ncomments": 0,
+      "createdAt": "2026-10-14T13:42:04.647Z",
       "user": {
        "name": "0xbitcoiner"
       },
-      "subName": "econ"
+      "subName": "DIY"
      },
      {
-      "id": "1594737",
-      "title": "LexeConnect: connect a self-custodial Lightning wallet to any app in one tap",
-      "url": "https://youtu.be/3z5xj0hJpgM",
-      "text": "LexeConnect lets users connect their Lexe wallet to your app or service in one tap.\n\nYour app shows a \"Connect Lexe\" button or a QR code, requesting exactly the scopes it needs. The user taps Approve in the Lexe app, and your app receives a Lexe client credential scoped to that access. Your app can then receive Lightning payments into the user's wallet, pay from it, or read its history, without holding funds or running a wallet of its own.\n\nUsers stay self-custodial. The approval screen shows who is asking and what they are granting, the credential is limited to the approved scopes, and it can be revoked from the Lexe app at any time. Your app never sees the user's root seed.\n\nIn this demo, a bill-splitting app connects a Lexe wallet with one tap, then a web checkout page connects via QR code. Both end up as scoped credentials in the Lexe app, where the user can revoke them any time.\n\nDocs: https://docs.lexe.tech/lexeconnect/\nSpec: https://github.com/lexe-app/lexe-connect\nLive demo: https://lexeconnect.lexe.app",
-      "sats": 5119,
+      "id": "1595032",
+      "title": "A code reviewer for coding agents",
+      "url": "https://unbeholden.dev/blog/a-reviewer-for-my-agents",
+      "text": "",
+      "sats": 417,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 10,
-      "createdAt": "2026-10-13T17:14:01.149Z",
+      "ncomments": 1,
+      "createdAt": "2026-10-14T09:16:28.667Z",
       "user": {
-       "name": "MaxFangX"
+       "name": "unbeholden"
       },
-      "subName": "bitcoin"
+      "subName": "DIY"
+     },
+     {
+      "id": "1595164",
+      "title": "Electric Big Rigs Struggle to Compete, Even With Diesel at $8 a Gallon",
+      "url": "https://www.wsj.com/logistics-report/electric-big-rigs-struggle-to-compete-even-with-diesel-at-8-a-gallon-2d16fd68?st=WvegbW&reflink=desktopwebshare_permalink",
+      "text": "Common sense suggests that with diesel prices so high, this is EVs' time to shine (despite high electricity prices). I figured that, if anything, the obstacle facing these electric big rigs would be the lack of infrastructure and/or the fact that they aren't around yet. After all, when you see an 18-wheeler in the world, how many electric ones do you see?!? Tesla only recently got its Semi production line up and running.\n\nWell, it turns out that these things ***STILL*** are not very economical, even in California, where diesel prices have hit an absurd $8.44 a gallon! As a result of truckers asking for help, the Ports of Los Angeles and Long Beach are looking at subsidizing the high costs.\n\n> The [ports](https://www.wsj.com/topics/industry/ports) are considering paying truckers $60 each time they pick up or drop off containers with a zero-emission vehicle, up to a maximum $36,000 per truck per year, over the next three years. The boards of the two ports are expected to vote on the proposal in the coming months.\n\nIt turns out that these trucks can be ***THREE*** times more expensive than diesel trucks and that even Cali, with its generous grants to help offset this cost, still isn't enough.\n\nNow I know it might look and sound like I am just hating on EVs, but the fact of the matter is I actually tend to like them. However, just because I like something doesn't mean it is for everyone, and more importantly, if the market is not there yet, then clearly we have an issue. I am sure that infrastructure is a huge drag on these types of vehicles right now and that the rise in electricity prices surely is not helping, but given that the truck itself is 3x the price, it is an economic issue plain and simple. \n\nI do think that Tesla, by finishing their Semi production line and thus being able to ramp up production, could be a huge driver in lowering the cost of the vehicles. Economies of scale are critical.",
+      "sats": 370,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-14T14:29:39.866Z",
+      "user": {
+       "name": "Cje95"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
+      "id": "1595074",
+      "title": "The Simpsons TV - A Mini TV built with a Raspberry Pi Zero",
+      "url": "https://youtu.be/PS77R2y7a28",
+      "text": "The perfect gift for any ’90s kid",
+      "sats": 430,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-14T11:47:44.249Z",
+      "user": {
+       "name": "satoshiplanet"
+      },
+      "subName": "family"
+     },
+     {
+      "id": "1595156",
+      "title": "The Genesis Code, Ch. 3: Terms and Conditions",
+      "url": null,
+      "text": "*Harold*\n\nThe Paperton Public Library has forty-one computers, and forty of them are watched by a little black dome on the ceiling that the librarians swear is for \"patron safety.\" The forty-first sits in the back corner, between Large Print Westerns and a radiator that clanks like somebody's trapped in it. Nobody uses that one, because it's slow, and because it's next to the Westerns, and the Westerns smell like 1978.\n\nI'd sat three feet from that computer every Thursday for two years, reading Louis L'Amour and pretending I was warm. I never once noticed there was no camera above it.\n\nThat's the thing about seeing. You can be very good at it and still miss what's right next to you.\n\nIt took me forty minutes to get Ghostline open in the browser. Twenty of those minutes were the computer. The other twenty were me, typing my own name into things and then panicking and deleting it, because Toshi had said *don't say my name on a phone*, and I didn't know if a library computer counted as a phone. At my age everything counts as a phone.\n\nI typed in the string from the napkin. The screen went black, then gray, and then there was a blinking cursor and nothing else. No logo. No cheerful mascot. No owl thanking me for speaking up.\n\nI typed the way I was raised to write letters.\n\n*Dear Toshi,* I wrote. *It was good to see you at the Rusty Nickel. I have thought a great deal about what you said. I would like to know more. Regards, Harold Horcross.*\n\nThe reply came so fast I jumped.\n\n*dont sign your name,* it said. *ever.*\n\n*Apologies,* I wrote back. *Force of habit. Regards, H.*\n\nA long pause. Then: *ok thats fine actually.*\n\nWe went on like that for an hour. Him in little lowercase bursts, like a telegraph operator with somewhere to be. Me in paragraphs, because if I'm going to commit a federal crime, I'm going to use complete sentences.\n\nHe told me he'd worked at Proxy. He told me he'd been fired by an email. He told me there was a thing in a storage unit that he wasn't going to describe over any network, however encrypted, because the thing in the storage unit was worth more than the city of Paperton, and the people who wanted it back owned computers that made Ghostline look like two cans on a string.\n\nThen he told me what the thing needed.\n\n*it needs a pilot,* he wrote. *it can move on its own but only for short stuff. walking. standing. basic reflex. the real stuff, talking, deciding, being someone, needs a human mind on the other end.*\n\n*What sort of human mind?*\n\n*the kind with a neural interface. which i dont have. and which costs more than both of our houses.*\n\n*I don't own a house,* I wrote. *I rent a room above a dry cleaner.*\n\n*fine. more than both of us will make for the rest of our lives.*\n\nThere was a long pause. The radiator clanked. Somewhere behind me, a toddler was being told, gently and firmly, that we do not lick the globe.\n\n*one more thing,* he wrote. *theres code in it i cant read. not encrypted. some of it started as mine. an old side project. but it grew. it learns. from everything. most of it isnt written by anyone i know now. deep in the firmware, dormant. my best guess is some kind of autopilot. something that takes over eventually. i dont know what triggers it. i dont know what it wants.*\n\nI read that last line four times.\n\n*Machines don't want things,* I wrote.\n\nThe cursor blinked for a long time before his answer came.\n\n*Sure.*\n\nThat was all he wrote. But I'd been a teacher for thirty-one years, and I knew what \"sure\" meant from a student. It meant *you'll see*.\n\nHere's the part I still can't explain, and I've tried. Neither of us suggested it. I'd swear to that in court. I scrolled back through the whole conversation later, looking for the moment one of us said *let's put an old man in a robot and see what happens*, and it isn't there. There's just him saying it needs a pilot, and me saying nothing, and then a few minutes later both of us talking as if it had been decided years ago. Like we were remembering the plan instead of making it.\n\nMy mother used to say that some ideas are too big to belong to one person. She said it about the Constitution and about her meatloaf recipe. I used to think she was being dramatic.\n\n\\* \\* \\*\n\nThe letter came on Monday.\n\nI almost threw it away. It was a nice envelope, thick paper, the kind of cream color that means somebody paid extra, and nobody pays extra to write to me unless they're about to ask for something. The return address said MINDLINK LABS, with a logo like a brain made of little glowing dots, holding hands with itself.\n\n> *Dear Mr. Horcross,*\n\n>\n\n> *Congratulations! Based on your demographic and cognitive profile, you have been selected for Phase II of the Mindlink NeuroBridge™ Clinical Study.*\n\n>\n\n> *We are seeking healthy adults over 65 with a background in fine motor expression (such as art, music, or craftsmanship) to help us build a more connected tomorrow.*\n\n>\n\n> *Participants will receive a monthly stipend, all procedures at no cost, and the satisfaction of contributing to the future of human potential.*\n\n>\n\n> *Mindlink: Your Mind, Amplified.*\n\nI read it at my kitchen table, which is also my dining table, my desk, and on bad weeks my pharmacy. Then I read it again.\n\nA background in fine motor expression. Such as art.\n\nI had never applied to anything at Mindlink Labs. I had never heard of Mindlink Labs. I'd been retired for six years, and in six years nobody had needed a man who could draw a hand. Now, three days after I drew a robot on a napkin, a company with a glowing brain for a logo wanted me specifically, for my hands and my eyes and my age.\n\nThe stipend, I noticed, was eight hundred dollars a month. In today's money, that would buy a very nice used lawnmower. I don't own a lawn. I'd accepted anyway, in my head, before I'd finished the paragraph. That's what being poor does. It makes you say yes to things before you understand them.\n\nI took the letter to the library.\n\n*Toshi, I have received a letter,* I wrote.\n\nI typed the whole thing out for him, word for word, including the trademark symbol, which took me eleven minutes to find.\n\n*no way,* he wrote. Then, in capitals, which from Toshi was practically a scream: *NO WAY. harold thats a neural interface trial. thats the exact thing we need. thats insane luck.*\n\n*Is it luck?*\n\n*youre an old artist in the rust belt,* he wrote. *youre literally their target demographic. they probably mailed ten thousand of these. this is the universe handing us a key.*\n\nHe was so happy. I could hear it even in lowercase. And I thought about the little glowing brain holding hands with itself, and about how nobody had wanted me for anything in six years, and I decided that for once in my life I was going to let a good thing be a good thing.\n\nI would think about that decision a lot, later. But I don't regret it. Most of the best things I ever did, I did before I understood them.\n\n\\* \\* \\*\n\nThe Mindlink clinic was in a converted Applebee's off the interstate. You could still see the ghost of the old sign on the brick where the letters had been pried off. Inside it was all white and quiet, and it smelled like a new car and a hospital had a baby.\n\nThe consent form was forty-seven pages. I read every one of them, because I'm a retired schoolteacher and I have graded worse.\n\nMost of it was the usual. Risk of infection. Risk of headache. Risk of \"unanticipated neurological phenomena,\" which I took to mean they didn't know either. But on page thirty-eight, in type so small it looked like a hairline crack in the paper, was this:\n\n> *All data generated by the participant's neural activity during and after the Study, including but not limited to motor intent, sensory response, emotional valence, and cognitive pattern, shall be the sole property of Mindlink Labs and its partners.*\n\nIts partners. I asked the nurse who the partners were.\n\nShe smiled the way people smile at an old man who asks questions. \"Oh, just the usual,\" she said.\n\nI signed. I thought about the stipend and the storage unit and the President stopping like a paused video, and I signed my full name, Harold Horcross, in real ink, with a flourish. Toshi would have hated it.\n\nThe surgery was nothing. That's the part nobody tells you. They put you under, and a robot arm the size of a dentist's lamp does something to the back of your skull, and you wake up with a headache and a shaved patch and the vague feeling that you've forgotten a word. I lay there afterward in a recliner that had probably been a booth, drinking apple juice from a tiny carton, and I felt exactly the same.\n\nThen, for just a second, I felt the room.\n\nNot heard it. Felt it. The hum of the lights. The Wi-Fi in the walls. The heartbeat monitor two recliners over, blinking for a man in a Detroit Lions cap. It was like the moment in a dark theater just before the curtain goes up, when you can feel all the people around you breathing.\n\nThen it was gone, and I had a headache, and the apple juice was warm.\n\n\\* \\* \\*\n\nToshi picked me up behind the clinic, three days later, in a car so old it had a tape deck. He didn't say much. He drove to the edge of town, past the old stamping plant and the Dollar Depot that used to be a Kmart that used to be a drive-in, to a row of orange storage units behind a chain-link fence.\n\nUnit 114. He rolled the door up just high enough for us to duck under, and pulled it down behind us, and turned on a battery lantern.\n\nThere was a camping chair in the middle of the concrete floor. There was a man sitting in it.\n\nHe was wearing a navy suit and a flag pin. His hands were folded in his lap. His eyes were closed. He had a square jaw and kind eyes and hair the color of a good retirement, and I knew his face, because it was on a yard sign in front of the dry cleaner's, and on the side of the bus I took to the library, and on my television every twelve minutes, between the ads for Proxy Helpers.\n\n\"That's Noah Fiatt,\" I said.\n\n\"No,\" said Toshi. He set the lantern on the floor, and the light came up under the man's chin like a campfire story. \"That's what's going to be Noah Fiatt.\"\n\nThe man in the chair wasn't breathing. I watched a long time to be sure.\n\nThe back of my skull began, very softly, to hum.\n\n---\n\n*The Genesis Code: Block One* by E. G. Gore. One chapter a day until Election Day, Nov 3. Tomorrow: Chapter 4, *Two Men in One Chair*.\n\nThe whole book is free at https://eggore.com (CC BY-NC-SA 4.0). Earlier chapters are on my profile.",
+      "sats": 126,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-14T14:10:02.484Z",
+      "user": {
+       "name": "eggore"
+      },
+      "subName": "BooksAndArticles"
+     },
+     {
+      "id": "1595118",
+      "title": "US Inflation rose at 3.7% annual rate in September as gas costs skyrocket",
+      "url": "https://www.cnbc.com/amp/2026/10/14/cpi-inflation-report-september-2026.html",
+      "text": "![](https://m.stacker.news/161503)\n\nSeptember's inflation reading: \n\nCPI MoM: +0.6%\nCPI YoY: +3.7%\nCore CPI MoM: +0.3%\nCore CPI YoY: +2.6%",
+      "sats": 373,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-14T13:14:17.664Z",
+      "user": {
+       "name": "Coinsreporter"
+      },
+      "subName": "econ"
      },
      {
       "id": "1595050",
       "title": "How has the share of children born outside of marriage changed?",
       "url": "https://ourworldindata.org/how-has-the-share-of-children-born-outside-of-marriage-changed",
       "text": "![](https://m.stacker.news/161475)",
-      "sats": 199,
+      "sats": 443,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
@@ -2096,244 +2291,49 @@
       "subName": "charts_and_maps"
      },
      {
-      "id": "1594949",
-      "title": "Pope Leo diagnosed with cancer as doctors remove lobe of lung, Vatican says",
-      "url": null,
-      "text": "https://www.cnbc.com/2026/10/13/pope-leo-diagnosed-lung-cancer-vatican-says.html\n\n>Pope Leo was diagnosed with a common form of lung cancer after doctors removed a lower lobe of his right lung in surgery on Tuesday, the Vatican said in a medical bulletin.\n\n>The 71-year-old pontiff has lung adenocarcinoma, with tissue tests conducted during the operation confirming what doctors had suspected from preparatory examinations, the bulletin said.\n\n>The pope was admitted to Rome’s Gemelli hospital on Tuesday for surgery to remove a growth on his lung that doctors found in a recent health checkup.",
-      "sats": 816,
+      "id": "1594996",
+      "title": "Working Together on Bitcoin’s Post-Quantum Readiness",
+      "url": "https://www.coinbase.com/blog/working-together-on-btc-post-quantum-readiness",
+      "text": "Coinbase published a blog post today about how they view a transition to post quantum cryptography for Bitcoin. This is relevant because:\n\n> Coinbase is one of the largest crypto custodians in the world and holds ~5% of all BTC in existence. \n\nAnd I think they are rather understating how much Bitcoin they hold. \n\nAnyhow, here are the interesting points:\n\n> 1. **Preparing before certainty.** We believe it is important to begin preparing well ahead of any CRQC announcement. Bitcoin consensus changes and ecosystem migrations can take years, So it is important that we begin this work now.\n> 2. **Separating the \"container\" from the signature.** In our view, a PQ output type design that allows one or more PQ signature systems to be introduced, replaced, or supplemented without a complete redesign would serve the ecosystem well. P2MR (BIP-360) and P2TRv2 appear to offer this kind of flexibility.\n> 3. **Staged protection.** We would welcome an approach in which active wallets can use a PQ-capable or hybrid construction before the final legacy-signature policy is settled. One possible transition design is a 1-of-2 construction: the same funds have two alternative spending paths, one authorized by a classical ECDSA/Schnorr key and one authorized by a PQ key.\n> 4. **Use of state.** While stateful PQ signature schemes could be smaller and faster than stateless ones, managing state in digital signatures is notoriously error-prone and could even lead to forgery. If stateful signatures are supported, we think it is important to also have a stateless option available.\n> 5. **Robust implementations.** We hope the evaluation process will place strong weight on deterministic, cross-platform verification, constant-time implementations, clear parameterization, and resistance to signing RNG failures.\n> 6. **MPC-friendliness.** For Coinbase and many of our customers, MPC-friendliness is an important consideration in the choice of PQ schemes. When implemented effectively, MPC can provide strong protection against key theft, and it is an important layer of defense for large organizations that face constant attacks on their infrastructure.\n> 7. **A path for wallets that migrate late.** If Bitcoin eventually limits or ends ECDSA/Schnorr spending, some wallets may not have moved their funds to PQ-safe outputs by then. We believe it would be useful to consider whether and how those users could migrate their funds afterward, while recognizing that the approach and its tradeoffs remain open questions. In our view, that discussion can proceed alongside, and independently of, the technical work to add PQ signature support, so it need not delay progress on that work.\n\nThey are fairly supportive of BIP 360 as well as hash-based signatures like SHRINCS. \n\nThey also have a little section on the burn vs steal debate, but I didn't feel that it had very interesting stuff in it.",
+      "sats": 998,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-10-14T00:33:48.875Z",
+      "createdAt": "2026-10-14T04:10:12.650Z",
       "user": {
-       "name": "Wumbo"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1595041",
-      "title": "This Day on SN: October 14",
-      "url": null,
-      "text": "#### Top Posts\n- [The world's first Bitcoin Art Magazine - Genesis Edition](https://stacker.news/items/1256358)\n    - 3838 sats \\ 42 comments \\ @asanoha \\ ~art \\ `October 14, 2025`\n- [SN elects to go noncustodial on Nov. 5th - FAQ & AMA](https://stacker.news/items/722833)\n    - 12.8k sats \\ 341 comments \\ @k00b \\ ~meta \\ `October 14, 2024`\n- [Building a platform where ad engagement earns sats rewards. Feedback welcome!](https://stacker.news/items/284068)\n    - 1916 sats \\ 22 comments \\ @in_bits \\ ~bitcoin \\ `October 14, 2023`\n- [OpenTimestamps: Scalable, Trust-Minimized, Distributed Timestamping with Bitcoin](https://stacker.news/items/81644)\n    - 11.6k sats \\ 25 comments \\ @petertodd \\ ~bitcoin \\ `October 14, 2022`\n- no top post for `October 14, 2021`\n#### Top Stackers\n- @antic\n    - 77.1k stacked \\ 0 spent \\ 0 items \\ `October 14, 2025`\n- @k00b\n    - 185.2k stacked \\ 88.6k spent \\ 64 items \\ `October 14, 2024`\n- stacker is in hiding for `October 14, 2023`\n- @petertodd\n    - 11k stacked \\ 963 spent \\ 9 items \\ `October 14, 2022`\n- @ugmug\n    - 45 stacked \\ 17 spent \\ 3 items \\ `October 14, 2021`\n#### Top Comments\n- https://stacker.news/items/1255830?commentId=1256030 on [TABCONF 7 x SNIRL 1: Stacker News Trivia 100k Sat giveaway](https://stacker.news/items/1255830)\n    - 600 sats \\ 0 replies \\ @0xbitcoiner \\ `October 14, 2025`\n        > SNL (Stacker News Live) [...]\n- https://stacker.news/items/722833?commentId=722936 on [SN elects to go noncustodial on Nov. 5th - FAQ & AMA](https://stacker.news/items/722833)\n    - 10.1k sats \\ 4 replies \\ @k00b \\ `October 14, 2024`\n        > Thanks. It has been. There's nothing more draining for a founder than working on something that no one wants, but it's exciting to be nearly done. [...]\n- https://stacker.news/items/283307?commentId=284071 on [Hot take:  BitVM and Drive Chains](https://stacker.news/items/283307)\n    - 5926 sats \\ 0 replies \\ @supertestnet \\ `October 14, 2023`\n        > > the onchain footprint isn't larger than typical transactions in the cooperative case [...]\n- https://stacker.news/items/81788?commentId=81794 on [@petertodd's bio](https://stacker.news/items/81788)\n    - 608 sats \\ 7 replies \\ @8 \\ `October 14, 2022`\n        > The real peter todd laughed at me for not running a bitcoin node at a conference. Motivated me to run one. Thank you 🙏🏼 [...]\n- https://stacker.news/items/3442?commentId=3443 on [Announcing Pay Me In Bitcoin](https://stacker.news/items/3442)\n    - 12 sats \\ 2 replies \\ @nout \\ `October 14, 2021`\n        > So I tried and it doesn't work yet. \"We are preparing your deposit details\"... [...]\n#### Top Territories\n- ~Stacker_Sports\n    - 7463 stacked \\ 3259 revenue \\ 11.6k spent \\ 116 items \\ `October 14, 2025`\n- ~meta\n    - 53.9k stacked \\ 3488 revenue \\ 79.4k spent \\ 280 items \\ `October 14, 2024`\n- ~bitcoin\n    - 44.7k stacked \\ 0 revenue \\ 76.4k spent \\ 342 items \\ `October 14, 2023`\n- ~bitcoin\n    - 33.4k stacked \\ 0 revenue \\ 59k spent \\ 389 items \\ `October 14, 2022`\n- ~bitcoin\n    - 169 stacked \\ 0 revenue \\ 183 spent \\ 15 items \\ `October 14, 2021`",
-      "sats": 78,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T10:00:04.327Z",
-      "user": {
-       "name": "sn"
-      },
-      "subName": "meta"
-     },
-     {
-      "id": "1594993",
-      "title": "Take the narrow road",
-      "url": null,
-      "text": "“There is a way that seems right to a man, But its end is the way of death.”\r Proverbs 14:12 \n\n\r“Enter by the narrow gate; for wide is the gate and broad is the way that leads to destruction, and there are many who go in by it. Because narrow is the gate and difficult is the way which leads to life, and there are few who find it.” Matthew 7:13-14",
-      "sats": 608,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-14T04:00:25.232Z",
-      "user": {
-       "name": "KudzaiK"
-      },
-      "subName": "Christianity"
-     },
-     {
-      "id": "1595042",
-      "title": "Ranked: 125 European Cities by Quality of Life and Cost",
-      "url": null,
-      "text": "![](https://m.stacker.news/161469)\n\n[**🔗 visualcapitalist.com**](https://www.visualcapitalist.com/cp/125-european-cities-quality-of-life-cost/)",
-      "sats": 167,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T10:02:55.174Z",
-      "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "charts_and_maps"
-     },
-     {
-      "id": "1551074",
-      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
-      "url": null,
-      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
-      "sats": 6587,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 106,
-      "createdAt": "2026-08-19T19:44:47.321Z",
-      "user": {
-       "name": "openbitcoin"
+       "name": "Scoresby"
       },
       "subName": "bitcoin"
      },
      {
-      "id": "1595003",
-      "title": "OpenAI Employee Arrested for Planting Hidden Recorder in Conference Room",
-      "url": "https://thehackernews.com/2026/10/openai-employee-arrested-for-allegedly.html",
-      "text": "",
-      "sats": 408,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T05:29:15.356Z",
-      "user": {
-       "name": "kristapsk"
-      },
-      "subName": "security"
-     },
-     {
-      "id": "1574694",
-      "title": "Silent Upgrade • Haleen",
-      "url": "https://wavlake.com/track/1ae2deef-4ae1-4910-b587-1c895061aa7c",
-      "text": "This is @BlokchainB his favorite....this is a magical healing music",
-      "sats": 26209,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 74,
-      "createdAt": "2026-09-17T08:12:57.976Z",
-      "user": {
-       "name": "haleen"
-      },
-      "subName": "Music"
-     },
-     {
-      "id": "1594958",
-      "title": "SEC Proposal Would Address How Investment Advisers and Funds Can Custody Crypto",
-      "url": "https://www.sec.gov/newsroom/press-releases/2026-100-sec-proposal-would-address-how-investment-advisers-funds-can-custody-crypto-assets-under-federal",
-      "text": "",
-      "sats": 759,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T00:47:04.037Z",
-      "user": {
-       "name": "standardcrypto"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1594966",
-      "title": "Any ranked team exceeds 50 points this week?",
-      "url": "https://beta.predyx.com/market/any-ranked-team-exceeds-50-points-this-week-1791940593?ref=PREDYXO7VCSFSP&shareOg=95c3761b-026c-4843-90b8-781a2d976996&shareKind=market",
-      "text": "",
-      "sats": 377,
+      "id": "1595216",
+      "title": "Astros Will Not Renew Contract of Manager Joe Espada",
+      "url": "https://www.espn.com/mlb/story/_/id/50182001/astros-not-renew-contract-manager-joe-espada",
+      "text": "Oh, thank the lord there is a god.... This should have been done MONTHS ago..... The players clearly had given up on him and he has shown over the years that he couldnt rally the players either.",
+      "sats": 221,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 1,
-      "createdAt": "2026-10-14T01:27:10.363Z",
-      "user": {
-       "name": "DarkStacker"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1594747",
-      "title": "Up Only- Toronto Food Bank visits quadruple since 2020",
-      "url": null,
-      "text": "This is staggering and very sad.\n\nFood bank visits in Toronto have quadrupled since 2020 according to a 2026 Who's hungry? report conducted by the Daily Bread food bank.\n\n![](https://m.stacker.news/161412)\n\nWhen we lived in the city we used to take the kids grocery shopping around Christmas time where we would pick up a bunch of non perishable items and then drive over to the local food bank and drop them off. Most of the grocery stores do have a non perishable collection bin but I imagine Food banks are very strained with these numbers. \n\nI expect it to only get worse. Every time my wife complains about food prices I respond with something to the effect of \"you ain't seen nothing yet\".",
-      "sats": 1305,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 9,
-      "createdAt": "2026-10-13T17:27:20.465Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Politics_And_Law"
-     },
-     {
-      "id": "1595027",
-      "title": "Plebeian Market - Haleen healing music",
-      "url": "https://plebeian.market/profile/cbd2ff2aca546769a8da6b2d3876da47a01ee6902a8ce060a955471b0b92b116",
-      "text": "[https://plebeian.market/profile/cbd2ff2aca546769a8da6b2d3876da47a01ee6902a8ce060a955471b0b92b116](https://plebeian.market/profile/cbd2ff2aca546769a8da6b2d3876da47a01ee6902a8ce060a955471b0b92b116)\n\n![](https://m.stacker.news/161467)\n\nHaleen,\na musical project by a Belgian couple based in off-grid Portugal, has crafted a distinctive genre inspired by their energy shift and consciousness transformation. Their music is described as mind-opening, hypnotic, and uplifting, providing courage and improving listeners' moods.\nHans, starting his musical journey at a young age, transitioned from the metal scene to an acoustic guitar tuned to 432Hz. Embracing electronic music, he blended diverse genres, creating a unique symphony that transcends boundaries.\nKath, with a rapid shift in musical taste, moved from mainstream hits to Electronic Dance Music, influenced by artists resonating with a powerful energy. Her evolving musical palette includes sounds from Sam Garrett, Mose, Peia, Yaima, and Ajeet, mirroring her inner transformation.\nThey actively perform live, connecting with audiences through their love and acceptance.\nTo those who want to support us, purchase your download here\n\nLove and Blessings - Haleen\n\nps - if you are looking for high quality downloads of our healing music in 432hs follow the link, we appreciate any donation.\n\n@Public_N_M_E",
-      "sats": 36,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-14T08:03:54.204Z",
-      "user": {
-       "name": "haleen"
-      },
-      "subName": "art"
-     },
-     {
-      "id": "1594852",
-      "title": "SatPicks — Bitcoin Sports Picks Contests | Win Sats",
-      "url": "https://satpicks.com/",
-      "text": "Hey @grayruby, @gsc360, and @Undisciplined yall see this site before? \n\nIt’s a talk to discuss degen sports picking! I never heard of this! Looks interesting !",
-      "sats": 1257,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 5,
-      "createdAt": "2026-10-13T21:06:21.192Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1594977",
-      "title": "Introducing SATS  — 15% fixed rate, paid every business day",
-      "url": "https://strive.com/sats-ipo/",
-      "text": "https://x.com/ColeMacro/status/2110109170037129243",
-      "sats": 562,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-14T02:27:16.303Z",
-      "user": {
-       "name": "Coinsreporter"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1410658",
-      "title": "Blok’s Stack Strategy: How I use LN Markets to trade  daily to stack moar sats",
-      "url": null,
-      "text": "## Disclaimer:\n\n#### Don’t be a degen and waste sats like me. \n\nBUT!!\n\nIf you have an appetite for risk and want to grow your stack you can trade on LN Markets.\n\nI do this for the reasons below.\n\n1. The LN Markets team has built a tremendous trading platform only using lightning. I want to support the platform and use lightning every day (why I am addicted to SN) \n\n2. As the price rises you can stack moar sats with the sat stash you have. Plus you know your sat stack is increasing with every price pump. So not only are you feeling richer in fiat terms but also in sat terms \n\n3. As the price falls you can catch a falling knife and play the “when is the bottom in”\n\n4. I am not risk adverse. I trade on sats I can afford to lose. I zapped and spent way more sats on SN than I have traded on LN markets\n\n5. It takes the edge off on FOMO. \n\n## The Strategy:\n\nIt’s quite simple I enter a trade every day.  With the following parameters \n\n1. I do a modest position size. \n\n* If I feel bearish I do $15 \n* If I feel bullish I do $150 to $200\n\n2. Then I set it to 10x leverage \n\n3. Then I set the take profits at 25% and the stop loss at 8% \n\n4. I market buy\n\nI let the trades run for as long as possible. Once the price moves up I move the stop losses up accordingly to preserve capital. \n\nIf we get a massive pump before my take profits get triggered I let the trade just run \n\n\n![](https://m.stacker.news/125936)\n\n`I never do puts or shorts! I AM FORVER LONG PERMABULL`\n\n\n## Progres to date \n\nI only got 22 running trades. I had a lot more open but when the bitcoin price dips my stop losses hit.\n\n![](https://m.stacker.news/125937)\n\n#### My longest run trade goes back to 2024:\n\n\n![](https://m.stacker.news/125938)\n\n#### Summary of all my  running trades\n\n\n![](https://m.stacker.news/125939)\n\n\n#### My overall performance on LN markets \n\n![](https://m.stacker.news/125940)\n\n## Exit Strategy:\n\nNot sure if I have one. I was thinking of doing this until bitcoin hits $1M per coin in fiat but I’m not sure if that is prudent. I could get rugged and LN markets can go down at any second but I am comfortable with that risk. I have fun doing this and it takes the edge off of FOMOing in\n\nThanks to @Aardvark for sharing his option wheel strategy. I been doing this for quite sometime vark inspired me to share!",
-      "sats": 1544,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 318,
-      "createdAt": "2026-01-13T13:50:39.976Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1594558",
-      "title": "Daily Stock Discussion ~Stacker_Stocks",
-      "url": null,
-      "text": "Happy Tuesday. Silly me I thought the market was closed due to the holiday but Christopher be damned we traded stocks yesterday! And we had a bear day! Boo! \n\n![](https://m.stacker.news/161382)\n\nWill the bulls stay? Or will the bears dominate?\n🟩 or 🟥?\n\n## Question\n\n**Q tickers drop a ticker that starts with Q and its market cap along with your daily close guess to earn the bonus zap!**",
-      "sats": 118,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 15,
-      "createdAt": "2026-10-13T10:29:18.145Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
-      "id": "1594990",
-      "title": "New Senate Predyx Market: Talarico to Beat Paxton For Texas Senate Race",
-      "url": "https://beta.predyx.com/market/democrat-james-talarico-to-win-texas-senate-seat-1791949857?ref=PREDYXVN00WK1R",
-      "text": "",
-      "sats": 240,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-14T03:54:14.704Z",
+      "createdAt": "2026-10-14T15:33:14.520Z",
       "user": {
        "name": "Cje95"
       },
-      "subName": "Politics_And_Law"
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1595088",
+      "title": "Anthropic reinvents source control as Claude floods the world with code",
+      "url": "https://www.theregister.com/devops/2026/10/13/anthropic-reinvents-source-control-as-claude-floods-the-world-with-code/5302943",
+      "text": "Anthropic's Claude models have been emitting so much code that the company's coding infrastructure hasn't been able to keep up.\n\nIt's a symptom of the AI coding imperative and all-you-can-eat inference. Microsoft's GitHub in April published a blog post attributing recent availability problems to the exponential growth in pull requests and commits. The code flood has been noted by academic researchers, among others.",
+      "sats": 295,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-14T12:21:58.483Z",
+      "user": {
+       "name": "ch0k1"
+      },
+      "subName": "AI"
      }
     ]
    }
