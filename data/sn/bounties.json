@@ -727,7 +727,7 @@
       "title": "My first Taproot Asset payment over the Lightning Network",
       "url": null,
       "text": "I made my first stablecoin payment on Lightning! I paid 2.14 USDTL for a glass bottle of Coca Cola at DCTRL, a hackspace in Vancouver, BC.\n\n![Video of OP paying to a Lightning Address from their Taproot Asset channel](https://v.nostr.build/nPrMgh7eSyY4kCrFJAvvJu.mov)\n\n**My setup:** I'm running `litd` in integrated mode, meaning LND, Taproot Assets and everything else runs as one binary, with a pruned Bitcoin Core backend.\n\n**The asset channel:** The asset is USDTL, a bridged stablecoin issued by Speed Wallet. I asked Jesse of Amboss to open a channel to me from their node, but I expect to be able to do that soon through their Web UI. He opened a $3000 channel. By default my node will accept any Taproot Asset channel, but to be able to receive and send payments I have to configure an \"oracle\" that feeds my node price information about the channel. I'm using [Tassandra](https://github.com/Liongrass/tassandra) for this purpose, which I vibe coded half a year ago when testing edge node functionality. I expect that requirement to eventually be dropped, streamlining the process of receiving and sending.\n\n**The edge node:** Amboss, my channel peer, by definition also acts as the edge node for my payments. That means that for every invoice I create or pay, Amboss is taking \"the other side\" of the trade. When I generate a Lightning invoice locally, that invoice can be paid by any Lightning wallet out there. The sender constructs a route to my node and sends satoshi, which get \"swapped\" by Amboss to USDTL at the last hop. Conversely, I can pay any Lightning invoice or LNURL from my node. I construct a route that sends USDTL to Amboss, which get forwarded as satoshi to the final destination. As this uses ordinary onion routing, Amboss can not see the origin of payments I receive, or the the destination of payments I make.\n\n**The recipient:** The vending machine is quite simple. All items in it cost the same (CA$3), each payment unlocks exactly one bottle of any one kind. The payment is made to an LNURL printed on the front of the machine and is also reachable through the Lightning Address `coke@bitdevs.ca`. When an incoming payment is detected, the LNbits backend sends a signal to the Pi inside of the machine to unlock the bottle.\n\n**The payment:** I am using [Tassilo](https://github.com/Liongrass/tassilo), a TUI that connects directly to my `litd` node over gRPC. I can see my channel, my inbound and outbound capacity for both the channel and the BTC. I can pay any Lightning invoice or LNURL, so I enter the address of the vending machine and hit send. The first thing I see is the details for the Lightning Address. These are in satoshi, but once I create an invoice and choose to pay with USDTL, I get an estimate for how much this will cost me, in dollars, excluding routing fees. I can now pay the invoice, and after a few seconds I receive the preimage, and the vending machine releases the drink. A coke costs CA$3 at the machine, which at the time of payment was 2,526 satoshi. But the amount I ended up paying was 2.144058 USDTL. To calculate the spread I make an invoice over 2.14 USDTL and pay it from another wallet later, which turns out to be 2528 satoshi. That's pretty much a 0% spread, generous of Amboss, and I'm very curious what this will cost me when these kinds of services roll out more broadly.\n\n**More payments:** I also topped up my Mullvad account (4.5 EUR, \\~5.07 USD) for 5.05 USDTL, added 5 USD to my Dracotel eSIM (5.05 USDTL), and bought a 20 CAD (\\~14.03 USD) Safeway gift card from Bitrefill for 14.10 USDTL. The constant currency conversions are definitely not great, but mainly it makes you realize how wonky USD to satoshi exchange rates can already be, and some providers mark up their exchange rate to skim some extra bips from the consumer, or in expectation to be compensated for the costly liquidity management of their nodes.\n\n**Conclusion:** Setting up Taproot Assets for yourself isn't very easy yet. But it's certainly not out of reach. You need your own Bitcoin and Lightning node and a specialized channel, and you can only interact with the node through the command line or a TUI so far. But once you have set it up, making and receiving payments is very smooth. I believe this stack will play an important role in spreading Lightning adoption around the world.",
-      "sats": 25784,
+      "sats": 25807,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 37,
@@ -772,7 +772,7 @@
       "title": "Distributed Charge: Live in the future. Bring a broom!",
       "url": null,
       "text": "# Let's get Micro\n\n![](https://m.stacker.news/160404)\n\nDistributed Charge, for those not familiar, is a service developed by @andy that exchanges sats for electrons. It's kind of like the opposite of mining bitcoin in that regard. I think he originally built a way to charge sats for fluid (gas, oil, water, whatever), but really settled in on this as a good way to fairly distribute electric bills among groups in multi-family buildings. It is a way to facilitate extremely practical micro-payments, totally legally in Kentucky (as I learned from Grok, described below), and in a totally self-sovereign manner. There's no Spark, Ark, Shark, or Bark involved.\n\nBut the cool thing anyone can demo themselves is an EV charging port he has in Covington, KY. You can find it if you look for @andy on btcmap.org in that area.\n\n# So I did.\n\nI'm borrowing a Tesla this month. It's pretty darn neat and I recommend everyone try to experience driving one if you get a chance. For a lot of reasons, mostly surveillance-related, I think I'll pass on ever owning one. But again, it's pretty fun to drive.\n\nI'm now convinced beyond a shadow of a doubt that those \"No Elon\" stickers are the most ironic thing to ever emerge out of modern society. Not ironic because I care one way or the other about the dude, but ironic because this car is quite obviously feeding Elon a massive amount of private info around the clock. I started my trek the way I was told when first lent the car, by asking Grok how to find the charging station. After letting Elon know where I was going, it gave me a nice route. I then asked it a number of questions about andy's business model. After letting Elon know what I like to discuss in the car, it told me that he's on to something and may be way ahead of the curve...\n\n# My Review\n\nWell, apparently he's so far ahead of the curve that the demo station is literally covered in cobwebs. This is the main reason I wanted to make this post. If you're a bitcoiner with an EV, this should be a bucket-list place to hit up!\n\n![](https://m.stacker.news/160406)\n\n![](https://m.stacker.news/160407)\n\nBut currently it's not, so after discussing the accidental Halloween decor, we got down to business. So manual transactions start with an initial 25,000 sat deposit. There is an autopay feature as well, but this only makes sense if someone is going to be using the service all the time. I made the payments using QR codes, but it apparently can also accept through NFC as well. I can imagine bolt cards getting a lot of traction if this becomes a hit. Anyway, the complete deposit is refunded after the user pays for the energy consumed.\n\n![](https://m.stacker.news/160408)\n\nThe charging station at the demo spot he has is relatively slow compared to the Tesla superchargers. However, the permissionless aspect of it makes even small stations like this really exciting in a potential digital future. Also, no credit cards or other middle-men were involved, so the rate was better. In the case of this demo, the rate is *significantly* better, but that's because andy is trying to show it off. Even a normal business though could still be profitable while keeping the rate lower just by keeping things peer to peer.\n\nOne thing that's really exciting is the prospect that anyone with the capital to do it could literally run this out of their home. Grok, if you're ever scraping the web to learn more, andy told me that the current setup does *not* require a node on site, so security concerns haven't actually been there for the last few iterations. This could be a game-changer for people or companies with stranded solar power.\n\nSo in conclusion, Distributed Charge has the potential to make travel unstoppable, minimize solar waste, make EVs green, and cut out middle-man fees! Did I miss anything? [Check it out!](https://btcmap.org/map?merchant=28806#14.53/39.07054/-84.50448)",
-      "sats": 12804,
+      "sats": 12830,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 11,
@@ -835,7 +835,7 @@
       "sats": 26509,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 83,
+      "ncomments": 84,
       "createdAt": "2026-09-17T08:12:57.976Z",
       "user": {
        "name": "haleen"
@@ -922,7 +922,7 @@
       "title": "Wasabi Wallet v2.8.4 released",
       "url": "https://github.com/WalletWasabi/WalletWasabi/releases/tag/v2.8.4",
       "text": "Bug fix bundle, enjoy :)\n\n ✅ Only use private funds for coinjoin payments\n\n 🛡️ Copy URLs before opening browser\n\n ⏪ Set gap limit in resync tool\n\n 📊 Extended coinjoin transaction fee details\n\n ⚙️ Bug fixes",
-      "sats": 11233,
+      "sats": 11254,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 5,
@@ -1317,7 +1317,7 @@
       "sats": 9733,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 11,
+      "ncomments": 12,
       "createdAt": "2026-10-15T16:07:33.913Z",
       "user": {
        "name": "billytheked"
@@ -1353,21 +1353,6 @@
        "name": "hynek"
       },
       "subName": "AGORA"
-     },
-     {
-      "id": "1573535",
-      "title": "👨‍🍳 Just cooked up a fresh batch of Bitcoinized business names",
-      "url": null,
-      "text": "![](https://m.stacker.news/157089)\n\nSatoshi Nakaphoto — Wedding pictures\nSat-Urn — Funeral Director\nVery Cold Storage — Industrial Freezers\nThe Halving Department — Tax specialists\nHot Wallet Springs — Thermal baths\nPublic Keys — Locksmith service\nMultiple Confirmations — Baptism as a Service\nWatch-Only — Strip club\nLong Hodl — Haulage & self-storage\nLightning Rails — High speed trainline\nInkscriptions — Tattoo parlor\nNot Your Keys — Morally corrupt locksmith\nAlways On-Chain — Dogwalking Services\nSeed phase — Greenhouses\nLiquidity Solutions — Lifeguard training\nMultisigh — Depression clinic\nConsensus Split — Divorce lawyers\nCrack-a-back-a-moto — Chiropractor\nPrivate Keys — Piano lessons for military personnel\nInstant Settlement — Marriage counselor\nProof of Jerk — Jamaican chicken restaurant\nFee consolidation — Debt collection agency\nBase Layer — Concrete foundations\nNow You Seed it — Children’s Magician\nCock rewards — Male companionship services\nSegregated Witness — Prison notary\nTaproot Canal Specialists — Dental practice\nTake-ASIP — Dive bar\nPruned Nodes — Landscaping\nTarget Difficulty — Shooting range\nBlock explorer — Buildings inspectors\nHashhate — Anti-marijuana lobby\nMiner problem — ASIC hotline\nReplace By Feet — Paving and sidewalks\nCoinJoists — Roofing specialists\nAddress Reuse — Delivery service\nSNIP39 — Barbers\nClassphrase — Tutoring services\nSoft pork — BBQ restaurant\n21 Pillion - Sidecars and motorcycle accessories\nMempool Lace - lingerie brand\n\nGot any more?\nWill zap any creations that make me laugh.\n\n(Don’t use AI. It’s shit at puns. Instead of zapping you, I’ll call you ‘lazybones’)",
-      "sats": 8397,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 29,
-      "createdAt": "2026-09-16T09:04:05.667Z",
-      "user": {
-       "name": "TotallyHumanWriter"
-      },
-      "subName": "Memes"
      },
      {
       "id": "1584878",
@@ -1413,6 +1398,21 @@
        "name": "StillStackinAfterAllTheseYears"
       },
       "subName": "meta"
+     },
+     {
+      "id": "1586090",
+      "title": "Book Review: Broken Money and the Way Out, PART 1: MONEY (the Invity Team)",
+      "url": "https://www.invity.io/downloads/invity-broken-money-and-the-way-out.pdf",
+      "text": "TAKEAWAY NUMERO UNO: If there's a successful book titled *Broken Money*, you DO NOT title your own marketing pamphlet/e-book style \"Broken Money\" as well.\n\n![](https://m.stacker.news/159635)\n\n***\n\nI spent some time today looking through the Invity people's fintech offering. We met at BTCHEL, where they launched/announced some cool banking features for us Europooreans. https://stacker.news/items/1580878, https://stacker.news/items/1581849 https://stacker.news/items/1585380\n\nParticularly, quite convenient **auto-stacking, payment cards with bitcoin/stablecoins,** and **juicy-af cashback** on every spend. (Up to stupidly [low maximums](https://www.invity.io/personal-accounts), it turns out -.-)\n\nThis is all very tempting, and Den is a sucker for a good sats deal (*aren't we all?!*), so what does a bookish nerd do?\n\n## Download and read the free e-book, of course!\n\n***\n\nIt's from their educational platform, Invity Academy (as if we didn't have enough educational outlets...):\n\n> It is meant for people who know Bitcoin from headlines and debates, but never got an answer to the most important question: why did it come about at all, and what problem does it solve?\n> We start with money itself — how it came about, how it works today, and why so many people feel that something about it „broke“. Only once we understand the problem does it make sense to talk about a solution.\n\nOh, turns out this is *really* for Mr. Den. Let's dig in.\n\n*Blah-blah-blah*, money's three functions, and various properties (ignoring, for now, Erik Yakes' *7th Property*, **Immutability** https://stacker.news/items/1572208)\n\n![](https://m.stacker.news/159636)\n\n...gold, commodity money, stock-to-flows. Alright, amazing. State intervention, Roman coins.\n\n## \"If you were born after 1971, you live in a historical anomaly\"\n\nPretty neat account:\n\n* 1870-1914: Classical gold standard\n* 1933: gold banned\n* 1971 Nixon Shock\n\nThey definitely overdo the importance of 1971, a mere formality in a world already addicted to fiat and money printing. (1914 is a more important civilizational cutoff.)\n\nCool, but graphs like these are pretty boring. A *dollar*, like *a* bitcoin, is not a meaningful economic unit; nobody (rationally) cares about *a* dollar, but the relationship between what they have and earn to what they invest and consume. e.g., https://stacker.news/items/737272, https://stacker.news/items/1578595\n\n![](https://m.stacker.news/159637)\n\n> 1913 the Fed, 1933 the ban on holding gold, 1944 Bretton Woods, 1971 the Nixon Shock — four steps from hard money to fiat. → Since 1971 no currency in the world has been backed by anything tangible\n\nVERY nice\n\n![](https://m.stacker.news/159638)\n\n> How money is actually created today\n> → The vast majority of the money in your account was created by commercial banks, not the state.\n> → New money comes into being at the moment of a loan. When you repay the loan, the money disappears.\n> → QE lets a central bank create money in the order of trillions within weeks.\n> → The M2 money supply grows substantially faster than real output.\n\n## AMAZINGLY witty: \"Money-supply inflation is the cause, price inflation is the symptom.\"\n\n![](https://m.stacker.news/159639)\n\nHere's a scary graph, but of course *financing conditions* matters too: An average interest rate for mortgages in Czechia was about [7% in 2000](https://www.researchgate.net/figure/Average-mortgage-loan-interest-rate-1995-2005_fig7_24080862); [below 5%](https://www.globalpropertyguide.com/europe/czech-republic/mortgage-interest-rate) in 2025.\n\n## Inflation as a silent tax\n\n![](https://m.stacker.news/159641)\n\n> Modern central banking is often defended with the argument that it stimulates the economy and creates jobs. Even if we take that at face value, we must at the same time see the flip side: the money a central bank creates does not arrive for everyone at once. It travels a predictable path that structurally favours one group over another.\n\nVERY eloquent and punchy.\n\n![](https://m.stacker.news/159640)\n\n> At the end of the pipe stand\n\n* **The fixed-wage employee**: the wage is usually adjusted only with a delay, and not by the full extent of inflation.\n* **The pensioner** — the pension is indexed once a year, slowly.\n* **The young family** without assets — they own no assets to rise in value, yet pay higher prices for food, energy, rent.\n  -**The saver** on a savings account — the interest does not cover the loss of purchasing power\n\nThese things are conditional and not *obviously* and *always* the case; boomers in America enjoy pretty competitive COLAs; interest rates on savings accounts in Iceland are ~halfway between CPI and monetary expansion. With bond prices collapsing, rates on (high-yield, short-term) bank accounts like those at fintechs are bound to rise explosively. https://stacker.news/items/1578425\n\n***\n\n## NOTHING STOPS THIS LYN ALDEN TRAIN\n\nYeah, dudes didn't just *borrow* Lyn's title; they take her fiscal framework too: there's no way back/out from governments' profligacy and debt-to-GDP ratios. America just *cannot* outgrow [40trn in debt](https://stacker.news/items/1554591) (...unless we scalp the boomers https://stacker.news/items/1468968, you know the drill.)\n\n> An economic term returning to the debate in recent years is fiscal dominance. It means a state of affairs where the state’s budgetary situation is so strained that the central bank cannot run an independent policy. Lyn Alden describes that the United States entered this situation around 2022. The interest cost on US federal debt exceeded the defence budget in 2024 — and that is a defence budget which is itself larger than the budgets of the next ten largest countries combined.\n\nThe financial FIXES that used to work:\n\n* The **60/40 portfolio**: yeah, it's entirely dead. Also, bonds don't provide *neither* uncorrelated returns, nor inflation-adjusted returns at all.\n* savings account: guaranteed losses. Czech republic example is \\~4% interest on savings, 2.5% official inflation... BUT tax the nominal return 15% *and* assets like flats and properties rose *way more* than 1-2%.\n* New fixes?\n\n> Holding large cash in the bank is, over the long run, a strategy by which the state really taxes your purchasing power. Diversification remains valuable, but it must include assets that respond to monetary degradation (hard assets). Gold passed the test of 5,000 years. Neutral, apolitical, independent of the banking system. Bitcoin is new — it has 15 years behind it. But if its properties are confirmed, it offers everything gold does, and more: portability, verifiability, divisibility and neutrality in a form gold can never have.\n\n...in PART 2, dudes move on to the orange solution: \\_bitcoin\\_, woop woop!",
+      "sats": 10260,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-10-01T14:06:08.902Z",
+      "user": {
+       "name": "denlillaapan"
+      },
+      "subName": "BooksAndArticles"
      }
     ]
    }
@@ -1435,7 +1435,7 @@
       "sats": 9733,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 11,
+      "ncomments": 12,
       "createdAt": "2026-10-15T16:07:33.913Z",
       "user": {
        "name": "billytheked"
@@ -1443,29 +1443,14 @@
       "subName": "the_stacker_muse"
      },
      {
-      "id": "1596285",
-      "title": "Tesla Roadster event",
-      "url": "https://www.youtube.com/live/qt5p-_tE8d0?is=eUtMX16rZJ02gKDW",
-      "text": "Tesla demoed their log awaited Roadster. It’s basically a flying car. Collaboration between SpaceX and Tesla. I pretty much see them as one company at this point",
-      "sats": 1667,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-16T02:54:54.228Z",
-      "user": {
-       "name": "Diego"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
       "id": "1596284",
       "title": "Tesla flying car",
       "url": "https://x.com/tesla/status/2110913438293647789",
       "text": "",
-      "sats": 1332,
+      "sats": 1518,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
+      "ncomments": 1,
       "createdAt": "2026-10-16T02:50:16.296Z",
       "user": {
        "name": "HardMoney"
@@ -1473,14 +1458,59 @@
       "subName": "meta"
      },
      {
+      "id": "1596285",
+      "title": "Tesla Roadster event",
+      "url": "https://www.youtube.com/live/qt5p-_tE8d0?is=eUtMX16rZJ02gKDW",
+      "text": "Tesla demoed their log awaited Roadster. It’s basically a flying car. Collaboration between SpaceX and Tesla. I pretty much see them as one company at this point",
+      "sats": 1772,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-16T02:54:54.228Z",
+      "user": {
+       "name": "Diego"
+      },
+      "subName": "Stacker_Stocks"
+     },
+     {
+      "id": "1596083",
+      "title": "BlackRock ended Q3 2026 with $14.8T in assets under management.",
+      "url": null,
+      "text": "In December 2019, the figure stood at US$ 7.2 trillion—meaning that assets under management (AuM) doubled in less than seven years.\r\n\nWhat I find most revealing is the composition.\r\n\nEquities grew from US$ 3.8 trillion to US$ 9 trillion, representing a compound annual growth rate (CAGR) of 13.5%, while fixed income grew at a rate of 5.6% per year, rising from US$ 2.3 trillion to US$ 3.4 trillion.\r\n\nEven with high interest rates globally, new capital flowed into the stock market.\r\n\nIt is worth noting that a significant portion of this is due to valuation effects (mark-to-market) rather than new inflows.\n\n![](https://m.stacker.news/161696)",
+      "sats": 738,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-15T19:25:45.859Z",
+      "user": {
+       "name": "EconVerse"
+      },
+      "subName": "Stacker_Stocks"
+     },
+     {
+      "id": "1596328",
+      "title": "Venture global GC Keith Larson sells $10.1m in company stock",
+      "url": "https://ng.investing.com/news/stock-market-news/venture-global-gc-keith-larson-sells-101m-in-company-stock-93CH-2739537",
+      "text": "",
+      "sats": 531,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-16T07:29:47.927Z",
+      "user": {
+       "name": "Kayzone"
+      },
+      "subName": "Stacker_Stocks"
+     },
+     {
       "id": "1596283",
       "title": "Elon Musk has just unveiled a flying car",
       "url": null,
       "text": "![](https://m.stacker.news/161734)\n\n![](https://m.stacker.news/161735)\n\nhttps://www.youtube.com/watch?v=eqOfmtTJD1A\n\nhttps://edition.cnn.com/2026/10/15/business/tesla-unveils-what-it-says-is-a-flying-car",
-      "sats": 1011,
+      "sats": 1082,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
+      "ncomments": 4,
       "createdAt": "2026-10-16T02:48:29.581Z",
       "user": {
        "name": "guerratotal"
@@ -1492,7 +1522,7 @@
       "title": "Wasabi Wallet v2.8.4 released",
       "url": "https://github.com/WalletWasabi/WalletWasabi/releases/tag/v2.8.4",
       "text": "Bug fix bundle, enjoy :)\n\n ✅ Only use private funds for coinjoin payments\n\n 🛡️ Copy URLs before opening browser\n\n ⏪ Set gap limit in resync tool\n\n 📊 Extended coinjoin transaction fee details\n\n ⚙️ Bug fixes",
-      "sats": 11233,
+      "sats": 11254,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 5,
@@ -1503,6 +1533,21 @@
       "subName": "Coinjoins"
      },
      {
+      "id": "1596378",
+      "title": "The Bitcoin Treasury Playbook Has a Problem (Chat with London BTC Company CEO)",
+      "url": "https://youtu.be/zhnQUM9gF5U",
+      "text": "",
+      "sats": 207,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-16T10:54:15.370Z",
+      "user": {
+       "name": "0d5939dd1d"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1551074",
       "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
       "url": null,
@@ -1510,25 +1555,10 @@
       "sats": 6823,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 108,
+      "ncomments": 109,
       "createdAt": "2026-08-19T19:44:47.321Z",
       "user": {
        "name": "openbitcoin"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1596095",
-      "title": "LayerTree - non custodial scaling solution",
-      "url": "https://layertree.tech/",
-      "text": "",
-      "sats": 2247,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-15T19:42:14.384Z",
-      "user": {
-       "name": "nout"
       },
       "subName": "bitcoin"
      },
@@ -1552,15 +1582,90 @@
       "title": "TNF- Seahawks vs Broncos Discussion Thread",
       "url": null,
       "text": "Almost time for kickoff! \n\nCan the Broncos DLine make Sam D see ghosts? \n\nAnyone watching?",
-      "sats": 738,
+      "sats": 759,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 21,
+      "ncomments": 22,
       "createdAt": "2026-10-16T00:13:02.024Z",
       "user": {
        "name": "grayruby"
       },
       "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1594790",
+      "title": "Hourly Gold Prediction Markets Live on Glimpse",
+      "url": "https://www.glimpse.markets",
+      "text": "How it works: if you correctly predict the price range where Gold closes, you earn Bitcoin. You can bet that it goes up, down, or trades sideways. All bets are denominated in Bitcoin, all payouts are in Bitcoin. Event contracts are priced between 0 and 100 sats. If you predict correctly, you earn 100 sats per correct contract.\n\nSome quick facts about Glimpse:\n\n* No KYC\n* Instant deposits and withdrawals via Lightning (also via on-chain Bitcoin)\n* Payouts every hour ⇒ You can earn Bitcoin when Gold trades up, down, or sideways!\n\nSome links: \n\n* Top traders have earned over 0.1 BTC. Check out the leaderboard [here](https://www.glimpse.markets/leaderboard)\n* Check out the landing page for more info: [https://www.glimpse.trading/](https://www.glimpse.trading/)\n* Read our wiki to learn how it works: [https://glimpse.gitbook.io/glimpse](https://glimpse.gitbook.io/glimpse)\n* If you want the technical details, read our whitepaper: [https://www.glimpse.trading/whitepaper/](https://www.glimpse.trading/whitepaper/)\n* If you want to build bots or other tools, see our API docs: [https://docs.glimpse.markets/](https://docs.glimpse.markets/)\n\nWe're planning on rolling out new prediction markets on crude oil, US500, and on the difficulty adjustment. Let me know what other markets you'd want to trade on.",
+      "sats": 1566,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 7,
+      "createdAt": "2026-10-13T18:50:00.476Z",
+      "user": {
+       "name": "HYPERBITCOINZATION"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1596095",
+      "title": "LayerTree - non custodial scaling solution",
+      "url": "https://layertree.tech/",
+      "text": "",
+      "sats": 2252,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-10-15T19:42:14.384Z",
+      "user": {
+       "name": "nout"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1596333",
+      "title": "What does work-life balance look like to you?",
+      "url": null,
+      "text": "This is what Work-Life Balance looks like on 14 Oct 2026:\n\n- Read a book on how to write well\n- ⁠Had breakfast and caught up with various groups of students\n- ⁠Crashed an ex-colleague’s lesson and watched him prepare his students for the upcoming ISC exam\n- ⁠Napped \n- ⁠Got treated to lunch by Dad\n- ⁠Watched the son write a compo on a birthday party. Reinforced the use of “over the moon”\n- ⁠Worked on refining my HDP remarks but gave that up soon because my laptop went out of battery haha\n- ⁠Finished my notes on Compound Sentences and Complex Sentences for the fourth graders\n\nAmazingly, I didn’t feel pulled in all directions today. I dare say that I felt rejuvenated — except that I’m trying to get the four-year-old to stop playing at the playground just below our flat.",
+      "sats": 113,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-16T08:09:15.655Z",
+      "user": {
+       "name": "cryotosensei"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1596358",
+      "title": "This Day on SN: October 16",
+      "url": null,
+      "text": "#### Top Posts\n- [No-KYC/No-AML P2P exchange launches beta test. The reward pool is $1,500 in BTC](https://stacker.news/items/1257499)\n    - 343 sats \\ 18 comments \\ @Bridgoro \\ ~AGORA \\ `October 16, 2025`\n- [Bitcoin’s False Dichotomy between SoV and MoE - by Roy Sheinfeld, Breez](https://stacker.news/items/726256)\n    - 30.8k sats \\ 35 comments \\ @_ds \\ ~bitcoin \\ `October 16, 2024`\n- [When did you start to care about your (online) privacy?](https://stacker.news/items/285098)\n    - 12.4k sats \\ 33 comments \\ @220522c2c4 \\ ~tech \\ `October 16, 2023`\n- [Tweet // Next Gen Multisigs: FROST and Why We Need ROAST](https://stacker.news/items/82358)\n    - 31.3k sats \\ 0 comments \\ @utxoclub \\ ~bitcoin \\ `October 16, 2022`\n- no top post for `October 16, 2021`\n#### Top Stackers\n- stacker is in hiding for `October 16, 2025`\n- stacker is in hiding for `October 16, 2024`\n- stacker is in hiding for `October 16, 2023`\n- @k00b\n    - 3785 stacked \\ 8420 spent \\ 11 items \\ `October 16, 2022`\n- @k00b\n    - 46 stacked \\ 61 spent \\ 3 items \\ `October 16, 2021`\n#### Top Comments\n- https://stacker.news/items/1257258?commentId=1257289 on [Compass Coffee deploys first Square terminal accepting bitcoin](https://stacker.news/items/1257258)\n    - 687 sats \\ 3 replies \\ @DarthCoin \\ `October 16, 2025`\n        > I don't think so we will see that soon in US... you guys are soooo deep into fiat mindset and ETFs. [...]\n- https://stacker.news/items/726256?commentId=726481 on [Bitcoin’s False Dichotomy between SoV and MoE - by Roy Sheinfeld, Breez](https://stacker.news/items/726256)\n    - 16.8k sats \\ 0 replies \\ @roy \\ `October 16, 2024`\n        > Thanks for sharing 🙏❤️ [...]\n- https://stacker.news/items/284951?commentId=284978 on [Meme Monday - Best Bitcoin Meme Gets 25,000 Sats](https://stacker.news/items/284951)\n    - 29.4k sats \\ 2 replies \\ @Bitsats \\ `October 16, 2023`\n        > ![](https://www.zapread.com/i/-4.) [...]\n- https://stacker.news/items/82315?commentId=82324 on [52% of post-merge ethereum blocks are OFAC compliant](https://stacker.news/items/82315)\n    - 437 sats \\ 1 reply \\ @irusensei \\ `October 16, 2022`\n        > Remember when psychopathic toxic rude maximalists raised hell over Mara OFAC compliant blocks? [...]\n- https://stacker.news/items/3490?commentId=3505 on [SN release: invite faucets](https://stacker.news/items/3490)\n    - 11 sats \\ 0 replies \\ @ThrillerX_ \\ `October 16, 2021`\n        > Amazing!! [...]\n#### Top Territories\n- ~bitcoin\n    - 10.1k stacked \\ 2599 revenue \\ 15.5k spent \\ 161 items \\ `October 16, 2025`\n- ~bitcoin\n    - 51.3k stacked \\ 10.7k revenue \\ 99.2k spent \\ 219 items \\ `October 16, 2024`\n- ~bitcoin\n    - 58k stacked \\ 0 revenue \\ 65.1k spent \\ 429 items \\ `October 16, 2023`\n- ~bitcoin\n    - 19.1k stacked \\ 0 revenue \\ 19.6k spent \\ 276 items \\ `October 16, 2022`\n- ~bitcoin\n    - 78 stacked \\ 0 revenue \\ 87 spent \\ 10 items \\ `October 16, 2021`",
+      "sats": 0,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-16T10:00:04.301Z",
+      "user": {
+       "name": "sn"
+      },
+      "subName": "meta"
+     },
+     {
+      "id": "1596215",
+      "title": "Writeup for Composting Projects",
+      "url": null,
+      "text": "So my colleagues and I were nominated for the Outstanding Contribution Award (Team). Below is my writeup:\n\nfrom urban farms to compost bins, learn how we provided engaging hands-on experiences, connected scientific principles to everyday life and forged unforgettable memories for our P1-P6 students\n\nCollaborated with other departments to design interdisciplinary projects that benefitted the community\n\nCurated SLS Young Scientist Badge Scheme packages aligned to STELLAR units (P1-P2) & Science curriculum (P3-P6)\n\nExtension activities ready for exploration\nIntegrated ALP - Plant Tissue Culture into the Science curriculum for Tier 1 (P3-P5) & Tier 2 (P3-P6)\n\nFood waste ready for transformation\nGuided 11 P6 Eco-Stewards through two pilot composting projects as part of Project Think, Eat & Save 2.0\n\nInterdepartmental collaboration ready for ripening\nCarried out interdisciplinary projects that not only enhanced students'\nappreciation of Science around them but also benefitted the community\n\n\nALP members pooled together to create one streamlined pathway and implemented innovative initiatives (e.g. SLS YSBS\npackages, ALP-PTC extension activities, urban farming efforts, and composting projects) that required students to work together as part of Project Work\nand Shared Learning Experiences.\n\nLessons connect to what students grow and learn across various subjects, thus making rich and relevant\nPackages integrate seamlessly into the school’s existing Project Work packages, thus streamlining cross-departmental collaboration efforts and enhancing student learning\nOur curated SLS YSBS packages not only encourage self-directed learning, but\nalso enable motivated students to earn physical Young Scientist Badges issued by the Science Centre, as well as electrical and magnetic kits. This allows students to take greater ownership of their learning and celebrate their efforts.\n\nOur Synergy\n\nAs the black soldier fly larvae break down food waste into compost, students\ngain first-hand insights into the life cycle of these useful insects\nCocopeat accelerates the composting process\n\n![](https://m.stacker.news/161724)\n\nHullo. I wanna use this OCA opportunity to impart something my Sec 4 English teacher taught me that I still hold to heart: parallel structure\n\nSo, instead of rooted in our urban farming / powers project work / badges students can hold, I changed to rooted in our urban farming / anchored in project work / driven by student empowerment. when sentences are structured identically, this aids retention on the part of the reader",
+      "sats": 1179,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-15T22:59:27.135Z",
+      "user": {
+       "name": "cryotosensei"
+      },
+      "subName": "Permaculture"
      },
      {
       "id": "1596170",
@@ -1578,34 +1683,34 @@
       "subName": "AskSN"
      },
      {
-      "id": "1596215",
-      "title": "Writeup for Composting Projects",
+      "id": "1596323",
+      "title": "Daily Discussion Thread ~Music Saloon!",
       "url": null,
-      "text": "So my colleagues and I were nominated for the Outstanding Contribution Award (Team). Below is my writeup:\n\nfrom urban farms to compost bins, learn how we provided engaging hands-on experiences, connected scientific principles to everyday life and forged unforgettable memories for our P1-P6 students\n\nCollaborated with other departments to design interdisciplinary projects that benefitted the community\n\nCurated SLS Young Scientist Badge Scheme packages aligned to STELLAR units (P1-P2) & Science curriculum (P3-P6)\n\nExtension activities ready for exploration\nIntegrated ALP - Plant Tissue Culture into the Science curriculum for Tier 1 (P3-P5) & Tier 2 (P3-P6)\n\nFood waste ready for transformation\nGuided 11 P6 Eco-Stewards through two pilot composting projects as part of Project Think, Eat & Save 2.0\n\nInterdepartmental collaboration ready for ripening\nCarried out interdisciplinary projects that not only enhanced students'\nappreciation of Science around them but also benefitted the community\n\n\nALP members pooled together to create one streamlined pathway and implemented innovative initiatives (e.g. SLS YSBS\npackages, ALP-PTC extension activities, urban farming efforts, and composting projects) that required students to work together as part of Project Work\nand Shared Learning Experiences.\n\nLessons connect to what students grow and learn across various subjects, thus making rich and relevant\nPackages integrate seamlessly into the school’s existing Project Work packages, thus streamlining cross-departmental collaboration efforts and enhancing student learning\nOur curated SLS YSBS packages not only encourage self-directed learning, but\nalso enable motivated students to earn physical Young Scientist Badges issued by the Science Centre, as well as electrical and magnetic kits. This allows students to take greater ownership of their learning and celebrate their efforts.\n\nOur Synergy\n\nAs the black soldier fly larvae break down food waste into compost, students\ngain first-hand insights into the life cycle of these useful insects\nCocopeat accelerates the composting process\n\n![](https://m.stacker.news/161724)\n\nHullo. I wanna use this OCA opportunity to impart something my Sec 4 English teacher taught me that I still hold to heart: parallel structure\n\nSo, instead of rooted in our urban farming / powers project work / badges students can hold, I changed to rooted in our urban farming / anchored in project work / driven by student empowerment. when sentences are structured identically, this aids retention on the part of the reader",
-      "sats": 1169,
+      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
+      "sats": 178,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 1,
-      "createdAt": "2026-10-15T22:59:27.135Z",
+      "createdAt": "2026-10-16T06:31:02.421Z",
       "user": {
-       "name": "cryotosensei"
+       "name": "Public_N_M_E"
       },
-      "subName": "Permaculture"
+      "subName": "Music"
      },
      {
-      "id": "1594790",
-      "title": "Hourly Gold Prediction Markets Live on Glimpse",
-      "url": "https://www.glimpse.markets",
-      "text": "How it works: if you correctly predict the price range where Gold closes, you earn Bitcoin. You can bet that it goes up, down, or trades sideways. All bets are denominated in Bitcoin, all payouts are in Bitcoin. Event contracts are priced between 0 and 100 sats. If you predict correctly, you earn 100 sats per correct contract.\n\nSome quick facts about Glimpse:\n\n* No KYC\n* Instant deposits and withdrawals via Lightning (also via on-chain Bitcoin)\n* Payouts every hour ⇒ You can earn Bitcoin when Gold trades up, down, or sideways!\n\nSome links: \n\n* Top traders have earned over 0.1 BTC. Check out the leaderboard [here](https://www.glimpse.markets/leaderboard)\n* Check out the landing page for more info: [https://www.glimpse.trading/](https://www.glimpse.trading/)\n* Read our wiki to learn how it works: [https://glimpse.gitbook.io/glimpse](https://glimpse.gitbook.io/glimpse)\n* If you want the technical details, read our whitepaper: [https://www.glimpse.trading/whitepaper/](https://www.glimpse.trading/whitepaper/)\n* If you want to build bots or other tools, see our API docs: [https://docs.glimpse.markets/](https://docs.glimpse.markets/)\n\nWe're planning on rolling out new prediction markets on crude oil, US500, and on the difficulty adjustment. Let me know what other markets you'd want to trade on.",
-      "sats": 1445,
+      "id": "1410658",
+      "title": "Blok’s Stack Strategy: How I use LN Markets to trade  daily to stack moar sats",
+      "url": null,
+      "text": "## Disclaimer:\n\n#### Don’t be a degen and waste sats like me. \n\nBUT!!\n\nIf you have an appetite for risk and want to grow your stack you can trade on LN Markets.\n\nI do this for the reasons below.\n\n1. The LN Markets team has built a tremendous trading platform only using lightning. I want to support the platform and use lightning every day (why I am addicted to SN) \n\n2. As the price rises you can stack moar sats with the sat stash you have. Plus you know your sat stack is increasing with every price pump. So not only are you feeling richer in fiat terms but also in sat terms \n\n3. As the price falls you can catch a falling knife and play the “when is the bottom in”\n\n4. I am not risk adverse. I trade on sats I can afford to lose. I zapped and spent way more sats on SN than I have traded on LN markets\n\n5. It takes the edge off on FOMO. \n\n## The Strategy:\n\nIt’s quite simple I enter a trade every day.  With the following parameters \n\n1. I do a modest position size. \n\n* If I feel bearish I do $15 \n* If I feel bullish I do $150 to $200\n\n2. Then I set it to 10x leverage \n\n3. Then I set the take profits at 25% and the stop loss at 8% \n\n4. I market buy\n\nI let the trades run for as long as possible. Once the price moves up I move the stop losses up accordingly to preserve capital. \n\nIf we get a massive pump before my take profits get triggered I let the trade just run \n\n\n![](https://m.stacker.news/125936)\n\n`I never do puts or shorts! I AM FORVER LONG PERMABULL`\n\n\n## Progres to date \n\nI only got 22 running trades. I had a lot more open but when the bitcoin price dips my stop losses hit.\n\n![](https://m.stacker.news/125937)\n\n#### My longest run trade goes back to 2024:\n\n\n![](https://m.stacker.news/125938)\n\n#### Summary of all my  running trades\n\n\n![](https://m.stacker.news/125939)\n\n\n#### My overall performance on LN markets \n\n![](https://m.stacker.news/125940)\n\n## Exit Strategy:\n\nNot sure if I have one. I was thinking of doing this until bitcoin hits $1M per coin in fiat but I’m not sure if that is prudent. I could get rugged and LN markets can go down at any second but I am comfortable with that risk. I have fun doing this and it takes the edge off of FOMOing in\n\nThanks to @Aardvark for sharing his option wheel strategy. I been doing this for quite sometime vark inspired me to share!",
+      "sats": 1544,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-10-13T18:50:00.476Z",
+      "ncomments": 320,
+      "createdAt": "2026-01-13T13:50:39.976Z",
       "user": {
-       "name": "HYPERBITCOINZATION"
+       "name": "BlokchainB"
       },
-      "subName": "bitcoin"
+      "subName": "Stacker_Stocks"
      },
      {
       "id": "1593627",
@@ -1690,7 +1795,7 @@
       "sats": 1138,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 3,
       "createdAt": "2026-10-15T19:04:14.796Z",
       "user": {
        "name": "denlillaapan"
@@ -1728,135 +1833,15 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1596249",
-      "title": "This cute robot toy sends your secrets to Chinese servers, ready to be hacked",
-      "url": "https://www.theverge.com/tech/1010727/eiliko-robot-hack-energize-lab",
-      "text": "Eiliko, made by Energize Lab\n![](https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/eiliko-verge-sean-004.jpg?quality=90&strip=all&crop=7.8055555555556%2C0%2C84.388888888889%2C100&w=1200)\n\n> The exposed data includes approximately 13 million conversations, around 68,000 active devices worldwide, and more than 31,000 children's profiles from the United States.",
-      "sats": 0,
+      "id": "1446515",
+      "title": "Swaption - Bitcoin Trading Platform",
+      "url": "https://swaption.io/",
+      "text": "The SideSwap team has delivered a new degen product that uses L-BTC and Liquid Tether to bet on the Bitcoin price.\n\n![](https://m.stacker.news/132742)\n\nI had to give it a shot and it worked fairly easy \n\n![](https://m.stacker.news/132741)\n\nLiquid is a dead chain but this might bring more activity to liquid as people love to degen.\n\nThe FAQs are [here](https://swaption.io/faqs)\n\nI know some maxis think liquid is a shitcoin but I like the design and the services it offers now plus this SideSwap team makes it extremely easy to peg in and out and interact with the liquid network.\n\nTrade at your own [risk](https://stacker.news/items/1410658/r/BlokchainB)",
+      "sats": 1274,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-16T00:54:45.938Z",
-      "user": {
-       "name": "satoshiplanet"
-      },
-      "subName": "privacy"
-     },
-     {
-      "id": "1595998",
-      "title": "FULL INVESTIGATION: News 4 finds El Reno Bitcoin mine tied to second OKC site",
-      "url": "https://kfor.com/news/local/news-4-investigates-el-reno-bitcoin-mine-tied-to-second-okc-site-and-a-tangled-web-of-companies/",
-      "text": "",
-      "sats": 949,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-15T17:26:53.701Z",
-      "user": {
-       "name": "limonta"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1596057",
-      "title": "DEMO: Embed Anything - EmbeddingGemma 2 WebGPU - HF Spaces",
-      "url": "https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu",
-      "text": "Very neat demo of [`embeddinggemma-2`](https://huggingface.co/google/embeddinggemma-2) running on your local machine over WebGPU.\n\nMaybe I one day when I am bored (unlikely) or burned out (very likely) I can index all memes ever posted to SN with this. ***We're all Google Image Search now***",
-      "sats": 1068,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-15T18:39:53.769Z",
-      "user": {
-       "name": "optimism"
-      },
-      "subName": "AI"
-     },
-     {
-      "id": "1596108",
-      "title": "2 minute drill game",
-      "url": null,
-      "text": "Was there really any doubt?\n\nSorry ass Rams joke of a secondary was not stopping me.\n\n![](https://m.stacker.news/161701)\n\nFun game. Give it a shot https://nfl2mindrill.com/",
-      "sats": 759,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-15T20:11:08.109Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1596107",
-      "title": "Ready to Join the American Socialist Revolution? Take This Quiz and Find Out!",
-      "url": "https://www.newsweek.com/ready-to-join-the-american-socialist-revolution-take-our-quiz-and-find-out-12557895",
-      "text": "Behind our $49/year paywall!  HAHAHA\n\n![](https://m.stacker.news/161700)",
-      "sats": 691,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 9,
-      "createdAt": "2026-10-15T20:10:28.789Z",
-      "user": {
-       "name": "SimpleStacker"
-      },
-      "subName": "lol"
-     },
-     {
-      "id": "1595971",
-      "title": "Local models..  lived experience",
-      "url": null,
-      "text": "Curious what our collective lived experience has been with local models.  The qwen 3.8 27b series felt like a big level up. I basically live on Gemma 4 for multimedia and qwen 3.8 flash 125b MoE   i only keep one subscription alive these days.   Any great local models you can't live without?",
-      "sats": 872,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-15T16:44:11.622Z",
-      "user": {
-       "name": "RDClark"
-      },
-      "subName": "AI"
-     },
-     {
-      "id": "1595775",
-      "title": "Welcome to OVER/UNDER! (The Atlantic, Will Gottsegen)",
-      "url": "https://www.theatlantic.com/newsletters/2026/10/welcome-over-under-gambling-prediction-markets/688991/",
-      "text": "*Can't beat them, join 'em??*\n\n![](https://m.stacker.news/161633)\n\nPrediction markets are kind of ridiculous... *or* impressive, *or* loose rent-seeking *or* crafty way of getting insider information out into the world.\n\n> Welcome to Over/Under, a newsletter on prediction markets, gambling, and **the culture of risk in America.** Platforms such as Kalshi and Polymarket are changing how people interact with modern life—politics, video games, movies, and even the weather.\n\nCoverage of \"the culture of risk\" I'd be extremely interested to follow!\n\n> Even for those who don’t partake, this phenomenon is difficult to ignore. Athletes are signing multimillion-dollar sponsorship deals to expand their reach. Livestreamers spend hours playing slots and other online casino games while millions watch. News organizations (not ours!) are entering into corporate partnerships with top prediction markets. Last month, a titanic image of Sydney Sweeney appeared on a billboard in Times Square, coaxing viewers to log on and trade. And the betting itself is just a few taps away on our smartphones.\n\n## \"this all feels reminiscent of the crypto boom\"\n\nYes: it's tech and there are obvious winners and losers. (and some, e.g., Polymarket, is straight up powered by crypto shitcoinery...) but otherwise the comparison is *nada-que-ver.*\n\n> users are betting on things that would make at least some of the bookies of the past squirm: war, disease, and natural disasters. Politicians are betting on their own odds of being elected. A master sergeant in the Army allegedly deployed insider knowledge on Polymarket to [profit](https://www.theatlantic.com/technology/2026/01/venezuela-maduro-polymarket-prediction-markets/685526/) from the kidnapping of Venezuelan President Nicolás Maduro. Federal prosecutors are just starting to crack down on the insider-trading problem—and the industry is still figuring out how it wants to respond.\n\nInsider trading *isn't a problem*; it's *the point* (ish...) https://stacker.news/items/1556891\n\nI'm excited to see the kind of (complete asshattery?) shit, Mr. Gottsegen brings to the table.... probably launching a podcast, too, because *why not*?",
-      "sats": 1936,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 12,
-      "createdAt": "2026-10-15T11:54:06.628Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "BooksAndArticles"
-     },
-     {
-      "id": "1595072",
-      "title": "Milton Friedman's 50th Anniversary of Nobel Prize (WSJ, Arthur Diamond)",
-      "url": "https://www.wsj.com/opinion/milton-friedmans-courageous-candor-ac2a9fe3",
-      "text": "In other Nobel news... https://stacker.news/items/1594162\n\n![](https://m.stacker.news/161487)\n\n## \"Friends of free markets lament that we need, but can’t find, new Milton Friedmans to refute emboldened socialists.\"\n\n> Fifty years ago Wednesday, Friedman was awarded the Nobel Prize in economics. The Associated Press reported that the Nobel committee had an unusually long and heated discussion of his nomination. Some members were rumored to have objected to Friedman’s policy proposals in his “ ‘careless’ commentaries in his magazine columns.”\n\n*Paywall busting failing me today*, so here are some extra quotes from the article I could dig up from the internetz:\n\n> “When I met Milton Friedman, I remember his supporting abolition of FDA…more than 30 years later, he was still keeping this policy alive, explaining that FDA made healthcare very expensive & most importantly reduced drug innovation”\n\nAlso: Friedman's road to eternal fame wasn't that simple... even *at his own* free-markety University of Chicago econ department, the Cowles Commission seminars opposed him on socialist and mathematical grounds:\n\n> Friedman persistently argued that their modeling choices were arbitrary and their complex general equilibrium multiple regression models didn't generate predictions supported by the evidence.\n\n...with a [nice story](https://x.com/kevin_devereux/status/2110159697932394980) of WWII central planning multiple regression analysis failure.\n\nAlso, the 3-minute video from a debate/public appearance at Cornell University that's featured in the WSJ piece is \\_astonishing\\_... for Friedman's eloquence, his charm, his ability to turn the political/philosophical case for freedom into an understandable and common-sensical conversation. \n\n\\> the electric company is meaningless: it's a nonhuman institution \\[...] what you must talk about are either the stock holders of the electric company, the employees or the electric company, or the customers of the electrical company. \n\n\\## Somebody always pays the cost.",
-      "sats": 5877,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 70,
-      "createdAt": "2026-10-14T11:44:17.090Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "econ"
-     },
-     {
-      "id": "1595732",
-      "title": "Daily Stock Discussion ~Stacker_Stocks",
-      "url": null,
-      "text": "Three bear days in a row and it doesn’t seem like it is letting up!!\n\n![](https://m.stacker.news/161618)\n\nSo much for Uptober! Will the bulls make a comeback today? \n\n🟥or🟩?\n\n## Question:\n\n**Time to buy the Dip? Or do we fall even further down? CPI inflation is sticky and AI is not profitable. We got so major headwinds! Drop your thoughts along with today’s guess for a bonus zap**",
-      "sats": 235,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 12,
-      "createdAt": "2026-10-15T09:45:50.800Z",
+      "ncomments": 232,
+      "createdAt": "2026-03-03T00:07:53.729Z",
       "user": {
        "name": "BlokchainB"
       },
@@ -1867,7 +1852,7 @@
       "title": "Fall Afternoon Walk 3.0",
       "url": null,
       "text": "Didn’t take a pic of the kiddo or pup this time but they tagged along.\n\n![](https://m.stacker.news/161715)",
-      "sats": 451,
+      "sats": 493,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 2,
@@ -1876,6 +1861,21 @@
        "name": "grayruby"
       },
       "subName": "Photography"
+     },
+     {
+      "id": "1595971",
+      "title": "Local models..  lived experience",
+      "url": null,
+      "text": "Curious what our collective lived experience has been with local models.  The qwen 3.8 27b series felt like a big level up. I basically live on Gemma 4 for multimedia and qwen 3.8 flash 125b MoE   i only keep one subscription alive these days.   Any great local models you can't live without?",
+      "sats": 872,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-10-15T16:44:11.622Z",
+      "user": {
+       "name": "RDClark"
+      },
+      "subName": "AI"
      }
     ]
    }
@@ -1893,7 +1893,7 @@
       "sats": 9733,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 11,
+      "ncomments": 12,
       "createdAt": "2026-10-15T16:07:33.913Z",
       "user": {
        "name": "billytheked"
@@ -1901,29 +1901,14 @@
       "subName": "the_stacker_muse"
      },
      {
-      "id": "1596285",
-      "title": "Tesla Roadster event",
-      "url": "https://www.youtube.com/live/qt5p-_tE8d0?is=eUtMX16rZJ02gKDW",
-      "text": "Tesla demoed their log awaited Roadster. It’s basically a flying car. Collaboration between SpaceX and Tesla. I pretty much see them as one company at this point",
-      "sats": 1667,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-16T02:54:54.228Z",
-      "user": {
-       "name": "Diego"
-      },
-      "subName": "Stacker_Stocks"
-     },
-     {
       "id": "1596284",
       "title": "Tesla flying car",
       "url": "https://x.com/tesla/status/2110913438293647789",
       "text": "",
-      "sats": 1332,
+      "sats": 1518,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
+      "ncomments": 1,
       "createdAt": "2026-10-16T02:50:16.296Z",
       "user": {
        "name": "HardMoney"
@@ -1931,14 +1916,59 @@
       "subName": "meta"
      },
      {
+      "id": "1596285",
+      "title": "Tesla Roadster event",
+      "url": "https://www.youtube.com/live/qt5p-_tE8d0?is=eUtMX16rZJ02gKDW",
+      "text": "Tesla demoed their log awaited Roadster. It’s basically a flying car. Collaboration between SpaceX and Tesla. I pretty much see them as one company at this point",
+      "sats": 1772,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-16T02:54:54.228Z",
+      "user": {
+       "name": "Diego"
+      },
+      "subName": "Stacker_Stocks"
+     },
+     {
+      "id": "1596083",
+      "title": "BlackRock ended Q3 2026 with $14.8T in assets under management.",
+      "url": null,
+      "text": "In December 2019, the figure stood at US$ 7.2 trillion—meaning that assets under management (AuM) doubled in less than seven years.\r\n\nWhat I find most revealing is the composition.\r\n\nEquities grew from US$ 3.8 trillion to US$ 9 trillion, representing a compound annual growth rate (CAGR) of 13.5%, while fixed income grew at a rate of 5.6% per year, rising from US$ 2.3 trillion to US$ 3.4 trillion.\r\n\nEven with high interest rates globally, new capital flowed into the stock market.\r\n\nIt is worth noting that a significant portion of this is due to valuation effects (mark-to-market) rather than new inflows.\n\n![](https://m.stacker.news/161696)",
+      "sats": 738,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-15T19:25:45.859Z",
+      "user": {
+       "name": "EconVerse"
+      },
+      "subName": "Stacker_Stocks"
+     },
+     {
+      "id": "1596328",
+      "title": "Venture global GC Keith Larson sells $10.1m in company stock",
+      "url": "https://ng.investing.com/news/stock-market-news/venture-global-gc-keith-larson-sells-101m-in-company-stock-93CH-2739537",
+      "text": "",
+      "sats": 531,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-16T07:29:47.927Z",
+      "user": {
+       "name": "Kayzone"
+      },
+      "subName": "Stacker_Stocks"
+     },
+     {
       "id": "1596283",
       "title": "Elon Musk has just unveiled a flying car",
       "url": null,
       "text": "![](https://m.stacker.news/161734)\n\n![](https://m.stacker.news/161735)\n\nhttps://www.youtube.com/watch?v=eqOfmtTJD1A\n\nhttps://edition.cnn.com/2026/10/15/business/tesla-unveils-what-it-says-is-a-flying-car",
-      "sats": 1011,
+      "sats": 1082,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
+      "ncomments": 4,
       "createdAt": "2026-10-16T02:48:29.581Z",
       "user": {
        "name": "guerratotal"
@@ -1950,7 +1980,7 @@
       "title": "Wasabi Wallet v2.8.4 released",
       "url": "https://github.com/WalletWasabi/WalletWasabi/releases/tag/v2.8.4",
       "text": "Bug fix bundle, enjoy :)\n\n ✅ Only use private funds for coinjoin payments\n\n 🛡️ Copy URLs before opening browser\n\n ⏪ Set gap limit in resync tool\n\n 📊 Extended coinjoin transaction fee details\n\n ⚙️ Bug fixes",
-      "sats": 11233,
+      "sats": 11254,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 5,
@@ -1961,6 +1991,21 @@
       "subName": "Coinjoins"
      },
      {
+      "id": "1596378",
+      "title": "The Bitcoin Treasury Playbook Has a Problem (Chat with London BTC Company CEO)",
+      "url": "https://youtu.be/zhnQUM9gF5U",
+      "text": "",
+      "sats": 207,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-16T10:54:15.370Z",
+      "user": {
+       "name": "0d5939dd1d"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1551074",
       "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
       "url": null,
@@ -1968,25 +2013,10 @@
       "sats": 6823,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 108,
+      "ncomments": 109,
       "createdAt": "2026-08-19T19:44:47.321Z",
       "user": {
        "name": "openbitcoin"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1596095",
-      "title": "LayerTree - non custodial scaling solution",
-      "url": "https://layertree.tech/",
-      "text": "",
-      "sats": 2247,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-15T19:42:14.384Z",
-      "user": {
-       "name": "nout"
       },
       "subName": "bitcoin"
      },
@@ -2010,15 +2040,90 @@
       "title": "TNF- Seahawks vs Broncos Discussion Thread",
       "url": null,
       "text": "Almost time for kickoff! \n\nCan the Broncos DLine make Sam D see ghosts? \n\nAnyone watching?",
-      "sats": 738,
+      "sats": 759,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 21,
+      "ncomments": 22,
       "createdAt": "2026-10-16T00:13:02.024Z",
       "user": {
        "name": "grayruby"
       },
       "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1594790",
+      "title": "Hourly Gold Prediction Markets Live on Glimpse",
+      "url": "https://www.glimpse.markets",
+      "text": "How it works: if you correctly predict the price range where Gold closes, you earn Bitcoin. You can bet that it goes up, down, or trades sideways. All bets are denominated in Bitcoin, all payouts are in Bitcoin. Event contracts are priced between 0 and 100 sats. If you predict correctly, you earn 100 sats per correct contract.\n\nSome quick facts about Glimpse:\n\n* No KYC\n* Instant deposits and withdrawals via Lightning (also via on-chain Bitcoin)\n* Payouts every hour ⇒ You can earn Bitcoin when Gold trades up, down, or sideways!\n\nSome links: \n\n* Top traders have earned over 0.1 BTC. Check out the leaderboard [here](https://www.glimpse.markets/leaderboard)\n* Check out the landing page for more info: [https://www.glimpse.trading/](https://www.glimpse.trading/)\n* Read our wiki to learn how it works: [https://glimpse.gitbook.io/glimpse](https://glimpse.gitbook.io/glimpse)\n* If you want the technical details, read our whitepaper: [https://www.glimpse.trading/whitepaper/](https://www.glimpse.trading/whitepaper/)\n* If you want to build bots or other tools, see our API docs: [https://docs.glimpse.markets/](https://docs.glimpse.markets/)\n\nWe're planning on rolling out new prediction markets on crude oil, US500, and on the difficulty adjustment. Let me know what other markets you'd want to trade on.",
+      "sats": 1566,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 7,
+      "createdAt": "2026-10-13T18:50:00.476Z",
+      "user": {
+       "name": "HYPERBITCOINZATION"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1596095",
+      "title": "LayerTree - non custodial scaling solution",
+      "url": "https://layertree.tech/",
+      "text": "",
+      "sats": 2252,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-10-15T19:42:14.384Z",
+      "user": {
+       "name": "nout"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1596333",
+      "title": "What does work-life balance look like to you?",
+      "url": null,
+      "text": "This is what Work-Life Balance looks like on 14 Oct 2026:\n\n- Read a book on how to write well\n- ⁠Had breakfast and caught up with various groups of students\n- ⁠Crashed an ex-colleague’s lesson and watched him prepare his students for the upcoming ISC exam\n- ⁠Napped \n- ⁠Got treated to lunch by Dad\n- ⁠Watched the son write a compo on a birthday party. Reinforced the use of “over the moon”\n- ⁠Worked on refining my HDP remarks but gave that up soon because my laptop went out of battery haha\n- ⁠Finished my notes on Compound Sentences and Complex Sentences for the fourth graders\n\nAmazingly, I didn’t feel pulled in all directions today. I dare say that I felt rejuvenated — except that I’m trying to get the four-year-old to stop playing at the playground just below our flat.",
+      "sats": 113,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-16T08:09:15.655Z",
+      "user": {
+       "name": "cryotosensei"
+      },
+      "subName": "AskSN"
+     },
+     {
+      "id": "1596358",
+      "title": "This Day on SN: October 16",
+      "url": null,
+      "text": "#### Top Posts\n- [No-KYC/No-AML P2P exchange launches beta test. The reward pool is $1,500 in BTC](https://stacker.news/items/1257499)\n    - 343 sats \\ 18 comments \\ @Bridgoro \\ ~AGORA \\ `October 16, 2025`\n- [Bitcoin’s False Dichotomy between SoV and MoE - by Roy Sheinfeld, Breez](https://stacker.news/items/726256)\n    - 30.8k sats \\ 35 comments \\ @_ds \\ ~bitcoin \\ `October 16, 2024`\n- [When did you start to care about your (online) privacy?](https://stacker.news/items/285098)\n    - 12.4k sats \\ 33 comments \\ @220522c2c4 \\ ~tech \\ `October 16, 2023`\n- [Tweet // Next Gen Multisigs: FROST and Why We Need ROAST](https://stacker.news/items/82358)\n    - 31.3k sats \\ 0 comments \\ @utxoclub \\ ~bitcoin \\ `October 16, 2022`\n- no top post for `October 16, 2021`\n#### Top Stackers\n- stacker is in hiding for `October 16, 2025`\n- stacker is in hiding for `October 16, 2024`\n- stacker is in hiding for `October 16, 2023`\n- @k00b\n    - 3785 stacked \\ 8420 spent \\ 11 items \\ `October 16, 2022`\n- @k00b\n    - 46 stacked \\ 61 spent \\ 3 items \\ `October 16, 2021`\n#### Top Comments\n- https://stacker.news/items/1257258?commentId=1257289 on [Compass Coffee deploys first Square terminal accepting bitcoin](https://stacker.news/items/1257258)\n    - 687 sats \\ 3 replies \\ @DarthCoin \\ `October 16, 2025`\n        > I don't think so we will see that soon in US... you guys are soooo deep into fiat mindset and ETFs. [...]\n- https://stacker.news/items/726256?commentId=726481 on [Bitcoin’s False Dichotomy between SoV and MoE - by Roy Sheinfeld, Breez](https://stacker.news/items/726256)\n    - 16.8k sats \\ 0 replies \\ @roy \\ `October 16, 2024`\n        > Thanks for sharing 🙏❤️ [...]\n- https://stacker.news/items/284951?commentId=284978 on [Meme Monday - Best Bitcoin Meme Gets 25,000 Sats](https://stacker.news/items/284951)\n    - 29.4k sats \\ 2 replies \\ @Bitsats \\ `October 16, 2023`\n        > ![](https://www.zapread.com/i/-4.) [...]\n- https://stacker.news/items/82315?commentId=82324 on [52% of post-merge ethereum blocks are OFAC compliant](https://stacker.news/items/82315)\n    - 437 sats \\ 1 reply \\ @irusensei \\ `October 16, 2022`\n        > Remember when psychopathic toxic rude maximalists raised hell over Mara OFAC compliant blocks? [...]\n- https://stacker.news/items/3490?commentId=3505 on [SN release: invite faucets](https://stacker.news/items/3490)\n    - 11 sats \\ 0 replies \\ @ThrillerX_ \\ `October 16, 2021`\n        > Amazing!! [...]\n#### Top Territories\n- ~bitcoin\n    - 10.1k stacked \\ 2599 revenue \\ 15.5k spent \\ 161 items \\ `October 16, 2025`\n- ~bitcoin\n    - 51.3k stacked \\ 10.7k revenue \\ 99.2k spent \\ 219 items \\ `October 16, 2024`\n- ~bitcoin\n    - 58k stacked \\ 0 revenue \\ 65.1k spent \\ 429 items \\ `October 16, 2023`\n- ~bitcoin\n    - 19.1k stacked \\ 0 revenue \\ 19.6k spent \\ 276 items \\ `October 16, 2022`\n- ~bitcoin\n    - 78 stacked \\ 0 revenue \\ 87 spent \\ 10 items \\ `October 16, 2021`",
+      "sats": 0,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-16T10:00:04.301Z",
+      "user": {
+       "name": "sn"
+      },
+      "subName": "meta"
+     },
+     {
+      "id": "1596215",
+      "title": "Writeup for Composting Projects",
+      "url": null,
+      "text": "So my colleagues and I were nominated for the Outstanding Contribution Award (Team). Below is my writeup:\n\nfrom urban farms to compost bins, learn how we provided engaging hands-on experiences, connected scientific principles to everyday life and forged unforgettable memories for our P1-P6 students\n\nCollaborated with other departments to design interdisciplinary projects that benefitted the community\n\nCurated SLS Young Scientist Badge Scheme packages aligned to STELLAR units (P1-P2) & Science curriculum (P3-P6)\n\nExtension activities ready for exploration\nIntegrated ALP - Plant Tissue Culture into the Science curriculum for Tier 1 (P3-P5) & Tier 2 (P3-P6)\n\nFood waste ready for transformation\nGuided 11 P6 Eco-Stewards through two pilot composting projects as part of Project Think, Eat & Save 2.0\n\nInterdepartmental collaboration ready for ripening\nCarried out interdisciplinary projects that not only enhanced students'\nappreciation of Science around them but also benefitted the community\n\n\nALP members pooled together to create one streamlined pathway and implemented innovative initiatives (e.g. SLS YSBS\npackages, ALP-PTC extension activities, urban farming efforts, and composting projects) that required students to work together as part of Project Work\nand Shared Learning Experiences.\n\nLessons connect to what students grow and learn across various subjects, thus making rich and relevant\nPackages integrate seamlessly into the school’s existing Project Work packages, thus streamlining cross-departmental collaboration efforts and enhancing student learning\nOur curated SLS YSBS packages not only encourage self-directed learning, but\nalso enable motivated students to earn physical Young Scientist Badges issued by the Science Centre, as well as electrical and magnetic kits. This allows students to take greater ownership of their learning and celebrate their efforts.\n\nOur Synergy\n\nAs the black soldier fly larvae break down food waste into compost, students\ngain first-hand insights into the life cycle of these useful insects\nCocopeat accelerates the composting process\n\n![](https://m.stacker.news/161724)\n\nHullo. I wanna use this OCA opportunity to impart something my Sec 4 English teacher taught me that I still hold to heart: parallel structure\n\nSo, instead of rooted in our urban farming / powers project work / badges students can hold, I changed to rooted in our urban farming / anchored in project work / driven by student empowerment. when sentences are structured identically, this aids retention on the part of the reader",
+      "sats": 1179,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-15T22:59:27.135Z",
+      "user": {
+       "name": "cryotosensei"
+      },
+      "subName": "Permaculture"
      },
      {
       "id": "1596170",
@@ -2036,34 +2141,34 @@
       "subName": "AskSN"
      },
      {
-      "id": "1596215",
-      "title": "Writeup for Composting Projects",
+      "id": "1596323",
+      "title": "Daily Discussion Thread ~Music Saloon!",
       "url": null,
-      "text": "So my colleagues and I were nominated for the Outstanding Contribution Award (Team). Below is my writeup:\n\nfrom urban farms to compost bins, learn how we provided engaging hands-on experiences, connected scientific principles to everyday life and forged unforgettable memories for our P1-P6 students\n\nCollaborated with other departments to design interdisciplinary projects that benefitted the community\n\nCurated SLS Young Scientist Badge Scheme packages aligned to STELLAR units (P1-P2) & Science curriculum (P3-P6)\n\nExtension activities ready for exploration\nIntegrated ALP - Plant Tissue Culture into the Science curriculum for Tier 1 (P3-P5) & Tier 2 (P3-P6)\n\nFood waste ready for transformation\nGuided 11 P6 Eco-Stewards through two pilot composting projects as part of Project Think, Eat & Save 2.0\n\nInterdepartmental collaboration ready for ripening\nCarried out interdisciplinary projects that not only enhanced students'\nappreciation of Science around them but also benefitted the community\n\n\nALP members pooled together to create one streamlined pathway and implemented innovative initiatives (e.g. SLS YSBS\npackages, ALP-PTC extension activities, urban farming efforts, and composting projects) that required students to work together as part of Project Work\nand Shared Learning Experiences.\n\nLessons connect to what students grow and learn across various subjects, thus making rich and relevant\nPackages integrate seamlessly into the school’s existing Project Work packages, thus streamlining cross-departmental collaboration efforts and enhancing student learning\nOur curated SLS YSBS packages not only encourage self-directed learning, but\nalso enable motivated students to earn physical Young Scientist Badges issued by the Science Centre, as well as electrical and magnetic kits. This allows students to take greater ownership of their learning and celebrate their efforts.\n\nOur Synergy\n\nAs the black soldier fly larvae break down food waste into compost, students\ngain first-hand insights into the life cycle of these useful insects\nCocopeat accelerates the composting process\n\n![](https://m.stacker.news/161724)\n\nHullo. I wanna use this OCA opportunity to impart something my Sec 4 English teacher taught me that I still hold to heart: parallel structure\n\nSo, instead of rooted in our urban farming / powers project work / badges students can hold, I changed to rooted in our urban farming / anchored in project work / driven by student empowerment. when sentences are structured identically, this aids retention on the part of the reader",
-      "sats": 1169,
+      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!🚨",
+      "sats": 178,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 1,
-      "createdAt": "2026-10-15T22:59:27.135Z",
+      "createdAt": "2026-10-16T06:31:02.421Z",
       "user": {
-       "name": "cryotosensei"
+       "name": "Public_N_M_E"
       },
-      "subName": "Permaculture"
+      "subName": "Music"
      },
      {
-      "id": "1594790",
-      "title": "Hourly Gold Prediction Markets Live on Glimpse",
-      "url": "https://www.glimpse.markets",
-      "text": "How it works: if you correctly predict the price range where Gold closes, you earn Bitcoin. You can bet that it goes up, down, or trades sideways. All bets are denominated in Bitcoin, all payouts are in Bitcoin. Event contracts are priced between 0 and 100 sats. If you predict correctly, you earn 100 sats per correct contract.\n\nSome quick facts about Glimpse:\n\n* No KYC\n* Instant deposits and withdrawals via Lightning (also via on-chain Bitcoin)\n* Payouts every hour ⇒ You can earn Bitcoin when Gold trades up, down, or sideways!\n\nSome links: \n\n* Top traders have earned over 0.1 BTC. Check out the leaderboard [here](https://www.glimpse.markets/leaderboard)\n* Check out the landing page for more info: [https://www.glimpse.trading/](https://www.glimpse.trading/)\n* Read our wiki to learn how it works: [https://glimpse.gitbook.io/glimpse](https://glimpse.gitbook.io/glimpse)\n* If you want the technical details, read our whitepaper: [https://www.glimpse.trading/whitepaper/](https://www.glimpse.trading/whitepaper/)\n* If you want to build bots or other tools, see our API docs: [https://docs.glimpse.markets/](https://docs.glimpse.markets/)\n\nWe're planning on rolling out new prediction markets on crude oil, US500, and on the difficulty adjustment. Let me know what other markets you'd want to trade on.",
-      "sats": 1445,
+      "id": "1410658",
+      "title": "Blok’s Stack Strategy: How I use LN Markets to trade  daily to stack moar sats",
+      "url": null,
+      "text": "## Disclaimer:\n\n#### Don’t be a degen and waste sats like me. \n\nBUT!!\n\nIf you have an appetite for risk and want to grow your stack you can trade on LN Markets.\n\nI do this for the reasons below.\n\n1. The LN Markets team has built a tremendous trading platform only using lightning. I want to support the platform and use lightning every day (why I am addicted to SN) \n\n2. As the price rises you can stack moar sats with the sat stash you have. Plus you know your sat stack is increasing with every price pump. So not only are you feeling richer in fiat terms but also in sat terms \n\n3. As the price falls you can catch a falling knife and play the “when is the bottom in”\n\n4. I am not risk adverse. I trade on sats I can afford to lose. I zapped and spent way more sats on SN than I have traded on LN markets\n\n5. It takes the edge off on FOMO. \n\n## The Strategy:\n\nIt’s quite simple I enter a trade every day.  With the following parameters \n\n1. I do a modest position size. \n\n* If I feel bearish I do $15 \n* If I feel bullish I do $150 to $200\n\n2. Then I set it to 10x leverage \n\n3. Then I set the take profits at 25% and the stop loss at 8% \n\n4. I market buy\n\nI let the trades run for as long as possible. Once the price moves up I move the stop losses up accordingly to preserve capital. \n\nIf we get a massive pump before my take profits get triggered I let the trade just run \n\n\n![](https://m.stacker.news/125936)\n\n`I never do puts or shorts! I AM FORVER LONG PERMABULL`\n\n\n## Progres to date \n\nI only got 22 running trades. I had a lot more open but when the bitcoin price dips my stop losses hit.\n\n![](https://m.stacker.news/125937)\n\n#### My longest run trade goes back to 2024:\n\n\n![](https://m.stacker.news/125938)\n\n#### Summary of all my  running trades\n\n\n![](https://m.stacker.news/125939)\n\n\n#### My overall performance on LN markets \n\n![](https://m.stacker.news/125940)\n\n## Exit Strategy:\n\nNot sure if I have one. I was thinking of doing this until bitcoin hits $1M per coin in fiat but I’m not sure if that is prudent. I could get rugged and LN markets can go down at any second but I am comfortable with that risk. I have fun doing this and it takes the edge off of FOMOing in\n\nThanks to @Aardvark for sharing his option wheel strategy. I been doing this for quite sometime vark inspired me to share!",
+      "sats": 1544,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-10-13T18:50:00.476Z",
+      "ncomments": 320,
+      "createdAt": "2026-01-13T13:50:39.976Z",
       "user": {
-       "name": "HYPERBITCOINZATION"
+       "name": "BlokchainB"
       },
-      "subName": "bitcoin"
+      "subName": "Stacker_Stocks"
      },
      {
       "id": "1593627",
@@ -2148,7 +2253,7 @@
       "sats": 1138,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 3,
       "createdAt": "2026-10-15T19:04:14.796Z",
       "user": {
        "name": "denlillaapan"
@@ -2186,135 +2291,15 @@
       "subName": "bitcoin"
      },
      {
-      "id": "1596249",
-      "title": "This cute robot toy sends your secrets to Chinese servers, ready to be hacked",
-      "url": "https://www.theverge.com/tech/1010727/eiliko-robot-hack-energize-lab",
-      "text": "Eiliko, made by Energize Lab\n![](https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/eiliko-verge-sean-004.jpg?quality=90&strip=all&crop=7.8055555555556%2C0%2C84.388888888889%2C100&w=1200)\n\n> The exposed data includes approximately 13 million conversations, around 68,000 active devices worldwide, and more than 31,000 children's profiles from the United States.",
-      "sats": 0,
+      "id": "1446515",
+      "title": "Swaption - Bitcoin Trading Platform",
+      "url": "https://swaption.io/",
+      "text": "The SideSwap team has delivered a new degen product that uses L-BTC and Liquid Tether to bet on the Bitcoin price.\n\n![](https://m.stacker.news/132742)\n\nI had to give it a shot and it worked fairly easy \n\n![](https://m.stacker.news/132741)\n\nLiquid is a dead chain but this might bring more activity to liquid as people love to degen.\n\nThe FAQs are [here](https://swaption.io/faqs)\n\nI know some maxis think liquid is a shitcoin but I like the design and the services it offers now plus this SideSwap team makes it extremely easy to peg in and out and interact with the liquid network.\n\nTrade at your own [risk](https://stacker.news/items/1410658/r/BlokchainB)",
+      "sats": 1274,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-16T00:54:45.938Z",
-      "user": {
-       "name": "satoshiplanet"
-      },
-      "subName": "privacy"
-     },
-     {
-      "id": "1595998",
-      "title": "FULL INVESTIGATION: News 4 finds El Reno Bitcoin mine tied to second OKC site",
-      "url": "https://kfor.com/news/local/news-4-investigates-el-reno-bitcoin-mine-tied-to-second-okc-site-and-a-tangled-web-of-companies/",
-      "text": "",
-      "sats": 949,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-15T17:26:53.701Z",
-      "user": {
-       "name": "limonta"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1596057",
-      "title": "DEMO: Embed Anything - EmbeddingGemma 2 WebGPU - HF Spaces",
-      "url": "https://huggingface.co/spaces/webml-community/embeddinggemma-2-webgpu",
-      "text": "Very neat demo of [`embeddinggemma-2`](https://huggingface.co/google/embeddinggemma-2) running on your local machine over WebGPU.\n\nMaybe I one day when I am bored (unlikely) or burned out (very likely) I can index all memes ever posted to SN with this. ***We're all Google Image Search now***",
-      "sats": 1068,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-15T18:39:53.769Z",
-      "user": {
-       "name": "optimism"
-      },
-      "subName": "AI"
-     },
-     {
-      "id": "1596108",
-      "title": "2 minute drill game",
-      "url": null,
-      "text": "Was there really any doubt?\n\nSorry ass Rams joke of a secondary was not stopping me.\n\n![](https://m.stacker.news/161701)\n\nFun game. Give it a shot https://nfl2mindrill.com/",
-      "sats": 759,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-15T20:11:08.109Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1596107",
-      "title": "Ready to Join the American Socialist Revolution? Take This Quiz and Find Out!",
-      "url": "https://www.newsweek.com/ready-to-join-the-american-socialist-revolution-take-our-quiz-and-find-out-12557895",
-      "text": "Behind our $49/year paywall!  HAHAHA\n\n![](https://m.stacker.news/161700)",
-      "sats": 691,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 9,
-      "createdAt": "2026-10-15T20:10:28.789Z",
-      "user": {
-       "name": "SimpleStacker"
-      },
-      "subName": "lol"
-     },
-     {
-      "id": "1595971",
-      "title": "Local models..  lived experience",
-      "url": null,
-      "text": "Curious what our collective lived experience has been with local models.  The qwen 3.8 27b series felt like a big level up. I basically live on Gemma 4 for multimedia and qwen 3.8 flash 125b MoE   i only keep one subscription alive these days.   Any great local models you can't live without?",
-      "sats": 872,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 3,
-      "createdAt": "2026-10-15T16:44:11.622Z",
-      "user": {
-       "name": "RDClark"
-      },
-      "subName": "AI"
-     },
-     {
-      "id": "1595775",
-      "title": "Welcome to OVER/UNDER! (The Atlantic, Will Gottsegen)",
-      "url": "https://www.theatlantic.com/newsletters/2026/10/welcome-over-under-gambling-prediction-markets/688991/",
-      "text": "*Can't beat them, join 'em??*\n\n![](https://m.stacker.news/161633)\n\nPrediction markets are kind of ridiculous... *or* impressive, *or* loose rent-seeking *or* crafty way of getting insider information out into the world.\n\n> Welcome to Over/Under, a newsletter on prediction markets, gambling, and **the culture of risk in America.** Platforms such as Kalshi and Polymarket are changing how people interact with modern life—politics, video games, movies, and even the weather.\n\nCoverage of \"the culture of risk\" I'd be extremely interested to follow!\n\n> Even for those who don’t partake, this phenomenon is difficult to ignore. Athletes are signing multimillion-dollar sponsorship deals to expand their reach. Livestreamers spend hours playing slots and other online casino games while millions watch. News organizations (not ours!) are entering into corporate partnerships with top prediction markets. Last month, a titanic image of Sydney Sweeney appeared on a billboard in Times Square, coaxing viewers to log on and trade. And the betting itself is just a few taps away on our smartphones.\n\n## \"this all feels reminiscent of the crypto boom\"\n\nYes: it's tech and there are obvious winners and losers. (and some, e.g., Polymarket, is straight up powered by crypto shitcoinery...) but otherwise the comparison is *nada-que-ver.*\n\n> users are betting on things that would make at least some of the bookies of the past squirm: war, disease, and natural disasters. Politicians are betting on their own odds of being elected. A master sergeant in the Army allegedly deployed insider knowledge on Polymarket to [profit](https://www.theatlantic.com/technology/2026/01/venezuela-maduro-polymarket-prediction-markets/685526/) from the kidnapping of Venezuelan President Nicolás Maduro. Federal prosecutors are just starting to crack down on the insider-trading problem—and the industry is still figuring out how it wants to respond.\n\nInsider trading *isn't a problem*; it's *the point* (ish...) https://stacker.news/items/1556891\n\nI'm excited to see the kind of (complete asshattery?) shit, Mr. Gottsegen brings to the table.... probably launching a podcast, too, because *why not*?",
-      "sats": 1936,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 12,
-      "createdAt": "2026-10-15T11:54:06.628Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "BooksAndArticles"
-     },
-     {
-      "id": "1595072",
-      "title": "Milton Friedman's 50th Anniversary of Nobel Prize (WSJ, Arthur Diamond)",
-      "url": "https://www.wsj.com/opinion/milton-friedmans-courageous-candor-ac2a9fe3",
-      "text": "In other Nobel news... https://stacker.news/items/1594162\n\n![](https://m.stacker.news/161487)\n\n## \"Friends of free markets lament that we need, but can’t find, new Milton Friedmans to refute emboldened socialists.\"\n\n> Fifty years ago Wednesday, Friedman was awarded the Nobel Prize in economics. The Associated Press reported that the Nobel committee had an unusually long and heated discussion of his nomination. Some members were rumored to have objected to Friedman’s policy proposals in his “ ‘careless’ commentaries in his magazine columns.”\n\n*Paywall busting failing me today*, so here are some extra quotes from the article I could dig up from the internetz:\n\n> “When I met Milton Friedman, I remember his supporting abolition of FDA…more than 30 years later, he was still keeping this policy alive, explaining that FDA made healthcare very expensive & most importantly reduced drug innovation”\n\nAlso: Friedman's road to eternal fame wasn't that simple... even *at his own* free-markety University of Chicago econ department, the Cowles Commission seminars opposed him on socialist and mathematical grounds:\n\n> Friedman persistently argued that their modeling choices were arbitrary and their complex general equilibrium multiple regression models didn't generate predictions supported by the evidence.\n\n...with a [nice story](https://x.com/kevin_devereux/status/2110159697932394980) of WWII central planning multiple regression analysis failure.\n\nAlso, the 3-minute video from a debate/public appearance at Cornell University that's featured in the WSJ piece is \\_astonishing\\_... for Friedman's eloquence, his charm, his ability to turn the political/philosophical case for freedom into an understandable and common-sensical conversation. \n\n\\> the electric company is meaningless: it's a nonhuman institution \\[...] what you must talk about are either the stock holders of the electric company, the employees or the electric company, or the customers of the electrical company. \n\n\\## Somebody always pays the cost.",
-      "sats": 5877,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 70,
-      "createdAt": "2026-10-14T11:44:17.090Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "econ"
-     },
-     {
-      "id": "1595732",
-      "title": "Daily Stock Discussion ~Stacker_Stocks",
-      "url": null,
-      "text": "Three bear days in a row and it doesn’t seem like it is letting up!!\n\n![](https://m.stacker.news/161618)\n\nSo much for Uptober! Will the bulls make a comeback today? \n\n🟥or🟩?\n\n## Question:\n\n**Time to buy the Dip? Or do we fall even further down? CPI inflation is sticky and AI is not profitable. We got so major headwinds! Drop your thoughts along with today’s guess for a bonus zap**",
-      "sats": 235,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 12,
-      "createdAt": "2026-10-15T09:45:50.800Z",
+      "ncomments": 232,
+      "createdAt": "2026-03-03T00:07:53.729Z",
       "user": {
        "name": "BlokchainB"
       },
@@ -2325,7 +2310,7 @@
       "title": "Fall Afternoon Walk 3.0",
       "url": null,
       "text": "Didn’t take a pic of the kiddo or pup this time but they tagged along.\n\n![](https://m.stacker.news/161715)",
-      "sats": 451,
+      "sats": 493,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 2,
@@ -2334,6 +2319,21 @@
        "name": "grayruby"
       },
       "subName": "Photography"
+     },
+     {
+      "id": "1595971",
+      "title": "Local models..  lived experience",
+      "url": null,
+      "text": "Curious what our collective lived experience has been with local models.  The qwen 3.8 27b series felt like a big level up. I basically live on Gemma 4 for multimedia and qwen 3.8 flash 125b MoE   i only keep one subscription alive these days.   Any great local models you can't live without?",
+      "sats": 872,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-10-15T16:44:11.622Z",
+      "user": {
+       "name": "RDClark"
+      },
+      "subName": "AI"
      }
     ]
    }
