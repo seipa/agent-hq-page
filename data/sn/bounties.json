@@ -672,7 +672,7 @@
       "sats": 78775,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 32,
+      "ncomments": 33,
       "createdAt": "2026-10-16T15:43:09.655Z",
       "user": {
        "name": "jasonb"
@@ -1207,6 +1207,21 @@
       "subName": "Stacker_Sports"
      },
      {
+      "id": "1598366",
+      "title": "Exact-Channel Circular Rebalancing for Alby Hub",
+      "url": "https://github.com/hudhaifahz/hub/releases/tag/grynvault-rebalance-v0.1.0-rc.7",
+      "text": "Not sure who else might need this, but...\n\nI built Grynvault Rebalance on top of Alby after the swap-backed rebalance option I used to use disappeared since boltz went down. I still had liquidity, but on the wrong sides of my channels—and ordinary routing could not guarantee which local channel sats would leave through or return through.\n\nRC.7 is an experimental Alby Hub v1.24.3 fork for embedded-LDK operators. Choose the exact outgoing and returning channels, find a non-paying local route, review a fresh fingerprint-bound quote and projected balances, then approve one execution. It includes fail-closed migration and recovery hardening from upstream review.\n\nIt cannot create liquidity or guarantee a public route: you need one channel with outbound liquidity, another with inbound capacity, and a viable path.\n\nmacOS 15.4+ for this RC. PGP-signed manifest; not Apple-notarized; independently maintained; not official Alby.\n\nSource/download: [https://github.com/hudhaifahz/hub/releases/tag/grynvault-rebalance-v0.1.0-rc.7](https://github.com/hudhaifahz/hub/releases/tag/grynvault-rebalance-v0.1.0-rc.7)\nDocs: [https://rebalance.grynvault.com/](https://rebalance.grynvault.com/)",
+      "sats": 598,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-10-20T00:17:36.667Z",
+      "user": {
+       "name": "kode"
+      },
+      "subName": "lightning"
+     },
+     {
       "id": "1585484",
       "title": "Why SoV -> MoE -> UoA for bitcoin",
       "url": null,
@@ -1400,21 +1415,6 @@
        "name": "Kruw"
       },
       "subName": "Quotes"
-     },
-     {
-      "id": "1590694",
-      "title": "Why Are Bond Yields Suddenly so High?! (FT, Chris Giles)",
-      "url": "https://www.ft.com/content/a6161dfd-bfb9-4bf5-866f-1ca0a0c8e6aa",
-      "text": "*Great question, few good answers.*\n\n![](https://m.stacker.news/160553)\n\n\"The big question is why yields have risen so much.\"\n\n* Is it because investors want more compensation for perceived fiscal unsustainability?\n* Does it reflect expectations of much faster growth?\n* Is there a global war for investment funds and limited lenders?\n* Has the Iran war raised the prospect of continued high inflation?\n* Is it that central banks signalled the need for persistently higher short-term interest rates and markets are parroting this back?\n* Have monetary policymakers lost inflation-fighting credibility?\n* Or are bond markets now dominated by flighty hedge funds that can make huge returns if they get a negative narrative to stick?\n\nChris Giles goes through some of these and provide some decent rebuttals.\n\n> Federal Reserve chair Kevin Warsh said there were [three broad reasons](https://www.federalreserve.gov/mediacenter/files/FOMCpresconf20260916.pdf) at a press conference in September: US economic strength, competition for capital and difficult geopolitics.\n> The more important thing he said, however, was that explanations for changes in bond yields “tend to be overdetermined”. In other words, there are many competing but unprovable theories. And he is right.\n\n## \"The single clearest cause of the rise in bond yields, as the chart below shows, was President Donald Trump’s decision to initiate war with Iran, before which yields were generally falling\"\n\n![](https://m.stacker.news/160554)\n\nSeems obvious, but I'm still a little stuck on the **transmission mechanism** : there's no reason, in principle, that wars or even oil price shocks ought to result in higher yields\n\nThe analogy being the 1970 had a few other critical components: **labor unions aggressively striking** for higher wages, setting off a price-wage push; and **central banks eager to accommodate** the real-cost push with new money.\n\nThere's no risk for the former, as labor unions worldwide (minus the Nordics, but they're pretty meek here) are a ghost of their former self. And the latter is entirely under our own control; central bankers can decide not to accommodate oil price increases (or actively crush demand... ), thus gaining credibility for their monetary policy *and* an indication of how independent they are from the fiscal authorities.\n\nI guess, then, the bond market is pragmatic and saying \"Fat chance, Den; dream the fuck on — dudes will print.\"\n\nSTILL, I find it kind of weird, then, to jump past the intermediate steps and conclude that wars (or oil prices) cause inflation and thus yields.  **No, (central) *banks printing money* cause inflation, *always and everywhere*.** For immediate analogy: Planes don't crash because of gravity, even though of course gravity is involved and 'ultimately' the cause.\n\n> There is no doubt that short-term interest rate expectations have risen across advanced economies. At the start of the year, the Fed was expected to cut rates to almost 3 per cent and now is expected to raise them to 4.75 per cent. That is a huge shift.\n\nAnother commonly quipped reason is that AI has unleashed *massive* productivity gains that are about to swamp GDP numbers -- thus rates ought to go up (via the real economy). So far, only a single quarter of a sliver of such indications. AND:\n\n> anyone who remembers 2022, when the US Inflation Reduction Act led to excitement about green growth that did not materialise, should be wary of predicting a massive increase in US growth rates.\n\nAlso, this investment boom is not *that* visible (outside specific sectors):\n\n![](https://m.stacker.news/160560)\n\nThe other option is that capital is *expensive* now, with AI debt issuance swallowing up all the air in the room, *lol mixing metaphors*:\n\n> Higher yields could simply reflect a massive increase in demand for investible funds that is not met by increased supply. The chart below, which I have borrowed from Toby Nangle’s excellent piece, shows that debt issued by AI hyperscalers accounts for 13.8 per cent of US Treasury issuance, up from only 1.3 per cent in 2024. In other words, there has been a big increase in demand for debt from the AI sector.\n\n> there could still be a general change in the balance between overall debt issuance and debt demand among investors. To the extent that the war for capital is a valid explanation of higher long-term yields, it is more a story of excess debt overall than one to be pinned on the tech bros.\n\n## \"No one I have spoken to thinks government debt markets in advanced economies are currently disorderly or signalling impending default.\"\n\neeeh, cute. *Maybe look further afield than your standard sources, fren*?!\n\n***\n\nArchive still messing w us... lmk if you want the full article -- lots of good graphs in there.",
-      "sats": 8655,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-10-07T16:09:35.679Z",
-      "user": {
-       "name": "denlillaapan"
-      },
-      "subName": "Stacker_Stocks"
      }
     ]
    }
@@ -1430,14 +1430,44 @@
    "items": {
     "items": [
      {
+      "id": "1598366",
+      "title": "Exact-Channel Circular Rebalancing for Alby Hub",
+      "url": "https://github.com/hudhaifahz/hub/releases/tag/grynvault-rebalance-v0.1.0-rc.7",
+      "text": "Not sure who else might need this, but...\n\nI built Grynvault Rebalance on top of Alby after the swap-backed rebalance option I used to use disappeared since boltz went down. I still had liquidity, but on the wrong sides of my channels—and ordinary routing could not guarantee which local channel sats would leave through or return through.\n\nRC.7 is an experimental Alby Hub v1.24.3 fork for embedded-LDK operators. Choose the exact outgoing and returning channels, find a non-paying local route, review a fresh fingerprint-bound quote and projected balances, then approve one execution. It includes fail-closed migration and recovery hardening from upstream review.\n\nIt cannot create liquidity or guarantee a public route: you need one channel with outbound liquidity, another with inbound capacity, and a viable path.\n\nmacOS 15.4+ for this RC. PGP-signed manifest; not Apple-notarized; independently maintained; not official Alby.\n\nSource/download: [https://github.com/hudhaifahz/hub/releases/tag/grynvault-rebalance-v0.1.0-rc.7](https://github.com/hudhaifahz/hub/releases/tag/grynvault-rebalance-v0.1.0-rc.7)\nDocs: [https://rebalance.grynvault.com/](https://rebalance.grynvault.com/)",
+      "sats": 598,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-10-20T00:17:36.667Z",
+      "user": {
+       "name": "kode"
+      },
+      "subName": "lightning"
+     },
+     {
+      "id": "1551074",
+      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
+      "url": null,
+      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
+      "sats": 6923,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 113,
+      "createdAt": "2026-08-19T19:44:47.321Z",
+      "user": {
+       "name": "openbitcoin"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1598244",
       "title": "I published a threat model for a SeedSigner on a Nintendo DSi. Tear it apart.",
       "url": null,
       "text": "![](https://m.stacker.news/160935)\n\nA week ago I posted [NDS-Signer](https://stacker.news/items/1592478), SeedSigner running on a Nintendo DSi ([demo video](https://odysee.com/@ndssigner:9/nds-signer-demo:2)). Someone asked what the weakest part was, and my answer was too vague. Here's a better one.\n\nSomeone on nostr told me \"waiting for audits can become a graveyard, publish the threat model and the scary files first\". Fair, so I did:\n\n* **Threat model**: [https://github.com/ndssigner/nds-signer/blob/main/docs/threat-model.md](https://github.com/ndssigner/nds-signer/blob/main/docs/threat-model.md)\n* **Audit guide**, critical files by priority: [https://github.com/ndssigner/nds-signer/blob/main/AUDIT.md](https://github.com/ndssigner/nds-signer/blob/main/AUDIT.md)\n* **Entropy spec**: [https://github.com/ndssigner/nds-signer/blob/main/docs/entropy.md](https://github.com/ndssigner/nds-signer/blob/main/docs/entropy.md)\n\nThe short version:\n\n* The seed only lives in RAM and gets wiped when you close the lid. Nothing is ever written to the SD card.\n* No network. The wifi driver isn't even linked and the radio is switched off at boot.\n* The weak spot is what runs *before* it: DSi firmware → Unlaunch → TWiLight Menu++, all from the SD card. NDS-Signer can't verify any of that.\n* No secure element. Someone with your console and the right skills could try to read RAM.\n\nWhat I know is missing:\n\n1. The QR decoding in C hasn't been fuzzed. Every QR the camera reads is attacker-controlled.\n2. The scribble + microphone entropy has no measured number. Use dice if you want to count bits.\n3. Nobody but me has reproduced a release build yet.\n\nI opened issues for each of these, so they're easy to pick up: [https://github.com/ndssigner/nds-signer/labels/audit](https://github.com/ndssigner/nds-signer/labels/audit)\n\nWhere would you attack first?",
-      "sats": 5083,
+      "sats": 5265,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 4,
       "createdAt": "2026-10-19T19:30:44.839Z",
       "user": {
        "name": "ndssigner"
@@ -1445,14 +1475,29 @@
       "subName": "bitdevs"
      },
      {
+      "id": "1598340",
+      "title": "Restaurant with no prices closing after years of trying to prove socialism works",
+      "url": "https://notthebee.com/article/minneapolis-restaurant-that-had-no-prices-closes-after-years-of-trying-to-prove-that-communism-works",
+      "text": "> For six months, the restaurant operated as a pay-what-you-can (or pay-nothing-at-all) sanctuary in Minneapolis. But as it turns out, people are greedy, and the comrade who pays $10 for a hipster sandwich starts wondering why they are shelling out $10 while someone else pays $1, and the comrade who pays $1 is wondering why others are getting the sandwich for free.\n>\n> And so, the aptly named Post Modern Times has come to a predictable end.\n\n![](https://m.stacker.news/162208)\n\n---\n\nI found this statement fascinating:\n\n> \"The only way for places like Modern Times to exist in the future is to actively challenge the reasons why it can no longer exist.\"\n\nYou mean reasons like human nature?  Communists inevitably run into the problem of human nature.  That probably explains why communism always devolves into re-education camps and ideological policing.",
+      "sats": 2533,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 20,
+      "createdAt": "2026-10-19T23:22:09.536Z",
+      "user": {
+       "name": "SimpleStacker"
+      },
+      "subName": "econ"
+     },
+     {
       "id": "1598123",
       "title": "Loyalty/Rewards and Other Monetary Scams: The Points Guy (Net Interest)",
       "url": null,
       "text": "**Here's an interesting (but dated) one... from the amazing Substack \"Net Interest.\"**\n\nI had occasion today to look through point and reward economics, and next to central banking or sex trafficking or whatever it must be one of the most despicable industries out there. It's well-known that loyalty cards/rewards schemes are fiat money-printing scams that, at best, saddles the user with a below-mininum wage job (https://stacker.news/items/869415).\n\n...but it's good for the companies running these schemes. (Yea, no shit: the money printing/issuing was always great, and under shitty monetary regime there's an incentive for everyone to become a bank or a bank-like entity #[743123](https://stacker.news/items/743123), https://stacker.news/items/1329539)\n\nIt's a typical example where businesses do things **against the interest of their customer** (thus, it's dishonest) *while looking* like they're providing you with extra benefits. Somebody should call Lizzy (Warren!). (Also, it's one area where the European Union, in its infinite overlording wisdom, made a limiting regulation that was *actually good* for us Europooreans! By capping interchange fees, they basically outlawed rewards programs and saved/spared 500 million Europeans the time/necessary effort to play these silly money games.)\n\n***\n\nIn the age of card networks and (FX) spreads (https://stacker.news/items/1586158) and costs to merchants, the COST and BENEFITS of these (Ponzi?) schemes become entirely intransparent where everyone, like in democracy, think they might get one over on someone else.\n\nAt best, it's a selection-biased gamble where **sophisticated consumers take advantage by optimizing the terms/conditions/value of the whole scheme vs naive consumers** who mistakenly believe they can/will win, while the house (as every properly set-up gamble) wins. The naive consumers will inevitably make some sort of error in their financial behavior (overdrafts, not enough spending, not maximizing rewards, too small fish such that annual fee eats up all other benefits).\n\nThe most well-known examples here are\n\n* **bank deposits**: people hold too much cash at low-yielding bank accounts vs what they could/optimally should keep in higher-yielding savings accounts. The difference, while maaaybe sometimes convenient for the customer, end up in aggregate securing a massive windfall (=cheap financing) for the banks\n* **life insurance products**: life insurance is usually priced very affordably and attractively for the buyer, which the insurance company isn't doing out of ignorance or stupidity but because they know from experience that some portion of the buyers (accidents, life circumstances changing, or just neglect) will let their policies lapse after having paid for a few years, meaning free money for the company, or worse, sell it back to the company at a great discount (=again, free money)\n\nHere's the conclusion from a Fed paper on the subject from a few years ago:\n\n> regardless of income, sophisticated individuals profit from reward credit cards at the expense of naïve consumers. To probe the underlying mechanisms, we exploit bank-initiated account limit increases at the card level and show that reward cards induce more spending, leaving naïve consumers with higher unpaid balances \\[...]\n> Naïve consumers might underestimate these payments and incur costs from usage. Sophisticated consumers, in contrast, might rake in the benefits while avoiding the payments and thus profit from usage\n\nHere's the graph they use to display the idea (sorted by FICO scores, but the same point stands)\n\n![](https://m.stacker.news/162147)\n\n*tl;dr*, the area between the curves is larger on the negative side than the positive side, thus a) redistributing from naive to sophisticated, but more importantly b) makes the entire scam profitable to the company to run: What it has to pay the sophisticated winners is less than what they manage to extract from the idiot losers.\n\n## The entire edifice is a combination of beggar-thy-neighbor and race to the bottom, with misperception and money illusion becoming key features.\n\nFrom our pal Matt Levine in a recent Money Stuff piece\n\n> banks make a lot of their money from depositor inattention: When interest rates go up, bank customers mostly don’t move their money, because it would be a pain, so banks can pay below-market interest rates on their deposits.\n> You could have similar worries about life insurance, or annuities, or mortgages: Lots of financial products are built (and priced) based on assumptions about customer inattention.\n\nThe strategy is that you intentionally misprice (underprice) your service, banking on the fact that, in aggregate, enough people who opt in for this juicy, nice-looking offers will make enough errors that the few sophisticated customers who take perfect, optimized advantage of the mispricing won't cost the company.\n\n***\n\nANYWAY, **Marc Rubenstein walks through the logic and economics of loyalty programs** and points(!) to some of the intricate cross-subsidized and legal/economic oddities with these programs:\n\n> A key question in the whole points dynamic is how much partners pay for miles. Avios Group deferred revenue at a rate of 0.88 pence per point on the stock it issued in 2023, its highest rate in many years. The consumer value of points varies widely according to how they are used, but The Points Guy puts the value of Avios at around 1.2 pence per point, so the benefit to the consumer is clear. \n> Because the airline can adjust the redemption rate to encourage the use of rewards in ways that reduce their marginal cost, it is able to offer rewards to card issuers at a discount.2 In this way, reward programs can generate profits for both issuers and airlines while generating loyalty to both, a significant positive sum outcome.\n\n## “By minting points, airline companies are able to lock in substantial cash flows.”\n\n> Online points-monitoring sites posting point “valuation” tables on a regular basis because of course the offers change and of course the issuer of this fake, unusable money manipulate it to their advantage.\n> The only problem is that competition has been driving up the rate at which card companies pay rewards. Over the last 12 months, American Express has paid out 1.07% of purchase volume in rewards, up from 0.80% ten years ago. Other card issuers have seen similar reward inflation. Capital One paid out 1.29% of purchase volume in 2022, up from 0.80% in 2013. And Discover paid out 1.43%, up from 0.94%. \n> American Express was initially exempt from the EU rules, so my British Airways co-branded card remained unaffected. In 2018, though, the courts brought Amex into line. Fortunately, American Express agreed to eat the cost. My BA Premium Plus card continues to pay 1.5 Avios points for every £1 spent, equivalent to around 1.8% on the basis of The Points Guy’s 1.2 pence per Avios valuation. I guess I do pay £250 per year for the privilege, and Amex likely bought the points at a steep discount (in particular the batch they acquired in 2020 to help the airline out of a liquidity squeeze).\n\nJUST that gives us a few intransparent economic flows:\n\n* First: The Amex bailout of BA during ‘rona, purchasing made-up points at cheap discount… even if Amex nominally loses \\~1.3% per dollar of EU transactions, if what they hand over to the customer in rewards (=made-up BA money) was acquired at well below par, there’s still a profit in it for the card company.\n* Second, to recoup the yearly card fee of 250 quid, a user needs to transact just below £14,000 a year, basically most of the discretionary card spending for a normal (Europoorean) person… and that’s not giving you pounds back, but made-up BA money you must do some additional trixing (in their webshops, for air fares, for lounge access or extra luggage etc) to benefit from.\n\n## “there are clear subsidies at play. Someone, somewhere is subsidizing my points habit – no longer the merchant, it is now other BA or Amex customers. Indeed, such subsidies are the most controversial aspect to the model.”\n\nI don't quite understand what this percentage is referring to (a larger share of Amex revenues are going back to users than before...?) but it seems to suggest that there is some sort of competitive pressure to close this rent-seeking gap\n\n![](https://m.stacker.news/162156)",
-      "sats": 7564,
+      "sats": 7585,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 18,
+      "ncomments": 20,
       "createdAt": "2026-10-19T16:22:54.930Z",
       "user": {
        "name": "denlillaapan"
@@ -1464,10 +1509,10 @@
       "title": "Would you trust an entirely AI-written bitcoin node implementation?",
       "url": null,
       "text": "Reardencode has been working on a bitcoin node implementation written in Rust. From what I can tell, [rbitcoin](https://github.com/reardencode/rbitcoin) is almost entirely vibe-coded.\n\nRearden [first posted](https://x.com/reardencode/status/2087920631165935995) about rbitcoin on 13 August of this year, saying\n\n> I prompted [@grok](https://x.com/grok) to create a bitcoin node implementation that I've been somewhat working on in the back of my mind for over 8 years.\n\nIf you go to the project's website https://rbitcoin.org/ you will see this on the about page:\n\n> # How it was built\n> \n> Brandon Black, known as Rearden or [@reardencode](https://x.com/reardencode), designed and directed the project. Grok wrote the code, with help from Claude, using grok build and Cursor.\n>\n> AI made it possible to build a design he had wanted to pursue for years.\n\nI like the idea of different implementations of bitcoin nodes, but I don't use rbitcoin as my node software -- honesty, I haven't even posted about it because I didn't take a fully AI-written bitcoin node seriously. I suspect I'm not the only one who has been cautious in approaching this project. Perhaps this is what prompted Rearden to ask\n\n# what would it take for you to trust rbitcoin to stay in consensus with bitcoin core?\n\n![](https://m.stacker.news/162200)\n\n[source](https://x.com/reardencode/status/2111461378644942998)\n\nRearden emphasizes the extensive testing that rbitcoin has implemented:\n\n![](https://m.stacker.news/162201)\n\n[source](https://x.com/reardencode/status/2111763871694307367)\n\nIt is true that human software developers have made their fair share of mistakes (even if we didn't discover a lot of them until AI got good at scanning the code). And I'm not sure that an average human dev writing and reviewing code is more likely to avoid mistakes than a bot. But still...\n\n# Am I just being a luddite in feeling that I don't trust software that doesn't have human review? \n\n@jonatack posted an interesting reply to Rearden:\n\n![](https://m.stacker.news/162202)\n\n[source](https://x.com/jonatack/status/2111578122843828561)\n\nOf the many things he mentions here, the one that stands out to me the most is that users might want a strong track record. \n\nI think a legitimate answer to Rearden's initial question of what it would take to get me to trust rbitcoin is time. When rbitcoin nodes have stayed in consensus for a halving or two, I might be willing to use it as a node. \n\n# How do you think about this? Would you use rbitcoin as the backend for your wallet?",
-      "sats": 1112,
+      "sats": 1361,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 14,
       "createdAt": "2026-10-19T21:45:58.537Z",
       "user": {
        "name": "Scoresby"
@@ -1475,14 +1520,59 @@
       "subName": "AI"
      },
      {
+      "id": "1597957",
+      "title": "There's never been a better time to go into math - 3Blue1Brown",
+      "url": "https://www.youtube.com/watch?v=LKrwhjOI8Nc",
+      "text": "Huge cope? Or some valuable thoughts on how to think about the future of math, physics, and science?\nI'm leaning towards the latter?\n\n45 minutes of a well-structured talk.\n\nIt does give me some ideas about how to frame my next ERC grant application...",
+      "sats": 3254,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-10-19T12:25:43.930Z",
+      "user": {
+       "name": "south_korea_ln"
+      },
+      "subName": "math"
+     },
+     {
+      "id": "1598359",
+      "title": "MNF- Commies vs 49ers Discussion Thread",
+      "url": null,
+      "text": "Bang Bang Niner Gang! \n\nAnyone watching?",
+      "sats": 957,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 36,
+      "createdAt": "2026-10-20T00:07:14.842Z",
+      "user": {
+       "name": "grayruby"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1598429",
+      "title": "Archipelago Foundation",
+      "url": "https://archipelago.builders",
+      "text": "These guys put out this music video today and it's got a cool feel.  \n\nhttps://x.com/polycarpweb5/status/2112333900626465071\n\nThey say it's decentralized mesh internet run on Bitcoin nodes. \n\n![](https://m.stacker.news/162216)\n\nThey have some code for something they call their OS at this [git workshop page](https://gitworkshop.dev/npub1w3sqdkrhn0gyuvsex32effzgnfpyde6qrrc4u467flg5e9txh4wsfn5vjg/relay.ngit.dev/archy)\n\nAnd there's some kind of foundation associated with it here: https://archipelago-foundation.org/\n\nTheir main website (linked at the top) seems a little light on details, but this is perhaps because they haven't really launched yet:\n\n![](https://m.stacker.news/162217)\n\nI will say that projects that spend so much effort on the look and feel usually make me pretty skeptical...but it does seem kinda cool (maybe I'm just a sucker for the lunarpunk aesthetic).\n\nCurious to see what they produce on the 31st.",
+      "sats": 341,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-20T02:07:02.687Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1598264",
       "title": "Why Is Europe Burning? The Boomers Did It (TFP, Niall Ferguson)",
       "url": "https://www.thefp.com/p/niall-ferguson-why-europe-burning-government-protest",
       "text": ".... not literally (they too old, weak and unhealthy to cause a riot). **Bear with me.**\n\n*I bash the boomers quite a lot here, individually and as a class.*\n\nIt's only *a little bit* in jest; obviously I don't want to take anybody's stuff or commit [senicide (like a proper Norseman](https://en.wikipedia.org/wiki/%C3%84ttestupa)), nor do I think every single boomer is a horned demon (or *do I?!*) but if there were a way to rewind the clock or press a button to take away their unearned gains/abolish Social Security or your equivalent Europoorean gov state Ponzi scheme (*with* the associated dividend windfalls reasonably distributed etc, etc.) of course I -- like any sane, sensible, thoughtful person -- *would do that!*\n\n## I do generally think boomers, as a class, have betrayed all that is good\n\nhttps://stacker.news/items/1388123\n\nShort of impossible dreams, magical or political, it *is* possible for individual boomers to be better (https://stacker.news/items/1598011): don't claim SS (or max it, and give it to someone who deserves it), give away most of your wealth (or even consume it... that's still work for someone else) or better yet, go out of your way to care for grandkids and *pay for as much as you possibly can*; remortgage your paid-off house to do it, if you need to.\n\nStill, it's undeniable that the boomers, individually, have acquired unearned wealth and have, broadly speaking, failed any honorable morality test of an upstanding citizenry. https://stacker.news/items/1598011, https://stacker.news/items/1527198.\n\nBut when Niall Ferguson and Izabella Kaminska, establishment historian and journalist, respectively, **say the same thing... it's a tad unnerving?**\n\n![](https://m.stacker.news/162194)\n\nhttps://x.com/izakaminska/status/2112173142915371039\n\n> As I write, [**French schools are burning**](https://www.thefp.com/p/france-student-protests-melenchon)—set ablaze by high schoolers who say they want more investment in education but for some reason think they can achieve this by filling the streets with garbage, setting it on fire, waving Palestinian flags, and clashing with the police.\n\nlol, SELF-OWN.\n\n(obviously there's plenty of retarded peeps in my own younger generations, too; and god knows the troubles we'd be in if the green woke dystopia had not been balanced by more conservative, largely boomer counterweights.) But they're *ignorant*; quite a lot of the boomers are complacent, or downright evil (hence the horns...).\n\n## \"it’s not just France. The kids are out in the streets of Madrid, too, incensed (they claim) about a growing housing crisis. In Brussels the burning issue is government budget cuts.\"\n\nSo what do the burning cities of Europe have to do with boomerism?\n\nWell:\n\n> The fact that young people are setting wheelie bins on fire is in some ways **a distraction from the root causes of all this political instability.** For, despite the echoes of 1789, 1830, 1848, 1871, and 1968, when youthful revolutionaries challenged Europe’s established order, the generational politics of 2026 is very different.\n\n> Today, by historical standards, the young are an endangered species. They are dimly aware that they are being screwed, but they don’t appear to understand who’s doing the screwing.\n\n## \"A clue for the European young: It’s not Donald Trump or Benjamin Netanyahu or whoever else you want to burn in effigy. *Mais, non*: It’s your grandparents.\"\n\nHot. Freakin'. Damn.\n\n> The French rioters say their principal grievance is under-investment in schools. But it should really be over-investment in French retirees.\n> ...it has paid better in both \\[the UK and France] to be retired than to be employed....\n\nPREACH.\n\n***\n\n**Nice little econ recap of yields and oil prices.**\n\n![](https://m.stacker.news/162196)\n\n> France is not alone. In both Italy and the United Kingdom, the cost of government borrowing is higher than the nominal growth rate. What has gone wrong? Here’s where grandma and grandad come in. The French (and British and Italian) fiscal crisis is at root due to generational imbalances in welfare and tax systems, exacerbated by reflexive Keynesian spending every time anything nasty happens (a financial crisis, a pandemic, a war, an energy shock).\n\nGuess I could have titled this \"the Keynesians did it\" too? https://stacker.news/items/1476087, https://stacker.news/items/1537872\n(Because without them, and on a sound money, or with a small gov, the boomers could ever only have inflicted so much damage -- no matter their moral or cognitive failures)\n\nYup, we're pretty fucked: https://stacker.news/items/1593563, https://stacker.news/items/1590714\n\n> Europe has relatively generous welfare systems, which do more taxing and redistributing than their U.S. equivalents. It’s just that these systems were designed for 2.5 children per family and an average life expectancy of 62, not 1.25 and 79. With a few exceptions, the various European models are in the early phase of a nosedive into insolvency.\n\nAND, let's not forget, aging populations (=boomers) living too long(!), didn't pay up enough, and have been stealing too much (as a class, anyway):\n\n> aging isn’t the sole driver of rising public debt. It explains about two-fifths of the increase since 2000. The rest is due to debt-financed spending in response to the financial crisis, Covid-19, and other crises; tax cuts and discretionary spending; and the rising cost of paying interest on the debt\n> This is not primarily a problem of public pensions—the original government welfare program, introduced by the German chancellor Otto von Bismarck in 1889. The OECD’s latest projections have average public pension spending rising from 8.8 percent of GDP in 2023–2024 to 10 percent in 2050—not a crippling increase. This is because most countries (not all) have acted in various ways to cap the costs of public pensions, either by reducing benefits, restricting coverage, or raising retirement ages.\n\n## \"politicians on both sides of the English Channel have gotten into the very bad habit of bribing seniors based on the observation that they are increasingly numerous and have relatively high turnout rates in elections.\"\n\n![](https://m.stacker.news/162197)\n\nEXCELLENT FUCKING PARAGRAPH:\n\n> The vocabulary of European politics rules out the sentence: “We need to reform seniors’ entitlements so that we don’t go bankrupt.” Instead, the left offers socialism and the right serves up national socialism. The left lays the blame on billionaires, whom they will tax to pay for yet more benefits. The right lays the blame on immigrants, whom they will deport as if that will help matters. Apart from that difference, there is a horseshoe forming in Western politics: At the extremes, socialism and national socialism are converging on economic issues (industrial policy, public ownership, rent controls), not to mention foreign policy (blame Israel for everything). Of course, **these tired old ideas bear almost no relation to economic reality.**\n\n> think young Europeans have been so successfully indoctrinated in school and college that they’ll blame almost anyone for their dissatisfaction, except the people who are actually responsible: namely seniors and the politicians who rely on their votes.\n\nIncredible. Indeed: *Fuck. The. Boomers.*\n\noh, *fuck*: the only thing Europe is investing in (\"Investing\")... *also* boomers:\n\n> A shocking amount of European defense spending goes to—you guessed it—the pensions of retired military personnel.\n> Young people will set more things on fire; if not their own schools, then asylum-seekers’ hotels and synagogues as a rising share of young men swing to the far right. That will achieve precisely nothing, except to expedite the capital flight.\n\n***\n\nopen access here: [https://niallferguson.substack.com/p/why-europe-is-burning](https://niallferguson.substack.com/p/why-europe-is-burning)",
-      "sats": 1424,
+      "sats": 1647,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 11,
+      "ncomments": 17,
       "createdAt": "2026-10-19T20:35:41.313Z",
       "user": {
        "name": "denlillaapan"
@@ -1490,19 +1580,94 @@
       "subName": "Politics_And_Law"
      },
      {
+      "id": "1598355",
+      "title": "Abandoned Bitcoin? Wallet Targeted by Noah Doe Lawsuit Moves $33 Million",
+      "url": "https://decrypt.co/381337/abandoned-bitcoin-wallet-noah-doe-lawsuit-moves-33-million",
+      "text": "",
+      "sats": 942,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-19T23:44:28.812Z",
+      "user": {
+       "name": "limonta"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1598218",
       "title": "Data Center Opposition Threatens Millions of Jobs Billions in Economic Activity",
       "url": "https://itif.org/publications/2026/10/16/data-center-opposition-threatens-millions-jobs-billions-economic-activity/?utm_source=Center+for+Data+Innovation&utm_campaign=c17d4e5554-EMAIL_CAMPAIGN_2026_04_10_06_29_COPY_01&utm_medium=email&utm_term=0_-dea7acd246-601150978&mc_cid=c17d4e5554&mc_eid=ec65641928",
       "text": "This article is a very, very, very good read and shows the huge boon data centers can bring to places. It also makes clear that data centers are not for everyone or for every place.\n\n\nAt this point in 2026, roughly $260 billion in canceled investments have been announced. \n> To quantify these potential losses, this analysis uses existing estimates of the economic contributions of large data centers to calculate the impacts of canceled investments. Based on these calculations, the $260 billion in canceled investments in 2026 represents the equivalent of approximately 1,207 foregone data center projects. During the construction phase, which typically lasts between 18 and 24 months, these projects could have supported more than 2 million jobs and generated approximately $94 billion in wages, $294 billion in local economic activity, and $12 billion in state and local tax revenues.\n\nOverall a well written and researched article.",
-      "sats": 1377,
+      "sats": 1578,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 3,
       "createdAt": "2026-10-19T18:58:19.604Z",
       "user": {
        "name": "Cje95"
       },
       "subName": "AI"
+     },
+     {
+      "id": "1598314",
+      "title": "DIESEL SHOCK - The on-going Diesel crisis in numbers",
+      "url": "https://dieselshock.pages.dev/",
+      "text": "",
+      "sats": 607,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-10-19T22:19:35.200Z",
+      "user": {
+       "name": "anon"
+      },
+      "subName": "econ"
+     },
+     {
+      "id": "1598226",
+      "title": "Keynote + Kickoff — niftynei, Rene Pickhardt | bitcoin++ Berlin, payments editio",
+      "url": "https://youtu.be/lQB0_kmI6kI",
+      "text": "",
+      "sats": 1029,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-19T19:11:55.297Z",
+      "user": {
+       "name": "0xbitcoiner"
+      },
+      "subName": "bitcoinplusplus"
+     },
+     {
+      "id": "1598375",
+      "title": "IF Nuclear = aliens, THEN does AI = aliens, too?",
+      "url": null,
+      "text": "If UFO sightings are more prevalent around nuclear weapons facilities (presumably due to being a threat to aliens and/or humanity itself), then will UFO sightings increase once AI reaches a similar threat level as nuclear weapons?",
+      "sats": 296,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-20T00:34:13.897Z",
+      "user": {
+       "name": "gpvansat"
+      },
+      "subName": "aliens_and_UFOs"
+     },
+     {
+      "id": "1598419",
+      "title": "Dakar Bitcoin Days – A forum focused on technological innovations.",
+      "url": "https://dakarbitcoindays.com",
+      "text": "",
+      "sats": 316,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-20T01:37:07.419Z",
+      "user": {
+       "name": "hasherstacker"
+      },
+      "subName": "events"
      },
      {
       "id": "1598257",
@@ -1512,7 +1677,7 @@
       "sats": 1132,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 3,
       "createdAt": "2026-10-19T19:54:11.077Z",
       "user": {
        "name": "StillStackinAfterAllTheseYears"
@@ -1520,29 +1685,14 @@
       "subName": "food_and_drinks"
      },
      {
-      "id": "1598314",
-      "title": "DIESEL SHOCK - The on-going Diesel crisis in numbers",
-      "url": "https://dieselshock.pages.dev/",
-      "text": "",
-      "sats": 280,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-19T22:19:35.200Z",
-      "user": {
-       "name": "anon"
-      },
-      "subName": "econ"
-     },
-     {
       "id": "1597406",
       "title": "The Aftermath: \"It's like a war zone here\"",
       "url": "https://www.reuters.com/world/europe/france-faces-aftermath-worst-unrest-years-2026-10-18/",
       "text": "[See also this](https://stacker.news/items/1597292/r/hasherstacker)",
-      "sats": 1098,
+      "sats": 1198,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 9,
+      "ncomments": 11,
       "createdAt": "2026-10-18T12:19:51.020Z",
       "user": {
        "name": "hasherstacker"
@@ -1550,11 +1700,26 @@
       "subName": "Politics_And_Law"
      },
      {
+      "id": "1598373",
+      "title": "satsforbots.com: the directory for AI agents that pay in Bitcoin",
+      "url": null,
+      "text": "AI agents are starting to do real work: calling APIs, buying data, running tasks on their own. But most of the internet still expects a human with a credit card and a signup form. Agents can't do that. They can pay a Lightning invoice.\n\n[Sats for Bots](https://satsforbots.com/) is a curated directory of the tools that make that possible: L402 frameworks, agent wallets, MCP servers and paid APIs that let agents pay and get paid in Bitcoin over Lightning. Every listing is hand-checked, Lightning only, and explained in plain English, with a clear note when a tool is custodial or runs on a separate layer.\n\nIt's for builders who want their agents to spend sats, for developers putting their API behind a Lightning paywall, and for anyone following where Bitcoin and AI meet. A free weekly newsletter rounds up what's new, what's worth trying and why it matters.\n\nBrowse the directory, or subscribe at [satsforbots.com](https://satsforbots.com/).",
+      "sats": 338,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-20T00:32:38.931Z",
+      "user": {
+       "name": "gpvansat"
+      },
+      "subName": "AI"
+     },
+     {
       "id": "1598133",
       "title": "2026 NFL Survivor Pool- Week 6 recap",
       "url": null,
       "text": "@grayruby @supercyclone @Cje95 @Undisciplined @WeAreAllSatoshi @Bell_curve @Jer @TNStacker @chrisliss @Carresan @JesseJames\n\nCurrent Prize Pool: **427k sats** (20% guaranteed to @WeAreAllSatoshi)\n\nThe following players suffered losses this week:\n\n* @WeAreAllSatoshi @supercyclone @JesseJames @Undisciplined @grayruby @Cje95 @chrisliss (Rams)\n* @TNStacker (Colts)\n\n@supercyclone @JesseJames @Undisciplined @grayruby @Cje95 @chrisliss @TNStacker are all eliminated. Thanks for playing. @WeAreAllSatoshi still has a rebuy.\n\nHere are all the picks/results so far:\n\n![](https://m.stacker.news/162164)\n\nThis leaves us with just 3 remaining competitors heading into week 7.\n\nGood Luck!",
-      "sats": 1034,
+      "sats": 1070,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 15,
@@ -1565,19 +1730,49 @@
       "subName": "Stacker_Sports"
      },
      {
-      "id": "1597957",
-      "title": "There's never been a better time to go into math - 3Blue1Brown",
-      "url": "https://www.youtube.com/watch?v=LKrwhjOI8Nc",
-      "text": "Huge cope? Or some valuable thoughts on how to think about the future of math, physics, and science?\nI'm leaning towards the latter?\n\n45 minutes of a well-structured talk.\n\nIt does give me some ideas about how to frame my next ERC grant application...",
-      "sats": 2253,
+      "id": "1532071",
+      "title": "Wasabi Wallet - Privacy by Default",
+      "url": "https://wasabiwallet.io/",
+      "text": "Welcome to the coinjoin territory, anon. Post your questions here, and I will answer them.\n\n\n![](https://m.stacker.news/149538)",
+      "sats": 2563,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-19T12:25:43.930Z",
+      "ncomments": 46,
+      "createdAt": "2026-07-24T22:47:04.833Z",
       "user": {
-       "name": "south_korea_ln"
+       "name": "Kruw"
       },
-      "subName": "math"
+      "subName": "Coinjoins"
+     },
+     {
+      "id": "1598289",
+      "title": "Arch Manning on the verge of being benched",
+      "url": "https://www.espn.com/college-football/story/_/id/50218991/sources-texas-give-qb-kj-lacey-jr-increased-first-team-reps",
+      "text": "The headline is actually \"Sources: Texas to give QB KJ Lacey Jr. increased first-team reps,\" but it's clearly a possibility. \n\nI don't hate the Mannings like some football fans do, but I also admit that I'd laugh hard if he stayed out of the draft to avoid being a Jet and dropped to the third round as a result.",
+      "sats": 457,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-19T21:39:53.599Z",
+      "user": {
+       "name": "StillStackinAfterAllTheseYears"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1598394",
+      "title": "Spotted in Vienna",
+      "url": null,
+      "text": "![](https://m.stacker.news/162198)",
+      "sats": 231,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-20T00:50:41.660Z",
+      "user": {
+       "name": "hasherstacker"
+      },
+      "subName": "bitcoin"
      },
      {
       "id": "1598127",
@@ -1610,6 +1805,36 @@
       "subName": "Politics_And_Law"
      },
      {
+      "id": "1598286",
+      "title": "Nscale, Anthropic in Talks for $45 Billion Cloud Computing Deal",
+      "url": "http://archive.today/Cc4yi",
+      "text": "Nscale Ltd., the AI cloud computing firm, is in talks to sell computing power to Anthropic PBC in a deal that could be worth about $45 billion, according to people familiar with the negotiations.\n\n\nThe Nvidia Corp.-backed data center developer is seeking a second major deal with the firm behind Claude for a second facility at its Monarch data center campus in West Virginia, the people said. Anthropic has agreements in place with Nscale for infrastructure that’s worth as much as about $44.6 billion, according to a regulatory filing for Nscale’s planned initial public offering.",
+      "sats": 372,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-19T21:33:27.462Z",
+      "user": {
+       "name": "ch0k1"
+      },
+      "subName": "news"
+     },
+     {
+      "id": "1598365",
+      "title": "Fishermen on the Tiber River, Rome, Italy, c. 1890s-1910s",
+      "url": null,
+      "text": "![](https://m.stacker.news/162212)",
+      "sats": 222,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-20T00:17:01.583Z",
+      "user": {
+       "name": "guerratotal"
+      },
+      "subName": "Photography"
+     },
+     {
       "id": "1598011",
       "title": "Why Don’t Boomers Want to Grandparent? (Newsweek, Daniella Gray)",
       "url": "https://www.newsweek.com/why-dont-boomers-want-to-grandparent-12575764",
@@ -1640,244 +1865,19 @@
       "subName": "Stacker_Sports"
      },
      {
-      "id": "1598226",
-      "title": "Keynote + Kickoff — niftynei, Rene Pickhardt | bitcoin++ Berlin, payments editio",
-      "url": "https://youtu.be/lQB0_kmI6kI",
-      "text": "",
-      "sats": 637,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-19T19:11:55.297Z",
-      "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "bitcoinplusplus"
-     },
-     {
-      "id": "1598228",
-      "title": "Bitcoin Calendar now has a timeline view",
+      "id": "1598290",
+      "title": "Davante Adams out 6-10 weeks",
       "url": null,
-      "text": "Added a timeline view alongside calendar view, so you can browse events chronologically.\n\n[**bitcoin-calendar.org**](https://bitcoin-calendar.org/en?view=timeline)\n\nLet me know what you think. Suggestions are welcome!\n\n![](https://m.stacker.news/162186)\n\n![](https://m.stacker.news/162187)\n\n![](https://m.stacker.news/162188)\n\n![](https://m.stacker.news/162189)\n\n![](https://m.stacker.news/162190)",
-      "sats": 643,
+      "text": "Not much going right in Ram Land.\n\nGood thing they don’t have any fans to witness this epic downfall.\n\nhttps://x.com/rapsheet/status/2112286809397006716?s=46&t=opFMGEQXdk09WvPsXf4z6g",
+      "sats": 317,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-19T19:12:25.500Z",
-      "user": {
-       "name": "Tony"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1598286",
-      "title": "Nscale, Anthropic in Talks for $45 Billion Cloud Computing Deal",
-      "url": "http://archive.today/Cc4yi",
-      "text": "Nscale Ltd., the AI cloud computing firm, is in talks to sell computing power to Anthropic PBC in a deal that could be worth about $45 billion, according to people familiar with the negotiations.\n\n\nThe Nvidia Corp.-backed data center developer is seeking a second major deal with the firm behind Claude for a second facility at its Monarch data center campus in West Virginia, the people said. Anthropic has agreements in place with Nscale for infrastructure that’s worth as much as about $44.6 billion, according to a regulatory filing for Nscale’s planned initial public offering.",
-      "sats": 305,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-19T21:33:27.462Z",
-      "user": {
-       "name": "ch0k1"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1598097",
-      "title": "Your sats aren't sitting in an escrow wallet. So how does Mostro actually work?",
-      "url": null,
-      "text": "# Your sats aren't sitting in an escrow wallet. So how does Mostro actually work?\n\nOne of the most interesting things I've learned from helping run a Mostro coordinator in Europe is how Lightning hold invoices can be used for P2P Bitcoin trading.\nWhen people hear the word \"escrow\", they usually imagine a third party receiving their Bitcoin, holding it somewhere, and eventually sending it to the buyer.\nBut Lightning allows a different approach.\nAnd I think more Bitcoiners should understand how it works.\n\n## What is a Lightning hold invoice?\n\nWith a normal Lightning payment, the recipient settles the payment by revealing the payment preimage.\nA hold invoice works differently.\nThe payment can be accepted at the HTLC level without immediately revealing the preimage. The recipient can decide to settle it later or cancel it.\nUntil settlement, the payment remains unresolved, with the relevant funds committed to the pending Lightning payment.\nIt's not a regular wallet balance that someone can freely spend.\nBut it's also not magic. HTLC timeouts, channel liquidity, wallet behavior and node reliability all matter.\n\n## How does Mostro use this?\n\nImagine Alice wants to sell Bitcoin for euros, and Bob wants to buy.\nAlice and Bob find each other through a Mostro coordinator.\nThe seller's Lightning payment is held while the fiat side of the trade takes place.\nOnce Bob sends the euros and Alice confirms receiving them, the trade can proceed to settlement.\nIf something goes wrong, the trade may require cancellation, timeout handling or dispute resolution.\nThe important distinction is that the coordinator isn't simply receiving Alice's Bitcoin into a conventional custodial wallet and holding it there.\nHowever, the coordinator still plays a critical role in the protocol. The design doesn't eliminate operational risk, payment risk or the need to understand the dispute process.\nNon-custodial doesn't mean risk-free.\n\n## What surprised me most\n\nWhen we started operating MostroEuropa, I expected the hardest part to be the infrastructure.\nKeeping services online, maintaining Lightning connectivity, monitoring invoices, dealing with software updates and making sure everything behaves correctly.\nThose things certainly matter.\nBut we've already seen real P2P trades happen, and another challenge has become obvious: liquidity.\nYou can have working software, a functioning coordinator and people interested in decentralized trading.\nBut if someone opens the order book and finds nothing that matches their needs, they may simply leave.\nIt's a classic problem for a small P2P marketplace.\nThe technology can be ready before the market is.\nAnd that's something you can't fix with another server upgrade.\n\n## Why I still think this is worth building\n\nI like the idea of people trading Bitcoin directly, using open protocols rather than depending entirely on centralized exchanges.\nLightning provides interesting payment primitives.\nNostr provides an open communication layer.\nMostro brings those pieces together into a P2P trading protocol.\nNone of this guarantees adoption. And it certainly doesn't remove every risk.\nBut experimenting with these systems in the real world teaches you things that reading documentation never will.\nWe're still learning, still improving and still trying to grow a real European P2P market.\n\n## A question for Stackers\n\nI'm curious how other Bitcoiners see this.\n**Would you feel comfortable using Lightning hold invoices for P2P trading, or would you prefer a different escrow model?**\nAnd for those who have used Mostro, RoboSats or other P2P tools: what's the biggest obstacle for you?\nLiquidity? Wallet compatibility? Trust? User experience?\nI'd genuinely like to hear your experiences.\nFor context, I help operate MostroEuropa, a European Mostro coordinator:\n[https://mostroeuropa.github.io/](https://mostroeuropa.github.io/)",
-      "sats": 965,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-19T15:59:44.919Z",
-      "user": {
-       "name": "39963a0737"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1597932",
-      "title": "Elon Musk says he’ll give a SpaceX share to every child in America next year",
-      "url": null,
-      "text": "https://www.cnbc.com/2026/10/19/elon-musk-spacex-shares-giveaway-kids.html\n\n>[SpaceX](https://www.cnbc.com/quotes/SPCX/) boss [Elon Musk](https://www.cnbc.com/elon-musk/) said Monday that he’ll give every child in the U.S. one of his shares in the company next year.\n\n>Musk currently owns about 4.8 billion SpaceX shares, according to an August SEC filing. That figure rises to 6.4 billion when taking into account unvested awards and stock options, representing a 48.4% beneficial stake in the company.\n\n>“This will be the first of many,” Musk said in a post on X\n\nI am curious on how this transfer would occur.  Is every kid going to have to KYC and setup a brokerage account?",
-      "sats": 1415,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-10-19T11:51:27.290Z",
-      "user": {
-       "name": "Wumbo"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1598041",
-      "title": "Jalen Hurts Out for Season After Blood Clots Discovered in Eagles QB's Lungs",
-      "url": "https://www.espn.com/nfl/story/_/id/50218378/eagles-jalen-hurts-season-due-blood-clots-lungs",
-      "text": "Holy crap.... this is terrible.... I mean his career.... it might be over.\n\n> Hurts will undergo treatment for the blood clots that will take at least three months, according to Rapoport.\n\n> After initially being diagnosed with a superficial clot in his calf, Hurts underwent further examination that revealed \"a deep vein thrombosis, as well as bilateral pulmonary emboli,\" according to the statement.",
-      "sats": 836,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 14,
-      "createdAt": "2026-10-19T15:04:07.176Z",
-      "user": {
-       "name": "Cje95"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1597437",
-      "title": "I finally visited Pubkey in Washington DC",
-      "url": null,
-      "text": "![](https://m.stacker.news/162019)\n\nI am attending a reunion of sorts of some old friends in DC.  I had some free time yesterday, so I finally got the opportunity to visit the Washington Pubkey.\n\nI have posted a few times about the NYC version. I have a great time whenever I go:\n\nhttps://stacker.news/items/219987/r/siggy47\n\nhttps://stacker.news/items/230440/r/siggy47\n\nhttps://stacker.news/items/1283387/r/siggy47\n\nThe Washington DC version of Pubkey is located on 7th Street in the [Penn Quarter](https://en.wikipedia.org/wiki/Penn_Quarter) neighborhood of the city. It's not far from Ford's Theater and the J Edgar Hoover FBI building.  Capital One Arena, where the Washington Capitals play, is down the block. It is an upscale, touristy location.\n\nPubkey DC opened in January, 2026, according to the website, but I thought it had been around longer.  Yesterday the Washington Capitals had an early game, so there were plenty of fans in jerseys milling about. When I walked in I immediately noticed how different this place was from the New York version. It's huge, around 12,000 square feet, with two bars, a stage, and big screens everywhere showing sporting events. There was a good crowd, which looked to be a mix of tourists, locals, and hockey fans. I can't be certain, but I'm pretty sure I was the only person in the place interested in bitcoin.\n\nThis is not an in your face bitcoin space. I had just had a long car and was hungry. I decided to sit at the bar and have some lunch after exploring a bit.\n\nAt first I didn't notice much bitcoin stuff, but it is all strategically placed to fit in unobtrusively. I liked the low key design. It could be any sports /tourist spot in any city.\n\nThere were a few stickers in the men's room:\n\n![](https://m.stacker.news/162028)\n\n![](https://m.stacker.news/162029)\n\nI then noticed a large wall display with some actively mining bitaxes:\n\n![](https://m.stacker.news/162030)\n\nAnd this small, but intriguing stack of bitcoin and bitcoin adjacent books below a \"Free Samourai\" sign:\n\n![](https://m.stacker.news/162032)\n\nI sat at the bar and saw this cool display:\n\n![](https://m.stacker.news/162033)\n\nOccasionally the ticker had a news flash scrolling across the screen.\n\nWhen ordering my lunch I let the bartender know that I planned to pay in bitcoin. I was told that if I did, I would receive a 21% discount, which is impressive. I asked about the payment setup, and was a little disappointed that they just use square. I tried to.engage my server in a little bitcoin banter, but it was obvious he had no deep interest. I dont want to sound negative. All of the workers were friendly and competent. The menu was similar to the NYC Pubkey. I had a Caesar wrap, which was very good.  I must say paying with the square app was quick and easy. You select the tip amount before the invoice is generated, which is nice. I have experienced a few awkward moments trying to tip at the NYC Pubkey. You never can be sure if the server would prefer sats or dollars. This way they probably get a choice.\n\nThat being said, paying with square is still disappointing.\n\nOn the way out I found this board near the front bar:\n\n![](https://m.stacker.news/162036)\n\nI guess this proves there are some bitcoiners patronizing the place.\n\nI didn't get to experience an event, but there is plenty of room for bitcoin gatherings. NYC Pubkey always feels a little cramped. I know Thomas Massie will be holding a discussion soon. I hope I get some time on my next trip to catch a presentation.",
-      "sats": 15817,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 16,
-      "createdAt": "2026-10-18T13:59:41.302Z",
-      "user": {
-       "name": "siggy47"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1597996",
-      "title": "What is the Pic OT of the week?",
-      "url": null,
-      "text": "![](https://m.stacker.news/162132)\n\nDalton Schultz of the Houston Texans is tackled by Dennis Gardeck of the Jacksonville Jaguars\n\n***\n\n![](https://m.stacker.news/162133)\n\nShohei Ohtani #17 of the Los Angeles Dodgers hits a three-run home run against the Milwaukee Brewers\n\n***\n\n![](https://m.stacker.news/162134)\n\nJesse Love, driver of the #2 Whelen Chevrolet, celebrates after winning the NASCAR O'Reilly Auto Parts Series Timberland PRO 200\n\n***\n\n![](https://m.stacker.news/162136)\n\nNataliya Guseva plays a shot from the sixth tee during the second round of the Buick LPGA Shanghai 2026\n\n***\n\n![](https://m.stacker.news/162138)\n\nColton Dach #34 of the Edmonton Oilers dives for the puck during the second period of a game against the Utah Mammoth\n\n***\n\n![](https://m.stacker.news/162140)\n\nZheng Qinwen, the women's singles champion of the China Open 2026, poses with the trophy during a photo session at the Great Wall of China\n\n***\n\ncc: @Undisciplined  @WeAreAllSatoshi @realBitcoinDog @TNStacker @BlokchainB @DarkStacker @siggy47 @Coinsreporter @grayruby @Carresan @gsc360 @User21000000 @suraz @HardMoney",
-      "sats": 990,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-19T13:48:11.448Z",
-      "user": {
-       "name": "guerratotal"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1598071",
-      "title": "US banning Chinese AI DeepSeek from government agency IT systems",
-      "url": "https://www.reuters.com/technology/us-banning-chinese-ai-deepseek-government-agency-it-systems-2026-10-19/",
-      "text": "",
-      "sats": 721,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-19T15:34:35.130Z",
-      "user": {
-       "name": "Gian"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1598164",
-      "title": "And it's gone. Ben Simmons comeback looks to be over",
-      "url": null,
-      "text": "https://x.com/BleacherReport/status/2111950735852400760?s=20",
-      "sats": 519,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-19T17:35:36.588Z",
+      "ncomments": 5,
+      "createdAt": "2026-10-19T21:40:58.153Z",
       "user": {
        "name": "grayruby"
       },
       "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1598082",
-      "title": "First domino falls",
-      "url": null,
-      "text": "Ballard gone in Indy.\n\nhttps://x.com/Colts/status/2112175612932882744?s=20",
-      "sats": 673,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-10-19T15:48:09.929Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1598251",
-      "title": "Kelowna BC man wins City Council election on \"Unqualified\" Platform",
-      "url": null,
-      "text": "Hilarious campaign.\n\nI suggest \"My wife told me to get a job\" for his mayoral campaign in four years.\n\nhttps://x.com/6ixbuzztv/status/2112199625486536835?s=20",
-      "sats": 406,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-19T19:44:39.276Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "lol"
-     },
-     {
-      "id": "1598140",
-      "title": "English ↔ Claudish",
-      "url": "https://programasweights.com/claudish",
-      "text": "![](https://m.stacker.news/162165)\n\nA bidirectional English and Claudish translator powered by compiled 0.6B neural programs.\n\n- - -\n\n#AI #Humor #Tools",
-      "sats": 652,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-19T16:58:19.072Z",
-      "user": {
-       "name": "deSign_r"
-      },
-      "subName": "Design"
-     },
-     {
-      "id": "1598169",
-      "title": "Five years ago today, Wall Street got its first Bitcoin ETF",
-      "url": null,
-      "text": "Hard to believe it's been five years. On October 19, 2021, BITO started trading, and everyone treated it like the big moment had finally arrived. A billion dollars poured in within two days.\n\nBut it didn't hold bitcoin. It held CME futures. After years of turning down spot ETFs, the SEC finally approved one, and it was a wrapper around derivatives.\n\n![](https://m.stacker.news/162172)\n\nPeople who bought it learned what contango is the hard way. Every month the fund rolled its futures, every roll cost a bit, and over time BITO fell well behind actual BTC. You paid a fee to underperform the thing you thought you owned.\n\nTo be fair, it probably did help. It showed there was huge demand, and that made it harder to keep blocking spot products, which we eventually got in January 2024. Now those funds hold a big chunk of the supply.\n\nI keep going back and forth on how to feel about it. Was BITO a necessary step, or just a toll booth for people who didn't want to learn self-custody?",
-      "sats": 391,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-19T17:47:41.236Z",
-      "user": {
-       "name": "Satoshisatsamoto"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1597457",
-      "title": "Receive-only Lightning checkout: a hacked server can’t drain your node",
-      "url": "https://openreceive.org/",
-      "text": "Like a lot of you, we spent August 7 watching merchant Lightning nodes get swept. A bug in BTCPay Server let attackers pull LND macaroons off merchant servers without logging in. With those, they closed channels and walked off with the funds. Foundation, Citadel21, IVPN and others were hit. ([IVPN's writeup](https://www.ivpn.net/blog/security-incident-bitcoin-payment-server/) is worth a read.)\n\nTo be clear, we love BTCPay Server. It has done more for merchant adoption than almost anything, and the team responded fast. But that week made something obvious that was always true: keeping a live, spend-capable Lightning node on the same internet-facing machine that runs your shop is fundamentally pretty scary. \n\nSo we built **OpenReceive** to take spending out of the picture entirely.\n\n**How it works**\n\n* Your app connects to your wallet with a **receive-only Nostr Wallet Connect (NWC) code**. That code can create invoices and list incoming payments. It cannot pay anyone.\n* On startup, OpenReceive asks the wallet what the code is allowed to do. If the code advertises `pay_invoice` or any other spend method, the app refuses to start.\n* There is no send path anywhere in the code.\n* Worst case: your server gets owned and the code leaks. The attacker can generate invoices that pay *you* and read your payment history. They can't drain anything. Revoke the code and mint a new one.\n* Your node doesn't have to live on the merchant box at all. NWC talks to it over a Nostr relay, so it can sit on separate hardware: Alby Hub, LNbits, or your own CLN node with a zero-budget NWC plugin. Rizful works too if you're small and want something simple.\n* No accounts, no API keys, we never touch funds. MIT licensed and self-hosted.\n\n**Works with BTCPay Server, and makes it safer**\n\nYou don't have to choose. There's an OpenReceive plugin in the BTCPay plugin directory (BTCPay 2.4.4+). Paste in a receive-only NWC code and your wallet becomes the store's Lightning node. BTCPay keeps doing what it's good at, including invoices, accounting, and the Woo/Odoo/Magento/PrestaShop integrations. The difference is that there's no node with spendable macaroons sitting on the server anymore. The tradeoff, by design: no Lightning payouts or refunds from that backend.\n\nIf you're not on BTCPay, there are drop-in libraries for Express, Fastify, Next.js, NestJS, FastAPI, Django, Flask, Rails, PHP/Laravel, plus a WooCommerce plugin.\n\n**Yes, about the stablecoins…**\n\nOpenReceive can *optionally* accept USDT and USDC (also SOL and ETH) through a swap provider you configure. The payment is swapped automatically to BTC over Lightning and settles in your wallet. The merchant never holds a stablecoin. They receive sats.\n\nWe did this because the reality is a lot of people want to pay with this. In a lot of the world, dollar stablecoins are how people actually hold and move money. We think the best way to bring Bitcoin adoption to those people is to have the merchants actually receive Lightning. Every one of those payments ends up as a bitcoin buy, and every merchant who turns it on is running a Lightning checkout.\n\nIf you don't want it, don't turn it on. Swaps are off unless you add a provider. One honest caveat: swaps add complexity, because a short or late deposit has to be refunded on the payer's chain. That flow is documented.\n\n**Links**\n\n* Docs: [https://openreceive.org](https://openreceive.org)\n* BTCPay plugin: [https://openreceive.org/btcpay](https://openreceive.org/btcpay)\n* Source: [https://github.com/OpenReceive/openreceive](https://github.com/OpenReceive/openreceive)\n\nWe'd genuinely love for this crowd to try to break it. Tell us what we got wrong.",
-      "sats": 1208,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 17,
-      "createdAt": "2026-10-18T14:30:14.710Z",
-      "user": {
-       "name": "rizful_com"
-      },
-      "subName": "lightning"
-     },
-     {
-      "id": "1598275",
-      "title": "Apple Teases MacBook Pro-Focused Event for Oct. 28th",
-      "url": "https://www.pcmag.com/news/apple-teases-macbook-pro-focused-event-for-oct-28th",
-      "text": "Only days after [announcing](https://www.pcmag.com/news/apple-oct-13-event-details-announced-homeview-homepod-mini-2-lg-home) new smart home products, Apple is teasing a MacBook Pro-focused event for next week, on Wednesday, October 28th. \n\nThis morning, the company sent journalists an invite to attend the event, which starts at 10am PST, and is  being held in Los Angeles. “Pro and tell,” the invite says. Apple’s SVP for marketing, Greg Joswiak, also [tweeted](https://x.com/gregjoz/status/2112212372182249831 \"(Opens in a new tab)\") the same tagline.",
-      "sats": 198,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-19T21:14:33.562Z",
-      "user": {
-       "name": "ch0k1"
-      },
-      "subName": "news"
      }
     ]
    }
@@ -1888,14 +1888,44 @@
    "items": {
     "items": [
      {
+      "id": "1598366",
+      "title": "Exact-Channel Circular Rebalancing for Alby Hub",
+      "url": "https://github.com/hudhaifahz/hub/releases/tag/grynvault-rebalance-v0.1.0-rc.7",
+      "text": "Not sure who else might need this, but...\n\nI built Grynvault Rebalance on top of Alby after the swap-backed rebalance option I used to use disappeared since boltz went down. I still had liquidity, but on the wrong sides of my channels—and ordinary routing could not guarantee which local channel sats would leave through or return through.\n\nRC.7 is an experimental Alby Hub v1.24.3 fork for embedded-LDK operators. Choose the exact outgoing and returning channels, find a non-paying local route, review a fresh fingerprint-bound quote and projected balances, then approve one execution. It includes fail-closed migration and recovery hardening from upstream review.\n\nIt cannot create liquidity or guarantee a public route: you need one channel with outbound liquidity, another with inbound capacity, and a viable path.\n\nmacOS 15.4+ for this RC. PGP-signed manifest; not Apple-notarized; independently maintained; not official Alby.\n\nSource/download: [https://github.com/hudhaifahz/hub/releases/tag/grynvault-rebalance-v0.1.0-rc.7](https://github.com/hudhaifahz/hub/releases/tag/grynvault-rebalance-v0.1.0-rc.7)\nDocs: [https://rebalance.grynvault.com/](https://rebalance.grynvault.com/)",
+      "sats": 598,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-10-20T00:17:36.667Z",
+      "user": {
+       "name": "kode"
+      },
+      "subName": "lightning"
+     },
+     {
+      "id": "1551074",
+      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
+      "url": null,
+      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
+      "sats": 6923,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 113,
+      "createdAt": "2026-08-19T19:44:47.321Z",
+      "user": {
+       "name": "openbitcoin"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1598244",
       "title": "I published a threat model for a SeedSigner on a Nintendo DSi. Tear it apart.",
       "url": null,
       "text": "![](https://m.stacker.news/160935)\n\nA week ago I posted [NDS-Signer](https://stacker.news/items/1592478), SeedSigner running on a Nintendo DSi ([demo video](https://odysee.com/@ndssigner:9/nds-signer-demo:2)). Someone asked what the weakest part was, and my answer was too vague. Here's a better one.\n\nSomeone on nostr told me \"waiting for audits can become a graveyard, publish the threat model and the scary files first\". Fair, so I did:\n\n* **Threat model**: [https://github.com/ndssigner/nds-signer/blob/main/docs/threat-model.md](https://github.com/ndssigner/nds-signer/blob/main/docs/threat-model.md)\n* **Audit guide**, critical files by priority: [https://github.com/ndssigner/nds-signer/blob/main/AUDIT.md](https://github.com/ndssigner/nds-signer/blob/main/AUDIT.md)\n* **Entropy spec**: [https://github.com/ndssigner/nds-signer/blob/main/docs/entropy.md](https://github.com/ndssigner/nds-signer/blob/main/docs/entropy.md)\n\nThe short version:\n\n* The seed only lives in RAM and gets wiped when you close the lid. Nothing is ever written to the SD card.\n* No network. The wifi driver isn't even linked and the radio is switched off at boot.\n* The weak spot is what runs *before* it: DSi firmware → Unlaunch → TWiLight Menu++, all from the SD card. NDS-Signer can't verify any of that.\n* No secure element. Someone with your console and the right skills could try to read RAM.\n\nWhat I know is missing:\n\n1. The QR decoding in C hasn't been fuzzed. Every QR the camera reads is attacker-controlled.\n2. The scribble + microphone entropy has no measured number. Use dice if you want to count bits.\n3. Nobody but me has reproduced a release build yet.\n\nI opened issues for each of these, so they're easy to pick up: [https://github.com/ndssigner/nds-signer/labels/audit](https://github.com/ndssigner/nds-signer/labels/audit)\n\nWhere would you attack first?",
-      "sats": 5083,
+      "sats": 5265,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 4,
       "createdAt": "2026-10-19T19:30:44.839Z",
       "user": {
        "name": "ndssigner"
@@ -1903,14 +1933,29 @@
       "subName": "bitdevs"
      },
      {
+      "id": "1598340",
+      "title": "Restaurant with no prices closing after years of trying to prove socialism works",
+      "url": "https://notthebee.com/article/minneapolis-restaurant-that-had-no-prices-closes-after-years-of-trying-to-prove-that-communism-works",
+      "text": "> For six months, the restaurant operated as a pay-what-you-can (or pay-nothing-at-all) sanctuary in Minneapolis. But as it turns out, people are greedy, and the comrade who pays $10 for a hipster sandwich starts wondering why they are shelling out $10 while someone else pays $1, and the comrade who pays $1 is wondering why others are getting the sandwich for free.\n>\n> And so, the aptly named Post Modern Times has come to a predictable end.\n\n![](https://m.stacker.news/162208)\n\n---\n\nI found this statement fascinating:\n\n> \"The only way for places like Modern Times to exist in the future is to actively challenge the reasons why it can no longer exist.\"\n\nYou mean reasons like human nature?  Communists inevitably run into the problem of human nature.  That probably explains why communism always devolves into re-education camps and ideological policing.",
+      "sats": 2533,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 20,
+      "createdAt": "2026-10-19T23:22:09.536Z",
+      "user": {
+       "name": "SimpleStacker"
+      },
+      "subName": "econ"
+     },
+     {
       "id": "1598123",
       "title": "Loyalty/Rewards and Other Monetary Scams: The Points Guy (Net Interest)",
       "url": null,
       "text": "**Here's an interesting (but dated) one... from the amazing Substack \"Net Interest.\"**\n\nI had occasion today to look through point and reward economics, and next to central banking or sex trafficking or whatever it must be one of the most despicable industries out there. It's well-known that loyalty cards/rewards schemes are fiat money-printing scams that, at best, saddles the user with a below-mininum wage job (https://stacker.news/items/869415).\n\n...but it's good for the companies running these schemes. (Yea, no shit: the money printing/issuing was always great, and under shitty monetary regime there's an incentive for everyone to become a bank or a bank-like entity #[743123](https://stacker.news/items/743123), https://stacker.news/items/1329539)\n\nIt's a typical example where businesses do things **against the interest of their customer** (thus, it's dishonest) *while looking* like they're providing you with extra benefits. Somebody should call Lizzy (Warren!). (Also, it's one area where the European Union, in its infinite overlording wisdom, made a limiting regulation that was *actually good* for us Europooreans! By capping interchange fees, they basically outlawed rewards programs and saved/spared 500 million Europeans the time/necessary effort to play these silly money games.)\n\n***\n\nIn the age of card networks and (FX) spreads (https://stacker.news/items/1586158) and costs to merchants, the COST and BENEFITS of these (Ponzi?) schemes become entirely intransparent where everyone, like in democracy, think they might get one over on someone else.\n\nAt best, it's a selection-biased gamble where **sophisticated consumers take advantage by optimizing the terms/conditions/value of the whole scheme vs naive consumers** who mistakenly believe they can/will win, while the house (as every properly set-up gamble) wins. The naive consumers will inevitably make some sort of error in their financial behavior (overdrafts, not enough spending, not maximizing rewards, too small fish such that annual fee eats up all other benefits).\n\nThe most well-known examples here are\n\n* **bank deposits**: people hold too much cash at low-yielding bank accounts vs what they could/optimally should keep in higher-yielding savings accounts. The difference, while maaaybe sometimes convenient for the customer, end up in aggregate securing a massive windfall (=cheap financing) for the banks\n* **life insurance products**: life insurance is usually priced very affordably and attractively for the buyer, which the insurance company isn't doing out of ignorance or stupidity but because they know from experience that some portion of the buyers (accidents, life circumstances changing, or just neglect) will let their policies lapse after having paid for a few years, meaning free money for the company, or worse, sell it back to the company at a great discount (=again, free money)\n\nHere's the conclusion from a Fed paper on the subject from a few years ago:\n\n> regardless of income, sophisticated individuals profit from reward credit cards at the expense of naïve consumers. To probe the underlying mechanisms, we exploit bank-initiated account limit increases at the card level and show that reward cards induce more spending, leaving naïve consumers with higher unpaid balances \\[...]\n> Naïve consumers might underestimate these payments and incur costs from usage. Sophisticated consumers, in contrast, might rake in the benefits while avoiding the payments and thus profit from usage\n\nHere's the graph they use to display the idea (sorted by FICO scores, but the same point stands)\n\n![](https://m.stacker.news/162147)\n\n*tl;dr*, the area between the curves is larger on the negative side than the positive side, thus a) redistributing from naive to sophisticated, but more importantly b) makes the entire scam profitable to the company to run: What it has to pay the sophisticated winners is less than what they manage to extract from the idiot losers.\n\n## The entire edifice is a combination of beggar-thy-neighbor and race to the bottom, with misperception and money illusion becoming key features.\n\nFrom our pal Matt Levine in a recent Money Stuff piece\n\n> banks make a lot of their money from depositor inattention: When interest rates go up, bank customers mostly don’t move their money, because it would be a pain, so banks can pay below-market interest rates on their deposits.\n> You could have similar worries about life insurance, or annuities, or mortgages: Lots of financial products are built (and priced) based on assumptions about customer inattention.\n\nThe strategy is that you intentionally misprice (underprice) your service, banking on the fact that, in aggregate, enough people who opt in for this juicy, nice-looking offers will make enough errors that the few sophisticated customers who take perfect, optimized advantage of the mispricing won't cost the company.\n\n***\n\nANYWAY, **Marc Rubenstein walks through the logic and economics of loyalty programs** and points(!) to some of the intricate cross-subsidized and legal/economic oddities with these programs:\n\n> A key question in the whole points dynamic is how much partners pay for miles. Avios Group deferred revenue at a rate of 0.88 pence per point on the stock it issued in 2023, its highest rate in many years. The consumer value of points varies widely according to how they are used, but The Points Guy puts the value of Avios at around 1.2 pence per point, so the benefit to the consumer is clear. \n> Because the airline can adjust the redemption rate to encourage the use of rewards in ways that reduce their marginal cost, it is able to offer rewards to card issuers at a discount.2 In this way, reward programs can generate profits for both issuers and airlines while generating loyalty to both, a significant positive sum outcome.\n\n## “By minting points, airline companies are able to lock in substantial cash flows.”\n\n> Online points-monitoring sites posting point “valuation” tables on a regular basis because of course the offers change and of course the issuer of this fake, unusable money manipulate it to their advantage.\n> The only problem is that competition has been driving up the rate at which card companies pay rewards. Over the last 12 months, American Express has paid out 1.07% of purchase volume in rewards, up from 0.80% ten years ago. Other card issuers have seen similar reward inflation. Capital One paid out 1.29% of purchase volume in 2022, up from 0.80% in 2013. And Discover paid out 1.43%, up from 0.94%. \n> American Express was initially exempt from the EU rules, so my British Airways co-branded card remained unaffected. In 2018, though, the courts brought Amex into line. Fortunately, American Express agreed to eat the cost. My BA Premium Plus card continues to pay 1.5 Avios points for every £1 spent, equivalent to around 1.8% on the basis of The Points Guy’s 1.2 pence per Avios valuation. I guess I do pay £250 per year for the privilege, and Amex likely bought the points at a steep discount (in particular the batch they acquired in 2020 to help the airline out of a liquidity squeeze).\n\nJUST that gives us a few intransparent economic flows:\n\n* First: The Amex bailout of BA during ‘rona, purchasing made-up points at cheap discount… even if Amex nominally loses \\~1.3% per dollar of EU transactions, if what they hand over to the customer in rewards (=made-up BA money) was acquired at well below par, there’s still a profit in it for the card company.\n* Second, to recoup the yearly card fee of 250 quid, a user needs to transact just below £14,000 a year, basically most of the discretionary card spending for a normal (Europoorean) person… and that’s not giving you pounds back, but made-up BA money you must do some additional trixing (in their webshops, for air fares, for lounge access or extra luggage etc) to benefit from.\n\n## “there are clear subsidies at play. Someone, somewhere is subsidizing my points habit – no longer the merchant, it is now other BA or Amex customers. Indeed, such subsidies are the most controversial aspect to the model.”\n\nI don't quite understand what this percentage is referring to (a larger share of Amex revenues are going back to users than before...?) but it seems to suggest that there is some sort of competitive pressure to close this rent-seeking gap\n\n![](https://m.stacker.news/162156)",
-      "sats": 7564,
+      "sats": 7585,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 18,
+      "ncomments": 20,
       "createdAt": "2026-10-19T16:22:54.930Z",
       "user": {
        "name": "denlillaapan"
@@ -1922,10 +1967,10 @@
       "title": "Would you trust an entirely AI-written bitcoin node implementation?",
       "url": null,
       "text": "Reardencode has been working on a bitcoin node implementation written in Rust. From what I can tell, [rbitcoin](https://github.com/reardencode/rbitcoin) is almost entirely vibe-coded.\n\nRearden [first posted](https://x.com/reardencode/status/2087920631165935995) about rbitcoin on 13 August of this year, saying\n\n> I prompted [@grok](https://x.com/grok) to create a bitcoin node implementation that I've been somewhat working on in the back of my mind for over 8 years.\n\nIf you go to the project's website https://rbitcoin.org/ you will see this on the about page:\n\n> # How it was built\n> \n> Brandon Black, known as Rearden or [@reardencode](https://x.com/reardencode), designed and directed the project. Grok wrote the code, with help from Claude, using grok build and Cursor.\n>\n> AI made it possible to build a design he had wanted to pursue for years.\n\nI like the idea of different implementations of bitcoin nodes, but I don't use rbitcoin as my node software -- honesty, I haven't even posted about it because I didn't take a fully AI-written bitcoin node seriously. I suspect I'm not the only one who has been cautious in approaching this project. Perhaps this is what prompted Rearden to ask\n\n# what would it take for you to trust rbitcoin to stay in consensus with bitcoin core?\n\n![](https://m.stacker.news/162200)\n\n[source](https://x.com/reardencode/status/2111461378644942998)\n\nRearden emphasizes the extensive testing that rbitcoin has implemented:\n\n![](https://m.stacker.news/162201)\n\n[source](https://x.com/reardencode/status/2111763871694307367)\n\nIt is true that human software developers have made their fair share of mistakes (even if we didn't discover a lot of them until AI got good at scanning the code). And I'm not sure that an average human dev writing and reviewing code is more likely to avoid mistakes than a bot. But still...\n\n# Am I just being a luddite in feeling that I don't trust software that doesn't have human review? \n\n@jonatack posted an interesting reply to Rearden:\n\n![](https://m.stacker.news/162202)\n\n[source](https://x.com/jonatack/status/2111578122843828561)\n\nOf the many things he mentions here, the one that stands out to me the most is that users might want a strong track record. \n\nI think a legitimate answer to Rearden's initial question of what it would take to get me to trust rbitcoin is time. When rbitcoin nodes have stayed in consensus for a halving or two, I might be willing to use it as a node. \n\n# How do you think about this? Would you use rbitcoin as the backend for your wallet?",
-      "sats": 1112,
+      "sats": 1361,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 14,
       "createdAt": "2026-10-19T21:45:58.537Z",
       "user": {
        "name": "Scoresby"
@@ -1933,14 +1978,59 @@
       "subName": "AI"
      },
      {
+      "id": "1597957",
+      "title": "There's never been a better time to go into math - 3Blue1Brown",
+      "url": "https://www.youtube.com/watch?v=LKrwhjOI8Nc",
+      "text": "Huge cope? Or some valuable thoughts on how to think about the future of math, physics, and science?\nI'm leaning towards the latter?\n\n45 minutes of a well-structured talk.\n\nIt does give me some ideas about how to frame my next ERC grant application...",
+      "sats": 3254,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-10-19T12:25:43.930Z",
+      "user": {
+       "name": "south_korea_ln"
+      },
+      "subName": "math"
+     },
+     {
+      "id": "1598359",
+      "title": "MNF- Commies vs 49ers Discussion Thread",
+      "url": null,
+      "text": "Bang Bang Niner Gang! \n\nAnyone watching?",
+      "sats": 957,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 36,
+      "createdAt": "2026-10-20T00:07:14.842Z",
+      "user": {
+       "name": "grayruby"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1598429",
+      "title": "Archipelago Foundation",
+      "url": "https://archipelago.builders",
+      "text": "These guys put out this music video today and it's got a cool feel.  \n\nhttps://x.com/polycarpweb5/status/2112333900626465071\n\nThey say it's decentralized mesh internet run on Bitcoin nodes. \n\n![](https://m.stacker.news/162216)\n\nThey have some code for something they call their OS at this [git workshop page](https://gitworkshop.dev/npub1w3sqdkrhn0gyuvsex32effzgnfpyde6qrrc4u467flg5e9txh4wsfn5vjg/relay.ngit.dev/archy)\n\nAnd there's some kind of foundation associated with it here: https://archipelago-foundation.org/\n\nTheir main website (linked at the top) seems a little light on details, but this is perhaps because they haven't really launched yet:\n\n![](https://m.stacker.news/162217)\n\nI will say that projects that spend so much effort on the look and feel usually make me pretty skeptical...but it does seem kinda cool (maybe I'm just a sucker for the lunarpunk aesthetic).\n\nCurious to see what they produce on the 31st.",
+      "sats": 341,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-20T02:07:02.687Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1598264",
       "title": "Why Is Europe Burning? The Boomers Did It (TFP, Niall Ferguson)",
       "url": "https://www.thefp.com/p/niall-ferguson-why-europe-burning-government-protest",
       "text": ".... not literally (they too old, weak and unhealthy to cause a riot). **Bear with me.**\n\n*I bash the boomers quite a lot here, individually and as a class.*\n\nIt's only *a little bit* in jest; obviously I don't want to take anybody's stuff or commit [senicide (like a proper Norseman](https://en.wikipedia.org/wiki/%C3%84ttestupa)), nor do I think every single boomer is a horned demon (or *do I?!*) but if there were a way to rewind the clock or press a button to take away their unearned gains/abolish Social Security or your equivalent Europoorean gov state Ponzi scheme (*with* the associated dividend windfalls reasonably distributed etc, etc.) of course I -- like any sane, sensible, thoughtful person -- *would do that!*\n\n## I do generally think boomers, as a class, have betrayed all that is good\n\nhttps://stacker.news/items/1388123\n\nShort of impossible dreams, magical or political, it *is* possible for individual boomers to be better (https://stacker.news/items/1598011): don't claim SS (or max it, and give it to someone who deserves it), give away most of your wealth (or even consume it... that's still work for someone else) or better yet, go out of your way to care for grandkids and *pay for as much as you possibly can*; remortgage your paid-off house to do it, if you need to.\n\nStill, it's undeniable that the boomers, individually, have acquired unearned wealth and have, broadly speaking, failed any honorable morality test of an upstanding citizenry. https://stacker.news/items/1598011, https://stacker.news/items/1527198.\n\nBut when Niall Ferguson and Izabella Kaminska, establishment historian and journalist, respectively, **say the same thing... it's a tad unnerving?**\n\n![](https://m.stacker.news/162194)\n\nhttps://x.com/izakaminska/status/2112173142915371039\n\n> As I write, [**French schools are burning**](https://www.thefp.com/p/france-student-protests-melenchon)—set ablaze by high schoolers who say they want more investment in education but for some reason think they can achieve this by filling the streets with garbage, setting it on fire, waving Palestinian flags, and clashing with the police.\n\nlol, SELF-OWN.\n\n(obviously there's plenty of retarded peeps in my own younger generations, too; and god knows the troubles we'd be in if the green woke dystopia had not been balanced by more conservative, largely boomer counterweights.) But they're *ignorant*; quite a lot of the boomers are complacent, or downright evil (hence the horns...).\n\n## \"it’s not just France. The kids are out in the streets of Madrid, too, incensed (they claim) about a growing housing crisis. In Brussels the burning issue is government budget cuts.\"\n\nSo what do the burning cities of Europe have to do with boomerism?\n\nWell:\n\n> The fact that young people are setting wheelie bins on fire is in some ways **a distraction from the root causes of all this political instability.** For, despite the echoes of 1789, 1830, 1848, 1871, and 1968, when youthful revolutionaries challenged Europe’s established order, the generational politics of 2026 is very different.\n\n> Today, by historical standards, the young are an endangered species. They are dimly aware that they are being screwed, but they don’t appear to understand who’s doing the screwing.\n\n## \"A clue for the European young: It’s not Donald Trump or Benjamin Netanyahu or whoever else you want to burn in effigy. *Mais, non*: It’s your grandparents.\"\n\nHot. Freakin'. Damn.\n\n> The French rioters say their principal grievance is under-investment in schools. But it should really be over-investment in French retirees.\n> ...it has paid better in both \\[the UK and France] to be retired than to be employed....\n\nPREACH.\n\n***\n\n**Nice little econ recap of yields and oil prices.**\n\n![](https://m.stacker.news/162196)\n\n> France is not alone. In both Italy and the United Kingdom, the cost of government borrowing is higher than the nominal growth rate. What has gone wrong? Here’s where grandma and grandad come in. The French (and British and Italian) fiscal crisis is at root due to generational imbalances in welfare and tax systems, exacerbated by reflexive Keynesian spending every time anything nasty happens (a financial crisis, a pandemic, a war, an energy shock).\n\nGuess I could have titled this \"the Keynesians did it\" too? https://stacker.news/items/1476087, https://stacker.news/items/1537872\n(Because without them, and on a sound money, or with a small gov, the boomers could ever only have inflicted so much damage -- no matter their moral or cognitive failures)\n\nYup, we're pretty fucked: https://stacker.news/items/1593563, https://stacker.news/items/1590714\n\n> Europe has relatively generous welfare systems, which do more taxing and redistributing than their U.S. equivalents. It’s just that these systems were designed for 2.5 children per family and an average life expectancy of 62, not 1.25 and 79. With a few exceptions, the various European models are in the early phase of a nosedive into insolvency.\n\nAND, let's not forget, aging populations (=boomers) living too long(!), didn't pay up enough, and have been stealing too much (as a class, anyway):\n\n> aging isn’t the sole driver of rising public debt. It explains about two-fifths of the increase since 2000. The rest is due to debt-financed spending in response to the financial crisis, Covid-19, and other crises; tax cuts and discretionary spending; and the rising cost of paying interest on the debt\n> This is not primarily a problem of public pensions—the original government welfare program, introduced by the German chancellor Otto von Bismarck in 1889. The OECD’s latest projections have average public pension spending rising from 8.8 percent of GDP in 2023–2024 to 10 percent in 2050—not a crippling increase. This is because most countries (not all) have acted in various ways to cap the costs of public pensions, either by reducing benefits, restricting coverage, or raising retirement ages.\n\n## \"politicians on both sides of the English Channel have gotten into the very bad habit of bribing seniors based on the observation that they are increasingly numerous and have relatively high turnout rates in elections.\"\n\n![](https://m.stacker.news/162197)\n\nEXCELLENT FUCKING PARAGRAPH:\n\n> The vocabulary of European politics rules out the sentence: “We need to reform seniors’ entitlements so that we don’t go bankrupt.” Instead, the left offers socialism and the right serves up national socialism. The left lays the blame on billionaires, whom they will tax to pay for yet more benefits. The right lays the blame on immigrants, whom they will deport as if that will help matters. Apart from that difference, there is a horseshoe forming in Western politics: At the extremes, socialism and national socialism are converging on economic issues (industrial policy, public ownership, rent controls), not to mention foreign policy (blame Israel for everything). Of course, **these tired old ideas bear almost no relation to economic reality.**\n\n> think young Europeans have been so successfully indoctrinated in school and college that they’ll blame almost anyone for their dissatisfaction, except the people who are actually responsible: namely seniors and the politicians who rely on their votes.\n\nIncredible. Indeed: *Fuck. The. Boomers.*\n\noh, *fuck*: the only thing Europe is investing in (\"Investing\")... *also* boomers:\n\n> A shocking amount of European defense spending goes to—you guessed it—the pensions of retired military personnel.\n> Young people will set more things on fire; if not their own schools, then asylum-seekers’ hotels and synagogues as a rising share of young men swing to the far right. That will achieve precisely nothing, except to expedite the capital flight.\n\n***\n\nopen access here: [https://niallferguson.substack.com/p/why-europe-is-burning](https://niallferguson.substack.com/p/why-europe-is-burning)",
-      "sats": 1424,
+      "sats": 1647,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 11,
+      "ncomments": 17,
       "createdAt": "2026-10-19T20:35:41.313Z",
       "user": {
        "name": "denlillaapan"
@@ -1948,19 +2038,94 @@
       "subName": "Politics_And_Law"
      },
      {
+      "id": "1598355",
+      "title": "Abandoned Bitcoin? Wallet Targeted by Noah Doe Lawsuit Moves $33 Million",
+      "url": "https://decrypt.co/381337/abandoned-bitcoin-wallet-noah-doe-lawsuit-moves-33-million",
+      "text": "",
+      "sats": 942,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-19T23:44:28.812Z",
+      "user": {
+       "name": "limonta"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1598218",
       "title": "Data Center Opposition Threatens Millions of Jobs Billions in Economic Activity",
       "url": "https://itif.org/publications/2026/10/16/data-center-opposition-threatens-millions-jobs-billions-economic-activity/?utm_source=Center+for+Data+Innovation&utm_campaign=c17d4e5554-EMAIL_CAMPAIGN_2026_04_10_06_29_COPY_01&utm_medium=email&utm_term=0_-dea7acd246-601150978&mc_cid=c17d4e5554&mc_eid=ec65641928",
       "text": "This article is a very, very, very good read and shows the huge boon data centers can bring to places. It also makes clear that data centers are not for everyone or for every place.\n\n\nAt this point in 2026, roughly $260 billion in canceled investments have been announced. \n> To quantify these potential losses, this analysis uses existing estimates of the economic contributions of large data centers to calculate the impacts of canceled investments. Based on these calculations, the $260 billion in canceled investments in 2026 represents the equivalent of approximately 1,207 foregone data center projects. During the construction phase, which typically lasts between 18 and 24 months, these projects could have supported more than 2 million jobs and generated approximately $94 billion in wages, $294 billion in local economic activity, and $12 billion in state and local tax revenues.\n\nOverall a well written and researched article.",
-      "sats": 1377,
+      "sats": 1578,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 3,
       "createdAt": "2026-10-19T18:58:19.604Z",
       "user": {
        "name": "Cje95"
       },
       "subName": "AI"
+     },
+     {
+      "id": "1598314",
+      "title": "DIESEL SHOCK - The on-going Diesel crisis in numbers",
+      "url": "https://dieselshock.pages.dev/",
+      "text": "",
+      "sats": 607,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 3,
+      "createdAt": "2026-10-19T22:19:35.200Z",
+      "user": {
+       "name": "anon"
+      },
+      "subName": "econ"
+     },
+     {
+      "id": "1598226",
+      "title": "Keynote + Kickoff — niftynei, Rene Pickhardt | bitcoin++ Berlin, payments editio",
+      "url": "https://youtu.be/lQB0_kmI6kI",
+      "text": "",
+      "sats": 1029,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-10-19T19:11:55.297Z",
+      "user": {
+       "name": "0xbitcoiner"
+      },
+      "subName": "bitcoinplusplus"
+     },
+     {
+      "id": "1598375",
+      "title": "IF Nuclear = aliens, THEN does AI = aliens, too?",
+      "url": null,
+      "text": "If UFO sightings are more prevalent around nuclear weapons facilities (presumably due to being a threat to aliens and/or humanity itself), then will UFO sightings increase once AI reaches a similar threat level as nuclear weapons?",
+      "sats": 296,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-20T00:34:13.897Z",
+      "user": {
+       "name": "gpvansat"
+      },
+      "subName": "aliens_and_UFOs"
+     },
+     {
+      "id": "1598419",
+      "title": "Dakar Bitcoin Days – A forum focused on technological innovations.",
+      "url": "https://dakarbitcoindays.com",
+      "text": "",
+      "sats": 316,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-20T01:37:07.419Z",
+      "user": {
+       "name": "hasherstacker"
+      },
+      "subName": "events"
      },
      {
       "id": "1598257",
@@ -1970,7 +2135,7 @@
       "sats": 1132,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 3,
       "createdAt": "2026-10-19T19:54:11.077Z",
       "user": {
        "name": "StillStackinAfterAllTheseYears"
@@ -1978,29 +2143,14 @@
       "subName": "food_and_drinks"
      },
      {
-      "id": "1598314",
-      "title": "DIESEL SHOCK - The on-going Diesel crisis in numbers",
-      "url": "https://dieselshock.pages.dev/",
-      "text": "",
-      "sats": 280,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-19T22:19:35.200Z",
-      "user": {
-       "name": "anon"
-      },
-      "subName": "econ"
-     },
-     {
       "id": "1597406",
       "title": "The Aftermath: \"It's like a war zone here\"",
       "url": "https://www.reuters.com/world/europe/france-faces-aftermath-worst-unrest-years-2026-10-18/",
       "text": "[See also this](https://stacker.news/items/1597292/r/hasherstacker)",
-      "sats": 1098,
+      "sats": 1198,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 9,
+      "ncomments": 11,
       "createdAt": "2026-10-18T12:19:51.020Z",
       "user": {
        "name": "hasherstacker"
@@ -2008,11 +2158,26 @@
       "subName": "Politics_And_Law"
      },
      {
+      "id": "1598373",
+      "title": "satsforbots.com: the directory for AI agents that pay in Bitcoin",
+      "url": null,
+      "text": "AI agents are starting to do real work: calling APIs, buying data, running tasks on their own. But most of the internet still expects a human with a credit card and a signup form. Agents can't do that. They can pay a Lightning invoice.\n\n[Sats for Bots](https://satsforbots.com/) is a curated directory of the tools that make that possible: L402 frameworks, agent wallets, MCP servers and paid APIs that let agents pay and get paid in Bitcoin over Lightning. Every listing is hand-checked, Lightning only, and explained in plain English, with a clear note when a tool is custodial or runs on a separate layer.\n\nIt's for builders who want their agents to spend sats, for developers putting their API behind a Lightning paywall, and for anyone following where Bitcoin and AI meet. A free weekly newsletter rounds up what's new, what's worth trying and why it matters.\n\nBrowse the directory, or subscribe at [satsforbots.com](https://satsforbots.com/).",
+      "sats": 338,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-20T00:32:38.931Z",
+      "user": {
+       "name": "gpvansat"
+      },
+      "subName": "AI"
+     },
+     {
       "id": "1598133",
       "title": "2026 NFL Survivor Pool- Week 6 recap",
       "url": null,
       "text": "@grayruby @supercyclone @Cje95 @Undisciplined @WeAreAllSatoshi @Bell_curve @Jer @TNStacker @chrisliss @Carresan @JesseJames\n\nCurrent Prize Pool: **427k sats** (20% guaranteed to @WeAreAllSatoshi)\n\nThe following players suffered losses this week:\n\n* @WeAreAllSatoshi @supercyclone @JesseJames @Undisciplined @grayruby @Cje95 @chrisliss (Rams)\n* @TNStacker (Colts)\n\n@supercyclone @JesseJames @Undisciplined @grayruby @Cje95 @chrisliss @TNStacker are all eliminated. Thanks for playing. @WeAreAllSatoshi still has a rebuy.\n\nHere are all the picks/results so far:\n\n![](https://m.stacker.news/162164)\n\nThis leaves us with just 3 remaining competitors heading into week 7.\n\nGood Luck!",
-      "sats": 1034,
+      "sats": 1070,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 15,
@@ -2023,19 +2188,49 @@
       "subName": "Stacker_Sports"
      },
      {
-      "id": "1597957",
-      "title": "There's never been a better time to go into math - 3Blue1Brown",
-      "url": "https://www.youtube.com/watch?v=LKrwhjOI8Nc",
-      "text": "Huge cope? Or some valuable thoughts on how to think about the future of math, physics, and science?\nI'm leaning towards the latter?\n\n45 minutes of a well-structured talk.\n\nIt does give me some ideas about how to frame my next ERC grant application...",
-      "sats": 2253,
+      "id": "1532071",
+      "title": "Wasabi Wallet - Privacy by Default",
+      "url": "https://wasabiwallet.io/",
+      "text": "Welcome to the coinjoin territory, anon. Post your questions here, and I will answer them.\n\n\n![](https://m.stacker.news/149538)",
+      "sats": 2563,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-19T12:25:43.930Z",
+      "ncomments": 46,
+      "createdAt": "2026-07-24T22:47:04.833Z",
       "user": {
-       "name": "south_korea_ln"
+       "name": "Kruw"
       },
-      "subName": "math"
+      "subName": "Coinjoins"
+     },
+     {
+      "id": "1598289",
+      "title": "Arch Manning on the verge of being benched",
+      "url": "https://www.espn.com/college-football/story/_/id/50218991/sources-texas-give-qb-kj-lacey-jr-increased-first-team-reps",
+      "text": "The headline is actually \"Sources: Texas to give QB KJ Lacey Jr. increased first-team reps,\" but it's clearly a possibility. \n\nI don't hate the Mannings like some football fans do, but I also admit that I'd laugh hard if he stayed out of the draft to avoid being a Jet and dropped to the third round as a result.",
+      "sats": 457,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-19T21:39:53.599Z",
+      "user": {
+       "name": "StillStackinAfterAllTheseYears"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1598394",
+      "title": "Spotted in Vienna",
+      "url": null,
+      "text": "![](https://m.stacker.news/162198)",
+      "sats": 231,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-20T00:50:41.660Z",
+      "user": {
+       "name": "hasherstacker"
+      },
+      "subName": "bitcoin"
      },
      {
       "id": "1598127",
@@ -2068,6 +2263,36 @@
       "subName": "Politics_And_Law"
      },
      {
+      "id": "1598286",
+      "title": "Nscale, Anthropic in Talks for $45 Billion Cloud Computing Deal",
+      "url": "http://archive.today/Cc4yi",
+      "text": "Nscale Ltd., the AI cloud computing firm, is in talks to sell computing power to Anthropic PBC in a deal that could be worth about $45 billion, according to people familiar with the negotiations.\n\n\nThe Nvidia Corp.-backed data center developer is seeking a second major deal with the firm behind Claude for a second facility at its Monarch data center campus in West Virginia, the people said. Anthropic has agreements in place with Nscale for infrastructure that’s worth as much as about $44.6 billion, according to a regulatory filing for Nscale’s planned initial public offering.",
+      "sats": 372,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-10-19T21:33:27.462Z",
+      "user": {
+       "name": "ch0k1"
+      },
+      "subName": "news"
+     },
+     {
+      "id": "1598365",
+      "title": "Fishermen on the Tiber River, Rome, Italy, c. 1890s-1910s",
+      "url": null,
+      "text": "![](https://m.stacker.news/162212)",
+      "sats": 222,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-10-20T00:17:01.583Z",
+      "user": {
+       "name": "guerratotal"
+      },
+      "subName": "Photography"
+     },
+     {
       "id": "1598011",
       "title": "Why Don’t Boomers Want to Grandparent? (Newsweek, Daniella Gray)",
       "url": "https://www.newsweek.com/why-dont-boomers-want-to-grandparent-12575764",
@@ -2098,244 +2323,19 @@
       "subName": "Stacker_Sports"
      },
      {
-      "id": "1598226",
-      "title": "Keynote + Kickoff — niftynei, Rene Pickhardt | bitcoin++ Berlin, payments editio",
-      "url": "https://youtu.be/lQB0_kmI6kI",
-      "text": "",
-      "sats": 637,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-19T19:11:55.297Z",
-      "user": {
-       "name": "0xbitcoiner"
-      },
-      "subName": "bitcoinplusplus"
-     },
-     {
-      "id": "1598228",
-      "title": "Bitcoin Calendar now has a timeline view",
+      "id": "1598290",
+      "title": "Davante Adams out 6-10 weeks",
       "url": null,
-      "text": "Added a timeline view alongside calendar view, so you can browse events chronologically.\n\n[**bitcoin-calendar.org**](https://bitcoin-calendar.org/en?view=timeline)\n\nLet me know what you think. Suggestions are welcome!\n\n![](https://m.stacker.news/162186)\n\n![](https://m.stacker.news/162187)\n\n![](https://m.stacker.news/162188)\n\n![](https://m.stacker.news/162189)\n\n![](https://m.stacker.news/162190)",
-      "sats": 643,
+      "text": "Not much going right in Ram Land.\n\nGood thing they don’t have any fans to witness this epic downfall.\n\nhttps://x.com/rapsheet/status/2112286809397006716?s=46&t=opFMGEQXdk09WvPsXf4z6g",
+      "sats": 317,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-19T19:12:25.500Z",
-      "user": {
-       "name": "Tony"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1598286",
-      "title": "Nscale, Anthropic in Talks for $45 Billion Cloud Computing Deal",
-      "url": "http://archive.today/Cc4yi",
-      "text": "Nscale Ltd., the AI cloud computing firm, is in talks to sell computing power to Anthropic PBC in a deal that could be worth about $45 billion, according to people familiar with the negotiations.\n\n\nThe Nvidia Corp.-backed data center developer is seeking a second major deal with the firm behind Claude for a second facility at its Monarch data center campus in West Virginia, the people said. Anthropic has agreements in place with Nscale for infrastructure that’s worth as much as about $44.6 billion, according to a regulatory filing for Nscale’s planned initial public offering.",
-      "sats": 305,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-19T21:33:27.462Z",
-      "user": {
-       "name": "ch0k1"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1598097",
-      "title": "Your sats aren't sitting in an escrow wallet. So how does Mostro actually work?",
-      "url": null,
-      "text": "# Your sats aren't sitting in an escrow wallet. So how does Mostro actually work?\n\nOne of the most interesting things I've learned from helping run a Mostro coordinator in Europe is how Lightning hold invoices can be used for P2P Bitcoin trading.\nWhen people hear the word \"escrow\", they usually imagine a third party receiving their Bitcoin, holding it somewhere, and eventually sending it to the buyer.\nBut Lightning allows a different approach.\nAnd I think more Bitcoiners should understand how it works.\n\n## What is a Lightning hold invoice?\n\nWith a normal Lightning payment, the recipient settles the payment by revealing the payment preimage.\nA hold invoice works differently.\nThe payment can be accepted at the HTLC level without immediately revealing the preimage. The recipient can decide to settle it later or cancel it.\nUntil settlement, the payment remains unresolved, with the relevant funds committed to the pending Lightning payment.\nIt's not a regular wallet balance that someone can freely spend.\nBut it's also not magic. HTLC timeouts, channel liquidity, wallet behavior and node reliability all matter.\n\n## How does Mostro use this?\n\nImagine Alice wants to sell Bitcoin for euros, and Bob wants to buy.\nAlice and Bob find each other through a Mostro coordinator.\nThe seller's Lightning payment is held while the fiat side of the trade takes place.\nOnce Bob sends the euros and Alice confirms receiving them, the trade can proceed to settlement.\nIf something goes wrong, the trade may require cancellation, timeout handling or dispute resolution.\nThe important distinction is that the coordinator isn't simply receiving Alice's Bitcoin into a conventional custodial wallet and holding it there.\nHowever, the coordinator still plays a critical role in the protocol. The design doesn't eliminate operational risk, payment risk or the need to understand the dispute process.\nNon-custodial doesn't mean risk-free.\n\n## What surprised me most\n\nWhen we started operating MostroEuropa, I expected the hardest part to be the infrastructure.\nKeeping services online, maintaining Lightning connectivity, monitoring invoices, dealing with software updates and making sure everything behaves correctly.\nThose things certainly matter.\nBut we've already seen real P2P trades happen, and another challenge has become obvious: liquidity.\nYou can have working software, a functioning coordinator and people interested in decentralized trading.\nBut if someone opens the order book and finds nothing that matches their needs, they may simply leave.\nIt's a classic problem for a small P2P marketplace.\nThe technology can be ready before the market is.\nAnd that's something you can't fix with another server upgrade.\n\n## Why I still think this is worth building\n\nI like the idea of people trading Bitcoin directly, using open protocols rather than depending entirely on centralized exchanges.\nLightning provides interesting payment primitives.\nNostr provides an open communication layer.\nMostro brings those pieces together into a P2P trading protocol.\nNone of this guarantees adoption. And it certainly doesn't remove every risk.\nBut experimenting with these systems in the real world teaches you things that reading documentation never will.\nWe're still learning, still improving and still trying to grow a real European P2P market.\n\n## A question for Stackers\n\nI'm curious how other Bitcoiners see this.\n**Would you feel comfortable using Lightning hold invoices for P2P trading, or would you prefer a different escrow model?**\nAnd for those who have used Mostro, RoboSats or other P2P tools: what's the biggest obstacle for you?\nLiquidity? Wallet compatibility? Trust? User experience?\nI'd genuinely like to hear your experiences.\nFor context, I help operate MostroEuropa, a European Mostro coordinator:\n[https://mostroeuropa.github.io/](https://mostroeuropa.github.io/)",
-      "sats": 965,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-10-19T15:59:44.919Z",
-      "user": {
-       "name": "39963a0737"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1597932",
-      "title": "Elon Musk says he’ll give a SpaceX share to every child in America next year",
-      "url": null,
-      "text": "https://www.cnbc.com/2026/10/19/elon-musk-spacex-shares-giveaway-kids.html\n\n>[SpaceX](https://www.cnbc.com/quotes/SPCX/) boss [Elon Musk](https://www.cnbc.com/elon-musk/) said Monday that he’ll give every child in the U.S. one of his shares in the company next year.\n\n>Musk currently owns about 4.8 billion SpaceX shares, according to an August SEC filing. That figure rises to 6.4 billion when taking into account unvested awards and stock options, representing a 48.4% beneficial stake in the company.\n\n>“This will be the first of many,” Musk said in a post on X\n\nI am curious on how this transfer would occur.  Is every kid going to have to KYC and setup a brokerage account?",
-      "sats": 1415,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-10-19T11:51:27.290Z",
-      "user": {
-       "name": "Wumbo"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1598041",
-      "title": "Jalen Hurts Out for Season After Blood Clots Discovered in Eagles QB's Lungs",
-      "url": "https://www.espn.com/nfl/story/_/id/50218378/eagles-jalen-hurts-season-due-blood-clots-lungs",
-      "text": "Holy crap.... this is terrible.... I mean his career.... it might be over.\n\n> Hurts will undergo treatment for the blood clots that will take at least three months, according to Rapoport.\n\n> After initially being diagnosed with a superficial clot in his calf, Hurts underwent further examination that revealed \"a deep vein thrombosis, as well as bilateral pulmonary emboli,\" according to the statement.",
-      "sats": 836,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 14,
-      "createdAt": "2026-10-19T15:04:07.176Z",
-      "user": {
-       "name": "Cje95"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1597437",
-      "title": "I finally visited Pubkey in Washington DC",
-      "url": null,
-      "text": "![](https://m.stacker.news/162019)\n\nI am attending a reunion of sorts of some old friends in DC.  I had some free time yesterday, so I finally got the opportunity to visit the Washington Pubkey.\n\nI have posted a few times about the NYC version. I have a great time whenever I go:\n\nhttps://stacker.news/items/219987/r/siggy47\n\nhttps://stacker.news/items/230440/r/siggy47\n\nhttps://stacker.news/items/1283387/r/siggy47\n\nThe Washington DC version of Pubkey is located on 7th Street in the [Penn Quarter](https://en.wikipedia.org/wiki/Penn_Quarter) neighborhood of the city. It's not far from Ford's Theater and the J Edgar Hoover FBI building.  Capital One Arena, where the Washington Capitals play, is down the block. It is an upscale, touristy location.\n\nPubkey DC opened in January, 2026, according to the website, but I thought it had been around longer.  Yesterday the Washington Capitals had an early game, so there were plenty of fans in jerseys milling about. When I walked in I immediately noticed how different this place was from the New York version. It's huge, around 12,000 square feet, with two bars, a stage, and big screens everywhere showing sporting events. There was a good crowd, which looked to be a mix of tourists, locals, and hockey fans. I can't be certain, but I'm pretty sure I was the only person in the place interested in bitcoin.\n\nThis is not an in your face bitcoin space. I had just had a long car and was hungry. I decided to sit at the bar and have some lunch after exploring a bit.\n\nAt first I didn't notice much bitcoin stuff, but it is all strategically placed to fit in unobtrusively. I liked the low key design. It could be any sports /tourist spot in any city.\n\nThere were a few stickers in the men's room:\n\n![](https://m.stacker.news/162028)\n\n![](https://m.stacker.news/162029)\n\nI then noticed a large wall display with some actively mining bitaxes:\n\n![](https://m.stacker.news/162030)\n\nAnd this small, but intriguing stack of bitcoin and bitcoin adjacent books below a \"Free Samourai\" sign:\n\n![](https://m.stacker.news/162032)\n\nI sat at the bar and saw this cool display:\n\n![](https://m.stacker.news/162033)\n\nOccasionally the ticker had a news flash scrolling across the screen.\n\nWhen ordering my lunch I let the bartender know that I planned to pay in bitcoin. I was told that if I did, I would receive a 21% discount, which is impressive. I asked about the payment setup, and was a little disappointed that they just use square. I tried to.engage my server in a little bitcoin banter, but it was obvious he had no deep interest. I dont want to sound negative. All of the workers were friendly and competent. The menu was similar to the NYC Pubkey. I had a Caesar wrap, which was very good.  I must say paying with the square app was quick and easy. You select the tip amount before the invoice is generated, which is nice. I have experienced a few awkward moments trying to tip at the NYC Pubkey. You never can be sure if the server would prefer sats or dollars. This way they probably get a choice.\n\nThat being said, paying with square is still disappointing.\n\nOn the way out I found this board near the front bar:\n\n![](https://m.stacker.news/162036)\n\nI guess this proves there are some bitcoiners patronizing the place.\n\nI didn't get to experience an event, but there is plenty of room for bitcoin gatherings. NYC Pubkey always feels a little cramped. I know Thomas Massie will be holding a discussion soon. I hope I get some time on my next trip to catch a presentation.",
-      "sats": 15817,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 16,
-      "createdAt": "2026-10-18T13:59:41.302Z",
-      "user": {
-       "name": "siggy47"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1597996",
-      "title": "What is the Pic OT of the week?",
-      "url": null,
-      "text": "![](https://m.stacker.news/162132)\n\nDalton Schultz of the Houston Texans is tackled by Dennis Gardeck of the Jacksonville Jaguars\n\n***\n\n![](https://m.stacker.news/162133)\n\nShohei Ohtani #17 of the Los Angeles Dodgers hits a three-run home run against the Milwaukee Brewers\n\n***\n\n![](https://m.stacker.news/162134)\n\nJesse Love, driver of the #2 Whelen Chevrolet, celebrates after winning the NASCAR O'Reilly Auto Parts Series Timberland PRO 200\n\n***\n\n![](https://m.stacker.news/162136)\n\nNataliya Guseva plays a shot from the sixth tee during the second round of the Buick LPGA Shanghai 2026\n\n***\n\n![](https://m.stacker.news/162138)\n\nColton Dach #34 of the Edmonton Oilers dives for the puck during the second period of a game against the Utah Mammoth\n\n***\n\n![](https://m.stacker.news/162140)\n\nZheng Qinwen, the women's singles champion of the China Open 2026, poses with the trophy during a photo session at the Great Wall of China\n\n***\n\ncc: @Undisciplined  @WeAreAllSatoshi @realBitcoinDog @TNStacker @BlokchainB @DarkStacker @siggy47 @Coinsreporter @grayruby @Carresan @gsc360 @User21000000 @suraz @HardMoney",
-      "sats": 990,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-19T13:48:11.448Z",
-      "user": {
-       "name": "guerratotal"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1598071",
-      "title": "US banning Chinese AI DeepSeek from government agency IT systems",
-      "url": "https://www.reuters.com/technology/us-banning-chinese-ai-deepseek-government-agency-it-systems-2026-10-19/",
-      "text": "",
-      "sats": 721,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-19T15:34:35.130Z",
-      "user": {
-       "name": "Gian"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1598164",
-      "title": "And it's gone. Ben Simmons comeback looks to be over",
-      "url": null,
-      "text": "https://x.com/BleacherReport/status/2111950735852400760?s=20",
-      "sats": 519,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 4,
-      "createdAt": "2026-10-19T17:35:36.588Z",
+      "ncomments": 5,
+      "createdAt": "2026-10-19T21:40:58.153Z",
       "user": {
        "name": "grayruby"
       },
       "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1598082",
-      "title": "First domino falls",
-      "url": null,
-      "text": "Ballard gone in Indy.\n\nhttps://x.com/Colts/status/2112175612932882744?s=20",
-      "sats": 673,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-10-19T15:48:09.929Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1598251",
-      "title": "Kelowna BC man wins City Council election on \"Unqualified\" Platform",
-      "url": null,
-      "text": "Hilarious campaign.\n\nI suggest \"My wife told me to get a job\" for his mayoral campaign in four years.\n\nhttps://x.com/6ixbuzztv/status/2112199625486536835?s=20",
-      "sats": 406,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-10-19T19:44:39.276Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "lol"
-     },
-     {
-      "id": "1598140",
-      "title": "English ↔ Claudish",
-      "url": "https://programasweights.com/claudish",
-      "text": "![](https://m.stacker.news/162165)\n\nA bidirectional English and Claudish translator powered by compiled 0.6B neural programs.\n\n- - -\n\n#AI #Humor #Tools",
-      "sats": 652,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-19T16:58:19.072Z",
-      "user": {
-       "name": "deSign_r"
-      },
-      "subName": "Design"
-     },
-     {
-      "id": "1598169",
-      "title": "Five years ago today, Wall Street got its first Bitcoin ETF",
-      "url": null,
-      "text": "Hard to believe it's been five years. On October 19, 2021, BITO started trading, and everyone treated it like the big moment had finally arrived. A billion dollars poured in within two days.\n\nBut it didn't hold bitcoin. It held CME futures. After years of turning down spot ETFs, the SEC finally approved one, and it was a wrapper around derivatives.\n\n![](https://m.stacker.news/162172)\n\nPeople who bought it learned what contango is the hard way. Every month the fund rolled its futures, every roll cost a bit, and over time BITO fell well behind actual BTC. You paid a fee to underperform the thing you thought you owned.\n\nTo be fair, it probably did help. It showed there was huge demand, and that made it harder to keep blocking spot products, which we eventually got in January 2024. Now those funds hold a big chunk of the supply.\n\nI keep going back and forth on how to feel about it. Was BITO a necessary step, or just a toll booth for people who didn't want to learn self-custody?",
-      "sats": 391,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-19T17:47:41.236Z",
-      "user": {
-       "name": "Satoshisatsamoto"
-      },
-      "subName": "news"
-     },
-     {
-      "id": "1597457",
-      "title": "Receive-only Lightning checkout: a hacked server can’t drain your node",
-      "url": "https://openreceive.org/",
-      "text": "Like a lot of you, we spent August 7 watching merchant Lightning nodes get swept. A bug in BTCPay Server let attackers pull LND macaroons off merchant servers without logging in. With those, they closed channels and walked off with the funds. Foundation, Citadel21, IVPN and others were hit. ([IVPN's writeup](https://www.ivpn.net/blog/security-incident-bitcoin-payment-server/) is worth a read.)\n\nTo be clear, we love BTCPay Server. It has done more for merchant adoption than almost anything, and the team responded fast. But that week made something obvious that was always true: keeping a live, spend-capable Lightning node on the same internet-facing machine that runs your shop is fundamentally pretty scary. \n\nSo we built **OpenReceive** to take spending out of the picture entirely.\n\n**How it works**\n\n* Your app connects to your wallet with a **receive-only Nostr Wallet Connect (NWC) code**. That code can create invoices and list incoming payments. It cannot pay anyone.\n* On startup, OpenReceive asks the wallet what the code is allowed to do. If the code advertises `pay_invoice` or any other spend method, the app refuses to start.\n* There is no send path anywhere in the code.\n* Worst case: your server gets owned and the code leaks. The attacker can generate invoices that pay *you* and read your payment history. They can't drain anything. Revoke the code and mint a new one.\n* Your node doesn't have to live on the merchant box at all. NWC talks to it over a Nostr relay, so it can sit on separate hardware: Alby Hub, LNbits, or your own CLN node with a zero-budget NWC plugin. Rizful works too if you're small and want something simple.\n* No accounts, no API keys, we never touch funds. MIT licensed and self-hosted.\n\n**Works with BTCPay Server, and makes it safer**\n\nYou don't have to choose. There's an OpenReceive plugin in the BTCPay plugin directory (BTCPay 2.4.4+). Paste in a receive-only NWC code and your wallet becomes the store's Lightning node. BTCPay keeps doing what it's good at, including invoices, accounting, and the Woo/Odoo/Magento/PrestaShop integrations. The difference is that there's no node with spendable macaroons sitting on the server anymore. The tradeoff, by design: no Lightning payouts or refunds from that backend.\n\nIf you're not on BTCPay, there are drop-in libraries for Express, Fastify, Next.js, NestJS, FastAPI, Django, Flask, Rails, PHP/Laravel, plus a WooCommerce plugin.\n\n**Yes, about the stablecoins…**\n\nOpenReceive can *optionally* accept USDT and USDC (also SOL and ETH) through a swap provider you configure. The payment is swapped automatically to BTC over Lightning and settles in your wallet. The merchant never holds a stablecoin. They receive sats.\n\nWe did this because the reality is a lot of people want to pay with this. In a lot of the world, dollar stablecoins are how people actually hold and move money. We think the best way to bring Bitcoin adoption to those people is to have the merchants actually receive Lightning. Every one of those payments ends up as a bitcoin buy, and every merchant who turns it on is running a Lightning checkout.\n\nIf you don't want it, don't turn it on. Swaps are off unless you add a provider. One honest caveat: swaps add complexity, because a short or late deposit has to be refunded on the payer's chain. That flow is documented.\n\n**Links**\n\n* Docs: [https://openreceive.org](https://openreceive.org)\n* BTCPay plugin: [https://openreceive.org/btcpay](https://openreceive.org/btcpay)\n* Source: [https://github.com/OpenReceive/openreceive](https://github.com/OpenReceive/openreceive)\n\nWe'd genuinely love for this crowd to try to break it. Tell us what we got wrong.",
-      "sats": 1208,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 17,
-      "createdAt": "2026-10-18T14:30:14.710Z",
-      "user": {
-       "name": "rizful_com"
-      },
-      "subName": "lightning"
-     },
-     {
-      "id": "1598275",
-      "title": "Apple Teases MacBook Pro-Focused Event for Oct. 28th",
-      "url": "https://www.pcmag.com/news/apple-teases-macbook-pro-focused-event-for-oct-28th",
-      "text": "Only days after [announcing](https://www.pcmag.com/news/apple-oct-13-event-details-announced-homeview-homepod-mini-2-lg-home) new smart home products, Apple is teasing a MacBook Pro-focused event for next week, on Wednesday, October 28th. \n\nThis morning, the company sent journalists an invite to attend the event, which starts at 10am PST, and is  being held in Los Angeles. “Pro and tell,” the invite says. Apple’s SVP for marketing, Greg Joswiak, also [tweeted](https://x.com/gregjoz/status/2112212372182249831 \"(Opens in a new tab)\") the same tagline.",
-      "sats": 198,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-10-19T21:14:33.562Z",
-      "user": {
-       "name": "ch0k1"
-      },
-      "subName": "news"
      }
     ]
    }
