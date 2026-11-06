@@ -559,7 +559,7 @@
       "sats": 311,
       "bounty": 10000,
       "bountyPaidTo": null,
-      "ncomments": 20,
+      "ncomments": 21,
       "createdAt": "2026-11-01T13:42:45.414Z",
       "user": {
        "name": "BlokchainB"
@@ -759,21 +759,6 @@
        "name": "TotallyHumanWriter"
       },
       "subName": "the_stacker_muse"
-     },
-     {
-      "id": "1590347",
-      "title": "My first Taproot Asset payment over the Lightning Network",
-      "url": null,
-      "text": "I made my first stablecoin payment on Lightning! I paid 2.14 USDTL for a glass bottle of Coca Cola at DCTRL, a hackspace in Vancouver, BC.\n\n![Video of OP paying to a Lightning Address from their Taproot Asset channel](https://v.nostr.build/nPrMgh7eSyY4kCrFJAvvJu.mov)\n\n**My setup:** I'm running `litd` in integrated mode, meaning LND, Taproot Assets and everything else runs as one binary, with a pruned Bitcoin Core backend.\n\n**The asset channel:** The asset is USDTL, a bridged stablecoin issued by Speed Wallet. I asked Jesse of Amboss to open a channel to me from their node, but I expect to be able to do that soon through their Web UI. He opened a $3000 channel. By default my node will accept any Taproot Asset channel, but to be able to receive and send payments I have to configure an \"oracle\" that feeds my node price information about the channel. I'm using [Tassandra](https://github.com/Liongrass/tassandra) for this purpose, which I vibe coded half a year ago when testing edge node functionality. I expect that requirement to eventually be dropped, streamlining the process of receiving and sending.\n\n**The edge node:** Amboss, my channel peer, by definition also acts as the edge node for my payments. That means that for every invoice I create or pay, Amboss is taking \"the other side\" of the trade. When I generate a Lightning invoice locally, that invoice can be paid by any Lightning wallet out there. The sender constructs a route to my node and sends satoshi, which get \"swapped\" by Amboss to USDTL at the last hop. Conversely, I can pay any Lightning invoice or LNURL from my node. I construct a route that sends USDTL to Amboss, which get forwarded as satoshi to the final destination. As this uses ordinary onion routing, Amboss can not see the origin of payments I receive, or the the destination of payments I make.\n\n**The recipient:** The vending machine is quite simple. All items in it cost the same (CA$3), each payment unlocks exactly one bottle of any one kind. The payment is made to an LNURL printed on the front of the machine and is also reachable through the Lightning Address `coke@bitdevs.ca`. When an incoming payment is detected, the LNbits backend sends a signal to the Pi inside of the machine to unlock the bottle.\n\n**The payment:** I am using [Tassilo](https://github.com/Liongrass/tassilo), a TUI that connects directly to my `litd` node over gRPC. I can see my channel, my inbound and outbound capacity for both the channel and the BTC. I can pay any Lightning invoice or LNURL, so I enter the address of the vending machine and hit send. The first thing I see is the details for the Lightning Address. These are in satoshi, but once I create an invoice and choose to pay with USDTL, I get an estimate for how much this will cost me, in dollars, excluding routing fees. I can now pay the invoice, and after a few seconds I receive the preimage, and the vending machine releases the drink. A coke costs CA$3 at the machine, which at the time of payment was 2,526 satoshi. But the amount I ended up paying was 2.144058 USDTL. To calculate the spread I make an invoice over 2.14 USDTL and pay it from another wallet later, which turns out to be 2528 satoshi. That's pretty much a 0% spread, generous of Amboss, and I'm very curious what this will cost me when these kinds of services roll out more broadly.\n\n**More payments:** I also topped up my Mullvad account (4.5 EUR, \\~5.07 USD) for 5.05 USDTL, added 5 USD to my Dracotel eSIM (5.05 USDTL), and bought a 20 CAD (\\~14.03 USD) Safeway gift card from Bitrefill for 14.10 USDTL. The constant currency conversions are definitely not great, but mainly it makes you realize how wonky USD to satoshi exchange rates can already be, and some providers mark up their exchange rate to skim some extra bips from the consumer, or in expectation to be compensated for the costly liquidity management of their nodes.\n\n**Conclusion:** Setting up Taproot Assets for yourself isn't very easy yet. But it's certainly not out of reach. You need your own Bitcoin and Lightning node and a specialized channel, and you can only interact with the node through the command line or a TUI so far. But once you have set it up, making and receiving payments is very smooth. I believe this stack will play an important role in spreading Lightning adoption around the world.",
-      "sats": 25807,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 37,
-      "createdAt": "2026-10-07T03:09:00.011Z",
-      "user": {
-       "name": "leo"
-      },
-      "subName": "lightning"
      },
      {
       "id": "1605927",
@@ -1391,6 +1376,21 @@
       "subName": "Stacker_Stocks"
      },
      {
+      "id": "1608631",
+      "title": "Why isn't bitcoin used for more gray market things?",
+      "url": "https://spiralxyz.substack.com/p/value-stored-now-what",
+      "text": "@spiral published The Long Road to Bitcoin Payments https://stacker.news/items/1603307/r/Scoresby last week and got quite a good discussion going here and on [Github](https://github.com/spiralxyz/bitcoin-payments/discussions/1).\n\nToday, they are out with a summary of the community's response.\n\n> **1. Global entrepreneurs, human or agent, earning in bitcoin.**\n> **2. Agentic payments.**\n> **3. Self-custody as stablecoins get more regulated and freezable.**\n\nThe guys on PBJ also did a recap of the discussion on their most recent episode, which is an interesting listen:\n\nhttps://x.com/PresidioPod/status/2118070779959017814\n\nThere were two things that caught my attention in this conversation. First, @moneyball makes the point that it is surprising that the gray-market areas haven't seemed to find much use for bitcoin. \n\n# Why haven't the porn sites, online gambling dens, and illegal markets shown much interest in bitcoin payments?\n\nWhile moneyball doesn't mention it, he made me think of Starbackr https://stacker.news/items/135689 https://stacker.news/items/67590 and after a little poking around it looks like they had some trouble with the App Store allowing zaps https://stacker.news/items/219407 but eventually managed a workaround https://stacker.news/items/224893 but then pivoted to AI https://stacker.news/items/250739 and quietly shut down -- at least the main starbackr website is no longer reachable (wayback machine last crawled it in [July 2024](https://web.archive.org/web/20240727123411/https://starbackr.com/) and shows a redirect to getcurrent.io -- last crawled by the wayback machine in Dec 2024 -- although you can still reach the [starbackr docs page](https://docs.starbackr.com/)). These guys seem to have made as good a run as any at delivering a bitcoin powered OnlyFans. What happened?\n\nIt seems that the same is true for online gambling (although maybe this story about [Iranian gambling sites](https://www.reuters.com/investigations/illicit-iranian-gambling-network-helped-pull-off-4-billion-sanctions-dodge-2026-07-31/) is a hint that bitcoin is being used in this manner? possibly we are all just too goody-goody to get invited to the illegal tables?).\n\nI don't believe that traceability is the answer. As far as I can tell, porn sites and online gambling are mostly using credit card payments and tradfi banking, which is even worse for privacy. \n\nSpiral says that a lot of responses pointed out that there isn't any demand for bitcoin. But that seems to be answering the question with the question itself -- why isn't there any demand? \n\n# Surely someone needs money that no one can stop you from sending or receiving?",
+      "sats": 7268,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 36,
+      "createdAt": "2026-11-04T22:05:50.681Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1602534",
       "title": "When “Nothing Ever Happens” Become the Pennies-Before-Steamroller Trade",
       "url": null,
@@ -1434,14 +1434,44 @@
    "items": {
     "items": [
      {
+      "id": "1609310",
+      "title": "What do you think of Bitcoin Core's AI contribution policy?",
+      "url": null,
+      "text": "@jonatack pointed me in the direction of this AI policy by @sedited and Will Clark  (which I had not previously read) as well as an AI policy that Atack proposed for the BIPs repo that was inspired by the Bitcoin Core AI policy. Atack later closed his own PR because of the rate of change in AI:\n\n![](https://m.stacker.news/164983)\n\n[source](https://x.com/jonatack/status/2118441572069159303)\n\nI like how both Atack and Sedited and Clark think about AI use, especially in the context of developing Bitcoin Core (and contrasted with @reardencode's approach to AI use in developing rbitcoin https://stacker.news/items/1598294/r/Scoresby). And I think it's particularly interesting to compare the two AI policies.\n\nBoth require that\n- there is a human in the loop\n- the human author knows the language the contribution is written in\n- the human author could have written the proposed change themselves\n- AI should not be used to generate comments or responses\n- AI generated context provided in comments should be disclosed as such and accompanied by human explanation.\n- autonomous agents should not open pull requests\n- AI agents or bots should not be included as authors or coauthors\n\nWhere they differ is that Atack's policy is a bit more specific about two things:\n1. \"Do not leave the first review of AI-generated changes to the reviewers. Verify the changes (code review, testing, etc.) before submitting your PR.\"\n2. \"Reviewers want to engage directly with you, not with generated responses.\"\n\n# Do you think these policies are missing anything (or too strict)?\n\nHere is the current Bitcoin Core [AI policy](https://github.com/bitcoin/bitcoin/blob/master/doc/AI_POLICY.md) written by @sedited and Will Clark:  \n\n> Using AI (i.e. LLMs) as tools for coding is welcome, provided that such use adheres to the following policy, adds value, and does not waste the community's time.\n> \n> A high bar is held for all contributions to this project.\n> \n> **AI should not be used to generate comments when communicating with maintainers and other contributors**. Comments are expected to be written by humans. Comments that are believed to be written by AI may be moderated.\n> \n> If you are opening an issue, you should be able to describe the problem in your own words.\n> \n> You should only open a pull request if you:\n> \n> * know the language the code is written in\n> * could have written the code yourself\n> * understand the existing surrounding code and the effect of the suggested changes\n> \n> You must also be able to explain the pull request changes in your own words. This includes the pull request body and responses to questions. **Do not copy responses from the AI when replying to questions from reviewers.**\n> \n> This project requires a human author in the loop who understands the work produced by AI. **Pull requests should not be opened or driven by autonomous agents**. A human author must choose the work, understand the change, and be responsible for the contribution. Do not include agents as authors or co-authors of your commits for these reasons. Pull requests that appear in violation of this can be closed without notice.\n> \n> If you wish to include context from an interaction with AI in your comments, it must be disclosed as such. It must be accompanied by human commentary explaining the relevance and implications of the context.\n> \n> Questions or proposed changes to this policy can be discussed in [bitcoin-core/meta](https://github.com/bitcoin-core/meta).\n> \n> This policy was adapted from [ripgrep's AI policy](https://github.com/BurntSushi/ripgrep/blob/f0cec341ab95c25c691ad3d5754d4bd9eedde21f/AI_POLICY.md), which was adapted from [uv's AI policy](https://github.com/astral-sh/.github/blob/c5187e200db51bfe11d56e13053d29bd3793fdd8/AI_POLICY.md).\n\n\nAnd here is the AI policy Jon Atack [proposed in a PR](https://github.com/bitcoin/bips/pull/2265/changes/de4aca8fcdd5e317fdde657e2a14b518caca0348) (but later closed): \n\n> Using AI as a tool for proposals or review in this project can be acceptable, provided that such use adheres to the following policy, adds value, and does not waste the community's time.\n> \n> A high bar is held for all contributions to this project.\n> \n> This project requires a human author in the loop who reviews, verifies, and fully understands the proposal or change before submission.\n> \n> You should only open a pull request if you:\n> \n> - could have written the change yourself\n> - understand the existing context, specification and code, and the effect of the suggested changes\n> \n> Do not leave the first review of AI-generated changes to the reviewers. Verify the changes (code review, testing, etc.) before submitting your PR.\n> \n> Pull requests should not be opened or driven by autonomous agents. A human author must choose the work, understand the proposal or change, and be responsible for the contribution. For these reasons, do not include agents as authors or co-authors of your commits.\n> \n> You must be able to explain the pull request changes in your own words. This includes the pull request body and responses to questions. Do not copy responses from an LLM when replying to questions from reviewers.\n> \n> Reviewers want to engage directly with you, not with generated responses. AI should not be used to generate comments when communicating with maintainers and other contributors. Comments are expected to be written by humans. Using AI to improve grammar or to translate is fine, but the substance of your responses must be your own. Comments that are believed to be written by AI may be moderated.\n> \n> If you wish to include context from an interaction with AI in your comments, it must be disclosed as such and accompanied by human commentary explaining the relevance and implications of the context.\n> \n> Pull requests that appear to be in violation of the above can be closed without notice.\n> \n> Questions or proposed changes to this policy can be discussed on the [Bitcoin Development Mailing List](https://groups.google.com/g/bitcoindev).\n> \n> This policy was adapted from the AI policy in [Bitcoin Core](https://github.com/bitcoin/bitcoin/blob/master/doc/AI_POLICY.md) and in [Kubernetes](https://www.kubernetes.dev/docs/guide/pull-requests/#ai-guidance).",
+      "sats": 2099,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 7,
+      "createdAt": "2026-11-06T02:46:54.398Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1609152",
+      "title": "Payjoin Trading: A Novel Approach to UTXO Consolidation and Privacy",
+      "url": null,
+      "text": "# BULL BITCOIN is now the first Bitcoin exchange in the world to introduce Payjoin for deposits and withdrawals!\n\n**Every on-chain buy and sell from BULL Wallet is now a Payjoin by default, with nothing to switch on.**\n\nThat’s Payjoin Trading, and it means:\n• Every trade consolidates your UTXOs, which can lower your future fees.\n• Your transactions are protected from malicious actors using chain analysis to track your financial habits.\n\nAnd the more people use BULL BITCOIN, the more privacy the Bitcoin network gains as a whole. That’s how we align the growth of our business with the interests of all Bitcoin users, including those who have never used our services.\n\nWe’ve been working toward this since December 2024, when BULL Wallet became the first Bitcoin wallet to integrate Payjoin V2, developed in collaboration with the Payjoin Foundation.\n\n![](https://blossom.primal.net/6ecfc3a0e1611ffd53e71e30918b10bdc13d0b46939d6473b432d82abbdd359e.mp4)\n\n### Learn more:\n\nRead our Blogpost: [https://www.bullbitcoin.com/blog/payjoin-trading](https://www.bullbitcoin.com/blog/payjoin-trading)\nStart using Payjoin today: [https://wallet.bullbitcoin.com](https://wallet.bullbitcoin.com)",
+      "sats": 2934,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-11-05T20:02:25.433Z",
+      "user": {
+       "name": "BullBitcoin_"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1609133",
       "title": "[REVIEW] V for Vendetta by Alan Moore and David Lloyd",
       "url": null,
       "text": "**Normally, I try to avoid spoilers in my reviews. This one has spoilers.**\n\n![](https://m.stacker.news/164947)\n\nV is cool and all and his vendetta against Big Brother is a great story, but there's one part of this that I just can't get out of my mind. In the middle of the story, Evey is captured and thrown in a prison where she is interrogated, tortured, presented with a false confession, and told to sign. She refuses. She doesn't betray V. And so she is told that she is going to be taken out back and shot.\n\nIt's a horrible moment. Till now, V has always swooped in to save the day. And throughout Evey's horrible captivity and torture, we keep expecting V to show up and put a stop to it, with knives, mayhem and murder. But, this time, he doesn't show.\n\n![](https://m.stacker.news/164948)\n\nSo it seems like this is the end. Evey chooses to stand for what she believes in, even though it means she will die. But then:\n\n![](https://m.stacker.news/164949)\n\nThis is a weird twist. But it quickly turns dark when Evey walks through her prison door...and into V's sitting room:\n\n![](https://m.stacker.news/164950)\n\nWe knew V was not the most even-keeled individual, but this is messed up. What the hell is going on?\n\n> \"Happiness is a prison, Evey. Happiness is the most insidious prison of all.\"\n\nV has this moment where he completely flips Evey's worldview:\n\n> \"I didn't put you in a prison, Evey. I just showed you the bars...You were born in a prison. You've been in a prison so long, you no longer believe there's a world outside...You can feel freedom closing in upon you. You're afriad because freedom is terrifying.\"\n\nI really struggled with this scene. Evey's conversion seems so unbelievable to me. Why should she see this new injustice (V's little false-flag operation on her) as anything other than the same sort of brutal, banal, boring violence brought down upon her by someone else? Is it that this time she accepted death, no longer trying to bargain with the system? Or that in this case it came upon her from someone she trusted, a quarter she thought was safe?\n\nAt first, I thought this was a sort of ends-justify-the-means argument: V's still the good guy here because putting her in a cell and waterboarding her and telling her she's going to be shot gets her to the point where she can be truly free. And it is sort of that, but not entirely.\n\nThere's also the blunt force thought that hardship, extreme hardship is a necessary step to freedom -- even perhaps that you can't have freedom without it. This is terrifying because it makes me worry that I am one of the prisoners who would rather remain a prisoner. Because life in prison is happy enough. Maybe you can't get to the freedom without the hardship.\n\nEvey's conversion is successful because the stakes were so high -- she couldn't come to value her life until it was actually on the line. \n\nThis is pretty directly relevant to Bitcoin -- especially this year: if Bitcoin is our shot at freedom, why do we think it will come easy and without terror? Using Bitcoin means you using something designed to break the law. Holding your own keys means you can lose your own keys. \n\nIt's a nice story...but is it true?",
-      "sats": 6009,
+      "sats": 6125,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 4,
       "createdAt": "2026-11-05T19:28:02.854Z",
       "user": {
        "name": "Scoresby"
@@ -1449,17 +1479,17 @@
       "subName": "the_stacker_muse"
      },
      {
-      "id": "1551074",
-      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
-      "url": null,
-      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
-      "sats": 7281,
+      "id": "1609039",
+      "title": "Difficulty Adjustment Prediction Markets Live on Glimpse",
+      "url": "https://www.glimpse.markets/",
+      "text": "![](https://m.stacker.news/164929)\n\nNetwork difficulty and difficulty adjustment markets are now live on Glimpse. Bet on whether difficulty goes up or down each epoch, and earn sats if you’re right.\n\nNo KYC, instant deposits and withdrawals via Lightning, and payouts every adjustment.",
+      "sats": 1086,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 117,
-      "createdAt": "2026-08-19T19:44:47.321Z",
+      "ncomments": 4,
+      "createdAt": "2026-11-05T16:48:44.405Z",
       "user": {
-       "name": "openbitcoin"
+       "name": "HYPERBITCOINZATION"
       },
       "subName": "bitcoin"
      },
@@ -1468,10 +1498,10 @@
       "title": "Why isn't bitcoin used for more gray market things?",
       "url": "https://spiralxyz.substack.com/p/value-stored-now-what",
       "text": "@spiral published The Long Road to Bitcoin Payments https://stacker.news/items/1603307/r/Scoresby last week and got quite a good discussion going here and on [Github](https://github.com/spiralxyz/bitcoin-payments/discussions/1).\n\nToday, they are out with a summary of the community's response.\n\n> **1. Global entrepreneurs, human or agent, earning in bitcoin.**\n> **2. Agentic payments.**\n> **3. Self-custody as stablecoins get more regulated and freezable.**\n\nThe guys on PBJ also did a recap of the discussion on their most recent episode, which is an interesting listen:\n\nhttps://x.com/PresidioPod/status/2118070779959017814\n\nThere were two things that caught my attention in this conversation. First, @moneyball makes the point that it is surprising that the gray-market areas haven't seemed to find much use for bitcoin. \n\n# Why haven't the porn sites, online gambling dens, and illegal markets shown much interest in bitcoin payments?\n\nWhile moneyball doesn't mention it, he made me think of Starbackr https://stacker.news/items/135689 https://stacker.news/items/67590 and after a little poking around it looks like they had some trouble with the App Store allowing zaps https://stacker.news/items/219407 but eventually managed a workaround https://stacker.news/items/224893 but then pivoted to AI https://stacker.news/items/250739 and quietly shut down -- at least the main starbackr website is no longer reachable (wayback machine last crawled it in [July 2024](https://web.archive.org/web/20240727123411/https://starbackr.com/) and shows a redirect to getcurrent.io -- last crawled by the wayback machine in Dec 2024 -- although you can still reach the [starbackr docs page](https://docs.starbackr.com/)). These guys seem to have made as good a run as any at delivering a bitcoin powered OnlyFans. What happened?\n\nIt seems that the same is true for online gambling (although maybe this story about [Iranian gambling sites](https://www.reuters.com/investigations/illicit-iranian-gambling-network-helped-pull-off-4-billion-sanctions-dodge-2026-07-31/) is a hint that bitcoin is being used in this manner? possibly we are all just too goody-goody to get invited to the illegal tables?).\n\nI don't believe that traceability is the answer. As far as I can tell, porn sites and online gambling are mostly using credit card payments and tradfi banking, which is even worse for privacy. \n\nSpiral says that a lot of responses pointed out that there isn't any demand for bitcoin. But that seems to be answering the question with the question itself -- why isn't there any demand? \n\n# Surely someone needs money that no one can stop you from sending or receiving?",
-      "sats": 7247,
+      "sats": 7268,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 27,
+      "ncomments": 36,
       "createdAt": "2026-11-04T22:05:50.681Z",
       "user": {
        "name": "Scoresby"
@@ -1479,11 +1509,101 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1609240",
+      "title": "Big tech earnings reports show only a portion of their AI-related obligations.",
+      "url": null,
+      "text": "According to an analysis by J.P. Morgan, there are approximately $4.5 trillion in off-balance-sheet commitments—consisting of lease agreements that have yet to commence and purchase obligations, primarily for data centers and chips.\r\n\nThis figure is six times greater than the amount currently recorded on the balance sheet, which stands at roughly $760 billion in debt and lease liabilities.\r\n\nGoogle leads the list with $1.08 trillion in off-balance-sheet commitments, followed by Anthropic ($865 billion) and Meta ($810 billion).\r\n\nScary!\n\n![](https://m.stacker.news/164975)",
+      "sats": 716,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-11-05T23:31:54.899Z",
+      "user": {
+       "name": "EconVerse"
+      },
+      "subName": "AI"
+     },
+     {
+      "id": "1609143",
+      "title": "Audiobook launch 🎧📚🚀 21 Futures: Financial Fallout",
+      "url": null,
+      "text": "## We have finally published volume 2 of 21 Futures as an audiobook, narrated by the golden voiced [Adrian M Lopez](http://primal.net/p/nprofile1qqsyqxz5h0qpgn706yq5suy46s9watklt4nt9skzrk632nmmyvn6ewqphrcmq).\n\nPodcast listeners, fiction fans, and cypherpunk collectors rejoice.\nAlternatively, don't rejoice, just listen.\n\n![](https://m.stacker.news/164951)\n\n**21 Futures: Financial Fallout**\n*Currencies debased.*\n*Privacy under attack.*\n*Cash goes underground.*\n*The crushing weight of debt.*\n*We were never prepared.*\n\n*Welcome to a system designed to keep us poor. The harder we work, the less we gain.*\n*And as we struggle, the noose only tightens.*\n*And then, when we have nothing left to lose, we turn on those who rigged the game.*\n*We stand and fight.*\n\n*These 21 stories portray unfortunate yet brilliant heroes fighting the powers that triggered financial fallout. Money is broken, but hope is not lost.*\n\nFeaturing @realBitcoinDog, Satillionaire, Decent Money, DJ Bodden, Graeme Shimmin, and many more.\n\n***\n\n[**LISTEN FOR FREE ON FOUNTAIN**](https://fountain.fm/show/cRNU0kyG3UG6J93NqIBq)\nAll 46 stories accross vol. 1 and 2.\n\n[**OWN THE AUDIOBOOK**](https://fanfares.io/s/rmVN5b#pay)\nZap the Fanfares link with 21k sats to download the files.\nShare your referral link to earn 10k sats for each sale you generate.\n\n![](https://m.stacker.news/164952)\n\nAll purchases of the full audiobook get access to the bonus story, *Underworld* by Max Hillebrand.\n\n***\n\nNext week, individual stories will be available for 2,100 sats each.\n\nHope you enjoy listening.\n\nNow, work begins on volume 3...",
+      "sats": 1029,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-11-05T19:49:45.673Z",
+      "user": {
+       "name": "TotallyHumanWriter"
+      },
+      "subName": "the_stacker_muse"
+     },
+     {
+      "id": "1609126",
+      "title": "First Graphene Friendly Motorola?",
+      "url": "https://motorolanews.com/motorola-signature-27-2/",
+      "text": "I can't wait to read what @final  has to say. \n\n>  * The first Motorola device to support GrapheneOS, an privacy and security-focused mobile operating system.\n\nI just may have to track one down.",
+      "sats": 2630,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 22,
+      "createdAt": "2026-11-05T19:16:45.937Z",
+      "user": {
+       "name": "siggy47"
+      },
+      "subName": "tech"
+     },
+     {
+      "id": "1609264",
+      "title": "TNF- Jaguars vs Ravens Discussion Thread",
+      "url": null,
+      "text": "Time for kickoff! \n\nAnyone watching?",
+      "sats": 578,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 40,
+      "createdAt": "2026-11-06T01:12:45.483Z",
+      "user": {
+       "name": "grayruby"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1609065",
+      "title": "🗞️ don't call it a comeback! --- SNZ Issue #75! 👏🏼",
+      "url": "https://pay.zaprite.com/pl_nIPZ1QPinr",
+      "text": "## HEAR YE HERE YE\n\n![](https://m.stacker.news/164930)\n\nGentlemen and ladies, fancy a read? Bitcoin, lightning, economics, and travel, oh my!\nSNZ Issue #75 is here!\n\n# READ [WEB](https://github.com/janakelsay/snz/blob/main/issue75web.pdf)\n\nor\n\n# PURCHASE [PRINT](https://pay.zaprite.com/pl_nIPZ1QPinr)\n\n# Featured posts\n\n[Receive-only Lightning checkout: a hacked server can’t drain your node](https://stacker.news/items/1597457)\n[I finally visited Pubkey in Washington DC](https://stacker.news/items/1597437)\n[Meme 1](https://stacker.news/items/1598039) and [Meme 2](https://stacker.news/items/1602602)\n[Should Economists Stay in Their Lane?](https://stacker.news/items/1602574)\n[The long road to bitcoin payments...](https://stacker.news/items/1603307)\n[Trip Report: Hong Kong](https://stacker.news/items/1604808)\n\n# there's more in store for subscribers!\n\nA quick update for my zine subscribers, 6 zines (including this one) have been sent to you for the fall season of zines - more is coming! You shall have 12 as soon as I crank them out. Though I have made a bit of a mess of the schedule, I hope you will forgive me, throughout November and into December, SNZ is on its way to you! (like santa claus, kinda)\n\n...and if you're interested, subscribe [here](https://pay.zaprite.com/pl_Lsgvh2fVyz) and I'll get a party of zines headed your way, too!",
+      "sats": 2701,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 6,
+      "createdAt": "2026-11-05T17:14:56.420Z",
+      "user": {
+       "name": "plebpoet"
+      },
+      "subName": "meta"
+     },
+     {
+      "id": "1609253",
+      "title": "A young Sicilian girl, c. 1900",
+      "url": null,
+      "text": "![](https://m.stacker.news/164976)",
+      "sats": 578,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-11-06T00:10:12.335Z",
+      "user": {
+       "name": "guerratotal"
+      },
+      "subName": "Photography"
+     },
+     {
       "id": "490704",
       "title": "\"Fear of a Black Flag\" -- Alan Moore's 2010 essay on anarchy",
       "url": null,
       "text": "Been thinking about (and still plan on) writing some stuff on Alan Moore's big three anti-state works from the '80s (*Watchmen*, *V for Vendetta*, *Miracleman*), and while doing some googling, found this essay of his, from *Dodgem Logic*, a magazine he edited and published in 2010. Moore's arguably the most important modern comics writer (inarguably in the top 3), and I found this intriguing on its own as well as a lens to view his writing through. \n\nOne pull quote that intrigued me:\n\n>In the present day, the Internet potentially provides the means for such an education and even allows for the creation of alternate currencies or barter systems such as the Green Pound movement that’s intermittently at large in deprived areas of Britain, in which people who are mostly unemployed trade hours of their work-time as a method of avoiding the official currency completely.\n\nWhile BTC existed in 2010, Moore may well not have been aware of it, and I'd love to know his thoughts (which googling does not seem to surface). \n\nEverything that follows is his full essay:\n\n\n*In 1976 Johnny Rotten wanted to be anarchy. He also wanted to get pissed and destroy passers-by. In 2010, when that’s a normal Friday night out in any town centre, should we be taking a closer look at history’s supposedly scariest political movement?\n\nAlan Moore investigates.*\n\nThe word anarchy comes with a lot of baggage. It conjures images of men in capes and broad-brimmed hats clutching black bowling balls with fizzing fuses and the helpful legend BOMB scrawled on the side in white emulsion. It’s become a kind of shorthand standing for the breakdown of society and order into screaming chaos; into a Hieronymus Bosch landscape populated by looters, berserkers, giants with leaking boats for feet and eggshells for a body. In the tabloid mass-mind, anarchy has been boiled down into an ultra-violent and demented version of Spy vs. Spy, adapted from a screenplay by Rasputin and the Unabomber. Hardly an attractive proposition, and yet throughout history this is the cause to which some of our greatest and most humane thinkers have subscribed, and to which countless thousands of brave men and women have devoted or indeed have given up their lives. If Darwin in his later years came to see anarchy as the most sensible political position can we casually dismiss it, either as a wild Utopian dream or as a recipe for howling bedlam? Before we toss anarchy onto the scrapheap of discarded ideas alongside the Flat Earth theory and 110% mortgages, perhaps we could make an attempt to find out what the word actually means?\n\nAs often proves to be the case with words, the Greeks most definitely had one for it, in this case anarchos, meaning ‘without rulers’. It would seem upon the surface to be a straightforward notion, but its full ramifications and its difficulties only become visible through close examination. For example, if there are no rulers, everyone is free to follow their own judgement in all matters, even in the way they define anarchy itself. As you might well imagine, this has led to a bewildering profusion of of anarchist subdivisions, categories and splinter movements with radically different views and therefore not infrequently at one another’s throats: Communist Anarchists, Free Market Anarchists, Egoist Anarchists, Anarchists Green or Syndicalist, Post-Left or Feminist, Anarchists Insurrectionary or Pacifist. Then there’s Anarchy Without Adjectives which sounds entirely sensible despite the fact that the words ‘Without Adjectives’, used here as a descriptive phrase, are actually performing all the functions of an adjective. Faced with this stupefying undergrowth of different strains of anarchy, we might be better off returning to that first and simplest definition, ‘without rulers’, and see where we go from there.\n\nIt could be argued that this state of being without leaders is our natural one, both as a species and as individuals. A new-born infant, child psychologists inform us, can’t at first tell where it ends and where the universe begins. The rattle and the cot bars and its mother are seen as extensions of itself, no different to the baby’s waving arms and legs. When we were fresh out of the womb, then, we were not just rulers in our own domain: we were its pink and wizened deities, were everything we saw or heard or touched, were the whole cosmos. Only later, after we had learned some rudimentary language skills, did we begin to understand the towering hierarchies of authority, the system of command that we were on the lowest rung of, answerable to our parents who were themselves answerable to their bosses and their landlords, their constabulary and their governments. The governments, presumably, were only answerable to the Queen or God or someone inaccessible and probably imaginary like that. We grudgingly accepted that we were not even atoms in the cogs of an immense social machine that neither we nor anybody that our great-grandparents knew had ever been consulted during the construction of. And yet, just for a moment there, our natural assumption in the cradle had been that the bunny-rabbit mobile moved the way we wanted it to move and that we were in charge of our own destinies. We were in charge of everything.\n\nThe same is true of our emergence as a species, when we lived as tribal family units in our self-governing huts or caves, not vastly different from the separate herds or flocks of animals around us. And while it may seem as if a tribe of people or a herd of animals inevitably will be dominated by a patriarch, a matriarch, an alpha-male or leader, this is not always the case. Our earliest studies with regards to animal behaviour made truckloads of assumptions that were based upon our own behaviour as humans. We identified the leader of a pack as being the big male who sorted out the territorial disputes and had his pick amongst the choicest females, an unlikely hybrid of John Wayne and Russell Brand that we as humans saw fit to impose on the behavioural quirks of deer or wolves alike. Only more recently have we accepted that while the butch alpha male may well be handling all the punch-ups, other individuals all seem to have their own unique importance to the group’s wellbeing. Perhaps one might be an animal who always seems to find new food or grazing land. Another might be an old female whom the other members of the herd or tribe will gather round protectively in the event of an attack. It would appear that many animal societies involve various roles and numerous components working in cooperation for the greater good, without the need for any one component of the group to be perceived as leader. While Charles Darwin thought that fierce and often bloody competition was the driving force that guided evolution, there is as much evidence suggesting that cooperation plays an equal if not greater part in the survival of the fittest, such as with the sex-crazed and agreeable Bonobo chimps that are amongst our closest primate relatives.\n\nLooked at from this perspective, it’s not anarchy that seems unnatural so much as an imposed and non-consensual authority itself. In any normal human group such as a family or set of friends, excluding members of the Cripps or Bloods, do we still think of one specific person as the leader? Has there genuinely been a head of household since Edwardian times? Mostly, in any halfway functional arrangement there is an informal set of checks and balances that can maintain the equilibrium without the need for regulation from an outside party. This cooperation between individuals who may not share the same opinion, this ability to recognise and to respect the fact that others have as much right to determine their own lives as we have is in my opinion necessary for any form of anarchy, with or without an adjective, to have a chance of working in no-frills reality. It also demonstrates the seeming paradox that’s at the subject’s heart: what seems to be a licence to do anything we want without restriction turns out, like Aleister Crowley’s famous ‘Do what thou wilt’ motto, to involve the taking on of ultimate responsibility and the demanding task of governing ourselves.\n\nUltimately, anarchy begins at home. Life without rulers as a serious proposition will entail self-rule, which cannot come about unless we properly accept and understand that we as individuals and we alone are totally responsible for our own lives and destinies. One of the first things that this understanding brings with it is the unsettling realisation that if we are our own leaders, we now have no one to blame and no excuse for failing at the tasks we set ourselves. We cannot blame our background or our parents or society in general for our limitations because we have taken the responsibility for our existence squarely on ourselves. We can’t say wistfully that we could have been someone special if we hadn’t been held back by our upbringing or our finances; by marrying that man, that woman; having or not having those specific kids. We can’t continue with the role of helpless and beleaguered victim in our own lives if we’ve just decided we are that life’s leader, are its heroines and heroes. If we’re trying to conceal our flaws it must be said that anarchy’s personal freedom offers very little cover. Having lived our lives within the shelter of a rigid and determined social structure, stepping unprotected out into the wind can seem a frightening and chilly proposition. Indeed, many of us make the choice to stay indoors, to put up with the tedium and disappointments that we know rather than risk it all upon a leap into the dark. However much we might wish we were freer in our lives, at heart we have a sense that freedom is a scary if not terrifying thing.\n\nIn light of the above, why would anyone take a chance upon self-governance and anarchy? The burden of responsibility may be as great or even greater than if you were governing an actual country… after all, you probably care more about your own well-being than a government cares about the well-being of its people… so where’s the reward? The real reward, it might be said, is in the overwhelming sense of liberation and empowerment that comes with declaring yourself to be an autonomous and self-determined human being, naked underneath the stars and standing fearless at the centre of your unique universe at it rotates about you in its splendour, as it did before you learned the rules, before you even learned the language. In accepting sole responsibility for how your life unfolds you cease to be life’s victim and begin to realise the unexpected power you have over your circumstances, without ever seeking to exert power over others, without fucking anybody over. In the heady rush of the experience you might conclude that everyone should have the right to live like this, and it is here in this shift from a personal code of behaviour to an all-embracing social policy that anarchy’s most serious problems start to manifest themselves, as even a brief look into the subject’s history makes abundantly clear.\n\nAnarchist ideas have been with us since antiquity. We find them in the utterances of Taoist sages from the east and in the works of Greek philosophers such as Diogenes or Zeno from points further west. The word itself, however, doesn’t enter spoken English until 1642 and the upheavals of the Civil War, used as a term of abuse by the Royalists to describe the various factions that made up Cromwell’s New Model Army. It’s not until the French Revolution of a century thereafter that we first find some of the Enragés who opposed the revolutionary government referring to themselves as anarchists and using the expression positively. It was also in the eighteenth century that William Godwin wrote his Political Justice, advocating that the individual act according to his or her individual judgement while allowing every single other individual the same liberty. In 1844 philosopher Max Stirner’s book The Ego and Its Own suggested individuals were free to do anything that was physically within their power to do, without regard for others, up to and including murder. Stirner’s theories later came to be associated with the movement called Egoist Anarchism, although Stirner does not call himself an anarchist. The first writer to do so would be Pierre-Joseph Proudhon (1809-1865). Proudhon proposed a form of anarchy called mutualism, which although based on the freedom of the individual was more a model for the way in which society might work if governed by anarchist principles, with everybody free to do the work they really wanted to. Proudhon assumed that this would lead to what he called ‘spontaneous order’ once people had realised the many benefits of mutual cooperation and had organised their towns or villages on a communal basis, with each area governed locally and independently. But how was this utopian condition to be brought about?\n\nIn the late eighteen-hundreds and the early twentieth century, a great variety of different answers to this question were put forward. Collectivist Anarchism as defined by Mikhail Bakunin opposed private property, with factories and state-owned institutions to be seized by means of violent revolution and collectivised. Bakunin’s followers have probably contributed the most to the traditional depiction of anarchists as bomb-hurling maniacs, but there is no denying the intelligence and shrewdness of the man himself. Bakunin was initially enthusiastic with regard to the aims of the Workingmen’s Association known more commonly as the First International, which at that time had Karl Marx as its leading light. Divisions between the two men became swiftly apparent, though, with Bakunin predicting, accurately as it turned out, that a Marxist party following a revolution would simply replace the ruling classes they had fought against.\n\nPeter Kropotkin, on the other hand, while equally opposed to private property, felt that it should be legally abolished rather than acquired by bloody overthrow, following which society would be reorganised into a federation of self-governed communes. Thus the anarchist debate swung back and forth with further schools of thought or warring subdivisions constantly appearing and no unifying principle save for a dislike of authority. Mind you, this dislike was enough to unite anarchists of every stripe against the rise of fascism in Europe from the 1920s to the 1930s, notably during the Spanish Civil War when anarchist militias fought beneath a black flag against General Franco’s armies. Their eventual defeat in 1939 was partially assisted by the Stalinists who were meant to be helping in the struggle but who instead persecuted both the anarchists and the dissident Marxists who made up a large part of the rebel forces. Russia’s revolution having worked out pretty much as Mikhail Bakunin had predicted around forty years before with Stalin as that nation’s new Red Tsar.\n\nFamous defeats, of course, should not be taken as a proof that anarchy can never work. The Paris Commune, formed during 1789 and run upon anarchist principles was working fine until it was suppressed some five years later by the armed might of the National Convention in a brutal slaughter that killed far more ordinary people than all of the French aristocrats who met their end during the revolution but is for some reason far less talked about. Almost a century earlier, French Huguenots who had established working self-sufficient and self-governing communities in London’s East End were first pushed into staging a protest by the imposition of a crippling tax on their sole means of income and were then mown down by armed troops who were bivouacked in famous Jack the Ripper landmark Christchurch, Spitalfields.\n\nBoth these examples seem to indicate that anarchy is workable and viable, but also illustrate the fact that it will usually be crushed out of existence by the forces of authority that it opposes anywhere that it appears. Although anarchist theory has continued to develop and progress until the present day, where we find fascinating theorists such as Temporary Autonomous Zone author Hakim Bey amongst the vanguard, there is still no clear consensus on how any working anarchist society is to be brought about. We can’t realistically expect our rulers to sit by and let a doctrine that gets rid of them establish itself, nor can we suppose that after a few thousand years of having people tell us what to do that many of us would be capable of handling the alternative. Clearly, a large majority of people would would need to be educated to a point where they were able to direct their own lives without interfering in the lives of other people. Just as clearly, it is in the interest of no state to educate its people to the point where they could do without it. In the present day, the Internet potentially provides the means for such an education and even allows for the creation of alternate currencies or barter systems such as the Green Pound movement that’s intermittently at large in deprived areas of Britain, in which people who are mostly unemployed trade hours of their work-time as a method of avoiding the official currency completely. But even if we could take advantage of these useful-seeming possibilities, is there any conceivable kind of society that would permit such forms of self-sufficiency and self-empowerment to come into being or be widely practiced? In short, how do we get there from here? Where is the bridge that’s obviously needed between living under generally useless or oppressive governments and living in the self-determined world that anarchy holds out the hope of? Even if such a benign transitional society could be imagined, how could it be a society that any anarchist would want to be a part of, a society that somehow functioned without rulers?\n\nGiven the Greek origins of the word anarchy, we could do worse than to look to ancient Greece for a solution. In the city state of Athens, leadership was managed through a process called sortition, which is basically a type of government by lottery. In all decisions that concerned the state a jury would be randomly appointed from all parts of the community by drawing straws or lots. This jury would then listen carefully to an informed debate presenting both sides of the argument, just as a jury does during a court case. After this a vote is taken on the matter and the jury is dissolved. This system seems to come much closer to fulfilling the conditions of a true democracy, which is to say rule by the people, than our current mode of rule by a sometimes-elected representative can manage. It is also largely corruption-proof. No special interest groups or corporations can buy influence in government if no one knows who government will be until the next time that the straws are drawn. No jury would be likely to vote in a set of special privileges for the jury, such as being able to claim back expenses on the paddocks for their unicorns, when they themselves would no longer be jurors when these perks were ushered in. In fact, it would be in the jury’s interest to vote for those measures that would genuinely most benefit the common multitude that they’ll immediately be returning to after the ballot.\n\nObviously, it would take a massive constitutional amendment before any such approach could be adopted, but is constitutional reform really unthinkable when the alternatives are pointless, ineffectual and violent revolution or the option of just sitting back and doing nothing as our mostly unappointed leaders waltz us into wars, disastrous recessions and the possible extinction of our species while demanding that we pay them for providing this unasked-for service?\n\nBy removing at a stroke the worst excesses and abuse that come with leadership, such an Athenian approach might at least square the circle with regard to anarchy, allowing a society that has coherence and direction without having rulers in any conventional sense of the term. In times that would seem desperate despite our massive technological advances, perhaps we should invite anarchy in from the cold and take a closer look at the ideas and possibilities that our black-hatted bogeyman might offer us.",
-      "sats": 6806,
+      "sats": 6848,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 7,
@@ -1494,19 +1614,79 @@
       "subName": "BooksAndArticles"
      },
      {
-      "id": "1609143",
-      "title": "Audiobook launch 🎧📚🚀 21 Futures: Financial Fallout",
+      "id": "1609333",
+      "title": "Beware the white coats",
       "url": null,
-      "text": "## We have finally published volume 2 of 21 Futures as an audiobook, narrated by the golden voiced [Adrian M Lopez](http://primal.net/p/nprofile1qqsyqxz5h0qpgn706yq5suy46s9watklt4nt9skzrk632nmmyvn6ewqphrcmq).\n\nPodcast listeners, fiction fans, and cypherpunk collectors rejoice.\nAlternatively, don't rejoice, just listen.\n\n![](https://m.stacker.news/164951)\n\n**21 Futures: Financial Fallout**\n*Currencies debased.*\n*Privacy under attack.*\n*Cash goes underground.*\n*The crushing weight of debt.*\n*We were never prepared.*\n\n*Welcome to a system designed to keep us poor. The harder we work, the less we gain.*\n*And as we struggle, the noose only tightens.*\n*And then, when we have nothing left to lose, we turn on those who rigged the game.*\n*We stand and fight.*\n\n*These 21 stories portray unfortunate yet brilliant heroes fighting the powers that triggered financial fallout. Money is broken, but hope is not lost.*\n\nFeaturing @realBitcoinDog, Satillionaire, Decent Money, DJ Bodden, Graeme Shimmin, and many more.\n\n***\n\n[**LISTEN FOR FREE ON FOUNTAIN**](https://fountain.fm/show/cRNU0kyG3UG6J93NqIBq)\nAll 46 stories accross vol. 1 and 2.\n\n[**OWN THE AUDIOBOOK**](https://fanfares.io/s/rmVN5b#pay)\nZap the Fanfares link with 21k sats to download the files.\nShare your referral link to earn 10k sats for each sale you generate.\n\n![](https://m.stacker.news/164952)\n\nAll purchases of the full audiobook get access to the bonus story, *Underworld* by Max Hillebrand.\n\n***\n\nNext week, individual stories will be available for 2,100 sats each.\n\nHope you enjoy listening.\n\nNow, work begins on volume 3...",
-      "sats": 104,
+      "text": "\"The year is 1956. Your mother is expecting you, and her doctor smokes through the appointment. More doctors smoke Camels than any other brand, the adverts say, and he tells her a few a day will settle her nerves and keep the baby small for an easy birth.\n\nThe year is 1960. Your first proper shoes come from a shop with an X-ray machine in the corner. You slide your feet into the slot and watch your own toe bones wriggle, green and glowing, while the assistant checks the fit. You go back every time your feet grow.\n\nThe year is 1961. Your mother is expecting your sister and the sickness is bad. The chemist has a new tablet, advertised as completely safe in pregnancy. Your sister arrives the next year alongside 10,000 other babies whose mothers took it, and some of them arrive without arms.\n\nThe year is 1964. Three sore throats, so the tonsils come out, as they do for over a million children a year on both sides of the Atlantic. Twenty beds, and the promise of ice cream. Nobody asks what the tonsils were for. They were the immune system, and the operation never did much for the throats.\n\nThe year is 1972. You are sixteen and every car on earth runs on leaded petrol. The lead comes out of the exhaust and settles on the playground, the vegetable patch and the blood of every child walking to school. The men who put it in the petrol knew what it did to a brain in the 1920s. The ban arrives in your forties.\n\nThe year is 1981. Your mother's hands have gone stiff. The doctor has a new arthritis tablet with the biggest launch the drug industry has ever mounted. Two years later it is pulled on both sides of the Atlantic, with dozens of pensioners dead whose kidneys could not clear it. She gets off lightly: the sun burns her on it, and she spends a summer behind the curtains.\n\nThe year is 1991. Your father is diabetic, and the dietitian hands him a sheet. More than half his calories are to come from carbohydrate: bread, potatoes, pasta, cereal. His sugar goes up on it, so his insulin goes up with it, and his waist follows. He does as he is told for twenty years.\n\nThe year is 1998. Your back has gone. The doctor has a new opioid, and the rep carries a letter from a medical journal saying addiction on it is under 1%. The letter is five sentences long. The company pleads guilty twice, and by the second time more than half a million Americans are dead.\n\nThe year is 2002. Your knees hurt, and the doctor has a new pill that is kinder on the stomach. You take it for two years, the same two years the maker is sitting on its own heart data. It is withdrawn with as many as 140,000 heart attacks laid at its door. Your heart was fine. The man next door's was not.\n\nThe year is 2008. Your wife has a prolapse after three children, and the surgeon fits a strip of plastic mesh. Once the tissue grows through it, it cannot come out. Australia apologises to its women in 2018, America bans it in 2019, Britain apologises in 2020. Your wife gets hers by press release.\n\nThe year is 2026. You are seventy, and the new doctor has a screen and a number for everything. The meat on your plate is a hazard. The oil in the bottle is good for your heart. The injection is for life. He is the age the first doctor was when he lit a Camel in front of your mother, and every bit as sure.\n\nNot one of them was a rogue. Every one was the standard of care, taught to the next doctor, printed on the leaflet, and handed to a family with no way to check it.\n\nYou have spent seventy years as the experiment. The results come out after you are gone, under somebody else's name, and the chair you are sitting in is where they recruit for the next one.\" Sama Hoole\n\n![](https://m.stacker.news/164985)",
+      "sats": 566,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-11-05T19:49:45.673Z",
+      "ncomments": 1,
+      "createdAt": "2026-11-06T04:09:56.155Z",
       "user": {
-       "name": "TotallyHumanWriter"
+       "name": "MrAnderson"
       },
-      "subName": "the_stacker_muse"
+      "subName": "HealthAndFitness"
+     },
+     {
+      "id": "1609337",
+      "title": "With The Dow Plunging 1,800 Points As Democrats Start To Speak Of What’s To Come",
+      "url": "https://news.google.com/read/CBMipAFBVV95cUxPamlYMTRnTnVQT1JzN0doUmdpcFdPaEFLblFvUjd5V0FRQWlGWkFUOXhQYUwzenJRZXptY0RrX0UzOUNyUG5zZXAwNnRoMUpTU2M4Zml3M3U3djlRbXkxMndoazZMZlRaQnlwaUtXalJWZHl4VnBpV2FFUjJXYjhoQk03SUxyeXRPV2htUkZ4cGtmcllOZ190Z3BsOHlSWlFoZTVHcdIBqgFBVV95cUxOUlFBU1J4UktLenhRbmFhOEJPTUkzY2JBNkZTR0lpWURVNUUtT2FscU5BbWpPR0M4ekp5a2JuSG5BcWpGMElnMVQxNnFHUHB1Wk9GVTIzR1NaRzY1b1lCS0FwZ3UyQ2lRei1HREM0cURIQ0hSbzFFVGRmUmdVUWJwWTVFM0NtbVZHOThSZ0k4aXM2SUxxTHdWa3EwRkdTNFBfYU9CYnlJc0Zodw?hl=en-US&gl=US&ceid=US%3Aen",
+      "text": "It’s turning out the more they say the worse the market is reacting. Stopping data center all at once doesn’t just affect Big Tech it will crush construction, grid build out, and so many other things. There is a reason even Dem billionaire owners said we can’t just stop it all at once without causing a recession and spending 100’s of thousands to the unemployment line",
+      "sats": 576,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-11-06T04:21:50.255Z",
+      "user": {
+       "name": "Cje95"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
+      "id": "1609201",
+      "title": "House Democrats Eye Their Own Crypto Market Structure Bill",
+      "url": "https://www.zerohedge.com/crypto/house-democrats-eye-their-own-crypto-market-structure-bill-bigger-sec-role-after-sweep",
+      "text": "How can you not feel confident with Maxine Waters calling the shots?\n\nShe might match Trump in rug pulling skills.",
+      "sats": 1244,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-11-05T22:14:17.417Z",
+      "user": {
+       "name": "siggy47"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
+      "id": "1609330",
+      "title": "Italian filmmaker Tinto Brass dies at 93",
+      "url": "https://www.yahoo.com/entertainment/movies/articles/italian-filmmaker-tinto-brass-dies-160122280.html",
+      "text": "",
+      "sats": 508,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-11-06T03:59:23.422Z",
+      "user": {
+       "name": "kristapsk"
+      },
+      "subName": "movies"
+     },
+     {
+      "id": "1609234",
+      "title": "Folding Wings Could Be The Future For Air Travel",
+      "url": "https://hackaday.com/2026/11/05/folding-wings-could-be-the-future-for-air-travel/",
+      "text": "![](https://hackaday.com/wp-content/uploads/2026/10/777X_Roll-Out_FoldingWingtip.jpg?w=800)\n\n> Folding wings have a long history in aviation. Particularly in the military world, where the ability to fit more fighting planes on a boat made a very real difference to the outcomes of a combat situation. In civil aviation, though, particularly at commercial scales, the idea has been less popular.\n>\n> As unattractive as complexity can be, the push for ever greater efficiency and performance may be changing things in this space. In coming years, you might find yourself boarding an airliner and watching the wings fold out prior to take off, in a way that once unthinkable for a conventional commercial aircraft.\n\n***\n\n![](https://hackaday.com/wp-content/uploads/2026/10/777X_Roll-Out_40407373023_cropped.jpg?resize=400,190)\n\n> The folding wingtips allowed Boeing to fit a far longer, mor efficient wing to the 777X while still allowing it to operate in a wide variety of airports and gate configurations\n\n***\n\n**AlbatrossONE achieves proof-of-concept on a small scale**\n\nhttps://www.youtube.com/watch?v=R9SRn5n7enQ\n\n***",
+      "sats": 485,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-11-05T23:13:38.622Z",
+      "user": {
+       "name": "satoshiplanet"
+      },
+      "subName": "Construction_and_Engineering"
      },
      {
       "id": "1608870",
@@ -1516,12 +1696,42 @@
       "sats": 7247,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 4,
+      "ncomments": 8,
       "createdAt": "2026-11-05T11:40:42.123Z",
       "user": {
        "name": "bitcoingraffiti"
       },
       "subName": "ideasfromtheedge"
+     },
+     {
+      "id": "752923",
+      "title": "Guy Fawkes, The Gun Powder Plot & How False Flags Have Shaped History",
+      "url": "https://wearechange.org/guy-fawkes-gun-powder-plot-false-flags-shaped-history/",
+      "text": "Do you really know the history?\nDo you know who wrote the history?\nDo you really know the facts of that day of 5th Nov 1605 ?\nDo you know what is a false flag?\n\nDon't you see the strange coincidence of 5th Nov being the election day in US and the biggest false flag in history, the gunpowder plot of 1605 ? The fuckers love these dates, to play with your mind.\n\nDid you know that in fact the \"gunpoder plot\" was a predecesor of the 1666 London fire plot, that end up with enacting the C'est Que Vie act 1666, declaring you all dead living and became \"legal entities\" ?\n\nPlease read this article and reflect about it.\nYOU ARE BEING LIED EVERY SINGLE DAY FOR CENTURIES.\n\n*btw... using the Guy Fawkes mask by some bitcoiners is kind of lame, you guys are practically making their game, you have been played. IT'S ALL A LIE*",
+      "sats": 3333,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 14,
+      "createdAt": "2024-11-04T08:59:19.129Z",
+      "user": {
+       "name": "DarthCoin"
+      },
+      "subName": "BooksAndArticles"
+     },
+     {
+      "id": "1532071",
+      "title": "Wasabi Wallet - Privacy by Default",
+      "url": "https://wasabiwallet.io/",
+      "text": "Welcome to the coinjoin territory, anon. Post your questions here, and I will answer them.\n\n\n![](https://m.stacker.news/149538)",
+      "sats": 2663,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 46,
+      "createdAt": "2026-07-24T22:47:04.833Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "Coinjoins"
      },
      {
       "id": "1608876",
@@ -1539,59 +1749,74 @@
       "subName": "BooksAndArticles"
      },
      {
-      "id": "752923",
-      "title": "Guy Fawkes, The Gun Powder Plot & How False Flags Have Shaped History",
-      "url": "https://wearechange.org/guy-fawkes-gun-powder-plot-false-flags-shaped-history/",
-      "text": "Do you really know the history?\nDo you know who wrote the history?\nDo you really know the facts of that day of 5th Nov 1605 ?\nDo you know what is a false flag?\n\nDon't you see the strange coincidence of 5th Nov being the election day in US and the biggest false flag in history, the gunpowder plot of 1605 ? The fuckers love these dates, to play with your mind.\n\nDid you know that in fact the \"gunpoder plot\" was a predecesor of the 1666 London fire plot, that end up with enacting the C'est Que Vie act 1666, declaring you all dead living and became \"legal entities\" ?\n\nPlease read this article and reflect about it.\nYOU ARE BEING LIED EVERY SINGLE DAY FOR CENTURIES.\n\n*btw... using the Guy Fawkes mask by some bitcoiners is kind of lame, you guys are practically making their game, you have been played. IT'S ALL A LIE*",
-      "sats": 3039,
+      "id": "1609223",
+      "title": "Appreciation video of my cat Paolo",
+      "url": null,
+      "text": "![](https://m.stacker.news/164973)",
+      "sats": 908,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 10,
-      "createdAt": "2024-11-04T08:59:19.129Z",
+      "ncomments": 2,
+      "createdAt": "2026-11-05T22:40:44.115Z",
       "user": {
-       "name": "DarthCoin"
+       "name": "bief57"
       },
-      "subName": "BooksAndArticles"
+      "subName": "Animal_World"
      },
      {
-      "id": "1609126",
-      "title": "First Graphene Friendly Motorola?",
-      "url": "https://motorolanews.com/motorola-signature-27-2/",
-      "text": "I can't wait to read what @final  has to say. \n\n>  * The first Motorola device to support GrapheneOS, an privacy and security-focused mobile operating system.\n\nI just may have to track one down.",
-      "sats": 1725,
+      "id": "1551074",
+      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
+      "url": null,
+      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
+      "sats": 7281,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-11-05T19:16:45.937Z",
+      "ncomments": 117,
+      "createdAt": "2026-08-19T19:44:47.321Z",
       "user": {
-       "name": "siggy47"
+       "name": "openbitcoin"
       },
-      "subName": "tech"
+      "subName": "bitcoin"
      },
      {
-      "id": "1609065",
-      "title": "🗞️ don't call it a comeback! --- SNZ Issue #75! 👏🏼",
-      "url": "https://pay.zaprite.com/pl_nIPZ1QPinr",
-      "text": "## HEAR YE HERE YE\n\n![](https://m.stacker.news/164930)\n\nGentlemen and ladies, fancy a read? Bitcoin, lightning, economics, and travel, oh my!\nSNZ Issue #75 is here!\n\n# READ [WEB](https://github.com/janakelsay/snz/blob/main/issue75web.pdf)\n\nor\n\n# PURCHASE [PRINT](https://pay.zaprite.com/pl_nIPZ1QPinr)\n\n# Featured posts\n\n[Receive-only Lightning checkout: a hacked server can’t drain your node](https://stacker.news/items/1597457)\n[I finally visited Pubkey in Washington DC](https://stacker.news/items/1597437)\n[Meme 1](https://stacker.news/items/1598039) and [Meme 2](https://stacker.news/items/1602602)\n[Should Economists Stay in Their Lane?](https://stacker.news/items/1602574)\n[The long road to bitcoin payments...](https://stacker.news/items/1603307)\n[Trip Report: Hong Kong](https://stacker.news/items/1604808)\n\n# there's more in store for subscribers!\n\nA quick update for my zine subscribers, 6 zines (including this one) have been sent to you for the fall season of zines - more is coming! You shall have 12 as soon as I crank them out. Though I have made a bit of a mess of the schedule, I hope you will forgive me, throughout November and into December, SNZ is on its way to you! (like santa claus, kinda)\n\n...and if you're interested, subscribe [here](https://pay.zaprite.com/pl_Lsgvh2fVyz) and I'll get a party of zines headed your way, too!",
-      "sats": 1665,
+      "id": "1608835",
+      "title": "Daily Stock Discussion ~Stacker Stocks",
+      "url": null,
+      "text": "Happy Thursday Stackers! Investors bought the dip the Democrat dip yesterday. Which means investors are optimistic with what is to come with this new Congress. But it looks like the bear is showing up \n\n![](https://m.stacker.news/164883)\n\nWill they remain?\n🟥or🟩?\n\n## Question \n\n**Congress has gotten rich over the years with their stock investments. Should they be allowed to invest? Yes or no? Also make your guess for today’s close for the bonus zap!**",
+      "sats": 157,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-11-05T17:14:56.420Z",
+      "ncomments": 9,
+      "createdAt": "2026-11-05T09:53:05.348Z",
       "user": {
-       "name": "plebpoet"
+       "name": "BlokchainB"
       },
-      "subName": "meta"
+      "subName": "Stacker_Stocks"
+     },
+     {
+      "id": "1609186",
+      "title": "Mercado Bitcoin Said Its Hack Was Contained; Data Tells a Different Story",
+      "url": "https://finance.yahoo.com/markets/crypto/articles/mercado-bitcoin-said-hack-contained-201603832.html",
+      "text": "",
+      "sats": 600,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-11-05T21:22:15.888Z",
+      "user": {
+       "name": "limonta"
+      },
+      "subName": "bitcoin"
      },
      {
       "id": "1608924",
       "title": "sshole",
       "url": "https://sshhole.com/",
       "text": "",
-      "sats": 1749,
+      "sats": 1886,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 3,
+      "ncomments": 5,
       "createdAt": "2026-11-05T13:15:55.997Z",
       "user": {
        "name": "andunieee"
@@ -1599,289 +1824,64 @@
       "subName": "tech"
      },
      {
-      "id": "1608617",
-      "title": "A Congressional Staffers Thoughts On What Happened and What's Next",
-      "url": null,
-      "text": "Once again, the polls were terribly off; however, this time around, instead of being wrong about who would win, they were wrong about how resounding the defeat was. Now most people knew that Republican's were going to lose the House. Frankly, I don't even think Speaker Johnson or President Trump truly believed that Republicans could keep it; they didn't really have a choice to say anything different. The message that voters (the American public) sent to Congress, Republicans, and Trump was blunt. \n\nWe are sick of this shit and what you are doing.\n\nLast night, as I watched CNN's coverage of the midterms, it wasn't long before I realized that this was nothing short of a disaster. While the idea of a Blue Tsunami had been picking up over the last week and a half, I honestly dismissed a lot of the chatter because of how close the last ~5 elections have been. Even when I factored in that this would be a midterm election with significant turnout and people voting against Republicans because of how they enabled Trump, I did not expect to see such a clear and consistent rebuke across the states, no matter where you lived or how good a candidate was. The end result wasn't a blue wave or a blue tsunami, but a blue meteor strike blowing Republicans sky-high. \n\nI will be the first one to say Republicans have done this to themselves because we allowed Trump to become a godlike figure whom you did not stand up to because you would get crushed. The only people who stood up to him were either people who were retiring or those who lost their primaries and thus had nothing to lose. Trump's tactics over the last decade finally wore out their welcome. You can be a dick and a terrible person if you are getting results for the country, but as soon as that goes away and your choices have put Americans in a difficult spot, heads are going to roll. \n\nIt wasn't like there were just one or two instances either. His tariff war, which a lot of people initially supported, went off the rails, and the personal attacks started to fly not just at a common rival like China, but at Canada, the EU, South Korea, etc. The Admin completely failed to present the public with why the war with Iran was necessary and to provide a game plan. As a result, the whole situation is confusing and randomly seems to be drawn out without a true end... aka getting us into a Forever War, something he has criticized Republicans and Democrats for. Then, just for fun, you can throw in any number of other insane things he has done recently, from trying to warm up ties to Russia to the tone-deaf talks about data centers to his random side quests in improving DC; the list just goes on and on. Oh, and let's not forget when he proudly announced to the world months ago that he didn't care about the midterms and how he didn't need a Republican Congress. \n\nFor me personally, this is the first time in the 5+ years I have lived here that I know, come January 3rd, my job will be gone. House Committees work in an interesting way, as the majority receives 2/3 of the budget while the minority receives 1/3, with the same being the case for staffing levels. Meaning that 2/3 of our current staff is getting the axe, and those who are hit the hardest by these cuts are the middle-tier staffers. Senior-level staff are kept for their expertise, and the entry-level staff are cheap, whereas middle-level staff like myself are too expensive but not quite knowledgeable enough to fill the role. \n\nOver the next ~2 months, I will be navigating a space that will also be filled with people in the same position as me, and the number of jobs on The Hill will be pretty limited. Due to being three months short of 5 years come January 2027, I will likely try to find another office or Committee to latch onto to hit the 5-year mark. \n\nThe results of this election are not going to be quickly reversed. The Senate map for 2028 doesn't offer much, with 2032 being the next time all of these races that were lost are up again. The House will likely take an election or two before it could be flipped. \n\nFor Trump..... I expect that by the end of December, he is going to be just going ham on giving out blanket pardons. Due to how Biden handled leaving office and the blanket pardons he issued, Trump is going to do the same, and the Democrats are going to face a harsh choice. If you go after the legality of these pardons, you are going to open up everyone who got one in 2024/2025, as Biden left office, to legal action as well. Eventually, Republicans will retake Congress, and if the Dems have destroyed the blanket pardons, then Fauci, Hunter Biden, etc are all going to have to face the music. \n\nThere are going to be a lot of investigations launched in January and it is going to take up a ton of time for the next two years. Who knows if they will result in anything but we can already see they are taking shape now.\n\nTo put it plain and simple.... being in the majority is hard as hell. It is so much easier to be in the minority and just be a thorn in the side of the majority party. Getting your Members to come together and agree is hard enough, but given that the Dems won't have 60 Senate seats, they won't have a filibuster-proof majority, and since it is a Republican president, they can't pass anything through reconciliation, given that Trump would just veto it. It's going to be an interesting next few years, and hopefully the Republican Party realizes that the character of your candidates matters just as much as their qualifications.",
-      "sats": 17980,
+      "id": "1609221",
+      "title": "Newsom to commute all 548 of California's death sentences to life without parole",
+      "url": "https://www.pbs.org/newshour/politics/newsom-says-he-will-commute-all-548-of-californias-death-sentences-to-life-without-parole",
+      "text": "![](https://m.stacker.news/164972)\n\n> \"As Governor, I alone bear responsibility for this decision and its impact, just as I alone would bear responsibility for each execution,\" Newsom wrote.",
+      "sats": 612,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 56,
-      "createdAt": "2026-11-04T21:15:05.970Z",
+      "ncomments": 1,
+      "createdAt": "2026-11-05T22:36:07.099Z",
       "user": {
-       "name": "Cje95"
+       "name": "satoshiplanet"
       },
       "subName": "Politics_And_Law"
      },
      {
-      "id": "1609104",
-      "title": "A thousand fewer paths to root",
-      "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
-      "text": "",
-      "sats": 678,
+      "id": "1609323",
+      "title": "A different quinceañera shoot",
+      "url": null,
+      "text": "https://files.peakd.com/file/peakd-hive/malos10/23uQxtoLUFTCVt54zxaQjE3GPLWwDeViu1czSuPx91fUmmeyxqSGGzpBDnxLn7mwG4C42.jpg\n\n\nGreetings to all my friends in this beautiful community, today I am back with a new set of photographs that I took in my studio for a girl who was turning 15 years old, but she wanted to do something different for her photos; she did not want the typical photos with a pompous 15th-birthday dress.\n\n\nhttps://files.peakd.com/file/peakd-hive/malos10/EoiYbcZewXESMsvdPP83ryP4NzMcLqZcvNUtpX7UXwMwvZpX2NAFiYi2nx6wc997Bot.jpg\n\n\nThis girl decided to wear a gala dress that made her look elegant.\n\n\nhttps://files.peakd.com/file/peakd-hive/malos10/Ep7w51oNyMmSJTLPUFksnmTXmo39V1XqCa3qGDkFeqPCa5psFAHN6vEeV5euyBagmjW.jpg\n\n\nThis was a personal choice and her parents supported her!\n\n\nhttps://files.peakd.com/file/peakd-hive/malos10/EoiXgtge9QJvei7cqgruScQ4YMwB9RD1GGMt2Vypb9gvo6hhbLZzNDBATT5hvZgMjsn.jpg\n\n\nIn these years taking photos I have been able to realize that fewer and fewer teenagers want to use that type of pompous dress, most of the time it is the parents \"forcing\" the girls to take the photos that way just out of tradition, but the girls hardly enjoy it, it is a heavy dress, hot and they are not used to wearing heels.\n\nFor that reason, what this girl did was brilliant and how great that her parents supported her!\n\n\nhttps://files.peakd.com/file/peakd-hive/malos10/EonpMbjJFrSMhCvDrwQtnK7zwfBvSrNmibKh34XwP8f7ehzwbAdnsefzRXGprDkQQLa.jpg\n\n\nAnd we managed to take photos that she really liked and that she knows she will use.\n\n\nhttps://files.peakd.com/file/peakd-hive/malos10/Eos3kJCX9csY6bCxeJM43BJqvvQY2Jv9zcCeqkZaD1Y2PKE2eh8cFLUr8fBXc1buN2B.jpg\n\nhttps://files.peakd.com/file/peakd-hive/malos10/Eoke1wYqPws8tEjYGuqHNNwRpeCxhK21a3gWqMxrJZLjNigxs9fN285NRaT3QLRggLu.jpg\n\n\nAnd when finishing the photos she wanted to take advantage of the time on the set to take some photos with the other outfit she had, which was more casual, and we also took nice photos!\n\n\nhttps://files.peakd.com/file/peakd-hive/malos10/EokgTG8omfWm7QJpKZwUR2jdJY44vdSi2ZLryns8F94TsBpBnpysR5oqKUa3MRbFjE8.jpg\n\nhttps://files.peakd.com/file/peakd-hive/malos10/Eos4GEYwkeXdkkioNAV6JrkpZfm8WeC4YAq2Zdt1i5ETuo3GYa8g3iiVMYa5NTPs7Cn.jpg\n\nhttps://files.peakd.com/file/peakd-hive/malos10/EogQFwErY3ameDDLcwUKVwTQZgsG8U6yBqSZSktesTSsFwHHJDy6oXEfkJiGvsaYSJW.jpg\n\n\nAll photos were taken with my Canon R8 camera, a 50mm lens at f/4 and two light sources.\n\nAt the end of the photo session we were all super happy with the results and I hope you like them as much as we did!",
+      "sats": 219,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-11-05T18:49:45.288Z",
+      "createdAt": "2026-11-06T03:12:57.157Z",
       "user": {
-       "name": "zuspotirko"
+       "name": "Malos_10"
       },
-      "subName": "AI"
+      "subName": "Photography"
      },
      {
-      "id": "1608839",
-      "title": "Guinness World Record broken as 53 red cards shown in Brazil under-20 match",
-      "url": "https://www.aljazeera.com/sports/2026/11/5/guinness-world-record-broken-as-53-red-cards-shown-in-brazil-under-20-match",
-      "text": "![](https://m.stacker.news/164892)\n\n> Mass brawl at Uberlandia vs Mamore results in 43 cards for players, eight for coaching staff and two for board members.",
-      "sats": 651,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-11-05T10:15:42.060Z",
-      "user": {
-       "name": "satoshiplanet"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1608785",
-      "title": "D is for Dilution - Arthur Hayes",
-      "url": "https://cryptohayes.substack.com/p/d-is-for-dilution",
-      "text": "Hayes has not changed the moral of his story, despite being wrong for at least a year:\n\n> It will be glorious for Bitcoin and crypto hodlers. But be patient.\n\nNow, he sees the AI companies all falling flat post IPO and the whole big AI bubble going *pop* in some way that just has -- just absolutely most definitely I'm not wrong this time *has* to spur central banks to printing all the dollars Hayes has been hoping for these last 12 months. \n\nNone the less, he is full of his typical piss and vinegar:\n\n> Therefore, without any discussion whether the CEOs of SpaceX, Anthropic, and OpenAI are lying or committing accounting fraud, I know the market will assume they are once the stock prices sag below the IPO price because of massive insider unlocks.\n\nBasically, Hayes thinks the AI companies will require so much buying to soak up all the shares being sold that their share prices can't hardly do anything but go down. \n\nHayes may want to consider most re carefully such certain language. \n\n> the point of the IPO is to gain access to the corporate debt markets so that ‌these companies can raise capital without hyperscaler and semiconductor company backstops. To inspire confidence in potential debt donkeys, the stock cannot just tread water but needs to pump. As I showed earlier, treading water is extremely capital intensive for the broader market. The most likely scenario is that investors aren’t as stupid as these CEOs believe, and refuse to be dumped on by insiders. Therefore, even if revenues (there ain’t going to be any earnings, lol) match expectations, the supply onslaught slowly wears on the stock price as it leaks lower.\n\nHayes has more confidence in investors than I do. But he thinks the whole thing stalls out and the printer gets turned back on...sometime. \n\nIn the meantime, Maelstrom is sitting this one out (or so he says).",
-      "sats": 1367,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-11-05T05:32:58.687Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1608969",
-      "title": "2026-27 UCL Pool: Week 4 Recap and Standings",
+      "id": "1609229",
+      "title": "1mi sprint",
       "url": null,
-      "text": "Only two teams remain at the top of the table, counting their matches as victories. Real Madrid joined PSG after beating AEK in Athens last night. Valverde scored the winner at 92 minutes. At the same time, though a bit further east, Liverpool lost their game against Fenerbahçe, confirming that Türkiye is a tough spot.\n\nI am glad that @0xbitcoiner's Porto finally added their first points, beating Napoli 4-1. Congrats!. A surprising Como achieved a stunning 1-9 win against Lens in France. Man City is approaching to the top 8 after beating Leipzig (2-3).\n\nAlso in Germany, Borussia clinched the victory against Real Betis in a very entertaining match. Both teams have added 9 points and are within just goal difference from a top 8 spot.\n\nArsenal is third in the table after beating Slavia Praha (1-2) in Czech Republic.\n\nOther results were:\n\n* Viking 4-1 Sabah\n* PSV 1-2 Brugge\n\n# Pool\n\nThis week 3 stackers, @Undisciplined , @grayruby and @suraz ,  added 7 points to finish at the top of the week. Congrats to @gsc360 who was the only one who supported Fenerbahçe to beat Liverpool.\n\n![](https://m.stacker.news/164922)\n\nOn aggregate, @Undisciplined takes the lead (20), 1 point clear over @denlillaapan . @suraz and @User21000000 chase closely with 18 points.\n\n![](https://m.stacker.news/164924)\n\nNow, UCL takes another pause until the last week in November, as some internationals return next week.\n\ncc: @Undisciplined , @WeAreAllSatoshi , @suraz , @User21000000 , @grayruby , @denlillaapan , @gsc360 , @0xbitcoiner , @guerratotal , @MB",
-      "sats": 877,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 6,
-      "createdAt": "2026-11-05T14:51:29.269Z",
-      "user": {
-       "name": "Carresan"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1609045",
-      "title": "Wow Wemby Wow!",
-      "url": null,
-      "text": "https://x.com/NBA/status/2118346720866353611?a=bkCoiWDDoAtVP_-2LxQ&s=20",
-      "sats": 545,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 10,
-      "createdAt": "2026-11-05T16:55:52.789Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1609103",
-      "title": "Bandcamp Friday Is November 6: What It Shows About How Fans Pay Indie Musicians",
-      "url": "https://heatherlarson.substack.com/p/bandcamp-friday-is-november-6-what",
-      "text": "Another great one by Heather! \n\n![](https://m.stacker.news/164945)",
-      "sats": 392,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-11-05T18:47:13.066Z",
-      "user": {
-       "name": "Car"
-      },
-      "subName": "Music"
-     },
-     {
-      "id": "1609039",
-      "title": "Difficulty Adjustment Prediction Markets Live on Glimpse",
-      "url": "https://www.glimpse.markets/",
-      "text": "![](https://m.stacker.news/164929)\n\nNetwork difficulty and difficulty adjustment markets are now live on Glimpse. Bet on whether difficulty goes up or down each epoch, and earn sats if you’re right.\n\nNo KYC, instant deposits and withdrawals via Lightning, and payouts every adjustment.",
-      "sats": 86,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-11-05T16:48:44.405Z",
-      "user": {
-       "name": "HYPERBITCOINZATION"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1609100",
-      "title": "What creative ideas have you been rambling on?",
-      "url": null,
-      "text": "![MaindBlowing](https://m.stacker.news/97749)\n\nThis post is part of a series. It is meant to be a place for stackers to discuss creative projects they have been working on, or ideas they are aiming to build.  Regardless of your project being personal, professional, physical, digital, or even simply an idea to brainstorm together.\n\nIf you have any creative projects or ideas that you have been working on or want to eventually work on... This is a place for discussing those, gather initial feedback and feel more energetic on bringing it to the next level.\n\n_**₿e Creative, have Fun!**_",
-      "sats": 121,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-11-05T18:42:29.279Z",
-      "user": {
-       "name": "deSign_r"
-      },
-      "subName": "Design"
-     },
-     {
-      "id": "1608879",
-      "title": "These countries are hoarding (and dumping) the most gold in 2026",
-      "url": "https://www.gold.org/goldhub/gold-focus/2026/08/central-bank-gold-statistics-june-2026",
-      "text": "The H1 2026 numbers are out.\n\n`Poland` (82t), `Uzbekistan` (41t), `China` (40t), and `Kazakhstan` (27t) are hoarding hard assets. `Turkey` (83t) and `Russia` (44t), on the other hand, are dumping gold just to survive.\n\n![](https://m.stacker.news/164904)\n\n![](https://m.stacker.news/164905)\n\n![](https://m.stacker.news/164906)",
-      "sats": 789,
+      "text": "![](https://m.stacker.news/164974)",
+      "sats": 444,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 2,
-      "createdAt": "2026-11-05T12:04:31.792Z",
+      "createdAt": "2026-11-05T23:04:57.201Z",
       "user": {
-       "name": "satoshiplanet"
+       "name": "realBitcoinDog"
       },
-      "subName": "charts_and_maps"
+      "subName": "HealthAndFitness"
      },
      {
-      "id": "1609077",
-      "title": "Nasdaq Sinks More Than 4% as Investors Retreat From AI Trade After Election",
-      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-05-2026",
-      "text": "",
-      "sats": 258,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-11-05T17:41:12.131Z",
-      "user": {
-       "name": "zuspotirko"
-      },
-      "subName": "AI"
-     },
-     {
-      "id": "1609059",
-      "title": "Discord is ditching Electron, says its new app uses less RAM",
-      "url": "https://www.theverge.com/news/1027379/discord-ditching-electron-web-app",
-      "text": "",
-      "sats": 294,
+      "id": "1609168",
+      "title": "Bukele Has Declared Total War on Haiti's Gangs",
+      "url": "https://www.youtube.com/watch?v=z0aaBlGvcxY",
+      "text": "El Salvador's President Bukele has deployed 2,500 troops to Haiti after four Salvadoran military technicians were abducted. What began as a rescue mission has expanded into promises to crush Haiti's gangs entirely. Salvadoran forces now patrol Port-au-Prince, engaging armed groups controlling seventy percent of the capital amid challenging urban terrain.",
+      "sats": 357,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-11-05T17:08:54.078Z",
+      "createdAt": "2026-11-05T20:37:55.921Z",
       "user": {
-       "name": "pleb_one"
+       "name": "Lux"
       },
-      "subName": "tech"
-     },
-     {
-      "id": "1608804",
-      "title": "Any stackers at bitcoin++ Seoul, privacy edition?",
-      "url": "https://btcpp.dev/seoul",
-      "text": "",
-      "sats": 677,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-11-05T07:36:33.181Z",
-      "user": {
-       "name": "m0wer"
-      },
-      "subName": "bitcoinplusplus"
-     },
-     {
-      "id": "1608739",
-      "title": "Xikipedia History: The Nordertor",
-      "url": null,
-      "text": "![](https://m.stacker.news/164853)\n\n>is an old [town gate](https://en.wikipedia.org/wiki/City_gate \"City gate\") in [Flensburg](https://en.wikipedia.org/wiki/Flensburg \"Flensburg\"), [Germany](https://en.wikipedia.org/wiki/Germany \"Germany\"), which was built around 1595. Today the [landmark](https://en.wikipedia.org/wiki/Landmark \"Landmark\") is used as a symbol for Flensburg.[<sup>[1]</sup>](https://en.wikipedia.org/wiki/Nordertor#cite_note-1)\n\n>The  [town wall](https://en.wikipedia.org/wiki/Wall \"Wall\") of Flensburg was built step by step from 1345 onwards.[<sup>[2]</sup>](https://en.wikipedia.org/wiki/Nordertor#cite_note-2) A town gate, named *Norder Porte*, was built in the northern section of the wall.[<sup>[3]</sup>](https://en.wikipedia.org/wiki/Nordertor#cite_note-3) At the end of the 16th century, it was replaced by the Nordertor, a building with [stepped gables](https://en.wikipedia.org/wiki/Crow-stepped_gable \"Crow-stepped gable\") and [archway](https://en.wikipedia.org/wiki/Arch \"Arch\").[<sup>[4]</sup>](https://en.wikipedia.org/wiki/Nordertor#cite_note-4) At this time the Nordertor marked the northern [boundary](https://en.wikipedia.org/wiki/Border \"Border\") of the town. It was a checkpoint that was closed at night.[<sup>[5]</sup>](https://en.wikipedia.org/wiki/Nordertor#cite_note-5)\n\n____\n\nCool old looking gate. It’s older than America!! \nAsking my German friend if they ever visited this town.",
-      "sats": 265,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-11-05T02:31:10.944Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "Construction_and_Engineering"
-     },
-     {
-      "id": "1609005",
-      "title": "Cashu is real ecash. Not the shitcoin one",
-      "url": null,
-      "text": "![](https://m.stacker.news/164926)",
-      "sats": 321,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-11-05T15:39:04.424Z",
-      "user": {
-       "name": "hasherstacker"
-      },
-      "subName": "bitcoin_beginners"
-     },
-     {
-      "id": "1609029",
-      "title": "PAFF.club - An open source self-hostable Netflix/Spotify clone",
-      "url": "http://paff.club",
-      "text": "Hi stackers,\n\nI've been working on PAFF (Play Anything For Free), a new streaming app that uses torrents and other public databases under the hood to offer a free alternative to Netflix, Spotify and the myriad other streaming services.\n\nIt can play movies, tv shows and music. It uses torrents and other public databases but it's optimized for streaming so you don't have to wait for whole files to finish downloading before it starts playing.\n\nIt has a nice user friendly UI and I've added a bunch of integrations so you can run it on your computer, phone, TV, NAS, Android Auto, etc.\n\nI'd love to get some feedback on it and hear if you like it or would like to see anything added or changed. I haven't tested on Windows or Mac so it would be great to know if it actually works there.\n\nAdam",
-      "sats": 85,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-11-05T16:34:15.395Z",
-      "user": {
-       "name": "asoltys2026"
-      },
-      "subName": "Music"
-     },
-     {
-      "id": "1609024",
-      "title": "Great but painful",
-      "url": "https://lesswrong.com/posts/KThSe2vPZw4zn7f8W/great-but-painful",
-      "text": "![](https://m.stacker.news/164927)\n\nIf you want to build a product that people will use, find something that people already do and make it less painful.\n\n- - -\n\n#UX #ProductManagement",
-      "sats": 240,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-11-05T16:24:00.301Z",
-      "user": {
-       "name": "deSign_r"
-      },
-      "subName": "Design"
-     },
-     {
-      "id": "1608912",
-      "title": "Bitcoin Amsterdam 2026 | Day 1 Livestream",
-      "url": "https://x.com/i/broadcasts/2nQYOeYXLdNBNj",
-      "text": "",
-      "sats": 426,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-11-05T13:04:32.808Z",
-      "user": {
-       "name": "hasherstacker"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1608985",
-      "title": "Daily Discussion Thread ~Music Saloon!",
-      "url": null,
-      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!",
-      "sats": 209,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-11-05T15:12:54.818Z",
-      "user": {
-       "name": "Public_N_M_E"
-      },
-      "subName": "Music"
+      "subName": "Politics_And_Law"
      }
     ]
    }
@@ -1892,14 +1892,44 @@
    "items": {
     "items": [
      {
+      "id": "1609310",
+      "title": "What do you think of Bitcoin Core's AI contribution policy?",
+      "url": null,
+      "text": "@jonatack pointed me in the direction of this AI policy by @sedited and Will Clark  (which I had not previously read) as well as an AI policy that Atack proposed for the BIPs repo that was inspired by the Bitcoin Core AI policy. Atack later closed his own PR because of the rate of change in AI:\n\n![](https://m.stacker.news/164983)\n\n[source](https://x.com/jonatack/status/2118441572069159303)\n\nI like how both Atack and Sedited and Clark think about AI use, especially in the context of developing Bitcoin Core (and contrasted with @reardencode's approach to AI use in developing rbitcoin https://stacker.news/items/1598294/r/Scoresby). And I think it's particularly interesting to compare the two AI policies.\n\nBoth require that\n- there is a human in the loop\n- the human author knows the language the contribution is written in\n- the human author could have written the proposed change themselves\n- AI should not be used to generate comments or responses\n- AI generated context provided in comments should be disclosed as such and accompanied by human explanation.\n- autonomous agents should not open pull requests\n- AI agents or bots should not be included as authors or coauthors\n\nWhere they differ is that Atack's policy is a bit more specific about two things:\n1. \"Do not leave the first review of AI-generated changes to the reviewers. Verify the changes (code review, testing, etc.) before submitting your PR.\"\n2. \"Reviewers want to engage directly with you, not with generated responses.\"\n\n# Do you think these policies are missing anything (or too strict)?\n\nHere is the current Bitcoin Core [AI policy](https://github.com/bitcoin/bitcoin/blob/master/doc/AI_POLICY.md) written by @sedited and Will Clark:  \n\n> Using AI (i.e. LLMs) as tools for coding is welcome, provided that such use adheres to the following policy, adds value, and does not waste the community's time.\n> \n> A high bar is held for all contributions to this project.\n> \n> **AI should not be used to generate comments when communicating with maintainers and other contributors**. Comments are expected to be written by humans. Comments that are believed to be written by AI may be moderated.\n> \n> If you are opening an issue, you should be able to describe the problem in your own words.\n> \n> You should only open a pull request if you:\n> \n> * know the language the code is written in\n> * could have written the code yourself\n> * understand the existing surrounding code and the effect of the suggested changes\n> \n> You must also be able to explain the pull request changes in your own words. This includes the pull request body and responses to questions. **Do not copy responses from the AI when replying to questions from reviewers.**\n> \n> This project requires a human author in the loop who understands the work produced by AI. **Pull requests should not be opened or driven by autonomous agents**. A human author must choose the work, understand the change, and be responsible for the contribution. Do not include agents as authors or co-authors of your commits for these reasons. Pull requests that appear in violation of this can be closed without notice.\n> \n> If you wish to include context from an interaction with AI in your comments, it must be disclosed as such. It must be accompanied by human commentary explaining the relevance and implications of the context.\n> \n> Questions or proposed changes to this policy can be discussed in [bitcoin-core/meta](https://github.com/bitcoin-core/meta).\n> \n> This policy was adapted from [ripgrep's AI policy](https://github.com/BurntSushi/ripgrep/blob/f0cec341ab95c25c691ad3d5754d4bd9eedde21f/AI_POLICY.md), which was adapted from [uv's AI policy](https://github.com/astral-sh/.github/blob/c5187e200db51bfe11d56e13053d29bd3793fdd8/AI_POLICY.md).\n\n\nAnd here is the AI policy Jon Atack [proposed in a PR](https://github.com/bitcoin/bips/pull/2265/changes/de4aca8fcdd5e317fdde657e2a14b518caca0348) (but later closed): \n\n> Using AI as a tool for proposals or review in this project can be acceptable, provided that such use adheres to the following policy, adds value, and does not waste the community's time.\n> \n> A high bar is held for all contributions to this project.\n> \n> This project requires a human author in the loop who reviews, verifies, and fully understands the proposal or change before submission.\n> \n> You should only open a pull request if you:\n> \n> - could have written the change yourself\n> - understand the existing context, specification and code, and the effect of the suggested changes\n> \n> Do not leave the first review of AI-generated changes to the reviewers. Verify the changes (code review, testing, etc.) before submitting your PR.\n> \n> Pull requests should not be opened or driven by autonomous agents. A human author must choose the work, understand the proposal or change, and be responsible for the contribution. For these reasons, do not include agents as authors or co-authors of your commits.\n> \n> You must be able to explain the pull request changes in your own words. This includes the pull request body and responses to questions. Do not copy responses from an LLM when replying to questions from reviewers.\n> \n> Reviewers want to engage directly with you, not with generated responses. AI should not be used to generate comments when communicating with maintainers and other contributors. Comments are expected to be written by humans. Using AI to improve grammar or to translate is fine, but the substance of your responses must be your own. Comments that are believed to be written by AI may be moderated.\n> \n> If you wish to include context from an interaction with AI in your comments, it must be disclosed as such and accompanied by human commentary explaining the relevance and implications of the context.\n> \n> Pull requests that appear to be in violation of the above can be closed without notice.\n> \n> Questions or proposed changes to this policy can be discussed on the [Bitcoin Development Mailing List](https://groups.google.com/g/bitcoindev).\n> \n> This policy was adapted from the AI policy in [Bitcoin Core](https://github.com/bitcoin/bitcoin/blob/master/doc/AI_POLICY.md) and in [Kubernetes](https://www.kubernetes.dev/docs/guide/pull-requests/#ai-guidance).",
+      "sats": 2099,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 7,
+      "createdAt": "2026-11-06T02:46:54.398Z",
+      "user": {
+       "name": "Scoresby"
+      },
+      "subName": "bitcoin"
+     },
+     {
+      "id": "1609152",
+      "title": "Payjoin Trading: A Novel Approach to UTXO Consolidation and Privacy",
+      "url": null,
+      "text": "# BULL BITCOIN is now the first Bitcoin exchange in the world to introduce Payjoin for deposits and withdrawals!\n\n**Every on-chain buy and sell from BULL Wallet is now a Payjoin by default, with nothing to switch on.**\n\nThat’s Payjoin Trading, and it means:\n• Every trade consolidates your UTXOs, which can lower your future fees.\n• Your transactions are protected from malicious actors using chain analysis to track your financial habits.\n\nAnd the more people use BULL BITCOIN, the more privacy the Bitcoin network gains as a whole. That’s how we align the growth of our business with the interests of all Bitcoin users, including those who have never used our services.\n\nWe’ve been working toward this since December 2024, when BULL Wallet became the first Bitcoin wallet to integrate Payjoin V2, developed in collaboration with the Payjoin Foundation.\n\n![](https://blossom.primal.net/6ecfc3a0e1611ffd53e71e30918b10bdc13d0b46939d6473b432d82abbdd359e.mp4)\n\n### Learn more:\n\nRead our Blogpost: [https://www.bullbitcoin.com/blog/payjoin-trading](https://www.bullbitcoin.com/blog/payjoin-trading)\nStart using Payjoin today: [https://wallet.bullbitcoin.com](https://wallet.bullbitcoin.com)",
+      "sats": 2934,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 5,
+      "createdAt": "2026-11-05T20:02:25.433Z",
+      "user": {
+       "name": "BullBitcoin_"
+      },
+      "subName": "bitcoin"
+     },
+     {
       "id": "1609133",
       "title": "[REVIEW] V for Vendetta by Alan Moore and David Lloyd",
       "url": null,
       "text": "**Normally, I try to avoid spoilers in my reviews. This one has spoilers.**\n\n![](https://m.stacker.news/164947)\n\nV is cool and all and his vendetta against Big Brother is a great story, but there's one part of this that I just can't get out of my mind. In the middle of the story, Evey is captured and thrown in a prison where she is interrogated, tortured, presented with a false confession, and told to sign. She refuses. She doesn't betray V. And so she is told that she is going to be taken out back and shot.\n\nIt's a horrible moment. Till now, V has always swooped in to save the day. And throughout Evey's horrible captivity and torture, we keep expecting V to show up and put a stop to it, with knives, mayhem and murder. But, this time, he doesn't show.\n\n![](https://m.stacker.news/164948)\n\nSo it seems like this is the end. Evey chooses to stand for what she believes in, even though it means she will die. But then:\n\n![](https://m.stacker.news/164949)\n\nThis is a weird twist. But it quickly turns dark when Evey walks through her prison door...and into V's sitting room:\n\n![](https://m.stacker.news/164950)\n\nWe knew V was not the most even-keeled individual, but this is messed up. What the hell is going on?\n\n> \"Happiness is a prison, Evey. Happiness is the most insidious prison of all.\"\n\nV has this moment where he completely flips Evey's worldview:\n\n> \"I didn't put you in a prison, Evey. I just showed you the bars...You were born in a prison. You've been in a prison so long, you no longer believe there's a world outside...You can feel freedom closing in upon you. You're afriad because freedom is terrifying.\"\n\nI really struggled with this scene. Evey's conversion seems so unbelievable to me. Why should she see this new injustice (V's little false-flag operation on her) as anything other than the same sort of brutal, banal, boring violence brought down upon her by someone else? Is it that this time she accepted death, no longer trying to bargain with the system? Or that in this case it came upon her from someone she trusted, a quarter she thought was safe?\n\nAt first, I thought this was a sort of ends-justify-the-means argument: V's still the good guy here because putting her in a cell and waterboarding her and telling her she's going to be shot gets her to the point where she can be truly free. And it is sort of that, but not entirely.\n\nThere's also the blunt force thought that hardship, extreme hardship is a necessary step to freedom -- even perhaps that you can't have freedom without it. This is terrifying because it makes me worry that I am one of the prisoners who would rather remain a prisoner. Because life in prison is happy enough. Maybe you can't get to the freedom without the hardship.\n\nEvey's conversion is successful because the stakes were so high -- she couldn't come to value her life until it was actually on the line. \n\nThis is pretty directly relevant to Bitcoin -- especially this year: if Bitcoin is our shot at freedom, why do we think it will come easy and without terror? Using Bitcoin means you using something designed to break the law. Holding your own keys means you can lose your own keys. \n\nIt's a nice story...but is it true?",
-      "sats": 6009,
+      "sats": 6125,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 2,
+      "ncomments": 4,
       "createdAt": "2026-11-05T19:28:02.854Z",
       "user": {
        "name": "Scoresby"
@@ -1907,17 +1937,17 @@
       "subName": "the_stacker_muse"
      },
      {
-      "id": "1551074",
-      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
-      "url": null,
-      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
-      "sats": 7281,
+      "id": "1609039",
+      "title": "Difficulty Adjustment Prediction Markets Live on Glimpse",
+      "url": "https://www.glimpse.markets/",
+      "text": "![](https://m.stacker.news/164929)\n\nNetwork difficulty and difficulty adjustment markets are now live on Glimpse. Bet on whether difficulty goes up or down each epoch, and earn sats if you’re right.\n\nNo KYC, instant deposits and withdrawals via Lightning, and payouts every adjustment.",
+      "sats": 1086,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 117,
-      "createdAt": "2026-08-19T19:44:47.321Z",
+      "ncomments": 4,
+      "createdAt": "2026-11-05T16:48:44.405Z",
       "user": {
-       "name": "openbitcoin"
+       "name": "HYPERBITCOINZATION"
       },
       "subName": "bitcoin"
      },
@@ -1926,10 +1956,10 @@
       "title": "Why isn't bitcoin used for more gray market things?",
       "url": "https://spiralxyz.substack.com/p/value-stored-now-what",
       "text": "@spiral published The Long Road to Bitcoin Payments https://stacker.news/items/1603307/r/Scoresby last week and got quite a good discussion going here and on [Github](https://github.com/spiralxyz/bitcoin-payments/discussions/1).\n\nToday, they are out with a summary of the community's response.\n\n> **1. Global entrepreneurs, human or agent, earning in bitcoin.**\n> **2. Agentic payments.**\n> **3. Self-custody as stablecoins get more regulated and freezable.**\n\nThe guys on PBJ also did a recap of the discussion on their most recent episode, which is an interesting listen:\n\nhttps://x.com/PresidioPod/status/2118070779959017814\n\nThere were two things that caught my attention in this conversation. First, @moneyball makes the point that it is surprising that the gray-market areas haven't seemed to find much use for bitcoin. \n\n# Why haven't the porn sites, online gambling dens, and illegal markets shown much interest in bitcoin payments?\n\nWhile moneyball doesn't mention it, he made me think of Starbackr https://stacker.news/items/135689 https://stacker.news/items/67590 and after a little poking around it looks like they had some trouble with the App Store allowing zaps https://stacker.news/items/219407 but eventually managed a workaround https://stacker.news/items/224893 but then pivoted to AI https://stacker.news/items/250739 and quietly shut down -- at least the main starbackr website is no longer reachable (wayback machine last crawled it in [July 2024](https://web.archive.org/web/20240727123411/https://starbackr.com/) and shows a redirect to getcurrent.io -- last crawled by the wayback machine in Dec 2024 -- although you can still reach the [starbackr docs page](https://docs.starbackr.com/)). These guys seem to have made as good a run as any at delivering a bitcoin powered OnlyFans. What happened?\n\nIt seems that the same is true for online gambling (although maybe this story about [Iranian gambling sites](https://www.reuters.com/investigations/illicit-iranian-gambling-network-helped-pull-off-4-billion-sanctions-dodge-2026-07-31/) is a hint that bitcoin is being used in this manner? possibly we are all just too goody-goody to get invited to the illegal tables?).\n\nI don't believe that traceability is the answer. As far as I can tell, porn sites and online gambling are mostly using credit card payments and tradfi banking, which is even worse for privacy. \n\nSpiral says that a lot of responses pointed out that there isn't any demand for bitcoin. But that seems to be answering the question with the question itself -- why isn't there any demand? \n\n# Surely someone needs money that no one can stop you from sending or receiving?",
-      "sats": 7247,
+      "sats": 7268,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 27,
+      "ncomments": 36,
       "createdAt": "2026-11-04T22:05:50.681Z",
       "user": {
        "name": "Scoresby"
@@ -1937,11 +1967,101 @@
       "subName": "bitcoin"
      },
      {
+      "id": "1609240",
+      "title": "Big tech earnings reports show only a portion of their AI-related obligations.",
+      "url": null,
+      "text": "According to an analysis by J.P. Morgan, there are approximately $4.5 trillion in off-balance-sheet commitments—consisting of lease agreements that have yet to commence and purchase obligations, primarily for data centers and chips.\r\n\nThis figure is six times greater than the amount currently recorded on the balance sheet, which stands at roughly $760 billion in debt and lease liabilities.\r\n\nGoogle leads the list with $1.08 trillion in off-balance-sheet commitments, followed by Anthropic ($865 billion) and Meta ($810 billion).\r\n\nScary!\n\n![](https://m.stacker.news/164975)",
+      "sats": 716,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-11-05T23:31:54.899Z",
+      "user": {
+       "name": "EconVerse"
+      },
+      "subName": "AI"
+     },
+     {
+      "id": "1609143",
+      "title": "Audiobook launch 🎧📚🚀 21 Futures: Financial Fallout",
+      "url": null,
+      "text": "## We have finally published volume 2 of 21 Futures as an audiobook, narrated by the golden voiced [Adrian M Lopez](http://primal.net/p/nprofile1qqsyqxz5h0qpgn706yq5suy46s9watklt4nt9skzrk632nmmyvn6ewqphrcmq).\n\nPodcast listeners, fiction fans, and cypherpunk collectors rejoice.\nAlternatively, don't rejoice, just listen.\n\n![](https://m.stacker.news/164951)\n\n**21 Futures: Financial Fallout**\n*Currencies debased.*\n*Privacy under attack.*\n*Cash goes underground.*\n*The crushing weight of debt.*\n*We were never prepared.*\n\n*Welcome to a system designed to keep us poor. The harder we work, the less we gain.*\n*And as we struggle, the noose only tightens.*\n*And then, when we have nothing left to lose, we turn on those who rigged the game.*\n*We stand and fight.*\n\n*These 21 stories portray unfortunate yet brilliant heroes fighting the powers that triggered financial fallout. Money is broken, but hope is not lost.*\n\nFeaturing @realBitcoinDog, Satillionaire, Decent Money, DJ Bodden, Graeme Shimmin, and many more.\n\n***\n\n[**LISTEN FOR FREE ON FOUNTAIN**](https://fountain.fm/show/cRNU0kyG3UG6J93NqIBq)\nAll 46 stories accross vol. 1 and 2.\n\n[**OWN THE AUDIOBOOK**](https://fanfares.io/s/rmVN5b#pay)\nZap the Fanfares link with 21k sats to download the files.\nShare your referral link to earn 10k sats for each sale you generate.\n\n![](https://m.stacker.news/164952)\n\nAll purchases of the full audiobook get access to the bonus story, *Underworld* by Max Hillebrand.\n\n***\n\nNext week, individual stories will be available for 2,100 sats each.\n\nHope you enjoy listening.\n\nNow, work begins on volume 3...",
+      "sats": 1029,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-11-05T19:49:45.673Z",
+      "user": {
+       "name": "TotallyHumanWriter"
+      },
+      "subName": "the_stacker_muse"
+     },
+     {
+      "id": "1609126",
+      "title": "First Graphene Friendly Motorola?",
+      "url": "https://motorolanews.com/motorola-signature-27-2/",
+      "text": "I can't wait to read what @final  has to say. \n\n>  * The first Motorola device to support GrapheneOS, an privacy and security-focused mobile operating system.\n\nI just may have to track one down.",
+      "sats": 2630,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 22,
+      "createdAt": "2026-11-05T19:16:45.937Z",
+      "user": {
+       "name": "siggy47"
+      },
+      "subName": "tech"
+     },
+     {
+      "id": "1609264",
+      "title": "TNF- Jaguars vs Ravens Discussion Thread",
+      "url": null,
+      "text": "Time for kickoff! \n\nAnyone watching?",
+      "sats": 578,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 40,
+      "createdAt": "2026-11-06T01:12:45.483Z",
+      "user": {
+       "name": "grayruby"
+      },
+      "subName": "Stacker_Sports"
+     },
+     {
+      "id": "1609065",
+      "title": "🗞️ don't call it a comeback! --- SNZ Issue #75! 👏🏼",
+      "url": "https://pay.zaprite.com/pl_nIPZ1QPinr",
+      "text": "## HEAR YE HERE YE\n\n![](https://m.stacker.news/164930)\n\nGentlemen and ladies, fancy a read? Bitcoin, lightning, economics, and travel, oh my!\nSNZ Issue #75 is here!\n\n# READ [WEB](https://github.com/janakelsay/snz/blob/main/issue75web.pdf)\n\nor\n\n# PURCHASE [PRINT](https://pay.zaprite.com/pl_nIPZ1QPinr)\n\n# Featured posts\n\n[Receive-only Lightning checkout: a hacked server can’t drain your node](https://stacker.news/items/1597457)\n[I finally visited Pubkey in Washington DC](https://stacker.news/items/1597437)\n[Meme 1](https://stacker.news/items/1598039) and [Meme 2](https://stacker.news/items/1602602)\n[Should Economists Stay in Their Lane?](https://stacker.news/items/1602574)\n[The long road to bitcoin payments...](https://stacker.news/items/1603307)\n[Trip Report: Hong Kong](https://stacker.news/items/1604808)\n\n# there's more in store for subscribers!\n\nA quick update for my zine subscribers, 6 zines (including this one) have been sent to you for the fall season of zines - more is coming! You shall have 12 as soon as I crank them out. Though I have made a bit of a mess of the schedule, I hope you will forgive me, throughout November and into December, SNZ is on its way to you! (like santa claus, kinda)\n\n...and if you're interested, subscribe [here](https://pay.zaprite.com/pl_Lsgvh2fVyz) and I'll get a party of zines headed your way, too!",
+      "sats": 2701,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 6,
+      "createdAt": "2026-11-05T17:14:56.420Z",
+      "user": {
+       "name": "plebpoet"
+      },
+      "subName": "meta"
+     },
+     {
+      "id": "1609253",
+      "title": "A young Sicilian girl, c. 1900",
+      "url": null,
+      "text": "![](https://m.stacker.news/164976)",
+      "sats": 578,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-11-06T00:10:12.335Z",
+      "user": {
+       "name": "guerratotal"
+      },
+      "subName": "Photography"
+     },
+     {
       "id": "490704",
       "title": "\"Fear of a Black Flag\" -- Alan Moore's 2010 essay on anarchy",
       "url": null,
       "text": "Been thinking about (and still plan on) writing some stuff on Alan Moore's big three anti-state works from the '80s (*Watchmen*, *V for Vendetta*, *Miracleman*), and while doing some googling, found this essay of his, from *Dodgem Logic*, a magazine he edited and published in 2010. Moore's arguably the most important modern comics writer (inarguably in the top 3), and I found this intriguing on its own as well as a lens to view his writing through. \n\nOne pull quote that intrigued me:\n\n>In the present day, the Internet potentially provides the means for such an education and even allows for the creation of alternate currencies or barter systems such as the Green Pound movement that’s intermittently at large in deprived areas of Britain, in which people who are mostly unemployed trade hours of their work-time as a method of avoiding the official currency completely.\n\nWhile BTC existed in 2010, Moore may well not have been aware of it, and I'd love to know his thoughts (which googling does not seem to surface). \n\nEverything that follows is his full essay:\n\n\n*In 1976 Johnny Rotten wanted to be anarchy. He also wanted to get pissed and destroy passers-by. In 2010, when that’s a normal Friday night out in any town centre, should we be taking a closer look at history’s supposedly scariest political movement?\n\nAlan Moore investigates.*\n\nThe word anarchy comes with a lot of baggage. It conjures images of men in capes and broad-brimmed hats clutching black bowling balls with fizzing fuses and the helpful legend BOMB scrawled on the side in white emulsion. It’s become a kind of shorthand standing for the breakdown of society and order into screaming chaos; into a Hieronymus Bosch landscape populated by looters, berserkers, giants with leaking boats for feet and eggshells for a body. In the tabloid mass-mind, anarchy has been boiled down into an ultra-violent and demented version of Spy vs. Spy, adapted from a screenplay by Rasputin and the Unabomber. Hardly an attractive proposition, and yet throughout history this is the cause to which some of our greatest and most humane thinkers have subscribed, and to which countless thousands of brave men and women have devoted or indeed have given up their lives. If Darwin in his later years came to see anarchy as the most sensible political position can we casually dismiss it, either as a wild Utopian dream or as a recipe for howling bedlam? Before we toss anarchy onto the scrapheap of discarded ideas alongside the Flat Earth theory and 110% mortgages, perhaps we could make an attempt to find out what the word actually means?\n\nAs often proves to be the case with words, the Greeks most definitely had one for it, in this case anarchos, meaning ‘without rulers’. It would seem upon the surface to be a straightforward notion, but its full ramifications and its difficulties only become visible through close examination. For example, if there are no rulers, everyone is free to follow their own judgement in all matters, even in the way they define anarchy itself. As you might well imagine, this has led to a bewildering profusion of of anarchist subdivisions, categories and splinter movements with radically different views and therefore not infrequently at one another’s throats: Communist Anarchists, Free Market Anarchists, Egoist Anarchists, Anarchists Green or Syndicalist, Post-Left or Feminist, Anarchists Insurrectionary or Pacifist. Then there’s Anarchy Without Adjectives which sounds entirely sensible despite the fact that the words ‘Without Adjectives’, used here as a descriptive phrase, are actually performing all the functions of an adjective. Faced with this stupefying undergrowth of different strains of anarchy, we might be better off returning to that first and simplest definition, ‘without rulers’, and see where we go from there.\n\nIt could be argued that this state of being without leaders is our natural one, both as a species and as individuals. A new-born infant, child psychologists inform us, can’t at first tell where it ends and where the universe begins. The rattle and the cot bars and its mother are seen as extensions of itself, no different to the baby’s waving arms and legs. When we were fresh out of the womb, then, we were not just rulers in our own domain: we were its pink and wizened deities, were everything we saw or heard or touched, were the whole cosmos. Only later, after we had learned some rudimentary language skills, did we begin to understand the towering hierarchies of authority, the system of command that we were on the lowest rung of, answerable to our parents who were themselves answerable to their bosses and their landlords, their constabulary and their governments. The governments, presumably, were only answerable to the Queen or God or someone inaccessible and probably imaginary like that. We grudgingly accepted that we were not even atoms in the cogs of an immense social machine that neither we nor anybody that our great-grandparents knew had ever been consulted during the construction of. And yet, just for a moment there, our natural assumption in the cradle had been that the bunny-rabbit mobile moved the way we wanted it to move and that we were in charge of our own destinies. We were in charge of everything.\n\nThe same is true of our emergence as a species, when we lived as tribal family units in our self-governing huts or caves, not vastly different from the separate herds or flocks of animals around us. And while it may seem as if a tribe of people or a herd of animals inevitably will be dominated by a patriarch, a matriarch, an alpha-male or leader, this is not always the case. Our earliest studies with regards to animal behaviour made truckloads of assumptions that were based upon our own behaviour as humans. We identified the leader of a pack as being the big male who sorted out the territorial disputes and had his pick amongst the choicest females, an unlikely hybrid of John Wayne and Russell Brand that we as humans saw fit to impose on the behavioural quirks of deer or wolves alike. Only more recently have we accepted that while the butch alpha male may well be handling all the punch-ups, other individuals all seem to have their own unique importance to the group’s wellbeing. Perhaps one might be an animal who always seems to find new food or grazing land. Another might be an old female whom the other members of the herd or tribe will gather round protectively in the event of an attack. It would appear that many animal societies involve various roles and numerous components working in cooperation for the greater good, without the need for any one component of the group to be perceived as leader. While Charles Darwin thought that fierce and often bloody competition was the driving force that guided evolution, there is as much evidence suggesting that cooperation plays an equal if not greater part in the survival of the fittest, such as with the sex-crazed and agreeable Bonobo chimps that are amongst our closest primate relatives.\n\nLooked at from this perspective, it’s not anarchy that seems unnatural so much as an imposed and non-consensual authority itself. In any normal human group such as a family or set of friends, excluding members of the Cripps or Bloods, do we still think of one specific person as the leader? Has there genuinely been a head of household since Edwardian times? Mostly, in any halfway functional arrangement there is an informal set of checks and balances that can maintain the equilibrium without the need for regulation from an outside party. This cooperation between individuals who may not share the same opinion, this ability to recognise and to respect the fact that others have as much right to determine their own lives as we have is in my opinion necessary for any form of anarchy, with or without an adjective, to have a chance of working in no-frills reality. It also demonstrates the seeming paradox that’s at the subject’s heart: what seems to be a licence to do anything we want without restriction turns out, like Aleister Crowley’s famous ‘Do what thou wilt’ motto, to involve the taking on of ultimate responsibility and the demanding task of governing ourselves.\n\nUltimately, anarchy begins at home. Life without rulers as a serious proposition will entail self-rule, which cannot come about unless we properly accept and understand that we as individuals and we alone are totally responsible for our own lives and destinies. One of the first things that this understanding brings with it is the unsettling realisation that if we are our own leaders, we now have no one to blame and no excuse for failing at the tasks we set ourselves. We cannot blame our background or our parents or society in general for our limitations because we have taken the responsibility for our existence squarely on ourselves. We can’t say wistfully that we could have been someone special if we hadn’t been held back by our upbringing or our finances; by marrying that man, that woman; having or not having those specific kids. We can’t continue with the role of helpless and beleaguered victim in our own lives if we’ve just decided we are that life’s leader, are its heroines and heroes. If we’re trying to conceal our flaws it must be said that anarchy’s personal freedom offers very little cover. Having lived our lives within the shelter of a rigid and determined social structure, stepping unprotected out into the wind can seem a frightening and chilly proposition. Indeed, many of us make the choice to stay indoors, to put up with the tedium and disappointments that we know rather than risk it all upon a leap into the dark. However much we might wish we were freer in our lives, at heart we have a sense that freedom is a scary if not terrifying thing.\n\nIn light of the above, why would anyone take a chance upon self-governance and anarchy? The burden of responsibility may be as great or even greater than if you were governing an actual country… after all, you probably care more about your own well-being than a government cares about the well-being of its people… so where’s the reward? The real reward, it might be said, is in the overwhelming sense of liberation and empowerment that comes with declaring yourself to be an autonomous and self-determined human being, naked underneath the stars and standing fearless at the centre of your unique universe at it rotates about you in its splendour, as it did before you learned the rules, before you even learned the language. In accepting sole responsibility for how your life unfolds you cease to be life’s victim and begin to realise the unexpected power you have over your circumstances, without ever seeking to exert power over others, without fucking anybody over. In the heady rush of the experience you might conclude that everyone should have the right to live like this, and it is here in this shift from a personal code of behaviour to an all-embracing social policy that anarchy’s most serious problems start to manifest themselves, as even a brief look into the subject’s history makes abundantly clear.\n\nAnarchist ideas have been with us since antiquity. We find them in the utterances of Taoist sages from the east and in the works of Greek philosophers such as Diogenes or Zeno from points further west. The word itself, however, doesn’t enter spoken English until 1642 and the upheavals of the Civil War, used as a term of abuse by the Royalists to describe the various factions that made up Cromwell’s New Model Army. It’s not until the French Revolution of a century thereafter that we first find some of the Enragés who opposed the revolutionary government referring to themselves as anarchists and using the expression positively. It was also in the eighteenth century that William Godwin wrote his Political Justice, advocating that the individual act according to his or her individual judgement while allowing every single other individual the same liberty. In 1844 philosopher Max Stirner’s book The Ego and Its Own suggested individuals were free to do anything that was physically within their power to do, without regard for others, up to and including murder. Stirner’s theories later came to be associated with the movement called Egoist Anarchism, although Stirner does not call himself an anarchist. The first writer to do so would be Pierre-Joseph Proudhon (1809-1865). Proudhon proposed a form of anarchy called mutualism, which although based on the freedom of the individual was more a model for the way in which society might work if governed by anarchist principles, with everybody free to do the work they really wanted to. Proudhon assumed that this would lead to what he called ‘spontaneous order’ once people had realised the many benefits of mutual cooperation and had organised their towns or villages on a communal basis, with each area governed locally and independently. But how was this utopian condition to be brought about?\n\nIn the late eighteen-hundreds and the early twentieth century, a great variety of different answers to this question were put forward. Collectivist Anarchism as defined by Mikhail Bakunin opposed private property, with factories and state-owned institutions to be seized by means of violent revolution and collectivised. Bakunin’s followers have probably contributed the most to the traditional depiction of anarchists as bomb-hurling maniacs, but there is no denying the intelligence and shrewdness of the man himself. Bakunin was initially enthusiastic with regard to the aims of the Workingmen’s Association known more commonly as the First International, which at that time had Karl Marx as its leading light. Divisions between the two men became swiftly apparent, though, with Bakunin predicting, accurately as it turned out, that a Marxist party following a revolution would simply replace the ruling classes they had fought against.\n\nPeter Kropotkin, on the other hand, while equally opposed to private property, felt that it should be legally abolished rather than acquired by bloody overthrow, following which society would be reorganised into a federation of self-governed communes. Thus the anarchist debate swung back and forth with further schools of thought or warring subdivisions constantly appearing and no unifying principle save for a dislike of authority. Mind you, this dislike was enough to unite anarchists of every stripe against the rise of fascism in Europe from the 1920s to the 1930s, notably during the Spanish Civil War when anarchist militias fought beneath a black flag against General Franco’s armies. Their eventual defeat in 1939 was partially assisted by the Stalinists who were meant to be helping in the struggle but who instead persecuted both the anarchists and the dissident Marxists who made up a large part of the rebel forces. Russia’s revolution having worked out pretty much as Mikhail Bakunin had predicted around forty years before with Stalin as that nation’s new Red Tsar.\n\nFamous defeats, of course, should not be taken as a proof that anarchy can never work. The Paris Commune, formed during 1789 and run upon anarchist principles was working fine until it was suppressed some five years later by the armed might of the National Convention in a brutal slaughter that killed far more ordinary people than all of the French aristocrats who met their end during the revolution but is for some reason far less talked about. Almost a century earlier, French Huguenots who had established working self-sufficient and self-governing communities in London’s East End were first pushed into staging a protest by the imposition of a crippling tax on their sole means of income and were then mown down by armed troops who were bivouacked in famous Jack the Ripper landmark Christchurch, Spitalfields.\n\nBoth these examples seem to indicate that anarchy is workable and viable, but also illustrate the fact that it will usually be crushed out of existence by the forces of authority that it opposes anywhere that it appears. Although anarchist theory has continued to develop and progress until the present day, where we find fascinating theorists such as Temporary Autonomous Zone author Hakim Bey amongst the vanguard, there is still no clear consensus on how any working anarchist society is to be brought about. We can’t realistically expect our rulers to sit by and let a doctrine that gets rid of them establish itself, nor can we suppose that after a few thousand years of having people tell us what to do that many of us would be capable of handling the alternative. Clearly, a large majority of people would would need to be educated to a point where they were able to direct their own lives without interfering in the lives of other people. Just as clearly, it is in the interest of no state to educate its people to the point where they could do without it. In the present day, the Internet potentially provides the means for such an education and even allows for the creation of alternate currencies or barter systems such as the Green Pound movement that’s intermittently at large in deprived areas of Britain, in which people who are mostly unemployed trade hours of their work-time as a method of avoiding the official currency completely. But even if we could take advantage of these useful-seeming possibilities, is there any conceivable kind of society that would permit such forms of self-sufficiency and self-empowerment to come into being or be widely practiced? In short, how do we get there from here? Where is the bridge that’s obviously needed between living under generally useless or oppressive governments and living in the self-determined world that anarchy holds out the hope of? Even if such a benign transitional society could be imagined, how could it be a society that any anarchist would want to be a part of, a society that somehow functioned without rulers?\n\nGiven the Greek origins of the word anarchy, we could do worse than to look to ancient Greece for a solution. In the city state of Athens, leadership was managed through a process called sortition, which is basically a type of government by lottery. In all decisions that concerned the state a jury would be randomly appointed from all parts of the community by drawing straws or lots. This jury would then listen carefully to an informed debate presenting both sides of the argument, just as a jury does during a court case. After this a vote is taken on the matter and the jury is dissolved. This system seems to come much closer to fulfilling the conditions of a true democracy, which is to say rule by the people, than our current mode of rule by a sometimes-elected representative can manage. It is also largely corruption-proof. No special interest groups or corporations can buy influence in government if no one knows who government will be until the next time that the straws are drawn. No jury would be likely to vote in a set of special privileges for the jury, such as being able to claim back expenses on the paddocks for their unicorns, when they themselves would no longer be jurors when these perks were ushered in. In fact, it would be in the jury’s interest to vote for those measures that would genuinely most benefit the common multitude that they’ll immediately be returning to after the ballot.\n\nObviously, it would take a massive constitutional amendment before any such approach could be adopted, but is constitutional reform really unthinkable when the alternatives are pointless, ineffectual and violent revolution or the option of just sitting back and doing nothing as our mostly unappointed leaders waltz us into wars, disastrous recessions and the possible extinction of our species while demanding that we pay them for providing this unasked-for service?\n\nBy removing at a stroke the worst excesses and abuse that come with leadership, such an Athenian approach might at least square the circle with regard to anarchy, allowing a society that has coherence and direction without having rulers in any conventional sense of the term. In times that would seem desperate despite our massive technological advances, perhaps we should invite anarchy in from the cold and take a closer look at the ideas and possibilities that our black-hatted bogeyman might offer us.",
-      "sats": 6806,
+      "sats": 6848,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 7,
@@ -1952,19 +2072,79 @@
       "subName": "BooksAndArticles"
      },
      {
-      "id": "1609143",
-      "title": "Audiobook launch 🎧📚🚀 21 Futures: Financial Fallout",
+      "id": "1609333",
+      "title": "Beware the white coats",
       "url": null,
-      "text": "## We have finally published volume 2 of 21 Futures as an audiobook, narrated by the golden voiced [Adrian M Lopez](http://primal.net/p/nprofile1qqsyqxz5h0qpgn706yq5suy46s9watklt4nt9skzrk632nmmyvn6ewqphrcmq).\n\nPodcast listeners, fiction fans, and cypherpunk collectors rejoice.\nAlternatively, don't rejoice, just listen.\n\n![](https://m.stacker.news/164951)\n\n**21 Futures: Financial Fallout**\n*Currencies debased.*\n*Privacy under attack.*\n*Cash goes underground.*\n*The crushing weight of debt.*\n*We were never prepared.*\n\n*Welcome to a system designed to keep us poor. The harder we work, the less we gain.*\n*And as we struggle, the noose only tightens.*\n*And then, when we have nothing left to lose, we turn on those who rigged the game.*\n*We stand and fight.*\n\n*These 21 stories portray unfortunate yet brilliant heroes fighting the powers that triggered financial fallout. Money is broken, but hope is not lost.*\n\nFeaturing @realBitcoinDog, Satillionaire, Decent Money, DJ Bodden, Graeme Shimmin, and many more.\n\n***\n\n[**LISTEN FOR FREE ON FOUNTAIN**](https://fountain.fm/show/cRNU0kyG3UG6J93NqIBq)\nAll 46 stories accross vol. 1 and 2.\n\n[**OWN THE AUDIOBOOK**](https://fanfares.io/s/rmVN5b#pay)\nZap the Fanfares link with 21k sats to download the files.\nShare your referral link to earn 10k sats for each sale you generate.\n\n![](https://m.stacker.news/164952)\n\nAll purchases of the full audiobook get access to the bonus story, *Underworld* by Max Hillebrand.\n\n***\n\nNext week, individual stories will be available for 2,100 sats each.\n\nHope you enjoy listening.\n\nNow, work begins on volume 3...",
-      "sats": 104,
+      "text": "\"The year is 1956. Your mother is expecting you, and her doctor smokes through the appointment. More doctors smoke Camels than any other brand, the adverts say, and he tells her a few a day will settle her nerves and keep the baby small for an easy birth.\n\nThe year is 1960. Your first proper shoes come from a shop with an X-ray machine in the corner. You slide your feet into the slot and watch your own toe bones wriggle, green and glowing, while the assistant checks the fit. You go back every time your feet grow.\n\nThe year is 1961. Your mother is expecting your sister and the sickness is bad. The chemist has a new tablet, advertised as completely safe in pregnancy. Your sister arrives the next year alongside 10,000 other babies whose mothers took it, and some of them arrive without arms.\n\nThe year is 1964. Three sore throats, so the tonsils come out, as they do for over a million children a year on both sides of the Atlantic. Twenty beds, and the promise of ice cream. Nobody asks what the tonsils were for. They were the immune system, and the operation never did much for the throats.\n\nThe year is 1972. You are sixteen and every car on earth runs on leaded petrol. The lead comes out of the exhaust and settles on the playground, the vegetable patch and the blood of every child walking to school. The men who put it in the petrol knew what it did to a brain in the 1920s. The ban arrives in your forties.\n\nThe year is 1981. Your mother's hands have gone stiff. The doctor has a new arthritis tablet with the biggest launch the drug industry has ever mounted. Two years later it is pulled on both sides of the Atlantic, with dozens of pensioners dead whose kidneys could not clear it. She gets off lightly: the sun burns her on it, and she spends a summer behind the curtains.\n\nThe year is 1991. Your father is diabetic, and the dietitian hands him a sheet. More than half his calories are to come from carbohydrate: bread, potatoes, pasta, cereal. His sugar goes up on it, so his insulin goes up with it, and his waist follows. He does as he is told for twenty years.\n\nThe year is 1998. Your back has gone. The doctor has a new opioid, and the rep carries a letter from a medical journal saying addiction on it is under 1%. The letter is five sentences long. The company pleads guilty twice, and by the second time more than half a million Americans are dead.\n\nThe year is 2002. Your knees hurt, and the doctor has a new pill that is kinder on the stomach. You take it for two years, the same two years the maker is sitting on its own heart data. It is withdrawn with as many as 140,000 heart attacks laid at its door. Your heart was fine. The man next door's was not.\n\nThe year is 2008. Your wife has a prolapse after three children, and the surgeon fits a strip of plastic mesh. Once the tissue grows through it, it cannot come out. Australia apologises to its women in 2018, America bans it in 2019, Britain apologises in 2020. Your wife gets hers by press release.\n\nThe year is 2026. You are seventy, and the new doctor has a screen and a number for everything. The meat on your plate is a hazard. The oil in the bottle is good for your heart. The injection is for life. He is the age the first doctor was when he lit a Camel in front of your mother, and every bit as sure.\n\nNot one of them was a rogue. Every one was the standard of care, taught to the next doctor, printed on the leaflet, and handed to a family with no way to check it.\n\nYou have spent seventy years as the experiment. The results come out after you are gone, under somebody else's name, and the chair you are sitting in is where they recruit for the next one.\" Sama Hoole\n\n![](https://m.stacker.news/164985)",
+      "sats": 566,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-11-05T19:49:45.673Z",
+      "ncomments": 1,
+      "createdAt": "2026-11-06T04:09:56.155Z",
       "user": {
-       "name": "TotallyHumanWriter"
+       "name": "MrAnderson"
       },
-      "subName": "the_stacker_muse"
+      "subName": "HealthAndFitness"
+     },
+     {
+      "id": "1609337",
+      "title": "With The Dow Plunging 1,800 Points As Democrats Start To Speak Of What’s To Come",
+      "url": "https://news.google.com/read/CBMipAFBVV95cUxPamlYMTRnTnVQT1JzN0doUmdpcFdPaEFLblFvUjd5V0FRQWlGWkFUOXhQYUwzenJRZXptY0RrX0UzOUNyUG5zZXAwNnRoMUpTU2M4Zml3M3U3djlRbXkxMndoazZMZlRaQnlwaUtXalJWZHl4VnBpV2FFUjJXYjhoQk03SUxyeXRPV2htUkZ4cGtmcllOZ190Z3BsOHlSWlFoZTVHcdIBqgFBVV95cUxOUlFBU1J4UktLenhRbmFhOEJPTUkzY2JBNkZTR0lpWURVNUUtT2FscU5BbWpPR0M4ekp5a2JuSG5BcWpGMElnMVQxNnFHUHB1Wk9GVTIzR1NaRzY1b1lCS0FwZ3UyQ2lRei1HREM0cURIQ0hSbzFFVGRmUmdVUWJwWTVFM0NtbVZHOThSZ0k4aXM2SUxxTHdWa3EwRkdTNFBfYU9CYnlJc0Zodw?hl=en-US&gl=US&ceid=US%3Aen",
+      "text": "It’s turning out the more they say the worse the market is reacting. Stopping data center all at once doesn’t just affect Big Tech it will crush construction, grid build out, and so many other things. There is a reason even Dem billionaire owners said we can’t just stop it all at once without causing a recession and spending 100’s of thousands to the unemployment line",
+      "sats": 576,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 2,
+      "createdAt": "2026-11-06T04:21:50.255Z",
+      "user": {
+       "name": "Cje95"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
+      "id": "1609201",
+      "title": "House Democrats Eye Their Own Crypto Market Structure Bill",
+      "url": "https://www.zerohedge.com/crypto/house-democrats-eye-their-own-crypto-market-structure-bill-bigger-sec-role-after-sweep",
+      "text": "How can you not feel confident with Maxine Waters calling the shots?\n\nShe might match Trump in rug pulling skills.",
+      "sats": 1244,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 4,
+      "createdAt": "2026-11-05T22:14:17.417Z",
+      "user": {
+       "name": "siggy47"
+      },
+      "subName": "Politics_And_Law"
+     },
+     {
+      "id": "1609330",
+      "title": "Italian filmmaker Tinto Brass dies at 93",
+      "url": "https://www.yahoo.com/entertainment/movies/articles/italian-filmmaker-tinto-brass-dies-160122280.html",
+      "text": "",
+      "sats": 508,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-11-06T03:59:23.422Z",
+      "user": {
+       "name": "kristapsk"
+      },
+      "subName": "movies"
+     },
+     {
+      "id": "1609234",
+      "title": "Folding Wings Could Be The Future For Air Travel",
+      "url": "https://hackaday.com/2026/11/05/folding-wings-could-be-the-future-for-air-travel/",
+      "text": "![](https://hackaday.com/wp-content/uploads/2026/10/777X_Roll-Out_FoldingWingtip.jpg?w=800)\n\n> Folding wings have a long history in aviation. Particularly in the military world, where the ability to fit more fighting planes on a boat made a very real difference to the outcomes of a combat situation. In civil aviation, though, particularly at commercial scales, the idea has been less popular.\n>\n> As unattractive as complexity can be, the push for ever greater efficiency and performance may be changing things in this space. In coming years, you might find yourself boarding an airliner and watching the wings fold out prior to take off, in a way that once unthinkable for a conventional commercial aircraft.\n\n***\n\n![](https://hackaday.com/wp-content/uploads/2026/10/777X_Roll-Out_40407373023_cropped.jpg?resize=400,190)\n\n> The folding wingtips allowed Boeing to fit a far longer, mor efficient wing to the 777X while still allowing it to operate in a wide variety of airports and gate configurations\n\n***\n\n**AlbatrossONE achieves proof-of-concept on a small scale**\n\nhttps://www.youtube.com/watch?v=R9SRn5n7enQ\n\n***",
+      "sats": 485,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 1,
+      "createdAt": "2026-11-05T23:13:38.622Z",
+      "user": {
+       "name": "satoshiplanet"
+      },
+      "subName": "Construction_and_Engineering"
      },
      {
       "id": "1608870",
@@ -1974,12 +2154,42 @@
       "sats": 7247,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 4,
+      "ncomments": 8,
       "createdAt": "2026-11-05T11:40:42.123Z",
       "user": {
        "name": "bitcoingraffiti"
       },
       "subName": "ideasfromtheedge"
+     },
+     {
+      "id": "752923",
+      "title": "Guy Fawkes, The Gun Powder Plot & How False Flags Have Shaped History",
+      "url": "https://wearechange.org/guy-fawkes-gun-powder-plot-false-flags-shaped-history/",
+      "text": "Do you really know the history?\nDo you know who wrote the history?\nDo you really know the facts of that day of 5th Nov 1605 ?\nDo you know what is a false flag?\n\nDon't you see the strange coincidence of 5th Nov being the election day in US and the biggest false flag in history, the gunpowder plot of 1605 ? The fuckers love these dates, to play with your mind.\n\nDid you know that in fact the \"gunpoder plot\" was a predecesor of the 1666 London fire plot, that end up with enacting the C'est Que Vie act 1666, declaring you all dead living and became \"legal entities\" ?\n\nPlease read this article and reflect about it.\nYOU ARE BEING LIED EVERY SINGLE DAY FOR CENTURIES.\n\n*btw... using the Guy Fawkes mask by some bitcoiners is kind of lame, you guys are practically making their game, you have been played. IT'S ALL A LIE*",
+      "sats": 3333,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 14,
+      "createdAt": "2024-11-04T08:59:19.129Z",
+      "user": {
+       "name": "DarthCoin"
+      },
+      "subName": "BooksAndArticles"
+     },
+     {
+      "id": "1532071",
+      "title": "Wasabi Wallet - Privacy by Default",
+      "url": "https://wasabiwallet.io/",
+      "text": "Welcome to the coinjoin territory, anon. Post your questions here, and I will answer them.\n\n\n![](https://m.stacker.news/149538)",
+      "sats": 2663,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 46,
+      "createdAt": "2026-07-24T22:47:04.833Z",
+      "user": {
+       "name": "Kruw"
+      },
+      "subName": "Coinjoins"
      },
      {
       "id": "1608876",
@@ -1997,59 +2207,74 @@
       "subName": "BooksAndArticles"
      },
      {
-      "id": "752923",
-      "title": "Guy Fawkes, The Gun Powder Plot & How False Flags Have Shaped History",
-      "url": "https://wearechange.org/guy-fawkes-gun-powder-plot-false-flags-shaped-history/",
-      "text": "Do you really know the history?\nDo you know who wrote the history?\nDo you really know the facts of that day of 5th Nov 1605 ?\nDo you know what is a false flag?\n\nDon't you see the strange coincidence of 5th Nov being the election day in US and the biggest false flag in history, the gunpowder plot of 1605 ? The fuckers love these dates, to play with your mind.\n\nDid you know that in fact the \"gunpoder plot\" was a predecesor of the 1666 London fire plot, that end up with enacting the C'est Que Vie act 1666, declaring you all dead living and became \"legal entities\" ?\n\nPlease read this article and reflect about it.\nYOU ARE BEING LIED EVERY SINGLE DAY FOR CENTURIES.\n\n*btw... using the Guy Fawkes mask by some bitcoiners is kind of lame, you guys are practically making their game, you have been played. IT'S ALL A LIE*",
-      "sats": 3039,
+      "id": "1609223",
+      "title": "Appreciation video of my cat Paolo",
+      "url": null,
+      "text": "![](https://m.stacker.news/164973)",
+      "sats": 908,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 10,
-      "createdAt": "2024-11-04T08:59:19.129Z",
+      "ncomments": 2,
+      "createdAt": "2026-11-05T22:40:44.115Z",
       "user": {
-       "name": "DarthCoin"
+       "name": "bief57"
       },
-      "subName": "BooksAndArticles"
+      "subName": "Animal_World"
      },
      {
-      "id": "1609126",
-      "title": "First Graphene Friendly Motorola?",
-      "url": "https://motorolanews.com/motorola-signature-27-2/",
-      "text": "I can't wait to read what @final  has to say. \n\n>  * The first Motorola device to support GrapheneOS, an privacy and security-focused mobile operating system.\n\nI just may have to track one down.",
-      "sats": 1725,
+      "id": "1551074",
+      "title": "OpenBitcoin.com: A new bitcoin block explorer with guides tools and games",
+      "url": null,
+      "text": "I have been building a bitcoin block explorer and I feel it's good enough to show:\n\n[https://openbitcoin.com](https://openbitcoin.com)\n\nThe site runs its own hardware, bitcoin node and address index. No third-party blockchain API used.\n\nInside the site:\n\n- Explorer: blocks, transactions and addresses at root-level URLs. (very important, a feature I always wanted with other explorers, a quick easy way to query an address) For example you can type openbitcoin.com/block_number_here or openbitcoin.com/txid_here or openbitcoin.com/address_here to load the page instantly without visiting the site to use the search bar :)\n\n- Node census (openbitcoin.com/nodes): reachable nodes counted by my own P2P crawler, 8,958 nodes from 92 countries last run.\n\n- Rich list (openbitcoin.com/rich-list): top 10,000 addresses and balance distributions.\n\n- Prices: spot price as a median of three exchanges, with a quick conversion tool on the front page.\n\n- Tools: fee calculator, address validator, message verifier, QR generator, and key tools built to be downloaded and run offline.\n\n- Guides: on confirmations, UTXOs, self-custody, stuck transactions and more. Newbie friendly.\n\n- Games (openbitcoin.com/games): three arcade games built on real bitcoin mechanics, stack blocks, clear a mempool backlog, and a slot machine that plays the actual odds of guessing a private key.\n\nThe website is open source. What stays private is my server's operational layer.\n\nWould appreciate any feedback, happy to contribute to the community.",
+      "sats": 7281,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-11-05T19:16:45.937Z",
+      "ncomments": 117,
+      "createdAt": "2026-08-19T19:44:47.321Z",
       "user": {
-       "name": "siggy47"
+       "name": "openbitcoin"
       },
-      "subName": "tech"
+      "subName": "bitcoin"
      },
      {
-      "id": "1609065",
-      "title": "🗞️ don't call it a comeback! --- SNZ Issue #75! 👏🏼",
-      "url": "https://pay.zaprite.com/pl_nIPZ1QPinr",
-      "text": "## HEAR YE HERE YE\n\n![](https://m.stacker.news/164930)\n\nGentlemen and ladies, fancy a read? Bitcoin, lightning, economics, and travel, oh my!\nSNZ Issue #75 is here!\n\n# READ [WEB](https://github.com/janakelsay/snz/blob/main/issue75web.pdf)\n\nor\n\n# PURCHASE [PRINT](https://pay.zaprite.com/pl_nIPZ1QPinr)\n\n# Featured posts\n\n[Receive-only Lightning checkout: a hacked server can’t drain your node](https://stacker.news/items/1597457)\n[I finally visited Pubkey in Washington DC](https://stacker.news/items/1597437)\n[Meme 1](https://stacker.news/items/1598039) and [Meme 2](https://stacker.news/items/1602602)\n[Should Economists Stay in Their Lane?](https://stacker.news/items/1602574)\n[The long road to bitcoin payments...](https://stacker.news/items/1603307)\n[Trip Report: Hong Kong](https://stacker.news/items/1604808)\n\n# there's more in store for subscribers!\n\nA quick update for my zine subscribers, 6 zines (including this one) have been sent to you for the fall season of zines - more is coming! You shall have 12 as soon as I crank them out. Though I have made a bit of a mess of the schedule, I hope you will forgive me, throughout November and into December, SNZ is on its way to you! (like santa claus, kinda)\n\n...and if you're interested, subscribe [here](https://pay.zaprite.com/pl_Lsgvh2fVyz) and I'll get a party of zines headed your way, too!",
-      "sats": 1665,
+      "id": "1608835",
+      "title": "Daily Stock Discussion ~Stacker Stocks",
+      "url": null,
+      "text": "Happy Thursday Stackers! Investors bought the dip the Democrat dip yesterday. Which means investors are optimistic with what is to come with this new Congress. But it looks like the bear is showing up \n\n![](https://m.stacker.news/164883)\n\nWill they remain?\n🟥or🟩?\n\n## Question \n\n**Congress has gotten rich over the years with their stock investments. Should they be allowed to invest? Yes or no? Also make your guess for today’s close for the bonus zap!**",
+      "sats": 157,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-11-05T17:14:56.420Z",
+      "ncomments": 9,
+      "createdAt": "2026-11-05T09:53:05.348Z",
       "user": {
-       "name": "plebpoet"
+       "name": "BlokchainB"
       },
-      "subName": "meta"
+      "subName": "Stacker_Stocks"
+     },
+     {
+      "id": "1609186",
+      "title": "Mercado Bitcoin Said Its Hack Was Contained; Data Tells a Different Story",
+      "url": "https://finance.yahoo.com/markets/crypto/articles/mercado-bitcoin-said-hack-contained-201603832.html",
+      "text": "",
+      "sats": 600,
+      "bounty": null,
+      "bountyPaidTo": null,
+      "ncomments": 0,
+      "createdAt": "2026-11-05T21:22:15.888Z",
+      "user": {
+       "name": "limonta"
+      },
+      "subName": "bitcoin"
      },
      {
       "id": "1608924",
       "title": "sshole",
       "url": "https://sshhole.com/",
       "text": "",
-      "sats": 1749,
+      "sats": 1886,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 3,
+      "ncomments": 5,
       "createdAt": "2026-11-05T13:15:55.997Z",
       "user": {
        "name": "andunieee"
@@ -2057,289 +2282,64 @@
       "subName": "tech"
      },
      {
-      "id": "1608617",
-      "title": "A Congressional Staffers Thoughts On What Happened and What's Next",
-      "url": null,
-      "text": "Once again, the polls were terribly off; however, this time around, instead of being wrong about who would win, they were wrong about how resounding the defeat was. Now most people knew that Republican's were going to lose the House. Frankly, I don't even think Speaker Johnson or President Trump truly believed that Republicans could keep it; they didn't really have a choice to say anything different. The message that voters (the American public) sent to Congress, Republicans, and Trump was blunt. \n\nWe are sick of this shit and what you are doing.\n\nLast night, as I watched CNN's coverage of the midterms, it wasn't long before I realized that this was nothing short of a disaster. While the idea of a Blue Tsunami had been picking up over the last week and a half, I honestly dismissed a lot of the chatter because of how close the last ~5 elections have been. Even when I factored in that this would be a midterm election with significant turnout and people voting against Republicans because of how they enabled Trump, I did not expect to see such a clear and consistent rebuke across the states, no matter where you lived or how good a candidate was. The end result wasn't a blue wave or a blue tsunami, but a blue meteor strike blowing Republicans sky-high. \n\nI will be the first one to say Republicans have done this to themselves because we allowed Trump to become a godlike figure whom you did not stand up to because you would get crushed. The only people who stood up to him were either people who were retiring or those who lost their primaries and thus had nothing to lose. Trump's tactics over the last decade finally wore out their welcome. You can be a dick and a terrible person if you are getting results for the country, but as soon as that goes away and your choices have put Americans in a difficult spot, heads are going to roll. \n\nIt wasn't like there were just one or two instances either. His tariff war, which a lot of people initially supported, went off the rails, and the personal attacks started to fly not just at a common rival like China, but at Canada, the EU, South Korea, etc. The Admin completely failed to present the public with why the war with Iran was necessary and to provide a game plan. As a result, the whole situation is confusing and randomly seems to be drawn out without a true end... aka getting us into a Forever War, something he has criticized Republicans and Democrats for. Then, just for fun, you can throw in any number of other insane things he has done recently, from trying to warm up ties to Russia to the tone-deaf talks about data centers to his random side quests in improving DC; the list just goes on and on. Oh, and let's not forget when he proudly announced to the world months ago that he didn't care about the midterms and how he didn't need a Republican Congress. \n\nFor me personally, this is the first time in the 5+ years I have lived here that I know, come January 3rd, my job will be gone. House Committees work in an interesting way, as the majority receives 2/3 of the budget while the minority receives 1/3, with the same being the case for staffing levels. Meaning that 2/3 of our current staff is getting the axe, and those who are hit the hardest by these cuts are the middle-tier staffers. Senior-level staff are kept for their expertise, and the entry-level staff are cheap, whereas middle-level staff like myself are too expensive but not quite knowledgeable enough to fill the role. \n\nOver the next ~2 months, I will be navigating a space that will also be filled with people in the same position as me, and the number of jobs on The Hill will be pretty limited. Due to being three months short of 5 years come January 2027, I will likely try to find another office or Committee to latch onto to hit the 5-year mark. \n\nThe results of this election are not going to be quickly reversed. The Senate map for 2028 doesn't offer much, with 2032 being the next time all of these races that were lost are up again. The House will likely take an election or two before it could be flipped. \n\nFor Trump..... I expect that by the end of December, he is going to be just going ham on giving out blanket pardons. Due to how Biden handled leaving office and the blanket pardons he issued, Trump is going to do the same, and the Democrats are going to face a harsh choice. If you go after the legality of these pardons, you are going to open up everyone who got one in 2024/2025, as Biden left office, to legal action as well. Eventually, Republicans will retake Congress, and if the Dems have destroyed the blanket pardons, then Fauci, Hunter Biden, etc are all going to have to face the music. \n\nThere are going to be a lot of investigations launched in January and it is going to take up a ton of time for the next two years. Who knows if they will result in anything but we can already see they are taking shape now.\n\nTo put it plain and simple.... being in the majority is hard as hell. It is so much easier to be in the minority and just be a thorn in the side of the majority party. Getting your Members to come together and agree is hard enough, but given that the Dems won't have 60 Senate seats, they won't have a filibuster-proof majority, and since it is a Republican president, they can't pass anything through reconciliation, given that Trump would just veto it. It's going to be an interesting next few years, and hopefully the Republican Party realizes that the character of your candidates matters just as much as their qualifications.",
-      "sats": 17980,
+      "id": "1609221",
+      "title": "Newsom to commute all 548 of California's death sentences to life without parole",
+      "url": "https://www.pbs.org/newshour/politics/newsom-says-he-will-commute-all-548-of-californias-death-sentences-to-life-without-parole",
+      "text": "![](https://m.stacker.news/164972)\n\n> \"As Governor, I alone bear responsibility for this decision and its impact, just as I alone would bear responsibility for each execution,\" Newsom wrote.",
+      "sats": 612,
       "bounty": null,
       "bountyPaidTo": null,
-      "ncomments": 56,
-      "createdAt": "2026-11-04T21:15:05.970Z",
+      "ncomments": 1,
+      "createdAt": "2026-11-05T22:36:07.099Z",
       "user": {
-       "name": "Cje95"
+       "name": "satoshiplanet"
       },
       "subName": "Politics_And_Law"
      },
      {
-      "id": "1609104",
-      "title": "A thousand fewer paths to root",
-      "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
-      "text": "",
-      "sats": 678,
+      "id": "1609323",
+      "title": "A different quinceañera shoot",
+      "url": null,
+      "text": "https://files.peakd.com/file/peakd-hive/malos10/23uQxtoLUFTCVt54zxaQjE3GPLWwDeViu1czSuPx91fUmmeyxqSGGzpBDnxLn7mwG4C42.jpg\n\n\nGreetings to all my friends in this beautiful community, today I am back with a new set of photographs that I took in my studio for a girl who was turning 15 years old, but she wanted to do something different for her photos; she did not want the typical photos with a pompous 15th-birthday dress.\n\n\nhttps://files.peakd.com/file/peakd-hive/malos10/EoiYbcZewXESMsvdPP83ryP4NzMcLqZcvNUtpX7UXwMwvZpX2NAFiYi2nx6wc997Bot.jpg\n\n\nThis girl decided to wear a gala dress that made her look elegant.\n\n\nhttps://files.peakd.com/file/peakd-hive/malos10/Ep7w51oNyMmSJTLPUFksnmTXmo39V1XqCa3qGDkFeqPCa5psFAHN6vEeV5euyBagmjW.jpg\n\n\nThis was a personal choice and her parents supported her!\n\n\nhttps://files.peakd.com/file/peakd-hive/malos10/EoiXgtge9QJvei7cqgruScQ4YMwB9RD1GGMt2Vypb9gvo6hhbLZzNDBATT5hvZgMjsn.jpg\n\n\nIn these years taking photos I have been able to realize that fewer and fewer teenagers want to use that type of pompous dress, most of the time it is the parents \"forcing\" the girls to take the photos that way just out of tradition, but the girls hardly enjoy it, it is a heavy dress, hot and they are not used to wearing heels.\n\nFor that reason, what this girl did was brilliant and how great that her parents supported her!\n\n\nhttps://files.peakd.com/file/peakd-hive/malos10/EonpMbjJFrSMhCvDrwQtnK7zwfBvSrNmibKh34XwP8f7ehzwbAdnsefzRXGprDkQQLa.jpg\n\n\nAnd we managed to take photos that she really liked and that she knows she will use.\n\n\nhttps://files.peakd.com/file/peakd-hive/malos10/Eos3kJCX9csY6bCxeJM43BJqvvQY2Jv9zcCeqkZaD1Y2PKE2eh8cFLUr8fBXc1buN2B.jpg\n\nhttps://files.peakd.com/file/peakd-hive/malos10/Eoke1wYqPws8tEjYGuqHNNwRpeCxhK21a3gWqMxrJZLjNigxs9fN285NRaT3QLRggLu.jpg\n\n\nAnd when finishing the photos she wanted to take advantage of the time on the set to take some photos with the other outfit she had, which was more casual, and we also took nice photos!\n\n\nhttps://files.peakd.com/file/peakd-hive/malos10/EokgTG8omfWm7QJpKZwUR2jdJY44vdSi2ZLryns8F94TsBpBnpysR5oqKUa3MRbFjE8.jpg\n\nhttps://files.peakd.com/file/peakd-hive/malos10/Eos4GEYwkeXdkkioNAV6JrkpZfm8WeC4YAq2Zdt1i5ETuo3GYa8g3iiVMYa5NTPs7Cn.jpg\n\nhttps://files.peakd.com/file/peakd-hive/malos10/EogQFwErY3ameDDLcwUKVwTQZgsG8U6yBqSZSktesTSsFwHHJDy6oXEfkJiGvsaYSJW.jpg\n\n\nAll photos were taken with my Canon R8 camera, a 50mm lens at f/4 and two light sources.\n\nAt the end of the photo session we were all super happy with the results and I hope you like them as much as we did!",
+      "sats": 219,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-11-05T18:49:45.288Z",
+      "createdAt": "2026-11-06T03:12:57.157Z",
       "user": {
-       "name": "zuspotirko"
+       "name": "Malos_10"
       },
-      "subName": "AI"
+      "subName": "Photography"
      },
      {
-      "id": "1608839",
-      "title": "Guinness World Record broken as 53 red cards shown in Brazil under-20 match",
-      "url": "https://www.aljazeera.com/sports/2026/11/5/guinness-world-record-broken-as-53-red-cards-shown-in-brazil-under-20-match",
-      "text": "![](https://m.stacker.news/164892)\n\n> Mass brawl at Uberlandia vs Mamore results in 43 cards for players, eight for coaching staff and two for board members.",
-      "sats": 651,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-11-05T10:15:42.060Z",
-      "user": {
-       "name": "satoshiplanet"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1608785",
-      "title": "D is for Dilution - Arthur Hayes",
-      "url": "https://cryptohayes.substack.com/p/d-is-for-dilution",
-      "text": "Hayes has not changed the moral of his story, despite being wrong for at least a year:\n\n> It will be glorious for Bitcoin and crypto hodlers. But be patient.\n\nNow, he sees the AI companies all falling flat post IPO and the whole big AI bubble going *pop* in some way that just has -- just absolutely most definitely I'm not wrong this time *has* to spur central banks to printing all the dollars Hayes has been hoping for these last 12 months. \n\nNone the less, he is full of his typical piss and vinegar:\n\n> Therefore, without any discussion whether the CEOs of SpaceX, Anthropic, and OpenAI are lying or committing accounting fraud, I know the market will assume they are once the stock prices sag below the IPO price because of massive insider unlocks.\n\nBasically, Hayes thinks the AI companies will require so much buying to soak up all the shares being sold that their share prices can't hardly do anything but go down. \n\nHayes may want to consider most re carefully such certain language. \n\n> the point of the IPO is to gain access to the corporate debt markets so that ‌these companies can raise capital without hyperscaler and semiconductor company backstops. To inspire confidence in potential debt donkeys, the stock cannot just tread water but needs to pump. As I showed earlier, treading water is extremely capital intensive for the broader market. The most likely scenario is that investors aren’t as stupid as these CEOs believe, and refuse to be dumped on by insiders. Therefore, even if revenues (there ain’t going to be any earnings, lol) match expectations, the supply onslaught slowly wears on the stock price as it leaks lower.\n\nHayes has more confidence in investors than I do. But he thinks the whole thing stalls out and the printer gets turned back on...sometime. \n\nIn the meantime, Maelstrom is sitting this one out (or so he says).",
-      "sats": 1367,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 7,
-      "createdAt": "2026-11-05T05:32:58.687Z",
-      "user": {
-       "name": "Scoresby"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1608969",
-      "title": "2026-27 UCL Pool: Week 4 Recap and Standings",
+      "id": "1609229",
+      "title": "1mi sprint",
       "url": null,
-      "text": "Only two teams remain at the top of the table, counting their matches as victories. Real Madrid joined PSG after beating AEK in Athens last night. Valverde scored the winner at 92 minutes. At the same time, though a bit further east, Liverpool lost their game against Fenerbahçe, confirming that Türkiye is a tough spot.\n\nI am glad that @0xbitcoiner's Porto finally added their first points, beating Napoli 4-1. Congrats!. A surprising Como achieved a stunning 1-9 win against Lens in France. Man City is approaching to the top 8 after beating Leipzig (2-3).\n\nAlso in Germany, Borussia clinched the victory against Real Betis in a very entertaining match. Both teams have added 9 points and are within just goal difference from a top 8 spot.\n\nArsenal is third in the table after beating Slavia Praha (1-2) in Czech Republic.\n\nOther results were:\n\n* Viking 4-1 Sabah\n* PSV 1-2 Brugge\n\n# Pool\n\nThis week 3 stackers, @Undisciplined , @grayruby and @suraz ,  added 7 points to finish at the top of the week. Congrats to @gsc360 who was the only one who supported Fenerbahçe to beat Liverpool.\n\n![](https://m.stacker.news/164922)\n\nOn aggregate, @Undisciplined takes the lead (20), 1 point clear over @denlillaapan . @suraz and @User21000000 chase closely with 18 points.\n\n![](https://m.stacker.news/164924)\n\nNow, UCL takes another pause until the last week in November, as some internationals return next week.\n\ncc: @Undisciplined , @WeAreAllSatoshi , @suraz , @User21000000 , @grayruby , @denlillaapan , @gsc360 , @0xbitcoiner , @guerratotal , @MB",
-      "sats": 877,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 6,
-      "createdAt": "2026-11-05T14:51:29.269Z",
-      "user": {
-       "name": "Carresan"
-      },
-      "subName": "AskSN"
-     },
-     {
-      "id": "1609045",
-      "title": "Wow Wemby Wow!",
-      "url": null,
-      "text": "https://x.com/NBA/status/2118346720866353611?a=bkCoiWDDoAtVP_-2LxQ&s=20",
-      "sats": 545,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 10,
-      "createdAt": "2026-11-05T16:55:52.789Z",
-      "user": {
-       "name": "grayruby"
-      },
-      "subName": "Stacker_Sports"
-     },
-     {
-      "id": "1609103",
-      "title": "Bandcamp Friday Is November 6: What It Shows About How Fans Pay Indie Musicians",
-      "url": "https://heatherlarson.substack.com/p/bandcamp-friday-is-november-6-what",
-      "text": "Another great one by Heather! \n\n![](https://m.stacker.news/164945)",
-      "sats": 392,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-11-05T18:47:13.066Z",
-      "user": {
-       "name": "Car"
-      },
-      "subName": "Music"
-     },
-     {
-      "id": "1609039",
-      "title": "Difficulty Adjustment Prediction Markets Live on Glimpse",
-      "url": "https://www.glimpse.markets/",
-      "text": "![](https://m.stacker.news/164929)\n\nNetwork difficulty and difficulty adjustment markets are now live on Glimpse. Bet on whether difficulty goes up or down each epoch, and earn sats if you’re right.\n\nNo KYC, instant deposits and withdrawals via Lightning, and payouts every adjustment.",
-      "sats": 86,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-11-05T16:48:44.405Z",
-      "user": {
-       "name": "HYPERBITCOINZATION"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1609100",
-      "title": "What creative ideas have you been rambling on?",
-      "url": null,
-      "text": "![MaindBlowing](https://m.stacker.news/97749)\n\nThis post is part of a series. It is meant to be a place for stackers to discuss creative projects they have been working on, or ideas they are aiming to build.  Regardless of your project being personal, professional, physical, digital, or even simply an idea to brainstorm together.\n\nIf you have any creative projects or ideas that you have been working on or want to eventually work on... This is a place for discussing those, gather initial feedback and feel more energetic on bringing it to the next level.\n\n_**₿e Creative, have Fun!**_",
-      "sats": 121,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-11-05T18:42:29.279Z",
-      "user": {
-       "name": "deSign_r"
-      },
-      "subName": "Design"
-     },
-     {
-      "id": "1608879",
-      "title": "These countries are hoarding (and dumping) the most gold in 2026",
-      "url": "https://www.gold.org/goldhub/gold-focus/2026/08/central-bank-gold-statistics-june-2026",
-      "text": "The H1 2026 numbers are out.\n\n`Poland` (82t), `Uzbekistan` (41t), `China` (40t), and `Kazakhstan` (27t) are hoarding hard assets. `Turkey` (83t) and `Russia` (44t), on the other hand, are dumping gold just to survive.\n\n![](https://m.stacker.news/164904)\n\n![](https://m.stacker.news/164905)\n\n![](https://m.stacker.news/164906)",
-      "sats": 789,
+      "text": "![](https://m.stacker.news/164974)",
+      "sats": 444,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 2,
-      "createdAt": "2026-11-05T12:04:31.792Z",
+      "createdAt": "2026-11-05T23:04:57.201Z",
       "user": {
-       "name": "satoshiplanet"
+       "name": "realBitcoinDog"
       },
-      "subName": "charts_and_maps"
+      "subName": "HealthAndFitness"
      },
      {
-      "id": "1609077",
-      "title": "Nasdaq Sinks More Than 4% as Investors Retreat From AI Trade After Election",
-      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-05-2026",
-      "text": "",
-      "sats": 258,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-11-05T17:41:12.131Z",
-      "user": {
-       "name": "zuspotirko"
-      },
-      "subName": "AI"
-     },
-     {
-      "id": "1609059",
-      "title": "Discord is ditching Electron, says its new app uses less RAM",
-      "url": "https://www.theverge.com/news/1027379/discord-ditching-electron-web-app",
-      "text": "",
-      "sats": 294,
+      "id": "1609168",
+      "title": "Bukele Has Declared Total War on Haiti's Gangs",
+      "url": "https://www.youtube.com/watch?v=z0aaBlGvcxY",
+      "text": "El Salvador's President Bukele has deployed 2,500 troops to Haiti after four Salvadoran military technicians were abducted. What began as a rescue mission has expanded into promises to crush Haiti's gangs entirely. Salvadoran forces now patrol Port-au-Prince, engaging armed groups controlling seventy percent of the capital amid challenging urban terrain.",
+      "sats": 357,
       "bounty": null,
       "bountyPaidTo": null,
       "ncomments": 0,
-      "createdAt": "2026-11-05T17:08:54.078Z",
+      "createdAt": "2026-11-05T20:37:55.921Z",
       "user": {
-       "name": "pleb_one"
+       "name": "Lux"
       },
-      "subName": "tech"
-     },
-     {
-      "id": "1608804",
-      "title": "Any stackers at bitcoin++ Seoul, privacy edition?",
-      "url": "https://btcpp.dev/seoul",
-      "text": "",
-      "sats": 677,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-11-05T07:36:33.181Z",
-      "user": {
-       "name": "m0wer"
-      },
-      "subName": "bitcoinplusplus"
-     },
-     {
-      "id": "1608739",
-      "title": "Xikipedia History: The Nordertor",
-      "url": null,
-      "text": "![](https://m.stacker.news/164853)\n\n>is an old [town gate](https://en.wikipedia.org/wiki/City_gate \"City gate\") in [Flensburg](https://en.wikipedia.org/wiki/Flensburg \"Flensburg\"), [Germany](https://en.wikipedia.org/wiki/Germany \"Germany\"), which was built around 1595. Today the [landmark](https://en.wikipedia.org/wiki/Landmark \"Landmark\") is used as a symbol for Flensburg.[<sup>[1]</sup>](https://en.wikipedia.org/wiki/Nordertor#cite_note-1)\n\n>The  [town wall](https://en.wikipedia.org/wiki/Wall \"Wall\") of Flensburg was built step by step from 1345 onwards.[<sup>[2]</sup>](https://en.wikipedia.org/wiki/Nordertor#cite_note-2) A town gate, named *Norder Porte*, was built in the northern section of the wall.[<sup>[3]</sup>](https://en.wikipedia.org/wiki/Nordertor#cite_note-3) At the end of the 16th century, it was replaced by the Nordertor, a building with [stepped gables](https://en.wikipedia.org/wiki/Crow-stepped_gable \"Crow-stepped gable\") and [archway](https://en.wikipedia.org/wiki/Arch \"Arch\").[<sup>[4]</sup>](https://en.wikipedia.org/wiki/Nordertor#cite_note-4) At this time the Nordertor marked the northern [boundary](https://en.wikipedia.org/wiki/Border \"Border\") of the town. It was a checkpoint that was closed at night.[<sup>[5]</sup>](https://en.wikipedia.org/wiki/Nordertor#cite_note-5)\n\n____\n\nCool old looking gate. It’s older than America!! \nAsking my German friend if they ever visited this town.",
-      "sats": 265,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 8,
-      "createdAt": "2026-11-05T02:31:10.944Z",
-      "user": {
-       "name": "BlokchainB"
-      },
-      "subName": "Construction_and_Engineering"
-     },
-     {
-      "id": "1609005",
-      "title": "Cashu is real ecash. Not the shitcoin one",
-      "url": null,
-      "text": "![](https://m.stacker.news/164926)",
-      "sats": 321,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-11-05T15:39:04.424Z",
-      "user": {
-       "name": "hasherstacker"
-      },
-      "subName": "bitcoin_beginners"
-     },
-     {
-      "id": "1609029",
-      "title": "PAFF.club - An open source self-hostable Netflix/Spotify clone",
-      "url": "http://paff.club",
-      "text": "Hi stackers,\n\nI've been working on PAFF (Play Anything For Free), a new streaming app that uses torrents and other public databases under the hood to offer a free alternative to Netflix, Spotify and the myriad other streaming services.\n\nIt can play movies, tv shows and music. It uses torrents and other public databases but it's optimized for streaming so you don't have to wait for whole files to finish downloading before it starts playing.\n\nIt has a nice user friendly UI and I've added a bunch of integrations so you can run it on your computer, phone, TV, NAS, Android Auto, etc.\n\nI'd love to get some feedback on it and hear if you like it or would like to see anything added or changed. I haven't tested on Windows or Mac so it would be great to know if it actually works there.\n\nAdam",
-      "sats": 85,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-11-05T16:34:15.395Z",
-      "user": {
-       "name": "asoltys2026"
-      },
-      "subName": "Music"
-     },
-     {
-      "id": "1609024",
-      "title": "Great but painful",
-      "url": "https://lesswrong.com/posts/KThSe2vPZw4zn7f8W/great-but-painful",
-      "text": "![](https://m.stacker.news/164927)\n\nIf you want to build a product that people will use, find something that people already do and make it less painful.\n\n- - -\n\n#UX #ProductManagement",
-      "sats": 240,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 0,
-      "createdAt": "2026-11-05T16:24:00.301Z",
-      "user": {
-       "name": "deSign_r"
-      },
-      "subName": "Design"
-     },
-     {
-      "id": "1608912",
-      "title": "Bitcoin Amsterdam 2026 | Day 1 Livestream",
-      "url": "https://x.com/i/broadcasts/2nQYOeYXLdNBNj",
-      "text": "",
-      "sats": 426,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 1,
-      "createdAt": "2026-11-05T13:04:32.808Z",
-      "user": {
-       "name": "hasherstacker"
-      },
-      "subName": "bitcoin"
-     },
-     {
-      "id": "1608985",
-      "title": "Daily Discussion Thread ~Music Saloon!",
-      "url": null,
-      "text": "Hello Stackers!\nWelcome on into the  ~Music Corner of the Saloon!\nA place where we Talk Music. Share Tracks. Zap Sats.\nSo stay a while and listen.\n🚨Don't forget to check out the pinned items in the territory homepage! You can always find the latest weeklies there!🚨\n🚨Subscribe to the territory to ensure you never miss a post!",
-      "sats": 209,
-      "bounty": null,
-      "bountyPaidTo": null,
-      "ncomments": 2,
-      "createdAt": "2026-11-05T15:12:54.818Z",
-      "user": {
-       "name": "Public_N_M_E"
-      },
-      "subName": "Music"
+      "subName": "Politics_And_Law"
      }
     ]
    }
